@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close"
+		p:driverClassName="${db.driver}"
+		p:url="${db.url}"
+		p:username="${db.username}"
+		p:password="${db.password}"	
+	/>
+	
+	
+	<bean id="mybatisConfig" class="org.apache.ibatis.session.Configuration" p:jdbcTypeForNull="NULL"/>
+	<!-- xml 파일을 로드할 경우
+	 p:configuration-ref="mybatisConfig"
+	 p:configLocation="classpath:mybatis-config.xml"
+	 -->
+	
+	<!--  p:mapperLocations : Mapeer를 자동으로 스캔하는 명령  -->
+	<!--  p:typeAliasesPackage : Type으로 사용될 객체의 Alias를 자동으로 생성하는 명령 -> Alias는 Class 명으로 생성 됨 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
+		p:configuration-ref="mybatisConfig"
+		p:mapperLocations="classpath:mappers/**/*.xml"
+		p:typeAliasesPackage="com.kh.mvc.*.model.vo"
+		p:dataSource-ref="dataSource"
+	/>
+	
+	<!-- 실제 마이바티스에서 사용할 Session 정의 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
+		c:sqlSessionFactory-ref="sqlSessionFactory"
+	/>
+	
+	<!-- DAO를 대처할 Mapper Scanning -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+		p:basePackage="com.kh.mvc.*.model.mapper"	
+	/>
+	
+	<!-- 트랜잭션 매니저 설정 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"
+	/>
+
+</beans>
