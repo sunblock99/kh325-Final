@@ -1,1 +1,395 @@
 /* your styles go here */
+@charset "UTF-8";
+
+/*폰트 적용*/
+@font-face {
+	font-family: 'pBlack';
+	font-weight: 900;
+	font-display: swap;
+	src: url(font/Pretendard-Black.ttf);
+}
+
+@font-face {
+	font-family: 'pEb';
+	font-weight: 800;
+	font-display: swap;
+	src: url(font/Pretendard-ExtraBold.ttf);
+}
+
+@font-face {
+	font-family: 'pB';
+	font-weight: 700;
+	font-display: swap;
+	src: url(font/Pretendard-Bold.ttf);
+}
+
+@font-face {
+	font-family: 'pSb';
+	font-weight: 600;
+	font-display: swap;
+	src: url(font/Pretendard-SemiBold.ttf);
+}
+
+@font-face {
+	font-family: 'pM';
+	font-weight: 500;
+	font-display: swap;
+	src: url(font/Pretendard-Medium.ttf);
+}
+
+@font-face {
+	font-family: 'pR';
+	font-weight: 400;
+	font-display: swap;
+	letter-spacing: 1px;
+	src: url(font/Pretendard-Regular.ttf);
+}
+
+@font-face {
+	font-family: 'pL';
+	font-weight: 300;
+	font-display: swap;
+	src: url(font/Pretendard-Light.ttf);
+}
+
+@font-face {
+	font-family: 'pEl';
+	font-weight: 200;
+	font-display: swap;
+	src: url(font/Pretendard-ExtraLight.ttf);
+}
+
+@font-face {
+	font-family: 'pThin';
+	font-weight: 100;
+	font-display: swap;
+	src: url(font/Pretendard-Thin.ttf);
+}
+
+div {
+	font-family: 'pR';
+	letter-spacing: -1px;
+}
+
+/*폰트 끝*/
+
+/* 일립시스 */
+.text-overflow-elip-3 {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: box;
+	margin-top: 1px;
+	max-height: 80px;
+	overflow: hidden;
+	vertical-align: top;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3
+}
+
+/* hover */
+a.a-orign-text {
+	text-decoration: none;
+	color: initial;
+	letter-spacing: 0 !important;
+}
+
+a:hover.a-hover,
+.a-orign-text {
+	color: #FD9F28;
+	text-decoration: none !important;
+}
+
+/* ==================================== 헤더 ======================================= */
+/* 화이트헤더 */
+.navbar .nav-link-header {
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	display: block;
+	padding: 0.5rem 1rem;
+	color: #fff;
+	transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+/* 블랙헤더 */
+.navbar .nav-link-header-black {
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	display: block;
+	padding: 0.5rem 1rem;
+	color: black;
+	transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+/* 헤더 hover 효과 */
+a.hvr:hover {
+	color: #FD9F28;
+	background-color: #FAF9F8;
+	text-decoration: none;
+}
+
+/* ==================================== 메인페이지 ======================================= */
+
+
+/* 갤러리 시작*/
+/* Reset CSS */
+/* * {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+  } */
+/* html,
+  body {
+	  /* background: linear-gradient(45deg, #190f2c, #200b30);
+	  padding: 15px;
+  }*/
+
+/* Main CSS */
+.grid-wrapper>div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.grid-wrapper>div>.img-main-gallery {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 5px
+}
+
+.grid-wrapper {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-auto-rows: 200px;
+	grid-auto-flow: dense;
+}
+
+.img-main-gallery {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.grid-wrapper .wide {
+	grid-column: span 2;
+}
+
+.grid-wrapper .tall {
+	grid-row: span 2;
+}
+
+.grid-wrapper .big {
+	grid-column: span 2;
+	grid-row: span 2;
+}
+
+/* 갤러리 끝*/
+
+/* 검색창 */
+div.absolute-searchbar {
+	position: relative;
+	width: 117%;
+	padding-top: 5px;
+	bottom: 70px;
+	margin: auto;
+	justify-content: center;
+	z-index: 100;
+	overflow: visible;
+}
+
+.searchbar-shadow {
+	filter: drop-shadow(0 5px 10px rgb(0 0 0 / 50%));
+}
+
+/* 검색창 끝 */
+
+/* 여행코스 슬라이더 */
+.detail-slider-tourplan {
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	overflow: hidden;
+	max-height: 400px;
+}
+
+/* 핫플레이스 사진 */
+.card-poster {
+	flex-direction: row;
+	align-items: flex-end;
+	color: #fff;
+	border: none;
+	overflow: hidden;
+	box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .1);
+	min-height: 350px;
+	min-width: 250px;
+}
+
+/* 핫플레이스 사진 끝 */
+
+/* 소개파트 */
+.main-number {
+	position: absolute;
+	top: -40px;
+	left: 0px;
+	right: 40px;
+	width: 3rem;
+	text-align: center;
+	color: #FD9F28;
+	font-size: 90px;
+	font-weight: 700;
+	z-index: 5;
+}
+
+/* 비디오 받침 배경 사각형 */
+.main-square {
+	background-size: 1200px 200px;
+	z-index: -100;
+	background-image: url("/html/image/mainVideoBack.png");
+	background-repeat: no-repeat;
+	background-position-x: 260px;
+	background-position-y: 120px;
+	overflow: visible;
+}
+
+.video-shadow {
+	filter: drop-shadow(5px 5px 10px rgb(0 0 0 / 50%));
+}
+
+
+/* 행사 일정 */
+.date-tile-event {
+	display: flex;
+	width: 4.5rem;
+	height: 4.5rem;
+	text-align: center;
+	color: #fffbef;
+	border-radius: 0.4rem;
+	background: #FD9F28;
+	align-items: center;
+	justify-content: center;
+}
+
+
+/* 커뮤니티 카테고리 폰트 */
+.community-cate-font {
+	color: #907B65;
+	text-align: left;
+	font-size: 18px;
+	inline-size: 150px;
+}
+
+/* 커뮤니티 글제목 폰트 */
+.community-title-font {
+	color: #000000;
+	text-align: left;
+	font-size: 18px;
+}
+
+/* 커뮤니티 테이블 간격 */
+tr.community-borer-size {
+	padding: 3px 3px;
+
+}
+
+/* 커뮤니티 더보기 효과*/
+.btn-link-cate {
+	font-family: 'pM';
+	color: rgba(101, 101, 101, 0.751);
+	text-decoration: none;
+	font-weight: initial;
+	letter-spacing: 0px;
+	align-items: center;
+	font-size: 16px !important;
+}
+
+.btn-link-cate:hover {
+	color: #b68302;
+	text-decoration: none;
+	font-family: 'pM'
+	!important;
+}
+
+/* ==================================== 관광상세페이지 ======================================= */
+/* 관광타입 뱃지 */
+.badge-tourinfo-detail {
+	font-family: 'pB';
+	display: inline-block;
+	padding: .35em .65em;
+	font-size: .75em;
+	font-weight: 700;
+	line-height: 1;
+	background-color: #113DA9;
+	color: #fff;
+	text-align: center;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25rem
+}
+
+.badge-foodinfo-detail {
+	font-family: 'pB';
+	display: inline-block;
+	padding: .35em .65em;
+	font-size: .75em;
+	font-weight: 700;
+	line-height: 1;
+	background-color: #FF005C;
+	color: #fff;
+	text-align: center;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25rem
+}
+
+.badge-etcinfo-detail {
+	font-family: 'pB';
+	display: inline-block;
+	padding: .35em .65em;
+	font-size: .75em;
+	font-weight: 700;
+	line-height: 1;
+	background-color: #FFCD4A;
+	color: black;
+	text-align: center;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25rem
+}
+
+.text-sidebar-title {
+	font-family: 'pBlack';
+	color: #113DA9;
+}
+
+.text-sidebar-title-food {
+	font-family: 'pBlack';
+	color: #FF005C;
+}
+
+.text-sidebar-title-event {
+	font-family: 'pBlack';
+	color: #b68302;
+}
+
+/* 무장애 아이콘 */
+.bg-tourinfo-detail-disabled {
+	background-color: #002e74 !important
+}
+
+/* ==================================== 푸터 ======================================= */
+footer {
+	font-family: 'pEb';
+	letter-spacing: 0px;
+}
