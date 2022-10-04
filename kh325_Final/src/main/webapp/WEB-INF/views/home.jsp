@@ -23,6 +23,7 @@
  <div>원일 커밋테스트</div>
  <div>형채 커밋테스트</div>
  <div>나임 커밋테스트</div>
+ <a href="views/manager/userManagement.jsp">관리자페이지 테스트</a>
  
 
  
