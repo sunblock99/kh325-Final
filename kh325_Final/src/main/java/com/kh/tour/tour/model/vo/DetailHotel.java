@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class DetailHotel {
 	private int contentId;                 // 콘텐츠ID
 	private int contentTypeId;             // 콘텐츠타입ID
-	private String accomcountLodging;      // 수용가능인원
+	private String accomCountLodging;      // 수용가능인원
 	private String benikia;                // 베니키아여부
 	private String checkInTime;            // 입실시간
 	private String checkOutTime;           // 퇴실시간
@@ -18,9 +18,9 @@ public class DetailHotel {
 	private String foodPlace;              // 식음료장
 	private String goodStay;               // 굿스테이여부
 	private String hanok;                  // 한옥여부
-	private String infocenterLodging;      // 문의및 안내
+	private String infoCenterLodging;      // 문의및 안내
 	private String parkingLodging;         // 주차시설
-	private String pickup;                 // 픽업서비스
+	private String pickUp;                 // 픽업서비스
 	private String roomCount;              // 객실수
 	private String reservationLodging;     // 예약안내
 	private String reservationUrl;         // 예약안내홈페이지
@@ -30,8 +30,8 @@ public class DetailHotel {
 	private String barbecue;               // 바비큐장여부
 	private String beauty;                 // 뷰티시설정보
 	private String beverage;               // 식음료장여부
-	private String biCycle;                // 자전거대여여부
-	private String campFire;               // 캠프파이여부
+	private String bicycle;                // 자전거대여여부
+	private String campfire;               // 캠프파이여부
 	private String fitness;                // 헬스장여부
 	private String karaoke;                // 노래방여부
 	private String publicBath;             // 공용샤워실여부
