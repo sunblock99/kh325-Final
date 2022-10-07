@@ -26,7 +26,7 @@ public class DetailRestaurant {
 	private String     seat                ;  //  좌석수
 	private String     smoking             ;  //  금연/흡연여부
 	private String     treatMenu           ;  //  취급메뉴
-	private String     lcnsno              ;  //  인허가번호
+	private String     lcnsNo              ;  //  인허가번호
 	private int        fldgubun            ;  //  일련번호
 	private String     infoName            ;  //  제목
 	private String     infoText            ;  //  내용
