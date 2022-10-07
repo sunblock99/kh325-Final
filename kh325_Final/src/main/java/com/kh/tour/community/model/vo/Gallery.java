@@ -11,9 +11,9 @@ public class Gallery {
 	int board_no;
 	int uno;
 	String title;
-	String original_image;
-	String renamed_image;
-	String gal_tag;
+	String originalImage;
+	String renamedImage;
+	String galTag;
 	String status;
-	String board_type;
+	String boardType;
 }

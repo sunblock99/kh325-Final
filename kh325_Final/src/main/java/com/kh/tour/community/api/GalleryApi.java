@@ -35,7 +35,7 @@ public class GalleryApi {
 		urlBuffer.append("&" + "pageNo=" + "1");
 		urlBuffer.append("&" + "MobileOS=" + "ETC");
 		urlBuffer.append("&" + "MobileApp=" + "AppTest");
-		urlBuffer.append("&" + "_type=" + "XML");
+		urlBuffer.append("&" + "Type=" + "XML");
 
 		System.out.println(urlBuffer);
 
@@ -68,15 +68,15 @@ public class GalleryApi {
 						int board_no = i + 100;
 						int uno = 1000;
 						String title = eElement.getElementsByTagName("galTitle").item(0).getTextContent();
-						String original_image = eElement.getElementsByTagName("galWebImageUrl").item(0)
+						String originalImage = eElement.getElementsByTagName("galWebImageUrl").item(0)
 								.getTextContent();
-						String renamed_imag = original_image;
-						String gal_tag = eElement.getElementsByTagName("galSearchKeyword").item(0).getTextContent();
+						String renamedImag = originalImage;
+						String galTag = eElement.getElementsByTagName("galSearchKeyword").item(0).getTextContent();
 						String status = "N";
-						String board_type = "Gallery";
+						String boardType = "Gallery";
 
-						Gallery gallery = new Gallery(board_no, uno, title, original_image, renamed_imag, gal_tag,
-								status, board_type);
+						Gallery gallery = new Gallery(board_no, uno, title, originalImage, renamedImag, galTag,
+								status, boardType);
 						list.add(gallery);
 					} catch (Exception e) {
 						System.out.println("데이터가 잘못되었습니다!");
