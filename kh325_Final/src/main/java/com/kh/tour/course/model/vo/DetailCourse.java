@@ -1,4 +1,4 @@
-package com.kh.tour.tour.model.vo;
+package com.kh.tour.course.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
