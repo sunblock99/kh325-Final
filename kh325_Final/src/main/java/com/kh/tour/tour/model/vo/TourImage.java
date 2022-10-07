@@ -16,4 +16,5 @@ public class TourImage {
 	private String imgName;  			// 이미지명
 	private String smallImageUrl;       // 썸네일이미지
 	private String serialNum;           // 이미지일련번호
+	
 }
