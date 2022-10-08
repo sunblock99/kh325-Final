@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.community.model.vo.Gallery;
+import com.kh.tour.tour.model.vo.Tour;
 
 public interface CommunityService {
 	//Gallery
@@ -17,6 +18,7 @@ public interface CommunityService {
 	void deleteFile(String filePath);
 	int deleteGallery(int boardNo, String rootPath);
 	int getGalleryCount(Map<String, String> param);
+	int initGalleryInfo(Gallery gallery);
 	
 	
 }

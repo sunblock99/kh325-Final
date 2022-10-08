@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.tour.common.util.PageInfo;
+import com.kh.tour.community.api.GalleryApi;
 import com.kh.tour.community.model.service.CommunityService;
 import com.kh.tour.community.model.vo.Gallery;
 import com.kh.tour.member.model.vo.Member;
@@ -25,11 +26,37 @@ import com.kh.tour.member.model.vo.Member;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequestMapping("/gallery") // 요청 url의 '/board'가 생략되서 사용할수 있다. view는 안먹힌다!!
+//@RequestMapping("/gallery") // 요청 url의 '/board'가 생략되서 사용할수 있다. view는 안먹힌다!!
 @Controller
 public class GalleryController {
 	@Autowired
 	private CommunityService service;
+	
+	@RequestMapping("/insertGallery.do")
+	public String initTourApi(Model model) {
+
+		int result = 0;
+
+		while (true) {
+			List<Gallery> list = GalleryApi.callGalleryByXML();
+			if (list == null || list.isEmpty()) {
+				continue;
+			}
+
+			for (Gallery gallery : list) {
+				result = service.initGalleryInfo(gallery);
+			}
+
+			if (result > 0) {
+				model.addAttribute("msg", "DB insert에 정상적으로 성공하였습니다.");
+				model.addAttribute("location", "/");
+			} else {
+				model.addAttribute("msg", "DB insert에 실패하였습니다.");
+				model.addAttribute("location", "/");
+			}
+			return "/common/msg";
+		}
+	}
 
 	@GetMapping("/list")
 	public String list(Model model, @RequestParam Map<String, String> param) {

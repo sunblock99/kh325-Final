@@ -16,4 +16,7 @@ public class Gallery {
 	private String galTag;
 	private String status;
 	private String boardType;
+	
+	
+	
 }
