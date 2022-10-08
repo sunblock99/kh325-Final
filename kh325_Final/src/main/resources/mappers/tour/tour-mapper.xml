@@ -28,6 +28,7 @@
 		<result property="overview" column="OVERVIEW"/>
 	</resultMap>
 	
+	
 	<insert id="insertTourInfo" parameterType="Tour"
 			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
 		INSERT INTO BASIC_TOUR_INFO (
