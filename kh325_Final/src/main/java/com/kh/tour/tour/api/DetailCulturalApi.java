@@ -14,26 +14,26 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.kh.tour.tour.model.vo.DetailRestaurant;
+import com.kh.tour.tour.model.vo.DetailCultural;
 
 
-public class DetailRestaurantApi {
+public class DetailCulturalApi {
 	public static String TOUR_URL = "http://apis.data.go.kr/B551011/KorService/areaBasedList";
-	public static String TOUR_RESTAURANT_DETAIL_URL = "http://apis.data.go.kr/B551011/KorService/detailIntro";
+	public static String TOUR_CULTURAL_DETAIL_URL = "http://apis.data.go.kr/B551011/KorService/detailIntro";
 	public static String SERVICE_KEY = "0L5Iqaft7cvvAFwyEcDDJLm%2FdpmPNBvCDwpM7tL3LZHsL2prES1i20X6QCvzIhZpF7he8BEFj%2FhFQhIplu2YfA%3D%3D";
 	public static String TOUR_URL_EXTRASTRING= "MobileOS=ETC&MobileApp=AppTest&listYN=Y&arrange=C";
-	public static String TOUR_RESTAURANT_DETAIL_EXTRASTRING1= "MobileOS=ETC&MobileApp=AppTest";
+	public static String TOUR_CULTURAL_DETAIL_EXTRASTRING1= "MobileOS=ETC&MobileApp=AppTest";
 	
 	
 	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
 	public static void main(String[] args) {
 //		practice4.heritageInfo_Url("1", "2", "3");
-		DetailRestaurantApi.callCurrentDetailRestaurantByXML();
+		DetailCulturalApi.callCurrentDetailCulturalByXML();
 	}
 	
-	public static List<DetailRestaurant> callCurrentDetailRestaurantByXML() {
-		List<DetailRestaurant> list = new ArrayList<>();
+	public static List<DetailCultural> callCurrentDetailCulturalByXML() {
+		List<DetailCultural> list = new ArrayList<>();
 		
 		for (int j = 1; j < 375; j++) {
 
@@ -78,7 +78,7 @@ public class DetailRestaurantApi {
 						//-------------------------------------------------info 시작
 						System.out.println(contentTypeId);
 					
-						if(contentTypeId == 39) {
+						if(contentTypeId == 14) {
 						URL url2 = new URL(DetailCulturalApi.culturalUrl(contentId, contentTypeId).toString());
 						
 						System.out.println("url : " + url2);
@@ -107,27 +107,23 @@ public class DetailRestaurantApi {
 							Element eElement2 = (Element) node2;
 							
 							
-							String chkcreditcardFood = getStrData(eElement2, "chkcreditcardfood");
-							String discountinfoFood = getStrData(eElement2, "discountinfofood");
-							String firstMenu = getStrData(eElement2, "firstmenu");
-							String infocenterFood = getStrData(eElement2, "infocenterfood");
-							String kidsFacility = getStrData(eElement2, "kidsfacility");
-							String opendateFood = getStrData(eElement2, "opendatefood");
-							String opentimeFood = getStrData(eElement2, "opentimefood");
-							String packing = getStrData(eElement2, "packing");
-							String parkingFood = getStrData(eElement2, "parkingfood");
-							String reservationFood = getStrData(eElement2, "reservationfood");
-							String restdateFood = getStrData(eElement2, "restdatefood");
-							String scaleFood = getStrData(eElement2, "scalefood");
-							String seat = getStrData(eElement2, "seat");
-							String smoking = getStrData(eElement2, "smoking");
-							String treatMenu = getStrData(eElement2, "treatmenu");
-							String lcnsNo = getStrData(eElement2, "lcnsno");
-							
+							String culScale = getStrData(eElement2, "scale");
+							String useFee = getStrData(eElement2, "usefee");
+							String discountInfo = getStrData(eElement2, "discountinfo");
+							String spendTime = getStrData(eElement2, "spendtime");
+							String parkingFee = getStrData(eElement2, "parkingfee");
+							String infoCenterCulture = getStrData(eElement2, "infocenterculture");
+							String accomCountCulture = getStrData(eElement2, "accomcountculture");
+							String useTimeCulture = getStrData(eElement2, "usetimeculture");
+							String restDateCulture = getStrData(eElement2, "restdateculture");
+							String parkingCulture = getStrData(eElement2, "parkingculture");
+							String chkBabyCarriageCulture = getStrData(eElement2, "chkbabycarriageculture");
+							String chkPetCulture = getStrData(eElement2, "chkpetculture");
+							String chkCreditCardCulture = getStrData(eElement2, "chkcreditcardculture");
 						
-							DetailRestaurant detailRestaurant = new DetailRestaurant(contentId, contentTypeId, chkcreditcardFood, discountinfoFood, firstMenu, infocenterFood, kidsFacility, 
-									opendateFood, opentimeFood, packing, parkingFood, reservationFood, restdateFood, scaleFood, seat, smoking, treatMenu, lcnsNo);
-							list.add(detailRestaurant);
+							DetailCultural detailCultural = new DetailCultural(contentId, contentTypeId, culScale, useFee, discountInfo, spendTime, parkingFee, 
+									infoCenterCulture, accomCountCulture, useTimeCulture, restDateCulture, parkingCulture, chkBabyCarriageCulture, chkPetCulture, chkCreditCardCulture);
+							list.add(detailCultural);
 							System.out.println(list.toString());
 						}
 						}
@@ -158,11 +154,11 @@ public class DetailRestaurantApi {
 	
 	
 	// 정보페이지 url만들어서 넘김 
-	public static StringBuffer restaurantUrl(int contentId, int contentTypeId) {
+	public static StringBuffer culturalUrl(int contentId, int contentTypeId) {
 		StringBuffer infoUrl = new StringBuffer();
-		infoUrl.append(TOUR_RESTAURANT_DETAIL_URL);
+		infoUrl.append(TOUR_CULTURAL_DETAIL_URL);
 		infoUrl.append("?" + "serviceKey=" + SERVICE_KEY);
-		infoUrl.append("&" + TOUR_RESTAURANT_DETAIL_EXTRASTRING1);
+		infoUrl.append("&" + TOUR_CULTURAL_DETAIL_EXTRASTRING1);
 		infoUrl.append("&" + "contentId=" + contentId);
 		infoUrl.append("&" + "contentTypeId=" + contentTypeId);
 	

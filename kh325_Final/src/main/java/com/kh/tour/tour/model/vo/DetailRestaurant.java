@@ -27,8 +27,5 @@ public class DetailRestaurant {
 	private String     smoking             ;  //  금연/흡연여부
 	private String     treatMenu           ;  //  취급메뉴
 	private String     lcnsNo              ;  //  인허가번호
-	private int        fldgubun            ;  //  일련번호
-	private String     infoName            ;  //  제목
-	private String     infoText            ;  //  내용
-    private int        serialNum           ;  //  반복일련번호
+	
 }
