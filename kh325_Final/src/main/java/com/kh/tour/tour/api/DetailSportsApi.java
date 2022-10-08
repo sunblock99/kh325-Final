@@ -35,7 +35,7 @@ public class DetailSportsApi {
 	public static List<DetailSports> callCurrentDetailSportsByXML() {
 		List<DetailSports> list = new ArrayList<>();
 		
-		for (int j = 1; j < 375; j++) {
+		for (int j = 1; j < 1000; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();
@@ -105,26 +105,29 @@ public class DetailSportsApi {
 						if (node2.getNodeType() == Node.ELEMENT_NODE) {
 							Element eElement2 = (Element) node2;
 							
-							int heritage1 = getIntData(eElement2, "heritage1");
-							int heritage2 = getIntData(eElement2, "heritage2");
-							int heritage3 = getIntData(eElement2, "heritage3");
-							String infoCenter = getStrData(eElement2, "infocenter");
-							String openDate = getStrData(eElement2, "opendate");
-							String restDate = getStrData(eElement2, "restdate");
-							String expGuide = getStrData(eElement2, "expguide");
-							String expAgeRange = getStrData(eElement2, "expagerange");
-							String accomCount = getStrData(eElement2, "accomcount");
-							String useSeason = getStrData(eElement2, "useseason");
-							String useTime = getStrData(eElement2, "usetime");
-							String parking = getStrData(eElement2, "parking");
-							String chkBabyCarriage = getStrData(eElement2, "chkbabycarriage");
-							String chkCreditCard = getStrData(eElement2, "chkpet");
-							String chkPet = getStrData(eElement2, "chkcreditcard");
+							String accomcountLeports = getStrData(eElement2, "accomcountLeports");
+							String chkbabycarriageLeport = getStrData(eElement2, "chkbabycarriageLeport");
+							String chkcreditcardLeports = getStrData(eElement2, "chkcreditcardLeports");
+							String chkpetLeports = getStrData(eElement2, "chkpetLeports");
+							String expagerangeLeports = getStrData(eElement2, "expagerangeLeports");
+							String infocenterLeports = getStrData(eElement2, "infocenterLeports");
+							String openPeriod = getStrData(eElement2, "openPeriod");
+							String parkingfeeLeports = getStrData(eElement2, "parkingfeeLeports");
+							String parkingLeports = getStrData(eElement2, "parkingLeports");
+							String reservation = getStrData(eElement2, "reservation");
+							String restdateLeports = getStrData(eElement2, "restdateLeports");
+							String scaleLeports = getStrData(eElement2, "scaleLeports");
+							String usefeeLeports = getStrData(eElement2, "usefeeLeports");
+							String usetimeLeports = getStrData(eElement2, "usetimeLeports");
+							int fldgubun = getIntData(eElement2, "fldgubun");
+							String infoName = getStrData(eElement2, "infoName");
+							String infoText = getStrData(eElement2, "infoText");
+							int serialNum = getIntData(eElement2, "serialNum");
 						
-							DetailSports detailSports = new DetailSports(contentId, contentTypeId, heritage1, heritage2, heritage3, infoCenter, openDate, 
-									restDate, expGuide, expAgeRange, accomCount, useSeason, useTime, parking, chkBabyCarriage, 
-									chkCreditCard, chkPet);
-							list.add(detailTourist);
+							DetailSports detailSports = new DetailSports(contentId, contentTypeId, accomcountLeports, chkbabycarriageLeport, chkcreditcardLeports, chkpetLeports, expagerangeLeports, 
+									infocenterLeports, openPeriod, parkingfeeLeports, parkingLeports, reservation, restdateLeports, scaleLeports, usefeeLeports, 
+									usetimeLeports, fldgubun, infoName, infoText, serialNum);
+							list.add(detailSports);
 							System.out.println(list.toString());
 						}
 						}
@@ -134,9 +137,6 @@ public class DetailSportsApi {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
 		
 		return list;
 	}
