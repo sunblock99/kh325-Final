@@ -27,7 +27,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
 		p:configuration-ref="mybatisConfig"
 		p:mapperLocations="classpath:mappers/**/*.xml"
-		p:typeAliasesPackage="com.kh.mvc.*.model.vo"
+		p:typeAliasesPackage="com.kh.tour.*.model.vo"
 		p:dataSource-ref="dataSource"
 	/>
 	
@@ -38,7 +38,7 @@
 	
 	<!-- DAO를 대처할 Mapper Scanning -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-		p:basePackage="com.kh.mvc.*.model.mapper"	
+		p:basePackage="com.kh.tour.*.model.mapper"	
 	/>
 	
 	<!-- 트랜잭션 매니저 설정 -->

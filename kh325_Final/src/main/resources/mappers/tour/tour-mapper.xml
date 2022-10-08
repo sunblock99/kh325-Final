@@ -10,7 +10,7 @@
 		<result property="title" column="TITLE"/>
 		<result property="tel" column="TEL"/>
 		<result property="telName" column="TELNAME"/>
-		<result property=homePage column="HOMEPAGE"/>
+		<result property="homePage" column="HOMEPAGE"/>
 		<result property="bookTour" column="BOOKTOUR"/>
 		<result property="firstImage" column="FIRSTIMAGE"/>
 		<result property="firstImage2" column="FIRSTIMAGE2"/>
