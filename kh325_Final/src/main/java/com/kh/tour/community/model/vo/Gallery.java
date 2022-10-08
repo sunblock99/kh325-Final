@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Gallery {
-	int board_no;
-	int uno;
-	String title;
-	String originalImage;
-	String renamedImage;
-	String galTag;
-	String status;
-	String boardType;
+	private int boardNo;
+	private int uno;
+	private String title;
+	private String originalImage;
+	private String renamedImage;
+	private String galTag;
+	private String status;
+	private String boardType;
 }

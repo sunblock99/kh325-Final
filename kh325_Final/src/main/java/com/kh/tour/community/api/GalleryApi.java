@@ -65,7 +65,7 @@ public class GalleryApi {
 					try {
 						Element eElement = (Element) node;
 
-						int board_no = i + 100;
+						int boardNo = i + 100;
 						int uno = 1000;
 						String title = eElement.getElementsByTagName("galTitle").item(0).getTextContent();
 						String originalImage = eElement.getElementsByTagName("galWebImageUrl").item(0)
@@ -75,7 +75,7 @@ public class GalleryApi {
 						String status = "N";
 						String boardType = "Gallery";
 
-						Gallery gallery = new Gallery(board_no, uno, title, originalImage, renamedImag, galTag,
+						Gallery gallery = new Gallery(boardNo, uno, title, originalImage, renamedImag, galTag,
 								status, boardType);
 						list.add(gallery);
 					} catch (Exception e) {
