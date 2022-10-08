@@ -15,7 +15,7 @@ public class TourServiceImpl implements TourService{
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int saveTourInfo(Tour tour) {
+	public int initTourInfo(Tour tour) {
 		return mapper.insertTourInfo(tour);
 	}
 

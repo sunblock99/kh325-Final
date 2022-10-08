@@ -9,7 +9,8 @@
  <br>
  <br>
  
- 
+ <h2><a href="${path}/???/????.do">사용불가(index)</a></h2>
+ <h2><a href="${path}/insertTour.do">관광 공통정보 INSERT</a></h2>
  <h2><a href="${path}/???/????.do">관광지 소개정보 INSERT</a></h2>
  <h2><a href="${path}/???/????.do">문화시설 소개정보 INSERT</a></h2>
  <h2><a href="${path}/???/????.do">행사축제 소개정보 INSERT</a></h2>

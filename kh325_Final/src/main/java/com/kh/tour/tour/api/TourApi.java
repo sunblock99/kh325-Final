@@ -35,7 +35,7 @@ public class TourApi {
 	public static List<Tour> callCurrentTourByXML() {
 		List<Tour> list = new ArrayList<>();
 		
-		for (int j = 1; j < 375; j++) {
+		for (int j = 1; j < 3; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();
@@ -95,7 +95,7 @@ public class TourApi {
 						
 						URL url2 = new URL(TourApi.tourUrl(contentId, contentTypeId).toString());
 						
-						System.out.println("url : " + url2);
+//						System.out.println("url : " + url2);
 						
 						HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
 //						conn2.setRequestProperty("Content-type", "application/json");
@@ -128,7 +128,7 @@ public class TourApi {
 									firstImage, firstImage2, areaCode, sigunguCode, cat1, cat2, cat3, addr1, 
 									addr2, zipCode, mapX, mapY, mLevel, overview);
 							list.add(tour);
-							System.out.println(list.toString());
+	//						System.out.println(list.toString());
 						}
 						
 					}
