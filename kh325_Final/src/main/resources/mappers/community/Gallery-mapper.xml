@@ -89,7 +89,7 @@
 	</select>
 	
 	
-	<insert id="insertBoard" parametertype="Gallery"
+	<insert id="insertBoard" parameterType="Gallery"
 			useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
 		INSERT INTO BOARD (
 			NO,
@@ -118,7 +118,7 @@
 		)
 	</insert>
 	
-	<update id="updateBoard" parametertype="Gallery">
+	<update id="updateBoard" parameterType="Gallery">
 		UPDATE BOARD
 		SET
 			TITLE=#{title},
