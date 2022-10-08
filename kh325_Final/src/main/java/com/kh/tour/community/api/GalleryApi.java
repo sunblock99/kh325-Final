@@ -65,8 +65,8 @@ public class GalleryApi {
 						String originalImage = eElement.getElementsByTagName("galWebImageUrl").item(0).getTextContent();
 						String renamedImag = originalImage;
 						String galTag = eElement.getElementsByTagName("galSearchKeyword").item(0).getTextContent();
-						String status = "N";
-						String boardType = "Gallery";
+						String status = "Y";
+						String boardType = "GALL";
 
 						Gallery gallery = new Gallery(boardNo, uno, title, originalImage, renamedImag, galTag,
 								status, boardType);

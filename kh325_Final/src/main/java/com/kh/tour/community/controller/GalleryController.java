@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.community.api.GalleryApi;
-import com.kh.tour.community.model.service.CommunityService;
+import com.kh.tour.community.model.service.GalleryService;
 import com.kh.tour.community.model.vo.Gallery;
 import com.kh.tour.member.model.vo.Member;
 
@@ -30,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class GalleryController {
 	@Autowired
-	private CommunityService service;
+	private GalleryService service;
 	
 	@RequestMapping("/insertGallery.do")
 	public String initTourApi(Model model) {
