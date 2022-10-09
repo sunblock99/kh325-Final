@@ -7,5 +7,5 @@ import com.kh.tour.tour.model.vo.RepeatHotel;
 @Mapper
 public interface RepeatCourseMapper {
 
-	int insertRepeatHotel (RepeatHotel repeatHotel);
+	int insertRepeatCourse (RepeatHotel repeatHotel);
 }

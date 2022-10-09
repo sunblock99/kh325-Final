@@ -49,7 +49,7 @@
 
 	
 	<insert id="insertRepeatHotel" parameterType="RepeatHotel"
-			useGeneratedKeys="true" keyProperty="courseDetailNo" keyColumn="COURSE_DETAIL_NO">
+			useGeneratedKeys="true" keyProperty="accommoDetailNo" keyColumn="ACCOMMO_DETAIL_NO">
 		INSERT INTO REPEAT_COURSE (
 			ACCOMMO_DETAIL_NO
 			CONTENTID
