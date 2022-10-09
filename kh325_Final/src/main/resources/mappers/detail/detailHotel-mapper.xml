@@ -44,7 +44,7 @@
 	<insert id="insertDetailHotel" parameterType="DetailHotel"
 		useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO
-		DETAIL_COURSE (
+		DETAIL_HOTEL (
 		CONTENTID,
 		CONTENTTYPEID,
 		ACCOMCOUNTLODGING,
