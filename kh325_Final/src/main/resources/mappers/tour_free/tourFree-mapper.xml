@@ -38,7 +38,7 @@
 	</resultMap>
 	
 	
-	<insert id="insertTourFInfo" parameterType="TourFree"
+	<insert id="insertTourFreeInfo" parameterType="TourFree"
 			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO TOUR_FREE (
 			CONTENTID,
@@ -73,6 +73,7 @@
 		) VALUES (
 			#{contentId},
 			#{parking},
+			#{route},
 			#{publicTransport},
 			#{ticketOffice},
 			#{promotion},
