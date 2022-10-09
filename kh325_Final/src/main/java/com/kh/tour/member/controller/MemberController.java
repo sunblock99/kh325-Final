@@ -107,17 +107,17 @@ public class MemberController {
 				@ModelAttribute Member member, // @ModelAttribute 생략 가능!!
 				@SessionAttribute(name= "loginMember", required = false) Member loginMember 
 			) {
-		if(loginMember == null || loginMember.getId().equals(member.getId()) == false) {
+		if(loginMember == null || loginMember.getUEmail().equals(member.getUEmail()) == false) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			model.addAttribute("location", "/");
 			return "common/msg";
 		}
 		
-		member.setNo(loginMember.getNo());
+		member.setUNo(loginMember.getUNo());
 		int result = service.save(member);
 		
 		if(result > 0 ) {
-			model.addAttribute("loginMember", service.findById(member.getId())); // DB에 있는 값으로 다시 세션값 업데이트
+			model.addAttribute("loginMember", service.findById(member.getUEmail())); // DB에 있는 값으로 다시 세션값 업데이트
 			model.addAttribute("msg", "회원정보를 수정하였습니다.");
 			model.addAttribute("location", "/member/view");
 		}else {
@@ -132,7 +132,7 @@ public class MemberController {
 	@GetMapping("/member/delete")
 	public String delete(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
-		int result = service.delete(loginMember.getNo());
+		int result = service.delete(loginMember.getUNo());
 		
 		if(result > 0 ) {
 			model.addAttribute("msg", "정상적으로 탈퇴 되었습니다.");
