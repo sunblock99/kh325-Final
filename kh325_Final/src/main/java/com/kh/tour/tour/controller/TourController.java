@@ -33,7 +33,7 @@ public class TourController {
 			}
 
 			for (Tour tour : list) {
-				result = tService.initTourInfo(tour);
+				result = tService.saveTourInfo(tour);
 			}
 
 			if (result > 0) {

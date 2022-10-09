@@ -4,5 +4,5 @@ import com.kh.tour.tour.model.vo.Tour;
 
 public interface TourService {
 
-	int initTourInfo(Tour tour);
+	int saveTourInfo(Tour tour);
 }
