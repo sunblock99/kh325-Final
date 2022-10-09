@@ -105,24 +105,24 @@ public class DetailSportsApi {
 						if (node2.getNodeType() == Node.ELEMENT_NODE) {
 							Element eElement2 = (Element) node2;
 							
-							String accomcountLeports = getStrData(eElement2, "accomcountLeports");
-							String chkbabycarriageLeport = getStrData(eElement2, "chkbabycarriageLeport");
-							String chkcreditcardLeports = getStrData(eElement2, "chkcreditcardLeports");
-							String chkpetLeports = getStrData(eElement2, "chkpetLeports");
-							String expagerangeLeports = getStrData(eElement2, "expagerangeLeports");
-							String infocenterLeports = getStrData(eElement2, "infocenterLeports");
-							String openPeriod = getStrData(eElement2, "openPeriod");
-							String parkingfeeLeports = getStrData(eElement2, "parkingfeeLeports");
-							String parkingLeports = getStrData(eElement2, "parkingLeports");
+							String accomcountLeports = getStrData(eElement2, "accomcountleports");
+							String chkbabycarriageLeport = getStrData(eElement2, "chkbabycarriageleport");
+							String chkcreditcardLeports = getStrData(eElement2, "chkcreditcardleports");
+							String chkpetLeports = getStrData(eElement2, "chkpetleports");
+							String expagerangeLeports = getStrData(eElement2, "expagerangeleports");
+							String infocenterLeports = getStrData(eElement2, "infocenterleports");
+							String openPeriod = getStrData(eElement2, "openperiod");
+							String parkingfeeLeports = getStrData(eElement2, "parkingfeeleports");
+							String parkingLeports = getStrData(eElement2, "parkingleports");
 							String reservation = getStrData(eElement2, "reservation");
-							String restdateLeports = getStrData(eElement2, "restdateLeports");
-							String scaleLeports = getStrData(eElement2, "scaleLeports");
-							String usefeeLeports = getStrData(eElement2, "usefeeLeports");
-							String usetimeLeports = getStrData(eElement2, "usetimeLeports");
+							String restdateLeports = getStrData(eElement2, "restdateleports");
+							String scaleLeports = getStrData(eElement2, "scaleleports");
+							String usefeeLeports = getStrData(eElement2, "usefeeleports");
+							String usetimeLeports = getStrData(eElement2, "usetimeleports");
 							int fldgubun = getIntData(eElement2, "fldgubun");
-							String infoName = getStrData(eElement2, "infoName");
-							String infoText = getStrData(eElement2, "infoText");
-							int serialNum = getIntData(eElement2, "serialNum");
+							String infoName = getStrData(eElement2, "infoname");
+							String infoText = getStrData(eElement2, "infotext");
+							int serialNum = getIntData(eElement2, "serialnum");
 						
 							DetailSports detailSports = new DetailSports(contentId, contentTypeId, accomcountLeports, chkbabycarriageLeport, chkcreditcardLeports, chkpetLeports, expagerangeLeports, 
 									infocenterLeports, openPeriod, parkingfeeLeports, parkingLeports, reservation, restdateLeports, scaleLeports, usefeeLeports, 

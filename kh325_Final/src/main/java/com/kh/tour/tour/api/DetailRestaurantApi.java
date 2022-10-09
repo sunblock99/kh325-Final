@@ -79,7 +79,7 @@ public class DetailRestaurantApi {
 						System.out.println(contentTypeId);
 					
 						if(contentTypeId == 39) {
-						URL url2 = new URL(DetailCulturalApi.culturalUrl(contentId, contentTypeId).toString());
+						URL url2 = new URL(DetailRestaurantApi.restaurantUrl(contentId, contentTypeId).toString());
 						
 						System.out.println("url : " + url2);
 						

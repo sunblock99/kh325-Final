@@ -101,25 +101,25 @@ public class DetailShoppingApi {
 						if (node2.getNodeType() == Node.ELEMENT_NODE) {
 								Element eElement2 = (Element) node2;
 								
-							 String chkbabyCarriage    	= getStrData(eElement2, "chkbabyCarriage");				
+							 String chkbabyCarriage    	= getStrData(eElement2, "chkbabycarriage");				
 							 String chkcredit           = getStrData(eElement2, "chkcredit");
-							 String chkpetShopping     	 = getStrData(eElement2, "chkpetShopping");
-							 String  cultureCenter       = getStrData(eElement2, "cultureCenter");
-							 String fairDay              = getStrData(eElement2, "fairDay");
-							 String  infocenterShopping 	 = getStrData(eElement2, "infocenterShopping");
-							 String opendateShopping    	 = getStrData(eElement2, "opendateShopping");
-							 String  openTime           	 = getStrData(eElement2, "openTime");
-							 String parkingShopping     	 = getStrData(eElement2, "parkingShopping");
-							 String restdateShopping    	 = getStrData(eElement2, "restdateShopping");
+							 String chkpetShopping     	 = getStrData(eElement2, "chkpetshopping");
+							 String  cultureCenter       = getStrData(eElement2, "culturecenter");
+							 String fairDay              = getStrData(eElement2, "fairday");
+							 String  infocenterShopping 	 = getStrData(eElement2, "infocentershopping");
+							 String opendateShopping    	 = getStrData(eElement2, "opendateshopping");
+							 String  openTime           	 = getStrData(eElement2, "opentime");
+							 String parkingShopping     	 = getStrData(eElement2, "parkingshopping");
+							 String restdateShopping    	 = getStrData(eElement2, "restdateshopping");
 							 String restroom            	 = getStrData(eElement2, "restroom");
-							 String saleItem            	 = getStrData(eElement2, "saleItem");
-							 String saleItemcost        	 = getStrData(eElement2, "saleItemcost");
-							 String scaleShopping      		 = getStrData(eElement2, "scaleShopping");
-							 String shopguId            	 = getStrData(eElement2, "shopguId");
+							 String saleItem            	 = getStrData(eElement2, "saleitem");
+							 String saleItemcost        	 = getStrData(eElement2, "saleitemcost");
+							 String scaleShopping      		 = getStrData(eElement2, "scaleshopping");
+							 String shopguId            	 = getStrData(eElement2, "shopguid");
 							 int fldgubun                = getIntData(eElement2, "fldgubun");
-							 String infoName            	 = getStrData(eElement2, "infoName");
-							 String infoText            	 = getStrData(eElement2, "infoText");
-							 int serialNum              	 = getIntData(eElement2, "serialNum");
+							 String infoName            	 = getStrData(eElement2, "infoname");
+							 String infoText            	 = getStrData(eElement2, "infotext");
+							 int serialNum              	 = getIntData(eElement2, "serialnum");
 								
 							 DetailShopping detailShopping = new DetailShopping(contentId, contentTypeId, chkbabyCarriage, chkcredit, chkpetShopping, cultureCenter, fairDay, 
 						infocenterShopping, opendateShopping, openTime, parkingShopping, restdateShopping, restroom, saleItem, saleItemcost, 
