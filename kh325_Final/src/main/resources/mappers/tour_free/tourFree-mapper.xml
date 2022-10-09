@@ -40,7 +40,7 @@
 	
 	<insert id="insertTourFInfo" parameterType="TourFree"
 			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
-		INSERT INTO BASIC_TOUR_INFO (
+		INSERT INTO TOUR_FREE (
 			CONTENTID,
 			PARKING,
 			ROUTE,
