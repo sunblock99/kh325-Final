@@ -14,6 +14,5 @@ public class TourImage {
 	private int contentId; 				// 콘텐츠ID
 	private String originImgUrl;        // 원본이미지
 	private String smallImageUrl;       // 썸네일이미지
-//	private String serialNum;           // 이미지일련번호
 	
 }
