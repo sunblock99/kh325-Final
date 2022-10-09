@@ -14,7 +14,7 @@
 	
 	<insert id="insertTourImageInfo" parameterType="TourImage"
 			useGeneratedKeys="true" keyProperty="imageDetailNo" keyColumn="IMAGE_DETAIL_NO">
-		INSERT INTO TOUR_IMAGE(
+		INSERT INTO TOUR_IMAGE (
 			IMAGE_DETAIL_NO,
 			CONTENTID,
 			ORIGINIMGURL,
