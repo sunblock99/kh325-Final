@@ -7,5 +7,5 @@ import com.kh.tour.tour.model.vo.DetailTourist;
 @Mapper
 public interface DetailTouristMapper {
 
-	int insertTouristDetail (DetailTourist dTourist);
+	int insertDetailTourist (DetailTourist detailTourist);
 }

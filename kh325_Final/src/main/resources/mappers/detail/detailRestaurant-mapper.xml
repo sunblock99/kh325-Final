@@ -28,11 +28,9 @@
 	</resultMap>
 	
 	
-	<insert id="insertRestaurantDetail" parameterType="DetailRestaurant"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
+	<insert id="insertDetailRestaurant" parameterType="DetailRestaurant"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO DETAIL_RESTAURANT (
-			CONTENTID,      
-			CONTENTTYPEID,  
 			CONTENTID,        
 			CONTENTTYPEID,    
 			CHKCREDITCARDFOOD,
@@ -50,8 +48,7 @@
 			SEAT,             
 			SMOKING,          
 			TREATMENU,        
-			LCNSNO,           
-                    
+			LCNSNO   
 		) VALUES (
 			#{contentId}, 
 			#{contenttypeId}, 

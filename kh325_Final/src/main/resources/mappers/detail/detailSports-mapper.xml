@@ -27,8 +27,8 @@
 	
 	
 	
-	<insert id="insertSportsDetail" parameterType="DetailSports"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
+	<insert id="insertDetailSports" parameterType="DetailSports"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO DETAIL_SPORTS (
 			CONTENTID,      
 			CONTENTTYPEID, 

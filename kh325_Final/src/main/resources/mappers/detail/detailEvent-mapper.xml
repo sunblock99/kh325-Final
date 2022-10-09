@@ -32,8 +32,8 @@
 	</resultMap>
 	
 	
-	<insert id="insertEventDetail" parameterType="DetailEvent"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
+	<insert id="insertDetailEvent" parameterType="DetailEvent"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO DETAIL_EVENT (
 			CONTENTID,     
  			CONTENTTYPEID, 
@@ -54,7 +54,7 @@
 			USETIMEFESTIVAL,     
 			DISCOUNTINFOFESTIVAL,
 			SPENDTIMEFESTIVAL,   
-			FESTIVALGRADE,        
+			FESTIVALGRADE     
 		) VALUES (
 			#{contentId},            
 			#{contenttypeId},            

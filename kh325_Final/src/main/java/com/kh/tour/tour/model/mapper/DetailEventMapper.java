@@ -7,6 +7,6 @@ import com.kh.tour.tour.model.vo.DetailEvent;
 @Mapper
 public interface DetailEventMapper {
 	
-	int insertEventDetail (DetailEvent detailEvent);
+	int insertDetailEvent (DetailEvent detailEvent);
 }
 

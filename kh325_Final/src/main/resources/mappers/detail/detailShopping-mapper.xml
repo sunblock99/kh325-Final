@@ -27,8 +27,8 @@
 	</resultMap>
 	
 	
-	<insert id="insertShoppingDetail" parameterType="DetailShopping"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
+	<insert id="insertDetailShopping" parameterType="DetailShopping"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO DETAIL_SHOPPING (
 			CONTENTID,      
 			CONTENTTYPEID,  

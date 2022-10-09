@@ -7,7 +7,7 @@
 	<resultMap type="DetailCultural" id="detailCulturalListResultMap">
 		<id property="contentId" column="CONTENTID"/>
 		<result property="contentTypeId" column="CONTENTTYPEID"/>
-		<result property="culScale" column="CULSCALE"/>
+		<result property="culScale" column="CUL_SCALE"/>
 		<result property="useFee" column="USEFEE"/>
 		<result property="discountInfo" column="DISCOUNTINFO"/>
 		<result property="spendTime" column="SPENDTIME"/>
@@ -20,18 +20,15 @@
 		<result property="chkBabyCarriageCulture" column="CHKBABYCARRIAGECULTURE"/>
 		<result property="chkPetCulture" column="CHKPETCULTURE"/>
 		<result property="chkCreditCardCulture" column="CHKCREDITCARDCULTURE"/>
-		
-		
-	
 	</resultMap>
 	
 	
-	<insert id="insertCulturalDetail" parameterType="DetailCultural"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
+	<insert id="insertDetailCultural" parameterType="DetailCultural"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO DETAIL_CULTURAL (
 			CONTENTID,      
 			CONTENTTYPEID,  
-			CULSCALE,              
+			CUL_SCALE,              
 			USEFEE,                
 			DISCOUNTINFO,          
 			SPENDTIME,             

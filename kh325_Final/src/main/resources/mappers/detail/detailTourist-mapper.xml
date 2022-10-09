@@ -26,8 +26,8 @@
 	</resultMap>
 	
 	
-	<insert id="insertTouristDetail" parameterType="DetailTourist"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
+	<insert id="insertDetailTourist" parameterType="DetailTourist"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO DETAIL_TOURIST (
 			CONTENTID,      
 			CONTENTTYPEID,  
