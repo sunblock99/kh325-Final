@@ -43,7 +43,7 @@ public class GalleryController {
 			}
 
 			for (Gallery gallery : list) {
-				result = service.initGalleryInfo(gallery);
+				result = service.saveGallery(gallery);
 			}
 
 			if (result > 0) {
@@ -112,13 +112,13 @@ public class GalleryController {
 	) {
 		log.info("게시글 작성 요청");
 
-		if (loginMember == null || loginMember.getId().equals(gallery.getWriterId()) == false) {
+		if (loginMember == null || loginMember.getUNo() != gallery.getUNo()) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			model.addAttribute("location", "/");
 			return "/common/msg";
 		}
 
-		gallery.setWriterNo(loginMember.getNo());
+		gallery.setUNo(loginMember.getUNo());
 
 		// 파일을 저장하는 로직
 		if (upfile != null && upfile.isEmpty() == false) {
