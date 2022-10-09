@@ -1,5 +1,7 @@
 package com.kh.tour.manager.model.service;
 
-public class ManagerService {
+import com.kh.tour.manager.model.vo.Manager;
 
+public interface ManagerService {
+	int insertReport(Manager manager);
 }
