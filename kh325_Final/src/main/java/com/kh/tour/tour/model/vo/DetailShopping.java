@@ -26,7 +26,7 @@ public class DetailShopping {
 	private String saleItem;                 //판매품목
 	private String saleItemcost;             //판매품목별가격
 	private String scaleShopping;            //규모
-	private String shopguId;                 //매장안내
+	private String shopGuide;                 //매장안내
                                              
 }
 

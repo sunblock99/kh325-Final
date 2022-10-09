@@ -115,12 +115,12 @@ public class DetailShoppingApi {
 							 String saleItem            	 = getStrData(eElement2, "saleitem");
 							 String saleItemcost        	 = getStrData(eElement2, "saleitemcost");
 							 String scaleShopping      		 = getStrData(eElement2, "scaleshopping");
-							 String shopguId            	 = getStrData(eElement2, "shopguid");
+							 String shopGuide            	 = getStrData(eElement2, "shopguid");
 							 
 								
 							 DetailShopping detailShopping = new DetailShopping(contentId, contentTypeId, chkbabyCarriage, chkcredit, chkpetShopping, cultureCenter, fairDay, 
 						infocenterShopping, opendateShopping, openTime, parkingShopping, restdateShopping, restroom, saleItem, saleItemcost, 
-						scaleShopping, shopguId);
+						scaleShopping, shopGuide);
 							list.add(detailShopping);
 							System.out.println(list.toString());
 						}
