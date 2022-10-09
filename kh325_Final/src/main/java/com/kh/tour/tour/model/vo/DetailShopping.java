@@ -27,9 +27,5 @@ public class DetailShopping {
 	private String saleItemcost;             //판매품목별가격
 	private String scaleShopping;            //규모
 	private String shopguId;                 //매장안내
-	private int fldgubun;                    //일련번호
-	private String infoName;                 //제목
-	private String infoText;                 //내용
-	private int serialNum;                    //반복일련번호
                                              
 }

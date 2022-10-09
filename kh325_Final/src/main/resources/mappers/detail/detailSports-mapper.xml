@@ -29,6 +29,8 @@
 	<insert id="insertSportsDetail" parameterType="DetailSports"
 			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
 		INSERT INTO DETAIL_SPORTS (
+			CONTENTID,      
+			CONTENTTYPEID, 
 			ACCOMCOUNTLEPORTS, 		
 			CHKBABYCARRIAGELEPORT, 	
 			CHKCREDITCARDLEPORTS, 	
@@ -42,8 +44,11 @@
 			RESTDATELEPORTS, 		
 			SCALELEPORTS, 			
 			USEFEELEPORTS, 			
-			USETIMELEPORTS 			
+			USETIMELEPORTS
+			 			
 		) VALUES (
+			#{contentId},
+			#{contentTypeId},
 			#{accomcountLeports},            
 			#{chkbabycarriageLeport},         
 			#{chkcreditcardLeports},            

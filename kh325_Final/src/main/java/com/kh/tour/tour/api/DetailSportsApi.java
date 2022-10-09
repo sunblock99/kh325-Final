@@ -119,14 +119,11 @@ public class DetailSportsApi {
 							String scaleLeports = getStrData(eElement2, "scaleleports");
 							String usefeeLeports = getStrData(eElement2, "usefeeleports");
 							String usetimeLeports = getStrData(eElement2, "usetimeleports");
-							int fldgubun = getIntData(eElement2, "fldgubun");
-							String infoName = getStrData(eElement2, "infoname");
-							String infoText = getStrData(eElement2, "infotext");
-							int serialNum = getIntData(eElement2, "serialnum");
+							
 						
 							DetailSports detailSports = new DetailSports(contentId, contentTypeId, accomcountLeports, chkbabycarriageLeport, chkcreditcardLeports, chkpetLeports, expagerangeLeports, 
 									infocenterLeports, openPeriod, parkingfeeLeports, parkingLeports, reservation, restdateLeports, scaleLeports, usefeeLeports, 
-									usetimeLeports, fldgubun, infoName, infoText, serialNum);
+									usetimeLeports);
 							list.add(detailSports);
 							System.out.println(list.toString());
 						}

@@ -34,6 +34,8 @@
 	<insert id="insertEventDetail" parameterType="DetailEvent"
 			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
 		INSERT INTO DETAIL_EVENT (
+			CONTENTID,     
+ 			CONTENTTYPEID, 
 			SPONSOR1,            
 			SPONSOR1TEL,         
 			SPONSOR2,            
@@ -53,6 +55,8 @@
 			SPENDTIMEFESTIVAL,   
 			FESTIVALGRADE,        
 		) VALUES (
+			#{contentId},            
+			#{contenttypeId},            
 			#{sponsor1},            
 			#{sponsor1Tel},         
 			#{sponsor2},            

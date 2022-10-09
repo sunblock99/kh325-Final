@@ -29,3 +29,20 @@ public class DetailEvent {
 	private String spendTimeFestival;       //관람소요시간
 	private String festivalGrade;           //축제등급
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
