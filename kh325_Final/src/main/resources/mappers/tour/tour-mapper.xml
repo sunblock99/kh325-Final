@@ -30,7 +30,7 @@
 	
 	
 	<insert id="insertTourInfo" parameterType="Tour"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
 		INSERT INTO BASIC_TOUR_INFO (
 			CONTENTID,
 			CONTENTTYPEID,
