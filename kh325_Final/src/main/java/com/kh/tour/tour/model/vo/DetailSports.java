@@ -25,9 +25,6 @@ public class DetailSports {
 	private String scaleLeports; 			// 규모
 	private String usefeeLeports; 			// 입장료
 	private String usetimeLeports; 			// 이용시간
-	private int fldgubun; 					// 일련번호
-	private String infoName; 				// 제목
-	private String infoText; 				// 내용
-	private int serialNum; 					// 반복일련번호
 	
 }
+	     
