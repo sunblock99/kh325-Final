@@ -19,9 +19,9 @@
  <h2><a href="${path}/???/????.do">음식점 소개정보 INSERT</a></h2>
  <h2><a href="${path}/???/????.do">숙박 소개정보 INSERT</a></h2>
  <h2><a href="${path}/???/????.do">여행코스 소개정보 INSERT</a></h2>
- <h2><a href="${path}/???/????.do">반복정보 (통합) INSERT</a></h2>
- <h2><a href="${path}/???/????.do">반복정보_여행코스 INSERT</a></h2>
- <h2><a href="${path}/???/????.do">반복정보_숙박 INSERT</a></h2>
+ <h2><a href="${path}/insertRepeatInfo.do">반복정보 (통합) INSERT</a></h2>
+ <h2><a href="${path}/insertRepeatCourse.do">반복정보_여행코스 INSERT</a></h2>
+ <h2><a href="${path}/insertRepeatHotel.do">반복정보_숙박 INSERT</a></h2>
  <h2><a href="${path}/???/????.do">이미지정보조회 INSERT</a></h2>
  <h2><a href="${path}/???/????.do">무장애여행 INSERT</a></h2>
  <h2><a href="${path}/insertGallery.do">갤러리 INSERT</a></h2>

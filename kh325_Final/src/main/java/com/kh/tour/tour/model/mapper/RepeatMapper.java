@@ -9,7 +9,7 @@ import com.kh.tour.tour.model.vo.RepeatInfo;
 @Mapper
 public interface RepeatMapper {
 
+	int insertRepeatInfo (RepeatInfo repeatInfo);
 	int insertRepeatCourse (RepeatCourse repeatCourse);
 	int insertRepeatHotel (RepeatHotel repeatHotel);
-	int insertRepeatInfo (RepeatInfo repeatInfo);
 }
