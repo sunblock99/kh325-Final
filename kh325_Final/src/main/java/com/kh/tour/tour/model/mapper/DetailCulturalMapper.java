@@ -7,5 +7,5 @@ import com.kh.tour.tour.model.vo.DetailCultural;
 @Mapper
 public interface DetailCulturalMapper {
 
-	int insertCulturalDetail (DetailCultural dCultural);
+	int insertCulturalDetail (DetailCultural detailCultural);
 }

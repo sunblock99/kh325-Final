@@ -4,7 +4,7 @@ import com.kh.tour.tour.model.vo.DetailSports;
 
 public interface DetailSportsMapper {
 
-	int insertSportsDetail (DetailSports dSports);
+	int insertSportsDetail (DetailSports detailSports);
 }
 
 

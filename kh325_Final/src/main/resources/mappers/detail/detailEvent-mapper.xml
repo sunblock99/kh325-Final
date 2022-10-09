@@ -13,14 +13,14 @@
 		<result property="sponsor2" column="SPONSOR2"/>
 		<result property="sponsor2Tel" column="SPONSOR2TEL"/>
 		<result property="eventEndDate" column="EVENTENDDATE"/>
-		<result property="playtTime" column="PLAYTTIME"/>
+		<result property="playTime" column="PLAYTIME"/>
 		<result property="eventPlace" column="EVENTPLACE"/>
 		<result property="eventHomePage" column="EVENTHOMEPAGE"/>
 		<result property="ageLimit" column="AGELIMIT"/>
 		<result property="bookingPlace" column="BOOKINGPLACE"/>
 		<result property="placeInfo" column="PLACEINFO"/>
 		<result property="subEvent" column="SUBEVENT"/>
-		<result property="program" column="PROGRAM"/>
+		<result property="evProgram" column="EV_PROGRAM"/>
 		<result property="eventStartDate" column="EVENTSTARTDATE"/>
 		<result property="useTimeFestival" column="USETIMEFESTIVAL"/>
 		<result property="discountInfoFestival" column="DISCOUNTINFOFESTIVAL"/>
@@ -42,14 +42,14 @@
 			SPONSOR2,            
 			SPONSOR2TEL,         
 			EVENTENDDATE,        
-			PLAYTTIME,           
+			PLAYTIME,           
 			EVENTPLACE,          
 			EVENTHOMEPAGE,       
 			AGELIMIT,            
 			BOOKINGPLACE,        
 			PLACEINFO,           
 			SUBEVENT,            
-			PROGRAM,             
+			EV_PROGRAM,             
 			EVENTSTARTDATE,      
 			USETIMEFESTIVAL,     
 			DISCOUNTINFOFESTIVAL,
@@ -63,14 +63,14 @@
 			#{sponsor2},            
 			#{sponsor2Tel},         
 			#{eventEndDate},        
-			#{playtTime},           
+			#{playTime},           
 			#{eventPlace},          
 			#{eventHomePage},       
 			#{ageLimit},            
 			#{bookingPlace},        
 			#{placeInfo},           
 			#{subEvent},            
-			#{program},             
+			#{evProgram},             
 			#{eventStartDate},      
 			#{useTimeFestival},     
 			#{discountInfoFestival},

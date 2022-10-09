@@ -113,14 +113,14 @@ public class DetailEventApi {
 							String sponsor2 = getStrData(eElement2, "sponsor2");
 							String sponsor2Tel = getStrData(eElement2, "sponsor2tel");
 							int eventEndDate = getIntData(eElement2, "eventenddate");
-							String playtTime = getStrData(eElement2, "playttime");
+							String playTime = getStrData(eElement2, "playtime");
 							String eventPlace = getStrData(eElement2, "eventplace");
 							String eventHomePage = getStrData(eElement2, "eventhomepage");
 							String ageLimit = getStrData(eElement2, "ageLimit");
 							String bookingPlace = getStrData(eElement2, "bookingplace");
 							String placeInfo = getStrData(eElement2, "placeinfo");
 							String subEvent = getStrData(eElement2, "subevent");
-							String program = getStrData(eElement2, "program");
+							String evProgram = getStrData(eElement2, "program");
 							int eventStartDate = getIntData(eElement2, "eventstartdate");
 							String useTimeFestival = getStrData(eElement2, "usetimefestival");
 							String discountInfoFestival = getStrData(eElement2, "discountinfofestival");
@@ -128,7 +128,7 @@ public class DetailEventApi {
 							String festivalGrade = getStrData(eElement2, "festivalgrade");
 						
 							DetailEvent detailEvent = new DetailEvent(contentId, contentTypeId, sponsor1, sponsor1Tel, sponsor2, sponsor2Tel, eventEndDate, 
-									playtTime, eventPlace, eventHomePage, ageLimit, bookingPlace, placeInfo, subEvent, program, 
+									playTime, eventPlace, eventHomePage, ageLimit, bookingPlace, placeInfo, subEvent, evProgram, 
 									eventStartDate, useTimeFestival, discountInfoFestival, spendTimeFestival, festivalGrade);
 							list.add(detailEvent);
 							System.out.println(list.toString());

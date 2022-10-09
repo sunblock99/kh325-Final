@@ -7,7 +7,7 @@ import com.kh.tour.tour.model.vo.DetailShopping;
 @Mapper
 public interface DetailShoppingMapper {
 
-	int insertShoppingDetail (DetailShopping dShopping);
+	int insertShoppingDetail (DetailShopping detailShopping);
 }
 
 
