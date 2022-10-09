@@ -26,5 +26,4 @@ public class DetailSports {
 	private String usefeeLeports; 			// 입장료
 	private String usetimeLeports; 			// 이용시간
 	
-}
-	     
+} 

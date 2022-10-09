@@ -29,3 +29,4 @@ public class DetailShopping {
 	private String shopguId;                 //매장안내
                                              
 }
+

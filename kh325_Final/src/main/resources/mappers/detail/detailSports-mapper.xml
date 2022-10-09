@@ -26,6 +26,7 @@
 	</resultMap>
 	
 	
+	
 	<insert id="insertSportsDetail" parameterType="DetailSports"
 			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTTYPEID">
 		INSERT INTO DETAIL_SPORTS (

@@ -9,3 +9,4 @@ public interface DetailEventMapper {
 	
 	int insertEventDetail (DetailEvent dEvent);
 }
+

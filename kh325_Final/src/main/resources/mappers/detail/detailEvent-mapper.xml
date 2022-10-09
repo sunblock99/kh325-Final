@@ -27,6 +27,7 @@
 		<result property="spendTimeFestival" column="SPENDTIMEFESTIVAL"/>
 		<result property="festivalGrade" column="FESTIVALGRADE"/>
 		
+		
 	
 	</resultMap>
 	

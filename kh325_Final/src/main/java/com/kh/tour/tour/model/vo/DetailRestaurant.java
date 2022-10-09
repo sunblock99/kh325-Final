@@ -29,3 +29,4 @@ public class DetailRestaurant {
 	private String     lcnsNo              ;  //  인허가번호
 	
 }
+

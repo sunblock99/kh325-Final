@@ -24,6 +24,7 @@
 		<result property="treatMenu" column="TREATMEnU"/>
 		<result property="lcnsNo" column="LCNSNO"/>
 		
+		
 	</resultMap>
 	
 	

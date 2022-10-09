@@ -23,6 +23,7 @@
 		<result property="scaleShopping" column="SCALESHOPPING"/>
 		<result property="shopguId" column="SHOPGUID"/>
 		
+		
 	</resultMap>
 	
 	

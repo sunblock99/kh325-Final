@@ -21,6 +21,7 @@
 		<result property="chkPetCulture" column="CHKPETCULTURE"/>
 		<result property="chkCreditCardCulture" column="CHKCREDITCARDCULTURE"/>
 		
+		
 	
 	</resultMap>
 	

@@ -6,3 +6,5 @@ public interface DetailSportsMapper {
 
 	int insertSportsDetail (DetailSports dSports);
 }
+
+

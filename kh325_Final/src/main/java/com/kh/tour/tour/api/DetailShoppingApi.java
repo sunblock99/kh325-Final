@@ -124,6 +124,7 @@ public class DetailShoppingApi {
 							list.add(detailShopping);
 							System.out.println(list.toString());
 						}
+						
 						}
 					}
 				}
