@@ -20,7 +20,7 @@
 			ORIGINIMGURL,
 			SMALLIMAGEURL
 		) VALUES (
-			#{imageDetailNo},
+			SEQ_IMAGE_DETAIL_NO.NEXTVAL,
 			#{contentId},
 			#{originImgUrl},
 			#{smallImageUrl}

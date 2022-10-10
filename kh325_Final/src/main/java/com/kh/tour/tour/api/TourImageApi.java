@@ -98,13 +98,11 @@ public class TourImageApi {
 						NodeList smallImageUrlList = item.getElementsByTagName("smallimageurl");
 
 						
-						int imageDetailNo = 1;
 						for(int k = 0; k <originImgUrlList.getLength(); k++) {
-							imageDetailNo++;
 							String originImgUrl = ((Element)originImgUrlList.item(k)).getTextContent();
 							String smallImageUrl = ((Element)smallImageUrlList.item(k)).getTextContent();
 							
-							TourImage tourImage = new TourImage(imageDetailNo, contentId, originImgUrl, smallImageUrl);
+							TourImage tourImage = new TourImage(0, contentId, originImgUrl, smallImageUrl);
 							list.add(tourImage);
 							System.out.println(list);
 						}
