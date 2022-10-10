@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Gallery {
 	private int 	boardNo;
-	private int 	uNo;
+	private int 	uno;
 	private String 	title;
 	private String 	originalImage;
 	private String 	renamedImage;

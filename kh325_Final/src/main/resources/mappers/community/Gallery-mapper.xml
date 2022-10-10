@@ -15,132 +15,89 @@
 		<result property="boardType" column="BOARD_TYPE"/>
 	</resultMap>
 	
-	<resultMap type="Gallery" id="boardDetailResultMap" extends="galleryListResultMap">
-		<collection property="replies" javaType="arrayList" columnPrefix="R_" resultMap="boardReplyResultMap"/>
-	</resultMap>
 	
-	<select id="selectGalleryList" resultMap="GalleryListResultMap"  parameterType="map">
-		SELECT  G.BOARD_NO, 
-<!-- 				G.UNO,  -->
-				M.ID, 
-				G.TITLE, 
-				G.ORIGINAL_IMAGE, 
-				G.RENAMED_IMAGE, 
-				G.GAL_TAG, 
-				G.STATUS, 
-				G.BOARD_TYPE
-		FROM GALLERY G
-		JOIN MEMBER M ON(G.UNO = M.NO)
-		WHERE G.STATUS = 'Y'
-		<!-- WHERE 1=1 -->
-		<if test="writerKeyword != null">
-			AND M.ID LIKE '%'||#{writerKeyword}||'%'
-		</if>
-		<if test="titleKeyword != null">
-			AND B.TITLE LIKE '%'||#{titleKeyword}||'%'
-		</if>
-		<if test="contentKeyword != null">
-			AND B.CONTENT LIKE '%'||#{contentKeyword}||'%'
-		</if>
-		ORDER BY B.NO DESC
-	</select>
-
-	<select id="selectBoardCount" resultType="int"  parameterType="map">
-		SELECT  COUNT(*)
-		FROM BOARD B
-		JOIN MEMBER M ON(B.WRITER_NO = M.NO)
-		WHERE B.STATUS = 'Y'
-		<!-- WHERE 1=1 -->
-		<if test="writerKeyword != null">
-			AND M.ID LIKE '%'||#{writerKeyword}||'%'
-		</if>
-		<if test="titleKeyword != null">
-			AND B.TITLE LIKE '%'||#{titleKeyword}||'%'
-		</if>
-		<if test="contentKeyword != null">
-			AND B.CONTENT LIKE '%'||#{contentKeyword}||'%'
-		</if>
-		ORDER BY B.NO DESC
-	</select>
-	
-	<select id="selectBoardByNo" parameterType="int" resultMap="boardDetailResultMap">
- 		SELECT B.NO,
-		       B.TITLE,
-		       B.WRITER_NO, 
-		       M.ID, 
-		       B.READCOUNT, 
-		       B.ORIGINAL_FILENAME, 
-		       B.RENAMED_FILENAME, 
-		       B.CONTENT,
-		       B.TYPE,
-		       B.CREATE_DATE, 
-		       B.MODIFY_DATE,
-		       R.NO AS R_NO, 
-		       R.BOARD_NO AS R_BOARD_NO, 
-		       R.CONTENT AS R_CONTENT, 
-		       M2.ID AS R_ID, 
-		       R.CREATE_DATE AS R_CREATE_DATE, 
-		       R.MODIFY_DATE AS R_MODIFY_DATE
-		FROM BOARD B
-		JOIN MEMBER M ON(B.WRITER_NO = M.NO)
-		LEFT OUTER JOIN REPLY R ON(B.NO = R.BOARD_NO)
-		LEFT OUTER JOIN MEMBER M2 ON(R.WRITER_NO = M2.NO)
-		WHERE B.STATUS='Y' AND B.NO=#{boardNo}
-	</select>
-	
-	
-	<insert id="insertBoard" parameterType="Gallery"
-			useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
-		INSERT INTO BOARD (
-			NO,
-			WRITER_NO,
-			TITLE,
-			CONTENT,
-			ORIGINAL_FILENAME,
-			RENAMED_FILENAME,
-			READCOUNT,
-			STATUS,
-			CREATE_DATE,
-			MODIFY_DATE,
-			TYPE		
+	<insert id="insertGallery" parameterType="Gallery"
+			useGeneratedKeys="true" keyProperty="boardNo" keyColumn="BOARD_NO">
+		INSERT INTO GALLERY (
+			BOARD_NO,   
+			UNO,	           
+			TITLE,	       
+			ORIGINAL_IMAGE,
+			RENAMED_IMAGE,
+			GAL_TAG,	       
+			STATUS,	       
+			BOARD_TYPE
 		) VALUES (
 			SEQ_BOARD_NO.NEXTVAL,
-			#{writerNo},
+			#{uno},
 			#{title},
-			#{content},
-			#{originalFileName},
-			#{renamedFileName},
-			DEFAULT,
-			DEFAULT,
-			DEFAULT,
+			#{originalImage},
+			#{renamedImage},
+			#{galTag},
 			DEFAULT,
 			DEFAULT
 		)
 	</insert>
 	
-	<update id="updateBoard" parameterType="Gallery">
-		UPDATE BOARD
-		SET
-			TITLE=#{title},
-			CONTENT=#{content},
-			<if test="originalFileName != null">
-				ORIGINAL_FILENAME=#{originalFileName},
-			</if>
-			<if test="renamedFileName != null">
-				RENAMED_FILENAME=#{renamedFileName},
-			</if>
-			MODIFY_DATE=SYSDATE
-		WHERE
-			NO=#{no}
-	</update>
+	
+<!-- 	<select id="selectGalleryList" resultMap="GalleryListResultMap"  parameterType="map"> -->
+<!-- 		SELECT  G.BOARD_NO,  -->
+<!-- 				M.ID,  -->
+<!-- 				G.TITLE,  -->
+<!-- 				G.ORIGINAL_IMAGE,  -->
+<!-- 				G.RENAMED_IMAGE,  -->
+<!-- 				G.GAL_TAG,  -->
+<!-- 				G.STATUS,  -->
+<!-- 				G.BOARD_TYPE -->
+<!-- 		FROM GALLERY G -->
+<!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
+<!-- 		WHERE G.STATUS = 'Y' -->
+<!-- 		<if test="titleKeyword != null"> -->
+<!-- 			AND M.ID LIKE '%'||#{titleKeyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		<if test="galTagKeyword != null"> -->
+<!-- 			AND B.TITLE LIKE '%'||#{galTagKeyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		<if test="unoKeyword != null"> -->
+<!-- 			AND B.CONTENT LIKE '%'||#{unoKeyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		ORDER BY B.NO DESC -->
+<!-- 	</select> -->
+
+<!-- 	<select id="selectGalleryCount" resultType="int"  parameterType="map"> -->
+<!-- 		SELECT  COUNT(*) -->
+<!-- 		FROM GALLERY G -->
+<!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
+<!-- 		WHERE B.STATUS = 'Y' -->
+<!-- 		<if test="titleKeyword != null"> -->
+<!-- 			AND M.ID LIKE '%'||#{titleKeyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		<if test="galTagKeyword != null"> -->
+<!-- 			AND B.TITLE LIKE '%'||#{galTagKeyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		<if test="unoKeyword != null"> -->
+<!-- 			AND B.CONTENT LIKE '%'||#{unoKeyword}||'%' -->
+<!-- 		</if> -->
+<!-- 		ORDER BY B.NO DESC -->
+<!-- 	</select> -->
+	
+<!-- 	<select id="selectGalleryByNo" parameterType="int" resultMap="galleryDetailResultMap"> -->
+<!--  		SELECT G.BOARD_NO,  -->
+<!-- 				M.ID,  -->
+<!-- 				G.TITLE,  -->
+<!-- 				G.ORIGINAL_IMAGE,  -->
+<!-- 				G.RENAMED_IMAGE,  -->
+<!-- 				G.GAL_TAG,  -->
+<!-- 				G.STATUS,  -->
+<!-- 				G.BOARD_TYPE -->
+<!-- 		FROM GALLERY G -->
+<!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
+<!-- 		WHERE B.STATUS='Y' AND G.BOARD_NO=#{boardNo} -->
+<!-- 	</select> -->
 	
 	
-	<update id="updateReadCount" parameterType="map">
-		UPDATE BOARD SET READCOUNT=#{readCount} WHERE NO=#{no}
-	</update>
-	
-	<update id="deleteBoard" parameterType="int">
-		UPDATE BOARD SET STATUS='N' WHERE NO=#{no}
-	</update>
+<!-- 	<update id="deleteGallery" parameterType="int"> -->
+<!-- 		UPDATE GALLERY SET STATUS='N' WHERE BOARD_NO=#{boardNo} -->
+<!-- 	</update> -->
 	
 </mapper>

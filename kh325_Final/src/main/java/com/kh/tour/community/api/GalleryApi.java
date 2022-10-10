@@ -17,7 +17,8 @@ import org.w3c.dom.NodeList;
 import com.kh.tour.community.model.vo.Gallery;
 
 public class GalleryApi {
-	public static String GALLERY_URL = "http://apis.data.go.kr/B551011/PhotoGalleryService/galleryList?serviceKey=kbPxcL0m9hZ1CR8kULawo9YO3QnDjjfWMwysPXznkKllm8h7BgmYIv3n8tUDW6SP31J9qo1ESUUwvJdji4i3Tw%3D%3D&numOfRows=4751&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=xml&arrange=A";
+	public static String GALLERY_URL = "http://apis.data.go.kr/B551011/PhotoGalleryService/galleryList?serviceKey=kbPxcL0m9hZ1CR8kULawo9YO3QnDjjfWMwysPXznkKllm8h7BgmYIv3n8tUDW6SP31J9qo1ESUUwvJdji4i3Tw%3D%3D&numOfRows=1000&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=xml&arrange=A";
+//	public static String GALLERY_URL = "http://apis.data.go.kr/B551011/PhotoGalleryService/galleryList?serviceKey=kbPxcL0m9hZ1CR8kULawo9YO3QnDjjfWMwysPXznkKllm8h7BgmYIv3n8tUDW6SP31J9qo1ESUUwvJdji4i3Tw%3D%3D&numOfRows=4751&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=xml&arrange=A";
 
 	public static void main(String[] args) {
 		GalleryApi.callGalleryByXML();
@@ -60,7 +61,7 @@ public class GalleryApi {
 						Element eElement = (Element) node;
 
 						boardNo++;
-						int uno = 1000;
+						int uno = 5;
 						String title = eElement.getElementsByTagName("galTitle").item(0).getTextContent();
 						String originalImage = eElement.getElementsByTagName("galWebImageUrl").item(0).getTextContent();
 						String renamedImag = originalImage;
