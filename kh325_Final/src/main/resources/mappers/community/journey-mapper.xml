@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kh.tour.community.model.mapper.JourneyMapper">
+	<resultMap type="Journey" id="journeyListResultMap">
+		<id property="journeyNo" column="JOURNEY_NO" />
+		<result property="uNo" column="UNO" />
+		<result property="title" column="TITLE" />
+		<result property="subTitle" column="SUB_TITLE" />
+		<result property="hashTag" column="HASH_TAG" />
+		<result property="content" column="CONTENT" />
+		<result property="imgOriginal" column="IMG_ORIGINAL" />
+		<result property="imgRenamed" column="IMG_RENAMED" />
+		<result property="postDate" column="POST_DATE" />
+		<result property="status" column="STATUS" />
+		<result property="count" column="COUNT" />
+		<result property="boardType" column="BOARD_TYPE" />
+	</resultMap>
+	
+	<resultMap type="JourneyComment" id="journeyCommentResultMap">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="journeyNo" column="JOURNEY_NO"/>
+		<result property="uNo" column="UNO"/>
+		<result property="content" column="CONTENT"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="status" column="STATUS"/>
+	</resultMap>
+	
+	<resultMap type="Journey" id="journeyDetailResultMap" extends="journeyListResultMap">
+		<collection property="commentList" javaType="arrayList" columnPrefix="R_" resultMap="journeyCommentResultMap"/>
+	</resultMap>
+	
+	
+	<!-- 셀렉트 -->
+	<select id="selectBoardList" resultMap="freeboardListResultMap"  parameterType="map">
+		SELECT  B.FREEBOARD_NO,
+				M.UNO, 
+				B.TITLE, 
+				B.SUB_TITLE,
+				B.HASH_TAG,
+				B.CONTENT,
+				B.IMG_ORIGINAL,
+				B.IMG_RENAMED,
+				B.POST_DATE,
+				B.STATUS,
+				B.COUNT,
+				B.BOARD_TYPE
+		FROM COMM_JOURNEY B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		WHERE B.STATUS = 'Y'
+		<!-- WHERE 1=1 -->
+		<if test="writerKeyword != null">
+			AND M.U_NAME LIKE '%'||#{writerKeyword}||'%'
+		</if>
+		<if test="titleKeyword != null">
+			AND B.TITLE LIKE '%'||#{titleKeyword}||'%'
+		</if>
+		<if test="contentKeyword != null">
+			AND B.CONTENT LIKE '%'||#{contentKeyword}||'%'
+		</if>
+		ORDER BY B.NO DESC
+	</select>
+	
+	<!--전체 게시글수 가져오긴 -->
+	<select id="selectBoardCount" resultType="int"  parameterType="map">
+		SELECT COUNT(*)
+		FROM COMM_JOURNEY B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		WHERE B.STATUS = 'Y'
+		<!-- WHERE 1=1 -->
+		<if test="writerKeyword != null">
+			AND M.U_NAME LIKE '%'||#{writerKeyword}||'%'
+		</if>
+		<if test="titleKeyword != null">
+			AND B.TITLE LIKE '%'||#{titleKeyword}||'%'
+		</if>
+		<if test="contentKeyword != null">
+			AND B.CONTENT LIKE '%'||#{contentKeyword}||'%'
+		</if>
+		ORDER BY B.NO DESC
+	</select>
+	
+	<!-- 게시글 상세   -->
+	<select id="selectBoardByNo" parameterType="int" resultMap="journeyDetailResultMap">
+ 		SELECT B.JOURNEY_NO,
+			   B.TITLE, 
+			   M.UNO, 
+			   B.SUB_TITLE, 
+			   B.HASH_TAG, 
+			   B.CONTENT, 
+			   B.IMG_ORIGINAL, 
+			   B.IMG_RENAMED, 
+			   B.POST_DATE, 
+			   B.STATUS,
+			   B.COUNT,
+			   B.BOARD_TYPE,
+		       R.COMMENT_NO AS R_COMMENT_NO, 
+		       R.JOURNEY_NO AS R_FREEBOARD_NO, 
+		       R.CONTENT AS R_CONTENT, 
+		       M2.UNO AS R_UNO, 
+		       R.POST_DATE AS R_POST_DATE,
+		       R.STATUS AS R_STATUS,
+		FROM COMM_JOURNEY B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		LEFT OUTER JOIN JOURNEY_COMMENT R ON(B.JOURNEY_NO = R.JOURNEY_NO)
+		LEFT OUTER JOIN MEMBER M2 ON(R.UNO = M2.UNO)
+		WHERE B.STATUS='Y' AND B.JOURNEY_NO=#{journeyNo}
+	</select>
+	
+	<!-- 게시글 등록 -->
+	<insert id="insertBoard" parameterType="Journey"
+			useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
+		INSERT INTO COMM_JOURNEY (
+			JOURNEY_NO,
+			UNO,
+			TITLE,
+			SUB_TITLE,
+			HASH_TAG,
+			CONTENT,
+			IMG_ORIGINAL,
+			IMG_RENAMED,
+			POST_DATE,
+			STATUS,
+			COUNT,
+			BOARD_TYPE
+		) VALUES (
+			SEQ_JOURNEY_NO.NEXTVAL,
+			#{uNo},
+			#{title},
+			#{subTitle},
+			#{hashTag},
+			#{content},
+			#{imgOriginal},
+			#{imgRenamed},
+			SYSDATE,
+			DEFAULT,
+			1,
+			DEFAULT
+		)
+	</insert>
+	
+	<!-- 댓글등록 -->
+	
+	<insert id="insertComment" parameterType="JourneyComment">
+		INSERT INTO JOURNEY_COMMENT 
+			VALUES(SEQ_JOURNEY_COMMENT_NO.NEXTVAL, 
+			#{journeyNo}, #{uNo}, #{content}, SYSDATE, DEFAULT)
+	</insert>
+	
+	
+	<!-- 게시글 수정 -->
+	
+	<update id="updateBoard" parameterType="Journey">
+		UPDATE COMM_JOURNEY
+		SET
+			TITLE=#{title},
+			SUB_TITLE=#{subTitle},
+			HASH_TAG=#{hashTag},
+			CONTENT=#{content},
+			<if test="fileOriginal != null">
+				IMG_ORIGINAL=#{imgOriginal},
+			</if>
+			<if test="fileRenamed != null">
+				IMG_RENAMED=#{imgRenamed},
+			</if>
+		WHERE
+			COMM_JOURNEY=#{journeyNo}
+	</update>
+	
+	<!-- 게시글 조회수 업-->
+	<update id="updateReadCount" parameterType="Journey">
+		UPDATE COMM_JOURNEY SET COUNT=#{count} WHERE JOURNEY_NO=#{journeyNo}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<update id="deleteBoard" parameterType="int">
+		UPDATE COMM_JOURNEY SET STATUS='N' WHERE JOURNEY_NO=#{journeyNo}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment" parameterType="int">
+		UPDATE JOURNEY_COMMENT SET STATUS='N' WHERE COMMENT_NO=#{commentNo}
+	</delete>
+</mapper>

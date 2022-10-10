@@ -10,12 +10,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompanionComment {
-	int COMMENT_NO;
-	int COMPANION_NO;
-	int SENDER_NO;
-	String MSG_SEND;
-	int RECEIVER_NO;
-	String MSG_REC;
-	Date POST_DATE;
-	String STATUS;
+	int commentNo;
+	int companionNo;
+	int senderNo;
+	String senderName;
+	String senderImg;
+	String msgSend;
+	int receiverNo;
+	String receiverName;
+	String receiverImg;
+	String msgRec;
+	Date postDate;
+	String status;
 }

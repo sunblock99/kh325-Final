@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kh.tour.community.model.mapper.CompanionMapper">
+	<resultMap type="Companion" id="companionListResultMap">
+		<id property="companionNo" column="COMPANION_NO" />
+		<result property="uNo" column="UNO" />
+		<result property="departureDate" column="DEPATURE_DATE" />
+		<result property="closeDate" column="CLOSE_DATE" />
+		<result property="content" column="CONTENT" />
+		<result property="area" column="AREA" />
+		<result property="postDate" column="POST_DATE" />
+		<result property="boardType" column="BOARD_TYPE" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+	
+	<resultMap type="CompanionComment" id="companionCommentResultMap">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="companionNo" column="COMPANION_NO"/>
+		<result property="senderNo" column="SENDER_NO"/>
+		<result property="senderName" column="SENDER_NAME"/>
+		<result property="senderImg" column="SENDER_IMG"/>
+		<result property="msgSend" column="MSG_SEND"/>
+		<result property="receiverNo" column="RECEIVER_NO"/>
+		<result property="receiverName" column="RECEIVER_NAME"/>
+		<result property="receiverImg" column="RECEIVER_IMG"/>
+		<result property="msgRec" column="MSG_REC"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="status" column="STATUS"/>
+	</resultMap>
+	
+	<resultMap type="Companion" id="companionDetailResultMap" extends="companionDetailResultMap">
+		<collection property="commentList" javaType="arrayList" columnPrefix="R_" resultMap="companionReplyResultMap"/>
+	</resultMap>
+	
+		<!-- 셀렉트 -->
+	<select id="selectBoardList" resultMap="companionListResultMap"  parameterType="map">
+		SELECT  B.COMPANION_NO,
+				M.UNO, 
+				B.DEPATURE_DATE, 
+				B.CLOSE_DATE, 
+				B.CONTENT, 
+				B.AREA, 
+				B.POST_DATE,
+				B.BOARD_TYPE,
+				B.STATUS
+		FROM COMM_COMPANION B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		WHERE B.STATUS = 'Y'
+		AND B.DEPATURE_DATE >= SYSDATE
+		<!-- WHERE 1=1 -->
+		<if test="departureDate != null">
+			AND B.DEPATURE_DATE >= #{departureDate}
+		</if>
+		<if test="area != null">
+			AND B.AREA LIKE '%'||#{area}||'%'
+		</if>
+		ORDER BY B.NO DESC
+	</select>
+	
+	<!-- 게시글개수 -->
+	<select id="selectBoardCount" resultType="int"  parameterType="map">
+		SELECT COUNT(*)
+		FROM COMM_COMPANION B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		WHERE B.STATUS = 'Y'
+		AND B.DEPATURE_DATE >= SYSDATE
+		<!-- WHERE 1=1 -->
+		<if test="departureDate != null">
+			AND B.DEPATURE_DATE >= #{departureDate}
+		</if>
+		<if test="area != null">
+			AND B.AREA LIKE '%'||#{area}||'%'
+		</if>
+		ORDER BY B.NO DESC
+	</select>
+	
+	<select id="selectCommentByNo" parameterType="int" resultMap="companionCommentResultMap">
+		SELECT B.COMMENT_NO,
+            B.COMPANION_NO,
+            M2.UNO AS SENDER_NO,
+            M2.U_NAME SENDER_NAME,
+            M2.U_AVATAR SENDER_IMG,
+            B.MSG_SEND,
+            M.UNO AS RECEIVER_NO,
+            M.U_NAME AS RECEIVER_NAME,
+            M.U_AVATAR AS RECEIVER_IMG,
+            B.MSG_REC,
+            B.POST_DATE,
+            B.STATUS
+		FROM companion_comment B
+		LEFT OUTER JOIN MEMBER M ON(B.RECEIVER_NO = M.UNO)
+        LEFT OUTER JOIN MEMBER M2 ON(B.SENDER_NO = M2.UNO)
+		WHERE B.STATUS = 'Y'  AND B.COMPANION_NO = #{companionNo};
+	</select>
+	
+	<!-- 동행 게시글 등록 -->
+	<insert id="insertBoard" parameterType="Companion"
+			useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
+		INSERT INTO COMM_COMPANION (
+			COMPANION_NO,
+			UNO,
+			DEPATURE_DATE,
+			CLOSE_DATE,
+			CONTENT,
+			AREA,
+			POST_DATE,
+			BOARD_TYPE,
+			STATUS
+		) VALUES (
+			SEQ_COMP_NO.NEXTVAL,
+			#{uNo},
+			#{departureDate},
+			#{closeDate},
+			#{content},
+			#{area},
+			SYSDATE,
+			DEFAULT,
+			DEFAULT
+		)
+	</insert>
+	
+	<!-- 댓글등록 -->
+	
+	<insert id="insertComment" parameterType="CompanionComment">
+		INSERT INTO COMPANION_COMMENT (
+			COMMENT_NO,
+			COMPANION_NO,
+			SENDER_NO,
+			MSG_SEND,
+			RECEIVER_NO,
+			MSG_REC,
+			POST_DATE,
+			STATUS
+		)VALUES(
+			SEQ_COMP_SC_NO.NEXTVAL, 
+			#{companionNo}, #{senderNo}, #{msgSend}, #{receiverNo}, #{msgRec},SYSDATE, DEFAULT
+		)
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<update id="deleteBoard" parameterType="int">
+		UPDATE COMM_COMPANION SET STATUS='N' WHERE COMPANION_NO=#{companionNo}
+	</update>
+	
+</mapper> 

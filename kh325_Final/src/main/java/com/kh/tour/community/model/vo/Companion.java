@@ -17,6 +17,7 @@ public class Companion {
 	Date closeDate;
 	String content;
 	Date postDate;
+	String area;
 	String boardType;
 	String status;
 	List<CompanionComment> commentList;
