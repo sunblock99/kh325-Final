@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class DetailRestaurant {    
 	
 	private int 	   contentId           ;  //  콘텐츠ID
-	private int 		contenttypeId      ;  //  콘텐츠타입ID
+	private int 		contentTypeId      ;  //  콘텐츠타입ID
 	private String     chkcreditcardFood   ;  //  신용카드가능정보
 	private String     discountinfoFood    ;  //  할인정보
 	private String     firstMenu           ;  //  대표메뉴

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class DetailShopping {
 
 	private int contentId;                   //콘텐츠Id
-	private int contenttypeId;               //콘텐츠타입Id
+	private int contentTypeId;               //콘텐츠타입Id
 	private String chkbabyCarriage;          //유모차대여정보
 	private String chkcreditCard;            //신용카드가능정보
 	private String chkpetShopping;           //애완동물동반가능정보

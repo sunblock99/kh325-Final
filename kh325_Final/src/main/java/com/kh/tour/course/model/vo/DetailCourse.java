@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class DetailCourse {
 	                                                
 	private  int     contentId             ;       //콘텐츠ID
-	private  int     contenttypeId         ;       //콘텐츠타입ID
+	private  int     contentTypeId         ;       //콘텐츠타입ID
 	private  String  distance              ;       //코스총거리
 	private  String  infocenterTourcourse  ;       //문의및안내
 	private  String  schedule              ;       //코스일정

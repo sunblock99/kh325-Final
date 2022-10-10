@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.tour.tour.model.mapper.DetailShoppingMapper">
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
 	<resultMap type="DetailShopping" id="detailShoppingListResultMap">
 		<id property="contentId" column="CONTENTID"/>
 		<result property="contentTypeId" column="CONTENTTYPEID"/>
@@ -21,7 +21,7 @@
 		<result property="saleItem" column="SALEITEM"/>
 		<result property="saleItemcost" column="SALEITEMCOST"/>
 		<result property="scaleShopping" column="SCALESHOPPING"/>
-		<result property="shopguId" column="SHOPGUID"/>
+		<result property="shopGuide" column="SHOPGUIDE"/>
 		
 		
 	</resultMap>
@@ -46,7 +46,7 @@
 			SALEITEM,           
 			SALEITEMCOST,       
 			SCALESHOPPING,      
-			SHOPGUID           
+			SHOPGUIDE           
                     
 		) VALUES (
 			#{contentId},
@@ -59,14 +59,13 @@
 			#{infocenterShopping},
 			#{opendateShopping},
 			#{openTime},
-			#{restDateCulture},
 			#{parkingShopping},
 			#{restdateShopping},
 			#{restroom},
 			#{saleItem},
 			#{saleItemcost},
 			#{scaleShopping},
-			#{shopguId}
+			#{shopGuide}
 		)
 	</insert>
 	

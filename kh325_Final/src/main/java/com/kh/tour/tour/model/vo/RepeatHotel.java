@@ -37,7 +37,7 @@ public class RepeatHotel {
 	private String  roomCook;                //취사용품여부
 	private String  roomTable;               //테이블여부
 	private String  roomHairdryer;           //드라이기여부
-	private int roomSize2;                   //객실크기(평방미터)
+	private long roomSize2;                   //객실크기(평방미터)
 	private String roomImg1;                 //객실사진1
 	private String roomImg1alt;              //객실사진1 설명
 	private String roomImg2;                 //객실사진2

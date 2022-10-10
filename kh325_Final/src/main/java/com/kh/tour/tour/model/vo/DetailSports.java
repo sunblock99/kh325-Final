@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 public class DetailSports {
 	
 	private int contentId; 					// 콘텐츠ID
-	private int contenttypeId; 				// 콘텐츠타입ID
+	private int contentTypeId; 				// 콘텐츠타입ID
 	private String accomcountLeports; 		// 수용인원
-	private String chkbabycarriageLeport; 	// 유모차대여정보
+	private String chkbabycarriageLeports; 	// 유모차대여정보
 	private String chkcreditcardLeports; 	// 신용카드가능정보
 	private String chkpetLeports; 			// 애완동물동반가능정보
 	private String expagerangeLeports; 		// 체험가능연령

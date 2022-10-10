@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper
-	namespace="com.kh.tour.tour.model.mapper.DetailHotelMapper">
-	<resultMap type="DetailHotel" id="detailCourseListResultMap">
+	namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailHotel" id="detailHotelListResultMap">
 		<id property="contentId" column="CONTENTID" />
 		<result property="contentTypeId" column="CONTENTTYPEID" />
 		<result property="accomCountLodging" column="ACCOMCOUNTLODGING" />
@@ -111,7 +111,6 @@
 		#{seminar},
 		#{sports},
 		#{refundRegulation}
-		
 		)
 	</insert>
 

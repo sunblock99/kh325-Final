@@ -22,7 +22,7 @@ public class RepeatHotelApi {
 	public static String TOUR_URL = "http://apis.data.go.kr/B551011/KorService/areaBasedList";
 	public static String TOUR_REPEAT_INFO_URL = "http://apis.data.go.kr/B551011/KorService/detailInfo";
 	public static String SERVICE_KEY = "fD0DCX7wMXP7oajt2G6gM9Gp9x3cxPbHZURBn3%2FG68CU%2Bta1e9Kx7vvu2vAg6Cj9%2BtuyfBqqPfJDbTw9IsfC%2Bw%3D%3D";
-	public static String TOUR_URL_EXTRASTRING = "MobileOS=ETC&MobileApp=AppTest";
+	public static String TOUR_URL_EXTRASTRING = "MobileOS=ETC&MobileApp=AppTest&listYN=Y&arrange=C";
 	public static String TOUR_REPEAT_INFO_EXTRASTRING1 = "MobileOS=ETC&MobileApp=AppTest";
 
 	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -34,7 +34,7 @@ public class RepeatHotelApi {
 	public static List<RepeatHotel> callCurrentRepeatHotelByXML() {
 		List<RepeatHotel> list = new ArrayList<>();
 		
-		for (int j = 1; j < 1000; j++) {
+		for (int j = 1; j < 3; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();
@@ -126,7 +126,7 @@ public class RepeatHotelApi {
 							String  roomCook           = getStrData(eElement2, "roomcook");     
 							String  roomTable          = getStrData(eElement2, "roomtable");     
 							String  roomHairdryer      = getStrData(eElement2, "roomhairdryer");     
-							int roomSize2              = getIntData(eElement2, "roomsize2");     
+							long roomSize2           = getLongData(eElement2, "roomsize2");     
 							String roomImg1            = getStrData(eElement2, "roomimg1");     
 							String roomImg1alt         = getStrData(eElement2, "roomimg1alt");     
 							String roomImg2            = getStrData(eElement2, "roomimg2");     
@@ -164,6 +164,14 @@ public class RepeatHotelApi {
 	private static int getIntData(Element eElement, String tagName) {
 		try {
 			return Integer.parseInt(eElement.getElementsByTagName(tagName).item(0).getTextContent());
+		} catch (Exception e) {
+			return 0;
+		}
+	}
+	
+	private static long getLongData(Element eElement, String tagName) {
+		try {
+			return Long.parseLong(eElement.getElementsByTagName(tagName).item(0).getTextContent());
 		} catch (Exception e) {
 			return 0;
 		}

@@ -15,14 +15,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.kh.tour.tour.model.vo.RepeatCourse;
-import com.kh.tour.tour.model.vo.RepeatInfo;
 
 public class RepeatCourseApi {
 
 	public static String TOUR_URL = "http://apis.data.go.kr/B551011/KorService/areaBasedList";
 	public static String TOUR_REPEAT_INFO_URL = "http://apis.data.go.kr/B551011/KorService/detailInfo";
 	public static String SERVICE_KEY = "fD0DCX7wMXP7oajt2G6gM9Gp9x3cxPbHZURBn3%2FG68CU%2Bta1e9Kx7vvu2vAg6Cj9%2BtuyfBqqPfJDbTw9IsfC%2Bw%3D%3D";
-	public static String TOUR_URL_EXTRASTRING = "MobileOS=ETC&MobileApp=AppTest";
+	public static String TOUR_URL_EXTRASTRING = "MobileOS=ETC&MobileApp=AppTest&listYN=Y&arrange=C";
 	public static String TOUR_REPEAT_INFO_EXTRASTRING1 = "MobileOS=ETC&MobileApp=AppTest";
 
 	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -34,7 +33,7 @@ public class RepeatCourseApi {
 	public static List<RepeatCourse> callCurrentRepeatCourseByXML() {
 		List<RepeatCourse> list = new ArrayList<>();
 		
-		for (int j = 1; j < 1000; j++) {
+		for (int j = 1; j < 10; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();

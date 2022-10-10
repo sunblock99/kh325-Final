@@ -15,7 +15,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.kh.tour.tour.model.vo.DetailShopping;
-import com.kh.tour.tour.model.vo.DetailSports;
 
 public class DetailShoppingApi {
 
@@ -34,7 +33,7 @@ public class DetailShoppingApi {
 	public static List<DetailShopping> callCurrentDetailShoppingByXML() {
 		List<DetailShopping> list = new ArrayList<>();
 		
-		for (int j = 1; j < 1000; j++) {
+		for (int j = 1; j < 3; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();
@@ -115,7 +114,7 @@ public class DetailShoppingApi {
 							 String saleItem            	 = getStrData(eElement2, "saleitem");
 							 String saleItemcost        	 = getStrData(eElement2, "saleitemcost");
 							 String scaleShopping      		 = getStrData(eElement2, "scaleshopping");
-							 String shopGuide            	 = getStrData(eElement2, "shopguid");
+							 String shopGuide            	 = getStrData(eElement2, "shopguide");
 							 
 								
 							 DetailShopping detailShopping = new DetailShopping(contentId, contentTypeId, chkbabyCarriage, chkcredit, chkpetShopping, cultureCenter, fairDay, 

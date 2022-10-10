@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.tour.tour.model.mapper.DetailRestaurantMapper">
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
 	<resultMap type="DetailRestaurant" id="detailRestaurantListResultMap">
 		<id property="contentId" column="CONTENTID"/>
 		<result property="contentTypeId" column="CONTENTTYPEID"/>
@@ -21,7 +21,7 @@
 		<result property="scaleFood" column="SCALEFOOD"/>
 		<result property="seat" column="SEAT"/>
 		<result property="smoking" column="SMOKING"/>
-		<result property="treatMenu" column="TREATMEnU"/>
+		<result property="treatMenu" column="TREATMENU"/>
 		<result property="lcnsNo" column="LCNSNO"/>
 		
 		
@@ -51,7 +51,7 @@
 			LCNSNO   
 		) VALUES (
 			#{contentId}, 
-			#{contenttypeId}, 
+			#{contentTypeId}, 
 			#{chkcreditcardFood}, 
 			#{discountinfoFood},  
 			#{firstMenu},         

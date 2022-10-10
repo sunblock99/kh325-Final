@@ -15,7 +15,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.kh.tour.tour.model.vo.DetailEvent;
-import com.kh.tour.tour.model.vo.DetailTourist;
 
 
 public class DetailEventApi {
@@ -36,7 +35,7 @@ public class DetailEventApi {
 	public static List<DetailEvent> callCurrentDetailEventByXML() {
 		List<DetailEvent> list = new ArrayList<>();
 		
-		for (int j = 1; j < 375; j++) {
+		for (int j = 1; j < 3; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();

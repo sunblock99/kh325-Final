@@ -14,7 +14,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.kh.tour.tour.model.vo.DetailCultural;
 import com.kh.tour.tour.model.vo.DetailHotel;
 
 
@@ -36,7 +35,7 @@ public class DetailHotelApi {
 	public static List<DetailHotel> callCurrentDetailHotelByXML() {
 		List<DetailHotel> list = new ArrayList<>();
 		
-		for (int j = 1; j < 375; j++) {
+		for (int j = 1; j < 3; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();

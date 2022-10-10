@@ -4,12 +4,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.tour.tour.model.mapper.DetailSportsMapper">
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
 	<resultMap type="DetailSports" id="detailSportsListResultMap">
 		<id property="contentId" column="CONTENTID"/>
 		<result property="contentTypeId" column="CONTENTTYPEID"/>
 		<result property="accomcountLeports" column="ACCOMCOUNTLEPORTS"/>
-		<result property="chkbabycarriageLeport" column="CHKBABYCARRIAGELEPORT"/>
+		<result property="chkbabycarriageLeports" column="CHKBABYCARRIAGELEPORTS"/>
 		<result property="chkcreditcardLeports" column="CHKCREDITCARDLEPORTS"/>
 		<result property="chkpetLeports" column="CHKPETLEPORTS"/>
 		<result property="expagerangeLeports" column="EXPAGERANGELEPORTS"/>
@@ -33,7 +33,7 @@
 			CONTENTID,      
 			CONTENTTYPEID, 
 			ACCOMCOUNTLEPORTS, 		
-			CHKBABYCARRIAGELEPORT, 	
+			CHKBABYCARRIAGELEPORTS, 	
 			CHKCREDITCARDLEPORTS, 	
 			CHKPETLEPORTS, 			
 			EXPAGERANGELEPORTS, 		
@@ -51,7 +51,7 @@
 			#{contentId},
 			#{contentTypeId},
 			#{accomcountLeports},            
-			#{chkbabycarriageLeport},         
+			#{chkbabycarriageLeports},         
 			#{chkcreditcardLeports},            
 			#{chkpetLeports},         
 			#{expagerangeLeports},        

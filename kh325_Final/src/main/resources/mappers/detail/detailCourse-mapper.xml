@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.tour.tour.model.mapper.DetailCourseMapper">
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
 	<resultMap type="DetailCourse" id="detailCourseListResultMap">
 		<id property="contentId" column="CONTENTID"/>
 		<result property="contentTypeId" column="CONTENTTYPEID"/>

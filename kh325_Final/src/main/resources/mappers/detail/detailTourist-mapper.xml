@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.tour.tour.model.mapper.DetailTouristMapper">
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
 	<resultMap type="DetailTourist" id="detailTouristListResultMap">
 		<id property="contentId" column="CONTENTID"/>
 		<result property="contentTypeId" column="CONTENTTYPEID"/>
@@ -28,7 +28,7 @@
 	
 	<insert id="insertDetailTourist" parameterType="DetailTourist"
 			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
-		INSERT INTO DETAIL_TOURIST (
+		INSERT INTO DETAIL_TOURIST(
 			CONTENTID,      
 			CONTENTTYPEID,  
 			HERITAGE1,      
@@ -45,8 +45,7 @@
 			PARKING,           
 			CHKBABYCARRIAGE,
 			CHKCREDITCARD,  
-			CHKPET         	
-		) VALUES (
+			CHKPET) VALUES (
 			#{contentId},
 			#{contentTypeId},
 			#{heritage1},
@@ -64,7 +63,6 @@
 			#{chkBabyCarriage},
 			#{chkCreditCard},
 			#{chkPet}
-			
 		)
 	</insert>
 	

@@ -35,7 +35,7 @@ public class DetailTouristApi {
 	public static List<DetailTourist> callCurrentDetailTouristByXML() {
 		List<DetailTourist> list = new ArrayList<>();
 		
-		for (int j = 1; j < 375; j++) {
+		for (int j = 1; j < 3; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();

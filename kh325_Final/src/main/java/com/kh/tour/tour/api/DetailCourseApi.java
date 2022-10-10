@@ -33,7 +33,7 @@ public class DetailCourseApi {
 	public static List<DetailCourse> callCurrentDetailCourseByXML() {
 		List<DetailCourse> list = new ArrayList<>();
 
-		for (int j = 1; j < 375; j++) {
+		for (int j = 1; j < 10; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();

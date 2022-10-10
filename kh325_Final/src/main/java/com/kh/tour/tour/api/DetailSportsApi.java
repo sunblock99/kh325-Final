@@ -15,7 +15,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.kh.tour.tour.model.vo.DetailSports;
-import com.kh.tour.tour.model.vo.DetailTourist;
 
 public class DetailSportsApi {
 	
@@ -35,7 +34,7 @@ public class DetailSportsApi {
 	public static List<DetailSports> callCurrentDetailSportsByXML() {
 		List<DetailSports> list = new ArrayList<>();
 		
-		for (int j = 1; j < 1000; j++) {
+		for (int j = 1; j < 3; j++) {
 
 			try {
 				StringBuilder urlBuilder = new StringBuilder();
