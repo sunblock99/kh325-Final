@@ -22,7 +22,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		
 		
-		return "main/mainHome";
+		return "home";
 	}
 	
 }

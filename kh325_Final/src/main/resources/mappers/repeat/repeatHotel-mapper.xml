@@ -55,7 +55,7 @@
 	<insert id="insertRepeatHotel" parameterType="RepeatHotel"
 		useGeneratedKeys="true" keyProperty="accommoDetailNo"
 		keyColumn="ACCOMMO_DETAIL_NO">
-		INSERT INTO REPEAT_COURSE (
+		INSERT INTO REPEAT_HOTEL(
 		ACCOMMO_DETAIL_NO,
 		CONTENTID,
 		CONTENTTYPEID,
