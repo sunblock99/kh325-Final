@@ -34,7 +34,7 @@
 	
 	
 	<!-- 셀렉트 -->
-	<select id="selectBoardList" resultMap="freeboardListResultMap"  parameterType="map">
+	<select id="selectBoardList" resultMap="journeyListResultMap"  parameterType="map">
 		SELECT  B.FREEBOARD_NO,
 				M.UNO, 
 				B.TITLE, 
