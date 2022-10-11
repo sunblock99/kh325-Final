@@ -1,10 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +28,7 @@
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/addGallery.css">
-    <link rel="stylesheet" href="css/font.css">
+    <!-- <link rel="stylesheet" href="css/font.css"> -->
 
     <!-- <link href="css/addSearch.css" rel="stylesheet" /> -->
     <!-- Favicon-->
@@ -48,214 +41,180 @@
     <script src="https://kit.fontawesome.com/d5ea4955cb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
+<style>
+    @font-face {
+        font-family: 'pBlack';
+        font-weight: 900;
+        font-display: swap;
+        src: url(font/Pretendard-Black.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pEb';
+        font-weight: 800;
+        font-display: swap;
+        src: url(font/Pretendard-ExtraBold.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pB';
+        font-weight: 700;
+        font-display: swap;
+        src: url(font/Pretendard-Bold.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pSb';
+        font-weight: 600;
+        font-display: swap;
+        src: url(font/Pretendard-SemiBold.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pM';
+        font-weight: 500;
+        font-display: swap;
+        src: url(font/Pretendard-Medium.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pR';
+        font-weight: 400;
+        font-display: swap;
+        letter-spacing: 1px;
+        src: url(font/Pretendard-Regular.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pL';
+        font-weight: 300;
+        font-display: swap;
+        src: url(font/Pretendard-Light.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pEl';
+        font-weight: 200;
+        font-display: swap;
+        src: url(font/Pretendard-ExtraLight.ttf);
+    }
+    
+    @font-face {
+        font-family: 'pThin';
+        font-weight: 100;
+        font-display: swap;
+        src: url(font/Pretendard-Thin.ttf);
+    }
+    
+    @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+    /* 헤더 hover 효과 */
+    
+    a.hvr:hover {
+        color: #FD9F28;
+        background-color: #FAF9F8;
+        text-decoration: none;
+    }
+    /* 블랙헤더 */
+    
+    .navbar .nav-link-header-black {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 1rem;
+        color: black;
+        transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    }
+</style>
 
-
-<body style="padding-top: 56px; width: 120%; margin-left:-10%;;">
-    <header class="header">
+<body style="padding-top: 90px; ">
+    <header class="header header-absolute" style="font-size:30px; ">
         <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo"></a>
-                    <!-- <a class="navbar-brand py-1" href="index.html"><img src="pic/together_logo.png" alt="Directory logo" style="width: 138px; height: 31px;"></a> -->
-                    <form class="form-inline d-none d-sm-flex" action="#" id="search">
-                        <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
-                            <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span
-                                    class="sr-only">What are you looking for?</span></label>
-                            <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
-                        </div>
-                    </form>
+
+                    <!-- 로고 시작 -->
+                    <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
+                        <img class="ps-3" src="./image/togetherLogo.png" width="30%" height="10%">
+                    </a>
+                    <!-- 로고 끝-->
+
+                    <!-- 공간활용 용도-->
+                    <div class="input-label-absolute input-label-absolute-left
+                input-expand ms-lg-2 ms-xl-3"></div>
                 </div>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                <!-- Navbar Collapse -->
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <form class="form-inline mt-4 mb-2 d-sm-none" action="#" id="searchcollapsed">
-                        <div class="input-label-absolute input-label-absolute-left w-100">
-                            <label class="label-absolute" for="searchcollapsed_search"><i class="fa fa-search"></i><span
-                                    class="sr-only">What are you looking for?</span></label>
-                            <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchcollapsed_search" placeholder="Search" aria-label="Search" type="search">
-                        </div>
-                    </form>
+
+                <!-- =============== 메뉴바 영역 =============== -->
+                <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="homeDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Home</a>
-                            <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item" href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a class="dropdown-item" href="index-4.html">Real
-                                    Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link-header-black" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
                         </li>
-                        <!-- Megamenu-->
-                        <li class="nav-item dropdown position-static"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Template</a>
-                            <div class="dropdown-menu megamenu py-lg-0">
-                                <div class="row">
-                                    <div class="col-lg-9">
-                                        <div class="row p-3 pe-lg-0 ps-lg-5 pt-lg-5">
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Homepage</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Rooms </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-2.html">Restaurants </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-3.html">Travel </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-4.html">Real estate <span
-                                                                class="badge badge-info-light ms-1">New</span> </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Restaurants</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category.html">Category - Map on the top </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2.html">Category - Map on the right </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3.html">Category - no map </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail.html">Restaurant detail </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Rooms</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-rooms.html">Category - Map on the top </a>
-                                                    </li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2-rooms.html">Category - Map on the right
-                                                        </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3-rooms.html">Category - no map </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail-rooms.html">Room detail </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Blog</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Blog </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="post.html">Post </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Pages</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="compare.html">Comparison </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="team.html">Team </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="contact.html">Contact </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Pages</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="pricing.html">Pricing </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="text.html">Text page </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="faq.html">F.A.Q.s </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="coming-soon.html">Coming soon </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="404.html">404 page </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base.html">Knowledge Base <span
-                                                                class="badge badge-info-light ms-1">New</span> </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base-topic.html">Knowledge Base &mdash;
-                                                            Topic<span class="badge badge-info-light ms-1">New</span>
-                                                        </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="terms.html">Terms & Conditions <span
-                                                                class="badge badge-info-light ms-1">New</span> </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Host</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-add-0.html">Add new listing - 6 pages </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-list.html">Bookings &mdash; list view </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">User</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-profile.html">Profile </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-account.html">Account </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-personal.html">Personal info - forms </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-security.html">Password & security - forms </a>
-                                                    </li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="login.html">Sign in </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="signup.html">Sign up </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-1.html">Booking process - 4 pages </a>
-                                                    </li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-grid.html">Bookings &mdash; grid view </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-detail.html">Booking detail </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-invoice.html">Invoice <span
-                                                                class="badge badge-info-light ms-1">New</span> </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages.html">Messages <span
-                                                                class="badge badge-info-light ms-1">New</span> </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages-detail.html">Message Detail <span
-                                                                class="badge badge-info-light ms-1">New</span> </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="row megamenu-services d-none d-lg-flex ps-lg-5">
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                                                        <use xlink:href="#destination-map-1"> </use>
-                                                    </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Best rentals</h6>
-                                                        <p class="mb-0 text-muted text-sm">Find the perfect place</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                                                        <use xlink:href="#money-box-1"> </use>
-                                                    </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Earn points</h6>
-                                                        <p class="mb-0 text-muted text-sm">And get great rewards</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                                                        <use xlink:href="#customer-support-1"> </use>
-                                                    </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">020-800-456-747</h6>
-                                                        <p class="mb-0 text-muted text-sm">24/7 Available Support</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                                                        <use xlink:href="#secure-payment-1"> </use>
-                                                    </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Secure Payment</h6>
-                                                        <p class="mb-0 text-muted text-sm">Secure Payment</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
+
+                        <!-- 상단바메뉴 시작 -->
+                        <li class="nav-item position-static">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      관광정보</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
+                                    <h6 class="dropdown-header fw-normal" style="font-family:
+                        pB;">관광정보</h6>
+                                    <a class="hvr dropdown-item" href="docs/docs-introduction.html">HOT PLACE </a>
+                                    <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">관광지 정보</a>
+                                    <a class="hvr dropdown-item" href="docs/docs-gulp.html">지역별
+                        축제ㅣ행사 </a>
+                                    <a class="hvr dropdown-item" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
                                 </div>
+                            </li>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link-header-black" href="contact.html">커뮤니티</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link-header-black" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
+
+                        <!-- <li class="nav-item"><a class="nav-link-header-black" href="login.html">로그인</a></li> -->
+
+                        <!-- 일반회원 로그인 성공 시 -->
+                        <!-- <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
+                  href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  곰발바닥 님</a>
+                  <div class="dropdown-menu dropdown-menu-end"
+                      aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
+                      <a class="hvr dropdown-item"
+                        href="docs/docs-introduction.html">마이페이지</a>
+                      <a class="hvr dropdown-item"
+                        href="docs/docs-directory-structure.html">로그아웃</a>
+                  </div>
+                </li> -->
+
+                        <!-- 관리자 로그인 성공 시 -->
+                        <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  곰발바닥 님</a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
+                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">마이페이지</a>
+                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">관리자페이지</a>
+                                <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">로그아웃</a>
                             </div>
                         </li>
-                        <!-- /Megamenu end-->
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Docs</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
-                                <h6 class="dropdown-header fw-normal">Documentation</h6><a class="dropdown-item" href="docs/docs-introduction.html">Introduction </a><a class="dropdown-item" href="docs/docs-directory-structure.html">Directory structure </a><a class="dropdown-item" href="docs/docs-gulp.html">Gulp </a>
-                                <a class="dropdown-item" href="docs/docs-customizing-css.html">Customizing CSS </a><a class="dropdown-item" href="docs/docs-credits.html">Credits </a><a class="dropdown-item" href="docs/docs-changelog.html">Changelog </a>
-                                <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
-                            </div>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="login.html">Sign in</a></li>
-                        <li class="nav-item"><a class="nav-link" href="signup.html">Sign up</a></li>
-                        <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="user-add-0.html">Add a listing</a></li>
+
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- /Navbar -->
+        <!-- 상단바메뉴 끝 -->
+        <!-- =============== 메뉴바 영역 끝 =============== -->
     </header>
 
-    <section class="circle1">
-        <section class="circle2">
-            <section class=" position-relative pt-5 pb-4 " style="background-color: rgba(255, 193, 121, 0.295); width: 120%; margin-left:-10%;;">
+    <section class="circle1" style=" margin-left:-5%;">
+        <section class="circle2" style=" margin-right:-5%;">
+            <section class=" position-relative pt-5 pb-4 " style="background-color: rgba(255, 193, 121, 0.295);">
                 <!-- <img class="bg-image" src="img/photo/photo-1467987506553-8f3916508521.jpg" alt=""> -->
                 <div class="container">
                     <div class="row">
@@ -702,17 +661,23 @@
 
 
                         <!-- Pagination -->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-template d-flex justify-content-center">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a>
+
+                        <nav aria-label="Page navigation example ">
+                            <ul class="pagination pagination-template d-flex justify-content-center p-5">
+                                <li class="page-item ">
+                                    <span class="page-link"><span style="color: #000000;">Previous</span></span>
                                 </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" style="background: #FD9F28" href="#"><span
+                            style="color: #000000;">1</span></a></li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a>
+                                    <span class="page-link" style="color: #000000;">
+                                    2
+                                    <span class="sr-only">(current)</span>
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#"><span style="color: #000000;">3</span></a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><span style="color: #000000;">Next</span></a>
                                 </li>
                             </ul>
                         </nav>

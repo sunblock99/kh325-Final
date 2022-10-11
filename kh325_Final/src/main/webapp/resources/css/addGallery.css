@@ -1,19 +1,19 @@
 .circle1 {
     background-size: 600px 600px;
     z-index: -100;
-    background-image: url("../pic/gallery-ring.png");
+    background-image: url("../image/gallery-ring.png");
     background-repeat: no-repeat;
-    background-position-x: -5%;
-    background-position-y: -25%;
+    background-position-x: -20%;
+    background-position-y: -18%;
 }
 
 .circle2 {
     background-size: 600px 600px;
     z-index: -100;
-    background-image: url("../pic/gallery-ring.png");
+    background-image: url("../image/gallery-ring.png");
     background-repeat: no-repeat;
-    background-position-x: 121%;
-    background-position-y: 18%;
+    background-position-x: 125%;
+    background-position-y: 30%;
 }
 
 
