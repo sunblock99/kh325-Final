@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Freeboard {
 	int freeBoardNo;
 	int uNo;
+	String userName;
 	String title;
 	String content;
 	String fileOriginal;

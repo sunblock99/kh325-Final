@@ -13,6 +13,7 @@ public class FreeBoardComment {
 	int commentNo;
 	int freeboardNo;
 	int uNo;
+	String userName;
 	String content;
 	Date postDate;
 	String status;
