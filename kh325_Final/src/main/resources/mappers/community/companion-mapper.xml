@@ -31,8 +31,8 @@
 		<result property="status" column="STATUS"/>
 	</resultMap>
 	
-	<resultMap type="Companion" id="companionDetailResultMap" extends="companionDetailResultMap">
-		<collection property="commentList" javaType="arrayList" columnPrefix="R_" resultMap="companionReplyResultMap"/>
+	<resultMap type="Companion" id="companionDetailResultMap" extends="companionListResultMap">
+		<collection property="commentList" javaType="arrayList" columnPrefix="R_" resultMap="companionCommentResultMap"/>
 	</resultMap>
 	
 		<!-- 셀렉트 -->
