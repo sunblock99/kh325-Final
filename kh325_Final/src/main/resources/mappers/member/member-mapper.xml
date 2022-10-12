@@ -22,13 +22,13 @@
 	
 	<resultMap type="Member" id="memberResultMap">
 		<id property="uNo" column="UNO"/>
-		<result property="uName" column="U_NAME"/>
-		<result property="uEmail" column="U_EMAIL"/>
-		<result property="uPassword" column="U_PASSWORD"/>
-		<result property="uPhone" column="U_PHONE"/>
-		<result property="uAddress" column="U_ADDRESS"/>
-		<result property="uAvatar" column="U_AVATAR"/>
-		<result property="uStatus" column="U_STATUS"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userEmail" column="U_EMAIL"/>
+		<result property="userPassword" column="U_PASSWORD"/>
+		<result property="userPhone" column="U_PHONE"/>
+		<result property="userAddress" column="U_ADDRESS"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="userStatus" column="U_STATUS"/>
 		<result property="managerStatus" column="MANAGER_STATUS"/>
 	</resultMap>
 	
@@ -46,7 +46,7 @@
  	 -->
 	<select id="selectMember" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql"/>
-		WHERE ID = #{uEmail} AND STATUS = 'Y'
+		WHERE ID = #{userEmail} AND STATUS = 'Y'
 	</select>
 	
 	<insert id="insertMember" parameterType="Member"
@@ -56,31 +56,31 @@
 		    U_PASSWORD, U_PHONE, U_ADDRESS, 
 		    U_AVATAR, U_STATUS, MANAGER_STATUS, 
 		) VALUES (
-		    SEQ_UNO.NEXTVAL, #{uName}, #{uEmail}, 
-		    #{uPassword}, #{uPhone}, 
-		    #{uAddress}, #{uAvatar}, DEFAULT, DEFAULT
+		    SEQ_UNO.NEXTVAL, #{userName}, #{userEmail}, 
+		    #{userPassword}, #{userPhone}, 
+		    #{userAddress}, #{userAvatar}, DEFAULT, DEFAULT
 		)
 	</insert>
 	
 	<update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
 		SET
-			U_NAME 	= #{uName},
-			U_EMAIL 	= #{uEmail},
-			U_PHONE 	= #{uPhone},
-			U_ADDRESS = #{uAddress},
-			U_AVATAR 	= #{uAvatar},
-		WHERE UNO = #{uNo}
+			U_NAME 	= #{userName},
+			U_EMAIL 	= #{userEmail},
+			U_PHONE 	= #{userPhone},
+			U_ADDRESS = #{userAddress},
+			U_AVATAR 	= #{userAvatar},
+		WHERE UNO = #{userNo}
 	</update>
 	
 	<update id="updatePwd" parameterType="map">
-		UPDATE MEMBER SET U_PASSWORD = #{newPwd} WHERE UNO = #{uNo}
+		UPDATE MEMBER SET U_PASSWORD = #{newPwd} WHERE UNO = #{userNo}
 	</update>
 	
 	<update id="deleteMember" parameterType="int">
 		UPDATE MEMBER
 			SET U_STATUS = 'N'
-		WHERE UNO = #{uNo}
+		WHERE UNO = #{userNo}
 	</update>
 
 </mapper>

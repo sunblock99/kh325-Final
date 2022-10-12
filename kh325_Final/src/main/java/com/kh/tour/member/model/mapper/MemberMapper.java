@@ -14,10 +14,10 @@ import com.kh.tour.member.model.vo.Member;
 public interface MemberMapper {
 	int selectCount();
 	List<Member> selectAll();
-	Member selectMember(@Param("uEmail") String uEmail); // @Param : 파라메터를 알려주는 어노테이션, 없어도 호환잘된다.
+	Member selectMember(@Param("userEmail") String uEmail); // @Param : 파라메터를 알려주는 어노테이션, 없어도 호환잘된다.
 	int insertMember(Member member);
 	int updateMember(Member member);
 	int updatePwd(Map<String, String> map);
-	int deleteMember(@Param("uNo") int uNo);
+	int deleteMember(@Param("userNo") int uNo);
 	
 }
