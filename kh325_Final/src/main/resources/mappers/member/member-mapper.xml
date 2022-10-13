@@ -16,12 +16,12 @@
 				U_ADDRESS,
 				U_AVATAR,
 				U_STATUS,
-				MANAGER_STATUS,
+				MANAGER_STATUS
 		FROM MEMBER
 	</sql>
 	
 	<resultMap type="Member" id="memberResultMap">
-		<id property="uNo" column="UNO"/>
+		<id property="userNo" column="UNO"/>
 		<result property="userName" column="U_NAME"/>
 		<result property="userEmail" column="U_EMAIL"/>
 		<result property="userPassword" column="U_PASSWORD"/>
@@ -46,17 +46,19 @@
  	 -->
 	<select id="selectMember" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql"/>
-		WHERE ID = #{userEmail} AND STATUS = 'Y'
+		WHERE U_EMAIL = #{userEmail} AND U_STATUS = 'Y'
 	</select>
 	
+
+	
 	<insert id="insertMember" parameterType="Member"
-		useGeneratedKeys="true" keyColumn="UNO" keyProperty="uNo">
+		useGeneratedKeys="true" keyColumn="UNO" keyProperty="userNo">
 		INSERT INTO MEMBER (
 		    UNO, U_NAME, U_EMAIL, 
 		    U_PASSWORD, U_PHONE, U_ADDRESS, 
-		    U_AVATAR, U_STATUS, MANAGER_STATUS, 
+		    U_AVATAR, U_STATUS, MANAGER_STATUS
 		) VALUES (
-		    SEQ_UNO.NEXTVAL, #{userName}, #{userEmail}, 
+		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
 		    #{userPassword}, #{userPhone}, 
 		    #{userAddress}, #{userAvatar}, DEFAULT, DEFAULT
 		)
@@ -69,7 +71,7 @@
 			U_EMAIL 	= #{userEmail},
 			U_PHONE 	= #{userPhone},
 			U_ADDRESS = #{userAddress},
-			U_AVATAR 	= #{userAvatar},
+			U_AVATAR 	= #{userAvatar}
 		WHERE UNO = #{userNo}
 	</update>
 	
@@ -82,5 +84,27 @@
 			SET U_STATUS = 'N'
 		WHERE UNO = #{userNo}
 	</update>
+	
+	<!-- 카카오 로그인 시작 -->
+	<insert id="insertKakaoMemeber" parameterType="Member">
+		INSERT INTO MEMBER (
+		    UNO, U_NAME, U_EMAIL, 
+		    U_PASSWORD, U_PHONE, U_ADDRESS, 
+		    U_AVATAR, U_STATUS, MANAGER_STATUS
+		) VALUES (
+		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
+		    #{userPassword}, 'null' , 
+		    'null', 'null', DEFAULT, DEFAULT
+		)
+	</insert>
+	
+	
+	
+	
+	<!-- 카카오 로그인  끝 -->
+	
+	
+	
+	
 
 </mapper>

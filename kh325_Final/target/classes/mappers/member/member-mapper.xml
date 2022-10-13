@@ -5,37 +5,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.mvc.member.model.mapper.MemberMapper">
+<mapper namespace="com.kh.tour.member.model.mapper.MemberMapper">
 	<sql id="selectMemberSql">
 		SELECT
-				NO,
-				ID,
-				PASSWORD,
-				ROLE,
-				NAME,
-				PHONE,
-				EMAIL,
-				ADDRESS,
-				HOBBY,
-				STATUS,
-				ENROLL_DATE,
-				MODIFY_DATE
+				UNO,
+				U_NAME,
+				U_EMAIL,
+				U_PASSWORD,
+				U_PHONE,
+				U_ADDRESS,
+				U_AVATAR,
+				U_STATUS,
+				MANAGER_STATUS
 		FROM MEMBER
 	</sql>
 	
 	<resultMap type="Member" id="memberResultMap">
-		<id property="no" column="NO"/>
-		<result property="id" column="ID"/>
-		<result property="password" column="PASSWORD"/>
-		<result property="role" column="ROLE"/>
-		<result property="name" column="NAME"/>
-		<result property="phone" column="PHONE"/>
-		<result property="email" column="EMAIL"/>
-		<result property="address" column="ADDRESS"/>
-		<result property="hobby" column="HOBBY"/>
-		<result property="status" column="STATUS"/>
-		<result property="enrollDate" column="ENROLL_DATE"/>
-		<result property="modifyDate" column="MODIFY_DATE"/>
+		<id property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userEmail" column="U_EMAIL"/>
+		<result property="userPassword" column="U_PASSWORD"/>
+		<result property="userPhone" column="U_PHONE"/>
+		<result property="userAddress" column="U_ADDRESS"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="userStatus" column="U_STATUS"/>
+		<result property="managerStatus" column="MANAGER_STATUS"/>
 	</resultMap>
 	
 	<select id="selectCount" resultType="int">
@@ -52,44 +46,65 @@
  	 -->
 	<select id="selectMember" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql"/>
-		WHERE ID = #{id} AND STATUS = 'Y'
+		WHERE U_EMAIL = #{userEmail} AND U_STATUS = 'Y'
 	</select>
 	
+
+	
 	<insert id="insertMember" parameterType="Member"
-		useGeneratedKeys="true" keyColumn="NO" keyProperty="no">
+		useGeneratedKeys="true" keyColumn="UNO" keyProperty="userNo">
 		INSERT INTO MEMBER (
-		    NO, ID, PASSWORD, 
-		    ROLE, NAME, PHONE, 
-		    EMAIL, ADDRESS, HOBBY, 
-		    STATUS, ENROLL_DATE, MODIFY_DATE
+		    UNO, U_NAME, U_EMAIL, 
+		    U_PASSWORD, U_PHONE, U_ADDRESS, 
+		    U_AVATAR, U_STATUS, MANAGER_STATUS
 		) VALUES (
-		    SEQ_UNO.NEXTVAL, #{id}, #{password}, 
-		    DEFAULT, #{name}, #{phone}, 
-		    #{email}, #{address}, #{hobby}, 
-		    DEFAULT, DEFAULT, DEFAULT
+		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
+		    #{userPassword}, #{userPhone}, 
+		    #{userAddress}, #{userAvatar}, DEFAULT, DEFAULT
 		)
 	</insert>
 	
 	<update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
 		SET
-			NAME 	= #{name},
-			PHONE 	= #{phone},
-			EMAIL 	= #{email},
-			ADDRESS = #{address},
-			HOBBY 	= #{hobby},
-			MODIFY_DATE = #{modifyDate}
-		WHERE NO = #{no}
+			U_NAME 	= #{userName},
+			U_EMAIL 	= #{userEmail},
+			U_PHONE 	= #{userPhone},
+			U_ADDRESS = #{userAddress},
+			U_AVATAR 	= #{userAvatar}
+		WHERE UNO = #{userNo}
 	</update>
 	
 	<update id="updatePwd" parameterType="map">
-		UPDATE MEMBER SET PASSWORD = #{newPwd} WHERE NO = #{no}
+		UPDATE MEMBER SET U_PASSWORD = #{newPwd} WHERE UNO = #{userNo}
 	</update>
 	
 	<update id="deleteMember" parameterType="int">
 		UPDATE MEMBER
-			SET STATUS = 'N'
-		WHERE NO = #{no}
+			SET U_STATUS = 'N'
+		WHERE UNO = #{userNo}
 	</update>
+	
+	<!-- 카카오 로그인 시작 -->
+	<insert id="insertKakaoMemeber" parameterType="Member">
+		INSERT INTO MEMBER (
+		    UNO, U_NAME, U_EMAIL, 
+		    U_PASSWORD, U_PHONE, U_ADDRESS, 
+		    U_AVATAR, U_STATUS, MANAGER_STATUS
+		) VALUES (
+		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
+		    #{userPassword}, 'null' , 
+		    'null', 'null', DEFAULT, DEFAULT
+		)
+	</insert>
+	
+	
+	
+	
+	<!-- 카카오 로그인  끝 -->
+	
+	
+	
+	
 
 </mapper>

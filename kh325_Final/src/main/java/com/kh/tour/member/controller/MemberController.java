@@ -107,17 +107,17 @@ public class MemberController {
 				@ModelAttribute Member member, // @ModelAttribute 생략 가능!!
 				@SessionAttribute(name= "loginMember", required = false) Member loginMember 
 			) {
-		if(loginMember == null || loginMember.getUEmail().equals(member.getUEmail()) == false) {
+		if(loginMember == null || loginMember.getUserEmail().equals(member.getUserEmail()) == false) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			model.addAttribute("location", "/");
 			return "common/msg";
 		}
 		
-		member.setUNo(loginMember.getUNo());
+		member.setUserNo(loginMember.getUserNo());
 		int result = service.save(member);
 		
 		if(result > 0 ) {
-			model.addAttribute("loginMember", service.findById(member.getUEmail())); // DB에 있는 값으로 다시 세션값 업데이트
+			model.addAttribute("loginMember", service.findById(member.getUserEmail())); // DB에 있는 값으로 다시 세션값 업데이트
 			model.addAttribute("msg", "회원정보를 수정하였습니다.");
 			model.addAttribute("location", "/member/view");
 		}else {
@@ -132,7 +132,7 @@ public class MemberController {
 	@GetMapping("/member/delete")
 	public String delete(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
-		int result = service.delete(loginMember.getUNo());
+		int result = service.delete(loginMember.getUserNo());
 		
 		if(result > 0 ) {
 			model.addAttribute("msg", "정상적으로 탈퇴 되었습니다.");
@@ -165,6 +165,27 @@ public class MemberController {
 		}
 		model.addAttribute("script", "self.close()");
 		return "common/msg";
+	}
+	
+	@GetMapping("/kakao/callback")
+	public String kakaoLogin(Model model,String code) throws Exception{
+		// code는 카카오 서버로부터 받은 인가코드
+		
+		String access_Token = service.getAccessToken(code);
+		System.out.println("###access_Token#### : " + access_Token);
+		
+		
+		
+		Member userInfo = service.getUserInfo(access_Token);
+		System.out.println("###uNo#### : " + userInfo.getUserNo());
+		System.out.println("###nickname#### : " + userInfo.getUserName());
+		System.out.println("###email#### : " + userInfo.getUserEmail());
+		
+		
+		
+		model.addAttribute("loginMember", userInfo);
+		
+		return "home";
 	}
 	
 }

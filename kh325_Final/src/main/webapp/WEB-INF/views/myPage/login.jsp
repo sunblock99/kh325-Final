@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,13 +24,13 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,7 +47,7 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     .text-pBlack {
@@ -58,7 +58,7 @@
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     .text-pEb {
@@ -69,7 +69,7 @@
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     .text-pB {
@@ -80,7 +80,7 @@
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     .text-pSb {
@@ -91,7 +91,7 @@
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     .text-pM {
@@ -114,7 +114,7 @@
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     .text-pL {
@@ -125,7 +125,7 @@
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     .text-pEl {
@@ -136,7 +136,7 @@
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     .text-pThin {
@@ -156,7 +156,7 @@
         <div class="row min-vh-100">
             <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
                 <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
-                    <div class="mb-5"><img class="img-fluid mb-3" src="img/loginLogo.png" alt="..." style="max-width: 8rem;">
+                    <div class="mb-5"><img class="img-fluid mb-3" src="${path}/resources/img/loginLogo.png" alt="..." style="max-width: 8rem;">
                         <h2 class="text-pB">환영합니다!</h2>
                     </div>
                     <form class="form-validate">
@@ -186,7 +186,7 @@
                         <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
                         <div class="d-grid gap-2">
                             <button class="btn btn text-pB" a href="네이버 로그인" style="color: #04CF5C; border-color: #04CF5C; position: relative; padding-left: 12;"><img src="https://littledeep.com/wp-content/uploads/2020/09/naver-icon-style.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">네이버 로그인</span></button>
-                            <button class="btn btn text-pB" a href="카카오톡 로그인" style="color: #F9E000; border-color: #F9E000; position: relative; padding-left: 12;"><img src="icons/kakaoLogin.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">카카오톡 로그인</span></button>
+                            <button class="btn btn text-pB" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=cd8b1886f132139b606ba3a3939880a9&redirect_uri=http://localhost:82/kakao/callback&response_type=code'" style="color: #F9E000; border-color: #F9E000; position: relative; padding-left: 12;"><img src="${path}/resources/icons/kakaoLogin.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">카카오톡 로그인</span></button>
                         </div>
                         <hr class="my-4">
                         <p class="text-center"><small class="text-muted text-center text-pB">아직 아이디가 없으신가요?<a href="signup.html" style="color: #FC950D; text-decoration: none;">  회원가입하기                </a></small></p>
@@ -199,7 +199,7 @@
             </div>
             <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
                 <!-- Image-->
-                <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
+                <div class="bg-cover h-100 me-n3" style="background-image: url(${path}/resources/img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
             </div>
         </div>
     </div>
@@ -229,17 +229,17 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
