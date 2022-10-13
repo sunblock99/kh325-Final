@@ -64,9 +64,9 @@ a:hover.heart_pink {
 .searchbar_font {
     font-family: 'pEb' !important;
     display: block;
-    width: 300%;
+    width: 400%;
     padding: 0rem 1rem;
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.6;
     /* color: #75797e; */

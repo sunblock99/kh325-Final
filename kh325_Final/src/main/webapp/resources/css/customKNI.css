@@ -147,6 +147,9 @@ a.hvr:hover {
     text-decoration: none;
 }
 
+.text-uppercase-tour {
+    text-transform: uppercase !important;
+  }
 
 /* ==================================== 헤더 ======================================= */
 
@@ -323,6 +326,15 @@ div.absolute-searchbar {
 
 /* 비디오 받침 배경 사각형 */
 
+.main-square {
+    background-size: 500px 310px;
+    z-index: -100;
+    background-image: url("/html/image/mainVideoBack.png");
+    background-repeat: no-repeat;
+    background-position-x: 340px;
+    background-position-y: 100px;
+    overflow: visible;
+}
 
 .video-shadow {
     filter: drop-shadow(5px 5px 10px rgb(0 0 0 / 50%));

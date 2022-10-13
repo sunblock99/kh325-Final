@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
-  
     <!-- Favicon-->
     <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
@@ -42,7 +41,9 @@
 
 </head>
 
-<!-- naim -->
+<body style="padding-top: 0;">
+
+    <!-- naim -->
     <style>
         /*폰트 적용*/
         
@@ -71,14 +72,14 @@
             font-family: 'pSb';
             font-weight: 600;
             font-display: swap;
-            src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
+            src: url(font/Pretendard-SemiBold.ttf);
         }
         
         @font-face {
             font-family: 'pM';
             font-weight: 500;
             font-display: swap;
-            src: url(${path}/resources/font/Pretendard-Medium.ttf);
+            src: url(font/Pretendard-Medium.ttf);
         }
         
         @font-face {
@@ -109,12 +110,9 @@
             src: url(${path}/resources/font/Pretendard-Thin.ttf);
         }
     </style>
-<body style="padding-top: 0;">
-
-    
 
 
-    <header class="header header-absolute" style="font-size:30px;">
+    <header class="header header-absolute" style="font-size:50px;">
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
             <div class="container-fluid">
@@ -122,7 +120,7 @@
 
                     <!-- 로고 시작 -->
                     <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="${path}/resources/image/togetherLogoWhite.png" width="30%" height="10%">
+                        <img class="ps-3" src="${path}/resources/image/togetherLogoWhite.png" width="40%" height="60%">
                     </a>
                     <!-- 로고 끝-->
 
@@ -132,37 +130,35 @@
                 </div>
 
                 <!-- =============== 메뉴바 영역 =============== -->
-                <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
+                <div class="collapse navbar-collapse px-6" id="navbarCollapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link-header" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
+                            <a class="fs-3 nav-link-header text-pB" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
                         </li>
 
                         <!-- 상단바메뉴 시작 -->
-                        <li class="nav-item position-static">
+                        <li class="nav-item position-static text-pB">
                             <li class="nav-item dropdown">
-                                <a class="nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    관광정보</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                    <h6 class="dropdown-header fw-normal" style="font-family:
-                      pB;">관광정보</h6>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-introduction.html">HOT PLACE </a>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-directory-structure.html">관광지 정보</a>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-gulp.html">지역별
-                      축제ㅣ행사 </a>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
+                                <a class="fs-3 nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" 
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관광정보</a>
+                                <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                                    <h6 class="dropdown-header fs-5 text-pSb">관광정보</h6>
+                                    <a class="hvr dropdown-item fs-5" href="${path}/resources/docs/docs-introduction.html">HOT PLACE </a>
+                                    <a class="hvr dropdown-item fs-5" href="${path}/resources/docs/docs-directory-structure.html">관광지 정보</a>
+                                    <a class="hvr dropdown-item fs-5" href="${path}/resources/docs/docs-gulp.html">지역별 축제ㅣ행사 </a>
+                                    <a class="hvr dropdown-item fs-5" href="${path}/resources/docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
                                 </div>
                             </li>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link-header" href="contact.html">커뮤니티</a></li>
+                        <li class="nav-item"><a class="fs-3 nav-link-header" href="contact.html">커뮤니티</a></li>
                         <li class="nav-item">
-                            <a class="nav-link-header" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
+                            <a class="fs-3 nav-link-header" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
 
                         <!-- <li class="nav-item"><a class="nav-link-header" href="login.html">로그인</a></li> -->
 
                         <!-- 일반회원 로그인 성공 시 -->
-                        <!-- <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
+                        <!-- <li class="nav-item dropdown"><a class="fs-3 nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
                 href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 곰발바닥 님</a>
                 <div class="dropdown-menu dropdown-menu-end"
@@ -175,12 +171,12 @@
               </li> -->
 
                         <!-- 관리자 로그인 성공 시 -->
-                        <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                곰발바닥 님</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">마이페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">관리자페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">로그아웃</a>
+                        <li class="nav-item dropdown"><a class="fs-3 nav-link-header dropdown-toggle" id="docsDropdownMenuLink" 
+                            href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">곰발바닥 님</a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink text-pB">
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="${path}/resources/docs/docs-introduction.html">마이페이지</a>
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="${path}/resources/docs/docs-introduction.html">관리자페이지</a>
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="${path}/resources/docs/docs-directory-structure.html">로그아웃</a>
                             </div>
                         </li>
 
@@ -194,32 +190,31 @@
 
     <!-- 배경 -->
     <section class="pt-5 hero-home" style="background-color: #FD9F28;">
-        <div class="swiper-container hero-slider" style="height: 80%;">
-            <div class="swiper-wrapper dark-overlay">
+        <div class="swiper-container hero-slider" style="height: 82%;">
+            <div class="swiper-wrapper darker-overlay">
                 <div class="swiper-slide" style="background-image:url(${path}/resources/image/mainBackground.png)"></div>
-                <div class="swiper-slide" style="background-image:url(${path}/resources/image/mainBackground2.png)"></div>
-                <div class="swiper-slide" style="background-image:url(${path}/resources/image/mainBackground3.png)"></div>
+                <div class="swiper-slide" style="background-image:url(${path}/resources/image/mainBackground2.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(${path}/resources/image/mainBackground3.jpg)"></div>
             </div>
         </div>
 
-        <div class="container py-5 py-md-4 text-white z-index-20">
+        <div class="col-1"></div>
+        <div class="col-12 py-5 py-md-4 text-white z-index-20">
             <div class="row">
                 <div class="col-xl-10">
                     <div class="py-6 text-center text-lg-start">
-                        <p class="ps-2 subtitle mb-2" style="color: #fff;
-                font-family:pL;">DISCOVER SOUTH KOREA</p>
-                        <h1 class="display-2 fw-bold text-shadow" style="font-family:
-                pBlack;">TOGETHER</h1>
-                        <p class="ps-2 fs-4" style="font-family: pEl;"> 투게더와 함께 대한민국의 구석구석을 둘러보고 멋진 여행을 계획 해보세요</p>
-                        <button class="mt-4 col-lg-3 btn rounded-pill d-grid fs-5 letter-spacing-1" style="background-color: #FD9F28; font-family: pB;" type="submit">관광정보 검색하기</button>
+                        <p class="fs-3 text-pSb mb-1" style="color: #fff; letter-spacing:2px;">DISCOVER SOUTH KOREA</p>
+                        <h1 class="display-1 fw-bold text-pBlack text-shadow">TOGETHER</h1>
+                        <p class="ps-2 fs-4 text-pR"> 투게더와 함께 대한민국의 구석구석을 둘러보고 멋진 여행을 계획 해보세요</p>
+                        <button class="mt-4 mb-3 col-lg-3 btn rounded-pill d-grid fs-5 letter-spacing-1 text-pB" style="background-color: #FD9F28;" type="submit">관광정보 검색하기</button>
                     </div>
 
                     <!-- 검색창 시작 -->
-                    <div class="search-bar searchbar-shadow mt-5 p-3 p-lg-1 ps-lg-3 absolute-searchbar" style="font-family: pR;">
+                    <div class="search-bar col-10 searchbar-shadow mt-5 p-3 p-lg-1 ps-lg-3 absolute-searchbar text-pSb">
                         <form action="#">
                             <div class="row">
                                 <div class="col-lg-10 d-flex align-items-center form-group">
-                                    <input class="form-control border-0 shadow-0" type="text" name="search" placeholder="검색어를 입력 해주세요">
+                                    <input style="font-size: 1.4rem;" class="form-control border-0 shadow-0" type="text" name="search" placeholder=" &nbsp; 검색어를 입력 해주세요">
                                 </div>
                                 <div class="col-lg-2 d-grid" style="text-align: center;">
                                     <button class="btn rounded-pill h-100 fs-5 letter-spacing-4" style="background-color: #FD9F28;" type="submit">검색</button>
@@ -239,16 +234,16 @@
         <div class="row mb-5 pb-5">
 
             <div class="col-1"></div>
-            <div class="col-md-4">
+            <div class="col-md-4 mt-1">
                 <p class="fs-3 mb-0" style="color: rgba(255, 255, 255, 0.598); font-family:pM;">MAKE IT TOGETHER</p>
-                <h6 class="display-4 fw-bold" style="font-family: pBlack;">나만의 여행코스</h6>
-                <p class="fs-2 mb-0 text-pM" style="color: #fff;">투게더 이용자들이 직접 기록한 여행코스</p>
-                <p class="fs-3 mb-0 pt-5" style="color: #fff; font-family:pM;">
+                <h6 class="display-4 fw-bold text-pBlack">나만의 여행코스</h6>
+                <p class="fs-2 mb-0 pt-3" style="color: #fff; font-family:pM;">투게더 이용자들이 직접 기록한 여행코스</p>
+                <p class="fs-3 mb-0 pt-4" style="color: #fff; font-family:pM;">
                     오늘은
                     <span class="fs-3 mb-0 pt-1 todaytour-intro-id">박박만*님</span> ,
-                    <span class="fs-3 mb-0 pt-1 todaytour-intro-id">짜파게*님</span> 의
-                    <br>여행코스를 구경해보세요</p>
-                <div class="row mt-5 pt-3 pb-3">
+                    <span class="fs-3 mb-0 pt-1 todaytour-intro-id">짜파게*님</span> 만의
+                    <br>특별한 여행코스를 구경해보세요</p>
+                <div class="row mt-5 pt-4 pb-3">
                     <div class="col-lg-5 d-grid" style="text-align: center;">
                         <button class="btn-black rounded-pill h-100" style="background-color: black; color: #fff;" type="submit">
                   추천코스 바로가기</button>
@@ -262,7 +257,7 @@
             <div class="col-md-3">
                 <div class="d-flex align-items-lg-stretch mb-2 col-lg-4">
                     <div class="d-flex align-items-lg-stretch">
-                        <div class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate" style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=d9fa86a0-cddf-4f5a-a3ae-97e83f5d4039);">
+                        <div class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate" style="background: url(${path}/resources/https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=d9fa86a0-cddf-4f5a-a3ae-97e83f5d4039);">
                             <a class="tile-link" href="category.html"> </a>
                             <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
                                 <!-- <h3 class="text-shadow text-uppercase mb-0">   </h3> -->
@@ -276,7 +271,7 @@
             <div class="col-md-3">
                 <div class="d-flex align-items-lg-stretch mb-2 col-lg-4">
                     <div class="d-flex">
-                        <div class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate" style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=92205eba-0012-49b7-af73-a907c01089f7); ">
+                        <div class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate" style="background: url(${path}/resources/https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=92205eba-0012-49b7-af73-a907c01089f7); ">
 
                             <a class="tile-link" href="category.html"> </a>
                             <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
@@ -299,29 +294,29 @@
 
             <div class="col-lg-3 px-5 position-relative z-index-30">
                 <p class="main-number">1</p>
-                <div class="ps-lg-4">
+                <div class="ps-lg-3">
                     <h5 class="text-uppercase">Together</h5>
-                    <p class="mb-5 mb-lg-0" style="font-family: 'pM';">
-                        같이 떠나요. 그곳이 어디든 소중한 이와 함께라면 행복한 시간이 찾아올 거예요. 혼자라면 투게더에서 ‘동행’을 구해보는 건 어떨까요. 새로운 인연이 기다릴 거예요.</p>
+                    <p class="mb-5 mb-lg-0 text-pM fs-5">
+                        같이 떠나요. 그곳이 어디든 소중한 이와 함께라면 행복한 시간이 찾아올 거예요. 투게더에서 ‘동행’을 구해보세요. 새로운 인연이 기다릴 거예요.</p>
                 </div>
             </div>
 
             <div class="col-1"></div>
             <div class="col-lg-3 px-5 position-relative z-index-30">
                 <p class="main-number">2</p>
-                <div class="ps-lg-4">
+                <div class="ps-lg-3">
                     <h5 class="text-uppercase ms-3">To Get There</h5>
-                    <p class="mb-5 mb-lg-0 ms-3" style="font-family: 'pM';">
-                        실시간 ‘핫플레이스’부터 우리나라 구석구석 숨겨진 명소까지. 투게더에서 제공하는 상세한 관광 정보를 바탕으로 ‘나만의 특별한 여행 계획’을 세워보세요.</p>
+                    <p class="mb-5 mb-lg-0 ms-3 text-pM fs-5">
+                        실시간 ‘핫플레이스’부터 우리나라 구석구석 숨겨진 명소까지. 투게더에서 제공하는 관광 정보를 바탕으로 ‘나만의 여행 계획’을 세워보세요.</p>
                 </div>
             </div>
 
             <div class="col-1"></div>
             <div class="col-lg-3 px-5 position-relative z-index-30">
                 <p class="main-number">3</p>
-                <div class="ps-lg-4">
+                <div class="ps-lg-3">
                     <h5 class="text-uppercase ms-3">To Remember</h5>
-                    <p class="mb-5 mb-lg-0 ms-3" style="font-family: 'pM';">
+                    <p class="mb-5 mb-lg-0 ms-3 text-pM fs-5">
                         여행은 즐거우셨나요. ‘리뷰’와 ‘여행 후기’를 통해 여러분의 아름다운 추억을 되새기고 공유해주세요. 함께 나누는 만큼 오래도록 잊히지 않을 기억이 될 거예요</p>
                 </div>
             </div>
@@ -338,10 +333,10 @@
             </div>
             <div class="col-md-3 mb-5 mb-md-0">
                 <p class="fs-3 mb-0" style="color: #907B65; font-family:pM;">HOT PLACE</p>
-                <h6 class="display-4 fw-bold" style="font-family: pBlack;">핫플레이스</h6>
-                <p class="fs-5 mb-2" style="font-family: pEb;">현재 많은 사람들이 관심있는 곳은 어딜까요?</p>
-                <p class="fs-5 text-muted" style="font-family: pB; height: -20px;">
-                    대한민국의 각 지역들을 대표하는 관광지 중 가장 인기가 많고<br> 이용자들이 많이 검색하는 핫플레이스를 투게더에서 <br> 함께 확인해보세요!
+                <h6 class="display-4 fw-bold text-pBlack">핫플레이스</h6>
+                <p class="fs-4 mb-2 text-pSb">현재 많은 사람들이 관심있는 곳은 어딜까요?</p>
+                <p class="fs-4 text-muted text-pR" style="height: -20px;">
+                    대한민국의 각 지역들을 대표하는 관광지 중<br> 가장 인기가 많고 이용자들이 많이 검색하는 <br> 핫플레이스를 투게더에서 함께 확인해보세요!
                 </p>
                 <a class="d-flex a-hover a-orign-text btn-link-cate-lgfont pt-5 justify-content-end" href="post.html">
               더보기
@@ -404,8 +399,8 @@
     </section>
     <!-- 핫플레이스 끝 -->
 
-    <div class="overflow-visible">
-        <img src="${path}/resources//image/mainMiddleLine.png" alt="" width="2000px" height="130px">
+    <div class="overflow-hidden">
+        <img src="${path}/resources/image/mainMiddleLine.png" alt="" width="2000px" height="130px">
     </div>
 
     <!-- 행사 ㅣ 축제 시작 -->
@@ -413,18 +408,20 @@
         <div class="row mb-5">
             <p class="fs-4 mb-0 pt-0" style="color: #907B65; font-family:pM;">ENJOY TOGETHER</p>
             <div class="col-md-6">
-                <h6 class="display-6" style="font-family: pBlack;">행사ㅣ축제</h6>
+                <h6 class="display-4 text-pBlack">행사ㅣ축제</h6>
 
                 <div class="row mb-3">
                     <div class="col-6 d-flex mt-4">
                         <a class="a-orign-text" href="">
                             <img class="date-tile-event me-3" src="http://tong.visitkorea.or.kr/cms/resource/54/2483454_image2_1.JPG" /></a>
-                        <p class="mb-0 text-lg"><b>가무악극으로 만나는 토요 상설공연</b><br>2021.03.06 ~ 2021.10.30</p>
+                        <p class="mb-0 text-lg"><b>가무악극으로 만나는 토요 상설공연</b>
+                            <br>2021.03.06 ~ 2021.10.30</p>
                     </div>
                     <div class="col-6 d-flex mt-4">
                         <a class="a-orign-text" href="">
-                            <img class="date-tile-event me-3" src="http://tong.visitkorea.or.kr/cms/resource/26/2704326_image2_1.JPG" /></a>
-                        <p class="mb-0 text-lg"><b>가족끼리 빙어체험</b><br>2021.03.01 ~ 2021.06.06</p>
+                            <img class="date-tile-event me-3 ms-2" src="http://tong.visitkorea.or.kr/cms/resource/26/2704326_image2_1.JPG" /></a>
+                        <p class="mb-0 text-lg"><b>가족끼리 빙어체험</b>
+                            <br>2021.03.01 ~ 2021.06.06</p>
                     </div>
                 </div>
 
@@ -432,13 +429,15 @@
                     <div class="col-6 d-flex mt-4">
                         <a class="a-orign-text" href="">
                             <img class="date-tile-event me-3" src="http://tong.visitkorea.or.kr/cms/resource/96/2707496_image2_1.jpg" /></a>
-                        <p class="mb-0 text-lg"><b>가족끼리딸기 캠피닉</b><br>2021.03.01 ~ 2021.06.06</p>
+                        <p class="mb-0 text-lg"><b>가족끼리딸기 캠피닉</b>
+                            <br>2021.03.01 ~ 2021.06.06</p>
                     </div>
 
                     <div class="col-6 d-flex mt-4">
                         <a class="a-orign-text" href="">
-                            <img class="date-tile-event me-3" src="http://tong.visitkorea.or.kr/cms/resource/60/2705060_image2_1.jpg" /></a>
-                        <p class="mb-0 text-lg"><b>가족오페라 &lt;마술피리&gt; 2021</b><br>2021.03.01 ~ 2021.06.06</p>
+                            <img class="date-tile-event me-3 ms-2" src="http://tong.visitkorea.or.kr/cms/resource/60/2705060_image2_1.jpg" /></a>
+                        <p class="mb-0 text-lg"><b>가족오페라 &lt;마술피리&gt; 2021</b>
+                            <br>2021.03.01 ~ 2021.06.06</p>
                     </div>
                 </div>
                 <a class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2" href="post.html">
@@ -447,12 +446,7 @@
             </div>
 
 
-            <div class="col-md-6 z-index-50" style="background-size: 500px 310px; z-index: -100;
-   												    background-image: url(${path}/resources/image/mainVideoBack.png);
-    												background-repeat: no-repeat;
-    												background-position-x: 340px;
-    												background-position-y: 100px;
-    												overflow: visible;">
+            <div class="col-md-6 main-square z-index-50">
                 <div class="d-flex align-items-center">
                     <div class="ms-6 ps-6">
                         <iframe class="ms-lg-4 mb-3 pb-4 video-shadow" src="https://www.youtube.com/embed/RMD91n01DuA?start=0&cc_load_policy=1&iv_load_policy=3&color=white" width="550" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -471,11 +465,11 @@
             <div class="row mb-0">
                 <div class="col-md-8">
                     <p class="fs-4 mb-0 mt-5" style="color: #907B65; font-family:pM;">JOIN US TOGETHER</p>
-                    <h6 class="display-6 fw-bold pb-2" style="font-family: pBlack;">커뮤니티</h6>
+                    <h6 class="display-4 pb-0 text-pBlack">커뮤니티</h6>
                 </div>
 
-                <div class="col-sm-6 ps-lg-2 pe-4" style="font-family: pEb;">
-                    <div class="ps-lg-1 pb-3 fs-5" style="font-family: pB;">인기 블로그
+                <div class="col-sm-6 ps-lg-2 pe-4 text-pEb">
+                    <div class="ps-lg-1 pb-1 fs-3 text-pB opacity-75">인기 블로그
                     </div>
                     <div class="mt-2 py-2 me-2 container card border-0 shadow-sm hover-animate justify-content-center">
                         <div class="pt-4 row">
@@ -484,10 +478,10 @@
 
                             <div class="col-7">
                                 <a class="a-hover community-cate-font fw-bold" href="#">여행후기 </a>
-                                <h5 class="my-1 fs-4"><a class="text-dark" href="post.html">행복의 나라를 아시나요          </a></h5>
-                                <p class="text-gray-500 text-sm">
+                                <h5 class="my-1 fs-3"><a class="text-dark" href="post.html">행복의 나라를 아시나요          </a></h5>
+                                <p class="text-gray-500 text-md text-pM">
                                     <i class="far fa-clock me-2"></i>2022년 09월 24일</p>
-                                <p class="my-2 text-muted text-md text-overflow-elip-2">일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임</p>
+                                <p class="my-2 text-muted text-pR text-overflow-elip-3">일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임</p>
                                 <a class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2" href="post.html">
                       더보기
                       <i class="fas fa-angle-double-right ms-1"></i></a>
@@ -502,10 +496,10 @@
 
                             <div class="col-7">
                                 <a class="a-hover community-cate-font fw-bold" href="#">여행후기 </a>
-                                <h5 class="my-1 fs-4"><a class="text-dark" href="post.html">행복의 나라를 아시나요          </a></h5>
-                                <p class="text-gray-500 text-sm">
+                                <h5 class="my-1 fs-3"><a class="text-dark" href="post.html">행복의 나라를 아시나요          </a></h5>
+                                <p class="text-gray-500 text-md text-pM">
                                     <i class="far fa-clock me-2"></i>2022년 09월 24일</p>
-                                <p class="my-2 text-muted text-md text-overflow-elip-2">일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임</p>
+                                <p class="my-2 text-muted text-pR text-overflow-elip-3">일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임</p>
                                 <a class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2" href="post.html">
                       더보기
                       <i class="fas fa-angle-double-right ms-1"></i></a>
@@ -519,8 +513,8 @@
             <i class="fa fa-long-arrow-alt-right ms-2"></i></a> -->
 
                 <div class="col-sm-6 ps-6 pe-5">
-                    <div class="table-responsive text-sm mb-5">
-                        <div class="ps-lg-1 fs-5 py-1" style="font-family: pB;">최신 게시글</div>
+                    <div class="table-responsive text-sm">
+                        <div class="ps-lg-1 fs-3 py-1 text-pB opacity-75">최신 게시글</div>
                         <table class="table table-striped mt-3">
                             </thead>
                             <tbody class="text-start">
@@ -559,14 +553,10 @@
                                     <td class="fw-bold community-title-font"><a class="a-hover a-orign-text" href="#">Room Rental Services</a></td>
                                     <td class="community-title-font">August</td>
                                 </tr>
-                                <tr>
-                                    <td class="community-cate-font">자유게시판</td>
-                                    <td class="fw-bold community-title-font"><a class="a-hover a-orign-text" href="#">Room Rental Services</a></td>
-                                    <td class="community-title-font">August</td>
-                                </tr>
+                               
                             </tbody>
                         </table>
-                        <a class="d-flex a-hover a-orign-text btn-link-cate justify-content-end pb-3" href="post.html">
+                        <a class="d-flex a-hover a-orign-text btn-link-cate justify-content-end pt-4 pe-4" href="post.html">
                     전체 게시글 보러가기
                     <i class="fas fa-angle-double-right ms-1"></i></a>
 
@@ -577,11 +567,11 @@
     </section>
 
     <!--갤러리 시작 -->
-    <div class="col-md-12 pt-0 pb-7" style="background-color:#F3F1EE">
+    <div class="col-md-12 pb-6" style="background-color:#F3F1EE">
         <div class="ps-7 pe-7">
-            <p class="fs-4 mb-0" style="color: #907B65; font-family:pM;">
+            <p class="fs-4 mb-0 pt-5" style="color: #907B65; font-family:pM;">
                 SPECIAL MOMENTS</p>
-            <h6 class="mb-0 display-6 fw-bold" style="font-family: pB;
+            <h6 class="mb-0 display-4 fw-bold" style="font-family: pBlack;
           letter-spacing: 2px;">갤러리</h6>
 
             <a class="d-flex a-hover a-orign-text btn-link-cate-lgfont justify-content-end pb-3" href="post.html">
@@ -633,7 +623,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <img src="${path}/resources/image/togetherLogo.png" height="60" width="140" alt="">
+                        <img src="./image/togetherLogo.png" height="60" width="140" alt="">
                         <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
                         <div class="mt-4 pt-2 ps-3 ms-sm-4">
                             <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
