@@ -32,8 +32,8 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public Member login(String id, String pwd) {
-		Member member = this.findById(id);
+	public Member login(String userEmail, String pwd) {
+		Member member = this.findByEmail(userEmail);
 		if(member == null) {
 			return null;
 		}
@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(passwordEncoder.matches(pwd, member.getUserPassword())); 
 			// 파라메터로 받아온 pwd를 암호화하고 기존 암호화된 비밀번호와 비교하는 코드
 		
-		if(id.equals("admin")) { // admin일 경우 테스트를 위해 비밀번호 확인하지 않음
+		if(userEmail.equals("admin")) { // admin일 경우 테스트를 위해 비밀번호 확인하지 않음
 			return member;
 		}
 		
@@ -78,14 +78,14 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public boolean validate(String userId) {
-		return this.findById(userId) != null;
+	public boolean validate(String userEmail) {
+		return this.findByEmail(userEmail) != null;
 	}
 
 
 	@Override
-	public Member findById(String id) {
-		return mapper.selectMember(id);
+	public Member findByEmail(String userEmail) {
+		return mapper.selectMember(userEmail);
 	}
 
 	@Override
@@ -139,7 +139,7 @@ public class MemberServiceImpl implements MemberService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
+//			System.out.println("response body : " + result);
             
 			// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 			JsonParser parser = new JsonParser();
@@ -160,6 +160,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public Member getUserInfo(String access_Token) {
 		Member userInfo = new Member();
 		String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -174,7 +175,7 @@ public class MemberServiceImpl implements MemberService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
+//			System.out.println("response body : " + result);
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
@@ -183,14 +184,14 @@ public class MemberServiceImpl implements MemberService {
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			userInfo.setUserName(nickname);
 			// 카카오로그인 기능은 무조건 일반로그인으로 하지못하게끔 하기 위해서 비밀번호 설정
-			userInfo.setUserPassword("SKDFKSDM256SDFJMDSF4321DSF195@@@");
+			userInfo.setUserPassword("SKDFKSDM256SDFJM#$%#$DSF4321DSF195@@@");
 			userInfo.setUserEmail(email);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 			Member kakaoMember = mapper.selectMember(userInfo.getUserEmail());
-			if(kakaoMember == null) {
-			int result = mapper.insertKakaoMemeber(userInfo);
+			if(kakaoMember.getUserEmail() == null) {
+			int result = mapper.insertKakaoMember(userInfo);
 			System.out.println(result);
 			}
 			

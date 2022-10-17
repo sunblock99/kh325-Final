@@ -17,5 +17,5 @@ public interface MemberMapper {
 	int updateMember(Member member);
 	int updatePwd(Map<String, String> map);
 	int deleteMember(int userNo);
-	int insertKakaoMemeber(Member member);
+	int insertKakaoMember(Member member);
 }

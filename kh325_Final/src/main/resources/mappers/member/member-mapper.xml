@@ -86,7 +86,7 @@
 	</update>
 	
 	<!-- 카카오 로그인 시작 -->
-	<insert id="insertKakaoMemeber" parameterType="Member">
+	<insert id="insertKakaoMember" parameterType="Member">
 		INSERT INTO MEMBER (
 		    UNO, U_NAME, U_EMAIL, 
 		    U_PASSWORD, U_PHONE, U_ADDRESS, 

@@ -117,7 +117,7 @@ public class MemberController {
 		int result = service.save(member);
 		
 		if(result > 0 ) {
-			model.addAttribute("loginMember", service.findById(member.getUserEmail())); // DB에 있는 값으로 다시 세션값 업데이트
+			model.addAttribute("loginMember", service.findByEmail(member.getUserEmail())); // DB에 있는 값으로 다시 세션값 업데이트
 			model.addAttribute("msg", "회원정보를 수정하였습니다.");
 			model.addAttribute("location", "/member/view");
 		}else {
@@ -170,12 +170,9 @@ public class MemberController {
 	@GetMapping("/kakao/callback")
 	public String kakaoLogin(Model model,String code) throws Exception{
 		// code는 카카오 서버로부터 받은 인가코드
+		System.out.println("카카오로그인 실행");
 		
 		String access_Token = service.getAccessToken(code);
-		System.out.println("###access_Token#### : " + access_Token);
-		
-		
-		
 		Member userInfo = service.getUserInfo(access_Token);
 		System.out.println("###uNo#### : " + userInfo.getUserNo());
 		System.out.println("###nickname#### : " + userInfo.getUserName());
@@ -187,6 +184,18 @@ public class MemberController {
 		
 		return "home";
 	}
+	
+//	@RequestMapping("/naver/callback")
+//	public String naverCallback(Model model) throws Exception{
+//		System.out.println("naverCallback 호출 !!");
+////		System.out.println(n_name);
+////		System.out.println(n_email);
+////		System.out.println(mobile);
+//		
+//		return "home";
+//	}
+	
+	
 	
 }
 

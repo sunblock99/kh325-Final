@@ -9,7 +9,7 @@ public interface MemberService {
 
 	boolean validate(String userId);
 
-	Member findById(String userId);
+	Member findByEmail(String userEmail);
 
 	int delete(int userNo);
 
