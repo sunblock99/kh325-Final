@@ -24,16 +24,16 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- Leaflet Maps-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
-
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/course.detail.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,7 +41,7 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- 좋아요 CSS -->
-    <link rel="stylesheet" href="css/like.css">
+    <link rel="stylesheet" href="${path}/resources/css/like.css">
 </head>
 
 <style>
@@ -51,63 +51,63 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     @font-face {
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     @font-face {
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     @font-face {
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     @font-face {
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     @font-face {
         font-family: 'pR';
         font-weight: 400;
         font-display: swap;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
     
     @font-face {
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     @font-face {
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     @font-face {
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     div {
@@ -150,11 +150,11 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
                                 <h6 class="dropdown-header fw-normal" style="font-family:
                   pB;">관광정보</h6>
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">HOT PLACE </a>
-                                <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">관광지 정보</a>
-                                <a class="hvr dropdown-item" href="docs/docs-gulp.html">지역별
+                                <a class="hvr dropdown-item" href="${path}/resources/docs/docs-introduction.html">HOT PLACE </a>
+                                <a class="hvr dropdown-item" href="${path}/resources/docs/docs-directory-structure.html">관광지 정보</a>
+                                <a class="hvr dropdown-item" href="${path}/resources/docs/docs-gulp.html">지역별
                   축제ㅣ행사 </a>
-                                <a class="hvr dropdown-item" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
+                                <a class="hvr dropdown-item" href="${path}/resources/docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
                             </div>
                         </li>
                     </li>
@@ -182,9 +182,9 @@
                     <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             곰발바닥 님</a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                            <a class="hvr dropdown-item" href="docs/docs-introduction.html">마이페이지</a>
-                            <a class="hvr dropdown-item" href="docs/docs-introduction.html">관리자페이지</a>
-                            <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">로그아웃</a>
+                            <a class="hvr dropdown-item" href="${path}/resources/docs/docs-introduction.html">마이페이지</a>
+                            <a class="hvr dropdown-item" href="${path}/resources/docs/docs-introduction.html">관리자페이지</a>
+                            <a class="hvr dropdown-item" href="${path}/resources/docs/docs-directory-structure.html">로그아웃</a>
                         </div>
                     </li>
 
@@ -205,19 +205,19 @@
             <div class="d-flex justify-content-between align-items-start flex-column
           flex-lg-row align-items-lg-end">
                 <div class="mb-4 mb-lg-0 my-4">
-                    <div class="badge-tourinfo-detail px-3 py-2 mb-2 text-uppercase">tourist attraction
+                    <div class="badge-tourinfo-detail px-3 py-2 mb-2 fs-6 text-uppercase-tour">tourist attraction
                     </div>
-                    <h1 class="display-5 text-black" style="font-family: pB;">가창 찐빵 골목
+                    <h1 class="display-4 text-black text-pB">가창 찐빵 골목
                     </h1>
-                    <p style="font-family:pB">
+                    <p class="text-pB fs-5 ms-1">
                         대구광역시 달성군 가창면 가창로 1099 (가창면)</p>
                     <p class="mb-0 d-flex align-items-center" style="color: rgb(255,
               183, 0);">
-                        <i class="fa fa-xs fa-star"></i>
-                        <i class="fa fa-xs fa-star"></i>
-                        <i class="fa fa-xs fa-star"></i>
-                        <i class="fa fa-xs fa-star"></i>
-                        <i class="fa fa-xs fa-star text-gray-500 me-4"></i>
+                        <i class="ps-1 fa fa-1x fa-star"></i>
+                        <i class="fa fa-1x fa-star"></i>
+                        <i class="fa fa-1x fa-star"></i>
+                        <i class="fa fa-1x fa-star"></i>
+                        <i class="fa fa-1x fa-star text-gray-500 me-4"></i>
                     </p>
                 </div>
             </div>
@@ -227,87 +227,88 @@
 
 
     <!-- ===== 상세정보 시작 ===== -->
-    <section class="py-6">
+    <section class="py-4 pt-lg-6">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
 
+                    <!-- 사진 -->
+                    <div class="">
+                        <!-- <h3 class="mb-4 text-pBlack fs-2">갤러리</h3> -->
+                        <div class="row gallery ms-n1 me-n1">
+                            <div class="col-lg-4 col-6 px-1 mb-2">
+                                <a href="${path}/resources/img/photo/restaurant-1515164783716-8e6920f3e77c.jpg"><img class="img-fluid" src="${path}/resources/img/photo/restaurant-1515164783716-8e6920f3e77c.jpg" alt="..."></a>
+                            </div>
+                            <div class="col-lg-4 col-6 px-1 mb-2">
+                                <a href="${path}/resources/img/photo/restaurant-1466978913421-dad2ebd01d17.jpg"><img class="img-fluid" src="${path}/resources/img/photo/restaurant-1466978913421-dad2ebd01d17.jpg" alt="..."></a>
+                            </div>
+                            <div class="col-lg-4 col-6 px-1 mb-2">
+                                <a href="${path}/resources/img/photo/restaurant-1477763858572-cda7deaa9bc5.jpg"><img class="img-fluid" src="${path}/resources/img/photo/restaurant-1477763858572-cda7deaa9bc5.jpg" alt="..."></a>
+                            </div>
+                            <div class="col-lg-4 col-6 px-1 mb-2">
+                                <a href="${path}/resources/img/photo/restaurant-1505275350441-83dcda8eeef5.jpg"><img class="img-fluid" src="${path}/resources/img/photo/restaurant-1505275350441-83dcda8eeef5.jpg" alt="..."></a>
+                            </div>
+                            <div class="col-lg-4 col-6 px-1 mb-2">
+                                <a href="${path}/resources/img/photo/restaurant-1508766917616-d22f3f1eea14.jpg"><img class="img-fluid" src="${path}/resources/img/photo/restaurant-1508766917616-d22f3f1eea14.jpg" alt="..."></a>
+                            </div>
+                            <div class="col-lg-4 col-6 px-1 mb-2">
+                                <a href="${path}/resources/img/photo/restaurant-1430931071372-38127bd472b8.jpg"><img class="img-fluid" src="${path}/resources/img/photo/restaurant-1430931071372-38127bd472b8.jpg" alt="..."></a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 소개 -->
                     <div class="text-block">
-                        <h3 class="mb-3" style="font-family: pBlack;">소개</h3>
+                        <h3 class="mb-3 text-pBlack fs-2">소개</h3>
 
-                        <p class="text-muted"> ※ 영업시간 및 휴무 여부는 가게마다 차이가 있으므로 방문전 전화문의 요망<br><br> 대구에서 청도로 가는 30번 국도. 달성군 가창면 용계마을 입구에 들어서면 겨울 추위를 잊게 하는 진풍경이 펼쳐진다. 길가에 내놓은 찜통에서 하얀 김이 모락모락 피어나고, 무언가를 사려는 사람들이 길게 줄을 늘어서 있다. 따뜻한 김을 피워내는 것은 바로 찐빵이다. 2000년 3월 첫 '옛날찐빵집'이 열리고, 현재는
+                        <p class="text-muted fs-5"> ※ 영업시간 및 휴무 여부는 가게마다 차이가 있으므로 방문전 전화문의 요망<br><br> 대구에서 청도로 가는 30번 국도. 달성군 가창면 용계마을 입구에 들어서면 겨울 추위를 잊게 하는 진풍경이 펼쳐진다. 길가에 내놓은 찜통에서 하얀 김이 모락모락 피어나고, 무언가를 사려는 사람들이 길게 줄을 늘어서 있다. 따뜻한 김을 피워내는 것은 바로 찐빵이다. 2000년 3월 첫 '옛날찐빵집'이 열리고, 현재는
                             9곳이 생겨나 가창찐빵 골목은 이제 대구의 새로운 명물거리로 자리잡고 있다. 찐빵골목으로 전국적인 명성을 떨치고 있는 이곳에는 500여 m에 걸친 길가에 9곳의 찐빵집이 성업 중이다. 제각각 먹음직스런 찐빵을 만들어내기에 대구에서 가창으로 들어가는 길목에는 구수한 가창찐빵을 사려는 사람들이 줄을 선다. 또한 가창찐빵거리는 2013년 10월 17일 착한골목이 되었다. 착한골목은 사랑의 열매(사회복지공동모금회)에
                             매월 일정액을 기부하는 착한가게들이 골목을 이뤄 단체로 가입한 경우에 선정된다. 가창찐빵골목의 찐빵집 9곳과 음식점 등 11곳이 착한가게로 참여해 전국 6번째 착한 골목을 이루었다..</p>
 
                     </div>
 
-                    <!-- 사진 -->
-                    <div class="text-block">
-                        <h3 class="mb-4" style="font-family: pBlack;">갤러리</h3>
-                        <div class="row gallery ms-n1 me-n1">
-                            <div class="col-lg-4 col-6 px-1 mb-2">
-                                <a href="img/photo/restaurant-1515164783716-8e6920f3e77c.jpg"><img class="img-fluid" src="img/photo/restaurant-1515164783716-8e6920f3e77c.jpg" alt="..."></a>
-                            </div>
-                            <div class="col-lg-4 col-6 px-1 mb-2">
-                                <a href="img/photo/restaurant-1466978913421-dad2ebd01d17.jpg"><img class="img-fluid" src="img/photo/restaurant-1466978913421-dad2ebd01d17.jpg" alt="..."></a>
-                            </div>
-                            <div class="col-lg-4 col-6 px-1 mb-2">
-                                <a href="img/photo/restaurant-1477763858572-cda7deaa9bc5.jpg"><img class="img-fluid" src="img/photo/restaurant-1477763858572-cda7deaa9bc5.jpg" alt="..."></a>
-                            </div>
-                            <div class="col-lg-4 col-6 px-1 mb-2">
-                                <a href="img/photo/restaurant-1505275350441-83dcda8eeef5.jpg"><img class="img-fluid" src="img/photo/restaurant-1505275350441-83dcda8eeef5.jpg" alt="..."></a>
-                            </div>
-                            <div class="col-lg-4 col-6 px-1 mb-2">
-                                <a href="img/photo/restaurant-1508766917616-d22f3f1eea14.jpg"><img class="img-fluid" src="img/photo/restaurant-1508766917616-d22f3f1eea14.jpg" alt="..."></a>
-                            </div>
-                            <div class="col-lg-4 col-6 px-1 mb-2">
-                                <a href="img/photo/restaurant-1430931071372-38127bd472b8.jpg"><img class="img-fluid" src="img/photo/restaurant-1430931071372-38127bd472b8.jpg" alt="..."></a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- 지도 -->
-                    <div class="text-block">
-                        <!-- Listing Location-->
-                        <h3 class="mb-4" style="font-family: pBlack;">위치</h3>
-                        <div class="map-wrapper-300 mb-3">
-                            <div class="h-100" id="detailMap"></div>
-                        </div>
+                   <!-- 지도 -->
+                   <div class="text-block">
+                    <!-- Listing Location-->
+                    <h3 class="mb-4 fs-2 text-pBlack">위치</h3>
+                    <div class="map-wrapper-300 mb-3">
+                        <div class="h-100" id="detailMap"></div>
                     </div>
+                </div>
 
 
                     <!-- 무장애여행-->
                     <div class="text-block">
-                        <h3 class="mb-4" style="font-family: pBlack;">무장애여행</h3>
+                        <h3 class="mb-4 text-pBlack fs-2">무장애여행</h3>
                         <ul class="amenities-list list-inline" style="font-family: pB;">
-                            <li class="list-inline-item mb-3">
+                            <li class="list-item mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-circle bg-tourinfo-detail-disabled me-2"><i class="fa
-                        fa-check"></i></div><span>장애인 주차장 있음(가창면행정복지센터)</span>
+                        fa-check"></i></div><span class="fs-5 text-pSb">장애인 주차장 있음(가창면행정복지센터)</span>
                                 </div>
                             </li>
-                            <li class="list-inline-item mb-3">
+                            <li class="list-item mb-3">
                                 <div class="d-flex align-items-center">
-                                    <div class="icon-circle bg-tourinfo-detail-disabled me-2"><i class="fa fa-check"></i></div><span>전반적으로 평탄하고 골목길도 비좁지
-                      않음</span>
+                                    <div class="icon-circle bg-tourinfo-detail-disabled me-2">
+                                        <i class="fa fa-check"></i></div>
+                                        <span class="fs-5 text-pSb">전반적으로 평탄하고 골목길도 비좁지 않음</span>
                                 </div>
                             </li>
-                            <li class="list-inline-item mb-3">
+                            <li class="list-item mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-circle bg-tourinfo-detail-disabled me-2"><i class="fa
                         fa-check"></i></div>
-                                    <span>면사무소 와 보건소 장애인 전용 화장실 이용가능_무장애 편의시설</span>
+                                    <span class="fs-5 text-pSb">면사무소 와 보건소 장애인 전용 화장실 이용가능_무장애 편의시설</span>
                                 </div>
                             </li>
                         </ul>
 
                         <!-- 좋아요 ㅣ 코스추가 버튼 -->
-                        <div class="row position-relative justify-content-lg-center">
+                        <div class="row position-relative justify-content-lg-center pt-4 pb-4">
                             <!-- 코스추가 기능 -->
                             <div class="col-1">
                                 <div class="wrapper mt-0">
-                                    <a href="javascript:void(0);" class="like-button">
+                                    <a href="${path}/resources/javascript:void(0);" class="like-button">
                                         <i class="material-icons not-liked bouncy">
                         <svg class="svg-icon theme-line-1 text-danger">
                           <use xlink:href="#map-location-1"></use></svg>
@@ -318,15 +319,14 @@
                         </i>
                                         <span class="like-overlay"></span>
                                     </a>
-                                    <div class="text-center mt-2" style="font-family: pB; font-size: 10px;">코스담기</div>
+                                    <div class="text-center mt-2 text-pB" style="font-size: 15px;">코스담기</div>
                                 </div>
                             </div>
                             <!-- 코스추가 기능 -->
                             <!-- 좋아요 기능 -->
-                            <!-- <h5 class="mt-3 text-center" style="font-family:pB; color: rgb(97, 97, 97);" >정보가 마음에 드셨나요?</h5> -->
-                            <div class="col-1 justify-content-end">
+                            <div class="col-1">
                                 <div class="wrapper mt-0">
-                                    <a href="javascript:void(0);" class="like-button">
+                                    <a href="${path}/resources/javascript:void(0);" class="like-button">
                                         <i class="material-icons not-liked bouncy">
                       <svg class="svg-icon text-danger">
                         <use xlink:href="#heart-1"></use>
@@ -338,7 +338,7 @@
                       </i>
                                         <span class="like-overlay"></span>
                                     </a>
-                                    <div class="text-center mt-2" style="font-family: pB; font-size: 10px;">좋아요</div>
+                                    <div class="text-center mt-2 me-0 text-pB" style="font-size: 16px;">좋아요</div>
                                 </div>
                             </div>
                             <!-- 좋아요 기능 -->
@@ -347,61 +347,63 @@
 
 
                     <!-- 리뷰 -->
-                    <div class="text-block" font-family='pB'>
-                        <p class="subtitle text-sm text-danger">Reviews </p>
-                        <h5 class="mb-4">Listing Reviews </h5>
+                    <div class="text-block text-pB">
+                        <h5 class="mb-4 fs-2 text-pBlack">리뷰 목록 </h5>
                         <div class="d-flex d-block d-sm-flex review">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-8.jpg" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
+                                <img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-8.jpg" alt="Padmé Amidala">
+                                <span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                             <div>
-                                <h6 class="mt-2 mb-1">Padmé Amidala</h6>
-                                <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa
-                      fa-xs fa-star text-warning"></i><i class="fa fa-xs
-                      fa-star
-                      text-warning"></i><i class="fa fa-xs fa-star
-                      text-warning"></i>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">Padmé Amidala</h6>
+                                <div class="mb-2">
+                                    <i class="fa fa-xs fa-star text-warning"></i>
+                                    <i class="fa fa-xs fa-star text-warning"></i>
+                                    <i class="fa fa-xs fa-star text-warning"></i>
+                                    <i class="fa fa-xs fa-star text-warning"></i>
+                                    <i class="fa fa-xs fa-star text-warning"></i>
                                 </div>
-                                <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly,
+                                <p class="text-muted text-md">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly,
                                     slightly domed and divided by arches into stiff sections </p>
                             </div>
                         </div>
                         <div class="d-flex d-block d-sm-flex review">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                             <div>
-                                <h6 class="mt-2 mb-1">Luke Skywalker</h6>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">Luke Skywalker</h6>
                                 <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa
                       fa-xs fa-star text-warning"></i><i class="fa fa-xs
                       fa-star
                       text-warning"></i><i class="fa fa-xs fa-star
                       text-gray-200"></i>
                                 </div>
-                                <p class="text-muted text-sm">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot;
+                                <p class="text-muted text-md">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot;
                                     he thought. It wasn't a dream. </p>
                             </div>
                         </div>
                         <div class="d-flex d-block d-sm-flex review">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                             <div>
-                                <h6 class="mt-2 mb-1">Princess Leia</h6>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">Princess Leia</h6>
                                 <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa
                       fa-xs fa-star text-warning"></i><i class="fa fa-xs
                       fa-star
                       text-gray-200"></i><i class="fa fa-xs fa-star
                       text-gray-200"></i>
                                 </div>
-                                <p class="text-muted text-sm">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table. </p>
+                                <p class="text-muted text-md">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table. </p>
                             </div>
                         </div>
                         <div class="d-flex d-block d-sm-flex review">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-4.jpg" alt="Jabba Hut"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-4.jpg" alt="Jabba Hut"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
                             <div>
-                                <h6 class="mt-2 mb-1">Jabba Hut</h6>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">Jabba Hut</h6>
                                 <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa
                       fa-xs fa-star text-warning"></i><i class="fa fa-xs
                       fa-star
                       text-warning"></i><i class="fa fa-xs fa-star
                       text-warning"></i>
                                 </div>
-                                <p class="text-muted text-sm">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. </p>
+                                <p class="text-muted text-md">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. </p>
                             </div>
                         </div>
                         <div class="py-5">
@@ -452,14 +454,14 @@
 
                 <!-- 공통정보 -->
                 <div class="col-lg-4">
-                    <div class="ps-xl-4">
+                    <div class="ps-xl-5">
                         <div class="card border-0 shadow mb-5">
                             <div class="card-header bg-gray-100 py-4 border-0">
                                 <div class="d-flex align-items-center
                     justify-content-between">
                                     <div>
-                                        <p class="mb-0 text-sidebar-title">BASIC INFORMATION</p>
-                                        <p class="mb-0 fs-3" style="font-family: pBlack;">기본정보</p>
+                                        <p class="mb-0 text-sidebar-title fs-5">BASIC INFORMATION</p>
+                                        <p class="mb-0 fs-3 text-pBlack">기본정보</p>
                                     </div>
                                     <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem
                       ms-3 text-muted flex-shrink-0">
@@ -468,31 +470,28 @@
                                 </div>
                             </div>
                             <div class="card-body ">
-                                <ul class="list-unstyled mb-4" style="font-family: pB;">
+                                <ul class="list-unstyled mb-0 text-pB">
 
-                                    <li class="col-lg-12 mb-2">
-                                        <a class="text-gray-00 text-sm
-                        text-decoration-none" href="#">
-                                            <i class="text-sidebar-title col-1 fa fa-exclamation-circle"></i>
-                                            <span class="col-1 text-black">우편번호</span>
-                                            <span class="text-muted ms-3">53308</span>
+                                    <li class="col-lg-12 mb-2 justify-content-evenly">
+                                        <a class="text-gray-00 text-sm text-decoration-none" href="#">
+                                            <i class="text-sidebar-title col-1 fa fa-exclamation-circle fs-6"></i>
+                                            <span class="col-1 text-black fs-6">우편번호</span>
+                                            <span class="text-muted ms-3 float-end">53308</span>
                                         </a>
                                     </li>
 
                                     <li class="col-lg-12 mb-2">
-                                        <a class=" text-sm
-                        text-decoration-none" href="#">
-                                            <i class="text-sidebar-title col-1 fa fa-map-marked"></i>
-                                            <span class="col-1 text-black">주소</span>
-                                            <span class="text-muted ms-3">서울특별시 종로구 사직로 161</span>
+                                        <a class=" text-sm text-decoration-none" href="#">
+                                            <i class="text-sidebar-title col-1 fa fa-map-marked fs-6"></i>
+                                            <span class="col-1 text-black fs-6">주소</span>
+                                            <span class="text-muted ms-3 float-end">서울특별시 종로구 사직로 161</span>
                                         </a>
                                     </li>
                                     <li class="col-lg-12 mb-2">
-                                        <a class=" text-sm
-                        text-decoration-none" href="#">
-                                            <i class="text-sidebar-title fa fa-globe me-3"></i>
-                                            <span class="col-1 text-black">홈페이지 주소</span>
-                                            <span class="text-muted ms-3">www.yangdaechang.co.kr</span>
+                                        <a class=" text-sm text-decoration-none" href="#">
+                                            <i class="text-sidebar-title col-1 fa fa-globe fs-6"></i>
+                                            <span class="col-1 text-black fs-6">홈페이지 주소</span>
+                                            <span class="text-muted ms-3 float-end">www.yangdaechang.co.kr</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -506,8 +505,8 @@
                                 <div class="d-flex align-items-center
                     justify-content-between">
                                     <div>
-                                        <p class="mb-0 text-sidebar-title">DETAIL INFORMATION</p>
-                                        <p class="mb-0 fs-3" style="font-family: pBlack;">상세정보
+                                        <p class="mb-0 text-sidebar-title fs-5">DETAIL INFORMATION</p>
+                                        <p class="mb-0 fs-3 text-pBlack">상세정보
                                         </p>
                                     </div>
                                     <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem
@@ -521,36 +520,36 @@
                             <div class="card-body">
                                 <table class="table text-sm mb-0">
                                     <tr>
-                                        <th class="ps-0 border-0">수용인원</th>
-                                        <td class="pe-0 text-end border-0">8:00 am - 6:00 pm</td>
+                                        <th class="ps-0 fs-6">수용인원</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">8:00 am - 6:00 pm</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0">유모차대여정보</th>
-                                        <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                                        <th class="ps-0 fs-6">유모차대여정보</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">8:00 am - 6:00 pm</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0">신용카드가능정보</th>
-                                        <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                                        <th class="ps-0 fs-6">신용카드가능정보</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">8:00 am - 6:00 pm</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0">애완동물동반가능정보</th>
-                                        <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                                        <th class="ps-0 fs-6">애완동물동반가능정보</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">8:00 am - 6:00 pm</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0">체험가능연령</th>
-                                        <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                                        <th class="ps-0 fs-6">체험가능연령</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">8:00 am - 6:00 pm</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0">체험안내</th>
-                                        <td class="pe-0 text-end">8:00 am - 6:00 pm</td>
+                                        <th class="ps-0 fs-6">체험안내</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">8:00 am - 6:00 pm</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0">문의 및 안내</th>
-                                        <td class="pe-0 text-end">Closed</td>
+                                        <th class="ps-0 fs-6">문의 및 안내</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">Closed</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0">개장일</th>
-                                        <td class="pe-0 text-end">Closed</td>
+                                        <th class="ps-0 fs-6">개장일</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600">Closed</td>
                                     </tr>
                                 </table>
                             </div>
@@ -562,10 +561,10 @@
     </section>
 
 
-    <div class="py-6 bg-gray-100">
+    <div class="py-3 bg-gray-100">
         <div class="container">
-            <h3 class="mb-0" style="font-family:pBlack">추천 관광코스</h3>
-            <p class="subtitle text-sm text-warning mb-4">You may also like </p>
+            <h3 class="mb-1" style="font-family:pBlack">추천 관광코스</h3>
+            <p class="subtitle text-sm text-warning mb-3">You may also like </p>
             <div class="col-lg-auto">
                 <div class="row mt-2">
 
@@ -635,7 +634,7 @@
                                             </div>
                                         </div>
                                         <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
+                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                                 <i class="fas fa-heart svg-icon"></i>
                                             </a>
                                         </div>
@@ -674,7 +673,7 @@
                                             </div>
                                         </div>
                                         <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
+                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                                 <i class="fas fa-heart svg-icon"></i>
                                             </a>
                                         </div>
@@ -715,7 +714,7 @@
                                             </div>
                                         </div>
                                         <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
+                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                                 <i class="fas fa-heart svg-icon"></i>
                                             </a>
                                         </div>
@@ -757,7 +756,7 @@
                                             </div>
                                         </div>
                                         <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
+                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                                 <i class="fas fa-heart svg-icon"></i>
                                             </a>
                                         </div>
@@ -798,7 +797,7 @@
                                             </div>
                                         </div>
                                         <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
+                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                                 <i class="fas fa-heart svg-icon"></i>
                                             </a>
                                         </div>
@@ -826,8 +825,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- If we need pagination-->
-                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -888,10 +885,10 @@
                     </div>
                     <div class="col-md-6">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/visa.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/mastercard.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/paypal.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/western-union.svg" alt="..."></li>
                         </ul>
                     </div>
                 </div>
@@ -924,17 +921,17 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
@@ -948,7 +945,6 @@
     <script src="js/map-layers.js">
     </script>
     <script src="js/map-detail.js"></script>
-
     <script>
         $(document).ready(function() {
             $('.like-button').click(function() {
@@ -1204,7 +1200,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">
     </script>
-    <script src="js/datepicker-detail.js">
+    <script src="${path}/resources/js/datepicker-detail.js">
     </script>
 </body>
 
