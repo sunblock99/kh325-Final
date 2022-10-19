@@ -1,9 +1,10 @@
 package com.kh.tour.community.api;
 
 import java.net.HttpURLConnection;
-//import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,6 +24,8 @@ public class GalleryApi {
 	public static void main(String[] args) {
 		GalleryApi.callGalleryByXML();
 	}
+	
+	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
 	public static List<Gallery> callGalleryByXML() {
 
@@ -63,13 +66,14 @@ public class GalleryApi {
 						boardNo++;
 						int uno = 5;
 						String title = eElement.getElementsByTagName("galTitle").item(0).getTextContent();
+						Date postDate = getDateData(eElement, "galCreatedtime");
 						String originalImage = eElement.getElementsByTagName("galWebImageUrl").item(0).getTextContent();
 						String renamedImag = originalImage;
 						String galTag = eElement.getElementsByTagName("galSearchKeyword").item(0).getTextContent();
 						String status = "Y";
 						String boardType = "GALL";
 
-						Gallery gallery = new Gallery(boardNo, uno, title, originalImage, renamedImag, galTag,
+						Gallery gallery = new Gallery(boardNo, uno, title, postDate, originalImage, renamedImag, galTag,
 								status, boardType);
 						list.add(gallery);
 						System.out.println(list.toString());
@@ -83,6 +87,19 @@ public class GalleryApi {
 		}
 		return list;
 	}
+	
+	private static Date getDateData(Element eElement, String tagName) {
+		try {
+			String str = (eElement.getElementsByTagName(tagName).item(0).getTextContent()).substring(0,8);
+			Date date = sdf.parse(str);
+			return new java.sql.Date(date.getTime());
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	
+	
 	
 	
 }

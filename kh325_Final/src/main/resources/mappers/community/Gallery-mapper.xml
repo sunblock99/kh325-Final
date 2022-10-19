@@ -8,6 +8,7 @@
 		<id property="boardNo" column="BOARD_NO"/>
 		<result property="uno" column="UNO"/>
 		<result property="title" column="TITLE"/>
+		<result property="postDate" column="POST_DATE"/>
 		<result property="originalImage" column="ORIGINAL_IMAG"/>
 		<result property="renamedImage" column="RENAMED_IMAGE"/>
 		<result property="galTag" column="GAL_TAG"/>
@@ -22,6 +23,7 @@
 			BOARD_NO,   
 			UNO,	           
 			TITLE,	       
+			POST_DATE,	       
 			ORIGINAL_IMAGE,
 			RENAMED_IMAGE,
 			GAL_TAG,	       
@@ -31,6 +33,7 @@
 			SEQ_BOARD_NO.NEXTVAL,
 			#{uno},
 			#{title},
+			#{postDate},
 			#{originalImage},
 			#{renamedImage},
 			#{galTag},

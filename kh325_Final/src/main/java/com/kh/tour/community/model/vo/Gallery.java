@@ -1,5 +1,7 @@
 package com.kh.tour.community.model.vo;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,7 @@ public class Gallery {
 	private int 	boardNo;
 	private int 	uno;
 	private String 	title;
+	private Date 	postDate;
 	private String 	originalImage;
 	private String 	renamedImage;
 	private String 	galTag;
