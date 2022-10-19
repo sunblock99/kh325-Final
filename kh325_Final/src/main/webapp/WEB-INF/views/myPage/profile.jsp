@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,13 +24,13 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,7 +41,7 @@
     <!-- ===boxicons===-->
     <link href='http://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
 </head>
 <style>
     /*폰트 적용*/
@@ -159,7 +159,7 @@
         <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo"></a>
+                    <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo"></a>
                     <form class="form-inline d-none d-sm-flex" action="#" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                             <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
@@ -314,7 +314,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
+                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="${path}/resources/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
                                 </div>
                             </div>
                         </li>
@@ -331,7 +331,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown ms-lg-3">
-                            <a id="userDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="img/avatar/avatar-10.jpg" alt="Jack London"></a>
+                            <a id="userDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt="Jack London"></a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink"><a class="dropdown-item" href="user-booking-1.html">Booking process - 4 pages </a><a class="dropdown-item" href="user-grid.html">Bookings &mdash; grid view </a><a class="dropdown-item" href="user-booking-detail.html">Booking detail </a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt me-2 text-muted"></i> Sign out</a>
                             </div>
@@ -350,7 +350,7 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="img/avatar/avatar-10.jpg" alt=""></a>
+                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
                             <h5 class="text-pB">Dongmin Lee</h5>
                             <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
                         </div>
@@ -439,17 +439,18 @@
                 <div class="col-lg-9 ps-lg-5">
                     <h1 class="hero-heading mb-0 text-pEb">Profile</h1>
                     <div class="text-block ">
+                    <form action="${path}/myPage/update" method="post">
                         <div class=" mt-5 mb-5 col-12">
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">이름</h6>
                             </label>
-                            <input class="text" name="name" id="name" type="text" value="${loginMember.userName}" readonly required>
+                            <input class="text" name="userName" id="name" type="text" value="${loginMember.userName}" readonly required>
                         </div>
                         <div class=" mt-5 mb-5 col-12">
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">아이디 (이메일 주소)</h6>
                             </label>
-                            <input class="form-control" name="email" id="email" type="email" value="${loginMember.userEmail}">
+                            <input class="form-control" name="userEmail" id="email" type="email" value="${loginMember.userEmail}" readonly required>
                         </div>
                         <div class="row">
                             <div class="col-sm-8">
@@ -463,7 +464,7 @@
                             <div class="row mt-4">
                                 <div class="mb-4 col-12">
                                     <label class="form-label text-pEb" for="password-current">현재 비밀번호</label>
-                                    <input class="form-control" type="password" name="password" id="password1">
+                                    <input class="form-control" type="password" name="userPassword" id="password1">
                                 </div>
                                 <div class="mb-4 col-md-6">
                                     <label class="form-label text-pEb" for="password-new">새로운 비밀번호</label>
@@ -480,13 +481,13 @@
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">연락처</h6>
                             </label>
-                            <input class="form-control" name="phone" id="phone" type="tel" value="${loginMember.userPhone}">
+                            <input class="form-control" name="userPhone" id="phone" type="tel" value="${loginMember.userPhone}">
                         </div>
                         <div class=" mt-5 mb-4 col-12">
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">주소</h6>
                             </label>
-                            <input class="form-control" name="address" id="address" type="text"  value="${loginMember.userAddress}">
+                            <input class="form-control" name="userAddress" id="address" type="text"  value="${loginMember.userAddress}">
                         </div>
                         <div class="mb-5 mt-5 col-lg-6">
                             <label class="form-label" for="formFile" style="color:black">
@@ -495,8 +496,9 @@
                             <input class="form-control" id="formFile" type="file">
                         </div>
                         <button class="btn btn-primary text-pEb" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">수정하기</button>
-                        <button class="btn btn-primary text-pEb" type="submit" id="deleteMember" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">탈퇴하기</button>
+                        <button class="btn btn-primary text-pEb" type="button" onclick="location.href='${path}/member/delete'" id="deleteMember" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">탈퇴하기</button>
                     </div>
+                    </form>
 
                 </div>
             </div>
@@ -559,10 +561,10 @@
                     </div>
                     <div class="col-md-6">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/visa.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/mastercard.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/paypal.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/western-union.svg" alt="..."></li>
                         </ul>
                     </div>
                 </div>
@@ -633,24 +635,24 @@
 	</script>
 	
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
     
     
 </body>

@@ -162,7 +162,7 @@
                     <form class="form-validate" id="LoginFrm" action="${path}/login" method="post">
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginUsername"> 아이디(이메일 주소)</label>
-                            <input class="form-control text-pB" name="email" id="email" type="email" placeholder="name@address.com" autocomplete="off" required="" data-msg="Please enter your email">
+                            <input class="form-control text-pB" name="userEmail" id="email" type="email" placeholder="name@address.com" autocomplete="off" required="" data-msg="Please enter your email">
                         </div>
                         <div class="mb-4">
                             <div class="row">
@@ -171,7 +171,7 @@
                                 </div>
                                 <div class="col-auto text-pB"><a class="form-text small text-pB" href="#" style="color: black !important;">비밀번호를 잊으셨나요?</a></div>
                             </div>
-                            <input class="form-control" name="password" id="password1" placeholder="Password" type="password" required="" data-msg="Please enter your password">
+                            <input class="form-control" name="userPassword" id="password1" placeholder="Password" type="password" required="" data-msg="Please enter your password">
                         </div>
                         <div class="mb-4">
                             <div class="form-check">
@@ -185,8 +185,8 @@
                         </div>
                         <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
                         <div class="d-grid gap-2">
-                            <button class="btn btn text-pB" a href="네이버 로그인" style="color: #04CF5C; border-color: #04CF5C; position: relative; padding-left: 12;"><img src="https://littledeep.com/wp-content/uploads/2020/09/naver-icon-style.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">네이버 로그인</span></button>
-                            <button class="btn btn text-pB" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=cd8b1886f132139b606ba3a3939880a9&redirect_uri=http://localhost:82/kakao/callback&response_type=code'" style="color: #F9E000; border-color: #F9E000; position: relative; padding-left: 12;"><img src="${path}/resources/icons/kakaoLogin.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">카카오톡 로그인</span></button>
+                            <button class="btn btn text-pB"  style="color: #04CF5C; border-color: #04CF5C; position: relative; padding-left: 12;"><img src="https://littledeep.com/wp-content/uploads/2020/09/naver-icon-style.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">네이버 로그인</span></button>
+                            <button class="btn btn text-pB" type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=cd8b1886f132139b606ba3a3939880a9&redirect_uri=http://localhost:82/kakao/callback&response_type=code'" style="color: #F9E000; border-color: #F9E000; position: relative; padding-left: 12;"><img src="${path}/resources/icons/kakaoLogin.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">카카오톡 로그인</span></button>
                         </div>
                         <hr class="my-4">
                         <p class="text-center"><small class="text-muted text-center text-pB">아직 아이디가 없으신가요?<a href="signup.html" style="color: #FC950D; text-decoration: none;">  회원가입하기                </a></small></p>
@@ -199,7 +199,7 @@
             </div>
             <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
                 <!-- Image-->
-                <div class="bg-cover h-100 me-n3" style="background-image: url(${path}/resources/img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
+                <div class="bg-cover h-100 me-n3" style="background-image: url(${path}/resources/img/photo/xxx.jpg);"></div>
             </div>
         </div>
     </div>

@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Companion {
 	int companionNo;
-	int uNo;
+	int userNo;
+	String userName;
 	Date departureDate;
 	Date closeDate;
 	String content;
