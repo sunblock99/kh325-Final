@@ -32,9 +32,9 @@ public class MemberController {
 	private MemberService service;
 	
 	@PostMapping("/login")
-	public String login(Model model, String email, String password1) {
-		log.info("id : " + email + ", pw : " + password1);
-		Member loginMember = service.login(email, password1);
+	public String login(Model model, String userEmail, String userPassword) {
+		log.info("userEmail : " + userEmail + ", userPassword : " + userPassword);
+		Member loginMember = service.login(userEmail, userPassword);
 		
 		if(loginMember != null) {
 			model.addAttribute("loginMember", loginMember);
@@ -54,14 +54,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/member/enroll")
+	@GetMapping("/myPage/signup")
 	public String enrollPage() {
 		log.info("가입 페이지 요청");
-		return "member/enroll";
+		return "myPage/signup";
 	}
 	
 	// ModelAndView 사용법, 가능하면 하나 통일해서 쓸것!! ModelAndView=전자정부에서 좋아한다.....
-	@PostMapping("/member/enroll")
+	@PostMapping("/myPage/signup")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		log.info("회원 가입, member : " + member);
 		int result = 0;

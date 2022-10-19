@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,13 +24,13 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -153,28 +153,27 @@
         <div class="row min-vh-100">
             <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
                 <div class="w-100 py-5 px-md-5 px-xxl-6 position-relative">
-                    <div class="mb-4"><img class="img-fluid mb-4" src="img/loginLogo.png" alt="..." style="max-width: 8rem;">
+                    <div class="mb-4"><img class="img-fluid mb-4" src="${path}/resources/img/loginLogo.png" alt="..." style="max-width: 8rem;">
                         <h2 class="text-pB">회원 가입을 환영합니다!
-                            <!DOCTYPE html>
                         </h2>
                         <p class="text-muted text-pB">지금 회원가입 하신 후 사이트에서 다양한 서비스를 경험해보세요.</p>
                     </div>
                     <form class="form-validate" name="signinFrm" action="${path}/myPage/signup" method="post">
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginUsername"> 이름</label>
-                            <input class="form-control text-pB" name="name" id="name" type="text" placeholder="홍길동" autocomplete="off" required data-msg="Please enter your email">
+                            <input class="form-control text-pB" name="userName" id="name" type="text" placeholder="홍길동" autocomplete="off" required data-msg="Please enter your email">
                         </div>
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginUseremail"> 아이디(이메일 주소)</label>
-                            <input class="form-control text-pB" name="email" id="email" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
+                            <input class="form-control text-pB" name="userEmail" id="email" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
                         </div>
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginUserphone"> 연락처</label>
-                            <input class="form-control text-pB" name="phone" id="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" required data-msg="Please enter your mobile number">
+                            <input class="form-control text-pB" name="userPhone" id="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" required data-msg="Please enter your mobile number">
                         </div>
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginPassword"> 비밀번호</label>
-                            <input class="form-control text-pB" name="password" id="password1" placeholder="Password" type="password" required data-msg="Please enter your password">
+                            <input class="form-control text-pB" name="userPassword" id="password1" placeholder="Password" type="password" required data-msg="Please enter your password">
                         </div>
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginPassword2"> 비밀번호 확인</label>
@@ -185,8 +184,7 @@
                         </div>
                         <hr class="my-3 hr-text letter-spacing- text-pB2" data-content="OR">
                         <div class="d-grid gap-2">
-                            <button class="btn btn text-pB" a href="네이버 로그인" style="color: #04CF5C; border-color: #04CF5C; position: relative; padding-left: 12;"><img src="https://littledeep.com/wp-content/uploads/2020/09/naver-icon-style.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">네이버 로그인</span></button>
-                            <button class="btn btn text-pB" a href="카카오톡 로그인" style="color: #F9E000; border-color: #F9E000; position: relative; padding-left: 12;"><img src="icons/kakaoLogin.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">카카오톡 로그인</span></button>
+                            <button class="btn btn text-pB" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=cd8b1886f132139b606ba3a3939880a9&redirect_uri=http://localhost:82/kakao/callback&response_type=code'" style="color: #F9E000; border-color: #F9E000; position: relative; padding-left: 12;"><img src="${path}/resources/icons/kakaoLogin.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">카카오톡 로그인</span></button>
                         </div>
                         <!--<hr class="my-4">
                          <p class="text-sm text-muted">By signing up you agree to Directory's <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p> -->
@@ -199,48 +197,24 @@
             </div>
             <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
                 <!-- Image-->
-                <div class="bg-cover h-100 me-n3" style="background-image: url(img/photo/zxz.jpg);"></div>
+                <div class="bg-cover h-100 me-n3" style="background-image: url(${path}/resources/img/photo/zxz.jpg);"></div>
             </div>
         </div>
     </div>
-    <!-- JavaScript files-->
-    <script>
-        // ------------------------------------------------------- //
-        //   Inject SVG Sprite - 
-        //   see more here 
-        //   https://css-tricks.com/ajaxing-svg-sprite/
-        // ------------------------------------------------------ //
-        function injectSvgSprite(path) {
-
-            var ajax = new XMLHttpRequest();
-            ajax.open("GET", path, true);
-            ajax.send();
-            ajax.onload = function(e) {
-                var div = document.createElement("div");
-                div.className = 'd-none';
-                div.innerHTML = ajax.responseText;
-                document.body.insertBefore(div, document.body.childNodes[0]);
-            }
-        }
-        // to avoid CORS issues when viewing using file:// protocol, using the demo URL for the SVG sprite
-        // use your own URL in production, please :)
-        // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
-        //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
-        injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
-    </script>
+   
     
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>

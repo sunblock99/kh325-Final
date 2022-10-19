@@ -162,7 +162,7 @@
                     <form class="form-validate" id="LoginFrm" action="${path}/login" method="post">
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginUsername"> 아이디(이메일 주소)</label>
-                            <input class="form-control text-pB" name="email" id="email" type="email" placeholder="name@address.com" autocomplete="off" required="" data-msg="Please enter your email">
+                            <input class="form-control text-pB" name="userEmail" id="email" type="email" placeholder="name@address.com" autocomplete="off" required="" data-msg="Please enter your email">
                         </div>
                         <div class="mb-4">
                             <div class="row">
@@ -171,7 +171,7 @@
                                 </div>
                                 <div class="col-auto text-pB"><a class="form-text small text-pB" href="#" style="color: black !important;">비밀번호를 잊으셨나요?</a></div>
                             </div>
-                            <input class="form-control" name="password" id="password1" placeholder="Password" type="password" required="" data-msg="Please enter your password">
+                            <input class="form-control" name="userPassword" id="password1" placeholder="Password" type="password" required="" data-msg="Please enter your password">
                         </div>
                         <div class="mb-4">
                             <div class="form-check">
@@ -199,7 +199,7 @@
             </div>
             <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
                 <!-- Image-->
-                <div class="bg-cover h-100 me-n3" style="background-image: url(${path}/resources/img/photo/photo-1497436072909-60f360e1d4b1.jpg);"></div>
+                <div class="bg-cover h-100 me-n3" style="background-image: url(${path}/resources/img/photo/xxx.jpg);"></div>
             </div>
         </div>
     </div>
