@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path }/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,16 +24,16 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path }/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- Leaflet Maps-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path }/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customPHY.css">
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path }/resources/css/customPHY.css">
+    <link rel="stylesheet" href="${path }/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path }/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,7 +41,7 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="${path }/resources/css/font.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
@@ -50,63 +50,63 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path }/resources/font/Pretendard-Black.ttf);
     }
     
     @font-face {
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path }/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     @font-face {
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path }/resources/font/Pretendard-Bold.ttf);
     }
     
     @font-face {
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path }/resources/font/Pretendard-SemiBold.ttf);
     }
     
     @font-face {
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path }/resources/font/Pretendard-Medium.ttf);
     }
     
     @font-face {
         font-family: 'pR';
         font-weight: 400;
         font-display: swap;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path }/resources/font/Pretendard-Regular.ttf);
     }
     
     @font-face {
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path }/resources/font/Pretendard-Light.ttf);
     }
     
     @font-face {
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path }/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     @font-face {
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path }/resources/font/Pretendard-Thin.ttf);
     }
     
     div {
@@ -117,11 +117,11 @@
     </style>
 </head>
 <script>
-    function popup() {
-        var url = "file:///C:/Users/USER/Desktop/%ED%8C%80%EA%B3%BC%EC%A0%9C/%ED%8C%8C%EC%9D%B4%EB%84%90/front_final/directory-2-0-1/bootstrap-5/html/find_secretCommnet.html";
+    function popup(pageUrl) {
+        var url = "${path}/community/companionComment";
         var name = "popup test";
         var option = "width = 1000, height = 500, top = 100, left = 200, location = no"
-        window.open(url, name, option);
+        window.open(pageUrl, name, option);
     }
 
     function popup_add() {
@@ -142,14 +142,48 @@
     $(document).ready(function() {
         console.log('11');
         $('.find_text').on('keyup', function() {
-            $('.test_cnt').html("(" + $(this).val().length + " / 40)");
+            $('.test_cnt').html("(" + $(this).val().length + " / 50)");
 
-            if ($(this).val().length > 40) {
+            if ($(this).val().length > 50) {
                 $(this).val($(this).val().substring(0, 40));
-                $('.test_cnt').html("(40 / 40)");
+                $('.test_cnt').html("(50 / 50)");
             }
         });
     });
+    
+    function Checkform() {
+		console.log("???")
+         var departureDate = document.querySelector('#departureDate').value;
+         var closeDate = document.querySelector('#closeDate').value;
+		console.log(departureDate)
+		console.log(closeDate)
+
+        if (departureDate == "") {
+            alert("출발일을 입력해주세요");
+            return false;
+        }
+
+
+        if (closeDate == "") {
+            alert("종료일을 입력해주세요");
+            return false;
+        }
+        
+       var dd = new Date(departureDate);
+       var cd = new Date(closeDate);
+		console.log(dd);
+		console.log(cd);
+   
+        if(dd.getTime()>cd){
+        	alert("종료일이 출발일 보다 빠를 수는 없습니다.");
+        	return false;
+        }
+        
+        var form = document.frm;
+        
+        form.submit();
+        
+    }
 </script>
 
 <body>
@@ -161,7 +195,7 @@
 
                     <!-- 로고 시작 -->
                     <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="./image/togetherLogoWhite.png" width="30%" height="10%">
+                        <img class="ps-3" src="${path }/resources/image/togetherLogoWhite.png" width="30%" height="10%">
                     </a>
                     <!-- 로고 끝-->
 
@@ -232,7 +266,7 @@
     </header>
     <section>
         <!--상단 헤더 시작-->
-        <div class="hero py-6 mb-5 " style=" background-image: url(./image/header1.png);size: inherit; ">
+        <div class="hero py-6 mb-5 " style=" background-image: url(${path }/resources//image/header1.png);size: inherit; ">
             <div class="container-fluid pt-5 pb-3 px-lg-5 mb-3 ">
                 <div class="row text-center ">
                     <div class=" ">
@@ -248,31 +282,31 @@
             <div class="row pt-4 ps-6 ">
                 <div class="col-lg-2 pt-3 shadow rounded mb-6 " style="background-color: ghostwhite; height: 800px; ">
                     <h3 class="mt-2 ms-2 mb-3 h2 "> Organizer</h3>
-                    <form class="pe-xl-3 " action="# " autocomplete="off ">
+                    <form class="pe-xl-3" action="${path}/community/companionList" autocomplete="off">
                         <div class="mb-2 ">
                             <label class="form-label" for="form_dates">Dates</label>
                             <div class="datepicker-container datepicker-container-left">
-                                <input class="form-control" type="text" name="bookingDate" id="form_dates" placeholder="Choose your dates">
+                                <input class="form-control" type="date" name="departureDate"  value="${param.departureDate }"placeholder="Choose your dates">
                             </div>
                         </div>
                         <div class="mb-2 ">
                             <label class="form-label" for="area-form">Area</label>
-                            <select class="selectpicker form-control " name="area " id="area-form" data-style="btn-selectpicker " title=" ">
-                                <option value="seoul" >서울 </option>
-                                <option value="gyeonggi ">경기 </option>
-                                <option value="jeolla">전라 </option>
-                                <option value="gyeongsang">경상</option>
-                                <option value="chungcheong">충청 </option>
-                                <option value="jeju">제주 </option>
+                            <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker" value="${param.area }">
+                                <option value="전국">전국</option>
+                                <option value="서울">서울</option>
+                                <option value="경기 ">경기</option>
+                                <option value="전라">전라</option>
+                                <option value="경상">경상</option>
+                                <option value="충청">충청</option>
+                                <option value="제주">제주</option>
                             </select>
                         </div>
                         <div class="text-center">
-                            <input type="submit " class="btn btn-outline-warning btn-lg " value="filter ">
+                            <input type="submit" class="btn btn-outline-warning btn-lg px-6" value="filter">
                         </div>
-
                     </form>
                     <div class="mb-1 mt-2 pe-1 ">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#findComp"><img src="./image/postit_add.png " alt=" " style="width: 280px; "></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#findComp"><img src="${path }/resources//image/postit_add.png " alt=" " style="width: 280px; "></a>
                     </div>
 
                     <!-- 동행 구하기 메모 모달 -->
@@ -283,37 +317,39 @@
                                     <h1 class="modal-title fs-5 fw-bold" id="findCompLabel">동행 구하기 메모 작성</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body" style="background-image: url(./image/monoon_back.png);">
-                                    <form>
+                                <div class="modal-body" style="background-image: url({path}/resources/image/monoon_back.png);">
+                                    <form action="${path}/community/writeCompanion" method="post" name="frm">
+                                    	<input type="text" name="userNo" value="${loginMember.userNo }" hidden>
                                         <div class="row">
                                             <div class="form-group col-6">
                                                 <label for="depart_date" class="form-label">여행출발일</label>
-                                                <input type="date" class="form-control" id="depart_date">
+                                                <input type="date" class="form-control" id="departureDate" name="departureDate">
                                             </div>
                                             <div class="form-group col-6">
                                                 <label class="form-label" for="end_date">여행종료일</label>
-                                                <input type="date" class="form-control" id="end_date">
+                                                <input type="date" class="form-control" id="closeDate" name="closeDate">
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label" for="area-form">지역</label>
-                                                <select class="selectpicker form-control " name="area " id="area-form" data-style="btn-selectpicker " title=" ">
-                                                <option value="seoul" >서울 </option>
-                                                <option value="gyeonggi ">경기 </option>
-                                                <option value="jeolla">전라 </option>
-                                                <option value="gyeongsang">경상</option>
-                                                <option value="chungcheong">충청 </option>
-                                                <option value="jeju">제주 </option>
+                                                <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker" >
+                                                <option value="전국" selected="selected">전국</option>
+                                                <option value="서울">서울</option>
+                                                <option value="경기">경기</option>
+                                                <option value="전라">전라</option>
+                                                <option value="경상">경상</option>
+                                                <option value="충청">충청</option>
+                                                <option value="제주">제주</option>
                                             </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group pt-3">
                                             <label class="form-label" for="find_text">내용</label>
-                                            <textarea class="form-control find_text" id="find_text" name="find_text" cols="10" rows="4" placeholder="40자 이내로 작성하세요."></textarea>
-                                            <div class="text-muted pb-2 test_cnt">(0 / 40)</div>
+                                            <textarea class="form-control find_text" id="content" name="content" cols="10" rows="4" placeholder="40자 이내로 작성하세요."></textarea>
+                                            <div class="text-muted pb-2 test_cnt">(0 / 50)</div>
                                         </div>
                                         <div class="form-group pt-3 text-end ">
-                                            <input type="submit" class="btn btn-outline-muted " value="메모등록">
+                                            <input class="btn btn-outline-muted " onclick="Checkform();" value="메모등록">
                                         </div>
                                     </form>
                                 </div>
@@ -342,120 +378,50 @@
                 <div class="col-lg-9 ">
                     <div class="d-flex justify-content-between align-items-center flex-column flex-md-row ">
                         <div class="ps-7 me-3 text-end ">
-                            <p class="mb-3 mb-md-0 "><strong>12</strong> results found</p>
+                            <p class="mb-3 mb-md-0 "><strong>${totalCount}</strong> results found</p>
                         </div>
 
                     </div>
                     <div class=" ps-6 row ">
+                    	<c:forEach var="board" items="${list}">
                         <!-- place item-->
                         <div class="col-sm-6 col-xl-4 hover-animate ">
-                            <div class="pe-3 pt-4 " style="background-image: url(./image/brown.png); width: 410px; height: 350px; ">
+                            <div class="pe-3 pt-4 " style="background-image: url(${path }/resources/image/brown.png); width: 410px; height: 350px; ">
                                 <div class="ps-5 pt-6 mb-3 6 pe-1 text-white fw-bold ">
 
-                                    <p>[date] 2022.10.20~2022.10.20</p>
-                                    <p class=" ">[memo] 에버랜드 단체 할인으로 같이 가실분 있으신가요? 비댓 달아주세요오!갸갸갸갸갸갸 </p>
-                                    <p class=" ">[writer] 에버랜드처돌이 </p>
+                                    <p><span class="pe-1">[date]</span> <fmt:formatDate type="date" dateStyle="long" value="${board.departureDate}"/>~<fmt:formatDate type="date" dateStyle="long"  value="${board.closeDate}"/></p>
+                                    <p class="pe-3" style="height: 47px;"><span class="pe-1">[memo]</span> ${board.content } </p>
+                                    <p class=" "><span class="pe-1">[writer]</span> ${board.userName } </p>
                                 </div>
                                 <div class="text-end pe-4 pt-4 ">
-                                    <a href="# " class=" text-white " onclick="popup() "><i class="fa-regular fa-comments fas "> comment</i></a>
-                                    <a href="# " class=" text-white "> | <i class="fas fa-trash "></i></a>
-                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white "> | <i class="fa-solid fa-bullhorn fas "></i></a>
+                                	<c:if test="${board.userNo == loginMember.userNo }">
+	                                    <a href="# " class=" text-white " onclick="popup('${path}/community/compCommentForWriter?companionNo=${board.companionNo}&userNo=${board.userNo}') "><i class="fa-regular fa-comments fas "> comment</i></a>
+	                                    <a href="${path}/community/deleteCompanion?companionNo=${board.companionNo}&userNo=${board.userNo}" class=" text-white "> | <i class="fas fa-trash "></i></a>
+                                    </c:if>
+                                    <c:if test="${board.userNo ne loginMember.userNo }">
+                                     	<a href="# " class=" text-white " onclick="popup('${path}/community/compCommentForSender?companionNo=${board.companionNo}&userNo=${board.userNo}') "><i class="fa-regular fa-comments fas "> comment</i></a>
+                                    	<a href="#" data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white "> | <i class="fa-solid fa-bullhorn fas "></i></a>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- place item-->
-                        <div class="col-sm-6 col-xl-4 hover-animate ">
-                            <div class="pe-3 pt-4 " style="background-image: url(./image/brown.png); width: 410px; height: 350px; ">
-                                <div class="ps-5 pt-6 mb-3 6 pe-1 text-white fw-bold ">
-
-                                    <p>[date] 2022.10.20~2022.10.20</p>
-                                    <p class=" ">[memo] 에버랜드 단체 할인으로 같이 가실분 있으신가요? 비댓 달아주세요오! </p>
-                                    <p class=" ">[writer] 에버랜드처돌이 </p>
-                                </div>
-                                <div class="text-end pe-4 pt-4 ">
-                                    <a href="# " class=" text-white " onclick="popup() "><i class="fa-regular fa-comments fas "> comment</i></a>
-                                    <a href="# " class=" text-white "> | <i class="fas fa-trash "></i></a>
-                                    <a href="# " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white "> | <i class="fa-solid fa-bullhorn fas "></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- place item-->
-                        <div class="col-sm-6 col-xl-4 hover-animate ">
-                            <div class="pe-3 pt-4 " style="background-image: url(./image/brown.png); width: 410px; height: 350px; ">
-                                <div class="ps-5 pt-6 mb-3 6 pe-1 text-white fw-bold ">
-
-                                    <p>[date] 2022.10.20~2022.10.20</p>
-                                    <p class=" ">[memo] 에버랜드 단체 할인으로 같이 가실분 있으신가요? 비댓 달아주세요오! </p>
-                                    <p class=" ">[writer] 에버랜드처돌이 </p>
-                                </div>
-                                <div class="text-end pe-4 pt-4 ">
-                                    <a href="# " class=" text-white " onclick="popup() "><i class="fa-regular fa-comments fas "> comment</i></a>
-                                    <a href="# " class=" text-white "> | <i class="fas fa-trash "></i></a>
-                                    <a href="# " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white "> | <i class="fa-solid fa-bullhorn fas "></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- place item-->
-                        <div class="col-sm-6 col-xl-4 mb-5 hover-animate ">
-                            <div class="pe-3 pt-4 " style="background-image: url(./image/brown.png); width: 410px; height: 350px; ">
-                                <div class="ps-5 pt-6 mb-3 6 pe-1 text-white fw-bold ">
-
-                                    <p>[date] 2022.10.20~2022.10.20</p>
-                                    <p class=" ">[memo] 에버랜드 단체 할인으로 같이 가실분 있으신가요? 비댓 달아주세요오! </p>
-                                    <p class=" ">[writer] 에버랜드처돌이 </p>
-                                </div>
-                                <div class="text-end pe-4 pb-2 pt-4 ">
-                                    <a href="# " class=" text-white " onclick="popup() "><i class="fa-regular fa-comments fas "> comment</i></a>
-                                    <a href="# " class=" text-white "> | <i class="fas fa-trash "></i></a>
-                                    <a href="# " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white "> | <i class="fa-solid fa-bullhorn fas "></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- place item-->
-                        <div class="col-sm-6 col-xl-4 mb-5 hover-animate ">
-                            <div class="pe-3 pt-4 " style="background-image: url(./image/brown.png); width: 410px; height: 350px; ">
-                                <div class="ps-5 pt-6 mb-3 6 pe-1 text-white fw-bold ">
-
-                                    <p>[date] 2022.10.20~2022.10.20</p>
-                                    <p class=" ">[memo] 에버랜드 단체 할인으로 같이 가실분 있으신가요? 비댓 달아주세요오! </p>
-                                    <p class=" ">[writer] 에버랜드처돌이 </p>
-                                </div>
-                                <div class="text-end pe-4 pb-2 pt-4 ">
-                                    <a href="# " class=" text-white " onclick="popup() "><i class="fa-regular fa-comments fas "> comment</i></a>
-                                    <a href="# " class=" text-white "> | <i class="fas fa-trash "></i></a>
-                                    <a href="# " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white "> | <i class="fa-solid fa-bullhorn fas "></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- place item-->
-                        <div class="col-sm-6 col-xl-4 mb-5 hover-animate ">
-                            <div class="pe-3 pt-4 " style="background-image: url(./image/brown.png); width: 410px; height: 350px; ">
-                                <div class="ps-5 pt-6 mb-3 6 pe-1 text-white fw-bold ">
-
-                                    <p>[date] 2022.10.20~2022.10.20</p>
-                                    <p class=" ">[memo] 에버랜드 단체 할인으로 같이 가실분 있으신가요? 비댓 달아주세요오! </p>
-                                    <p class=" ">[writer] 에버랜드처돌이 </p>
-                                </div>
-                                <div class="text-end pe-4 pb-2 pt-4 ">
-                                    <a href="# " class=" text-white " onclick="popup() "><i class="fa-regular fa-comments fas "> comment</i></a>
-                                    <a href="# " class=" text-white "> | <i class="fas fa-trash "></i></a>
-                                    <a href="# " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white "> | <i class="fa-solid fa-bullhorn fas "></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <nav aria-label="Page navigation example ">
-                        <ul class="pagination pagination-template d-flex justify-content-end ">
+						</c:forEach>	
+                    </div> 
+                    <nav aria-label="Page navigation example" class="pt-3">
+                        <ul class="pagination pagination-template d-flex justify-content-end">
                             <li class="page-item ">
-                                <a class="page-link-course " href="# "> <i class="fa fa-angle-left "></i></a>
+                                <a class="page-link-course" href="#" onclick="movePage('${path}/community/companionList?page=${pageInfo.prevPage}');" tabindex="-1 "> <i class="fa fa-angle-left "></i></a>
                             </li>
-                            <li class="page-item-course active "><a class="page-link-course " href="# ">1</a></li>
-                            <li class="page-item-course "><a class="page-link-course " href="# ">2</a></li>
-                            <li class="page-item-course "><a class="page-link-course " href="# ">3</a></li>
-                            <li class="page-item-course ">
-                                <a class="page-link-course " href="# "> <i class="fa fa-angle-right "></i></a>
+                            <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
+							<c:if test="${pageInfo.currentPage == status.current}">
+                            	<li class="page-item-course disabled "><a class="page-link-course " href="#"><c:out value="${status.current}"/></a></li>
+                            </c:if>
+                            <c:if test="${pageInfo.currentPage != status.current}">
+                           	 	<li class="page-item-course"><a class="page-link-course" onclick="movePage('${path}/community/companionList?page=${status.current}');" href="#"><c:out value="${status.current}"/></a></li>
+                            </c:if>
+                            </c:forEach>
+                            <li>
+                                <a class="page-link-course" href="#" onclick="movePage('${path}/community/companionList?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right "></i></a>
                             </li>
                         </ul>
                     </nav>
@@ -507,7 +473,7 @@
             <div class="container ">
                 <div class="row ">
                     <div class="col-lg-4 mb-5 mb-lg-0 ">
-                        <img src="./image/togetherLogo.png " height="60 " width="140 " alt=" ">
+                        <img src="${path }/resources/image/togetherLogo.png " height="60 " width="140 " alt=" ">
                         <div class="text-black mb-4 ps-3 ms-sm-4 " style="font-family:pM; ">TOGETHER, to GET THERE</div>
                         <div class="mt-4 pt-2 ps-3 ms-sm-4 ">
                             <span class="text-muted text-sm ">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
@@ -537,8 +503,8 @@
                         <p class="mb-3 "> 투게더의 소식을 정기적으로 받아보세요</p>
                         <form action="# " id="newsletter-form ">
                             <div class="input-group mb-3 ">
-                                <input class="form-control bg-transparent border-dark border-end-0 " type="email " placeholder="Your Email Address " aria-label="Your Email Address ">
-                                <button class="btn btn-outline-dark border-start-0 " type="submit "> <i class="fa fa-paper-plane text-lg "></i></button>
+                                <input class="form-control bg-transparent border-dark border-end-0 " type="email" placeholder="Your Email Address " aria-label="Your Email Address ">
+                                <button class="btn btn-outline-dark border-start-0 " type="submit"> <i class="fa fa-paper-plane text-lg "></i></button>
                             </div>
                         </form>
                     </div>
@@ -555,10 +521,10 @@
                     </div>
                     <div class="col-md-6 ">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end ">
-                            <li class="list-inline-item "><img class="w-2rem " src="img/visa.svg " alt="... "></li>
-                            <li class="list-inline-item "><img class="w-2rem " src="img/mastercard.svg " alt="... "></li>
-                            <li class="list-inline-item "><img class="w-2rem " src="img/paypal.svg " alt="... "></li>
-                            <li class="list-inline-item "><img class="w-2rem " src="img/western-union.svg " alt="... "></li>
+                            <li class="list-inline-item "><img class="w-2rem " src="${path }/resources/img/visa.svg " alt="... "></li>
+                            <li class="list-inline-item "><img class="w-2rem " src="${path }/resources/img/mastercard.svg " alt="... "></li>
+                            <li class="list-inline-item "><img class="w-2rem " src="${path }/resources/img/paypal.svg " alt="... "></li>
+                            <li class="list-inline-item "><img class="w-2rem " src="${path }/resources/img/western-union.svg " alt="... "></li>
                         </ul>
                     </div>
                 </div>
@@ -567,6 +533,16 @@
     </footer>
     <!-- JavaScript files-->
     <script>
+	    function movePage(pageUrl){
+			var searchDate = document.getElementById("departureDate"); 
+			var searchArea = document.getElementById("area"); 
+			var searchType = '';
+			if(searchArea.value.length > 0){
+				
+				pageUrl = pageUrl + '&departureDate=' + searchDate.value + '&area=' + searchArea.value; 
+			}
+			location.href = encodeURI(pageUrl);	
+		}
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
         //   see more here 
@@ -591,33 +567,33 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js "></script>
+    <script src="${path }/resources/vendor/jquery/jquery.min.js "></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+    <script src="${path }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js "></script>
+    <script src="${path }/resources/vendor/magnific-popup/jquery.magnific-popup.min.js "></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js "></script>
+    <script src="${path }/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js "></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js "></script>
+    <script src="${path }/resources/vendor/bootstrap-select/js/bootstrap-select.min.js "></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js "></script>
+    <script src="${path }/resources/vendor/object-fit-images/ofi.min.js "></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js "></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js "></script>
+    <script src="${path }/resources/js/theme.js "></script>
     <!-- Daterange picker-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js ">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js ">
     </script>
-    <script src="js/datepicker-category.js ">
+    <script src="${path }/resources/js/datepicker-category.js ">
     </script>
     <!-- Price Slider-->
-    <script src="vendor/nouislider/nouislider.min.js "></script>
+    <script src="${path }/resources/vendor/nouislider/nouislider.min.js "></script>
     <script>
         var snapSlider = document.getElementById('slider-snap');
 

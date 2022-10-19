@@ -6,7 +6,8 @@
 <mapper namespace="com.kh.tour.community.model.mapper.CompanionMapper">
 	<resultMap type="Companion" id="companionListResultMap">
 		<id property="companionNo" column="COMPANION_NO" />
-		<result property="uNo" column="UNO" />
+		<result property="userNo" column="UNO" />
+		<result property="userName" column="U_NAME" />
 		<result property="departureDate" column="DEPATURE_DATE" />
 		<result property="closeDate" column="CLOSE_DATE" />
 		<result property="content" column="CONTENT" />
@@ -31,14 +32,29 @@
 		<result property="status" column="STATUS"/>
 	</resultMap>
 	
+	<resultMap type="Member" id="CommentSenderListMap">
+		<id property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="userEmail" column="U_EMAIL"/>
+		<result property="userPassword" column="U_PASSWORD"/>
+		<result property="userPhone" column="U_PHONE"/>
+		<result property="userAddress" column="U_ADDRESS"/>
+		<result property="userStatus" column="U_STATUS"/>
+		<result property="managerStatus" column="MANAGER_STATUS"/>
+	</resultMap>
+	
 	<resultMap type="Companion" id="companionDetailResultMap" extends="companionListResultMap">
 		<collection property="commentList" javaType="arrayList" columnPrefix="R_" resultMap="companionCommentResultMap"/>
 	</resultMap>
 	
-		<!-- 셀렉트 -->
+	
+	
+	<!-- 셀렉트 -->
 	<select id="selectBoardList" resultMap="companionListResultMap"  parameterType="map">
 		SELECT  B.COMPANION_NO,
 				M.UNO, 
+				M.U_NAME,
 				B.DEPATURE_DATE, 
 				B.CLOSE_DATE, 
 				B.CONTENT, 
@@ -57,7 +73,7 @@
 		<if test="area != null">
 			AND B.AREA LIKE '%'||#{area}||'%'
 		</if>
-		ORDER BY B.NO DESC
+		ORDER BY B.COMPANION_NO DESC
 	</select>
 	
 	<!-- 게시글개수 -->
@@ -74,7 +90,21 @@
 		<if test="area != null">
 			AND B.AREA LIKE '%'||#{area}||'%'
 		</if>
-		ORDER BY B.NO DESC
+		ORDER BY B.COMPANION_NO DESC
+	</select>
+	
+	<select id="selectCompanionByNo" parameterType="int" resultMap="companionListResultMap">
+		SELECT  B.COMPANION_NO,
+				B.UNO, 
+				B.DEPATURE_DATE, 
+				B.CLOSE_DATE, 
+				B.CONTENT, 
+				B.AREA, 
+				B.POST_DATE,
+				B.BOARD_TYPE,
+				B.STATUS
+		FROM COMM_COMPANION B
+		WHERE B.STATUS = 'Y' AND B.COMPANION_NO = #{companionNo}
 	</select>
 	
 	<select id="selectCommentByNo" parameterType="int" resultMap="companionCommentResultMap">
@@ -93,12 +123,12 @@
 		FROM companion_comment B
 		LEFT OUTER JOIN MEMBER M ON(B.RECEIVER_NO = M.UNO)
         LEFT OUTER JOIN MEMBER M2 ON(B.SENDER_NO = M2.UNO)
-		WHERE B.STATUS = 'Y'  AND B.COMPANION_NO = #{companionNo};
+		WHERE B.STATUS = 'Y'  AND B.COMPANION_NO = #{companionNo} AND B.SENDER_NO = #{senderNo}
+		ORDER BY B.COMMENT_NO 
 	</select>
 	
 	<!-- 동행 게시글 등록 -->
-	<insert id="insertBoard" parameterType="Companion"
-			useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
+	<insert id="insertBoard" parameterType="Companion">
 		INSERT INTO COMM_COMPANION (
 			COMPANION_NO,
 			UNO,
@@ -111,7 +141,7 @@
 			STATUS
 		) VALUES (
 			SEQ_COMP_NO.NEXTVAL,
-			#{uNo},
+			#{userNo},
 			#{departureDate},
 			#{closeDate},
 			#{content},
@@ -144,5 +174,15 @@
 	<update id="deleteBoard" parameterType="int">
 		UPDATE COMM_COMPANION SET STATUS='N' WHERE COMPANION_NO=#{companionNo}
 	</update>
+	
+	<!-- 추가 -->
+	
+	<!-- 코멘트 센더 리스트 -->
+		
+	<select id="selectCommentSenderList" parameterType="int" resultMap="CommentSenderListMap">
+		SELECT DISTINCT B.SENDER_NO AS UNO, M.U_NAME, M.U_AVATAR,M.U_EMAIL,M.U_PASSWORD,M.U_PHONE,M.U_ADDRESS,M.U_STATUS,M.MANAGER_STATUS
+		FROM companion_comment B  JOIN MEMBER M ON(B.SENDER_NO = M.UNO) 
+		WHERE companion_no=#{companionNo}
+	</select>
 	
 </mapper> 
