@@ -83,12 +83,12 @@
                             <span> 회원목록 </span>
                         </a>
                     </li>
-                    <li class="side-nav-item">
-                        <a href="${path}/manager/allCourse" class="side-nav-link">
-                            <i class="uil-check"></i>
-                            <span> 여행코스 승인 </span>
-                        </a>
-                    </li>
+<!--                     <li class="side-nav-item"> -->
+<%--                         <a href="${path}/manager/allCourse" class="side-nav-link"> --%>
+<!--                             <i class="uil-check"></i> -->
+<!--                             <span> 여행코스 승인 </span> -->
+<!--                         </a> -->
+<!--                     </li> -->
                     <li class="side-nav-title side-nav-item" style="font-size: 15px;">게시판 관리</li>
                     <li class="side-nav-item">
                         <a href="${path}/manager/allBoard" target="_blank" class="side-nav-link">

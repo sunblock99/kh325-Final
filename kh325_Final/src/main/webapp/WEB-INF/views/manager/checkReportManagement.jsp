@@ -10,12 +10,17 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>DASHBOARD</title>
+    <title>TOGETHER_ADMIN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="${path}/resources/manager/assets/images/favicon.ico">
+
+    <!-- third party css -->
+    <link href="${path}/resources/manager/assets/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="${path}/resources/manager/assets/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
 
     <!-- App css -->
     <link href="${path}/resources/manager/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -305,6 +310,8 @@
                        
 <!--                     </div> -->
                 </div>
+                <!-- end Topbar -->
+                <!-- end Topbar -->
 
                 <!-- Start Content-->
                 <div class="container-fluid">
@@ -315,12 +322,12 @@
                             <div class="page-title-box">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="${path}">TOGETHER</a></li>
-                                        <li class="breadcrumb-item"><a href="${path}/manager/dashBoard">관리자페이지</a></li>
-                                        <li class="breadcrumb-item active">대시보드</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">TOUR</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">관리자 페이지</a></li>
+                                        <li class="breadcrumb-item active">전체 신고 게시글 관리</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">대시보드</h4>
+                                <h4 class="page-title">전체 신고 게시글 관리</h4>
                             </div>
                         </div>
                     </div>
@@ -328,148 +335,38 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <div class="card widget-inline">
-                                <div class="card-body p-0">
-                                    <div class="row g-0">
-                                        <div class="col-sm-6 col-lg-3">
-                                            <div class="card shadow-none m-0">
-                                                <div class="card-body text-center">
-                                                    <i class="dripicons-briefcase text-muted" style="font-size: 24px;"></i>
-                                                    <h3><span><c:out value="${countAllCourse}"/></span></h3>
-                                                    <p class="text-muted font-15 mb-0">여행코스</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-lg-3">
-                                            <div class="card shadow-none m-0 border-start">
-                                                <div class="card-body text-center">
-                                                    <i class="dripicons-checklist text-muted" style="font-size: 24px;"></i>
-                                                    <h3><span><c:out value="${countAllComm}" /></span></h3>
-                                                    <p class="text-muted font-15 mb-0">게시글 수</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-lg-3">
-                                            <div class="card shadow-none m-0 border-start">
-                                                <div class="card-body text-center">
-                                                    <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
-                                                    <h3><span><c:out value="${countAllUser}"/></span></h3>
-                                                    <p class="text-muted font-15 mb-0">회원 수</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-lg-3">
-                                            <div class="card shadow-none m-0 border-start">
-                                                <div class="card-body text-center">
-                                                    <i class="dripicons-graph-line text-muted" style="font-size: 24px;"></i>
-                                                    <h3><span>61651</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
-                                                    <p class="text-muted font-15 mb-0">방문자 수</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <!-- end row -->
-                                </div>
-                            </div>
-                            <!-- end card-box-->
-                        </div>
-                        <!-- end col-->
-                    </div>
-                    <!-- 메뉴바 끝-->
-
-
-                    <div class="row">
-                        <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="header-title"><a href="${path}/manager/allBoard"><span style="color: #000000">커뮤니티</span></a></h4>
-                                        <div class="dropdown">
-                                        </div>
-                                    </div>
-
-                                    <div class="mt-3 mb-4 chartjs-chart" style="height: 207px;">
-                                        <canvas id="project-status-chart" data-colors="#0acf97,#727cf5,#fa5c7c"></canvas>
-                                    </div>
-
-                                    <div class="row text-center mt-2 py-2">
-                                        <div class="col-sm-4">
-                                            <div class="my-2 my-sm-0">
-                                                <i class="mdi mdi-trending-up text-success mt-3 h3"></i>
-                                                <h3 class="fw-normal">
-                                                    <span>54%</span>
-                                                </h3>
-                                                <p class="text-muted mb-0">일반</p>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="my-2 my-sm-0">
-                                                <i class="mdi mdi-trending-down text-primary mt-3 h3"></i>
-                                                <h3 class="fw-normal">
-                                                    <span>26%</span>
-                                                </h3>
-                                                <p class="text-muted mb-0">미처리</p>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="my-2 my-sm-0">
-                                                <i class="mdi mdi-trending-down text-danger mt-3 h3"></i>
-                                                <h3 class="fw-normal">
-                                                    <span>10%</span>
-                                                </h3>
-                                                <p class="text-muted mb-0">블라인드</p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!-- end row-->
-
-                                </div>
-                                <!-- end card body-->
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col-->
-
-                        <div class="col-lg-8">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <h4 class="header-title"><a href="${path}/manager/allReport"><span style="color: #000000">신고게시판</span></a></h4>
-                                    </div>
-                                    <br>
-                                    <!-- <p><b>107</b> Tasks completed out of 195</p> -->
-
                                     <div class="table-responsive">
-                                        <table class="table table-centered table-nowrap table-hover mb-0">
+                                        <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 20px;">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="customCheck1">
+                                                            <label class="form-check-label" for="customCheck1">&nbsp;</label>
+                                                        </div>
+                                                    </th>
+                                                    <th>게시판 명</th>
+                                                    <th>게시글 제목</th>
+                                                    <th>게시글 작성자</th>
+                                                    <th>신고유형</th>
+                                                    <th>신고사유</th>
+                                                    <th>처리결과</th>
+                                                    <th style="width: 75px;">Action</th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
-                                            <c:forEach items="${reportList}" var="Manager" end="3">
+                                            <c:forEach var="Manager" items="${checkReport}">
                                                 <tr>
                                                     <td>
-                                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body"><c:out value="${Manager.boardName}"/></a></h5>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                                                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <span class="text-muted font-13">Status</span> <br/>
-                                                        <c:if test="${Manager.status eq 'Y'}">
-                                                        <span class="badge badge-success-lighten">비블라인드</span>
-                                                        </c:if>
-                                                        <c:if test="${Manager.status eq 'N'}">
-                                                        <span class="badge badge-danger-lighten">블라인드</span>
-                                                        </c:if>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-muted font-13">작성자</span>
-                                                        <h5 class="font-14 mt-1 fw-normal"><c:out value="${Manager.userName}" /></h5>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-muted font-13">게시판</span>
-                                                        <h5 class="font-14 mt-1 fw-normal">
+                                                    <td class="table-user">
+                                                   
                                                     <c:if test="${Manager.boardType eq 'GAL'}">
                                                         <a href="javascript:void(0);" class="text-body fw-semibold">갤러리</a>
 													</c:if>
@@ -481,52 +378,41 @@
 													</c:if>
 													<c:if test="${Manager.boardType eq 'FB'}">
                                                         <a href="javascript:void(0);" class="text-body fw-semibold">자유게시판</a>
-													</c:if></h5>
+													</c:if>
+													
                                                     </td>
-                                                    <td class="table-action" style="width: 90px;">
-                                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                    <td>
+                                                        <c:out value="${Manager.boardName}"/>
+                                                    </td>
+                                                    <td>
+                                                        <c:out value="${Manager.userName}"/>
+                                                    </td>
+                                                    <td>
+                                                        <c:out value="${Manager.category}"/>
+                                                    </td>
+                                                    <td>
+                                                        <c:out value="${Manager.reasons}"/>
+                                                    </td>
+                                                    <td>
+                                                    <c:if test="${Manager.status eq 'N'}">
+
+                                                        <span class="badge badge-danger-lighten">블라인드</span>
+													</c:if>
+													<c:if test="${Manager.status eq 'Y'}">
+                                                        <span class="badge badge-success-lighten">비블라인드</span>
+                                                    </c:if>
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="#" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                                         <a href="${path}/manager/updateReport?reportNo=${Manager.reportNo}&boardNo=${Manager.boardNo}&boardType=${Manager.boardType}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                     </td>
                                                 </tr>
-                                             </c:forEach>
+                                                </c:forEach>
+
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <h4 class="header-title">일일 게시글 수</h4>
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-dots-vertical"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Weekly Report</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Monthly Report</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div dir="ltr">
-                                        <div class="mt-3 chartjs-chart" style="height: 320px;">
-                                            <canvas id="task-area-chart" data-bgColor="#727cf5" data-borderColor="#727cf5"></canvas>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -553,12 +439,17 @@
                     </div>
                 </div>
             </footer>
+            <!-- end Footer -->
 
         </div>
 
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
 
 
     </div>
+    <!-- END wrapper -->
 
 
     <!-- Right Sidebar -->
@@ -568,30 +459,33 @@
             <a href="javascript:void(0);" class="end-bar-toggle float-end">
                 <i class="dripicons-cross noti-icon"></i>
             </a>
-            <h5 class="m-0">테마 설정</h5>
+            <h5 class="m-0">Settings</h5>
         </div>
 
         <div class="rightbar-content h-100" data-simplebar>
 
             <div class="p-3">
+                <div class="alert alert-warning" role="alert">
+                    <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
+                </div>
 
                 <!-- Settings -->
-                <h5 class="mt-3">테마 색상</h5>
+                <h5 class="mt-3">Color Scheme</h5>
                 <hr class="mt-1" />
 
                 <div class="form-check form-switch mb-1">
                     <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check" checked>
-                    <label class="form-check-label" for="light-mode-check">밝은 버전</label>
+                    <label class="form-check-label" for="light-mode-check">Light Mode</label>
                 </div>
 
                 <div class="form-check form-switch mb-1">
                     <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
-                    <label class="form-check-label" for="dark-mode-check">어두운 버전</label>
+                    <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
                 </div>
 
 
                 <!-- Width -->
-                <h5 class="mt-4">넓이</h5>
+                <h5 class="mt-4">Width</h5>
                 <hr class="mt-1" />
                 <div class="form-check form-switch mb-1">
                     <input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked>
@@ -605,21 +499,21 @@
 
 
                 <!-- Left Sidebar-->
-                <h5 class="mt-4">메뉴바 설정</h5>
+                <h5 class="mt-4">Left Sidebar</h5>
                 <hr class="mt-1" />
                 <div class="form-check form-switch mb-1">
                     <input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check">
-                    <label class="form-check-label" for="default-check">기본값</label>
+                    <label class="form-check-label" for="default-check">Default</label>
                 </div>
 
                 <div class="form-check form-switch mb-1">
                     <input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked>
-                    <label class="form-check-label" for="light-check">밝은버전</label>
+                    <label class="form-check-label" for="light-check">Light</label>
                 </div>
 
                 <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check">
-                    <label class="form-check-label" for="dark-check">어두운버전</label>
+                    <label class="form-check-label" for="dark-check">Dark</label>
                 </div>
 
                 <div class="form-check form-switch mb-1">
@@ -636,7 +530,12 @@
                     <input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check">
                     <label class="form-check-label" for="scrollable-check">Scrollable</label>
                 </div>
-                
+
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+
+                    <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/" class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
+                </div>
             </div>
             <!-- end padding-->
 
@@ -646,16 +545,21 @@
     <div class="rightbar-overlay"></div>
     <!-- /End-bar -->
 
+
     <!-- bundle -->
     <script src="${path}/resources/manager/assets/js/vendor.min.js"></script>
     <script src="${path}/resources/manager/assets/js/app.min.js"></script>
 
     <!-- third party js -->
-    <script src="${path}/resources/manager/assets/js/vendor/chart.min.js"></script>
+    <script src="${path}/resources/manager/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="${path}/resources/manager/assets/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="${path}/resources/manager/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="${path}/resources/manager/assets/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="${path}/resources/manager/assets/js/vendor/dataTables.checkboxes.min.js"></script>
     <!-- third party js ends -->
 
     <!-- demo app -->
-    <script src="${path}/resources/manager/assets/js/pages/demo.dashboard-projects.js"></script>
+    <script src="${path}/resources/manager/assets/js/pages/demo.customers.js"></script>
     <!-- end demo js-->
 
 </body>
