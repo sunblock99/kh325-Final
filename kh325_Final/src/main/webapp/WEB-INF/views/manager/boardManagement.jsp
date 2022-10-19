@@ -38,12 +38,12 @@
 
 <body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
     <!-- Begin page -->
-    <div class="wrapper">
+   <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
         <div class="leftside-menu">
 
             <!-- LOGO -->
-            <a href="index.html" class="logo text-center logo-light">
+            <a href="${path}/" class="logo text-center logo-light">
                 <span class="logo-lg">
                         <img src="${path}/resources/manager/assets/images/custom/togetherLogoWhite.png" alt="" height="50">
                     </span>
@@ -62,22 +62,23 @@
                     </span>
             </a>
 
-             <div class="h-100" id="leftside-menu-container" data-simplebar>
+           <div class="h-100" id="leftside-menu-container" data-simplebar>
 
                 <!--- 사이드바 시작 -->
                 <ul class="side-nav">
                     <li class="side-nav-item">
-                        <a href="apps-calendar.html" class="side-nav-link">
+                        <a href="${path}/" class="side-nav-link">
                             <i class=" uil-home-alt"></i>
                             <span> 홈페이지로 이동 </span>
                         </a>
                     </li>
 
+
                     <li class="side-nav-item">
-                        <a href="6.대시보드.html" class="side-nav-link">
+                        <a href="${path}/manager/dashBoard" class="side-nav-link">
                             <i class="uil-dashboard"></i>
                             <span class="badge bg-success float-end">4</span>
-                            <span> Dashboards </span>
+                            <span> Dashboard </span>
                         </a>
 
                     </li>
@@ -85,20 +86,20 @@
                     <li class="side-nav-title side-nav-item" style="font-size: 15px;">회원관리</li>
 
                     <li class="side-nav-item">
-                        <a href="0회원관리.html" class="side-nav-link">
+                        <a href="${path}/manager/allUser" class="side-nav-link">
                             <i class=" uil-users-alt"></i>
                             <span> 회원목록 </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="5.코스 인증 승인.html" class="side-nav-link">
+                        <a href="${path}/manager/allCourse" class="side-nav-link">
                             <i class="uil-check"></i>
                             <span> 여행코스 승인 </span>
                         </a>
                     </li>
                     <li class="side-nav-title side-nav-item" style="font-size: 15px;">게시판 관리</li>
                     <li class="side-nav-item">
-                        <a href="1게시글 관리.html" target="_blank" class="side-nav-link">
+                        <a href="${path}/manager/allBoard" target="_blank" class="side-nav-link">
                             <i class="uil-list-ul"></i>
                             <span> 게시글 관리 </span>
                         </a>
@@ -106,13 +107,13 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="4댓글관리.html" target="_blank" class="side-nav-link">
+                        <a href="${path}/manager/allReply" target="_blank" class="side-nav-link">
                             <i class="uil-comment-alt-message"></i>
                             <span> 댓글 관리 </span>
                         </a>
                     </li>
 
-                    <li class="side-nav-item">
+					<li class="side-nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarLayouts" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
                             <i class="uil-balance-scale"></i>
                             <span> 신고된 게시글 </span>
@@ -121,13 +122,13 @@
                         <div class="collapse" id="sidebarLayouts">
                             <ul class="side-nav-second-level">
                                 <li>
-                                    <a href="3신고 게시글 관리.html">전체 게시글</a>
+                                    <a href="${path}/manager/allReport">전체 게시글</a>
                                 </li>
                                 <li>
-                                    <a href="layouts-detached.html">처리된 게시글</a>
+                                    <a href="${path}/manager/checkReport">처리된 게시글</a>
                                 </li>
                                 <li>
-                                    <a href="layouts-full.html">미처리된 게시글</a>
+                                    <a href="${path}/manager/unCheckReport">미처리된 게시글</a>
                                 </li>
                             </ul>
                         </div>
@@ -153,6 +154,8 @@
                                 </form>
                             </div>
                         </li>
+
+
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <i class="dripicons-bell noti-icon"></i>
@@ -164,15 +167,14 @@
                                 <div class="dropdown-item noti-title px-3">
                                     <h5 class="m-0">
                                         <span class="float-end">
-                                                <a href="javascript: void(0);" class="text-dark">
-                                                    <small>Clear All</small>
-                                                </a>
-                                            </span>Notification
+                                            </span>오늘의 알림
                                     </h5>
                                 </div>
+
                                 <div class="px-3" style="max-height: 300px;" data-simplebar>
 
                                     <h5 class="text-muted font-13 fw-normal mt-0">Today</h5>
+                                    <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
                                         <div class="card-body">
                                             <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
@@ -183,12 +185,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
-                                                    <h5 class="noti-item-title fw-semibold font-14">Datacorp <small class="fw-normal text-muted ms-1">1 min ago</small></h5>
-                                                    <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
+                                                    <h5 class="noti-item-title fw-semibold font-14">방문자 수<small class="fw-normal text-muted ms-1">1 min ago</small></h5>
+                                                    <small class="noti-item-subtitle text-muted">어제의 방문자 수는 356명입니다.</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
+
+                                    <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                                         <div class="card-body">
                                             <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
@@ -199,75 +203,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 text-truncate ms-2">
-                                                    <h5 class="noti-item-title fw-semibold font-14">Admin <small class="fw-normal text-muted ms-1">1 hours ago</small></h5>
-                                                    <small class="noti-item-subtitle text-muted">New user registered</small>
+                                                    <h5 class="noti-item-title fw-semibold font-14">가입자 수<small class="fw-normal text-muted ms-1">1 hours ago</small></h5>
+                                                    <small class="noti-item-subtitle text-muted">어제의 가입자 수는 15명입니다.</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
 
-                                    <h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
-                                    <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-                                        <div class="card-body">
-                                            <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0">
-                                                    <div class="notify-icon">
-                                                        <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1 text-truncate ms-2">
-                                                    <h5 class="noti-item-title fw-semibold font-14">Cristina Pride <small class="fw-normal text-muted ms-1">1 day ago</small></h5>
-                                                    <small class="noti-item-subtitle text-muted">Hi, How are you? What about our next meeting</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
-                                    <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-                                        <div class="card-body">
-                                            <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0">
-                                                    <div class="notify-icon bg-primary">
-                                                        <i class="mdi mdi-comment-account-outline"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1 text-truncate ms-2">
-                                                    <h5 class="noti-item-title fw-semibold font-14">Datacorp</h5>
-                                                    <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
-                                        <div class="card-body">
-                                            <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0">
-                                                    <div class="notify-icon">
-                                                        <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1 text-truncate ms-2">
-                                                    <h5 class="noti-item-title fw-semibold font-14">Karen Robinson</h5>
-                                                    <small class="noti-item-subtitle text-muted">Wow ! this admin looks good and awesome design</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <div class="text-center">
-                                        <i class="mdi mdi-dots-circle mdi-spin text-muted h3 mt-0"></i>
-                                    </div>
                                 </div>
-
-                                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
-                                        View All
-                                    </a>
-
                             </div>
                         </li>
 
@@ -280,20 +223,20 @@
                                 <div class="p-2">
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/slack.png" alt="slack">
+                                            <a class="dropdown-icon-item" href="https://slack.com/intl/ko-kr/">
+                                                <img src="${path}/resources/manager/assets/images/brands/slack.png" alt="slack">
                                                 <span>Slack</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/github.png" alt="Github">
+                                            <a class="dropdown-icon-item" href="https://github.com/sunblock99/FINAL">
+                                                <img src="${path}/resources/manager/assets/images/brands/github.png" alt="Github">
                                                 <span>GitHub</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                            <a class="dropdown-icon-item" href="https://dribbble.com/">
+                                                <img src="${path}/resources/manager/assets/images/brands/dribbble.png" alt="dribbble">
                                                 <span>Dribbble</span>
                                             </a>
                                         </div>
@@ -301,25 +244,24 @@
 
                                     <div class="row g-0">
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                            <a class="dropdown-icon-item" href="https://bitbucket.org/">
+                                                <img src="${path}/resources/manager/assets/images/brands/bitbucket.png" alt="bitbucket">
                                                 <span>Bitbucket</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                            <a class="dropdown-icon-item" href="https://www.dropbox.com">
+                                                <img src="${path}/resources/manager/assets/images/brands/dropbox.png" alt="dropbox">
                                                 <span>Dropbox</span>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/g-suite.png" alt="G Suite">
-                                                <span>G Suite</span>
+                                            <a class="dropdown-icon-item" href="https://www.google.co.kr/">
+                                                <img src="${path}/resources/manager/assets/images/brands/g-suite.png" alt="G Suite">
+                                                <span>Google</span>
                                             </a>
                                         </div>
                                     </div>
-                                    <!-- end row-->
                                 </div>
 
                             </div>
@@ -334,41 +276,28 @@
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar"> 
-                                        <img src="https://www.iei.or.kr/upload/teacher/haesung7lee_teacher_photo.jpg" alt="user-image" class="rounded-circle">
+                                        <img src="${path}/resources/manager/assets/images/custom/togetherLogo_icon.png" alt="user-image" class="rounded-circle">
                                     </span>
                                 <span>
-                                        <span class="account-user-name">Haeseong Lee</span>
-                                <span class="account-position">Founder</span>
+                                        <span class="account-user-name">${loginMember.userName}</span>
+                                <span class="account-position">ADMIN</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-                                <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Welcome !</h6>
-                                </div>
 
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-circle me-1"></i>
-                                    <span>My Account</span>
-                                </a>
-
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-account-edit me-1"></i>
-                                    <span>Settings</span>
+                                    <span>내 정보수정</span>
                                 </a>
 
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="mdi mdi-lifebuoy me-1"></i>
-                                    <span>Support</span>
-                                </a>
-
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-lock-outline me-1"></i>
-                                    <span>Lock Screen</span>
+                                    <span>홈페이지로 가기</span>
                                 </a>
 
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="mdi mdi-logout me-1"></i>
-                                    <span>Logout</span>
+                                    <span>로그아웃</span>
                                 </a>
                             </div>
                         </li>
@@ -377,60 +306,17 @@
                     <button class="button-menu-mobile open-left">
                             <i class="mdi mdi-menu"></i>
                         </button>
-                    <div class="app-search dropdown d-none d-lg-block">
-                        <form>
-                            <div class="input-group">
-                                <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
-                                <span class="mdi mdi-magnify search-icon"></span>
-                                <button class="input-group-text btn-primary" type="submit">Search</button>
-                            </div>
-                        </form>
+<!--                     <div class="app-search dropdown d-none d-lg-block"> -->
+<!--                         <form> -->
+<!--                             <div class="input-group"> -->
+<!--                                 <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search"> -->
+<!--                                 <span class="mdi mdi-magnify search-icon"></span> -->
+<!--                                 <button class="input-group-text btn-primary" type="submit">Search</button> -->
+<!--                             </div> -->
+<!--                         </form> -->
 
-                        <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                            <div class="dropdown-header noti-title">
-                                <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
-                            </div>
-
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="uil-notes font-16 me-1"></i>
-                                <span>Analytics Report</span>
-                            </a>
-
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="uil-life-ring font-16 me-1"></i>
-                                <span>How can I help you?</span>
-                            </a>
-
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="uil-cog font-16 me-1"></i>
-                                <span>User profile settings</span>
-                            </a>
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                            </div>
-
-                            <div class="notification-list">
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-2.jpg" alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Erwin Brown</h5>
-                                            <span class="font-12 mb-0">UI Designer</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="d-flex">
-                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-5.jpg" alt="Generic placeholder image" height="32">
-                                        <div class="w-100">
-                                            <h5 class="m-0 font-14">Jacob Deo</h5>
-                                            <span class="font-12 mb-0">Developer</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                       
+<!--                     </div> -->
                 </div>
 
                 <div class="container-fluid">
@@ -475,6 +361,7 @@
                                             </thead>
 
                                             <tbody>
+	                                            <c:forEach  var="BoardManager" items="${allBoard}">
                                                 <tr>
                                                     <td>
                                                         <div class="form-check">
@@ -483,103 +370,44 @@
                                                         </div>
                                                     </td>
                                                     <td class="table-user" style="width: 60px;">
+													<c:if test="${BoardManager.boardType eq 'GAL'}">
+                                                        <a href="javascript:void(0);" class="text-body fw-semibold">갤러리</a>
+													</c:if>
+													<c:if test="${BoardManager.boardType eq 'JB'}">
+                                                        <a href="javascript:void(0);" class="text-body fw-semibold">블로그</a>
+													</c:if>
+													<c:if test="${BoardManager.boardType eq 'CB'}">
+                                                        <a href="javascript:void(0);" class="text-body fw-semibold">동행구하기</a>
+													</c:if>
+													<c:if test="${BoardManager.boardType eq 'FB'}">
                                                         <a href="javascript:void(0);" class="text-body fw-semibold">자유게시판</a>
+													</c:if>
                                                     </td>
-                                                    <td class="" style="max-width: 300px; display: -webkit-box;
-                                                    display: -ms-flexbox;
-                                                    display: box;
-                                                    margin-top: 1px;
-                                                    max-height: 90px;
-                                                    overflow: hidden;
-                                                    vertical-align: top;
-                                                    text-overflow: ellipsis;
-                                                    word-break: break-all;
-                                                    -webkit-box-orient: vertical;
-                                                    -webkit-line-clamp: 1;">
-                                                        오늘 뭐하지오늘 뭐하지오늘 뭐sssssssssssssssssssssssssssssss
+                                                    <td>
+                                                        <c:out value="${fn:substring(BoardManager.title,0,30)}..."/>
                                                     </td>
                                                     <td class="textPrivate" style="width: 200px;">
-                                                        뭐먹을지 추천좀
+                                                        <c:out value="${fn:substring(BoardManager.content,0,15)}..."/>
                                                     </td>
                                                     <td class="" style="width: 100px;">
-                                                        마샬 킴
+                                                       <c:out value="${BoardManager.userName}"/>
                                                     </td>
                                                     <td class="" style="width: 100px;">
-                                                        2022년 09월 19일
+                                                       <c:out value="${BoardManager.postDate}"/>
                                                     </td>
                                                     <td class="" style="width: 70px;">
-                                                        <span class=" badge badge-success-lighten" style="text-align: center;">활성화</span>
+                                                      <c:if test="${BoardManager.status eq 'N'}">
+                                                        <span class="badge badge-danger-lighten">블라인드</span>
+													</c:if>
+													<c:if test="${BoardManager.status eq 'Y'}">
+                                                        <span class="badge badge-success-lighten">비블라인드</span>
+                                                    </c:if>
                                                     </td>
                                                     <td class="" style="width: 15px;">
-                                                        <a href="javascript:void(0); " class="action-icon "> <i class="mdi mdi-square-edit-outline "></i></a>
-                                                        <a href="javascript:void(0); " class="action-icon "> <i class="mdi mdi-delete "></i></a>
+                                                        <a href="${path}/manager/updateBoard?boardNo=${BoardManager.boardNo}&boardType=${BoardManager.boardType}" class="action-icon "> <i class="mdi mdi-delete "></i></a>
                                                     </td>
                                                 </tr>
-
-
-                                                <!-- <tr>
-                                                    <td>
-                                                        <div class="form-check ">
-                                                            <input type="checkbox " class="form-check-input " id="customCheck2 ">
-                                                            <label class="form-check-label " for="customCheck2 ">&nbsp;</label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="table-user ">
-                                                        <a href="javascript:void(0); " class="text-body fw-semibold ">동행</a>
-                                                    </td>
-                                                    <td>
-                                                        오늘 ??? 갈분!!
-                                                    </td>
-                                                    <td>
-                                                        드라이브해요
-                                                    </td>
-                                                    <td>
-                                                        장첸
-                                                    </td>
-                                                    <td>
-                                                        2022년 09월 19일
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge-success-lighten ">활성화</span>
-                                                    </td>
-
-                                                    <td>
-                                                        <a href="javascript:void(0); " class="action-icon "> <i class="mdi mdi-square-edit-outline "></i></a>
-                                                        <a href="javascript:void(0); " class="action-icon "> <i class="mdi mdi-delete "></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check ">
-                                                            <input type="checkbox " class="form-check-input " id="customCheck2 ">
-                                                            <label class="form-check-label " for="customCheck2 ">&nbsp;</label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="table-user ">
-                                                        <a href="javascript:void(0); " class="text-body fw-semibold ">여행 후기</a>
-                                                    </td>
-                                                    <td>
-                                                        와 오늘 레전드
-                                                    </td>
-                                                    <td>
-                                                        수리남 갔다왔는데 진짜 지금 안가면 후회해요
-                                                    </td>
-                                                    <td>
-                                                        전요환
-                                                    </td>
-                                                    <td>
-                                                        2022년 09월 17일
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge-success-lighten ">활성화</span>
-                                                    </td>
-
-                                                    <td>
-                                                        <a href="javascript:void(0); " class="action-icon "> <i class="mdi mdi-square-edit-outline "></i></a>
-                                                        <a href="javascript:void(0); " class="action-icon "> <i class="mdi mdi-delete "></i></a>
-                                                    </td>
-                                                </tr> -->
-
+												</c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -588,9 +416,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- content -->
-
-                <!-- Footer Start -->
+                
                 <footer class="footer ">
                     <div class="container-fluid ">
                         <div class="row ">
@@ -609,17 +435,11 @@
                         </div>
                     </div>
                 </footer>
-                <!-- end Footer -->
 
             </div>
 
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
 
         </div>
-        <!-- END wrapper -->
 
 
         <!-- Right Sidebar -->
