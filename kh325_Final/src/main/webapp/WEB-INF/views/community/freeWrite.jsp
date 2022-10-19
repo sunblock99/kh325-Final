@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path }/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,21 +24,21 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path }/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path }/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customPHY.css">
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path }/resources/css/customPHY.css">
+    <link rel="stylesheet" href="${path }/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path }/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="${path }/resources/css/font.css">
     <style>
         @font-face {
             font-family: 'Pretendard-Regular';
@@ -77,7 +77,7 @@
 
                     <!-- 로고 시작 -->
                     <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="./image/togetherLogo.png" width="30%" height="10%">
+                        <img class="ps-3" src="${path }/resources/image/togetherLogo.png" width="30%" height="10%">
                     </a>
                     <!-- 로고 끝-->
 
@@ -146,7 +146,7 @@
         <!-- 상단바메뉴 끝 -->
         <!-- =============== 메뉴바 영역 끝 =============== -->
     </header>
-    <section style="background-image: url(./image/circles_w.png); background-repeat: no-repeat; height: 1250px; ">
+    <section style="background-image: url(${path }/resources/image/circles_w.png); background-repeat: no-repeat; height: 1250px; ">
         <!--  <div class="row  py-6  " style="background-color:; padding-left: 400px; padding-right: 400px; background-image: url(./free_header3.png);">
             <div class="col-12">
             </div>
@@ -158,31 +158,33 @@
                 <p class="text-muted h6">투게더에 멋진 게시글을 남겨주세요</p>
             </div>
         </div>
+        <c:set var="now" value="<%=new java.util.Date()%>" />
         <div class="container px-6 py-1">
             <div class="py-4 px-5">
                 <div class="container">
                     <div class="mb-2 text-end">
-                        <p> Written by <span class="fw-bold" href="#" style="color: #907B65;">맥가이버</span><span class="mx-1">/</span> January 16, 2016 <span class="mx-1"></span></p>
+                        <p> Written by <span class="fw-bold" href="#" style="color: #907B65;">${loginMember.userName }</span><span class="mx-1">/</span> <fmt:formatDate value="${now}" type="date" dateStyle="full" /> <span class="mx-1"></span></p>
                     </div>
                     <div class="row">
                         <div class=" mb-5 mb-md-0">
-                            <form class="form" id="contact-form" method="post" action="contact.php">
+                            <form class="form" id="contact-form" method="post" action="${path }/community/writefree" enctype="multipart/form-data" >
+                            	<input type="text" name="userNo" value="${loginMember.userNo }" hidden>
                                 <div class="mb-4">
                                     <label class="form-label" for="email">TITLE</label>
-                                    <input class="form-control" type="text" name="" id="" placeholder="제목을 입력하세요." required="required">
+                                    <input class="form-control" type="text" name="title" id="" placeholder="제목을 입력하세요." required="required">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label" for="message">MESSAGE</label>
-                                    <textarea class="form-control" rows="16" name="message" id="message" placeholder="내용을 작성하세요." required="required"></textarea>
+                                    <textarea class="form-control" rows="16" name="content" id="content" placeholder="내용을 작성하세요." required="required"></textarea>
                                 </div>
                                 <div class="mb-4" style="padding-right: 500px;">
                                     <label class="form-label" for="email">FILE</label>
-                                    <input class="form-control" type="file" name="" id="" placeholder="" required="required">
+                                    <input class="form-control" type="file" name="upfile" id="upfile" placeholder="" value="null">
                                 </div>
                                 <div class="mb-4">
                                     <div class="row text-end">
                                         <div class="">
-                                            <button class="btn btn-outline-warning text-black font-weight-bold" type="submit"><i class="fas fa-align-left"></i> 리스트로</button>
+                                            <button class="btn btn-outline-warning text-black font-weight-bold" onclick="location.href='${path}/community/freeboardList'"><i class="fas fa-align-left"></i> 리스트로</button>
                                             <button class="btn btn-warning font-weight-bold " type="submit"><i class="fas fa-pen"></i> 글올리기</button>
                                         </div>
                                     </div>
@@ -201,7 +203,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <img src="./image/togetherLogo.png" height="60" width="140" alt="">
+                        <img src="${path }/resources/image/togetherLogo.png" height="60" width="140" alt="">
                         <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
                         <div class="mt-4 pt-2 ps-3 ms-sm-4">
                             <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
@@ -250,10 +252,10 @@
                     </div>
                     <div class="col-md-6">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/visa.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/mastercard.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/paypal.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/western-union.svg" alt="..."></li>
                         </ul>
                     </div>
                 </div>
@@ -286,24 +288,24 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js "></script>
+    <script src="${path }/resources/vendor/jquery/jquery.min.js "></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+    <script src="${path }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js "></script>
+    <script src="${path }/resources/vendor/magnific-popup/jquery.magnific-popup.min.js "></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js "></script>
+    <script src="${path }/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js "></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js "></script>
+    <script src="${path }/resources/vendor/bootstrap-select/js/bootstrap-select.min.js "></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js "></script>
+    <script src="${path }/resources/vendor/object-fit-images/ofi.min.js "></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js "></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js "></script>
+    <script src="${path }/resources/js/theme.js "></script>
 </body>
 
 </html>

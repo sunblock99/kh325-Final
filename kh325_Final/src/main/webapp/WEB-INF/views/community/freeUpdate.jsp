@@ -65,16 +65,6 @@
             color: black;
             transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
         }
-        .txt_post {
-		    overflow: hidden;
-		    text-overflow: ellipsis;
-		    display: -webkit-box;
-		    -webkit-line-clamp: 1; /* 라인수 */
-		    -webkit-box-orient: vertical;
-		    word-wrap:break-word; 
-		    line-height: 1.2em;
-		    height: 1.2em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
-		  }
     </style>
 </head>
 
@@ -156,134 +146,60 @@
         <!-- 상단바메뉴 끝 -->
         <!-- =============== 메뉴바 영역 끝 =============== -->
     </header>
-    <section style="background-image: url(${path }/resources/image/circles_w.png) ">
+    <section style="background-image: url(${path }/resources/image/circles_w.png); background-repeat: no-repeat; height: 1250px; ">
         <!--  <div class="row  py-6  " style="background-color:; padding-left: 400px; padding-right: 400px; background-image: url(./free_header3.png);">
             <div class="col-12">
             </div>
         </div> -->
         <div class="py-4 mb-3 mt-4">
-            <div class="container px-lg-6 ">
-                <div class="col-md-8 p-1">
-                    <h1 class="display-5 fw-bold text-dark mb-4  py-4">자유게시판</h1>
-                    <p class="subtitle" style="color: #907B65;">Best posting</p>
-                    <h4>인기게시글</h4>
-                </div>
-                <div class="row">
-                	<c:if test="${!empty bestList}">
-                	<c:forEach var="post" items="${bestList }" end="${bestList.size() }">
-                    <div class="col-4">
-                        <div class="docs-item" id="ribbon">
-                            <div class="mt-3">
-                                <div class="card py-3 border-0 shadow ">
-                                    <div class="ribbon ribbon-warning ">BEST</div>
-                                    <div class="ps-4 text-dark" style="padding-top: 30px;">
-                                        <a href="${path}/community/freeDetail?freeboardNo=${post.freeBoardNo }" class="text-decoration-none">
-                                            <h6 class="h6 text-dark text-decoration-none txt_post pe-3">${post.title }</h6>
-                                        </a>
-                                        <span class="text-muted text-sm">조회수 ${post.count } | 댓글 ${post.commentList.size() }</span>
-                                        <p class="text-end text-dark pe-4">Written by ${post.userName}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </c:forEach>
-                    </c:if>
-                </div>
+            <div class="container px-lg-6 text-center pt-5 fw-bolder ">
+                <p class="h4" style="color:#907B65;">자유게시판</p>
+                <h1 class="h1">게시판글쓰기</h1>
+                <p class="text-muted h6">투게더에 멋진 게시글을 남겨주세요</p>
             </div>
         </div>
-        <div class="container px-6">
-            <div class="row">
-                <div class="justify-content-start col-3  ps-4 pt-3">
-                    <p class="text-muted">total ${boardCountAll} messages </p>
-                </div>
-                <div class="d-flex justify-content-end align-items-end mb-4  col-9">
-                    <form action="${path}/community/freeboardList" class="border rounded">
-                        <div class="row">
-                            <div class="col-lg-3 d-flex align-items-center form-group no-divider">
-                                <select class="selectpicker" title="검색분류" name="searchType" id="searchType" data-style="btn-form-control">
-                                    <option value="title"  ${param.searchType=='title' ? 'selected' : '' }>제목</option>
-                                    <option value="writer" ${param.searchType=='writer' ? 'selected' : '' }>글쓴이</option>
-                                    <option value="content" ${param.searchType=='content' ? 'selected' : '' }>내용</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-5 d-flex align-items-center form-group">
-                                <input class="form-control border-0 shadow-0" type="text" id="searchValue" 
-                                 name="searchValue" placeholder="검색 키워드를 입력하세요." value="${param.searchValue}">
-                            </div>
-
-                            <div class="col-lg-4 d-grid text-start ">
-                                <button class="btn btn-outline-light text-black " type="submit"> Search</button>
-                            </div>
+        <c:set var="now" value="<%=new java.util.Date()%>" />
+        <div class="container px-6 py-1">
+            <div class="py-4 px-5">
+                <div class="container">
+                    <div class="mb-2 text-end">
+                        <p> Written by <span class="fw-bold" href="#" style="color: #907B65;">${loginMember.userName }</span><span class="mx-1">/</span> <fmt:formatDate value="${now}" type="date" dateStyle="full" /> <span class="mx-1"></span></p>
+                    </div>
+                    <div class="row">
+                        <div class=" mb-5 mb-md-0">
+                            <form class="form" id="contact-form" method="post" action="${path }/community/updatefreeboard" enctype="multipart/form-data" >
+                            	<input type="text" name="userNo" value="${loginMember.userNo }" hidden>
+                            	<input type="text" name="freeBoardNo" value="${board.freeBoardNo }" hidden>
+                                <div class="mb-4">
+                                    <label class="form-label" for="email">TITLE</label>
+                                    <input class="form-control" type="text" name="title" id="" placeholder="제목을 입력하세요." value="${board.title }" required="required">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="message">MESSAGE</label>
+                                    <textarea class="form-control" rows="16" name="content" id="content" required="required">${board.content}</textarea>
+                                </div>
+                                <div class="mb-4" style="padding-right: 500px;">
+                                    <label class="form-label" for="email">FILE</label>
+                                    <input class="form-control" type="file" name="upfile" id="upfile" placeholder="${board.fileOriginal }" value="">
+                                    <c:if test="${!empty board.fileOriginal}">
+										<span class="text-muted text-sm">현재 업로드 파일 : </span>
+										<a class="text-muted text-sm">
+											${board.fileOriginal}
+										</a>						
+									</c:if>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="row text-end">
+                                        <div class="">
+                                            <button type="button" class="btn btn-outline-warning text-black font-weight-bold" onclick="location.href='${path}/community/freeboardList'"><i class="fas fa-align-left"></i> 리스트로</button>
+                                            <button class="btn btn-warning font-weight-bold " type="submit"><i class="fas fa-pen"></i> 글올리기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-            </div>
-            <div class="list-group  mb-5">
-                <div class="table-responsive mb-3">
-                    <table class="table table-striped ">
-                        <thead class="text-white" style="background-color: #907B65;">
-                            <tr class="border-0 text-center">
-                                <th class="center col-1">no</th>
-                                <th class="col-6">title</th>
-                                <th class="col-3">writer</th>
-                                <th class="col-1">file</th>
-                                <th class="col-1">date</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm">
-                        	<c:forEach var="board" items="${list}">
-                            <tr>
-                                <td class="text-center"><c:out value="${board.freeBoardNo}"/></td>
-                                <td class="">
-                                    <a href="#" onclick="location.href='${path}/community/freeDetail?freeboardNo=${board.freeBoardNo}'"class="fw-bold text-black text-decoration-none ">
-                                        <c:out value="${board.title}"/><span class="text-muted fw-light"> - ${board.commentList.size() } comments</span>
-                                    </a>
-                                </td>
-                                <td class="text-center"><c:out value="${board.userName}"/></td>
-                                <td class="text-center">
-	                                <c:if test="${!empty board.fileOriginal }">
-	                               		<i class="fas fa-file"></i>
-	                                </c:if>
-                                </td>
-                                <td class=""><fmt:formatDate pattern="yyyy.MM.dd " value="${board.postDate}"/></td>
-                            </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                
-                <div class="row mb-3 mt-2">
-                    <div class="col-8">
-                        <nav aria-label="Page navigation example pt-1">
-                            <ul class="pagination justify-content-end ">
-                                <li class="page-item">
-                                    <a class="page-link " href="# " onclick="movePage('${path}/community/freeboardList?page=${pageInfo.prevPage}');" tabindex="-1 ">Previous</a>
-                                </li>
-                                <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
-									<c:if test="${pageInfo.currentPage == status.current}">
-										<li class="page-item disabled"><a class="page-link " href="#"><c:out value="${status.current}"/></a></li>
-									</c:if>
-									<c:if test="${pageInfo.currentPage != status.current}">
-										 <li class="page-item ">
-										 	<a class="page-link" href="#" onclick="movePage('${path}/community/freeboardList?page=${status.current}');">
-												<c:out value="${status.current}"/>
-											</a>
-										</li>
-									</c:if>
-								</c:forEach>
-                                
-                                <li class="page-item ">
-                                    <a class="page-link" onclick="movePage('${path}/community/freeboardList?page=${pageInfo.nextPage}');" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="text-end col-4">
-                        <button class="btn btn-outline-dark" onclick="location.href='${path}/community/writefree'">write</button>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -353,20 +269,8 @@
             </div>
         </div>
     </footer>
-
     <!-- JavaScript files-->
     <script>
-	    function movePage(pageUrl){
-			var searchValue = document.getElementById("searchValue"); 
-			var searchTypes = document.getElementById("searchType"); 
-			var searchType = 'title';
-			if(searchValue.value.length > 0){
-				
-				pageUrl = pageUrl + '&searchType=' + searchTypes.value + '&searchValue=' + searchValue.value; 
-			}
-			location.href = encodeURI(pageUrl);	
-		}
-	    
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
         //   see more here 
@@ -404,9 +308,7 @@
     <script src="${path }/resources/vendor/object-fit-images/ofi.min.js "></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js "></script>
-    <script>
-        var basePath = ''
-    </script>
+
     <!-- Main Theme JS file    -->
     <script src="${path }/resources/js/theme.js "></script>
 </body>

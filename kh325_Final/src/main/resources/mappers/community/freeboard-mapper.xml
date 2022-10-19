@@ -6,7 +6,7 @@
 <mapper namespace="com.kh.tour.community.model.mapper.FreeboardMapper">
 	<resultMap type="Freeboard" id="freeboardListResultMap">
 		<id property="freeBoardNo" column="FREEBOARD_NO" />
-		<result property="uNo" column="UNO" />
+		<result property="userNo" column="UNO" />
 		<result property="userName" column="U_NAME" />
 		<result property="title" column="TITLE" />
 		<result property="content" column="CONTENT" />
@@ -21,7 +21,7 @@
 	<resultMap type="FreeBoardComment" id="FreeBoardCommentResultMap">
 		<id property="commentNo" column="COMMENT_NO"/>
 		<result property="freeboardNo" column="FREEBOARD_NO"/>
-		<result property="uNo" column="UNO"/>
+		<result property="userNo" column="UNO"/>
 		<result property="userName" column="U_NAME" />
 		<result property="content" column="CONTENT"/>
 		<result property="postDate" column="POST_DATE"/>
@@ -33,19 +33,29 @@
 	</resultMap>
 	
 	<!-- 셀렉트 -->
-	<select id="selectBoardList" resultMap="freeboardListResultMap"  parameterType="map">
-		SELECT  B.FREEBOARD_NO,
-				B.TITLE, 
-				M.UNO, 
-				M.U_NAME,
-				B.CONTENT, 
-				B.FILE_ORIGINAL, 
-				B.FILE_RENAMED, 
-				B.COUNT,
-				B.POST_DATE,
-				B.BOARD_TYPE
+	<select id="selectBoardList" resultMap="freeboardDetailResultMap"  parameterType="map">
+		SELECT B.FREEBOARD_NO,
+			   B.TITLE, 
+			   M.UNO, 
+			   M.U_NAME,
+			   B.CONTENT, 
+			   B.FILE_ORIGINAL, 
+			   B.FILE_RENAMED, 
+			   B.COUNT,
+			   B.POST_DATE,
+			   B.BOARD_TYPE,
+			   B.STATUS,
+		       R.COMMENT_NO AS R_COMMENT_NO, 
+		       R.FREEBOARD_NO AS R_FREEBOARD_NO, 
+		       R.CONTENT AS R_CONTENT, 
+		       M2.UNO AS R_UNO, 
+		       M2.U_NAME AS R_U_NAME,
+		       R.POST_DATE AS R_POST_DATE,
+		       R.STATUS AS R_STATUS
 		FROM COMM_FREEBOARD B
 		JOIN MEMBER M ON(B.UNO = M.UNO)
+		LEFT OUTER JOIN FREEBOARD_COMMENT R ON(B.FREEBOARD_NO = R.FREEBOARD_NO)
+		LEFT OUTER JOIN MEMBER M2 ON(R.UNO = M2.UNO)
 		WHERE B.STATUS = 'Y'
 		<!-- WHERE 1=1 -->
 		<if test="writerKeyword != null">
@@ -60,7 +70,7 @@
 		ORDER BY B.FREEBOARD_NO DESC
 	</select>
 	
-	<!--전체 게시글수 가져오긴 -->
+	<!--전체 게시글수 가져오긴(page/filter 적용) -->
 	<select id="selectBoardCount" resultType="int"  parameterType="map">
 		SELECT  COUNT(*)
 		FROM COMM_FREEBOARD B
@@ -107,8 +117,7 @@
 	</select>
 	
 	<!-- 게시글 등록 -->
-	<insert id="insertBoard" parameterType="Freeboard"
-			useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
+	<insert id="insertBoard" parameterType="Freeboard">
 		INSERT INTO COMM_FREEBOARD (
 			FREEBOARD_NO,
 			UNO,
@@ -119,14 +128,14 @@
 			COUNT,
 			POST_DATE,
 			STATUS,
-			BOARD_TYPE,
+			BOARD_TYPE
 		) VALUES (
 			SEQ_FREENO.NEXTVAL,
-			#{uNo},
+			#{userNo},
 			#{title},
 			#{content},
-			#{fileOriginal},
-			#{fileRenamed},
+			#{fileOriginal, jdbcType=VARCHAR},
+			#{fileRenamed, jdbcType=VARCHAR},
 			1,
 			SYSDATE,
 			DEFAULT,
@@ -137,9 +146,21 @@
 	<!-- 댓글등록 -->
 	
 	<insert id="insertComment" parameterType="FreeBoardComment">
-		INSERT INTO FREEBOARD_COMMENT 
-			VALUES(SEQ_FREE_COMMENT_NO.NEXTVAL, 
-			#{freeboardNo}, #{uNo}, #{content}, SYSDATE, DEFAULT)
+		INSERT INTO FREEBOARD_COMMENT (
+			COMMENT_NO,
+            FREEBOARD_NO,
+            UNO,
+            CONTENT,
+            POST_DATE,
+            STATUS
+		)VALUES(
+			SEQ_FREE_COMMENT_NO.NEXTVAL, 
+			#{freeboardNo},
+			#{userNo},
+			#{content},
+			SYSDATE,
+			DEFAULT
+		)
 	</insert>
 	
 	<!-- 게시글 수정 -->
@@ -150,11 +171,12 @@
 			TITLE=#{title},
 			CONTENT=#{content},
 			<if test="fileOriginal != null">
-				ORIGINAL_FILENAME=#{originalFileName},
+				FILE_ORIGINAL=#{fileOriginal},
 			</if>
 			<if test="fileRenamed != null">
-				RENAMED_FILENAME=#{renamedFileName},
+				FILE_RENAMED=#{fileRenamed},
 			</if>
+			STATUS ='Y'
 		WHERE
 			FREEBOARD_NO=#{freeBoardNo}
 	</update>
@@ -173,7 +195,40 @@
 	<!-- 댓글 삭제 -->
 	
 	<delete id="deleteComment" parameterType="int">
-		UPDATE FREEBOARD_COMMENT SET STATUS='N' WHERE COMMENT_NO=#{commentNo}
+		DELETE FREEBOARD_COMMENT WHERE COMMENT_NO=#{commentNo}
 	</delete>
 	
+	<!-- 추가쿼리 -->
+	<!-- 순수 전체 게시글 수 -->
+	<select id="selectBoardCountAll" resultType="int">
+		SELECT COUNT(*) FROM COMM_FREEBOARD
+	</select>
+	
+	<!-- 베스트 게시글  -->
+	
+	
+	<select id="selectBestPost" resultMap="freeboardDetailResultMap">
+		SELECT      
+               B.FREEBOARD_NO,
+			   B.TITLE, 
+			   M.UNO, 
+			   M.U_NAME,
+			   B.CONTENT, 
+			   B.FILE_ORIGINAL, 
+			   B.FILE_RENAMED, 
+			   B.COUNT,
+			   B.POST_DATE,
+			   B.BOARD_TYPE,
+			   B.STATUS,
+		       R.COMMENT_NO AS R_COMMENT_NO, 
+		       R.FREEBOARD_NO AS R_FREEBOARD_NO, 
+		       R.CONTENT AS R_CONTENT, 
+		       R.POST_DATE AS R_POST_DATE,
+		       R.STATUS AS R_STATUS
+		FROM (SELECT * FROM (SELECT  ROWNUM,  B.* FROM COMM_FREEBOARD B ORDER BY COUNT DESC) WHERE  4 > ROWNUM) B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		LEFT OUTER JOIN FREEBOARD_COMMENT R ON(B.FREEBOARD_NO = R.FREEBOARD_NO)
+		WHERE B.STATUS='Y' AND B.POST_DATE > SYSDATE-7
+        
+	</select>
 </mapper>

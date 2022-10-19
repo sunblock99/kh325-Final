@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Freeboard {
 	int freeBoardNo;
-	int uNo;
+	int userNo;
 	String userName;
 	String title;
 	String content;

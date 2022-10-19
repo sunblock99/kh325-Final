@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class FreeBoardComment {
 	int commentNo;
 	int freeboardNo;
-	int uNo;
+	int userNo;
 	String userName;
 	String content;
 	Date postDate;
