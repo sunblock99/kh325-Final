@@ -361,12 +361,12 @@ div {
                             <div class="row">
                                 <div class="form-group">
                                     <label class="form-label" for="area-form">신고사유</label>
-                                    <select class="selectpicker form-control bg-gray-200 " name="reason " id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">
-                                    <option value="욕설" >욕설 </option>
-                                    <option value="사기행위">사기행위 </option>
-                                    <option value="광고/도배">광고/도배 </option>
-                                    <option value="기타">기타</option>
-                                </select>
+                                    <select class="selectpicker form-control bg-gray-200 " name="reason" id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">
+	                                    <option value="욕설" >욕설 </option>
+	                                    <option value="사기행위">사기행위 </option>
+	                                    <option value="광고/도배">광고/도배 </option>
+	                                    <option value="기타">기타</option>
+	                                </select>
                                 </div>
                             </div>
 
