@@ -350,8 +350,8 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
-                            <h5 class="text-pB">Dongmin Lee</h5>
+                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="value="${loginMember.userAvatar}" alt=""></a>
+                            <h5 class="text-pB" value="${loginMember.userName}"></h5>
                             <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
                         </div>
                         <div class="card-body p-5" style="height: 540px;">
@@ -468,14 +468,14 @@
                                 </div>
                                 <div class="mb-4 col-md-6">
                                     <label class="form-label text-pEb" for="password-new">새로운 비밀번호</label>
-                                    <input class="form-control" type="password" name="password-new" id="password-new">
+                                    <input class="form-control" type="password" name="newPassword" id="newPassword">
                                 </div>
                                 <div class="mb-4 col-md-6">
                                     <label class="form-label text-pEb" for="password-confirm">비밀번호 재입력</label>
-                                    <input class="form-control" type="password" name="password-confirm" id="password-confirm">
+                                    <input class="form-control" type="password" name="conPassword" id="conPassword">
                                 </div>
                             </div>
-                            <button class="btn btn-outline-primary text-pEb" type="submit" id="updatePwd" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">비밀번호 업데이트</button>
+                            <button class="btn btn-outline-primary text-pEb" type="submit" id="updateSubmit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">비밀번호 업데이트</button>
                         </div>
                         <div class=" mt-5 mb-4 col-12">
                             <label class="form-label" for="password-current" style="color:black">
@@ -493,7 +493,7 @@
                             <label class="form-label" for="formFile" style="color:black">
                                 <h6 class="text-pEb"> 프로필 사진 변경</h6>
                             </label>
-                            <input class="form-control" id="formFile" type="file">
+                            <input class="form-control" name="userAvatar" id="formFile" type="file">
                         </div>
                         <button class="btn btn-primary text-pEb" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">수정하기</button>
                         <button class="btn btn-primary text-pEb" type="button" onclick="location.href='${path}/member/delete'" id="deleteMember" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">탈퇴하기</button>
@@ -600,15 +600,15 @@
     <script>
 		$(document).ready(() => {
 			$("#updateSubmit").on("click", (e) => {
-				let pass1 = $("#password-new").val();			
-				let pass2 = $("#password-confirm").val();
+				let pass1 = $("#newPassword").val();			
+				let pass2 = $("#conPassword").val();
 				
 				if(pass1.trim() != pass2.trim()) {
 					alert("비밀번호가 일치하지 않습니다.");
 					
-					$("#password-new").val("");
-					$("#password-confirm").val("");
-					$("#password-new").focus();
+					$("#newPassword").val("");
+					$("#conPassword").val("");
+					$("#newPassword").focus();
 					
 					return false;
 				}		
@@ -620,7 +620,7 @@
 		$(function () {
 			$("#deleteMember").on("click", (e) => {
 				if(confirm("정말로 탈퇴하시겠습니까?")) {
-					location.replace('${path}/myPage/delte');
+					location.replace('${path}/myPage/delete');
 				}
 			});
 		

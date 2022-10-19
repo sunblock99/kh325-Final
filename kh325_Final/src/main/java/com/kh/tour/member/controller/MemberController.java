@@ -142,7 +142,7 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("/member/delete")
+	@GetMapping("/myPage/delete")
 	public String delete(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
 		int result = service.delete(loginMember.getUserNo());
@@ -157,19 +157,19 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	@GetMapping("/member/updatePwd")
+	@GetMapping("/myPage/updatePwd")
 	public String updatePwd() {
 		return "/member/updatePwd";
 	}
 	
 	
-	@PostMapping("/member/updatePwd")
+	@PostMapping("/myPage/updatePwd")
 	public String updatePwd(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember,
-			String userPwd) {
-		log.info("update pw : " + userPwd);
+			String userPassword) {
+		log.info("update pw : " + userPassword);
 		
-		int result = service.updatePwd(loginMember, userPwd);
+		int result = service.updatePwd(loginMember, userPassword);
 		
 		if(result > 0 ) {
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
