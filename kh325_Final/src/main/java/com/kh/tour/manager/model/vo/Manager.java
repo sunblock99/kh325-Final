@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Manager {
-	private String reportNo;       // 신고고유번호
+	private int reportNo;       // 신고고유번호
 	private String boardType;      // 게시글번호
 	private String boardNo;        // 게시글 타입
 	private String boardName;      // 게시글 제목
-	private String uNo;            // 회원번호
+	private String userNo;         // 회원번호
+	private String userName;         // 회원번호
 	private String category;       // 신고유형
 	private String reasons;        // 신고사유
 	private String status;         // STATUS
