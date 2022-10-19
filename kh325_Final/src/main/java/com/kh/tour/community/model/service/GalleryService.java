@@ -11,13 +11,16 @@ import com.kh.tour.community.model.vo.Gallery;
 public interface GalleryService {
 	//Gallery
 	int saveGallery(Gallery gallery);
-//	String saveFile(MultipartFile upfile, String savePath);
-//	List<Gallery> getGalleryList(PageInfo pageInfo, Map<String, String> param);
-//	Gallery findByUno(int uno);
-//	void deleteFile(String filePath);
-//	int deleteGallery(int boardNo, String rootPath);
-//	int getGalleryCount(Map<String, String> param);
-//	int initGalleryInfo(Gallery gallery);
 	
+	int getGalleryCount(Map<String, String> param);
 	
+	List<Gallery> getGalleryList(PageInfo pageInfo, Map<String, String> param);
+	
+	String saveFile(MultipartFile upfile, String savePath);
+	
+	int deleteGallery(int boardNo, String rootPath);
+	
+	void deleteFile(String filePath);
+
+	Gallery findByBoardNo(int uno);
 }

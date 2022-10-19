@@ -16,7 +16,7 @@
 		<result property="boardType" column="BOARD_TYPE"/>
 	</resultMap>
 	
-	
+	<!-- 이미지 업로드 -->
 	<insert id="insertGallery" parameterType="Gallery"
 			useGeneratedKeys="true" keyProperty="boardNo" keyColumn="BOARD_NO">
 		INSERT INTO GALLERY (
@@ -42,64 +42,66 @@
 		)
 	</insert>
 	
-<!-- 	<select id="selectGalleryList" resultMap="GalleryListResultMap"  parameterType="map"> -->
-<!-- 		SELECT  G.BOARD_NO,  -->
-<!-- 				M.ID,  -->
-<!-- 				G.TITLE,  -->
-<!-- 				G.ORIGINAL_IMAGE,  -->
-<!-- 				G.RENAMED_IMAGE,  -->
-<!-- 				G.GAL_TAG,  -->
-<!-- 				G.STATUS,  -->
-<!-- 				G.BOARD_TYPE -->
-<!-- 		FROM GALLERY G -->
+	<!-- 이미지 젠체 출력 -->
+	<select id="selectGalleryList" resultMap="galleryListResultMap"  parameterType="map">
+		SELECT  BOARD_NO, 
+				UNO, 
+				TITLE, 
+				POST_DATE, 
+				ORIGINAL_IMAGE, 
+				RENAMED_IMAGE, 
+				GAL_TAG, 
+				STATUS, 
+				BOARD_TYPE
+		FROM GALLERY 
 <!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
-<!-- 		WHERE G.STATUS = 'Y' -->
-<!-- 		<if test="titleKeyword != null"> -->
-<!-- 			AND M.ID LIKE '%'||#{titleKeyword}||'%' -->
+		WHERE STATUS = 'Y' 
+<!-- 		<if test="galTagKeyword != null">	검색창에서 검색,, -->
+<!-- 			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%'  -->
 <!-- 		</if> -->
-<!-- 		<if test="galTagKeyword != null"> -->
-<!-- 			AND B.TITLE LIKE '%'||#{galTagKeyword}||'%' -->
+<!-- 		<if test="unoKeyword != null">		나의갤러리 누르면 회원번호로 검색,, -->
+<!-- 			AND UNO =#{unoKeyword}  -->
 <!-- 		</if> -->
-<!-- 		<if test="unoKeyword != null"> -->
-<!-- 			AND B.CONTENT LIKE '%'||#{unoKeyword}||'%' -->
-<!-- 		</if> -->
-<!-- 		ORDER BY B.NO DESC -->
-<!-- 	</select> -->
+		ORDER BY BOARD_NO DESC
+	</select>
 
-<!-- 	<select id="selectGalleryCount" resultType="int"  parameterType="map"> -->
-<!-- 		SELECT  COUNT(*) -->
-<!-- 		FROM GALLERY G -->
+	<!-- 갯수 -->
+	<select id="selectGalleryCount" resultType="int"  parameterType="map">
+		SELECT  COUNT(*) 
+		FROM GALLERY 
 <!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
-<!-- 		WHERE B.STATUS = 'Y' -->
+		WHERE STATUS = 'Y' 
 <!-- 		<if test="titleKeyword != null"> -->
-<!-- 			AND M.ID LIKE '%'||#{titleKeyword}||'%' -->
+<!-- 			AND TITLE LIKE '%'||#{titleKeyword}||'%' -->
 <!-- 		</if> -->
 <!-- 		<if test="galTagKeyword != null"> -->
-<!-- 			AND B.TITLE LIKE '%'||#{galTagKeyword}||'%' -->
+<!-- 			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%'  -->
 <!-- 		</if> -->
 <!-- 		<if test="unoKeyword != null"> -->
-<!-- 			AND B.CONTENT LIKE '%'||#{unoKeyword}||'%' -->
+<!-- 			AND UNO =#{unoKeyword}  -->
 <!-- 		</if> -->
-<!-- 		ORDER BY B.NO DESC -->
-<!-- 	</select> -->
+		ORDER BY BOARD_NO DESC 
+	</select>
 	
-<!-- 	<select id="selectGalleryByNo" parameterType="int" resultMap="galleryDetailResultMap"> -->
-<!--  		SELECT G.BOARD_NO,  -->
-<!-- 				M.ID,  -->
-<!-- 				G.TITLE,  -->
-<!-- 				G.ORIGINAL_IMAGE,  -->
-<!-- 				G.RENAMED_IMAGE,  -->
-<!-- 				G.GAL_TAG,  -->
-<!-- 				G.STATUS,  -->
-<!-- 				G.BOARD_TYPE -->
-<!-- 		FROM GALLERY G -->
+	<!-- 글번호로 이미지 가져오기 = 삭제할때 필요 -->
+<!-- 	<select id="selectGalleryByBoardNo" parameterType="int" resultMap="galleryDetailResultMap"> -->
+<!--  		SELECT  BOARD_NO,  -->
+<!-- 				UNO,  -->
+<!-- 				TITLE,  -->
+<!-- 				ORIGINAL_IMAGE,  -->
+<!-- 				RENAMED_IMAGE,  -->
+<!-- 				GAL_TAG,  -->
+<!-- 				STATUS,  -->
+<!-- 				BOARD_TYPE -->
+<!-- 		FROM GALLERY  -->
 <!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
-<!-- 		WHERE B.STATUS='Y' AND G.BOARD_NO=#{boardNo} -->
+<!-- 		WHERE G.STATUS='Y' AND G.WHERE BOARD_NO=#{boardNo} -->
+<!-- 		WHERE G.STATUS='Y' AND G.UNO=#{uno} -->
 <!-- 	</select> -->
 	
-	
-<!-- 	<update id="deleteGallery" parameterType="int"> -->
-<!-- 		UPDATE GALLERY SET STATUS='N' WHERE BOARD_NO=#{boardNo} -->
-<!-- 	</update> -->
+	<!-- 이미지 삭제 -->
+	<update id="deleteGallery" parameterType="int">
+		UPDATE GALLERY SET STATUS='N' WHERE BOARD_NO=#{boardNo}
+	</update>
 	
 </mapper>

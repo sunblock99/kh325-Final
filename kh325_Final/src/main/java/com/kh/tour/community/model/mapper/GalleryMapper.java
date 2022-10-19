@@ -12,9 +12,8 @@ import com.kh.tour.community.model.vo.Gallery;
 public interface GalleryMapper {
 	//Gallery
 	int insertGallery(Gallery gallery);
-//	List<Gallery> selectGalleryList(RowBounds rowBounds, Map<String, String> map);
-//	Gallery selectGalleryByUno(int uno); 
-//	Gallery selectGalleryByBoardNo(int boardNo); 
-//	int selectGalleryCount(Map<String, String> map);
-//	int deleteGallery(int boardNo);
+	List<Gallery> selectGalleryList(RowBounds rowBounds, Map<String, String> map);
+	int selectGalleryCount(Map<String, String> map);
+	Gallery selectGalleryByBoardNo(int boardNo); 
+	int deleteGallery(int boardNo);
 }
