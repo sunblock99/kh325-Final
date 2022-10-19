@@ -159,10 +159,10 @@
                     <div class="mb-5"><img class="img-fluid mb-3" src="${path}/resources/img/loginLogo.png" alt="..." style="max-width: 8rem;">
                         <h2 class="text-pB">환영합니다!</h2>
                     </div>
-                    <form class="form-validate">
+                    <form class="form-validate" id="LoginFrm" action="${path}/login" method="post">
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginUsername"> 아이디(이메일 주소)</label>
-                            <input class="form-control text-pB" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required="" data-msg="Please enter your email">
+                            <input class="form-control text-pB" name="email" id="email" type="email" placeholder="name@address.com" autocomplete="off" required="" data-msg="Please enter your email">
                         </div>
                         <div class="mb-4">
                             <div class="row">
@@ -171,7 +171,7 @@
                                 </div>
                                 <div class="col-auto text-pB"><a class="form-text small text-pB" href="#" style="color: black !important;">비밀번호를 잊으셨나요?</a></div>
                             </div>
-                            <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required="" data-msg="Please enter your password">
+                            <input class="form-control" name="password" id="password1" placeholder="Password" type="password" required="" data-msg="Please enter your password">
                         </div>
                         <div class="mb-4">
                             <div class="form-check">
@@ -181,7 +181,7 @@
                         </div>
                         <!-- Submit-->
                         <div class="d-grid">
-                            <button class="btn btn-lg btn-primary" style=" background-color: #FFF1CC; border-color: #FC950D; color: #FC950D! important;">로그인</button>
+                            <button class="btn btn-lg btn-primary" type="submit" style="background-color: #FFF1CC; border-color: #FC950D; color: #FC950D! important;">로그인</button>
                         </div>
                         <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
                         <div class="d-grid gap-2">

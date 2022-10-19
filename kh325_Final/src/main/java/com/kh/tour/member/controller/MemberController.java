@@ -32,9 +32,9 @@ public class MemberController {
 	private MemberService service;
 	
 	@PostMapping("/login")
-	public String login(Model model, String userId, String userPwd) {
-		log.info("id : " + userId + ", pw : " + userPwd);
-		Member loginMember = service.login(userId, userPwd);
+	public String login(Model model, String email, String password1) {
+		log.info("id : " + email + ", pw : " + password1);
+		Member loginMember = service.login(email, password1);
 		
 		if(loginMember != null) {
 			model.addAttribute("loginMember", loginMember);

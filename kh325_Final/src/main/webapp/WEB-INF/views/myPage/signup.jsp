@@ -159,29 +159,29 @@
                         </h2>
                         <p class="text-muted text-pB">지금 회원가입 하신 후 사이트에서 다양한 서비스를 경험해보세요.</p>
                     </div>
-                    <form class="form-validate">
+                    <form class="form-validate" name="signinFrm" action="${path}/myPage/signup" method="post">
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginUsername"> 이름</label>
-                            <input class="form-control text-pB" name="loginUsername" id="loginUsername" type="email" placeholder="홍길동" autocomplete="off" required data-msg="Please enter your email">
+                            <input class="form-control text-pB" name="name" id="name" type="text" placeholder="홍길동" autocomplete="off" required data-msg="Please enter your email">
                         </div>
                         <div class="mb-4">
-                            <label class="form-label text-pB" for="loginUsername"> 아이디(이메일 주소)</label>
-                            <input class="form-control text-pB" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
+                            <label class="form-label text-pB" for="loginUseremail"> 아이디(이메일 주소)</label>
+                            <input class="form-control text-pB" name="email" id="email" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
                         </div>
                         <div class="mb-4">
-                            <label class="form-label text-pB" for="loginUsername"> 연락처</label>
-                            <input class="form-control text-pB" name="loginUsername" id="loginUsername" type="email" placeholder="010-0000-0000" autocomplete="off" required data-msg="Please enter your email">
+                            <label class="form-label text-pB" for="loginUserphone"> 연락처</label>
+                            <input class="form-control text-pB" name="phone" id="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" required data-msg="Please enter your mobile number">
                         </div>
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginPassword"> 비밀번호</label>
-                            <input class="form-control text-pB" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
+                            <input class="form-control text-pB" name="password" id="password1" placeholder="Password" type="password" required data-msg="Please enter your password">
                         </div>
                         <div class="mb-4">
                             <label class="form-label text-pB" for="loginPassword2"> 비밀번호 확인</label>
-                            <input class="form-control text-pB" name="loginPassword2" id="loginPassword2" placeholder="Password" type="password" required data-msg="Please enter your password">
+                            <input class="form-control text-pB" name="password2" id="password2" placeholder="Password" type="password" required data-msg="Please enter your password">
                         </div>
                         <div class="d-grid gap-2 text-pB">
-                            <button class="btn btn-lg btn-primary text-pB" type="submit" style=" background-color: #FFF1CC; border-color: #FC950D; color: #FC950D! important;">회원 가입</button>
+                            <button class="btn btn-lg btn-primary text-pB" id="enrollSubmit" type="submit" style=" background-color: #FFF1CC; border-color: #FC950D; color: #FC950D! important;">회원 가입</button>
                         </div>
                         <hr class="my-3 hr-text letter-spacing- text-pB2" data-content="OR">
                         <div class="d-grid gap-2">
@@ -228,6 +228,7 @@
         //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
+    
     <!-- jQuery-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
@@ -245,6 +246,58 @@
     <script>
         var basePath = ''
     </script>
+    
+    <script type="text/javascript">
+	$(function () {
+		$("#password2").blur((event) => {
+			let password1 = $("#password1").val();			
+			let password2 = $(event.target).val();
+			
+			if(password1.trim() != password2.trim()) {
+				alert("비밀번호가 일치하지 않습니다.");
+				
+				$("#password1").val("");
+				$(event.target).val("");
+				$("#password1").focus();
+			}
+		});
+    	
+	    $("#enrollSubmit").on("click", () => {
+	    	// TODO 전송하기 전에 각 영역에 유효성 검사로직을 추가하는 부분!
+	    	//return false;
+	    });
+	    
+	    // 아이디 중복을 확인하는 AJAX 코드
+	    $("#checkDuplicate").on("click", ()=>{
+	    	let id = $("#email").val().trim();
+	    	
+	    	if(id.length < 4){
+				alert("아이디는 최소 4글자입니다.")
+				return;
+	    	}
+	    	
+	    	$.ajax({
+	    		type:"get",
+	    		url:"${path}/member/idCheck",
+	    		data:{id}, // 속성 키값 이름으로 서버에 보낼경우 1개만 쓴다. 
+	    		success:
+	    			(data)=>{
+	    				console.log(data);
+	    				if(data.validate === true){
+	    					alert("이미 사용중인 아이디입니다.")
+	    				}else{
+	    					alert("사용 가능합니다.")
+	    				}
+	    			},
+	    		error:
+	    			(e)=>{
+	    				console.log(e);
+	    			}
+	    	});
+	    });
+	});
+</script>
+    
     <!-- Main Theme JS file    -->
     <script src="js/theme.js"></script>
 </body>

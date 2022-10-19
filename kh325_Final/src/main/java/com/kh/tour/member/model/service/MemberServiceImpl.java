@@ -32,7 +32,7 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public Member login(String userEmail, String pwd) {
+	public Member login(String userEmail, String userPassword) {
 		Member member = this.findByEmail(userEmail);
 		if(member == null) {
 			return null;
@@ -40,15 +40,15 @@ public class MemberServiceImpl implements MemberService {
 		
 		// passwordEncoder 활용법
 		System.out.println(member.getUserPassword()); // Hash 코드로 암호화된 비밀번호가 저장되어있음
-		System.out.println(passwordEncoder.encode(pwd)); // encode를 통해 평문에서 암호문으로 변경
-		System.out.println(passwordEncoder.matches(pwd, member.getUserPassword())); 
+		System.out.println(passwordEncoder.encode(userPassword)); // encode를 통해 평문에서 암호문으로 변경
+		System.out.println(passwordEncoder.matches(userPassword, member.getUserPassword())); 
 			// 파라메터로 받아온 pwd를 암호화하고 기존 암호화된 비밀번호와 비교하는 코드
 		
 		if(userEmail.equals("admin")) { // admin일 경우 테스트를 위해 비밀번호 확인하지 않음
 			return member;
 		}
 		
-		if(member != null && passwordEncoder.matches(pwd, member.getUserPassword()) == true) {
+		if(member != null && passwordEncoder.matches(userPassword, member.getUserPassword()) == true) {
 			// 성공일때!
 			return member;
 		}else {
@@ -90,16 +90,16 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int delete(int no) {
-		return mapper.deleteMember(no);
+	public int delete(int userNo) {
+		return mapper.deleteMember(userNo);
 	}
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int updatePwd(Member loginMember, String userPwd) {
+	public int updatePwd(Member loginMember, String userPassword) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("no", "" + loginMember.getUserNo());
-		map.put("newPwd", passwordEncoder.encode(userPwd));
+		map.put("newPwd", passwordEncoder.encode(userPassword));
 		return mapper.updatePwd(map);
 	}
 

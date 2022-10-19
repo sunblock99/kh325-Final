@@ -443,13 +443,13 @@
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">이름</h6>
                             </label>
-                            <input class="form-control" type="text" name="name" id="name">
+                            <input class="text" name="name" id="name" type="text" value="${loginMember.userName}" readonly required>
                         </div>
                         <div class=" mt-5 mb-5 col-12">
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">아이디 (이메일 주소)</h6>
                             </label>
-                            <input class="form-control" type="text" name="name" id="name">
+                            <input class="form-control" name="email" id="email" type="email" value="${loginMember.userEmail}">
                         </div>
                         <div class="row">
                             <div class="col-sm-8">
@@ -463,7 +463,7 @@
                             <div class="row mt-4">
                                 <div class="mb-4 col-12">
                                     <label class="form-label text-pEb" for="password-current">현재 비밀번호</label>
-                                    <input class="form-control" type="password" name="password-current" id="password-current">
+                                    <input class="form-control" type="password" name="password" id="password1">
                                 </div>
                                 <div class="mb-4 col-md-6">
                                     <label class="form-label text-pEb" for="password-new">새로운 비밀번호</label>
@@ -474,19 +474,19 @@
                                     <input class="form-control" type="password" name="password-confirm" id="password-confirm">
                                 </div>
                             </div>
-                            <button class="btn btn-outline-primary text-pEb" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">비밀번호 업데이트</button>
+                            <button class="btn btn-outline-primary text-pEb" type="submit" id="updatePwd" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">비밀번호 업데이트</button>
                         </div>
                         <div class=" mt-5 mb-4 col-12">
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">연락처</h6>
                             </label>
-                            <input class="form-control" type="text" name="name" id="name">
+                            <input class="form-control" name="phone" id="phone" type="tel" value="${loginMember.userPhone}">
                         </div>
                         <div class=" mt-5 mb-4 col-12">
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">주소</h6>
                             </label>
-                            <input class="form-control" type="text" name="name" id="name">
+                            <input class="form-control" name="address" id="address" type="text"  value="${loginMember.userAddress}">
                         </div>
                         <div class="mb-5 mt-5 col-lg-6">
                             <label class="form-label" for="formFile" style="color:black">
@@ -495,7 +495,7 @@
                             <input class="form-control" id="formFile" type="file">
                         </div>
                         <button class="btn btn-primary text-pEb" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">수정하기</button>
-                        <button class="btn btn-primary text-pEb" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">탈퇴하기</button>
+                        <button class="btn btn-primary text-pEb" type="submit" id="deleteMember" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">탈퇴하기</button>
                     </div>
 
                 </div>
@@ -594,6 +594,44 @@
         //- injectSvgSprite('${path}icons/orion-svg-sprite.svg'); 
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
+    
+    <script>
+		$(document).ready(() => {
+			$("#updateSubmit").on("click", (e) => {
+				let pass1 = $("#password-new").val();			
+				let pass2 = $("#password-confirm").val();
+				
+				if(pass1.trim() != pass2.trim()) {
+					alert("비밀번호가 일치하지 않습니다.");
+					
+					$("#password-new").val("");
+					$("#password-confirm").val("");
+					$("#password-new").focus();
+					
+					return false;
+				}		
+			});
+		});
+	</script>
+	
+	<script type="text/javascript">
+		$(function () {
+			$("#deleteMember").on("click", (e) => {
+				if(confirm("정말로 탈퇴하시겠습니까?")) {
+					location.replace('${path}/myPage/delte');
+				}
+			});
+		
+			$("updatePwd").on("click", (e) => {
+				const url="${path}/myPage/updatePwd";
+				const status = "left=500px,top=200px,width=400px,height=210px"
+				
+				open(url, "", status);
+			});
+		});
+	
+	</script>
+	
     <!-- jQuery-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
@@ -613,6 +651,8 @@
     </script>
     <!-- Main Theme JS file    -->
     <script src="js/theme.js"></script>
+    
+    
 </body>
 
 </html>
