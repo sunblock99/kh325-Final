@@ -42,7 +42,6 @@
 		)
 	</insert>
 	
-	
 <!-- 	<select id="selectGalleryList" resultMap="GalleryListResultMap"  parameterType="map"> -->
 <!-- 		SELECT  G.BOARD_NO,  -->
 <!-- 				M.ID,  -->

@@ -20,6 +20,7 @@ public class Gallery {
 	private String 	status;
 	private String 	boardType;
 	
+	
 //	BOARD_NO	   
 //	UNO	           
 //	TITLE	       
