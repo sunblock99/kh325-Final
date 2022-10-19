@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,14 +24,14 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customPHY.css">
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/customPHY.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -39,8 +39,8 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/like.css">
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
+    <link rel="stylesheet" href="${path}/resources/css/like.css">
 
 <style>
 
@@ -50,35 +50,35 @@
 	font-family: 'pBlack';
 	font-weight: 900;
 	font-display: swap;
-	src: url(font/Pretendard-Black.ttf);
+	src: url(${path}/resources/font/Pretendard-Black.ttf);
 }
 
 @font-face {
 	font-family: 'pEb';
 	font-weight: 800;
 	font-display: swap;
-	src: url(font/Pretendard-ExtraBold.ttf);
+	src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
 }
 
 @font-face {
 	font-family: 'pB';
 	font-weight: 700;
 	font-display: swap;
-	src: url(font/Pretendard-Bold.ttf);
+	src: url(${path}/resources/font/Pretendard-Bold.ttf);
 }
 
 @font-face {
 	font-family: 'pSb';
 	font-weight: 600;
 	font-display: swap;
-	src: url(font/Pretendard-SemiBold.ttf);
+	src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
 }
 
 @font-face {
 	font-family: 'pM';
 	font-weight: 500;
 	font-display: swap;
-	src: url(font/Pretendard-Medium.ttf);
+	src: url(${path}/resources/font/Pretendard-Medium.ttf);
 }
 
 @font-face {
@@ -86,28 +86,28 @@
 	font-weight: 400;
 	font-display: swap;
 	letter-spacing: 1px;
-	src: url(font/Pretendard-Regular.ttf);
+	src: url(${path}/resources/font/Pretendard-Regular.ttf);
 }
 
 @font-face {
 	font-family: 'pL';
 	font-weight: 300;
 	font-display: swap;
-	src: url(font/Pretendard-Light.ttf);
+	src: url(${path}/resources/font/Pretendard-Light.ttf);
 }
 
 @font-face {
 	font-family: 'pEl';
 	font-weight: 200;
 	font-display: swap;
-	src: url(font/Pretendard-ExtraLight.ttf);
+	src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
 }
 
 @font-face {
 	font-family: 'pThin';
 	font-weight: 100;
 	font-display: swap;
-	src: url(font/Pretendard-Thin.ttf);
+	src: url(${path}/resources/font/Pretendard-Thin.ttf);
 }
 
 div {
@@ -130,7 +130,6 @@ div {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        console.log('11');
         $('.find_text').on('keyup', function() {
             $('.test_cnt').html("(" + $(this).val().length + " / 40)");
 
@@ -151,7 +150,7 @@ div {
 
                     <!-- 로고 시작 -->
                     <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="./image/togetherLogoWhite.png" width="30%" height="10%">
+                        <img class="ps-3" src="${path}/resources/image/togetherLogoWhite.png" width="30%" height="10%">
                     </a>
                     <!-- 로고 끝-->
 
@@ -238,12 +237,12 @@ div {
             <div class="row">
                 <div class="col-xl-8 col-lg-10 mx-auto">
                     <p class="py-1 mb-5 text-muted  fw-light">
-                        <h1 class="py-4 text-pB text-center"> 행복의 나라로 갈테야</h1>
+                        <h1 class="py-4 text-pB text-center"> ${board.title }</h1>
                         
                         <div class="text-center mb-4 pb-4">
-                            <a href=""><img class="text-start avatar p-1 me-2" src="img/avatar/avatar-11.jpg" alt=""></a>
-                             Written by <a class="fw-bold" href="#" style="color: #907B65;">맥가이버</a>
-                             <span class="mx-2">|<span class="mx-2 text-pR">January 16, 2016 | <span class="mx-2 text-muted"> 2 comments </span>
+                            <a href=""><img class="text-start avatar p-1 me-2" src="${path}/resources/img/avatar/avatar-11.jpg" alt=""></a>
+                             Written by <a class="fw-bold" href="#" style="color: #907B65;">${board.userName }</a>
+                             <span class="mx-2">|<span class="mx-2 text-pR"><fmt:formatDate type="both" dateStyle="full" value="${board.postDate}"/> <span class="mx-2 text-muted"> ${comments.size() } comments </span>
                     </div>
                     </p>
                 </div>
@@ -252,55 +251,71 @@ div {
             <div class="row">
                 <div class="col-xl-8 col-lg-10 mx-auto">
                     <div class="text-content">
-                        <figure class="figure mb-5 pb-2"><img class="figure-img img-fluid w-100" src="https://cdn.pixabay.com/photo/2016/04/20/00/41/mcdonalds-1340199_960_720.jpg" alt="Example blog post alt.">
-                            <figcaption class="figure-caption text-center">맥도날드 제주점 </figcaption>
+                        <figure class="figure mb-5 pb-2 text-center">
+                        	<img class="figure-img img-fluid w-100" src="${board.imgRenamed }" alt="Example blog post alt.">
+                            <figcaption class="figure-caption text-center">${board.imgOriginal} </figcaption>
                         </figure>
 
-                        <blockquote class="blockquote-blog">이색 테마 여행, 전국 맥도날드 일주기</blockquote>
-                        <p>참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에
-                            순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지참깨빵위에 순쇠고기 패티2장 특별한 소스 양상추 치즈 피클 양파까지</p>
-                        
-                            <div class="col-12 text-end">
-                                <div class="wrapper text-end">
-                                    <a href="javascript:void(0);" class="like-button">
-                                        <i class="material-icons not-liked bouncy">
-                                        <svg class="svg-icon text-danger">
-                                            <use xlink:href="#heart-1"></use>
-                                        </svg></i>
-                                        <i class="material-icons is-liked bouncy">
-                                        <svg class="svg-icon text-white">
-                                            <use xlink:href="#heart-1"></use>
-                                        </svg>
-                                        </i>
-                                        <span class="like-overlay"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <br><hr>
+                        <blockquote class="blockquote-blog">${board.subTitle }</blockquote>
+                        <p class="lh-base" style="text-indent : 20px;">
+                        	${board.content}
+						</p>
+                          <div class="col-12 text-end">
+                              <div class="wrapper text-end" id="toggleLike">
+                              	  <c:if test="${board.like == true}">
+                                  <a href="javascript:void(0);return false;" class="like-button is-active">
+                                      <i class="material-icons not-liked bouncy">
+                                      <svg class="svg-icon text-danger">
+                                          <use xlink:href="#heart-1"></use>
+                                      </svg></i>
+                                      <i class="material-icons is-liked bouncy">
+                                      <svg class="svg-icon text-white">
+                                          <use xlink:href="#heart-1"></use>
+                                      </svg>
+                                      </i>
+                                      <span class="like-overlay"></span>
+                                  </a>
+                                  </c:if>
+                              	  <c:if test="${board.like == false || empty board}">
+                                  <a href="javascript:void(0);return false;" class="like-button">
+                                      <i class="material-icons not-liked bouncy">
+                                      <svg class="svg-icon text-danger">
+                                          <use xlink:href="#heart-1"></use>
+                                      </svg></i>
+                                      <i class="material-icons is-liked bouncy">
+                                      <svg class="svg-icon text-white">
+                                          <use xlink:href="#heart-1"></use>
+                                      </svg>
+                                      </i>
+                                      <span class="like-overlay"></span>
+                                  </a>
+                                  </c:if>
+                              </div>
+                          </div>
+                          <br><hr>
                     </div>
                     <!-- 댓글 시작-->
                     <!-- 댓글 리스트 시작-->
                     <div class="mt-5 text-pR">
-                        <h6 class="text-muted mb-4">2 COMMENTS</h6>
-                        <!--댓글 시작-->
-                        <div class="d-flex mb-4">
-                            <img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="img/avatar/avatar-0.jpg" alt="Julie Alma">
-                            <div>
-                                <h5 class="text-pB">윤다나</h5>
-                                <p class="text-sm text-muted"><i class="far fa-clock"></i> September 23, 2017 at 12:00 am</p>
-                                <p class="text-muted">맥도날드는 마음의 고향입니다,</p>
-                            </div>
-                        </div>
-                        <!--댓글 끝-->
-                        <!--댓글 시작-->
-                        <div class="d-flex mb-4"><img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="img/avatar/avatar-8.jpg" alt="Louise Armero">
-                            <div>
-                                <h5 class="text-pB">골드</h5>
-                                <p class="text-sm text-muted"><i class="far fa-clock"></i> June 23, 2017 at 12:35 pm</p>
-                                <p class="text-muted">정말 무익하고 특이한 여행이네요. 다음에는 버거킹 어떠신가요? </p>
-                            </div>
-                        </div>
-                        <!--댓글 끝-->
+                        <h6 class="text-muted mb-4">${comments.size() } COMMENTS</h6>
+                        <c:if test="${!empty comments }">
+	                        <c:forEach var="comment" items="${comments}">
+	                        <!--댓글 시작-->
+	                        <div class="d-flex mb-4">
+	                            <img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${path}/resources/img/avatar/avatar-0.jpg" alt="Julie Alma">
+	                            <div>
+	                                <h5 class="text-pB">${comment.userName }</h5>
+	                                <p class="text-sm text-muted"><i class="far fa-clock pe-1"></i><fmt:formatDate type="date" dateStyle="full" value="${comment.postDate}"/>  </p>
+	                                <p class="text-muted">${comment.content }
+		                                <c:if test="${!empty loginMember && loginMember.userNo == comment.userNo }">
+	                                    	<a href="${path}/community/deleteJourneyComment?commentNo=${comment.commentNo}&journeyNo=${board.journeyNo}" class="text-sm "> | <i class="fas fa-trash p-1 "> 댓글 삭제 </i></a>
+	                                    </c:if>
+                                    </p>
+	                            </div>
+	                        </div>
+	                        <!--댓글 끝-->
+	                        </c:forEach>
+                        </c:if>
                     </div>
                     <!-- / 댓글 리스트 끝-->
                     <!--   댓글 달기 시작-->
@@ -308,15 +323,22 @@ div {
                         <div class="text-pR" id="leaveComment">
                             <div class="mt-4">
                                 <h5 class="mb-4 float-end" style="color:#907B65; ">Leave a comment</h5>
-                                <form class="form text-pB" id="comment-form" method="post" action="#">
+                                <form class="form text-pB" id="comment-form" method="post" action="${path}/community/writeJourneyComment">
+                                	<input name="journeyNo" value="${board.journeyNo }" hidden="hidden">
                                     <div class="mb-4">
-                                        <textarea class="form-control" id="comment" rows="4"></textarea>
+                                        <textarea class="form-control" id="comment" name="content" rows="4"></textarea>
                                     </div>
                                     <button class="btn btn-outline-dark float-end text-pB" type="submit"><i class="far fa-comment"></i> 댓글 </button>
-                                    <a class="btn btn-outline-dark float-start me-2" type=""><i class="fas fa-align-left"></i> 목록 </a>
-                                    <a class="btn btn-outline-dark float-start me-2" type=""><i class="fas fa-archive"></i> 수정</a>
+                                    <a class="btn btn-outline-dark float-start me-2" href="${path}/community/journeyList"><i class="fas fa-align-left"></i> 목록 </a>
+                                    <c:if test="${!empty loginMember && loginMember.userNo == board.userNo }">
+                                  	  <a class="btn btn-outline-dark float-start me-2" href="${path}/community/updateJourney?journeyNo=${board.journeyNo}"><i class="fas fa-archive"></i> 수정</a>
+                                  	  <a class="btn btn-outline-dark float-start me-2" href="${path}/community/deleteJourney?journeyNo=${board.journeyNo}"><i class="fas fa-archive"></i> 삭제</a>
+                                    </c:if>
+                                    <c:if test="${!empty loginMember && loginMember.userNo != board.userNo }">
                                     <a class="btn btn-outline-dark float-start me-2" data-bs-toggle="modal" data-bs-target="#exclaim" type="">
-                                        <i class="fa-solid fa-bullhorn fas"></i> 신고 </a>
+                                        <i class="fa-solid fa-bullhorn fas"></i> 신고
+                                    </a>
+                                    </c:if>
                                 </form>
                             </div>
                         </div>
@@ -340,10 +362,10 @@ div {
                                 <div class="form-group">
                                     <label class="form-label" for="area-form">신고사유</label>
                                     <select class="selectpicker form-control bg-gray-200 " name="reason " id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">
-                                    <option value="insult" >욕설 </option>
-                                    <option value="fraud ">사기행위 </option>
-                                    <option value="lie">사실관계과 다름 </option>
-                                    <option value="rest">기타</option>
+                                    <option value="욕설" >욕설 </option>
+                                    <option value="사기행위">사기행위 </option>
+                                    <option value="광고/도배">광고/도배 </option>
+                                    <option value="기타">기타</option>
                                 </select>
                                 </div>
                             </div>
@@ -370,7 +392,7 @@ div {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <img src="./image/togetherLogo.png" height="60" width="140" alt="">
+                        <img src="${path }/resources/image/togetherLogo.png" height="60" width="140" alt="">
                         <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
                         <div class="mt-4 pt-2 ps-3 ms-sm-4">
                             <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
@@ -419,10 +441,10 @@ div {
                     </div>
                     <div class="col-md-6">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/visa.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/mastercard.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/paypal.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/western-union.svg" alt="..."></li>
                         </ul>
                     </div>
                 </div>
@@ -431,6 +453,31 @@ div {
     </footer>
     <!-- JavaScript files-->
     <script>
+    
+	    $(document).ready(function() {
+	    	console.log(${board.like})
+	        $('.like-button').click(function() {
+ 	            $(this).toggleClass('is-active');
+		        var path = "${path}/community/likeOnOff?boardNo=${board.journeyNo}";
+		        console.log(path)
+		        $.ajax({
+	   	            type: "get",
+	   	            url: path,
+	   	            contentType: "application/json; charset=utf-8",
+	   	            data: '',
+	   	            dataType: "json",
+	   	            success: function (data) {
+	   	            	
+	   	            	console.log(data);
+                              
+	   	            },
+	   	        	error: function (req, status, error) {
+		                alert("Error try again");
+	   	        	}
+		    	})
+	        })
+	    });
+	    
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
         //   see more here 
@@ -455,31 +502,31 @@ div {
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
 
     <script>
-        $(document).ready(function() {
+     /*    $(document).ready(function() {
             $('.like-button').click(function() {
                 $(this).toggleClass('is-active');
             })
-        })
+        }) */
     </script>
 
 </body>

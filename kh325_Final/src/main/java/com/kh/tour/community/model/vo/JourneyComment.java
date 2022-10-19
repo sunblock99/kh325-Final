@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 public class JourneyComment {
 	int commentNo;
 	int journeyNo;
-	int uNo;
+	int userNo;
+	String userName;
 	String content;
 	Date postDate;
 	String status;

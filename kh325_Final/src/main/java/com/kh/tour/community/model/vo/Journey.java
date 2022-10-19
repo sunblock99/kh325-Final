@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Journey {
 	int journeyNo;
-	int uNo;
+	int userNo;
+	String userName;
 	String title;
 	String subTitle;
 	String hashTag;
@@ -24,4 +25,5 @@ public class Journey {
 	int count;
 	String boardType;
 	List<JourneyComment> commentList;
+	boolean like;
 }

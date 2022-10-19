@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommLike {
 	int likeNo;
-	int uNo;
+	int userNo;
 	String boardType;
 	int boardNo;
 }

@@ -49,7 +49,7 @@
             return;
         }
     </script>
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
     <style>
     /*폰트 적용*/
     @font-face {
@@ -216,9 +216,8 @@
     <!-- 글쓰기 폼 시작 -->
     <section class="py-6 mb-3">
         <div class="container">
-            <form action="${path}/community/journeyWrite" method="post" enctype="multipart/form-data">
-            <c:set var="now" value="<%=new java.util.Date()%>" />
-            <input type="text" name="userNo" value="${loginMember.userNo }" hidden="hidden"/>
+            <form action="${path}/community/updateJourney" method="post" enctype="multipart/form-data">
+            	<input name="journeyNo" value="${board.journeyNo }" hidden="hidden">
                 <div class="row">
                     <div class="px-lg-7 px-3">
                         <h2 class="text-pEb">
@@ -226,20 +225,20 @@
                         </h2>
                         <div class="mb-3 py-2 text-end text-pM">
                             <a href=""><img class="avatar p-1 me-2" src="${path }/resources/img/avatar/avatar-11.jpg" alt=""></a>
-                             Written by <a class="fw-bold" href="#" style="color: #907B65;">${loginMember.userName }</a><span class="mx-1">|</span> 
-                             <fmt:formatDate value="${now}" type="date" dateStyle="full" />  <span class="mx-1">|</span>
+                             Written by <a class="fw-bold" href="#" style="color: #907B65;">${board.userName }</a><span class="mx-1">|</span> 
+                             <fmt:formatDate type="date" dateStyle="long" value="${board.postDate}"/> <span class="mx-1">|</span>
                         </div>
                         <div class="mb-3 text-pB">
                             <label class="form-label" for="title">TITLE</label>
-                            <input class="form-control" name="title" type="text">
+                            <input class="form-control" name="title" value="${board.title }" type="text">
                         </div>
                         <div class="mb-3 text-pB">
                             <label class="form-label" for="text">SUB TITLE</label>
-                            <input type="text" name="subTitle" class="form-control">
+                            <input type="text" name="subTitle"  value="${board.subTitle }" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-pB" for="image">Main image</label>
-                            <input type="file" accept="image/*" name="upfile" id="image" class="form-control">
+                            <input class="form-control" accept="image/*" type="file" name="upfile" id="upfile" placeholder="" value="${board.imgOriginal }">
                         </div>
                         <div class="mb-3 text-pB border-bottom pb-4">
                             <div class="row">
@@ -248,22 +247,22 @@
                                     <input type="text" name="addTag" id="addTag" class="form-control">
                                 </div>
                                 <div class="col-lg-1" style="padding:0px">
-                                    <p class="btn btn-outline-warning" onclick="addTags();" style="width: 100%;"> 등록</p>
+                                    <p class="btn btn-outline-warning" onclick="addTags();" id="" style="width: 100%;"> 등록</p>
                                 </div>
                                 <div class="col-lg-8 mx-auto ">
-                                    <input type="text" class=" form-control bg-gray-100 " name="hashTag" id="tagList" value="#가을, #행복,">
+                                    <input type="text" class=" form-control bg-gray-100 " id="tagList" name="hashTag" value="${board.hashTag }"  >
                                 </div>
                             </div>
                         </div>
                         <div class="row pt-3">
                             <div class="mb-3">
                                 <label class="form-label text-pB" for="content">content</label>
-                                <textarea class="form-control" name="content" id="content" cols="30" rows="21"></textarea>
+                                <textarea class="form-control" name="content" cols="30" rows="21">${board.content }</textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class=" col-6 text-start">
-                                <input type="submit" class="btn btn-outline-warning" value="to Blog main">
+                                <input onclick="location.href='${path}/community/journeyList'"class="btn btn-outline-warning" value="to Blog main">
                             </div>
                             <div class=" col-6 text-end">
                                 <input type="submit" class="btn btn-outline-warning" value="post submit">
@@ -274,7 +273,7 @@
             </form>
         </div>
     </section>
-    <!-- 글쓰기 폼 시작 -->
+    <!-- 글쓰기 폼 끝 -->
     <!-- Footer-->
     <footer class="position-relative z-index-10 d-print-none">
         <!-- Main block - menus, subscribe form-->
@@ -367,24 +366,24 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="${path }/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="${path }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="${path }/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="${path }/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="${path }/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="${path }/resources/vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="${path }/resources/js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
 </body>
 
 </html>
