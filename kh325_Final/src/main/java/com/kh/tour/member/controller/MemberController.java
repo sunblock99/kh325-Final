@@ -46,6 +46,13 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping("/loginView")
+	public String loginView(Model model) {
+		
+			return "myPage/login";
+		
+	}
+	
 	@RequestMapping("/logout")
 	public String logout(SessionStatus status) {
 		log.info("status : " + status.isComplete());
@@ -95,14 +102,20 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("/member/view")
-	public String view() {
+	@GetMapping("/myPage/profile")
+	public String view(Model model,@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
 		log.info("회원 정보 페이지 요청");
-		return "member/view";
+		if(loginMember == null) {
+			model.addAttribute("msg", "잘못된 접근입니다.");
+			model.addAttribute("location", "/");
+			return "common/msg";
+		}
+		
+		return "myPage/profile";
 	}
 	
 //	@SessionAttribute : 세션으로 가지고 있는 값을 command 객체로 땡겨올때 쓰는 어노테이션
-	@PostMapping("/member/update")
+	@PostMapping("/myPage/update")
 	public String update(Model model,
 				@ModelAttribute Member member, // @ModelAttribute 생략 가능!!
 				@SessionAttribute(name= "loginMember", required = false) Member loginMember 
@@ -119,10 +132,10 @@ public class MemberController {
 		if(result > 0 ) {
 			model.addAttribute("loginMember", service.findByEmail(member.getUserEmail())); // DB에 있는 값으로 다시 세션값 업데이트
 			model.addAttribute("msg", "회원정보를 수정하였습니다.");
-			model.addAttribute("location", "/member/view");
+			model.addAttribute("location", "/myPage/profile");
 		}else {
 			model.addAttribute("msg", "회원정보 수정을 실패하였습니다.");
-			model.addAttribute("location", "/member/view");
+			model.addAttribute("location", "/myPage/profile");
 		}
 		
 		return "common/msg";
@@ -139,7 +152,7 @@ public class MemberController {
 			model.addAttribute("location", "/logout");
 		}else {
 			model.addAttribute("msg", "회원 탈퇴에 실패하였습니다.");
-			model.addAttribute("location", "/member/view");
+			model.addAttribute("location", "/myPage/profile");
 		}
 		return "common/msg";
 	}
