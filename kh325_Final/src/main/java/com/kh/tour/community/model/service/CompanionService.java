@@ -1,22 +1,18 @@
-package com.kh.tour.community.model.mapper;
+package com.kh.tour.community.model.service;
 
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
-
+import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.community.model.vo.Companion;
 import com.kh.tour.community.model.vo.CompanionComment;
 import com.kh.tour.member.model.vo.Member;
 
-@Mapper
-public interface CompanionMapper {
+public interface CompanionService {
 	
-	List<Companion> selectBoardList(RowBounds rowBounds,Map<String,String> map);
+	List<Companion> selectBoardList(PageInfo pageInfo,Map<String,String> map);
 	int selectBoardCount(Map<String,String> map);
-	List<CompanionComment> selectCommentByNo(@Param("companionNo") int companionNo,@Param("senderNo") int senderNo);
+	List<CompanionComment> selectCommentByNo(int companionNo, int senderNo);
 	int insertBoard(Companion companion);
 	int insertComment(CompanionComment companionComment);
 	int deleteBoard(int companionNo);
