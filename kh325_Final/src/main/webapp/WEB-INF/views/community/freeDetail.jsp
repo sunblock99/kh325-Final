@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path }/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,57 +24,57 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path }/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path }/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customPHY.css">
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path }/resources/css/customPHY.css">
+    <link rel="stylesheet" href="${path }/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="./resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path }/resources/css/font.css">
+    <link rel="stylesheet" href="${path }/resources/css/customKNI.css">
     <style>
         /*폰트 적용*/
 @font-face {
 	font-family: 'pBlack';
 	font-weight: 900;
 	font-display: swap;
-	src: url(font/Pretendard-Black.ttf);
+	src: url(${path}/resources/font/Pretendard-Black.ttf);
 }
 
 @font-face {
 	font-family: 'pEb';
 	font-weight: 800;
 	font-display: swap;
-	src: url(font/Pretendard-ExtraBold.ttf);
+	src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
 }
 
 @font-face {
 	font-family: 'pB';
 	font-weight: 700;
 	font-display: swap;
-	src: url(font/Pretendard-Bold.ttf);
+	src: url(${path}/resources/font/Pretendard-Bold.ttf);
 }
 
 @font-face {
 	font-family: 'pSb';
 	font-weight: 600;
 	font-display: swap;
-	src: url(font/Pretendard-SemiBold.ttf);
+	src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
 }
 
 @font-face {
 	font-family: 'pM';
 	font-weight: 500;
 	font-display: swap;
-	src: url(font/Pretendard-Medium.ttf);
+	src: url(${path}/resources/font/Pretendard-Medium.ttf);
 }
 
 @font-face {
@@ -82,35 +82,45 @@
 	font-weight: 400;
 	font-display: swap;
 	letter-spacing: 1px;
-	src: url(font/Pretendard-Regular.ttf);
+	src: url(${path }/resources/font/Pretendard-Regular.ttf);
 }
 
 @font-face {
 	font-family: 'pL';
 	font-weight: 300;
 	font-display: swap;
-	src: url(font/Pretendard-Light.ttf);
+	src: url(${path }/resources/font/Pretendard-Light.ttf);
 }
 
 @font-face {
 	font-family: 'pEl';
 	font-weight: 200;
 	font-display: swap;
-	src: url(font/Pretendard-ExtraLight.ttf);
+	src: url(${path }/resources/font/Pretendard-ExtraLight.ttf);
 }
 
 @font-face {
 	font-family: 'pThin';
 	font-weight: 100;
 	font-display: swap;
-	src: url(font/Pretendard-Thin.ttf);
+	src: url(${path }/resources/font/Pretendard-Thin.ttf);
 }
 
-div {
-	font-family: 'pR';
-	letter-spacing: -1px;
-}
+	div {
+		font-family: 'pR';
+		letter-spacing: -1px;
+	}
        
+	.txt_post {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 1; /* 라인수 */
+	    -webkit-box-orient: vertical;
+	    word-wrap:break-word; 
+	    line-height: 1.2em;
+	    height: 1.2em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+	}               
 </style>
 </head>
 
@@ -138,7 +148,7 @@ div {
 
                     <!-- 로고 시작 -->
                     <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="./image/togetherLogo.png" width="30%" height="10%">
+                        <img class="ps-3" src="${path }/resources/image/togetherLogo.png" width="30%" height="10%">
                     </a>
                     <!-- 로고 끝-->
 
@@ -207,7 +217,7 @@ div {
         <!-- 상단바메뉴 끝 -->
         <!-- =============== 메뉴바 영역 끝 =============== -->
     </header>
-    <section style="background-image: url(./image/circles_w.png); background-repeat: no-repeat; ">
+    <section style="background-image: url(${path }/resources/image/circles_w.png); background-repeat: no-repeat; ">
 
         <div class="py-4 mb-3 mt-4">
             <div class="container px-lg-6 ">
@@ -215,102 +225,79 @@ div {
                     <div class="badge rounded-pill me-2 bg-warning mb-2">
                         <span class="px-3 py-2 h6" style="font-weight: bolder; color: black;">자유게시판</span>
                     </div>
-                    <h1 class="display-5 fw-bold text-dark ">졸리으다</h1>
-                    <p> Written by <a class="fw-bold" href="# " style="color: #907B65; ">맥가이버</a><span class="mx-1 ">/</span> January 16, 2016 <span class="mx-1 "></span></p>
+                    <h1 class="display-5 fw-bold text-dark ">${board.title }</h1>
+                    <p> Written by <a class="fw-bold" href="# " style="color: #907B65; ">${board.userName }</a><span class="mx-1 ">/</span> <fmt:formatDate dateStyle="full" type="date" value="${board.postDate}"/> <span class="mx-1 "></span></p>
                     <div class="pt-4 ">
                         <div class=" mb-2 pb-4 border-bottom ">
-                            <img src="./image/dbq_ye(50x2).png" alt="">
-                            <p class="pt-2">orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                                a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                                Lorem Ipsum passages, and more recently with desktop pu
+                            <img src="${path }/resources/image/dbq_ye(50x2).png" alt="">
+                            <p class="pt-2">${board.content }
                             </p>
                         </div>
                         <div class="mb-3 py-4 text-end">
                             <div>
-                                <a href="#"><img src="./image/file.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">첨부파일 |</span></a>
-                                <a href="#"><img src="./image/pencil.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">수정 |</span> </a>
-                                <a href="#"><img src="./image/bin.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">삭제 |</span> </a>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#exclaim"><img src="./image/megaphone.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">신고하기</span> </a>
+                            	<c:if test="${!empty board.fileOriginal }">
+	                                <a href="${path}/community/fileDown?fileOriginal=${board.fileOriginal}&fileRenamed=${board.fileRenamed}"><img src="${path }/resources/image/file.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">첨부파일 |</span></a>
+                            	</c:if>
+                                <c:if test="${!empty loginMember && loginMember.userNo == board.userNo }">
+	                                <a href="${path}/community/updatefreeboard?freeboardNo=${board.freeBoardNo}"><img src="${path}/resources/image/pencil.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">수정 |</span> </a>
+	                                <a href="${path}/community/delete?freeboardNo=${board.freeBoardNo}"><img src="${path }/resources/image/bin.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">삭제 |</span> </a>
+                                </c:if>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#exclaim"><img src="${path }/resources/image/megaphone.png" style="width: 27px;" alt=""><span style="color:#907B65 ; ">신고하기</span> </a>
                             </div>
                         </div>
                         <div class="row pt-3">
-                            <div class="col-4 ">
-                                <div class="docs-item " id="ribbon ">
-                                    <div class="mt-3 ">
-                                        <div class="card py-3 border-0 shadow ">
-                                            <div class="ribbon ribbon-warning ">First</div>
-                                            <div class="ps-4 text-dark " style="padding-top: 30px; ">
-                                                <a href="#" class="">
-                                                    <h6 class="h6 text-black">스키장 싸게 가는 꿀팁 대방출 </h6>
-                                                </a>
-                                                <span class="text-muted text-sm ">조회수 100 | 댓글 10</span>
-                                                <p class="text-end pe-4 ">Written by 스키드</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 ">
-                                <div class="docs-item " id="ribbon ">
-                                    <div class="mt-3 ">
-                                        <div class="card py-3 border-0 shadow ">
-                                            <div class="ribbon ribbon-warning ">Second</div>
-                                            <div class="ps-4 text-dark " style="padding-top: 30px; ">
-                                                <a href="#">
-                                                    <h6 class="h6 text-black">맥도날드 신상 꼭 드세요 꼭</h6>
-                                                </a>
-                                                <span class="text-muted text-sm ">조회수 100 | 댓글 10</span>
-                                                <p class="text-end pe-4 ">Written by 맥가이버</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 ">
-                                <div class="docs-item " id="ribbon ">
-                                    <div class="mt-3 ">
-                                        <div class="card py-3 border-0 shadow ">
-                                            <div class="ribbon ribbon-warning ">Third</div>
-                                            <div class="ps-4 text-dark " style="padding-top: 30px; ">
-                                                <a href="#">
-                                                    <h6 class="h6 text-black">재밌는 영화 추천합니다 </h6>
-                                                </a>
-                                                <span class="text-muted text-sm ">조회수 100 | 댓글 10</span>
-                                                <p class="text-end pe-4 ">Written by 랭보</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <c:if test="${!empty bestList}">
+		                	<c:forEach var="post" items="${bestList }" end="${bestList.size() }">
+		                    <div class="col-4">
+		                        <div class="docs-item" id="ribbon">
+		                            <div class="mt-3">
+		                                <div class="card py-3 border-0 shadow ">
+		                                    <div class="ribbon ribbon-warning ">BEST</div>
+		                                    <div class="ps-4 text-dark" style="padding-top: 30px;">
+		                                        <a href="${path}/community/freeDetail?freeboardNo=${post.freeBoardNo }" class="text-decoration-none">
+		                                            <h6 class="h6 text-dark text-decoration-none txt_post pe-3">${post.title }</h6>
+		                                        </a>
+		                                        <span class="text-muted text-sm">조회수 ${post.count } | 댓글 ${post.commentList.size() }</span>
+		                                        <p class="text-end text-dark pe-4">Written by ${post.userName}</p>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    </c:forEach>
+		                    </c:if>
                         </div>
                         <!-- comments-->
                         <div class="mt-5 mb-4 ">
-                            <h6 class="text-uppercase text-muted mb-4 ">2 comments</h6>
-                            <!-- comment-->
-                            <div class="d-flex mb-4 border-bottom ">
-                                <div>
-                                    <h5 style="color: #907B65; ">Julie Alma <span class="text-uppercase text-sm text-muted ps-4 "><i class="far fa-clock "></i> September 23, 2017 at 12:00 am</span>
-                                        <span class="text-end ">
-                                            <a href="" class="text-sm "> | <i class="fas fa-trash p-1 "> 댓글 삭제 </i></a>
-                                        </span>
+                            <h6 class="text-uppercase text-muted mb-4 ">${ comments.size() } comments</h6>
+                            <c:if test="${ empty comments}">
+                            <div class="d-flex mb-3 border-bottom py-5">
+                                <div class="">
+                                    <h5 class="" style="color: #907B65; ">
+                                    	등록된 댓글이 없습니다. 소중한 댓글을 남겨주세요.
                                     </h5>
-                                    <p class="text-muted ">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                                 </div>
                             </div>
-                            <!-- /comment-->
+                            </c:if>
+                            
+                            <c:if test="${!empty comments}">
+                            <c:forEach var="comment" items="${comments}">
                             <!-- comment-->
-                            <div class="d-flex mb-4 border-bottom ">
+                            <div class="d-flex mb-4 border-bottom py-1">
                                 <div>
-                                    <h5 style="color: #907B65; ">Julie Alma <span class="text-uppercase text-sm text-muted ps-4 "><i class="far fa-clock "></i> September 23, 2017 at 12:00 am</span>
+                                    <h5 style="color: #907B65; ">${comment.userName } <span class="text-uppercase text-sm text-muted ps-4 "><i class="far fa-clock "></i> <fmt:formatDate dateStyle="full" type="date" value="${comment.postDate}"/></span>
                                         <span class="text-end ">
-                                            <a href="#" class="text-sm "> | <i class="fas fa-trash p-1 "> 댓글 삭제 </i></a>
+                                            <c:if test="${!empty loginMember && loginMember.userNo == comment.userNo }">
+                                            	<a href="${path}/community/deleteComment?commentNo=${comment.commentNo}&freeboardNo=${board.freeBoardNo}" class="text-sm "> | <i class="fas fa-trash p-1 "> 댓글 삭제 </i></a>
+                                            </c:if>
                                         </span>
                                     </h5>
-                                    <p class="text-muted ">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                    <p class="text-muted ">${comment.content }</p>
                                 </div>
                             </div>
+                            </c:forEach>
                             <!-- /comment-->
-
+                            </c:if>
                         </div>
                         <!-- /comment-->
                         <!-- comment form-->
@@ -318,17 +305,19 @@ div {
                             <div class=" " id="leaveComment ">
                                 <div class="mt-4 ">
                                     <h5 class="mb-2 text-end " style="color: #FFCD4A; ">Leave a comment</h5>
-                                    <form class="form " id="comment-form " method="post " action="# ">
+                                    <form class="form " id="comment-form " method="post" action="${path}/community/writefreeComment">
+                                    	<input type="text" name="freeboardNo" value="${board.freeBoardNo }" hidden>
+                                    	<input type="text" name="userNo" value="${loginMember.userNo}" hidden>
                                         <div class="mb-4 ">
                                             <label class="form-label " for="comment ">Comment <span class="required ">*</span></label>
-                                            <textarea class="form-control " id="comment " rows="4 "></textarea>
+                                            <textarea class="form-control " id="content" name="content" rows="4 "></textarea>
                                         </div>
                                         <div class="row ">
                                             <div class="text-start col-6 ">
-                                                <button class="btn btn-outline-dark " onclick=""><i class="fas fa-align-left "></i> TO LIST</button>
+                                                <button class="btn btn-outline-dark" type="button" onclick="location.href='${path}/community/freeboardList'"><i class="fas fa-align-left "></i> TO LIST</button>
                                             </div>
                                             <div class="text-end col-6 ">
-                                                <button class="btn btn-outline-dark " type="submit "><i class="fas fa-comment "></i> Comment</button>
+                                                <button class="btn btn-outline-dark " type="submit"><i class="fas fa-comment "></i> Comment</button>
                                             </div>
                                         </div>
                                     </form>
@@ -357,9 +346,9 @@ div {
                                 <div class="form-group">
                                     <label class="form-label" for="area-form">신고사유</label>
                                     <select class="selectpicker form-control bg-gray-200 " name="reason " id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">
-                                    <option value="insult" >욕설 </option>
-                                    <option value="fraud ">사기행위 </option>
-                                    <option value="lie">사실관계과 다름 </option>
+                                    <option value="insult">욕설 </option>
+                                    <option value="fraud">사기행위 </option>
+                                    <option value="commercial">광고/도배 </option>
                                     <option value="rest">기타</option>
                                 </select>
                                 </div>
@@ -390,7 +379,7 @@ div {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <img src="./image/togetherLogo.png" height="60" width="140" alt="">
+                        <img src="${path }/resources/image/togetherLogo.png" height="60" width="140" alt="">
                         <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
                         <div class="mt-4 pt-2 ps-3 ms-sm-4">
                             <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
@@ -439,10 +428,10 @@ div {
                     </div>
                     <div class="col-md-6">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/visa.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/mastercard.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/paypal.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/western-union.svg" alt="..."></li>
                         </ul>
                     </div>
                 </div>
@@ -476,24 +465,24 @@ div {
     </script>
 
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js "></script>
+    <script src="${path }/resources/vendor/jquery/jquery.min.js "></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+    <script src="${path }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js "></script>
+    <script src="${path }/resources/vendor/magnific-popup/jquery.magnific-popup.min.js "></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js "></script>
+    <script src="${path }/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js "></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js "></script>
+    <script src="${path }/resources/vendor/bootstrap-select/js/bootstrap-select.min.js "></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js "></script>
+    <script src="${path }/resources/vendor/object-fit-images/ofi.min.js "></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js "></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js "></script>
+    <script src="${path }/resources/js/theme.js "></script>
 </body>
 
 </html>

@@ -19,5 +19,7 @@ public interface FreeboardMapper {
 	int updateBoard(Freeboard freeboard);
 	int updateReadCount(Freeboard freeboard);
 	int deleteBoard(int freeBoardNo);
-	int deleteComment(int freeBoardNo);
+	int deleteComment(int commentNo);
+	int selectBoardCountAll();
+	List<Freeboard> selectBestPost();
 }
