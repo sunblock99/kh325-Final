@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.tour.common.util.PageInfo;
-import com.kh.tour.tour.api.TourApi;
 import com.kh.tour.tour.model.service.TourService;
 import com.kh.tour.tour.model.vo.Tour;
 
@@ -47,10 +45,14 @@ public class TourController {
 		
 		PageInfo pageInfo = new PageInfo(page, 10, tService.getEventCount(param, neighbourhood), 9);
 		List<Tour> list = tService.getEventList(pageInfo, param, neighbourhood);
+		List<String> neighbourhoodList = Arrays.asList(neighbourhood);
+		int eventListCount = tService.getEventCount(param, neighbourhood);
 		
 		model.addAttribute("list", list);
+		model.addAttribute("eventListCount", eventListCount);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("neighbourhood", neighbourhoodList);
 		return "event/eventSearch";
 	}
 
