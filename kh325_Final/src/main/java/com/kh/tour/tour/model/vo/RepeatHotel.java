@@ -48,5 +48,6 @@ public class RepeatHotel {
 	private String roomImg4alt;              //객실사진4 설명
 	private String roomImg5;                 //객실사진5
 	private String roomImg5alt;              //객실사진5 설명
+	private DetailHotel detailHotelTable;              //DetailHotel 객체 삽입
 
 }

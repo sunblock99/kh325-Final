@@ -1,5 +1,7 @@
 package com.kh.tour.tour.model.vo;
 
+import com.kh.tour.course.model.vo.DetailCourse;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +20,6 @@ public class RepeatCourse {
 	private String	subdetailOverview  ;    //코스개요
 	private String   subdetailImg       ;    //코스이미지
 	private String   subdetailAlt       ;    //코스이미지설명
+	private DetailCourse  detailCourseTable       ;    //DetailCourse 객체 삽입
  
 }

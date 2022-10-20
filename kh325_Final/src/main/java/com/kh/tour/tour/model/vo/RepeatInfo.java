@@ -16,5 +16,12 @@ public class RepeatInfo {
 	private int    fldgubun   ;    //일련번호
 	private String infoName   ;    //제목
 	private String infoText   ;    //내용
-
+	
+	
+	private DetailTourist detailTouristTable   ;    //DetailEvent 객체 삽입
+	private DetailCultural detailCulturalTable   ;    //DetailEvent 객체 삽입
+	private DetailEvent detailEventTable   ;    //DetailEvent 객체 삽입
+	private DetailSports detailSportsTable   ;    //DetailEvent 객체 삽입
+	private DetailShopping detailShoppingTable   ;    //DetailEvent 객체 삽입
+	private DetailRestaurant detailRestaurantTable   ;    //DetailEvent 객체 삽입
 }
