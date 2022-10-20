@@ -25,6 +25,10 @@
  <h2><a href="${path}/insertTourImage.do">이미지정보조회 INSERT</a></h2>
  <h2><a href="${path}/insertTourFree.do">무장애여행 INSERT</a></h2>
  <h2><a href="${path}/insertGallery.do">갤러리 INSERT</a></h2>
+ <h2><a href="${path}/insertAreaCode.do">AreaCode INSERT</a></h2>
+ <h2><a href="${path}/insertCategory.do">Category INSERT</a></h2>
+ <h2><a href="${path}/eventSearch">이벤트 페이지</a></h2>
+
 
 
 
