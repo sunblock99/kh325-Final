@@ -6,22 +6,12 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
-import com.kh.tour.course.model.vo.DetailCourse;
-import com.kh.tour.tour.model.vo.AreaCode;
-import com.kh.tour.tour.model.vo.Category;
-import com.kh.tour.tour.model.vo.DetailCultural;
-import com.kh.tour.tour.model.vo.DetailEvent;
-import com.kh.tour.tour.model.vo.DetailHotel;
-import com.kh.tour.tour.model.vo.DetailRestaurant;
-import com.kh.tour.tour.model.vo.DetailShopping;
-import com.kh.tour.tour.model.vo.DetailSports;
-import com.kh.tour.tour.model.vo.DetailTourist;
 import com.kh.tour.tour.model.vo.RepeatCourse;
 import com.kh.tour.tour.model.vo.RepeatHotel;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
-import com.kh.tour.tour.model.vo.TourFree;
-import com.kh.tour.tour.model.vo.TourImage;
+
+
 
 @Mapper
 public interface TotalTourMapper {

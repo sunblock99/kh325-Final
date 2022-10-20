@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
     <!-- <link rel="stylesheet" href="css/style_blogzin.css" id="theme-stylesheet"> -->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${path}/resources/css/event_search.css">
     <!-- <link rel="stylesheet" href="css/custom.css"> -->

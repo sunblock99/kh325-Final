@@ -32,7 +32,6 @@ public class TourController {
 		if(neighbourhood == null) {
 			System.out.println("neighbourhood null");
 		}else {
-			
 			System.out.println("checkbox neighbourhood list : " + Arrays.toString(neighbourhood));
 		}
 		
@@ -44,15 +43,15 @@ public class TourController {
 		}
 		
 		PageInfo pageInfo = new PageInfo(page, 10, tService.getEventCount(param, neighbourhood), 9);
-		List<Tour> list = tService.getEventList(pageInfo, param, neighbourhood);
-		List<String> neighbourhoodList = Arrays.asList(neighbourhood);
 		int eventListCount = tService.getEventCount(param, neighbourhood);
+		List<Tour> list = tService.getEventList(pageInfo, param, neighbourhood);
+//		List<String> neighbourhoodList = Arrays.asList(neighbourhood);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("eventListCount", eventListCount);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
-		model.addAttribute("neighbourhood", neighbourhoodList);
+//		model.addAttribute("neighbourhood", neighbourhoodList);
 		return "event/eventSearch";
 	}
 

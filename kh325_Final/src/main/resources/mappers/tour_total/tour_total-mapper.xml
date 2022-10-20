@@ -392,26 +392,25 @@
 	<!-- 2. 체크박스 선택값으로 행사 리스트 갯수 세기 -->
 	<select id="selectEventListCount" resultType="int"  parameterType="map">
 			SELECT COUNT(*) FROM (
-		SELECT  B.*, 
-				DE.*
-		FROM BASIC_TOUR_INFO B
-		INNER JOIN DETAIL_EVENT DE
-		ON (B.CONTENTID = DE.CONTENTID)
-		WHERE 1=1
-		<if test="eventKeyword != null">
-			AND B.TITLE LIKE '%'||#{eventKeyword}||'%' <!-- 검색어  -->
-		</if>
-		<if test="eventStartDate != null">
-			AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate} <!-- 월별 -->
-		</if>
-		<if test="neighbourhood != null">
-			AND B.AREACODE IN  <!-- 지역 -->
-				<foreach collection="neighbourhood" item="item" index="index" separator="," open="(" close=")">
-	              #{item}
-	            </foreach>
-		</if>
-		ORDER BY DE.EVENTSTARTDATE ASC
-		)
+				SELECT  B.*, 
+						DE.*
+				FROM BASIC_TOUR_INFO B
+				INNER JOIN DETAIL_EVENT DE
+				ON (B.CONTENTID = DE.CONTENTID)
+				WHERE 1=1
+				<if test="eventKeyword != null">
+					AND B.TITLE LIKE '%'||#{eventKeyword}||'%' <!-- 검색어  -->
+				</if>
+				<if test="eventStartDate != null">
+					AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate} <!-- 월별 -->
+				</if>
+				<if test="neighbourhood != null">
+					AND B.AREACODE IN  <!-- 지역 -->
+						<foreach collection="neighbourhood" item="item" index="index" separator="," open="(" close=")">
+			              #{item}
+			            </foreach>
+				</if>
+				ORDER BY DE.EVENTSTARTDATE ASC)
 	</select>
 	
 	<!-- 3. contentId로 공통(main) + 투어이미지 + 무장애 상세내용 조회하기 -->
