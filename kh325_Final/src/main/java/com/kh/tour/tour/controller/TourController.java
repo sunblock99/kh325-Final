@@ -1,13 +1,17 @@
 package com.kh.tour.tour.controller;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.tour.api.TourApi;
 import com.kh.tour.tour.model.service.TourService;
 import com.kh.tour.tour.model.vo.Tour;
@@ -20,30 +24,34 @@ public class TourController {
 
 	@Autowired
 	private TourService tService;
-
-	@RequestMapping("/insertTour.do")
-	public String initTourApi(Model model) {
-
-		int result = 0;
-
-		while (true) {
-			List<Tour> list = TourApi.callCurrentTourByXML();
-			if (list == null || list.isEmpty()) {
-				continue;
-			}
-
-			for (Tour tour : list) {
-				result = tService.saveTourInfo(tour);
-			}
-
-			if (result > 0) {
-				model.addAttribute("msg", "DB insert에 정상적으로 성공하였습니다.");
-				model.addAttribute("location", "/");
-			} else {
-				model.addAttribute("msg", "DB insert에 실패하였습니다.");
-				model.addAttribute("location", "/");
-			}
-			return "/common/msg";
+	
+	@GetMapping("/eventSearch")
+	public String eventSearchlist(Model model, @RequestParam Map<String, String> param,
+			@RequestParam(value = "neighbourhood" , required = false) String[] neighbourhood) {
+		log.info("param : " + param.toString());
+		System.out.println("가지고 들어온 파람값: " + param.toString());
+		
+		if(neighbourhood == null) {
+			System.out.println("neighbourhood null");
+		}else {
+			
+			System.out.println("checkbox neighbourhood list : " + Arrays.toString(neighbourhood));
 		}
+		
+		int page = 1;
+		if(param.containsKey("page") == true) {
+			try {
+				page = Integer.parseInt(param.get("page"));
+			} catch (Exception e) {}
+		}
+		
+		PageInfo pageInfo = new PageInfo(page, 10, tService.getEventCount(param, neighbourhood), 9);
+		List<Tour> list = tService.getEventList(pageInfo, param, neighbourhood);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("param", param);
+		model.addAttribute("pageInfo", pageInfo);
+		return "event/eventSearch";
 	}
+
 }
