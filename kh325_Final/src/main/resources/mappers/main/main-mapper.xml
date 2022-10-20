@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.main.model.mapper.MainMapper">
+	<resultMap type="MainCommunity"
+		id="mainCommunityListResultMap">
+		<id property="rownum" column="ROWNUM" />
+		<result property="freeboardNo" column="FREEBOARD_NO" />
+		<result property="boardType" column="BOARD_TYPE" />
+		<result property="title" column="TITLE" />
+		<result property="userName" column="U_NAME" />
+		<result property="postDate" column="POST_DATE" />
+	</resultMap>
+
+	<select id="selectMainCommunityList"
+		resultMap="mainCommunityListResultMap">
+		SELECT ROWNUM, SORT.* FROM
+		(SELECT FREEBOARD_NO, BOARD_TYPE, TITLE, M.U_NAME, POST_DATE FROM
+		COMM_FREEBOARD B
+		JOIN MEMBER M ON (B.UNO = M.UNO)
+
+		UNION ALL
+
+		SELECT COMPANION_NO, BOARD_TYPE, CONTENT, M.U_NAME, POST_DATE FROM
+		COMM_COMPANION C
+		JOIN MEMBER M ON (C.UNO = M.UNO)) SORT
+		WHERE ROWNUM BETWEEN 1 AND 8
+		ORDER BY POST_DATE DESC
+	</select>
+
+<!-- 	<resultMap type="MainEvent" id="mainEventListResultMap"> -->
+<!-- 		<id property="rownum" column="ROWNUM" /> -->
+<!-- 		<result property="boardType" column="BOARD_TYPE" /> -->
+<!-- 		<result property="title" column="TITLE" /> -->
+<!-- 		<result property="userName" column="U_NAME" /> -->
+<!-- 		<result property="postDate" column="POST_DATE" /> -->
+<!-- 	</resultMap> -->
+
+</mapper>
