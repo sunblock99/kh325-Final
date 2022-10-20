@@ -462,7 +462,27 @@
 		</select>
 	
 	
-	
+		<!-- 5. contentId로 (여행코스) 소개+반복 조회하기  -->
+		<select id="selectRepeatCourseByContentId" resultMap="repeatCourseListResultMap"  parameterType="int">
+				SELECT DC.*,
+					   RC.* 
+				FROM DETAIL_COURSE DC 	<!-- 행사 소개테이블  --> 
+				JOIN REPEAT_COURSE RC 	<!-- 반복정보 공통  --> 
+				ON (DC.CONTENTID = RC.CONTENTID)
+				WHERE DC.CONTENTID =  #{contentId}
+		</select>
+		
+		
+		<!-- 6. contentId로 (숙박) 소개+반복 조회하기  -->
+		<select id="selectRepeatHotelByContentId" resultMap="repeatHotelListResultMap"  parameterType="int">
+				SELECT DH.*,
+					   RH.*
+				FROM DETAIL_HOTEL DH 	<!-- 숙박 소개테이블  --> 
+				JOIN REPEAT_HOTEL RH 	<!-- 반복정보 공통  --> 
+				ON (DH.CONTENTID = RH.CONTENTID)
+				WHERE DH.CONTENTID = #{contentId}
+		</select>
+		
 	
 	
 	

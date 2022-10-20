@@ -814,7 +814,7 @@
             <!-- 체크박스 시작 -->
             <div class="pt-5" style="border: 10rem; padding-bottom: 3.8rem;">
                 <div class="tab-content">
-                     <form action="${path}/eventSearch" method="GET">
+                     <form action="${path}/eventSearch.do" method="GET">
                     <div class="container">
                         <div class="row">
                             <!-- 월별 체크박스 -->

@@ -27,7 +27,9 @@
  <h2><a href="${path}/insertGallery.do">갤러리 INSERT</a></h2>
  <h2><a href="${path}/insertAreaCode.do">AreaCode INSERT</a></h2>
  <h2><a href="${path}/insertCategory.do">Category INSERT</a></h2>
- <h2><a href="${path}/eventSearch">이벤트 페이지</a></h2>
+ <h2><a href="${path}/eventSearch.do">행사검색 페이지</a></h2>
+ <h2><a href="${path}/tourSearch.do">관광지검색 페이지</a></h2>
+ <h2><a href="${path}/eventCalendar.do">행사달력 페이지</a></h2>
 
 
 
