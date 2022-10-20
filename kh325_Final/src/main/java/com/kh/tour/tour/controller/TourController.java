@@ -42,16 +42,19 @@ public class TourController {
 			} catch (Exception e) {}
 		}
 		
-		PageInfo pageInfo = new PageInfo(page, 10, tService.getEventCount(param, neighbourhood), 9);
+		PageInfo pageInfo = new PageInfo(page, 10, tService.getEventCount(param, neighbourhood), 12);
 		int eventListCount = tService.getEventCount(param, neighbourhood);
 		List<Tour> list = tService.getEventList(pageInfo, param, neighbourhood);
-//		List<String> neighbourhoodList = Arrays.asList(neighbourhood);
+		if(neighbourhood != null) {
+			List<String> neighbourhoodList = Arrays.asList(neighbourhood);
+			
+			model.addAttribute("neighbourhood", neighbourhoodList);
+			}	
 		
 		model.addAttribute("list", list);
 		model.addAttribute("eventListCount", eventListCount);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
-//		model.addAttribute("neighbourhood", neighbourhoodList);
 		return "event/eventSearch";
 	}
 
