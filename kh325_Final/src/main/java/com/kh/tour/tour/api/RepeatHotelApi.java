@@ -138,7 +138,7 @@ public class RepeatHotelApi {
 							String roomImg5            = getStrData(eElement2, "roomimg5");     
 							String roomImg5alt         = getStrData(eElement2, "roomimg5alt");     
 							
-							RepeatHotel repeatCourse = new RepeatHotel(0, contentId, contentTypeId, roomCode, roomTitle, roomSize1, roomCount, roomBaseCount, roomMaxCount, roomOffSeasonMinFee1, roomOffSeasonMinFee2, roomPeakSeasonMinFee1, roomPeakSeasonMinFee2, roomIntro, roomBathFacility, roomBath, roomHomeTheater, roomAircondition, roomTv, roomPc, roomCable, roomInternet, roomRefrigerator, roomToiletries, roomSofa, roomCook, roomTable, roomHairdryer, roomSize2, roomImg1, roomImg1alt, roomImg2, roomImg2alt, roomImg3, roomImg3alt, roomImg4, roomImg4alt, roomImg5, roomImg5alt);
+							RepeatHotel repeatCourse = new RepeatHotel(0, contentId, contentTypeId, roomCode, roomTitle, roomSize1, roomCount, roomBaseCount, roomMaxCount, roomOffSeasonMinFee1, roomOffSeasonMinFee2, roomPeakSeasonMinFee1, roomPeakSeasonMinFee2, roomIntro, roomBathFacility, roomBath, roomHomeTheater, roomAircondition, roomTv, roomPc, roomCable, roomInternet, roomRefrigerator, roomToiletries, roomSofa, roomCook, roomTable, roomHairdryer, roomSize2, roomImg1, roomImg1alt, roomImg2, roomImg2alt, roomImg3, roomImg3alt, roomImg4, roomImg4alt, roomImg5, roomImg5alt, null);
 							list.add(repeatCourse);
 							System.out.println(list.toString());
 						}

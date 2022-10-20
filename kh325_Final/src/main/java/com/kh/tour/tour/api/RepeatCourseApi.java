@@ -107,11 +107,7 @@ public class RepeatCourseApi {
 							String   subdetailImg     = getStrData(eElement2, "subdetailimg");
 							String   subdetailAlt	  = getStrData(eElement2, "subdetailalt");     
 							
-							
-							
-							
-							
-							RepeatCourse repeatCourse = new RepeatCourse(0, contentId, contentTypeId, subNum, subcontentId, subName, subdetailOverview, subdetailImg, subdetailAlt);
+							RepeatCourse repeatCourse = new RepeatCourse(0, contentId, contentTypeId, subNum, subcontentId, subName, subdetailOverview, subdetailImg, subdetailAlt, null);
 							list.add(repeatCourse);
 							System.out.println(list.toString());
 						}

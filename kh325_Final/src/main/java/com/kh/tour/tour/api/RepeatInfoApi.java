@@ -106,7 +106,7 @@ public class RepeatInfoApi {
 							String infoText  	 = getStrData(eElement2, "infotext");
 								
 								
-							RepeatInfo repeatInfo = new RepeatInfo(0, contentId, contentTypeId, serialNum, fldgubun, infoName, infoText);
+							RepeatInfo repeatInfo = new RepeatInfo(0, contentId, contentTypeId, serialNum, fldgubun, infoName, infoText, null, null, null, null, null, null);
 							list.add(repeatInfo);
 							System.out.println(list.toString());
 						}

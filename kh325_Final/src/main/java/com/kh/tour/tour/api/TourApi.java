@@ -126,7 +126,7 @@ public class TourApi {
 						
 							Tour tour = new Tour(contentId, contentTypeId, title, tel, telName, homePage, bookTour, 
 									firstImage, firstImage2, areaCode, sigunguCode, cat1, cat2, cat3, addr1, 
-									addr2, zipCode, mapX, mapY, mLevel, overview);
+									addr2, zipCode, mapX, mapY, mLevel, overview, null, null, null, null);
 							list.add(tour);
 	//						System.out.println(list.toString());
 						}

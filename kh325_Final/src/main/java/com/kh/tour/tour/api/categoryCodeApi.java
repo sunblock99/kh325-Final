@@ -2,7 +2,6 @@ package com.kh.tour.tour.api;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,32 +13,26 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.kh.tour.tour.model.vo.TourImage;
+import com.kh.tour.tour.model.vo.Category;
 
-public class TourImageApi {
-	public static String TOUR_URL = "http://apis.data.go.kr/B551011/KorService/areaBasedList";
-	public static String TOUR_TOURLIST_DETAIL_IMAGE_URL = "http://apis.data.go.kr/B551011/KorService/detailImage";
+public class categoryCodeApi {
+	public static String TOUR_URL = "http://apis.data.go.kr/B551011/KorService/categoryCode";
 	public static String SERVICE_KEY = "fD0DCX7wMXP7oajt2G6gM9Gp9x3cxPbHZURBn3%2FG68CU%2Bta1e9Kx7vvu2vAg6Cj9%2BtuyfBqqPfJDbTw9IsfC%2Bw%3D%3D";
-	public static String TOUR_URL_EXTRASTRING = "MobileOS=ETC&MobileApp=AppTest&listYN=Y&arrange=C";
-	public static String TOUR__IMAGE_URL_EXTRASTRING = "imageYN=Y&subImageYN=Y";
-	public static String TOUR_TOURLIST_DETAIL_EXTRASTRING1 = "MobileOS=ETC&MobileApp=AppTest";
-
-	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+	public static String TOUR_URL_EXTRASTRING = "MobileOS=ETC&MobileApp=AppTest";
 
 	public static void main(String[] args) {
-		TourImageApi.callCurrentTourImageByXML();
+		categoryCodeApi.callCurrentCategoryCodeApiByXML();
 	}
 
-	public static List<TourImage> callCurrentTourImageByXML() {
-		List<TourImage> list = new ArrayList<>();
+	public static List<Category> callCurrentCategoryCodeApiByXML() {
+		List<Category> list = new ArrayList<>();
 
-		for (int j = 1; j < 3; j++) {
-
+		for (int j = 1; j < 100; j++) {
 			try {
 				StringBuilder urlBuilder = new StringBuilder();
 				urlBuilder.append(TOUR_URL);
 				urlBuilder.append("?" + "serviceKey=" + SERVICE_KEY); // 첫 번째만 물음표로 설정
-				urlBuilder.append("&" + "numOfRows=" + 1000);
+				urlBuilder.append("&" + "numOfRows=" + 100);
 				urlBuilder.append("&" + "pageNo=" + j);
 				urlBuilder.append("&" + TOUR_URL_EXTRASTRING);
 
@@ -63,15 +56,18 @@ public class TourImageApi {
 				for (int i = 0; i < nList.getLength(); i++) {
 					Node node = nList.item(i);
 
+//					System.out.println("\nCurrent Element : " + node.getNodeName());
 					if (node.getNodeType() == Node.ELEMENT_NODE) {
 
 						Element eElement = (Element) node;
 
-						int contentId = getIntData(eElement, "contentid"); //
+						String cat1 = getStrData(eElement, "code"); //
+						String cat1Name = getStrData(eElement, "name"); //
 
 						// -------------------------------------------------info 시작
+						System.out.println(cat1);
 
-						URL url2 = new URL(TourImageApi.tourImageUrl(contentId).toString());
+						URL url2 = new URL(categoryCodeApi.categoryCodeUrl(cat1).toString());
 
 						System.out.println("url : " + url2);
 
@@ -92,22 +88,24 @@ public class TourImageApi {
 
 						NodeList items = doc2.getElementsByTagName("item");
 						for (int t = 0; t < items.getLength(); t++) {
-							
+
 							Element item = (Element) items.item(t);
 
-							NodeList originImgUrlList = item.getElementsByTagName("originimgurl");
-							NodeList smallImageUrlList = item.getElementsByTagName("smallimageurl");
+							NodeList cat2List = item.getElementsByTagName("code");
+							NodeList cat2NameList = item.getElementsByTagName("name");
 
-							for (int k = 0; k < originImgUrlList.getLength(); k++) {
-								String originImgUrl = ((Element) originImgUrlList.item(k)).getTextContent();
-								String smallImageUrl = ((Element) smallImageUrlList.item(k)).getTextContent();
+							for (int k = 0; k < cat2List.getLength(); k++) {
+								String cat2Code = ((Element) cat2List.item(k)).getTextContent();
+								String cat2Name = ((Element) cat2NameList.item(k)).getTextContent();
 
-								TourImage tourImage = new TourImage(0, contentId, originImgUrl, smallImageUrl);
-								list.add(tourImage);
+								Category categoryTable = new Category(0, cat1, cat1Name, cat2Code, cat2Name);
+								list.add(categoryTable);
 								System.out.println(list.toString());
 							}
 						}
+
 					}
+
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -118,13 +116,13 @@ public class TourImageApi {
 
 	}
 
-//	private static String getStrData(Element eElement, String tagName) {
-//		try {
-//			return eElement.getElementsByTagName(tagName).item(0).getTextContent();
-//		} catch (Exception e) {
-//			return "-";
-//		}
-//	}
+	private static String getStrData(Element eElement, String tagName) {
+		try {
+			return eElement.getElementsByTagName(tagName).item(0).getTextContent();
+		} catch (Exception e) {
+			return "-";
+		}
+	}
 
 	private static int getIntData(Element eElement, String tagName) {
 		try {
@@ -135,17 +133,15 @@ public class TourImageApi {
 	}
 
 	// 정보페이지 url만들어서 넘김
-	public static StringBuffer tourImageUrl(int contentId) {
-		StringBuffer tourImageUrl = new StringBuffer();
-		tourImageUrl.append(TOUR_TOURLIST_DETAIL_IMAGE_URL);
-		tourImageUrl.append("?" + "serviceKey=" + SERVICE_KEY);
-		tourImageUrl.append("&" + "contentId=" + contentId);
-		tourImageUrl.append("&" + TOUR_TOURLIST_DETAIL_EXTRASTRING1);
-		tourImageUrl.append("&" + TOUR__IMAGE_URL_EXTRASTRING);
+	public static StringBuffer categoryCodeUrl(String cat1) {
+		StringBuffer categoryCodeUrl = new StringBuffer();
+		categoryCodeUrl.append(TOUR_URL);
+		categoryCodeUrl.append("?" + "serviceKey=" + SERVICE_KEY);
+		categoryCodeUrl.append("&" + "numOfRows=" + 100);
+		categoryCodeUrl.append("&" + TOUR_URL_EXTRASTRING);
+		categoryCodeUrl.append("&" + "cat1=" + cat1);
 
-//			System.out.println(tourImageUrl);
-
-		return tourImageUrl;
+		return categoryCodeUrl;
 
 	}
 
