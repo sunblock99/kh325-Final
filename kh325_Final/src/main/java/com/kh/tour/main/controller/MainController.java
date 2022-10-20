@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.tour.main.model.service.MainService;
 import com.kh.tour.main.model.vo.MainCommunity;
+import com.kh.tour.main.model.vo.MainHotPlace;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -19,12 +20,17 @@ public class MainController {
 	
 	@RequestMapping("/main")
 	public String main(Model model) {
+		List<MainHotPlace> selectMainHotPlace = service.selectMainHotPlace();
 		List<MainCommunity> selectMainCommunityList = service.selectMainCommunityList();
 		
+		log.info("핫플은 : " + selectMainHotPlace);
+		model.addAttribute("selectMainHotPlace", selectMainHotPlace);
 		log.info("커뮤니티는 : " + selectMainCommunityList);
 		model.addAttribute("selectMainCommunityList", selectMainCommunityList);
+		
 		return "main/mainHome";
 	}
+	
 	
 	
 	

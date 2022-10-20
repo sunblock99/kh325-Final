@@ -29,6 +29,25 @@
 		WHERE ROWNUM BETWEEN 1 AND 8
 		ORDER BY POST_DATE DESC
 	</select>
+	
+		<resultMap type="MainHotPlace" id="mainHotListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="likeCount" column="LIKE_COUNT" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="title" column="TITLE" />
+		<result property="addr1" column="ADDR1" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+	</resultMap>
+
+	<select id="selectMainHotPlace" parameterType="int" resultMap="mainHotListResultMap">
+		SELECT B.TITLE, B.ADDR1, B.CONTENTTYPEID, B.FIRSTIMAGE, test.*
+		FROM
+		(SELECT CONTENTID, COUNT(CONTENTID) AS LIKE_COUNT
+		FROM TOUR_LIKE
+		GROUP BY CONTENTID
+		ORDER BY LIKE_COUNT DESC) test, BASIC_TOUR_INFO B
+		WHERE B.CONTENTID = test.CONTENTID
+		</select>
 
 <!-- 	<resultMap type="MainEvent" id="mainEventListResultMap"> -->
 <!-- 		<id property="rownum" column="ROWNUM" /> -->
