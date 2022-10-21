@@ -57,7 +57,7 @@
                 </li>
               </li>
 
-              <li class="nav-item"><a class="nav-link-header" href="contact.html">커뮤니티</a></li>
+              <li class="nav-item"><a class="nav-link-header" href="${path }/community">커뮤니티</a></li>
               <li class="nav-item">
                 <a class="nav-link-header" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
               
