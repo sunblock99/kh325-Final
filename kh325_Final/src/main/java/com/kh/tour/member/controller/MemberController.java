@@ -1,6 +1,7 @@
 package com.kh.tour.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.tour.member.model.service.MemberService;
+import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
+import com.kh.tour.member.model.vo.MyCommunity;
+import com.kh.tour.member.model.vo.Mycourse;
+import com.kh.tour.member.model.vo.Review;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,6 +41,7 @@ public class MemberController {
 		log.info("userEmail : " + userEmail + ", userPassword : " + userPassword);
 		Member loginMember = service.login(userEmail, userPassword);
 		
+		System.out.println("로그인 멤버는" + loginMember);
 		if(loginMember != null) {
 			model.addAttribute("loginMember", loginMember);
 			return "redirect:/";
@@ -61,7 +67,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/myPage/signup")
+	@GetMapping("/signup")
 	public String enrollPage() {
 		log.info("가입 페이지 요청");
 		return "myPage/signup";
@@ -157,11 +163,6 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	@GetMapping("/myPage/updatePwd")
-	public String updatePwd() {
-		return "/member/updatePwd";
-	}
-	
 	
 	@PostMapping("/myPage/updatePwd")
 	public String updatePwd(Model model,
@@ -198,21 +199,95 @@ public class MemberController {
 		return "home";
 	}
 	
-//	@RequestMapping("/naver/callback")
-//	public String naverCallback(Model model) throws Exception{
-//		System.out.println("naverCallback 호출 !!");
-////		System.out.println(n_name);
-////		System.out.println(n_email);
-////		System.out.println(mobile);
-//		
-//		return "home";
-//	}
+	
+	@GetMapping("/myPage/bookmark")
+	public String bookmark(Model model, 
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
+//		int userNo = loginMember.getUserNo();
+//		System.out.println("userNo : " + userNo);
+		
+		List<Bookmark> bookmarkList = service.bookmark(1); 
+	
+		model.addAttribute("bookmarkList", bookmarkList);
+	return "myPage/bookmark";
+	}
+	
+	
+	@GetMapping("/myPage/deleteBookmark")
+	public String deleteBookmark(Model model,
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember, int likeNo) {
+		int result = service.deleteBookmark(likeNo);
+		if( result > 0) {
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("location", "/myPage/bookmark");
+		}else {
+			model.addAttribute("msg", "삭제에 실패하였습니다.");
+			model.addAttribute("location", "/myPage/bookmark");
+		}
+		return "myPage/bookmark";
+	}
+	
+	@GetMapping("/myPage/review")
+	public String review(Model model,
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
+		
+		List<Review> reviewList = service.review(1);
+		
+		model.addAttribute("reviewList", reviewList);
+	return "myPage/review";	
+	}
+	
+	@GetMapping("/myPage/deleteReview")
+	public String deleteReview(Model model,
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember, int reviewNo) {
+		int result = service.deleteReview(reviewNo);
+		if( result > 0) {
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("location", "/myPage/bookmark");
+		}else {
+			model.addAttribute("msg", "삭제에 실패하였습니다.");
+			model.addAttribute("location", "/myPage/bookmark");
+		}
+		return "myPage/review";
+	}
+	
+	@GetMapping("/myPage/community")
+	public String community(Model model,
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
+		
+		List<MyCommunity> communityList = service.community(1);
+		
+		model.addAttribute("communityList", communityList);
+	return "myPage/community";	
+	}
+	
+	@GetMapping("/myPage/deleteCommunity")
+	public String deleteCommunity(Model model,
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember, int freeboardNo) {
+		int result = service.deleteCommunity(freeboardNo);
+		if( result > 0) {
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("location", "/myPage/bookmark");
+		}else {
+			model.addAttribute("msg", "삭제에 실패하였습니다.");
+			model.addAttribute("location", "/myPage/bookmark");
+		}
+		return "myPage/community";
+	}
+	
+	@GetMapping("/myPage/mycourse")
+	public String mycourse(Model model,
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
+		List<Mycourse> mycourseList = service.mycourse(1);
+					
+		model.addAttribute("mycourseList", mycourseList);
+	return "myPage/mycourse";	
+	}	
+	
 	
 	
 	
 }
-
-
 
 
 

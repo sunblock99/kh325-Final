@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
+import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
+import com.kh.tour.member.model.vo.MyCommunity;
+import com.kh.tour.member.model.vo.Mycourse;
+import com.kh.tour.member.model.vo.Review;
 
 @Mapper
 public interface MemberMapper {
@@ -18,4 +21,11 @@ public interface MemberMapper {
 	int updatePwd(Map<String, String> map);
 	int deleteMember(int userNo);
 	int insertKakaoMember(Member member);
+	List<Bookmark> bookmark(int userNo);
+	int deleteBookmark(int likeNo);
+	List<Review> review(int userNo);
+	int deleteReview(int reviewNo);
+	List<MyCommunity> community(int userNo);
+	int deleteCommunity(int freeboardNo);
+	List<Mycourse> mycourse(int userNo);
 }

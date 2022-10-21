@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,13 +24,15 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/course_detail.css">
+    
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -39,7 +41,7 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
 </head>
 <style>
     /*폰트 적용*/
@@ -157,7 +159,7 @@
         <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo"></a>
+                    <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo"></a>
                     <form class="form-inline d-none d-sm-flex" action="#" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                             <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
@@ -312,7 +314,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
+                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="${path}/resources/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
                                 </div>
                             </div>
                         </li>
@@ -349,7 +351,7 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="img/avatar/avatar-10.jpg" alt=""></a>
+                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
                             <h5 class="text-pB">Dongmin Lee</h5>
                             <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
                         </div>
@@ -450,13 +452,14 @@
                           <option class="text-pB" value="sortBy_2">조회수 오름차순</option>
                           <option class="text-pB" value="sortBy_3" disabled>게시판</option>
                             <option class="text-pB" value="sortByss_3">자유게시판</option>
-                            <option class="text-pB" value="sortBssy_4">투어갤러리</option>
                             <option class="text-pB" value="sortBssy_4">동행구하기</option>
+                            <option class="text-pB" value="sortBssy_4">여행후기</option>
                         </select>
                     </div>
 
                     <br>
 
+					<c:forEach var="Community" items="${communityList}">
                     <div class="table-responsive text-sm mb-5">
                         <table class="table table-striped">
                             <thead class="bg-gray-200">
@@ -472,13 +475,13 @@
                             <tbody>
                                 <tr>
                                     <td class="text-center "><a class="text-black" href="">자유/모임</a></td>
-                                    <td class="fw-bold"><a class="text-black" href="">전주 10월 날씨 어떤가요?</a>
+                                    <td class="fw-bold"><a class="text-black" href=""><c:out value="${Community.title}"/></a>
                                     </td>
-                                    <td>2022.09.21</td>
-                                    <td class="text-end">13</td>
+                                    <td><c:out value="${Community.postDate}"/></td>
+                                    <td class="text-end"><c:out value="${Community.count}"/></td>
                                     <td class="text-center">5</td>
                                     <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
+                                        <a href="${path}/myPage/deleteCommunity?freeboardNo=${Community.freeboardNo}"><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
                                         </a>
                                     </td>
                                 </tr>
@@ -584,6 +587,7 @@
                             </tbody>
                         </table>
                     </div>
+                    </c:forEach>
 
                     <div class="mt-5" style="width: 348px; ">
                         <nav aria-label="Page navigation example">

@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,14 +24,14 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
-    <link rel="stylesheet" href="css/course_detail.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/course_detail.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -44,7 +44,7 @@
 
     <script src="https://kit.fontawesome.com/b4c02836de.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
 
 </head>
 
@@ -164,7 +164,7 @@
         <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo"></a>
+                    <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo"></a>
                     <form class="form-inline d-none d-sm-flex" action="#" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                             <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
@@ -319,7 +319,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
+                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="${path}/resources/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
                                 </div>
                             </div>
                         </li>
@@ -355,7 +355,7 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="img/avatar/avatar-10.jpg" alt=""></a>
+                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
                             <h5 class="text-pB">Dongmin Lee</h5>
                             <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
                         </div>
@@ -495,14 +495,14 @@
                         <div class="row">
 
                             <!-- place item-->
-
+							<c:forEach var="Bookmark" items="${bookmarkList}">
                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;">
                                 <div class="card h-100 border-0 shadow">
                                     <div class="card-img-top overflow-hidden gradient-overlay">
-                                        <img class="img-fluid" src="img/photo/kyung.jpg">
+                                        <img class="img-fluid" src='<c:out value="${Bookmark.image}"/>'>
                                         <a class="tile-link" href="detail-rooms.html"></a>
                                         <div class="card-img-overlay-top text-end">
-                                            <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;">
+                                            <a class="card-fav-icon position-relative z-index-50" href="${path}/myPage/deleteBookmark?likeNo=${Bookmark.likeNo}" style="background-color:black;">
                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i>
                                             </a>
                                         </div>
@@ -510,19 +510,34 @@
                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;">
                                         <div class="row w-100 txt_line ">
                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;">
-                                                <a class=" text-black" href="detail-rooms.html">경복궁</a>
+                                                <a class=" text-black" href="detail-rooms.html"><c:out value="${Bookmark.title}"/></a>
                                             </p>
                                             <div class="d-flex col-md-3" style="text-align: center">
                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
+                                                	<c:if test="${Bookmark.star == 1}">
+                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
+                                                	</c:if>
+                                                	<c:if test="${Bookmark.star == 2}">
+                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
+                                                	</c:if>
+                                                	<c:if test="${Bookmark.star == 3}">
+                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
+                                                	</c:if>
+                                                	<c:if test="${Bookmark.star == 4}">
                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
+                                                	</c:if>
+                                                	<c:if test="${Bookmark.star == 5}">
+                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+                                                	</c:if>
+                                                
                                                 </p>
 
                                             </div>
                                             <p class="text-sm text-black-50 card-subtitle mb-2">
-                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 종로구 </p>
+                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true" >&nbsp;&nbsp;<c:out value="${Bookmark.address}"/></i> </p>
                                             <div class=" card-text text-muted 
                                                                 text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
+                                                <div class="courseList_info" <c:out value="${Bookmark.overview}"/>>서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div>
                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;">
 
@@ -533,192 +548,192 @@
                                     </div>
                                 </div>
                             </div>
+							</c:forEach>
+<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
+<!--                                 <div class="card h-100 border-0 shadow"> -->
+<!--                                     <div class="card-img-top overflow-hidden gradient-overlay"> -->
+<%--                                         <img class="img-fluid" src="${path}/resources/img/photo/mock.jpg"> --%>
+<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
+<!--                                         <div class="card-img-overlay-top text-end"> -->
+<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
+<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
+<!--                                             </a> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
+<!--                                         <div class="row w-100 txt_line "> -->
+<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
+<!--                                                 <a class=" text-black" href="detail-rooms.html">목인박물관 목석원</a> -->
+<!--                                             </p> -->
+<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
+<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
+<!--                                                 </p> -->
 
-                            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay">
-                                        <img class="img-fluid" src="img/photo/mock.jpg">
-                                        <a class="tile-link" href="detail-rooms.html"></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;">
-                                                <i class="fa fa-trash" style="color:white" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;">
-                                                <a class=" text-black" href="detail-rooms.html">목인박물관 목석원</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
+<!--                                             </div> -->
+<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
+<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 종로구 </p> -->
+<!--                                             <div class=" card-text text-muted  -->
+<!--                                                                 text-sm text-black-50 txt_line"> -->
+<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
+<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
+<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
 
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2">
-                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 종로구 </p>
-                                            <div class=" card-text text-muted 
-                                                                text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
-                                                    태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div>
-                                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;">
+<!--                                                     <span> -->
+<!--                                                         </span></p> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
 
-                                                    <span>
-                                                        </span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
+<!--                                 <div class="card h-100 border-0 shadow"> -->
+<!--                                     <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;"> -->
+<%--                                         <img class="img-fluid" src="${path}/resources/img/photo/sabana.jpg"> --%>
+<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
+<!--                                         <div class="card-img-overlay-top text-end"> -->
+<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
+<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
+<!--                                             </a> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
+<!--                                         <div class="row w-100 txt_line "> -->
+<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
+<!--                                                 <a class=" text-black" href="detail-rooms.html">사비나 미술관</a> -->
+<!--                                             </p> -->
+<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
+<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
+<!--                                                 </p> -->
 
-                            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;">
-                                        <img class="img-fluid" src="img/photo/sabana.jpg">
-                                        <a class="tile-link" href="detail-rooms.html"></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;">
-                                                <i class="fa fa-trash" style="color:white" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;">
-                                                <a class=" text-black" href="detail-rooms.html">사비나 미술관</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
+<!--                                             </div> -->
+<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
+<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 은평구 </p> -->
+<!--                                             <div class=" card-text text-muted  -->
+<!--                                                                 text-sm text-black-50 txt_line"> -->
+<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
+<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
+<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
 
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2">
-                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 은평구 </p>
-                                            <div class=" card-text text-muted 
-                                                                text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
-                                                    태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div>
-                                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;">
+<!--                                                 </p> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
 
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
+<!--                                 <div class="card h-100 border-0 shadow"> -->
+<!--                                     <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;"> -->
+<%--                                         <img class="img-fluid" src="${path}/resources/img/photo/pill.JPG"> --%>
+<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
+<!--                                         <div class="card-img-overlay-top text-end"> -->
+<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
+<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
+<!--                                             </a> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
+<!--                                         <div class="row w-100 txt_line "> -->
+<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
+<!--                                                 <a class=" text-black" href="detail-rooms.html">필경재</a> -->
+<!--                                             </p> -->
+<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
+<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
+<!--                                                 </p> -->
 
-                            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;">
-                                        <img class="img-fluid" src="img/photo/pill.JPG">
-                                        <a class="tile-link" href="detail-rooms.html"></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;">
-                                                <i class="fa fa-trash" style="color:white" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;">
-                                                <a class=" text-black" href="detail-rooms.html">필경재</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
+<!--                                             </div> -->
+<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
+<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 강남구 </p> -->
+<!--                                             <div class=" card-text text-muted  -->
+<!--                                                                 text-sm text-black-50 txt_line"> -->
+<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
+<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
+<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
 
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2">
-                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 강남구 </p>
-                                            <div class=" card-text text-muted 
-                                                                text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
-                                                    태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div>
-                                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;">
+<!--                                                 </p> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
 
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
+<!--                                 <div class="card h-100 border-0 shadow"> -->
+<!--                                     <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;"> -->
+<!--                                         <img class="img-fluid" src="img/photo/cham.jpg"> -->
+<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
+<!--                                         <div class="card-img-overlay-top text-end"> -->
+<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
+<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
+<!--                                             </a> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
+<!--                                         <div class="row w-100 txt_line "> -->
+<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
+<!--                                                 <a class=" text-black" href="detail-rooms.html">참숯골</a> -->
+<!--                                             </p> -->
+<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
+<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
+<!--                                                 </p> -->
 
-                            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;">
-                                        <img class="img-fluid" src="img/photo/cham.jpg">
-                                        <a class="tile-link" href="detail-rooms.html"></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;">
-                                                <i class="fa fa-trash" style="color:white" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;">
-                                                <a class=" text-black" href="detail-rooms.html">참숯골</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
+<!--                                             </div> -->
+<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
+<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 중구 </p> -->
+<!--                                             <div class=" card-text text-muted  -->
+<!--                                                                 text-sm text-black-50 txt_line"> -->
+<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
+<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
+<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
 
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2">
-                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 중구 </p>
-                                            <div class=" card-text text-muted 
-                                                                text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
-                                                    태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div>
-                                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;">
+<!--                                                 </p> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
 
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
+<!--                                 <div class="card h-100 border-0 shadow"> -->
+<!--                                     <div class="card-img-top overflow-hidden gradient-overlay"> -->
+<!--                                         <img class="img-fluid" src="img/photo/hamo.JPG"> -->
+<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
+<!--                                         <div class="card-img-overlay-top text-end"> -->
+<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
+<!--                                                 <i class="fa fa-trash" style="color:white; " aria-hidden="true"></i> -->
+<!--                                             </a> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
+<!--                                         <div class="row w-100 txt_line "> -->
+<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
+<!--                                                 <a class=" text-black" href="detail-rooms.html">하모</a> -->
+<!--                                             </p> -->
+<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
+<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
+<!--                                                 </p> -->
 
-                            <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay">
-                                        <img class="img-fluid" src="img/photo/hamo.JPG">
-                                        <a class="tile-link" href="detail-rooms.html"></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;">
-                                                <i class="fa fa-trash" style="color:white; " aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;">
-                                                <a class=" text-black" href="detail-rooms.html">하모</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
+<!--                                             </div> -->
+<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
+<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 강남구 </p> -->
+<!--                                             <div class=" card-text text-muted  -->
+<!--                                                                 text-sm text-black-50 txt_line"> -->
+<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
+<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
+<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
 
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2">
-                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 강남구 </p>
-                                            <div class=" card-text text-muted 
-                                                                text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
-                                                    태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div>
-                                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;">
-
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                                                 </p> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
 
 
 
@@ -826,17 +841,17 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>

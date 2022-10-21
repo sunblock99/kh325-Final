@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.tour.member.model.mapper.MemberMapper;
+import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
+import com.kh.tour.member.model.vo.MyCommunity;
+import com.kh.tour.member.model.vo.Mycourse;
+import com.kh.tour.member.model.vo.Review;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -39,9 +44,9 @@ public class MemberServiceImpl implements MemberService {
 		}
 		
 		// passwordEncoder 활용법
-		System.out.println(member.getUserPassword()); // Hash 코드로 암호화된 비밀번호가 저장되어있음
-		System.out.println(passwordEncoder.encode(userPassword)); // encode를 통해 평문에서 암호문으로 변경
-		System.out.println(passwordEncoder.matches(userPassword, member.getUserPassword())); 
+//		System.out.println(member.getUserPassword()); // Hash 코드로 암호화된 비밀번호가 저장되어있음
+//		System.out.println(passwordEncoder.encode(userPassword)); // encode를 통해 평문에서 암호문으로 변경
+//		System.out.println(passwordEncoder.matches(userPassword, member.getUserPassword())); 
 			// 파라메터로 받아온 pwd를 암호화하고 기존 암호화된 비밀번호와 비교하는 코드
 		
 		if(userEmail.equals("admin")) { // admin일 경우 테스트를 위해 비밀번호 확인하지 않음
@@ -197,5 +202,44 @@ public class MemberServiceImpl implements MemberService {
 			
 			return mapper.selectMember(userInfo.getUserEmail());
 	}
+
+	@Override
+	public List<Bookmark> bookmark(int userNo) {
+		return mapper.bookmark(userNo);
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public int deleteBookmark(int likeNo) {
+		return mapper.deleteBookmark(likeNo);
+	}
+
+	@Override
+	public List<Review> review(int userNo) {
+		return mapper.review(userNo);
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public int deleteReview(int reviewNo) {
+		return mapper.deleteReview(reviewNo);
+	}
+
+	@Override
+	public List<MyCommunity> community(int userNo) {
+		return mapper.community(userNo);
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public int deleteCommunity(int freeboardNo) {
+		return mapper.deleteCommunity(freeboardNo);
+	}
+
+	@Override
+	public List<Mycourse> mycourse(int userNo) {
+		return mapper.mycourse(userNo);
+	}
+	
 }
 

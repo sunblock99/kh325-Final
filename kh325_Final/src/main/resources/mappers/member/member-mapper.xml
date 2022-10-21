@@ -103,8 +103,83 @@
 	
 	<!-- 카카오 로그인  끝 -->
 	
+	<resultMap type="Bookmark" id="bookmarkResultMap">
+		<result property="likeNo" column="LIKE_NO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="title" column="TITLE"/>
+		<result property="image" column="FIRSTIMAGE2"/>
+		<result property="address" column="ADDR1"/>
+		<result property="overview" column="OVERVIEW"/>
+		<result property="star" column="STAR"/>
+	</resultMap>
 	
+	<select id="bookmark" parameterType="int" resultMap="bookmarkResultMap">
+		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE2, B.ADDR1, B.OVERVIEW, R.STAR FROM BASIC_TOUR_INFO B
+		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
+		JOIN REVIEW_TOTAL R ON(R.UNO = L.UNO and R.CONTENTID = B.CONTENTID)
+		WHERE L.UNO = #{userNo}
+	</select> 
 	
+	<delete id="deleteBookmark" parameterType="int">
+		DELETE FROM TOUR_LIKE 
+		WHERE LIKE_NO = #{likeNo}
+	</delete>
 	
+	<resultMap type="Review" id="reviewResultMap">
+		<result property="reviewNo" column="REVIEW_NO"/>
+		<result property="userNo" column="UNO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="title" column="TITLE"/>
+		<result property="star" column="STAR"/>
+		<result property="content" column="CONTENT"/>
+	</resultMap>
+	
+	<select id="review" parameterType="int" resultMap="reviewResultMap">
+		SELECT R.REVIEW_NO, R.UNO, R.CONTENTID, B.TITLE, R.STAR, R.CONTENT FROM REVIEW_TOTAL R
+		JOIN MEMBER M ON(M.UNO=R.UNO)
+		JOIN BASIC_TOUR_INFO B ON(B.CONTENTID = R.CONTENTID)
+		WHERE R.UNO =  #{userNo}
+	</select>
+	
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM REVIEW_TOTAL 
+		WHERE REVIEW_NO = #{reviewNo}
+	</delete> 	
+	
+	<resultMap type="MyCommunity" id="communityResultMap">
+		<result property="boardType" column="BOARD_TYPE"/>
+		<result property="userNo" column="UNO"/>
+		<result property="freeboardNo" column="FREEBOARD_NO"/>
+		<result property="title" column="TITLE"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="count" column="COUNT"/>
+	</resultMap>
+	
+	<select id="community" parameterType="int" resultMap="communityResultMap">
+		SELECT F.BOARD_TYPE, M.UNO, F.FREEBOARD_NO, F.TITLE, F.POST_DATE, F.COUNT FROM COMM_FREEBOARD F
+		JOIN MEMBER M ON(F.UNO=M.UNO)
+		JOIN FREEBOARD_COMMENT C ON(C.FREEBOARD_NO = F.FREEBOARD_NO)
+		WHERE F.STATUS = 'Y' AND M.UNO= #{userNo}
+	</select>
+	
+	<delete id="deleteCommunity" parameterType="int">
+		DELETE FROM REVIEW_TOTAL 
+		WHERE REVIEW_NO = #{freeboardNo}
+	</delete> 	
+	
+	<resultMap type="Mycourse" id="mycourseResultMap">
+		<result property="mycourseNo" column="MYCOURSE_NO"/>
+		<result property="userNo" column="UNO"/>
+		<result property="mycourseContent" column="MYCOURSE_CONTENT"/>
+		<result property="mycourseTitle" column="MYCOURSE_TITLE"/>
+		<result property="mycourseMainimage" column="MYCOURSE_MAINIMAGE"/>
+	</resultMap>
+	
+	<select id="mycourse" parameterType="int" resultMap="mycourseResultMap">
+		SELECT MYCOURSE_NO, C.UNO, MYCOURSE_CONTENT, MYCOURSE_TITLE, MYCOURSE_MAINIMAGE FROM MYCOURSE C
+		JOIN MEMBER M ON(C.UNO=M.UNO)
+		WHERE C.MYCOURSE_STATUS = 'Y' AND C.UNO = #{userNo}
+	</select>
 
 </mapper>

@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,13 +24,13 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,7 +38,7 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
 </head>
 <style>
     /*폰트 적용*/
@@ -156,7 +156,7 @@
         <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo"></a>
+                    <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo"></a>
                     <form class="form-inline d-none d-sm-flex" action="#" id="search">
                         <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
                             <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
@@ -311,7 +311,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
+                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="${path}/resources/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
                                 </div>
                             </div>
                         </li>
@@ -347,7 +347,7 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block " href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="img/avatar/avatar-10.jpg" alt=""></a>
+                            <a class="d-inline-block " href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
                             <h5 class="text-pB">Dongmin Lee</h5>
                             <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
                         </div>
@@ -441,26 +441,38 @@
                     <div class="text-block text-pEb">
                         <!-- <p class="subtitle text-sm text-primary">Reviews </p>
                         <h5 class="mb-4">Listing Reviews </h5> -->
+                        <c:forEach var="Review" items="${reviewList}">
                         <div class="d-block mb-5">
                             <div>
-                                <h5 class="mt-2 mb-1 text-pEb">하모</h5>
+                                <h5 class="mt-2 mb-1 text-pEb"><c:out value="${Review.title}"/></h5>
                                 <div class="mb-2">
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
+                                    <c:if test="${Review.star == 1}">
+                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
+                                    </c:if>
+                                    <c:if test="${Review.star == 2}">
+                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
+                                    </c:if>
+                                    <c:if test="${Review.star == 3}">
+                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
+                                    </c:if>
+                                    <c:if test="${Review.star == 4}">
+                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
+                                    </c:if>
+                                    <c:if test="${Review.star == 5}">
+                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+                                    </c:if>
                                 </div>
-                                <p class="text-muted text-sm ">진주지역 전통음식점인데 과하지 않은 양념으로 담백한 맛을 느낄 수 있어요! 소박하고 정성이 가득한 음식이었어요. 별채와 같이 아늑한 공간에서 여유로운 식사를 할 수 있어서 좋았습니다.</p>
+                                <p class="text-muted text-sm "><c:out value="${Review.content}"/></p>
                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm" style="float:right;">
                                     <span class="me-1 text-muted text-pB">
                                     <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정</span> &nbsp;&nbsp;&nbsp;&nbsp;
                                     <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>삭제</span>
+                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true" href="${path}/myPage/deleteReview?"></i>삭제</span>
                                 </p>
                             </div>
                         </div>
-                        <hr>
+                        </c:forEach>
+               <!--          <hr>
                         <div class="d-block mb-5">
                             <div>
                                 <h5 class="mt-2 mb-1 text-pEb">2022년 경복궁 생과방</h5>
@@ -540,7 +552,7 @@
                                 </p>
                             </div>
                         </div>
-                        <hr>
+                        --> 
                     </div>
                 </div>
                 <div class="mt-2" style="width: 348px; ">
@@ -652,17 +664,17 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
