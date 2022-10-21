@@ -12,10 +12,8 @@
           <div class="d-flex align-items-center">
 
             <!-- 로고 시작 -->
-            <a class="navbar-brand py-3 px-5" href="index.html"
-              style="line-height:0;">
-              <img class="ps-3" src="${path}/resources/image/togetherLogo.png" width="30%"
-                height="10%">
+            <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
+              <img class="ps-3" src="${path}/resources/image/togetherLogo.png" width="40%" height="60%">
             </a>
             <!-- 로고 끝-->
 
@@ -29,40 +27,31 @@
             style="font-family: pL;">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link-header-black" id="homeDropdownMenuLink"
-                  href="index.html"
+                <a class="fs-3 nav-link-header-black text-pB" id="homeDropdownMenuLink" href="index.html"
                   aria-haspopup="true" aria-expanded="false">홈</a>
               </li>
 
               <!-- 상단바메뉴 시작 -->
-              <li class="nav-item position-static">
-                <li class="nav-item dropdown">
-                  <a class="nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink"
-                    href="index.html" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    관광정보</a>
-                  <div class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                    <h6 class="dropdown-header fw-normal" style="font-family:
-                      pB;">관광정보</h6>
-                    <a class="hvr dropdown-item"
-                      href="docs/docs-introduction.html">HOT PLACE </a>
-                    <a class="hvr dropdown-item"
-                      href="docs/docs-directory-structure.html">관광지 정보</a>
-                    <a class="hvr dropdown-item" href="docs/docs-gulp.html">지역별
-                      축제ㅣ행사 </a>
-                    <a class="hvr dropdown-item"
-                      href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
-                  </div>
-                </li>
-              </li>
+                        <li class="nav-item position-static text-pB">
+                            <li class="nav-item dropdown">
+                                <a class="fs-3 nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" 
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관광정보</a>
+                                <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                                    <h6 class="dropdown-header fs-5 text-pSb">관광정보</h6>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-introduction.html">HOT PLACE </a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-directory-structure.html">관광지 정보</a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-gulp.html">지역별 축제ㅣ행사 </a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
+                                </div>
+                            </li>
+                        </li>
 
-              <li class="nav-item"><a class="nav-link-header-black" href="contact.html">커뮤니티</a></li>
-              <li class="nav-item">
-                <a class="nav-link-header-black" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
+              <li class="nav-item"><a class="fs-3 nav-link-header-black" href="contact.html">커뮤니티</a></li>
+                        <li class="nav-item">
+                            <a class="fs-3 nav-link-header-black" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
               
               <c:if test="${loginMember eq null}">
-              <li class="nav-item"><a class="nav-link-header-black" href="${path}/loginView">로그인</a></li>
+              <li class="nav-item"><a class="fs-3 nav-link-header-black" href="${path}/loginView">로그인</a></li>
               </c:if>
               
               <!-- 일반회원 로그인 성공 시 -->
@@ -82,18 +71,14 @@
               
               <!-- 관리자 로그인 성공 시 -->
               <c:if test="${loginMember.managerStatus eq 'Y'}">
-              <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
+              <li class="nav-item dropdown"><a class="fs-3 nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
                 href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <c:out value="${loginMember.userName}" /> 님</a>
-                <div class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                    <a class="hvr dropdown-item"
-                      href="docs/docs-introduction.html">마이페이지</a>
-                    <a class="hvr dropdown-item"
-                      href="docs/docs-introduction.html">관리자페이지</a>
-                    <a class="hvr dropdown-item"
-                      href="docs/docs-directory-structure.html">로그아웃</a>
-                </div>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink text-pB">
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-introduction.html">마이페이지</a>
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-introduction.html">관리자페이지</a>
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-directory-structure.html">로그아웃</a>
+                            </div>
               </li>
               </c:if>
 

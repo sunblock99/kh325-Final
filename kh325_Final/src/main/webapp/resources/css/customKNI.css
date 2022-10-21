@@ -129,6 +129,20 @@ div {
     -webkit-line-clamp: 2
 }
 
+.text-overflow-elip-1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    margin-top: 1px;
+    max-height: 80px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1
+}
+
 
 /* hover */
 
@@ -240,24 +254,40 @@ a.hvr:hover {
 
 /* 갤러리 끝*/
 
+.darker-overlay {
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    z-index: 20;
+}
+.darker-overlay::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: ' ';
+      opacity: .5;
+      background-color: #000;
+}
+
 
 /* 검색창 */
-
 div.absolute-searchbar {
     position: relative;
-    width: 117%;
+    width: 101%;
     padding-top: 5px;
     bottom: 70px;
     margin: auto;
     justify-content: center;
     z-index: 100;
-    overflow: visible;
+    overflow: hidden
+    !important;
 }
 
 .searchbar-shadow {
     filter: drop-shadow(0 5px 10px rgb(0 0 0 / 50%));
 }
-
 
 /* 검색창 끝 */
 
@@ -329,7 +359,7 @@ div.absolute-searchbar {
 .main-square {
     background-size: 500px 310px;
     z-index: -100;
-    background-image: url("/html/image/mainVideoBack.png");
+    background-image: url(${path}/resources/image/mainVideoBack.png);
     background-repeat: no-repeat;
     background-position-x: 340px;
     background-position-y: 100px;
@@ -432,6 +462,20 @@ tr.community-borer-size {
     font-family: pM;
     text-decoration: underline;
     font-size: 20px;
+}
+
+.text-overflow-elip-3 {
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    margin-top: 1px;
+    max-height: 80px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 
 
