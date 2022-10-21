@@ -12,7 +12,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Directory Theme by Bootstrapious</title>
+<title>TOGETHER, to GET THERE</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -33,10 +33,10 @@
 	href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
 
 <!-- theme stylesheet-->
-<link rel="stylesheet" href="${path}/resources/css/style.default.css"
-	id="theme-stylesheet">
+<link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
 <!-- Custom stylesheet - for your changes-->
 <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
+<link rel="stylesheet" href="${path}/resources/font.css">
 <!-- Favicon-->
 <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
 <!-- Tweaks for older IEs-->
@@ -81,14 +81,14 @@
 	font-family: 'pSb';
 	font-weight: 600;
 	font-display: swap;
-	src: url(font/Pretendard-SemiBold.ttf);
+	src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
 }
 
 @font-face {
 	font-family: 'pM';
 	font-weight: 500;
 	font-display: swap;
-	src: url(font/Pretendard-Medium.ttf);
+	src: url(${path}/resources/font/Pretendard-Medium.ttf);
 }
 
 @font-face {
@@ -121,19 +121,19 @@
 </style>
 
 
-	
-		<jsp:include page="/WEB-INF/views/common/whiteHeader.jsp">
+<jsp:include page="/WEB-INF/views/common/whiteHeader.jsp">
 			<jsp:param value="예아바디" name="title"/>
-		</jsp:include>
+</jsp:include>
+
 	<!-- 배경 -->
 	<section class="pt-5 hero-home" style="background-color: #FD9F28;">
 		<div class="swiper-container hero-slider" style="height: 82%;">
 			<div class="swiper-wrapper darker-overlay">
-				<div class="swiper-slide"
+				<div class="swiper-slide darker-overlay"
 					style="background-image:url(${path}/resources/image/mainBackground.png)"></div>
-				<div class="swiper-slide"
+				<div class="swiper-slide darker-overlay"
 					style="background-image:url(${path}/resources/image/mainBackground2.jpg)"></div>
-				<div class="swiper-slide"
+				<div class="swiper-slide darker-overlay"
 					style="background-image:url(${path}/resources/image/mainBackground3.jpg)"></div>
 			</div>
 		</div>
@@ -143,27 +143,25 @@
 			<div class="row">
 				<div class="col-xl-10">
 					<div class="py-6 text-center text-lg-start">
-						<p class="fs-3 text-pSb mb-1"
-							style="color: #fff; letter-spacing: 2px;">DISCOVER SOUTH
-							KOREA</p>
+						<p class="fs-3 text-pSb mb-1" style="color: #fff; letter-spacing: 2px;">DISCOVER SOUTH KOREA</p>
 						<h1 class="display-1 fw-bold text-pBlack text-shadow">TOGETHER</h1>
 						<p class="ps-2 fs-4 text-pR">투게더와 함께 대한민국의 구석구석을 둘러보고 멋진 여행을
 							계획 해보세요</p>
-						<button
-							class="mt-4 mb-3 col-lg-3 btn rounded-pill d-grid fs-5 letter-spacing-1 text-pB"
-							style="background-color: #FD9F28;" type="submit">관광정보
+						<button class="mt-4 mb-5 col-lg-3 btn rounded-pill d-grid fs-5 letter-spacing-1 text-pB"
+							style="background-color: #FD9F28;" type="submit" onclick="${path}/tour/infoSearch">관광정보
 							검색하기</button>
 					</div>
 
 					<!-- 검색창 시작 -->
-					<div
-						class="search-bar col-10 searchbar-shadow mt-5 p-3 p-lg-1 ps-lg-3 absolute-searchbar text-pSb">
+					<div class="search-bar col-12 searchbar-shadow p-3 p-lg-1 ps-lg-3 text-pSb absolute-searchbar">
 						<form action="#">
 							<div class="row">
 								<div class="col-lg-10 d-flex align-items-center form-group">
+								<form action="/tour/수아 컨트롤러로 보냄">
 									<input style="font-size: 1.4rem;"
 										class="form-control border-0 shadow-0" type="text"
-										name="search" placeholder=" &nbsp; 검색어를 입력 해주세요">
+										name="수아가 받는 인자값" placeholder=" &nbsp; 검색어를 입력 해주세요">
+								</form>
 								</div>
 								<div class="col-lg-2 d-grid" style="text-align: center;">
 									<button class="btn rounded-pill h-100 fs-5 letter-spacing-4"
@@ -172,7 +170,7 @@
 							</div>
 						</form>
 					</div>
-					<!-- 검색창 시작 -->
+					<!-- 검색창 끝 -->
 
 				</div>
 			</div>
@@ -184,17 +182,14 @@
 		<div class="row mb-5 pb-5">
 
 			<div class="col-1"></div>
-			<div class="col-md-4 mt-1">
+			<div class="col-md-4">
 				<p class="fs-3 mb-0"
-					style="color: rgba(255, 255, 255, 0.598); font-family: pM;">MAKE
-					IT TOGETHER</p>
+					style="color: rgba(255, 255, 255, 0.598); font-family: pM;">MAKE IT TOGETHER</p>
 				<h6 class="display-4 fw-bold text-pBlack">나만의 여행코스</h6>
-				<p class="fs-2 mb-0 pt-3" style="color: #fff; font-family: pM;">투게더
-					이용자들이 직접 기록한 여행코스</p>
-				<p class="fs-3 mb-0 pt-4" style="color: #fff; font-family: pM;">
-					오늘은 <span class="fs-3 mb-0 pt-1 todaytour-intro-id">박박만*님</span> ,
-					<span class="fs-3 mb-0 pt-1 todaytour-intro-id">짜파게*님</span> 만의 <br>특별한
-					여행코스를 구경해보세요
+				<p class="fs-2 mb-0 pt-3 text-pSb" style="color: #fff;">투게더 이용자들이 직접 기록한 여행코스</p>
+				<p class="fs-3 mb-0 pt-4 text-pM" style="color: #fff;">
+					오늘은 <span class="fs-3 mb-0 pt-1 todaytour-intro-id text-pM">박박만*님</span> ,
+					<span class="fs-3 mb-0 pt-1 todaytour-intro-id text-pM">짜파게*님</span> 만의 <br>특별한 여행코스를 구경해보세요
 				</p>
 				<div class="row mt-5 pt-4 pb-3">
 					<div class="col-lg-5 d-grid" style="text-align: center;">
@@ -215,7 +210,7 @@
 					<div class="d-flex align-items-lg-stretch">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(${path}/resources/https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=d9fa86a0-cddf-4f5a-a3ae-97e83f5d4039);">
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=d9fa86a0-cddf-4f5a-a3ae-97e83f5d4039);">
 							<a class="tile-link" href="category.html"> </a>
 							<div
 								class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
@@ -234,7 +229,7 @@
 					<div class="d-flex">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(${path}/resources/https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=92205eba-0012-49b7-af73-a907c01089f7); ">
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=92205eba-0012-49b7-af73-a907c01089f7); ">
 
 							<a class="tile-link" href="category.html"> </a>
 							<div
@@ -310,7 +305,7 @@
 				</p>
 				<a
 					class="d-flex a-hover a-orign-text btn-link-cate-lgfont pt-5 justify-content-end"
-					href="post.html"> 더보기 <i class="fas fa-angle-double-right ms-1"></i></a>
+					href="${path}/tour/hotPlace"> 더보기 <i class="fas fa-angle-double-right ms-1"></i></a>
 			</div>
 
 			<!-- Slides-->
@@ -405,50 +400,33 @@
 				<h6 class="display-4 text-pBlack">행사ㅣ축제</h6>
 
 				<div class="row mb-3">
+				<c:forEach items="${selectMainEvent}" var="MainEvent">
 					<div class="col-6 d-flex mt-4">
-						<a class="a-orign-text" href=""> <img
-							class="date-tile-event me-3"
-							src="http://tong.visitkorea.or.kr/cms/resource/54/2483454_image2_1.JPG" /></a>
+						<a class="a-orign-text" href="">
+						<c:if test="${MainEvent.firstImage ne null}" />
+						<img class="date-tile-event me-3 ms-3" src='<c:out value="${MainEvent.firstImage}"/>' />
+						</a>
 						<p class="mb-0 text-lg">
-							<b>가무악극으로 만나는 토요 상설공연</b> <br>2021.03.06 ~ 2021.10.30
+							<b><c:out value="${MainEvent.title}" /></b><br>
+							<c:out value="${MainEvent.eventStartDate}" /> ~ <c:out value="${MainEvent.eventEndDate}" /> 
 						</p>
 					</div>
-					<div class="col-6 d-flex mt-4">
-						<a class="a-orign-text" href=""> <img
-							class="date-tile-event me-3 ms-2"
-							src="http://tong.visitkorea.or.kr/cms/resource/26/2704326_image2_1.JPG" /></a>
-						<p class="mb-0 text-lg">
-							<b>가족끼리 빙어체험</b> <br>2021.03.01 ~ 2021.06.06
-						</p>
-					</div>
-				</div>
-
-				<div class="row mb-3">
-					<div class="col-6 d-flex mt-4">
-						<a class="a-orign-text" href=""> <img
-							class="date-tile-event me-3"
-							src="http://tong.visitkorea.or.kr/cms/resource/96/2707496_image2_1.jpg" /></a>
-						<p class="mb-0 text-lg">
-							<b>가족끼리딸기 캠피닉</b> <br>2021.03.01 ~ 2021.06.06
-						</p>
-					</div>
-
-					<div class="col-6 d-flex mt-4">
-						<a class="a-orign-text" href=""> <img
-							class="date-tile-event me-3 ms-2"
-							src="http://tong.visitkorea.or.kr/cms/resource/60/2705060_image2_1.jpg" /></a>
-						<p class="mb-0 text-lg">
-							<b>가족오페라 &lt;마술피리&gt; 2021</b> <br>2021.03.01 ~ 2021.06.06
-						</p>
-					</div>
-				</div>
+				</c:forEach>
+ 				</div>
 				<a
 					class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2"
 					href="post.html"> 더보기 <i class="fas fa-angle-double-right ms-1"></i></a>
 			</div>
 
 
-			<div class="col-md-6 main-square z-index-50">
+			<div class="col-md-6 z-index-50"
+			style=" background-size: 500px 310px;
+				    z-index: -100;
+				    background-image: url(${path}/resources/image/mainVideoBack.png);
+				    background-repeat: no-repeat;
+				    background-position-x: 340px;
+				    background-position-y: 100px;
+				    overflow: visible;">
 				<div class="d-flex align-items-center">
 					<div class="ms-6 ps-6">
 						<iframe class="ms-lg-4 mb-3 pb-4 video-shadow"

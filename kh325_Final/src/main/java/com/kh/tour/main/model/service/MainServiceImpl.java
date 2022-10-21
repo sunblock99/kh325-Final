@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.tour.main.model.mapper.MainMapper;
 import com.kh.tour.main.model.vo.MainCommunity;
+import com.kh.tour.main.model.vo.MainEvent;
 import com.kh.tour.main.model.vo.MainHotPlace;
 
 
@@ -24,6 +25,11 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public List<MainHotPlace> selectMainHotPlace() {
 		return mapper.selectMainHotPlace();
+	}
+
+	@Override
+	public List<MainEvent> selectMainEvent() {
+		return mapper.selectMainEvent();
 	}
 	
 }
