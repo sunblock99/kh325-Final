@@ -71,6 +71,18 @@ public class GalleryServiceImpl implements GalleryService {
 				searchMap.put("unoKeyword", searchValue);
 			}
 		}
+		
+		String sort = param.get("sort");
+		if(sort != null && sort.length() > 0) {
+//			String sortType = param.get("sortType");
+			if (sort.equals("newest")) {
+				searchMap.put("sortNewest", sort);
+			} else if (sort.equals("oldest")) {
+				searchMap.put("sortOldest", sort);
+			}else if (sort.equals("popular")) {
+				searchMap.put("sortPopular", sort);
+			}
+		}
 
 		return mapper.selectGalleryList(rowBounds, searchMap);
 	}
@@ -87,6 +99,8 @@ public class GalleryServiceImpl implements GalleryService {
 				searchMap.put("unoKeyword", searchValue);
 			}
 		}
+		
+		
 		System.out.println(searchMap);
 		return mapper.selectGalleryCount(searchMap);
 	}

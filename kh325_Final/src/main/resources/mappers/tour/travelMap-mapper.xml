@@ -3,66 +3,70 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.tour.travelMap.model.mapper.TravelMapMapper">
-	<resultMap type="Tour" id="travelMapListResultMap">
-		<id property="contentId" column="CONTENTID"/>
-		<result property="contentTypeId" column="CONTENTTYPEID"/>
-		<result property="title" column="TITLE"/>
-		<result property="tel" column="TEL"/>
-		<result property="telName" column="TELNAME"/>
-		<result property="homePage" column="HOMEPAGE"/>
-		<result property="bookTour" column="BOOKTOUR"/>
-		<result property="firstImage" column="FIRSTIMAGE"/>
-		<result property="firstImage2" column="FIRSTIMAGE2"/>
-		<result property="areaCode" column="AREACODE"/>
-		<result property="sigunguCode" column="SIGUNGUCODE"/>
-		<result property="cat1" column="CAT1"/>
-		<result property="cat2" column="CAT2"/>
-		<result property="cat3" column="CAT3"/>
-		<result property="addr1" column="ADDR1"/>
-		<result property="addr2" column="ADDR2"/>
-		<result property="zipCode" column="ZIPCODE"/>
-		<result property="mapX" column="MAPX"/>
-		<result property="mapY" column="MAPY"/>
-		<result property="mLevel" column="MLEVEL"/>
-		<result property="overview" column="OVERVIEW"/>
+<mapper
+	namespace="com.kh.tour.travelMap.model.mapper.TravelMapMapper" >
+	
+	<resultMap type="TravelMap" id="travelMapListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="contentTypeName" column="CONTENTTYPENAME" />
+		<result property="title" column="TITLE" />
+		<result property="tel" column="TEL" />
+		<result property="homePage" column="HOMEPAGE" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="addr1" column="ADDR1" />
+		<result property="mapX" column="MAPX" />
+		<result property="mapY" column="MAPY" />
+		<result property="overview" column="OVERVIEW" />
+		<result property="star" column="STAR" />
 	</resultMap>
-	
-	<!-- 관광지도 체크박스 출력 -->
-	<select id="selectTravelMapList" resultMap="travelMapListResultMap"  parameterType="map">
-		SELECT  CONTENTID,
-			CONTENTTYPEID,
-			TITLE,
-			TEL,
-			TELNAME,
-			HOMEPAGE,
-			BOOKTOUR,
-			FIRSTIMAGE,
-			FIRSTIMAGE2,
-			AREACODE,
-			SIGUNGUCODE,		
-			CAT1,		
-			CAT2,		
-			CAT3,		
-			ADDR1,		
-			ADDR2,		
-			ZIPCODE,		
-			MAPX,		
-			MAPY,		
-			MLEVEL,		
-			OVERVIEW	
-		FROM BASIC_TOUR_INFO 
-<!-- 		<if test="titleKeyword != null"> -->
-<!-- 			AND TITLE LIKE '%'||#{titleKeyword}||'%' -->
+
+	<select id="selectTravelMapList"
+		resultMap="travelMapListResultMap" parameterType="String">
+		SELECT T.CONTENTID,
+			 T.CONTENTTYPEID,
+			 C.CONTENTTYPENAME,
+			 T.TITLE,
+			 T.TEL,
+			 T.HOMEPAGE,
+			 T.FIRSTIMAGE,
+			 T.ADDR1,
+			 T.MAPX,
+			 T.MAPY,
+			 T.OVERVIEW,
+			 L.STAR
+		FROM BASIC_TOUR_INFO T
+		JOIN CONTENTTYPELIST C ON(T.CONTENTTYPEID = C.CONTENTTYPEID)
+		full OUTER JOIN REVIEW_TOTAL L ON (T.CONTENTID = L.CONTENTID)
+		
+<!-- 		<if test="tourKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{tourKeyword} -->
 <!-- 		</if> -->
-<!-- 		<if test="galTagKeyword != null">	 -->
-<!-- 			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%'  -->
+<!-- 		<if test="restaurantKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{restaurantKeyword} -->
 <!-- 		</if> -->
-<!-- 		<if test="unoKeyword != null">		 -->
-<!-- 			AND UNO =#{unoKeyword}  -->
+<!-- 		<if test="hotelKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{hotelKeyword} -->
 <!-- 		</if> -->
-		ORDER BY CONTENTID DESC
+<!-- 		<if test="leportsKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{leportsKeyword} -->
+<!-- 		</if> -->
+<!-- 		<if test="facilityKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{facilityKeyword} -->
+<!-- 		</if> -->
+<!-- 		<if test="recommendKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{recommendKeyword} -->
+<!-- 		</if> -->
+<!-- 		<if test="travelCourseKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{travelCourseKeyword} -->
+<!-- 		</if> -->
+<!-- 		<if test="myCourseKeyword != null"> -->
+<!-- 			WHERE C.CONTENTTYPENAME = #{myCourseKeyword} -->
+<!-- 		</if> -->
+		
+		<if test="contentTypeName != null">
+		WHERE C.CONTENTTYPENAME = #{contentTypeName}
+		</if>
 	</select>
-	
 
 </mapper>

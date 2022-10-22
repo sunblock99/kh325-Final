@@ -9,7 +9,7 @@
 		<result property="uno" column="UNO"/>
 		<result property="title" column="TITLE"/>
 		<result property="postDate" column="POST_DATE"/>
-		<result property="originalImage" column="ORIGINAL_IMAG"/>
+		<result property="originalImage" column="ORIGINAL_IMAGE"/>
 		<result property="renamedImage" column="RENAMED_IMAGE"/>
 		<result property="galTag" column="GAL_TAG"/>
 		<result property="status" column="STATUS"/>
@@ -32,8 +32,9 @@
 		) VALUES (
 			SEQ_BOARD_NO.NEXTVAL,
 			#{uno},
+<!-- 			#{userNo}, -->
 			#{title},
-			#{postDate},
+			SYSDATE,
 			#{originalImage},
 			#{renamedImage},
 			#{galTag},
@@ -56,13 +57,36 @@
 		FROM GALLERY 
 <!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
 		WHERE STATUS = 'Y' 
-<!-- 		<if test="galTagKeyword != null">	검색창에서 검색,, -->
-<!-- 			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%'  -->
+		<if test="galTagKeyword != null">	<!-- 검색창에서 검색,, -->
+			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%' 
+		</if>
+		<if test="unoKeyword != null">		<!-- 나의갤러리 누르면 회원번호로 검색,, -->
+			AND UNO =#{unoKeyword} 
+		</if>
+		
+		<choose>
+			<when test="sortOldest != null">
+			ORDER BY BOARD_NO ASC
+			</when>
+			<when test="sortPopular != null">
+			ORDER BY BOARD_NO ASC
+			</when>
+			<otherwise>
+			ORDER BY BOARD_NO DESC
+			</otherwise>
+		</choose>
+<!-- 		<if test="sortNewest != null"> -->
+<!-- 		ORDER BY BOARD_NO DESC -->
 <!-- 		</if> -->
-<!-- 		<if test="unoKeyword != null">		나의갤러리 누르면 회원번호로 검색,, -->
-<!-- 			AND UNO =#{unoKeyword}  -->
+<!-- 		<if test="sortOldest != null"> -->
+<!-- 		ORDER BY BOARD_NO ASC -->
 <!-- 		</if> -->
-		ORDER BY BOARD_NO DESC
+<!-- 		<if test="sortPopular != null"> -->
+<!-- 		ORDER BY BOARD_NO DESC -->
+<!-- 		</if> -->
+<!-- 		<if test="sort != null"> -->
+<!-- 		ORDER BY BOARD_NO DESC -->
+<!-- 		</if> -->
 	</select>
 
 	<!-- 갯수 -->
@@ -71,33 +95,33 @@
 		FROM GALLERY 
 <!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
 		WHERE STATUS = 'Y' 
-<!-- 		<if test="titleKeyword != null"> -->
-<!-- 			AND TITLE LIKE '%'||#{titleKeyword}||'%' -->
-<!-- 		</if> -->
-<!-- 		<if test="galTagKeyword != null"> -->
-<!-- 			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%'  -->
-<!-- 		</if> -->
-<!-- 		<if test="unoKeyword != null"> -->
-<!-- 			AND UNO =#{unoKeyword}  -->
-<!-- 		</if> -->
+		<if test="galTagKeyword != null">	<!-- 검색창에서 검색,, -->
+			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%' 
+		</if>
+		<if test="unoKeyword != null">		<!-- 나의갤러리 누르면 회원번호로 검색,, -->
+			AND UNO =#{unoKeyword} 
+		</if>
 		ORDER BY BOARD_NO DESC 
 	</select>
 	
 	<!-- 글번호로 이미지 가져오기 = 삭제할때 필요 -->
-<!-- 	<select id="selectGalleryByBoardNo" parameterType="int" resultMap="galleryDetailResultMap"> -->
-<!--  		SELECT  BOARD_NO,  -->
-<!-- 				UNO,  -->
-<!-- 				TITLE,  -->
-<!-- 				ORIGINAL_IMAGE,  -->
-<!-- 				RENAMED_IMAGE,  -->
-<!-- 				GAL_TAG,  -->
-<!-- 				STATUS,  -->
-<!-- 				BOARD_TYPE -->
-<!-- 		FROM GALLERY  -->
+	<select id="selectGalleryByBoardNo" parameterType="int" resultMap="galleryListResultMap">
+ 		SELECT  BOARD_NO, 
+				UNO, 
+				TITLE, 
+				ORIGINAL_IMAGE, 
+				RENAMED_IMAGE, 
+				GAL_TAG, 
+				STATUS, 
+				BOARD_TYPE
+		FROM GALLERY 
 <!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
-<!-- 		WHERE G.STATUS='Y' AND G.WHERE BOARD_NO=#{boardNo} -->
+		WHERE STATUS='Y' 
+		AND BOARD_NO = #{boardNo}
 <!-- 		WHERE G.STATUS='Y' AND G.UNO=#{uno} -->
-<!-- 	</select> -->
+
+
+	</select>
 	
 	<!-- 이미지 삭제 -->
 	<update id="deleteGallery" parameterType="int">

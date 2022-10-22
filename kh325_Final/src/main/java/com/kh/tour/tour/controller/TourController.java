@@ -106,43 +106,43 @@ public class TourController {
 	}
 	
 	
-	@GetMapping("/tourDetailInfo.do") //contentId로 공통+이미지+무장애 객체 조회하기
-	public String tourCommonInfo(Model model, @RequestParam("contentId") int contentId) {
-		Tour tour = tService.findByContentId(contentId);
-		
-		if(tour == null) {
-			return "redirect:error";
-		}
-		
-		model.addAttribute("tour", tour);
-		return "tour/infoDetail";
-	}
-	
-	
-	@GetMapping("/tourDetailInfo.do") //  contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기 
-	public String tourDetailInfo(Model model, @RequestParam("contentId") int contentId) {
-		RepeatInfo repeatInfo = tService.findDetailByContentId(contentId);
-		
-		if(repeatInfo == null) {
-			return "redirect:error";
-		}
-		
-		model.addAttribute("repeatInfo", repeatInfo);
-		return "tour/infoDetail";
-	}
-	
-	@GetMapping("/tourDetailInfo.do") // contentId로 여행코스 소개+반복 조회하기  
-	public String CourseDetailInfo(Model model, @RequestParam("contentId") int contentId) {
-		RepeatCourse repeatCourse = tService.findCourseDetailByContentId(contentId);
-		
-		if(repeatCourse == null) {
-			return "redirect:error";
-		}
-		
-		model.addAttribute("repeatCourse", repeatCourse);
-		return "tour/infoDetail";
-	}
-	
+//	@GetMapping("/tourDetailInfo.do") //contentId로 공통+이미지+무장애 객체 조회하기
+//	public String tourCommonInfo(Model model, @RequestParam("contentId") int contentId) {
+//		Tour tour = tService.findByContentId(contentId);
+//		
+//		if(tour == null) {
+//			return "redirect:error";
+//		}
+//		
+//		model.addAttribute("tour", tour);
+//		return "tour/infoDetail";
+//	}
+//	
+//	
+//	@GetMapping("/tourDetailInfo.do") //  contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기 
+//	public String tourDetailInfo(Model model, @RequestParam("contentId") int contentId) {
+//		RepeatInfo repeatInfo = tService.findDetailByContentId(contentId);
+//		
+//		if(repeatInfo == null) {
+//			return "redirect:error";
+//		}
+//		
+//		model.addAttribute("repeatInfo", repeatInfo);
+//		return "tour/infoDetail";
+//	}
+//	
+//	@GetMapping("/tourDetailInfo.do") // contentId로 여행코스 소개+반복 조회하기  
+//	public String CourseDetailInfo(Model model, @RequestParam("contentId") int contentId) {
+//		RepeatCourse repeatCourse = tService.findCourseDetailByContentId(contentId);
+//		
+//		if(repeatCourse == null) {
+//			return "redirect:error";
+//		}
+//		
+//		model.addAttribute("repeatCourse", repeatCourse);
+//		return "tour/infoDetail";
+//	}
+//	
 	@GetMapping("/tourDetailInfo.do") // contentId로 숙박 소개+반복 조회하기   
 	public String HotelDetailInfo(Model model, @RequestParam("contentId") int contentId) {
 		RepeatHotel repeatHotel = tService.findHotelDetailByContentId(contentId);

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.travelMap.model.mapper.TravelMapMapper;
+import com.kh.tour.travelMap.model.vo.TravelMap;
 
 @Service
 public class TravelMapServiceImpl implements TravelMapService {
@@ -25,39 +26,44 @@ public class TravelMapServiceImpl implements TravelMapService {
 	private TravelMapMapper mapper;
 
 	@Override
-	public List<Tour> getTravelMapList(Map<String, String> param) {
-
-		Map<String, String> searchMap = new HashMap<String, String>();
-		String searchValue = param.get("searchValue");
-		if (searchValue != null && searchValue.length() > 0) {
-			String type = param.get("searchType");
-			if (type.equals("tour")) {
-				searchMap.put("tourKeyword", searchValue);
-			} else if (type.equals("restaurant")) {
-				searchMap.put("restaurantKeyword", searchValue);
-			} else if (type.equals("hotel")) {
-				searchMap.put("hotelKeyword", searchValue);
-
-			} else if (type.equals("leports")) {		//레포츠
-				searchMap.put("leportsKeyword", searchValue);
-
-			} else if (type.equals("facility")) {		//문화시설	
-				searchMap.put("facilityKeyword", searchValue);
-
-			} else if (type.equals("recommend")) {
-				searchMap.put("recommendKeyword", searchValue);
-
-			} else if (type.equals("travelCourse")) {
-				searchMap.put("travelCourseKeyword", searchValue);
-
-			} else if (type.equals("myCourse")) {
-				searchMap.put("myCourseKeyword", searchValue);
-			}
-		}
-
-		return mapper.selectTravelMapList(searchMap);
+	public List<TravelMap> getTravelMapList(String contentTypeName) {
+		return mapper.selectTravelMapList(contentTypeName);
 	}
-
+	
+//	@Override
+//	public List<TravelMap> getTravelMapList(Map<String, String> param) {
+//
+//		Map<String, String> searchMap = new HashMap<String, String>();
+//		String searchValue = param.get("searchValue");
+//		if (searchValue != null && searchValue.length() > 0) {
+//			String type = param.get("searchType");
+//			if (type.equals("tour")) {
+//				searchMap.put("tourKeyword", searchValue);
+//			} else if (type.equals("restaurant")) {
+//				searchMap.put("restaurantKeyword", searchValue);
+//			} else if (type.equals("hotel")) {
+//				searchMap.put("hotelKeyword", searchValue);
+//
+//			} else if (type.equals("leports")) {		//레포츠
+//				searchMap.put("leportsKeyword", searchValue);
+//
+//			} else if (type.equals("facility")) {		//문화시설	
+//				searchMap.put("facilityKeyword", searchValue);
+//
+//			} else if (type.equals("recommend")) {
+//				searchMap.put("recommendKeyword", searchValue);
+//
+//			} else if (type.equals("travelCourse")) {
+//				searchMap.put("travelCourseKeyword", searchValue);
+//
+//			} else if (type.equals("myCourse")) {
+//				searchMap.put("myCourseKeyword", searchValue);
+//			}
+//		}
+//
+//		return mapper.selectTravelMapList(searchMap);
+//	}
+	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public Tour findById(int contentId) {
