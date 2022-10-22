@@ -83,12 +83,6 @@
                             <span> 회원목록 </span>
                         </a>
                     </li>
-<!--                     <li class="side-nav-item"> -->
-<%--                         <a href="${path}/manager/allCourse" class="side-nav-link"> --%>
-<!--                             <i class="uil-check"></i> -->
-<!--                             <span> 여행코스 승인 </span> -->
-<!--                         </a> -->
-<!--                     </li> -->
                     <li class="side-nav-title side-nav-item" style="font-size: 15px;">게시판 관리</li>
                     <li class="side-nav-item">
                         <a href="${path}/manager/allBoard" target="_blank" class="side-nav-link">
@@ -366,24 +360,34 @@
                                                         </div>
                                                     </td>
                                                     <td class="table-user">
-                                                   
                                                     <c:if test="${Manager.boardType eq 'GAL'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">갤러리</a>
+                                                        <a href="${path}/community/gallery" class="text-body fw-semibold">갤러리</a>
 													</c:if>
 													<c:if test="${Manager.boardType eq 'JB'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">블로그</a>
+                                                        <a href="${path}/community/journeyList" class="text-body fw-semibold">블로그</a>
 													</c:if>
 													<c:if test="${Manager.boardType eq 'CB'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">동행구하기</a>
+                                                        <a href="${path}/community/companionList" class="text-body fw-semibold">동행구하기</a>
 													</c:if>
 													<c:if test="${Manager.boardType eq 'FB'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">자유게시판</a>
+                                                        <a href="${path}/community/freeboardList" class="text-body fw-semibold">자유게시판</a>
 													</c:if>
-													
                                                     </td>
                                                     <td>
-                                                        <c:out value="${Manager.boardName}"/>
+                                                    <c:if test="${Manager.boardType eq 'GAL'}">
+                                                        <a href="${path}/community/gallery" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+													</c:if>
+													<c:if test="${Manager.boardType eq 'JB'}">
+                                                        <a href="${path}/community/journeyDetail?journeyNo=${Manager.boardNo}" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+													</c:if>
+													<c:if test="${Manager.boardType eq 'CB'}">
+                                                        <a href="${path}/community/companionList" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+													</c:if>
+													<c:if test="${Manager.boardType eq 'FB'}">
+                                                        <a href="${path}/community/freeDetail?freeboardNo=${Manager.boardNo}" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+													</c:if>
                                                     </td>
+                                                    
                                                     <td>
                                                         <c:out value="${Manager.userName}"/>
                                                     </td>

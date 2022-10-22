@@ -369,22 +369,33 @@
                                                             <label class="form-check-label" for="customCheck2">&nbsp;</label>
                                                         </div>
                                                     </td>
-                                                    <td class="table-user" style="width: 60px;">
-													<c:if test="${BoardManager.boardType eq 'GAL'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">갤러리</a>
+                                                    <td class="table-user">
+                                                    <c:if test="${BoardManager.boardType eq 'GAL'}">
+                                                        <a href="${path}/community/gallery" class="text-body fw-semibold">갤러리</a>
 													</c:if>
 													<c:if test="${BoardManager.boardType eq 'JB'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">블로그</a>
+                                                        <a href="${path}/community/journeyList" class="text-body fw-semibold">블로그</a>
 													</c:if>
 													<c:if test="${BoardManager.boardType eq 'CB'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">동행구하기</a>
+                                                        <a href="${path}/community/companionList" class="text-body fw-semibold">동행구하기</a>
 													</c:if>
 													<c:if test="${BoardManager.boardType eq 'FB'}">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">자유게시판</a>
+                                                        <a href="${path}/community/freeboardList" class="text-body fw-semibold">자유게시판</a>
 													</c:if>
                                                     </td>
                                                     <td>
-                                                        <c:out value="${fn:substring(BoardManager.title,0,30)}..."/>
+                                                    <c:if test="${BoardManager.boardType eq 'GAL'}">
+                                                        <a href="${path}/community/gallery" class="text-body fw-semibold"><c:out value="${fn:substring(BoardManager.title,0,30)}..."/></a>
+													</c:if>
+													<c:if test="${BoardManager.boardType eq 'JB'}">
+                                                        <a href="${path}/community/journeyDetail?journeyNo=${BoardManager.boardNo}" class="text-body fw-semibold"><c:out value="${fn:substring(BoardManager.title,0,30)}..."/></a>
+													</c:if>
+													<c:if test="${BoardManager.boardType eq 'CB'}">
+                                                        <a href="${path}/community/companionList" class="text-body fw-semibold"><c:out value="${fn:substring(BoardManager.title,0,30)}..."/></a>
+													</c:if>
+													<c:if test="${BoardManager.boardType eq 'FB'}">
+                                                        <a href="${path}/community/freeDetail?freeboardNo=${BoardManager.boardNo}" class="text-body fw-semibold"><c:out value="${fn:substring(BoardManager.title,0,30)}..."/></a>
+													</c:if>
                                                     </td>
                                                     <td class="textPrivate" style="width: 200px;">
                                                         <c:out value="${fn:substring(BoardManager.content,0,15)}..."/>

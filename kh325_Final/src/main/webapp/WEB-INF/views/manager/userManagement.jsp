@@ -327,23 +327,23 @@
                                 <div class="card-body">
                                     <div class="row mb-2">
                                         <div class="col-xl-8">
-                                            <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                                <div class="col-auto">
-                                                    <div class="d-flex align-items-center">
-                                                        <select class="form-select" id="status-select">
-                                                                <option selected>Choose...</option>
-                                                                <option value="1">회원명</option>
-                                                                <option value="2">회원번호</option>
-                                                                <option value="3">이메일</option>
-                                                                <option value="4">Status</option>
-                                                            </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                    <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
-                                                </div>
-                                            </form>
+<!--                                             <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between"> -->
+<!--                                                 <div class="col-auto"> -->
+<!--                                                     <div class="d-flex align-items-center"> -->
+<!--                                                         <select class="form-select" id="status-select"> -->
+<!--                                                                 <option selected>Choose...</option> -->
+<!--                                                                 <option value="1">회원명</option> -->
+<!--                                                                 <option value="2">회원번호</option> -->
+<!--                                                                 <option value="3">이메일</option> -->
+<!--                                                                 <option value="4">Status</option> -->
+<!--                                                             </select> -->
+<!--                                                     </div> -->
+<!--                                                 </div> -->
+<!--                                                 <div class="col-auto"> -->
+<!--                                                     <label for="inputPassword2" class="visually-hidden">Search</label> -->
+<!--                                                     <input type="search" class="form-control" id="inputPassword2" placeholder="Search..."> -->
+<!--                                                 </div> -->
+<!--                                             </form> -->
                                         </div>
                                         <div class="col-xl-4">
                                             <div class="text-xl-end mt-xl-0 mt-2">
@@ -388,7 +388,7 @@
                                                         <div class="d-flex">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="flex-shrink-0">
-                                                                    <img src="https://previews.123rf.com/images/jemastock/jemastock1707/jemastock170711249/82189427-%EC%82%AC%EB%9E%91%EC%8A%A4%EB%9F%AC%EC%9A%B4-%ED%95%A0%EB%A8%B8%EB%8B%88%EC%9D%98-%EC%B4%88%EC%83%81-%EB%8A%99%EC%9D%80-%EC%97%AC%EC%9E%90-%ED%95%B4%ED%94%BC-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4%EC%85%98.jpg"
+                                                                    <img src="${path}/resources/image/logo.png"
                                                                         class="rounded-circle avatar-xs" alt="friend">
                                                                 </div>
                                                                 <div class="flex-grow-1 ms-2">
