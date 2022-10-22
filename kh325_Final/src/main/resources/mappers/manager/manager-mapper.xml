@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<insert id="insertReport" parameterType="Manager"
-			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+			useGeneratedKeys="true" keyProperty="reportNo" keyColumn="REPORT_NO">
 		INSERT INTO REPORT_NO (
 			REPORT_NO,    
 			BOARD_TYPE,   
@@ -31,7 +31,7 @@
 			REASONS,      
 			STATUS        
 		) VALUES (
-			SEQ_REPORT_NO.NEXTVAL
+			SEQ_REPORT_NO.NEXTVAL,
 			#{boardType},
 			#{boardNo},
 			#{boardName},
