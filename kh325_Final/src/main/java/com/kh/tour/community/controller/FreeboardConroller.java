@@ -1,7 +1,6 @@
 package com.kh.tour.community.controller;
 
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -31,14 +30,16 @@ import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.community.model.service.FreeBoardService;
 import com.kh.tour.community.model.vo.FreeBoardComment;
 import com.kh.tour.community.model.vo.Freeboard;
+import com.kh.tour.manager.model.service.ManagerService;
+import com.kh.tour.manager.model.vo.Manager;
 import com.kh.tour.member.model.vo.Member;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
+@SessionAttributes("loginMember") 
 @RequestMapping("/community")
-//@SessionAttributes("loginMember")
 public class FreeboardConroller {
 
 	@Autowired
@@ -47,7 +48,6 @@ public class FreeboardConroller {
 	@Autowired
 	private ResourceLoader resourceLoader; // 파일 다운로드 기능시 활용하는 loader
 	
-	Member loginMember = new Member(1,"바밤바","abc.naver.com","1234","010-1111-111","사는 곳","", "y","n");
 
 	/* /community/freeboardList */
 	@GetMapping("/freeboardList")
@@ -78,8 +78,9 @@ public class FreeboardConroller {
 	}
 	
 	@GetMapping("/freeDetail")
-	public String freeDetail(Model model, @RequestParam int freeboardNo) {
+	public String freeDetail(Model model, @RequestParam int freeboardNo,@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		log.info("freeboardNo : " + freeboardNo);
+		log.info("loginMember : " + loginMember);
 		
 		Freeboard board = service.selectBoardByNo(freeboardNo);
 		List<FreeBoardComment> comments = board.getCommentList();
@@ -114,11 +115,9 @@ public class FreeboardConroller {
 
 	}
 
-	/*
-	 * /community/writefree
-	 */	
+
 	@GetMapping("/writefree")
-	public String writeFree( Model model/*@SessionAttribute(name = "loginMember", required = false) Member loginMember*/) {
+	public String writeFree( Model model,@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
 		model.addAttribute("loginMember",loginMember);
 		log.info("loginMember : " + loginMember.toString());
@@ -128,7 +127,8 @@ public class FreeboardConroller {
 	}
 	 
 	 @PostMapping("/writefree")
-	 public String writeFree(HttpServletRequest request,@RequestParam("upfile") MultipartFile upfile,Freeboard board,Model model) {
+	 public String writeFree(HttpServletRequest request,@RequestParam("upfile") MultipartFile upfile,
+			 @SessionAttribute(name = "loginMember", required = false) Member loginMember,Freeboard board, Model model) {
 
 		if(loginMember == null || (loginMember.getUserNo()==board.getUserNo()) == false) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
@@ -181,6 +181,7 @@ public class FreeboardConroller {
 	 public String deleteBoardReply(Model model, HttpServletRequest request, int freeboardNo
 			//@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			) {
+		
 		log.debug("글삭제 요청");
 		String rootPath = request.getSession().getServletContext().getRealPath("uploaded");
 		log.info("rootPath:" + rootPath);
@@ -243,8 +244,8 @@ public class FreeboardConroller {
 	 }
 	 
 	 @GetMapping("/updatefreeboard")
-	 public String updateView(Model model,  int freeboardNo
-			//@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+	 public String updateView(Model model,  int freeboardNo,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember
 			) {
 	 
 		Freeboard board = service.selectBoardByNo(freeboardNo);
@@ -261,8 +262,8 @@ public class FreeboardConroller {
 		
 	 @PostMapping("/updatefreeboard")
 	 public String updateBoard(Model model, HttpServletRequest request, Freeboard board,
-			 @RequestParam("upfile") MultipartFile upfile
-			//@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			 @RequestParam("upfile") MultipartFile upfile,
+			 @SessionAttribute(name = "loginMember", required = false) Member loginMember
 			) {
 			log.info("게시글 수정 요청");
 			
@@ -303,5 +304,7 @@ public class FreeboardConroller {
 			}
 			return "/common/msg";
 	 }
+	 
+	
 	
 }

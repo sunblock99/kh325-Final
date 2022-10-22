@@ -100,7 +100,7 @@
                 <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link-header-black" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
+                            <a class="nav-link-header-black" id="homeDropdownMenuLink" href="${path }" aria-haspopup="true" aria-expanded="false">홈</a>
                         </li>
 
                         <!-- 상단바메뉴 시작 -->
@@ -111,43 +111,56 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
                                     <h6 class="dropdown-header fw-normal" style="font-family:
                         pB;">관광정보</h6>
-                                    <a class="hvr dropdown-item" href="docs/docs-introduction.html">HOT PLACE </a>
-                                    <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">관광지 정보</a>
-                                    <a class="hvr dropdown-item" href="docs/docs-gulp.html">지역별
+                                    <a class="hvr dropdown-item" href="#">HOT PLACE </a>
+                                    <a class="hvr dropdown-item" href="#">관광지 정보</a>
+                                    <a class="hvr dropdown-item" href="#">지역별
                         축제ㅣ행사 </a>
-                                    <a class="hvr dropdown-item" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
+                                    <a class="hvr dropdown-item" href="#">날짜별 축제ㅣ행사</a>
                                 </div>
                             </li>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link-header-black" href="contact.html">커뮤니티</a></li>
+                        <li class="nav-item"><a class="nav-link-header-black" href="${path }/community">커뮤니티</a></li>
                         <li class="nav-item">
-                            <a class="nav-link-header-black" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
-
-                        <!-- <li class="nav-item"><a class="nav-link-header-black" href="login.html">로그인</a></li> -->
-
-                        <!-- 일반회원 로그인 성공 시 -->
-                        <!-- <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
-                  href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  곰발바닥 님</a>
-                  <div class="dropdown-menu dropdown-menu-end"
-                      aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                      <a class="hvr dropdown-item"
-                        href="docs/docs-introduction.html">마이페이지</a>
-                      <a class="hvr dropdown-item"
-                        href="docs/docs-directory-structure.html">로그아웃</a>
-                  </div>
-                </li> -->
-
-                        <!-- 관리자 로그인 성공 시 -->
-                        <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  곰발바닥 님</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">마이페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">관리자페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">로그아웃</a>
-                            </div>
-                        </li>
+                            <a class="nav-link-header-black" href="#" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
+						
+						<c:if test="${loginMember eq null}">
+				              <li class="nav-item"><a class="nav-link-header-black" href="${path}/loginView">로그인</a></li>
+				        </c:if>
+						
+                       	<!-- 일반회원 로그인 성공 시 -->
+			              <c:if test="${loginMember ne null && loginMember.managerStatus eq 'N'}">
+			              <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
+			                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                <c:out value="${loginMember.userName}" /> 님</a>
+			                <div class="dropdown-menu dropdown-menu-end"
+			                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
+			                    <a class="hvr dropdown-item"
+			                      href="docs/docs-introduction.html">마이페이지</a>
+			                    <a class="hvr dropdown-item"
+			                      href="docs/docs-directory-structure.html">로그아웃</a>
+			                </div>
+			              </li>
+			              </c:if> 
+			              
+			              
+			              
+			              <!-- 관리자 로그인 성공 시 -->
+			              <c:if test="${loginMember.managerStatus eq 'Y'}">
+			              <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
+			                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                 <c:out value="${loginMember.userName}" /> 님</a>
+			                <div class="dropdown-menu dropdown-menu-end"
+			                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
+			                    <a class="hvr dropdown-item"
+			                      href="docs/docs-introduction.html">마이페이지</a>
+			                    <a class="hvr dropdown-item"
+			                      href="docs/docs-introduction.html">관리자페이지</a>
+			                    <a class="hvr dropdown-item"
+			                      href="docs/docs-directory-structure.html">로그아웃</a>
+			                </div>
+			              </li>
+			              </c:if>
 
                     </ul>
                 </div>
@@ -201,7 +214,7 @@
                     <form action="${path}/community/freeboardList" class="border rounded">
                         <div class="row">
                             <div class="col-lg-3 d-flex align-items-center form-group no-divider">
-                                <select class="selectpicker" title="검색분류" name="searchType" id="searchType" data-style="btn-form-control">
+                                <select class="selectpicker" title="검색분류" name="searchType" value="title" id="searchType" data-style="btn-form-control">
                                     <option value="title"  ${param.searchType=='title' ? 'selected' : '' }>제목</option>
                                     <option value="writer" ${param.searchType=='writer' ? 'selected' : '' }>글쓴이</option>
                                     <option value="content" ${param.searchType=='content' ? 'selected' : '' }>내용</option>
