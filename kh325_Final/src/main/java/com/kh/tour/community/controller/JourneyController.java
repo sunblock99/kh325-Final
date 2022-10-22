@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.tour.common.util.PageInfo;
@@ -29,17 +31,21 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("/community")
+@SessionAttributes("loginMember") 
 public class JourneyController {
 	
 	@Autowired
 	JourneyService service;
 	
-	Member loginMember = new Member(2,"바밤바","abc.naver.com","1234","010-1111-111","사는 곳","", "y","n");
+	//Member loginMember = new Member(2,"바밤바","abc.naver.com","1234","010-1111-111","사는 곳","", "y","n");
+	
+	
 	
 	// /community/journeyList
 	
 	@GetMapping("/journeyListScroll")
-	public @ResponseBody List<Journey> journeyListScroll(@RequestParam Map<String, String> param,int page,HttpServletRequest request) {
+	public @ResponseBody List<Journey> journeyListScroll(@RequestParam Map<String, String> param,
+			int page,HttpServletRequest request,@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
 		log.info("ㅁ.page: " + page);
 		log.info("ㅁ.param: " + param);
@@ -80,7 +86,8 @@ public class JourneyController {
 	}
 	
 	@GetMapping("/journeyList")
-	public String journeyList(Model model,@RequestParam Map<String, String> param,HttpServletRequest request/*@SessionAttribute(name = "loginMember", required = false) Member loginMember*/) {
+	public String journeyList(Model model,@RequestParam Map<String, String> param,HttpServletRequest request,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		log.info("param : " + param.toString());
 		int page = 1;
 		if (param.containsKey("page") == true) {
@@ -144,7 +151,8 @@ public class JourneyController {
 	}
 	
 	@GetMapping("/journeyDetail")
-	public String journeyDetail(Model model, HttpServletRequest request,@RequestParam int journeyNo/*@SessionAttribute(name = "loginMember", required = false) Member loginMember*/) {
+	public String journeyDetail(Model model, HttpServletRequest request,@RequestParam int journeyNo,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		log.info("journeyNo : " + journeyNo);
 		
 		Journey board = service.selectBoardByNo(journeyNo);
@@ -185,7 +193,8 @@ public class JourneyController {
 	}
 	
 	 @PostMapping("/writeJourneyComment")
-	 public String writerFreeComment(Model model, JourneyComment comment/*@SessionAttribute(name = "loginMember", required = false) Member loginMember*/) {
+	 public String writerFreeComment(Model model, JourneyComment comment,
+			 @SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		 log.info("comment:" + comment);
 		 
 		 // 세션에서 로긴 멤버 정보 가져와
@@ -219,7 +228,8 @@ public class JourneyController {
 	 }
 	 
 	 @GetMapping("/updateJourney")
-	 public String updateJourneyGet(Model model, int journeyNo/*@SessionAttribute(name = "loginMember", required = false) Member loginMember*/) {
+	 public String updateJourneyGet(Model model, int journeyNo,
+			 @SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		 
 	
 		 Journey board = service.selectBoardByNo(journeyNo);
@@ -240,7 +250,8 @@ public class JourneyController {
 	 
 	 @PostMapping("/updateJourney")
 	 public String updateJourneyPost (Model model, Journey board,
-			 HttpServletRequest request, @RequestParam("upfile") MultipartFile upfile/*@SessionAttribute(name = "loginMember", required = false) Member loginMember*/) {
+			 HttpServletRequest request, @RequestParam("upfile") MultipartFile upfile,
+			 @SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		 
 		 board.setUserNo(loginMember.getUserNo());
 		 log.info("board:" + board);	
@@ -276,7 +287,7 @@ public class JourneyController {
 	 }
 	 
 	 @GetMapping("/journeyWrite")
-	 public String journeyWriteGet(Model model) {
+	 public String journeyWriteGet(Model model, @SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		 
 		 model.addAttribute("loginMember",loginMember);
 		 
@@ -285,7 +296,8 @@ public class JourneyController {
 	 }
 	 
 	 @PostMapping("/journeyWrite")
-	 public String journeyWritePost(Model model, Journey board,HttpServletRequest request,@RequestParam("upfile") MultipartFile upfile) {
+	 public String journeyWritePost(Model model, Journey board,HttpServletRequest request,
+			 @RequestParam("upfile") MultipartFile upfile,@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		 
 		 log.info("들어온 journey : ", board);
 		 
@@ -320,7 +332,7 @@ public class JourneyController {
 	 
 	 @GetMapping("/deleteJourney")
 	 public String deleteJourney(HttpServletRequest request, Model model,
-			 int journeyNo/*@SessionAttribute(name = "loginMember", required = false) Member loginMember*/) {
+			 int journeyNo,@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		 
 		 Journey board = service.selectBoardByNo(journeyNo);
 		 
@@ -347,8 +359,10 @@ public class JourneyController {
 	 }
 	 
 	 @GetMapping("/likeOnOff")
-	 public @ResponseBody String likeOnOff(String boardNo) {
+	 public @ResponseBody String likeOnOff(String boardNo,@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		 
+		 log.info("loginMember :: "+loginMember);
+
 		 Map<String,String> param = new HashMap<String, String>();
 		 param.put("boardNo", boardNo+"");
 		 param.put("userNo", loginMember.getUserNo()+"");

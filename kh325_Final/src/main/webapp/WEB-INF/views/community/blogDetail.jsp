@@ -142,82 +142,88 @@ div {
 </script>
 
 <body>
-    <header class="header header-absolute" style="font-size:30px;">
-        <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center">
+     <header class="header header-absolute" style="font-size: 50px;">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
 
-                    <!-- 로고 시작 -->
-                    <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="${path}/resources/image/togetherLogoWhite.png" width="30%" height="10%">
-                    </a>
-                    <!-- 로고 끝-->
+            <!-- 로고 시작 -->
+            <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
+              <img class="ps-3" src="${path}/resources/image/togetherLogoWhite.png" width="40%" height="60%">
+            </a>
+            <!-- 로고 끝-->
 
-                    <!-- 공간활용 용도-->
-                    <div class="input-label-absolute input-label-absolute-left
-                 input-expand ms-lg-2 ms-xl-3"></div>
-                </div>
+            <!-- 공간활용 용도-->
+            <div class="input-label-absolute input-label-absolute-left
+              input-expand ms-lg-2 ms-xl-3"></div>
+          </div>
 
-                <!-- =============== 메뉴바 영역 =============== -->
-                <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link-header" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
-                        </li>
+          <!-- =============== 메뉴바 영역 =============== -->
+          <div class="collapse navbar-collapse px-6 " id="navbarCollapse"
+            style="font-family: pL;">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="fs-3 nav-link-header text-pB" id="homeDropdownMenuLink" href="${path}"
+                  aria-haspopup="true" aria-expanded="false">홈</a>
+              </li>
 
-                        <!-- 상단바메뉴 시작 -->
-                        <li class="nav-item position-static">
+              <!-- 상단바메뉴 시작 -->
+                        <li class="nav-item position-static text-pB">
                             <li class="nav-item dropdown">
-                                <a class="nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       관광정보</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                    <h6 class="dropdown-header fw-normal" style="font-family:
-                         pB;">관광정보</h6>
-                                    <a class="hvr dropdown-item" href="docs/docs-introduction.html">HOT PLACE </a>
-                                    <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">관광지 정보</a>
-                                    <a class="hvr dropdown-item" href="docs/docs-gulp.html">지역별
-                         축제ㅣ행사 </a>
-                                    <a class="hvr dropdown-item" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
+                                <a class="fs-3 nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" 
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관광정보</a>
+                                <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                                    <h6 class="dropdown-header fs-5 text-pSb">관광정보</h6>
+                                    <a class="hvr dropdown-item fs-5" href="${path}/tour/hotPlace">HOT PLACE </a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-directory-structure.html">관광지 정보</a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-gulp.html">지역별 축제ㅣ행사 </a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
                                 </div>
                             </li>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link-header" href="contact.html">커뮤니티</a></li>
+              <li class="nav-item"><a class="fs-3 nav-link-header" href="${path }/community">커뮤니티</a></li>
                         <li class="nav-item">
-                            <a class="nav-link-header" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
-
-                        <!-- <li class="nav-item"><a class="nav-link-header" href="login.html">로그인</a></li> -->
-
-                        <!-- 일반회원 로그인 성공 시 -->
-                        <!-- <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
-                   href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   곰발바닥 님</a>
-                   <div class="dropdown-menu dropdown-menu-end"
-                       aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                       <a class="hvr dropdown-item"
-                         href="docs/docs-introduction.html">마이페이지</a>
-                       <a class="hvr dropdown-item"
-                         href="docs/docs-directory-structure.html">로그아웃</a>
-                   </div>
-                 </li> -->
-
-                        <!-- 관리자 로그인 성공 시 -->
-                        <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   곰발바닥 님</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">마이페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">관리자페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">로그아웃</a>
-                            </div>
-                        </li>
-
-                    </ul>
+                            <a class="fs-3 nav-link-header" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
+              
+              <c:if test="${loginMember eq null}">
+              <li class="nav-item"><a class="fs-3 nav-link-header" href="${path}/loginView">로그인</a></li>
+              </c:if>
+              
+              <!-- 일반회원 로그인 성공 시 -->
+              <c:if test="${loginMember ne null && loginMember.managerStatus eq 'N'}">
+              <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
+                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <c:out value="${loginMember.userName}" /> 님</a>
+                <div class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
+                    <a class="hvr dropdown-item"
+                      href="docs/docs-introduction.html">마이페이지</a>
+                    <a class="hvr dropdown-item"
+                      href="docs/docs-directory-structure.html">로그아웃</a>
                 </div>
-            </div>
-        </nav>
-        <!-- 상단바메뉴 끝 -->
-        <!-- =============== 메뉴바 영역 끝 =============== -->
+              </li>
+              </c:if> 
+              
+              <!-- 관리자 로그인 성공 시 -->
+              <c:if test="${loginMember.managerStatus eq 'Y'}">
+              <li class="nav-item dropdown"><a class="fs-3 nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
+                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <c:out value="${loginMember.userName}" /> 님</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink text-pB">
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-introduction.html">마이페이지</a>
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-introduction.html">관리자페이지</a>
+                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-directory-structure.html">로그아웃</a>
+                            </div>
+              </li>
+              </c:if>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- 상단바메뉴 끝 -->
+      <!-- =============== 메뉴바 영역 끝 =============== -->
     </header>
     <!--히어로 헤더 시작-->
     <section class="d-flex align-items-center dark-overlay bg-cover mb-2" style="font-family: pB; background-image: url(https://cdn.pixabay.com/photo/2022/04/28/19/47/republic-of-korea-7161860_960_720.jpg); padding-top: 72px;">
@@ -357,22 +363,26 @@ div {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="${path }/community/reportJourney">
                             <div class="row">
                                 <div class="form-group">
+                                	<input type="text" name="boardType" value="${board.boardType }" hidden/>
+                                	<input type="text" name="boardNo" value="${board.journeyNo }" hidden/>
+                                	<input type="text" name="boardName" value="여행후기" hidden />
+                                	<input type="text" name="userNo" value="${loginMember.userNo }" hidden/>
                                     <label class="form-label" for="area-form">신고사유</label>
-                                    <select class="selectpicker form-control bg-gray-200 " name="reason" id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">
-	                                    <option value="욕설" >욕설 </option>
+                                    <select class="selectpicker form-control bg-gray-200 " name="category" id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">
+                                    	<option value="욕설" >욕설 </option>
 	                                    <option value="사기행위">사기행위 </option>
 	                                    <option value="광고/도배">광고/도배 </option>
 	                                    <option value="기타">기타</option>
-	                                </select>
+                                	</select>
                                 </div>
                             </div>
 
                             <div class="form-group pt-3">
                                 <label class="form-label" for="find_text">신고내용</label>
-                                <textarea class="find_text form-control bg-gray-200 " name="find_text" cols="10" rows="4" placeholder="신고 내용을 40자 이내로 작성하세요."></textarea>
+                                <textarea class="find_text form-control bg-gray-200 " name="reasons" cols="10" rows="4" placeholder="신고 내용을 40자 이내로 작성하세요."></textarea>
                                 <div class="text-mute test_cnt">(0 / 40)</div>
                             </div>
                             <div class="form-group pt-3 text-end">
