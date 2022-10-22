@@ -70,10 +70,12 @@ public class GalleryController {
 			}
 		}
 
-		PageInfo pageInfo = new PageInfo(page, 10, service.getGalleryCount(param), 12);
+		PageInfo pageInfo = new PageInfo(page, 5, service.getGalleryCount(param), 12);
 		List<Gallery> list = service.getGalleryList(pageInfo, param);
-
+		int count = service.getGalleryCount(param);
+		System.out.println("갤러리 : " + list);
 		model.addAttribute("list", list);
+		model.addAttribute("count", count);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
 		return "/community/gallery";
@@ -122,22 +124,23 @@ public class GalleryController {
 	public String writeGallery(Model model, HttpServletRequest request, // 리쿼스트갖고오는거
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember, // 세션갖고오는거
 			@ModelAttribute Gallery gallery, // 커맨드객체
-			@RequestParam("upfile") MultipartFile upfile // 인자네임으로 맵핑해올때
+			@RequestParam(value="upfile", required=false) MultipartFile upfile // 인자네임으로 맵핑해올때
 	) {
 		log.info("게시글 작성 요청");
 
-		if (loginMember == null || loginMember.getUserNo() != gallery.getUno()) {
-			model.addAttribute("msg", "잘못된 접근입니다.");
-			model.addAttribute("location", "/");
-			return "/common/msg";
-		}
+//		if (loginMember == null || loginMember.getUserNo() != gallery.getUno()) {
+//			model.addAttribute("msg", "잘못된 접근입니다.");
+//			model.addAttribute("location", "/");
+//			return "/common/msg";
+//		}
 
-		gallery.setUno(loginMember.getUserNo());
+//		gallery.setUno(loginMember.getUserNo());
+		gallery.setUno(10);
 
 		// 파일을 저장하는 로직
 		if (upfile != null && upfile.isEmpty() == false) {
 			String rootPath = request.getSession().getServletContext().getRealPath("resources"); // \src\main\webapp\resources
-			String savePath = rootPath + "/upload/gallery";
+			String savePath = rootPath + "/uploaded/gallery";
 			String renameFileName = service.saveFile(upfile, savePath); // 실제 파일 저장하는 코드
 
 			if (renameFileName != null) {
@@ -166,7 +169,7 @@ public class GalleryController {
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember, int boardNo) {
 		log.debug("글 삭제 요청");
 		String rootPath = request.getSession().getServletContext().getRealPath("resources");
-		rootPath = rootPath + "upload/gallery";
+		rootPath = rootPath + "uploaded/gallery";
 		int result = service.deleteGallery(boardNo, rootPath);
 
 		if (result > 0) {

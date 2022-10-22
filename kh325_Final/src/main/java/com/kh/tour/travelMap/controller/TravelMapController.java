@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.travelMap.model.service.TravelMapService;
+import com.kh.tour.travelMap.model.vo.TravelMap;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,16 +25,34 @@ public class TravelMapController {
 	private TravelMapService service;
 	
 	
-	@GetMapping("/travelMap")
-	public String list(Model model, @RequestParam Map<String, String> param) {
-		log.info("param : " + param.toString());
+//	@GetMapping("/travelMap")
+//	public String list(Model model, @RequestParam Map<String, String> param) {
+//		log.info("param : " + param.toString());
+//		
+//		List<TravelMap> list = service.getTravelMapList(param);
+//		
+//		model.addAttribute("list",list);
+//		model.addAttribute("param",param);
+//		return "/map/travelMap";
+//	}
 		
-		List<Tour> list = service.getTravelMapList(param);
+	@GetMapping("/travelMap")
+	public String list(Model model, String contentTypeName) {
+		List<TravelMap> list = service.getTravelMapList(contentTypeName);
+		System.out.println("list : " + list);
 		
 		model.addAttribute("list",list);
-		model.addAttribute("param",param);
 		return "/map/travelMap";
 	}
+//	
+//	@GetMapping("/travelMap")
+//	public String list(Model model, int contentTypeId) {
+//		List<TravelMap> list = service.getTravelMapList(12);
+//		System.out.println("list : " + list);
+//		
+//		model.addAttribute("list",list);
+//		return "/map/travelMap";
+//	}
 	
 	@GetMapping("/error")
 	public String error() {
