@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.community.model.service.CompanionService;
@@ -23,16 +25,16 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("/community")
+@SessionAttributes("loginMember") 
 public class CompanionController {
 	
 	@Autowired
 	CompanionService service;
 	
-	Member loginMember = new Member(3,"바밤바","abc.naver.com","1234","010-1111-111","사는 곳","", "y","n");
-	
 	//   /community/companionList
 	@GetMapping("/companionList")
-	public String freeboardList(Model model, @RequestParam Map<String, String> param) {
+	public String freeboardList(Model model, @RequestParam Map<String, String> param,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		log.info("param : " + param.toString());
 		int page = 1;
 		if (param.containsKey("page") == true) {
@@ -61,7 +63,8 @@ public class CompanionController {
 	}
 	
 	@GetMapping("/compCommentForWriter")
-	public String compCommentForWriter(Model model, int companionNo) {
+	public String compCommentForWriter(Model model, int companionNo,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
 		log.info("no:" + companionNo);
 		List<Member> setMember = service.selectCommentSenderList(companionNo); 
@@ -79,7 +82,8 @@ public class CompanionController {
 	}
 	
 	@GetMapping("/compCommentForSender")
-	public String compCommentForSender(Model model, int companionNo) {
+	public String compCommentForSender(Model model, int companionNo,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
 		log.info("no:" + companionNo);
 		List<CompanionComment> list = service.selectCommentByNo(companionNo,loginMember.getUserNo());
@@ -101,7 +105,8 @@ public class CompanionController {
 	}
 	
 	@GetMapping("/showComments")
-	public String showComments(Model model, int companionNo, int senderNo) {
+	public String showComments(Model model, int companionNo, int senderNo,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
 		List<CompanionComment> list = service.selectCommentByNo(companionNo,senderNo);
 		List<Member> setMember = service.selectCommentSenderList(companionNo); 
@@ -116,7 +121,8 @@ public class CompanionController {
 	}
 	
 	@GetMapping("/deleteCompanion")
-	public String deleteCompanion(Model model, int companionNo,int userNo) {
+	public String deleteCompanion(Model model, int companionNo,int userNo,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
 		if(loginMember.getUserNo() != userNo) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
