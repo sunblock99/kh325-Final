@@ -498,7 +498,6 @@
                      pageUrl += '&searchThema=' + searchThema.options[selectedElement.selectedIndex].value;
                  }
                 
-       
 	        /*     alert(pageUrl); */
 	            location.href = encodeURI(pageUrl);
             }

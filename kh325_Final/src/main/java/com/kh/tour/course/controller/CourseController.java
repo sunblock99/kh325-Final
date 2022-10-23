@@ -21,7 +21,6 @@ import com.kh.tour.course.model.vo.MyCourseRev;
 import com.kh.tour.course.model.vo.MyCourseSearch;
 import com.kh.tour.course.model.vo.MyCourseSearchIndex;
 import com.kh.tour.tour.model.vo.Tour;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

@@ -747,7 +747,6 @@
             });
         });
 
-
         //  클릭시 div 확장 
 
         function onDisplay() {

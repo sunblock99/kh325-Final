@@ -32,6 +32,7 @@ public interface CourseMapper {
 	DetailCourse selectDetailByContentId(int contentId);
 	
 	
+	
 	// 코스 메인
 	List<MainMyCourse> selectSortedByRevStar();
 	List<MainRecommCourse> sortedByRevStar();
