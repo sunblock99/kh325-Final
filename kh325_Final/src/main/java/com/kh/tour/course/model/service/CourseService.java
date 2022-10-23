@@ -1,5 +1,51 @@
 package com.kh.tour.course.model.service;
 
-public class CourseService {
+import java.util.List;
+import java.util.Map;
 
+import com.kh.tour.common.util.PageInfo;
+import com.kh.tour.course.model.vo.DetailCourse;
+import com.kh.tour.course.model.vo.MainMyCourse;
+import com.kh.tour.course.model.vo.MainRecommCourse;
+import com.kh.tour.course.model.vo.MyCourse;
+import com.kh.tour.course.model.vo.MyCourseDetail;
+import com.kh.tour.course.model.vo.MyCourseImage;
+import com.kh.tour.course.model.vo.MyCourseRev;
+import com.kh.tour.course.model.vo.MyCourseSearch;
+import com.kh.tour.course.model.vo.MyCourseSearchIndex;
+import com.kh.tour.tour.model.vo.Tour;
+
+public interface CourseService {
+
+
+	
+	List<Tour> findAllCourse();
+	
+	Tour findCourseByContentId(int contentId);
+	
+	DetailCourse findDetailByContentId(int contentId);
+	
+	
+	// 메인용
+	List<MainMyCourse> findSortedByRevStar();
+	List<MainRecommCourse> SortedByRevStar();
+	List<MyCourseDetail> findMyDetailByContentId(int myCourseNo);
+	
+	
+	// 나의코스용
+	List<MyCourseSearch> findMyCourse(PageInfo pageInfo, Map<String, String> map);
+	List<MyCourseSearch> countMyCourse(Map<String, String> map);
+	List<MyCourseSearch> countMyCoursebyIndex(Map<String, String> map);
+	
+	
+	// 나의코스 디테일
+	List<MyCourseSearch> getDetailMyCourse(int myCourseNo);
+	// 나의코스 리뷰
+	List<MyCourseRev> getMyCourseRev(int myCourseNo);
+	// 나의코스 이미지
+	List<MyCourseImage> getMyCourseImage(int myCourseNo);
+	
+	// 추천코스용
+	List<MainRecommCourse> findRecommCourse(PageInfo pageInfo, Map<String, String> map);
+	int countRecommCourse(Map<String, String> map);
 }

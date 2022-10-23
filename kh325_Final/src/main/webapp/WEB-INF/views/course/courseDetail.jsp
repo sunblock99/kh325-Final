@@ -17,7 +17,7 @@
     <meta name="robots" content="all,follow">
 
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -25,23 +25,24 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- Leaflet Maps-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
-    <link rel="stylesheet" href="css/addMap.css">
-    <link rel="stylesheet" href="css/course_detail.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/addMap.css">
+    <link rel="stylesheet" href="${path}/resources/css/course_detail.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
 </head>
@@ -51,7 +52,7 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     .text-pBlack {
@@ -62,7 +63,7 @@
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     .text-pEb {
@@ -73,7 +74,7 @@
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     .text-pB {
@@ -84,7 +85,7 @@
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     .text-pSb {
@@ -95,7 +96,7 @@
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     .text-pM {
@@ -107,7 +108,7 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
     
     .text-pR {
@@ -118,7 +119,7 @@
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     .text-pL {
@@ -129,7 +130,7 @@
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     .text-pEl {
@@ -140,7 +141,7 @@
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     .text-pThin {
@@ -158,83 +159,9 @@
 
 
 <body style="padding-top: 72px;">
-    <header class="header header-absolute" style="font-size:30px;">
-        <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center">
-
-                    <!-- 로고 시작 -->
-                    <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="./img/togetherLogoBlack.png" width="30%" height="10%">
-                    </a>
-                    <!-- 로고 끝-->
-
-                    <!-- 공간활용 용도-->
-                    <div class="input-label-absolute input-label-absolute-left
-                input-expand ms-lg-2 ms-xl-3"></div>
-                </div>
-
-                <!-- =============== 메뉴바 영역 =============== -->
-                <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link-header-black" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
-                        </li>
-
-                        <!-- 상단바메뉴 시작 -->
-                        <li class="nav-item position-static">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      관광정보</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                    <h6 class="dropdown-header fw-normal" style="font-family:
-                        pB;">관광정보</h6>
-                                    <a class="hvr dropdown-item" href="docs/docs-introduction.html">HOT PLACE </a>
-                                    <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">관광지 정보</a>
-                                    <a class="hvr dropdown-item" href="docs/docs-gulp.html">지역별
-                        축제ㅣ행사 </a>
-                                    <a class="hvr dropdown-item" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
-                                </div>
-                            </li>
-                        </li>
-
-                        <li class="nav-item"><a class="nav-link-header-black" href="contact.html">커뮤니티</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link-header-black" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
-
-                        <!-- <li class="nav-item"><a class="nav-link-header-black" href="login.html">로그인</a></li> -->
-
-                        <!-- 일반회원 로그인 성공 시 -->
-                        <!-- <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
-                  href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  곰발바닥 님</a>
-                  <div class="dropdown-menu dropdown-menu-end"
-                      aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                      <a class="hvr dropdown-item"
-                        href="docs/docs-introduction.html">마이페이지</a>
-                      <a class="hvr dropdown-item"
-                        href="docs/docs-directory-structure.html">로그아웃</a>
-                  </div>
-                </li> -->
-
-                        <!-- 관리자 로그인 성공 시 -->
-                        <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  곰발바닥 님</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">마이페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">관리자페이지</a>
-                                <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">로그아웃</a>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- 상단바메뉴 끝 -->
-        <!-- =============== 메뉴바 영역 끝 =============== -->
-    </header>
+     <jsp:include page="/WEB-INF/views/common/darkHeader.jsp">
+			<jsp:param value="예아바디" name="title"/>
+	</jsp:include>
 
     <section>
         <!-- Slider main container-->
@@ -242,24 +169,14 @@
             <!-- Additional required wrapper-->
             <div class="swiper-wrapper">
                 <!-- Slides-->
+                 <c:if test="${!empty detailCourseList}">
+				<c:forEach var="MyCourseSearch" items="${detailCourseList}"> 
                 <div class="swiper-slide">
-                    <a href="img/photo/photo-1426122402199-be02db90eb90.jpg" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=a168f9fb-ec51-495b-8d00-0e399e2079f0" alt="Our street"></a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="img/photo/photo-1512917774080-9991f1c4c750.jpg" data-toggle="gallery-top" title="Outside"><img style="height: 300px; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=1f41f7da-c10c-4c33-aa96-5ba98300ddb6" alt="Outside"></a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="img/photo/photo-1494526585095-c41746248156.jpg" data-toggle="gallery-top" title="Rear entrance"><img style="height: 300px; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=ac455587-c410-4c5b-82eb-24762a653b90" alt="Rear entrance"></a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="img/photo/photo-1484154218962-a197022b5858.jpg" data-toggle="gallery-top" title="Kitchen"><img style="height: 300px; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=bf846985-ea6f-4652-97a1-62a63837ed44" alt="Kitchen"></a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="img/photo/photo-1522771739844-6a9f6d5f14af.jpg" data-toggle="gallery-top" title="Bedroom"><img style="height: 300px; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=53504e12-c96f-480e-bfb3-ee9ddc12b42f" alt="Bedroom"></a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="img/photo/photo-1488805990569-3c9e1d76d51c.jpg" data-toggle="gallery-top" title="Bedroom"><img style="height: 300px; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=d7917fd1-e030-4abb-9521-c7b3f1a770c9" alt="Bedroom"></a>
-                </div>
+                    <a href="${MyCourseSearch.firstImage}" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="${MyCourseSearch.firstImage}" alt="Our street"></a>
+                </div> 
+                </c:forEach>
+                 </c:if>
+
             </div>
             <div class="swiper-pagination swiper-pagination-white"></div>
             <div class="swiper-button-prev swiper-button-white"></div>
@@ -277,20 +194,20 @@
                     text-align: center;
                     white-space: nowrap;
                     vertical-align: baseline ;
-                background:#FD9F28; border-radius: 40px;color:#fff;font-weight:700; font-size: 160%;">12코스
+                background:#FD9F28; border-radius: 40px;color:#fff;font-weight:700; font-size: 160%;"><c:out value="${detailCourseList.size()}"/>코스
                     </div>
                     <div class="col-md-11">
-                        <span class="h1" style="font-family: pB;">고즈넉한 쉼이 흐르는 안동 1박2일 여행 코스</span>
+                        <span class="h1" style="font-family: pB;"><c:out value="${detailCourseList.get(0).getMyCourseTitle()}"/></span>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <ul class="col-6 list-inline mt-4 mb-2 text-pB">
-                        <li class="list-inline-item me-lg-4 " style="color:#907B65; font-size: 20px;"><i class="fa-map-marker-alt fa me-1"></i> 경상북도 안동시</li>
+                        <li class="list-inline-item me-lg-4 " style="color:#907B65; font-size: 20px;"><i class="fa-map-marker-alt fa me-1"></i><c:out value="${detailCourseList.get(0).getAddr1()}"/></li>
                         <li class="list-inline-item me-lg-4" style="color:#907B65; font-size: 20px;">
-                            <i class="fa fa-regular fa-calendar px-2"></i>당일 여행
+                            <i class="fa fa-regular fa-calendar px-2"></i><c:out value="${detailCourseList.get(0).getMyCourseSchedule()}"/>
                         </li>
                         <li class="list-inline-item me-lg-4" style="color:#907B65; font-size: 20px;">
-                            <i class="fa fa-map-marked-alt h-auto px-2"></i>가족 코스
+                            <i class="fa fa-map-marked-alt h-auto px-2"></i><c:out value="${detailCourseList.get(0).getMyCourseThema()}"/>
                         </li>
                     </ul>
                     <ul class="col-6 list-inline mt-4 mb-2 text-end text-pB">
@@ -304,7 +221,7 @@
                     <hr>
                 </div>
                 <div class="row">
-                    <p class="text-muted fw-light mb-4">과거와 현재가 공존하는 매력적인 도시 안동에서의 여행 코스! 부용대, 솔밭식당, 하회별신굿탈놀이, 병산서원을 경유하며 전통 문화를 즐기고, 안동대장금찜닭, 관광커뮤니티센터 여기, 이상루 고택을 지나 봉정사, 낙강물길공원, 까치구멍집, 안동포타운, 만휴정까지 이어지는 여행 길에 휴식하며 힐링하는 시간을 보내게 된다.
+                    <p class="text-muted fw-light mb-4"><c:out value="${detailCourseList.get(0).getMyCourseContent()}"/>
                     </p>
                 </div>
                 <hr>
@@ -321,20 +238,23 @@
                             <!-- Additional required wrapper-->
                             <div class="swiper-wrapper pb-5">
                                 <!-- Slides-->
+                                  <c:if test="${!empty detailCourseList}">
+										<c:forEach var="MyCourseSearch" items="${detailCourseList}" varStatus="status"> 
                                 <div class="swiper-slide h-auto px-1">
                                     <!-- place item-->
+                                   
                                     <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
                                         <div class="card h-100 border-0 shadow">
                                             <div class="card-img-top h-75  overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=a168f9fb-ec51-495b-8d00-0e399e2079f0" />
-                                                <a class="tile-link" href="#myCourse1" data-bs-toggle="tab" role="tab"></a>
+                                                <img class="" style="height: 100%; width:100%;" src="${MyCourseSearch.firstImage}" />
+                                                <a class="tile-link" href="#myCourse${status.index +1}" data-bs-toggle="tab" role="tab"></a>
                                                 <div class="card-img-overlay-bottom z-index-20 ">
                                                     <div class="d-flex text-white text-sm align-items-center ">
-                                                        <div style="font-family: pB; font-size:larger"><em>1코스</em></div>
+                                                        <div style="font-family: pB; font-size:larger"><em><c:out value="${status.index +1}"/>코스</em></div>
                                                     </div>
                                                 </div>
                                                 <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
+                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                                         <i class="fas fa-heart svg-icon"></i>
                                                     </a>
                                                 </div>
@@ -342,18 +262,17 @@
                                             <div class="card-body d-flex align-items-center">
                                                 <div class="row w-100 txt_line ">
 
-                                                    <p class="card-title col-md-7"><a class="courseList_title text-black" href="#">부용대</a>
+                                                    <p class="card-title col-md-7"><a class="courseList_title text-black" href="#"><c:out value="${MyCourseSearch.detailTitle}"/></a>
                                                     </p>
                                                     <div class="d-flex col-md-3" style="text-align: center">
                                                         <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
                                                         </p>
-                                                        <span class="text-primary justify-center">4/5</span>
+                                                        <span class="text-primary justify-center"><c:out value="${MyCourseSearch.cntRevStar}"/>/5</span>
                                                     </div>
-                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 풍천면 광덕솔밭길 72</p>
+                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i><c:out value="${MyCourseSearch.addr1}"/></p>
                                                     <div class=" card-text text-muted 
                                                         text-sm text-black-50 txt_line">
-                                                        <div class="courseList_info">부용대는 태백산맥의 맨 끝부분에 해당하며 정상에서 안동 하회마을을 한눈에 조망할 수 있는 높이 64m의 절벽이다. 부용대라는 이름은 중국 고사에서 따온 것으로 부용은 연꽃을 뜻한다. 하회마을이 들어선 모습이 연꽃 같다는 데서 유래한 것으로, 하회마을을 가장 잘 바라볼 수 있는 곳이라 부용대라 부른다. 처음에는 ‘하회 북쪽에 있는 언덕’이란 뜻에서
-                                                            ‘북애’라 불렸다. 아래로 낙동강이 굽이쳐 흐르는 곳에 옥연정사, 겸암정사, 화천서원이 자리하고 있다.
+                                                        <div class="courseList_info"><c:out value="${MyCourseSearch.overview}"/>
                                                         </div>
 
                                                     </div>
@@ -361,372 +280,43 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide h-auto px-1">
-                                    <!-- place item-->
-                                    <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                        <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=1f41f7da-c10c-4c33-aa96-5ba98300ddb6" />
-                                                <a class="tile-link" href="#myCourse2" data-bs-toggle="tab" role="tab"></a>
-                                                <div class="card-img-overlay-bottom z-index-20 ">
-                                                    <div class="d-flex text-white text-sm align-items-center ">
-                                                        <div style="font-family: pB; font-size:larger"><em>2코스</em></div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                        <i class="fas fa-heart svg-icon"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-body d-flex align-items-center">
-                                                <div class="row w-100 txt_line ">
-                                                    <p class="card-title col-md-8"><a class="courseList_title text-black" data-toggle="collapse" href="#collapseCourseGallery" aria-expanded="false" aria-controls="collapseCourseGallery">하회 솔밭식당</a>
-                                                    </p>
-                                                    <div class="d-flex col-md-3" style="text-align: center">
-                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                        </p>
-                                                        <span class="text-primary justify-center">4/5</span>
-                                                    </div>
-                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 전서로 214-6</p>
-                                                    <div class=" card-text text-muted 
-                                                        text-sm text-black-50 txt_line">
-                                                        <div class="courseList_info">경북 안동시 풍천면 하회장터에 위치한 솔밭식당은 안동찜닭, 고등어정식 등 안동 대표음식을 판매하고 있으며, 하회별신굿 탈놀이 공연장 및 하회마을 도보거리에 위치하고 있어 관광지 접근성이 좋다.
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide h-auto px-1">
-                                    <!-- place item-->
-                                    <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                        <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75   overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=ac455587-c410-4c5b-82eb-24762a653b90" />
-                                                <a class="tile-link" href="#myCourse3" data-bs-toggle="tab" role="tab"></a>
-                                                <div class="card-img-overlay-bottom z-index-20 ">
-                                                    <div class="d-flex text-white text-sm align-items-center ">
-                                                        <div style="font-family: pB; font-size:larger"><em>3코스</em></div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                        <i class="fas fa-heart svg-icon"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-body d-flex align-items-center">
-                                                <div class="row w-100 txt_line ">
-                                                    <p class="card-title col-md-8 "><a class=" text-black courseList_title" data-toggle="collapse" href="#collapseCourseGallery" aria-expanded="false" aria-controls="collapseCourseGallery">하회별신굿탈놀이 상설공연</a>
-                                                    </p>
-                                                    <div class="d-flex col-md-3" style="text-align: center">
-                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                        </p>
-                                                        <span class="text-primary justify-center">4/5</span>
-                                                    </div>
-                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 풍천면 하회종가길 3-15</p>
-                                                    <div class=" card-text text-muted 
-                                                        text-sm text-black-50 txt_line">
-                                                        <div class="courseList_info">800여 년 이상의 역사를 지닌
-                                                            <하회별신굿탈놀이>는 양반, 선비 등의 기득권층과 고려 당시 불교계로 대변되는 특권층, 그외 일반 민중의 생활과 갈등을 꾸밈 없이 드러낸다. 이는 곧, 예로부터 양반이 많았던 안동에서 꾸준히 그 명맥을 이어올 수 있는 이유이자 우리나라 대표 가면극인 '탈놀이'의 특성에서 비롯됨을 알 수 있다. 총 6개 마당으로 이루어진 공연에서는 고려 중기부터 현대를 아우르는
-                                                                우리 사회의 모순과 지배층의 권위를 날카롭게 풍자한다. 여기에 민중들의 억눌려 있던 답답함과 억울함을 해소해 주는 매개로 기능하여 마을의 평안과 안녕, 나아가 공동체의 결속을 도모한다. 이를 통해 800년의 시대를 뛰어 넘어 현재와 이어지고, 국내를 넘어 세계와 소통하는 축제의 장을 마련한다.
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide h-auto px-1">
-                                    <!-- place item-->
-                                    <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                        <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=bf846985-ea6f-4652-97a1-62a63837ed44" />
-                                                <a class="tile-link" href="#myCourse4" data-bs-toggle="tab" role="tab"></a>
-                                                <div class="card-img-overlay-bottom z-index-20 ">
-                                                    <div class="d-flex text-white text-sm align-items-center ">
-                                                        <div style="font-family: pB; font-size:larger"><em>4코스</em></div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                        <i class="fas fa-heart svg-icon"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-body d-flex align-items-center">
-                                                <div class="row w-100 txt_line ">
-                                                    <p class="card-title col-md-8"><a class="courseList_title text-black" data-toggle="collapse" href="#collapseCourseGallery" aria-expanded="false" aria-controls="collapseCourseGallery">병산서원 [유네스코 세계문화유산]</a>
-                                                    </p>
-                                                    <div class="d-flex col-md-3" style="text-align: center">
-                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                        </p>
-                                                        <span class="text-primary justify-center">4/5</span>
-                                                    </div>
-                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 풍천면 병산길 386</p>
-                                                    <div class=" card-text text-muted 
-                                                        text-sm text-black-50 txt_line">
-                                                        <div class="courseList_info">본래 이 서원의 전신은 풍산현에 있던 풍악서당(豊岳書堂)으로 고려 때부터 사림의 교육기관이었다. 1572년(선조5)에 서애(西厓) 유성룡(柳成龍) 선생이 지금의 병산으로 옮긴 것이다. 1607년 서애가 타계하자 정경세(鄭經世) 등 지방 유림의 공의로 선생의 학문과 덕행을 추모하기 위하여 1613년(광해군5)에 존덕사(尊德祠)를 창건하고 위패를 봉안하여
-                                                            1614년 병산서원으로 개칭하였다. 1620년(광해군 12)에 유림의 공론에 따라 퇴계 선생을 모시는 여강서원(廬江書院)으로 위패를 옮기게 되었다. 그 뒤 1629년(인조 9)에 별도의 위패를 마련하여 존덕사에 모셨으며, 그의 셋째 아들 류진(柳袗)을 추가 배향하였다. 1863년(철종 14)에 사액(賜額)되어 서원으로 승격하였다. 선현 배향과
-                                                            지방교육의 일익을 담당하여 많은 학자를 배출하였으며, 1868년(고종5) 대원군의 서원철폐령이 내렸을 때에도 훼철(毁撤)되지 않고 보호되었다. 일제강점기에 대대적인 보수가 행해졌으며 강당은 1921년에, 사당은 1937년 각각 다시 지어 졌다. 매년 3월 중정(中丁：두 번째 丁日)과 9월 중정에 향사례를 지내고 있다. 사적으로 지정되어 있으며
-                                                            서애 선생의 문집을 비롯하여 각종 문헌 1,000여 종 3,000여 책이 소장되어 있다.
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide h-auto px-1">
-                                    <!-- place item-->
-                                    <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                        <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=faa8c18d-8fcb-4771-bffc-c5173b45c5ce" />
-                                                <a class="tile-link" href="#myCourse5" data-bs-toggle="tab" role="tab"></a>
-                                                <div class="card-img-overlay-bottom z-index-20 ">
-                                                    <div class="d-flex text-white text-sm align-items-center ">
-                                                        <div style="font-family: pB; font-size:larger"><em>5코스</em></div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                        <i class="fas fa-heart svg-icon"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-body d-flex align-items-center">
-                                                <div class="row w-100 txt_line ">
-                                                    <p class="card-title col-md-8">
-                                                        <a class="courseList_title text-black" href="#">안동대장금찜닭</a>
-                                                    </p>
-                                                    <div class="d-flex col-md-3" style="text-align: center">
-                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                        </p>
-                                                        <span class="text-primary justify-center">4/5</span>
-                                                    </div>
-                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 번영1길 45</p>
-                                                    <div class=" card-text text-muted 
-                                                        text-sm text-black-50 txt_line">
-                                                        <div class="courseList_info">부용대는 태백산맥의 맨 끝부분에 해당하며 정상에서 안동 하회마을을 한눈에 조망할 수 있는 높이 64m의 절벽이다. 부용대라는 이름은 중국 고사에서 따온 것으로 부용은 연꽃을 뜻한다. 하회마을이 들어선 모습이 연꽃 같다는 데서 유래한 것으로, 하회마을을 가장 잘 바라볼 수 있는 곳이라 부용대라 부른다. 처음에는 ‘하회 북쪽에 있는 언덕’이란 뜻에서
-                                                            ‘북애’라 불렸다. 아래로 낙동강이 굽이쳐 흐르는 곳에 옥연정사, 겸암정사, 화천서원이 자리하고 있다.
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide h-auto px-1">
-                                    <!-- place item-->
-                                    <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                        <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=53504e12-c96f-480e-bfb3-ee9ddc12b42f" />
-                                                <a class="tile-link" href="#myCourse6" data-bs-toggle="tab" role="tab"></a>
-                                                <div class="card-img-overlay-bottom z-index-20 ">
-                                                    <div class="d-flex text-white text-sm align-items-center ">
-                                                        <div style="font-family: pB; font-size:larger"><em>6코스</em></div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                        <i class="fas fa-heart svg-icon"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-body d-flex align-items-center">
-                                                <div class="row w-100 txt_line ">
-                                                    <p class="card-title col-md-8"><a class="courseList_title text-black" href="#">관광커뮤니티센터 여기
-                                                        </a>
-                                                    </p>
-                                                    <div class="d-flex col-md-3" style="text-align: center">
-                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                        </p>
-                                                        <span class="text-primary justify-center">4/5</span>
-                                                    </div>
-                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 축제장길 210 탈춤공연장</p>
-                                                    <div class=" card-text text-muted 
-                                                        text-sm text-black-50 txt_line">
-                                                        <div class="courseList_info">안동을 찾은 관광객들의 휴식 공간으로 제공되고 있으며 무인카페와 지역 특산품을 전시, 판매하는 공간이다.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               </div>
+                                    
+                             
+                                     </c:forEach>
+                				 </c:if>
                             </div>
                         </div>
 
                         <!-- Tabs content -->
                         <div class="container tab-content">
-                            <div class="tab-pane fade" id="myCourse1" role="tabpanel">
+                        <c:if test="${!empty detailCourseList}">
+							<c:forEach var="i" begin="1" end="${detailCourseList.size()}" step="1" varStatus="status"> 
+                            <div class="tab-pane fade" id="myCourse${i}" role="tabpanel">
                                 <div>
-                                    <p class="mt-2 mb-2" style="font-family:pB;"><i class="fa fa-arrow-right p-lg-2 "></i><em>1코스 부용대</em></p>
+                                    <p class="mt-2 mb-2" style="font-family:pB;"><i class="fa fa-arrow-right p-lg-2 "></i><em><c:out value="${i}"/>코스 &nbsp;<c:out value="${detailCourseList.get(i-1).getDetailTitle()}"/></em></p>
                                 </div>
                                 <div class="row gallery mb-3">
+                                	<c:if test="${!empty myCourseImageList}">
+                                	<c:forEach var="MyCourseImage" items="${myCourseImageList}" varStatus="status"> 
+                                	<c:if test="${MyCourseImage.myCourseSn eq i}">
                                     <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage1.jpg" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage1.jpg" alt="..."></a>
+                                        <a href="${MyCourseImage.originImgUrl}" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="${MyCourseImage.originImgUrl}" alt="..."></a>
                                     </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage2.jpg" data-fancybox="gallery" title="Outside"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage2.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage3.jpg" data-fancybox="gallery" title="Rear entrance"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage3.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage4.jpg" data-fancybox="gallery" title="Kitchen"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage4.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage5.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage5.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage6.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage6.jpg" alt="..."></a>
-                                    </div>
+                                    </c:if>
+                                    </c:forEach>
+                                    </c:if>
                                 </div>
                             </div>
-
-                            <div class="tab-pane fade" id="myCourse2" role="tabpanel">
-                                <div>
-                                    <p class="mt-2 mb-2" style="font-family:pB;"><i class="fa fa-arrow-right p-lg-2 "></i><em>2코스 부용대</em></p>
-                                </div>
-                                <div class="row gallery mb-3 ms-n1 me-n1">
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage1.jpg" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage1.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage2.jpg" data-fancybox="gallery" title="Outside"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage2.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage3.jpg" data-fancybox="gallery" title="Rear entrance"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage3.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage4.jpg" data-fancybox="gallery" title="Kitchen"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage4.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage5.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage5.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage6.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage6.jpg" alt="..."></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="myCourse3" role="tabpanel">
-                                <div>
-                                    <p class="mt-2 mb-2" style="font-family:pB;"><i class="fa fa-arrow-right p-lg-2 "></i><em>3코스 부용대</em></p>
-                                </div>
-                                <div class="row gallery mb-3 ms-n1 me-n1">
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage1.jpg" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage1.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage2.jpg" data-fancybox="gallery" title="Outside"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage2.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage3.jpg" data-fancybox="gallery" title="Rear entrance"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage3.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage4.jpg" data-fancybox="gallery" title="Kitchen"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage4.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage5.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage5.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage6.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage6.jpg" alt="..."></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="myCourse4" role="tabpanel">
-                                <div>
-                                    <p class="mt-2 mb-2" style="font-family:pB;"><i class="fa fa-arrow-right p-lg-2 "></i><em>4코스 부용대</em></p>
-                                </div>
-                                <div class="row gallery mb-3 ms-n1 me-n1">
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage1.jpg" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage1.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage2.jpg" data-fancybox="gallery" title="Outside"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage2.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage3.jpg" data-fancybox="gallery" title="Rear entrance"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage3.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage4.jpg" data-fancybox="gallery" title="Kitchen"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage4.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage5.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage5.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage6.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage6.jpg" alt="..."></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="myCourse5" role="tabpanel">
-                                <div>
-                                    <p class="mt-2 mb-2" style="font-family:pB;"><i class="fa fa-arrow-right p-lg-2 "></i><em>5코스 부용대</em></p>
-                                </div>
-                                <div class="row gallery mb-3 ms-n1 me-n1">
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage1.jpg" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage1.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage2.jpg" data-fancybox="gallery" title="Outside"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage2.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage3.jpg" data-fancybox="gallery" title="Rear entrance"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage3.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage4.jpg" data-fancybox="gallery" title="Kitchen"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage4.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage5.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage5.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage6.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage6.jpg" alt="..."></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="myCourse6" role="tabpanel">
-                                <div>
-                                    <p class="mt-2 mb-2" style="font-family:pB;"><i class="fa fa-arrow-right p-lg-2 "></i><em>6코스 부용대</em></p>
-                                </div>
-                                <div class="row gallery mb-3 ms-n1 me-n1">
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage1.jpg" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage1.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage2.jpg" data-fancybox="gallery" title="Outside"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage2.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage3.jpg" data-fancybox="gallery" title="Rear entrance"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage3.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage4.jpg" data-fancybox="gallery" title="Kitchen"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage4.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage5.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage5.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="img/course/courseDetail/testImage6.jpg" data-fancybox="gallery" title="Bedroom"><img style="height: 100%; width:100%;" src="img/course/courseDetail/testImage6.jpg" alt="..."></a>
-                                    </div>
-                                </div>
-                            </div>
+						</c:forEach>
+                           </c:if>
                         </div>
                     </div>
 
                 </div>
                 <div class="text-block">
                     <p class="subtitle text-sm text-pB" style="color:#907B65;">Location</p>
-                    <h5 class="mb-5 text-pEb">여행코스 위치정보
+                    <h5 class="mb-5 text-pEb">여행코스 위치정보</h5>
                         <div class="map-wrapper-450 mt-3">
                             <div class="h-100" id="detailMap"></div>
                         </div>
@@ -734,45 +324,20 @@
                 <div class="text-block">
                     <p class="subtitle text-sm text-pB" style=" color:#907B65; ">Reviews </p>
                     <h5 class="mb-4 text-pEb">여행코스 후기 </h5>
+                    <c:if test="${!empty myCourseRevList}">
+					<c:forEach var="MyCourseRev" items="${myCourseRevList}" varStatus="status"> 
                     <div class="d-flex d-block d-sm-flex review" style="padding-top: 1rem; padding-bottom: 1rem;">
-                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-8.jpg" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm"></span></div>
+                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/NAIM2.png" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm"></span></div>
                         <div>
-                            <h6 class="mt-2 mb-1">Padmé Amidala</h6>
-                            <div class="mb-0"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i>
+                            <h6 class="mt-2 mb-1"><c:out value="${MyCourseRev.userName}"></c:out></h6>
+                            <div class="mb-0"><c:forEach begin="1" end="${MyCourseRev.cntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
+                                <c:if test="${MyCourseRev.cntRevStar < 5}"><c:forEach begin="${MyCourseRev.cntRevStar+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
                             </div>
-                            <p class="text-muted text-sm">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly
-                                domed and divided by arches into stiff sections </p>
+                            <p class="text-muted text-sm"><c:out value="${MyCourseRev.mcRevContent}"></c:out></p>
                         </div>
-                    </div>
-                    <div class="d-flex d-block d-sm-flex review" style="padding-top: 1rem; padding-bottom: 1rem;">
-                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                        <div>
-                            <h6 class="mt-2 mb-1">Luke Skywalker</h6>
-                            <div class="mb-2"><i class="fa fa-xs fa-star  text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star  text-warning"></i><i class="fa fa-xs fa-star text-gray-200"></i>
-                            </div>
-                            <p class="text-muted text-sm">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot;
-                                he thought. It wasn't a dream. </p>
-                        </div>
-                    </div>
-                    <div class="d-flex d-block d-sm-flex review" style=" padding-top: 1rem; padding-bottom: 1rem; ">
-                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                        <div>
-                            <h6 class="mt-2 mb-1">Princess Leia</h6>
-                            <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-gray-200"></i><i class="fa fa-xs fa-star text-gray-200"></i>
-                            </div>
-                            <p class="text-muted text-sm">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table. </p>
-                        </div>
-                    </div>
-                    <div class="d-flex d-block d-sm-flex review" style="padding-top: 1rem; padding-bottom: 1rem;">
-                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="img/avatar/avatar-4.jpg" alt="Jabba Hut"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                        <div>
-                            <h6 class="mt-2 mb-1">Jabba Hut</h6>
-                            <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i>
-                            </div>
-                            <p class="text-muted text-sm">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. </p>
-                        </div>
-                    </div>
-
+                    </div>           
+                    </c:forEach>
+					</c:if>
                     <div class="py-5">
                         <button class="btn btn-outline-warning" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
                         <div class="collapse mt-4" id="leaveReview">
@@ -782,7 +347,7 @@
                                     <div class="col-sm-6">
                                         <div class="mb-4">
                                             <label class="form-label text-pB" for="name">Your name *</label>
-                                            <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
+                                            <input class="form-control" type="text" name="name" id="name" placeholder="이름이나 닉네임을 입력해주세요" required="required">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -800,11 +365,11 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label text-pB" for="email">Your email *</label>
-                                    <input class="form-control" type="email" name="email" id="email" placeholder="Enter your  email" required="required">
+                                    <input class="form-control" type="email" name="email" id="email" placeholder="이메일을 입력해주세요" required="required">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label text-pB" for="review">Review text *</label>
-                                    <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>
+                                    <textarea class="form-control" rows="4" name="review" id="review" placeholder="여행은 즐거우셨나요? 방문하신 장소에 대한 후기를 남겨주세요" required="required"></textarea>
                                 </div>
                                 <button class="btn btn-warning" type="submit">Post review</button>
                             </form>
@@ -829,71 +394,77 @@
         </div>
     </div>
 
-    <!-- Footer-->
+      <!-- Footer-->
     <footer class="position-relative z-index-10 d-print-none">
-        <!-- Main block - menus, subscribe form-->
-        <div class="py-5 bg-gray-200 text-muted">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <img src="./img/togetherLogoBlack.png" height="60" width="140" alt="">
-                        <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
-                        <div class="mt-4 pt-2 ps-3 ms-sm-4">
-                            <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-5 mb-lg-0 pt-4 ms-4">
-                        <h6 class="text-dark mb-2">CONTACT
-                            <ul class="list-unstyled">
-                                <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
-                                    <a class="text-muted" href="category-rooms.html">1544-9970</a>
-                                </li>
-                            </ul>
-                        </h6>
-
-                        <h6 class="text-dark mb-2">ADDRESS
-                            <ul class="list-unstyled">
-                                <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
-                                    <a class="text-muted" href="category-rooms.html">서울특별시 강남구 테헤란로14길 6 남도빌딩<br><br></a>
-                                </li>
-                            </ul>
-                        </h6>
-                    </div>
-
-                    <div class="col-lg-3 pt-4" style="font-family:pB;">
-                        <h6 class="fs-5 text-dark mb-2">정기구독 & 뉴스레터</h6>
-                        <p class="mb-3"> 투게더의 소식을 정기적으로 받아보세요</p>
-                        <form action="#" id="newsletter-form">
-                            <div class="input-group mb-3">
-                                <input class="form-control bg-transparent border-dark
-                        border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                                <button class="btn btn-outline-dark border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+      <!-- Main block - menus, subscribe form-->
+      <div class="py-5 bg-gray-200 text-muted">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+              <img src="${path}/resources/image/togetherLogo.png" height="60" width="140" alt="">
+              <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
+              <div class="mt-4 pt-2 ps-3 ms-sm-4">
+                <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
+              </div>
             </div>
-        </div>
-        <!-- Copyright section of the footer-->
-        <div class="py-4 fw-light bg-gray-800 text-gray-300">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="text-sm mb-md-0">&copy; 2022, TOGETHER. All rights reserved.
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
-                        </ul>
-                    </div>
-                </div>
+
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0 pt-4 ms-4">
+              <h6 class="text-dark mb-2">CONTACT
+              <ul class="list-unstyled">
+                <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
+                  <a class="text-muted" href="category-rooms.html">1544-9970</a>
+                </li>
+              </ul>
+            </h6>
+
+            <h6 class="text-dark mb-2">ADDRESS
+            <ul class="list-unstyled">
+              <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
+                <a class="text-muted" href="category-rooms.html">서울특별시 강남구 테헤란로14길 6 남도빌딩<br><br></a>
+              </li>
+            </ul>
+            </h6>
             </div>
+            
+            <div class="col-lg-3 pt-4" style="font-family:pB;">
+              <h6 class="fs-5 text-dark mb-2">정기구독 & 뉴스레터</h6>
+              <p class="mb-3"> 투게더의 소식을 정기적으로 받아보세요</p>
+              <form action="#" id="newsletter-form">
+                <div class="input-group mb-3">
+                  <input class="form-control bg-transparent border-dark
+                    border-end-0" type="email" placeholder="Your Email Address"
+                    aria-label="Your Email Address">
+                  <button class="btn btn-outline-dark border-start-0"
+                    type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
+      <!-- Copyright section of the footer-->
+      <div class="py-4 fw-light bg-gray-800 text-gray-300">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="text-sm mb-md-0">&copy; 2022, TOGETHER. All rights
+                reserved.</p>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
+                <li class="list-inline-item"><img class="w-2rem"
+                    src="${path}/resources/img/visa.svg" alt="..."></li>
+                <li class="list-inline-item"><img class="w-2rem"
+                    src="${path}/resources/img/mastercard.svg" alt="..."></li>
+                <li class="list-inline-item"><img class="w-2rem"
+                    src="${path}/resources/img/paypal.svg" alt="..."></li>
+                <li class="list-inline-item"><img class="w-2rem"
+                    src="${path}/resources/img/western-union.svg" alt="..."></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
     <!-- JavaScript files-->
     <script>
@@ -921,38 +492,38 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
     <!-- Map-->
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+   <!--  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> -->
     <!-- Available tile layers-->
-    <script src="js/map-layers.js">
+    <script src="${path}/resources/js/map-layers.js">
     </script>
-    <script src="js/map-detail.js"></script>
+    <script src="${path}/resources/js/map-detail.js"></script>
     <script>
         createListingsMap({
             mapId: 'detailMap',
-            jsonFile: 'js/restaurants-geojson.json',
+            jsonFile: '${path}/resources/js/restaurants-geojson.json',
             //tileLayer: tileLayers[5]  - uncomment for a different map styling
         });
     </script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf195a29b50143fef5883a438669e5bb"></script>
+    <script type="${path}/resources/text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf195a29b50143fef5883a438669e5bb"></script>
 
     <script>
         //  지도 
@@ -1003,7 +574,7 @@
         map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
         // 마커 이미지의 주소
-        var markerImageUrl = "img/marker3.png",
+        var markerImageUrl = "${path}/resources/img/marker3.png",
             markerImageSize = new kakao.maps.Size(40, 42), // 마커 이미지의 크기
             markerImageOptions = {
                 offset: new kakao.maps.Point(20, 42) // 마커 좌표에 일치시킬 이미지 안의 좌표
@@ -1193,7 +764,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">
     </script>
-    <script src="js/datepicker-detail.js">
+    <script src="${path}/resources/js/datepicker-detail.js">
     </script>
 </body>
 
