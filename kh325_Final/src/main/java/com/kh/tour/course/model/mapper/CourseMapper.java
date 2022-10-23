@@ -15,13 +15,15 @@ import com.kh.tour.course.model.vo.MyCourseImage;
 import com.kh.tour.course.model.vo.MyCourseRev;
 import com.kh.tour.course.model.vo.MyCourseSearch;
 import com.kh.tour.course.model.vo.MyCourseSearchIndex;
+import com.kh.tour.course.model.vo.RecommCourseDetail;
+import com.kh.tour.course.model.vo.RecommCourseImage;
+import com.kh.tour.course.model.vo.RecommCourseRev;
 import com.kh.tour.tour.model.vo.Tour;
 
 @Mapper
 public interface CourseMapper {
 
 	// 나만의코스 리스트
-
 	
 	// 추천코스 리스트
 	List<Tour> selectAllCourse();
@@ -30,7 +32,6 @@ public interface CourseMapper {
 	
 	// 추천코스 소개정보
 	DetailCourse selectDetailByContentId(int contentId);
-	
 	
 	
 	// 코스 메인
@@ -56,7 +57,11 @@ public interface CourseMapper {
 	List<MainRecommCourse> searchRecommCourse(RowBounds rowBounds, Map<String, String> map);
 	int countSearchRecommCourse(Map<String, String> map);
 	
-	
-	
-	
+
+	// 나의 코스 디테일
+	List<RecommCourseDetail> detailRecommCourse(int contentId);
+	// 추천 코스 디테일 이미지
+	List<RecommCourseImage> detailRecommCourseImage(int contentId);
+	// 추천 코스 디테일 리뷰
+	List<RecommCourseRev> detailRecommCourseRev(int contentId);
 }

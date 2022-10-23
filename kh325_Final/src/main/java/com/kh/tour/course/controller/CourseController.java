@@ -20,7 +20,11 @@ import com.kh.tour.course.model.vo.MyCourseImage;
 import com.kh.tour.course.model.vo.MyCourseRev;
 import com.kh.tour.course.model.vo.MyCourseSearch;
 import com.kh.tour.course.model.vo.MyCourseSearchIndex;
+import com.kh.tour.course.model.vo.RecommCourseDetail;
+import com.kh.tour.course.model.vo.RecommCourseImage;
+import com.kh.tour.course.model.vo.RecommCourseRev;
 import com.kh.tour.tour.model.vo.Tour;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -94,6 +98,25 @@ public class CourseController {
 		model.addAttribute("myCourseImageList", myCourseImageList);
 		
 		return "/course/courseDetail";
+	}
+	
+	@RequestMapping("/recommCourseDetail")
+	public String detailRecommCourse(Model model, @RequestParam("contentId") int contentId) {
+		log.info("param : " + contentId);
+		System.out.println("가지고 들어온 파람값: " + contentId);
+
+		
+		List<RecommCourseDetail> detailRecommCourseList = courseService.getDetailRecommCourse(contentId);
+		List<RecommCourseImage> recommCourseImageList = courseService.getRecommCourseImage(contentId);
+		List<RecommCourseRev> recommCourseRevList = courseService.getRecommCourseRev(contentId);
+		
+		
+		model.addAttribute("detailCourseList", detailRecommCourseList);
+		model.addAttribute("recommCourseImageList", recommCourseImageList);
+		model.addAttribute("recommCourseRevList", recommCourseRevList);
+
+		
+		return "/course/recommCourseDetail";
 	}
 
 	@RequestMapping("/courseRecommended")

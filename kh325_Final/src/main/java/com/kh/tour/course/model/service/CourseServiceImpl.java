@@ -21,6 +21,9 @@ import com.kh.tour.course.model.vo.MyCourseImage;
 import com.kh.tour.course.model.vo.MyCourseRev;
 import com.kh.tour.course.model.vo.MyCourseSearch;
 import com.kh.tour.course.model.vo.MyCourseSearchIndex;
+import com.kh.tour.course.model.vo.RecommCourseDetail;
+import com.kh.tour.course.model.vo.RecommCourseImage;
+import com.kh.tour.course.model.vo.RecommCourseRev;
 import com.kh.tour.tour.model.vo.Tour;
 
 @Service
@@ -184,6 +187,24 @@ public class CourseServiceImpl implements CourseService{
 	         searchMap.put("sigunguCode", searchSigunguCode);
 	      }
 		return courseMapper.countSearchRecommCourse(searchMap);
+	}
+
+	@Override
+	public List<RecommCourseDetail> getDetailRecommCourse(int contentId) {
+		
+		return courseMapper.detailRecommCourse(contentId);
+	}
+
+	@Override
+	public List<RecommCourseImage> getRecommCourseImage(int contentId) {
+		
+		return courseMapper.detailRecommCourseImage(contentId);
+	}
+
+	@Override
+	public List<RecommCourseRev> getRecommCourseRev(int contentId) {
+
+		return courseMapper.detailRecommCourseRev(contentId);
 	}
 
 

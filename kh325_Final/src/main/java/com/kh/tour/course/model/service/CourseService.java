@@ -13,10 +13,12 @@ import com.kh.tour.course.model.vo.MyCourseImage;
 import com.kh.tour.course.model.vo.MyCourseRev;
 import com.kh.tour.course.model.vo.MyCourseSearch;
 import com.kh.tour.course.model.vo.MyCourseSearchIndex;
+import com.kh.tour.course.model.vo.RecommCourseDetail;
+import com.kh.tour.course.model.vo.RecommCourseImage;
+import com.kh.tour.course.model.vo.RecommCourseRev;
 import com.kh.tour.tour.model.vo.Tour;
 
 public interface CourseService {
-
 
 	
 	List<Tour> findAllCourse();
@@ -48,4 +50,10 @@ public interface CourseService {
 	// 추천코스용
 	List<MainRecommCourse> findRecommCourse(PageInfo pageInfo, Map<String, String> map);
 	int countRecommCourse(Map<String, String> map);
+	// 추천코스 디테일
+	List<RecommCourseDetail> getDetailRecommCourse(int contentId);
+	// 추천코스 디테일 이미지
+	List<RecommCourseImage> getRecommCourseImage(int contentId);
+	// 추천코스 디테일 리뷰
+	List<RecommCourseRev> getRecommCourseRev(int contentId);
 }

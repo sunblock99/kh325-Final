@@ -336,7 +336,7 @@
                         <div class="card h-100 border-0 shadow">
                             <div class="card-img-top overflow-hidden gradient-overlay">
                                 <img class="img-fluid" src="<c:out value="${MainRecommCourse.firstImage}"></c:out>" />
-                                <a class="tile-link" href="detail-rooms.html"></a>
+                                <a class="tile-link" href="${path}/course/recommCourseDetail?contentId=${MainRecommCourse.contentId}"></a>
                                 <div class="card-img-overlay-top text-end">
                                     <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
                                         <i class="fas fa-heart svg-icon"></i>
@@ -393,17 +393,9 @@
                  if(searchAreaCode.selectedIndex != 0){
                     pageUrl += '&searchAreaCode=' + searchAreaCode.options[selectedElement.selectedIndex].value;
                  }
-           	
-                 
-	            var LocationValues = document.getElementById("form_neighbourhood"); //지역이름배열
-                for (var i = 0; i < LocationValues.options.length; i++) {
-                    if (LocationValues.options[i].selected == true) {
-                    	LocationValue = LocationValues.options[i].value;
-                        pageUrl += '&neighbourhood=' + LocationValue;
-                    }
-                }
+        
        
-	            alert(pageUrl);
+	      /*       alert(pageUrl); */
 	            location.href = encodeURI(pageUrl);
             }
             </script>
