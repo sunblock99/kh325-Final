@@ -327,7 +327,7 @@
                                     <h1 class="modal-title fs-5 fw-bold" id="findCompLabel">동행 구하기 메모 작성</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body" style="background-image: url({path}/resources/image/monoon_back.png);">
+                                <div class="modal-body" style="background-image: url(${path}/resources/image/monoon_back.png);">
                                     <form action="${path}/community/writeCompanion" method="post" name="frm">
                                     	<input type="text" name="userNo" value="${loginMember.userNo }" hidden>
                                         <div class="row">
@@ -429,7 +429,7 @@
 			                                <div class="form-group">
 			                                	<input type="text" name="boardType" value="${board.boardType }" hidden/>
 			                                	<input type="text" name="boardNo" value="${board.companionNo }" hidden/>
-			                                	<input type="text" name="boardName" value="동행구하기" hidden />
+			                                	<input type="text" name="boardName" value="${board.content }" hidden />
 			                                	<input type="text" name="userNo" value="${loginMember.userNo }" hidden/>
 			                                    <label class="form-label" for="area-form">신고사유</label>
 			                                    <select class="selectpicker form-control bg-gray-200 " name="category" id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">

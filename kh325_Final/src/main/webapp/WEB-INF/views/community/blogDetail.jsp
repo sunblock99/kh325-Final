@@ -368,7 +368,7 @@ div {
                                 <div class="form-group">
                                 	<input type="text" name="boardType" value="${board.boardType }" hidden/>
                                 	<input type="text" name="boardNo" value="${board.journeyNo }" hidden/>
-                                	<input type="text" name="boardName" value="여행후기" hidden />
+                                	<input type="text" name="boardName" value="${board.title }" hidden />
                                 	<input type="text" name="userNo" value="${loginMember.userNo }" hidden/>
                                     <label class="form-label" for="area-form">신고사유</label>
                                     <select class="selectpicker form-control bg-gray-200 " name="category" id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">
