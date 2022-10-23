@@ -201,7 +201,7 @@
                               
                               <script type="text/javascript">                                           
 					                 var selectValue = "${searchSchedule}";                          
-					                    var selectedElement = document.getElementByName("searchSchedule");
+					                    var selectedElement = document.getElementById("schedule");
 					                       var options = selectedElement.options;                  
 					                          for(var i = 0; i < options.length; i++){                
 					                              if(options[i].value == selectValue){                     
@@ -209,9 +209,11 @@
 					                                       break;                                                  
 					                                 }                                                        
 					                           }           
-					                 
-					                          var selectValue = "${searchThema}";                          
-							                    var selectedElement = document.getElementByName("searchThema");
+  
+	  						 </script>   
+	  						 <script type="text/javascript"> 
+	  						    var selectValue = "${searchThema}";                          
+							                    var selectedElement = document.getElementById("thema");
 							                       var options = selectedElement.options;                  
 							                          for(var i = 0; i < options.length; i++){                
 							                              if(options[i].value == selectValue){                     
@@ -219,7 +221,7 @@
 							                                       break;                                                  
 							                                 }                                                        
 							                           }   
-	  						 </script>   
+							                          </script> 
                             <div class="col-lg-2">
                                 <button class="btn h-100 ms-3 text-pB" style=" background-color:#907B65; color: white; " type="submit" >Search </button>
                             </div>
@@ -413,11 +415,11 @@
                         <li class="page-item-course active "><a class="page-link-course ">${status.current}</a></li>
                         </c:if>
                         <c:if test="${pageInfo.currentPage != status.current}">
-                        <li class="page-item-course "><a class="page-link-course" onclick="movePage('${path}/course/courseRecommended?page=${status.current}');">${status.current}</a></li>
+                        <li class="page-item-course "><a class="page-link-course" onclick="movePage('${path}/course/courseMyCourse?page=${status.current}');">${status.current}</a></li>
                        </c:if>
                        </c:forEach>
                        <li class="page-item-course ">
-                            <a class="page-link-course " onclick="movePage('${path}/course/courseRecommended?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right "></i></a>
+                            <a class="page-link-course " onclick="movePage('${path}/course/courseMyCourse?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right "></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -473,19 +475,15 @@
     <script src="${path}/resources/js/theme.js "></script>
     <!-- Map-->
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js " integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=" "></script>
-    <!-- Available tile layers-->
-    <script src="${path}/resources/js/map-layers.js ">
+
+    <!-- Daterange picker-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js ">
     </script>
-    <script src="${path}/resources/js/map-category.js ">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js ">
     </script>
-    <script>
-        createListingsMap({
-            mapId: 'categoryMap',
-            jsonFile: '${path}/resources/js/rooms-geojson.json',
-            mapPopupType: 'rental',
-            useTextIcon: true
-        });
+    <script src="${path}/resources/js/datepicker-category.js ">
     </script>
+   
   
 	<script>
             function movePage(pageUrl) {
@@ -493,14 +491,15 @@
                  if(searchSchedule.selectedIndex != 0){
                     pageUrl += '&searchSchedule=' + searchSchedule.options[selectedElement.selectedIndex].value;
                  }
-           	
+              /*    alert(pageUrl); */
+            	 
                  var searchThema = document.getElementById("thema"); //지역코드
                  if(searchThema.selectedIndex != 0){
-                    pageUrl += '&searchThema=' + searchThema.options[selectedElement.selectedIndex].value;
+                     pageUrl += '&searchThema=' + searchThema.options[selectedElement.selectedIndex].value;
                  }
-                }
+                
        
-	            alert(pageUrl);
+	        /*     alert(pageUrl); */
 	            location.href = encodeURI(pageUrl);
             }
             </script>

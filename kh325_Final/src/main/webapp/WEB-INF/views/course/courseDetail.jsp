@@ -265,9 +265,10 @@
                                                     <p class="card-title col-md-7"><a class="courseList_title text-black" href="#"><c:out value="${MyCourseSearch.detailTitle}"/></a>
                                                     </p>
                                                     <div class="d-flex col-md-3" style="text-align: center">
-                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
+                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><c:forEach begin="1" end="${MyCourseSearch.detailCntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
+                                <c:if test="${MyCourseSearch.detailCntRevStar < 5}"><c:forEach begin="${MyCourseSearch.detailCntRevStar+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
                                                         </p>
-                                                        <span class="text-primary justify-center"><c:out value="${MyCourseSearch.cntRevStar}"/>/5</span>
+                                                        <span class="text-primary justify-center"><c:out value="${MyCourseSearch.detailCntRevStar}"/>/5</span>
                                                     </div>
                                                     <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i><c:out value="${MyCourseSearch.addr1}"/></p>
                                                     <div class=" card-text text-muted 

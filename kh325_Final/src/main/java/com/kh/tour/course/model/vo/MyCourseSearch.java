@@ -29,5 +29,6 @@ public class MyCourseSearch {
 	private int indexNum;
 	private String overview;
 	private String mapX;           //GPS X좌표          
-	private String mapY;           //GPS Y좌표     
+	private String mapY;           //GPS Y좌표    
+	private int detailCntRevStar;
 }
