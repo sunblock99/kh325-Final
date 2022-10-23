@@ -5,7 +5,7 @@ import java.util.List;
 import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
 import com.kh.tour.member.model.vo.MyCommunity;
-import com.kh.tour.member.model.vo.Mycourse;
+import com.kh.tour.member.model.vo.MemMyCourse;
 import com.kh.tour.member.model.vo.Review;
 
 public interface MemberService {
@@ -37,6 +37,6 @@ public interface MemberService {
 
 	int deleteCommunity(int freeboardNo);
 
-	List<Mycourse> mycourse(int userNo);
+	List<MemMyCourse> mycourse(int userNo);
 
 }

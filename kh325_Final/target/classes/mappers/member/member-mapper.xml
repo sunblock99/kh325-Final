@@ -168,7 +168,7 @@
 		WHERE REVIEW_NO = #{freeboardNo}
 	</delete> 	
 	
-	<resultMap type="Mycourse" id="mycourseResultMap">
+	<resultMap type="MemMyCourse" id="mycourseResultMap">
 		<result property="mycourseNo" column="MYCOURSE_NO"/>
 		<result property="userNo" column="UNO"/>
 		<result property="mycourseContent" column="MYCOURSE_CONTENT"/>

@@ -22,7 +22,7 @@ import com.kh.tour.member.model.service.MemberService;
 import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
 import com.kh.tour.member.model.vo.MyCommunity;
-import com.kh.tour.member.model.vo.Mycourse;
+import com.kh.tour.member.model.vo.MemMyCourse;
 import com.kh.tour.member.model.vo.Review;
 
 import lombok.extern.slf4j.Slf4j;
@@ -278,7 +278,7 @@ public class MemberController {
 	@GetMapping("/myPage/mycourse")
 	public String mycourse(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
-		List<Mycourse> mycourseList = service.mycourse(1);
+		List<MemMyCourse> mycourseList = service.mycourse(1);
 					
 		model.addAttribute("mycourseList", mycourseList);
 	return "myPage/mycourse";	

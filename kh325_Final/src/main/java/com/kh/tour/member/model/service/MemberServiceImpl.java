@@ -23,7 +23,7 @@ import com.kh.tour.member.model.mapper.MemberMapper;
 import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
 import com.kh.tour.member.model.vo.MyCommunity;
-import com.kh.tour.member.model.vo.Mycourse;
+import com.kh.tour.member.model.vo.MemMyCourse;
 import com.kh.tour.member.model.vo.Review;
 
 @Service
@@ -237,7 +237,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<Mycourse> mycourse(int userNo) {
+	public List<MemMyCourse> mycourse(int userNo) {
 		return mapper.mycourse(userNo);
 	}
 	

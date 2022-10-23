@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 
-public class Mycourse {
+public class MemMyCourse {
 	private int mycourseNo;
 	private int userNo;
 	private String mycourseContent;
