@@ -238,8 +238,8 @@
                         <thead class="text-white" style="background-color: #907B65;">
                             <tr class="border-0 text-center">
                                 <th class="center col-1">no</th>
-                                <th class="col-6">title</th>
-                                <th class="col-3">writer</th>
+                                <th class="col-7">title</th>
+                                <th class="col-2">writer</th>
                                 <th class="col-1">file</th>
                                 <th class="col-1">date</th>
                             </tr>
