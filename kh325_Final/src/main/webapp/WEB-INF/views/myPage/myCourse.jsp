@@ -367,7 +367,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-profile.html">
+                                    <a href="${path}/myPage/profile">
                                         <p class="mb-0 text-pB" style="color: black">회원 정보</p>
                                     </a>
                                 </div>
@@ -393,7 +393,7 @@
           </svg>
                                 </div>
                                 <div>
-                                    <a href="user-myreview.html">
+                                    <a href="${path}/myPage/bookmark">
                                         <p class="mb-0 text-pB" style="color: black">작성 리뷰</p>
                                     </a>
                                 </div>
@@ -406,7 +406,7 @@
           </svg>
                                 </div>
                                 <div>
-                                    <a href="user-community.html">
+                                    <a href="${path}/myPage/community">
                                         <p class="mb-0 text-pB" style="color: black">커뮤니티</p>
                                     </a>
                                 </div>
@@ -420,7 +420,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-profile.html">
+                                    <a href="${path}/community/gallery">
                                         <p class="mb-0 text-pB" style="color: black">나의 갤러리</p>
                                     </a>
                                 </div>
@@ -433,7 +433,7 @@
         </svg>
                                 </div>
                                 <div>
-                                    <a href="user-mycourse.html">
+                                    <a href="${path}/myPage/myCourse">
                                         <p class="mb-0 text-pB" style="color: black"><b>나의 여행코스</b></p>
                                     </a>
                                 </div>

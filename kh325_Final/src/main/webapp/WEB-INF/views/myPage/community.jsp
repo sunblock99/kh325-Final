@@ -50,7 +50,7 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     .text-pBlack {
@@ -61,7 +61,7 @@
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     .text-pEb {
@@ -72,7 +72,7 @@
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     .text-pB {
@@ -83,7 +83,7 @@
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     .text-pSb {
@@ -94,7 +94,7 @@
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     .text-pM {
@@ -106,7 +106,7 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
     
     .text-pR {
@@ -117,7 +117,7 @@
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     .text-pL {
@@ -128,7 +128,7 @@
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     .text-pEl {
@@ -139,7 +139,7 @@
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     .text-pThin {
@@ -363,7 +363,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-profile.html">
+                                    <a href="${path}/myPage/profile">
                                         <p class="mb-0 text-pB" style="color: black">회원 정보</p>
                                     </a>
                                 </div>
@@ -376,7 +376,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-bookmark.html">
+                                    <a href="${path}/myPage/bookmark">
                                         <p class="mb-0 text-pB" style="color: black">즐겨찾기</p>
                                     </a>
                                 </div>
@@ -389,7 +389,7 @@
           </svg>
                                 </div>
                                 <div>
-                                    <a href="user-myreview.html">
+                                    <a href="${path}/myPage/review">
                                         <p class="mb-0 text-pB" style="color: black">작성 리뷰</p>
                                     </a>
                                 </div>
@@ -402,7 +402,7 @@
           </svg>
                                 </div>
                                 <div>
-                                    <a href="user-community.html">
+                                    <a href="${path}/myPage/community">
                                         <p class="mb-0 text-pB" style="color: black"><b>커뮤니티</b></p>
                                     </a>
                                 </div>
@@ -416,7 +416,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-profile.html">
+                                    <a href="${path}/community/gallery">
                                         <p class="mb-0 text-pB" style="color: black">나의 갤러리</p>
                                     </a>
                                 </div>
@@ -429,7 +429,7 @@
         </svg>
                                 </div>
                                 <div>
-                                    <a href="user-mycourse.html">
+                                    <a href="${path}/myPage/myCourse">
                                         <p class="mb-0 text-pB" style="color: black">나의 여행코스</p>
                                     </a>
                                 </div>
@@ -445,17 +445,20 @@
                     <br>
                     <div>
                         <label class="form-label me-2 text-pB" for="form_sort">정렬</label>
-                        <select class="selectpicker text-pB" name="sort" id="form_sort" data-style="btn-selectpicker" title="">
-                          <option class="text-pB" value="sortBy_0">작성일 내림차순</option>
-                          <option class="text-pB" value="sortBy_1">작성일 오름차순</option>
-                          <option class="text-pB" value="sortBy_2">조회수 내림차순</option>
-                          <option class="text-pB" value="sortBy_2">조회수 오름차순</option>
+                        <select class="selectpicker text-pB" name="sort" id="board" data-style="btn-selectpicker">
                           <option class="text-pB" value="sortBy_3" disabled>게시판</option>
-                            <option class="text-pB" value="sortByss_3">자유게시판</option>
-                            <option class="text-pB" value="sortBssy_4">동행구하기</option>
-                            <option class="text-pB" value="sortBssy_4">여행후기</option>
+                            <option class="text-pB" onclick="location.href='${path}/myPage/community/journey'" value="freeBoard">자유게시판</option>
+                            <option class="text-pB" onclick="${path}/myPage/community/journey"  value="companion">동행구하기</option>
+                            <option class="text-pB" onclick="${path}/myPage/community/journey" value="journey">여행후기</option>
                         </select>
                     </div>
+                    <script type="text/javascript">
+//                     var selectBoard = function selectBoard(value){
+
+//                     	location.href="${path}/"
+//                     	};
+                    
+                    </script>
 
                     <br>
 
@@ -480,107 +483,11 @@
                                     <td><c:out value="${Community.postDate}"/></td>
                                     <td class="text-end"><c:out value="${Community.count}"/></td>
                                     <td class="text-center">5</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <td class="text-end">
+                                    <a href="${path}/community/deleteCommunity?freeboardNo=${Community.freeboardNo}">
+                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>
+                                    <span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="${path}/myPage/deleteCommunity?freeboardNo=${Community.freeboardNo}"><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">여행 후기</td>
-                                    <td class="fw-bold">경복궁 생과방 방문후기!</td>
-                                    <td>2022.09.01</td>
-                                    <td class="text-end">57</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">투어 갤러리</td>
-                                    <td class="fw-bold">#여수밤바다</td>
-                                    <td>2022.07.20</td>
-                                    <td class="text-end">14</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">동행 구하기</td>
-                                    <td class="fw-bold">경복궁 한복 체험 동행자 구해요!</td>
-                                    <td>2022.06.12</td>
-                                    <td class="text-end">24</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">투어 갤러리</td>
-                                    <td class="fw-bold">#여수밤바다</td>
-                                    <td>2022.07.20</td>
-                                    <td class="text-end">14</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">동행 구하기</td>
-                                    <td class="fw-bold">경복궁 한복 체험 동행자 구해요!</td>
-                                    <td>2022.06.12</td>
-                                    <td class="text-end">24</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">투어 갤러리</td>
-                                    <td class="fw-bold">#여수밤바다</td>
-                                    <td>2022.07.20</td>
-                                    <td class="text-end">14</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">동행 구하기</td>
-                                    <td class="fw-bold">경복궁 한복 체험 동행자 구해요!</td>
-                                    <td>2022.06.12</td>
-                                    <td class="text-end">24</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">투어 갤러리</td>
-                                    <td class="fw-bold">#여수밤바다</td>
-                                    <td>2022.07.20</td>
-                                    <td class="text-end">14</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">동행 구하기</td>
-                                    <td class="fw-bold">경복궁 한복 체험 동행자 구해요!</td>
-                                    <td>2022.06.12</td>
-                                    <td class="text-end">24</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-end"><a href=""><i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href=""><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
                                         </a>
                                     </td>
                                 </tr>
@@ -697,24 +604,24 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
 </body>
 
 </html>

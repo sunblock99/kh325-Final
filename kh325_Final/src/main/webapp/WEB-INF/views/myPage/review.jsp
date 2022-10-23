@@ -47,7 +47,7 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     .text-pBlack {
@@ -58,7 +58,7 @@
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url${path}/resources/(font/Pretendard-ExtraBold.ttf);
     }
     
     .text-pEb {
@@ -69,7 +69,7 @@
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     .text-pB {
@@ -80,7 +80,7 @@
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     .text-pSb {
@@ -91,7 +91,7 @@
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     .text-pM {
@@ -103,7 +103,7 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
     
     .text-pR {
@@ -114,7 +114,7 @@
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     .text-pL {
@@ -125,7 +125,7 @@
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     .text-pEl {
@@ -136,7 +136,7 @@
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     .text-pThin {
@@ -359,7 +359,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-profile.html">
+                                    <a href="${path}/myPage/profile">
                                         <p class="mb-0 text-pB" style="color: black">회원 정보</p>
                                     </a>
                                 </div>
@@ -372,7 +372,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-bookmark.html">
+                                    <a href="${path}/myPage/bookmark">
                                         <p class="mb-0 text-pB" style="color: black">즐겨찾기</p>
                                     </a>
                                 </div>
@@ -385,7 +385,7 @@
           </svg>
                                 </div>
                                 <div>
-                                    <a href="user-myreview.html">
+                                    <a href="${path}/myPage/review">
                                         <p class="mb-0 text-pB" style="color: black"><b>작성 리뷰</b></p>
                                     </a>
                                 </div>
@@ -398,7 +398,7 @@
           </svg>
                                 </div>
                                 <div>
-                                    <a href="user-community.html">
+                                    <a href="${path}/myPage/community">
                                         <p class="mb-0 text-pB" style="color: black">커뮤니티</p>
                                     </a>
                                 </div>
@@ -412,7 +412,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-profile.html">
+                                    <a href="${path}/community/gallery">
                                         <p class="mb-0 text-pB" style="color: black">나의 갤러리</p>
                                     </a>
                                 </div>
@@ -425,7 +425,7 @@
         </svg>
                                 </div>
                                 <div>
-                                    <a href="user-mycourse.html">
+                                    <a href="${path}/myPage/myCourse">
                                         <p class="mb-0 text-pB" style="color: black">나의 여행코스</p>
                                     </a>
                                 </div>
@@ -466,8 +466,15 @@
                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm" style="float:right;">
                                     <span class="me-1 text-muted text-pB">
                                     <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="${path}/">
                                     <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true" href="${path}/myPage/deleteReview?"></i>삭제</span>
+                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정
+                                    </span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a href="${path}/myPage/deleteReview?reviewNo=${Review.reviewNo}">
+                                    <span class="me-1 text-muted text-pB">
+                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>삭제
+                                    </span></a>
+                                	
                                 </p>
                             </div>
                         </div>
@@ -681,7 +688,9 @@
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
+    
+    
 </body>
 
 </html>

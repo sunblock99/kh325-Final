@@ -231,7 +231,8 @@ public class MemberController {
 	public String review(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
 		
-		List<Review> reviewList = service.review(1);
+		int uno = loginMember.getUserNo();
+		List<Review> reviewList = service.review(uno);
 		
 		model.addAttribute("reviewList", reviewList);
 	return "myPage/review";	
@@ -255,7 +256,8 @@ public class MemberController {
 	public String community(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
 		
-		List<MyCommunity> communityList = service.community(1);
+		int uno = loginMember.getUserNo();
+		List<MyCommunity> communityList = service.community(uno);
 		
 		model.addAttribute("communityList", communityList);
 	return "myPage/community";	
@@ -278,7 +280,9 @@ public class MemberController {
 	@GetMapping("/myPage/mycourse")
 	public String mycourse(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
-		List<MemMyCourse> mycourseList = service.mycourse(1);
+		
+		int uno = loginMember.getUserNo();
+		List<MemMyCourse> mycourseList = service.mycourse(uno);
 					
 		model.addAttribute("mycourseList", mycourseList);
 	return "myPage/mycourse";	
