@@ -293,12 +293,15 @@
                         <div class="mb-2 ">
                             <label class="form-label" for="form_dates">Dates</label>
                             <div class="datepicker-container datepicker-container-left">
-                                <input class="form-control" type="date" name="departureDate"  value="${param.departureDate }"placeholder="Choose your dates">
+                                <input class="form-control" type="date" name="departureDate" value="${param.departureDate }"placeholder="Choose your dates">
                             </div>
                         </div>
                         <div class="mb-2 ">
                             <label class="form-label" for="area-form">Area</label>
-                            <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker" value="${param.area }">
+                            <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker">
+                            	<c:if test="${!empty param.area }">
+                                	<option value="${param.area }" selected>${param.area}</option>
+                                </c:if>
                                 <option value="전국">전국</option>
                                 <option value="서울">서울</option>
                                 <option value="경기 ">경기</option>
@@ -338,21 +341,22 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label" for="area-form">지역</label>
-                                                <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker" >
-                                                <option value="전국" selected="selected">전국</option>
-                                                <option value="서울">서울</option>
-                                                <option value="경기">경기</option>
-                                                <option value="전라">전라</option>
-                                                <option value="경상">경상</option>
-                                                <option value="충청">충청</option>
-                                                <option value="제주">제주</option>
-                                            </select>
+                                                
+                                                <select class="selectpicker form-control" name="area" id="area" data-style="btn-selectpicker" >
+	                                                <option value="전국">전국</option>
+	                                                <option value="서울">서울</option>
+	                                                <option value="경기">경기</option>
+	                                                <option value="전라">전라</option>
+	                                                <option value="경상">경상</option>
+	                                                <option value="충청">충청</option>
+	                                                <option value="제주">제주</option>
+                                            	</select>
                                             </div>
                                         </div>
 
                                         <div class="form-group pt-3">
                                             <label class="form-label" for="find_text">내용</label>
-                                            <textarea class="form-control find_text" id="content" name="content" cols="10" rows="4" placeholder="40자 이내로 작성하세요."></textarea>
+                                            <textarea class="form-control find_text" id="content" name="content" cols="10" rows="4" placeholder="50자 이내로 작성하세요."></textarea>
                                             <div class="text-muted pb-2 test_cnt">(0 / 50)</div>
                                         </div>
                                         <div class="form-group pt-3 text-end ">
