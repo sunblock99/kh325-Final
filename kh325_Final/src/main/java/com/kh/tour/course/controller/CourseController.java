@@ -37,53 +37,59 @@ public class CourseController {
 
 		log.info("param : " + param.toString());
 		System.out.println("가지고 들어온 파람값: " + param.toString());
-		
-		  int page = 1;
-	      if(param.containsKey("page") == true) {
-	         try {
-	            page = Integer.parseInt(param.get("page"));
-	         } catch (Exception e) {}
-	      }
-	      
-	    List<MyCourseSearch> countMyCoursebyIndex = courseService.countMyCoursebyIndex(param);   
-	    int total = 0;
-	    int toSix = 0;
-	    
-	    for(int i=0; i < countMyCoursebyIndex.size(); i++) {
-	    	total += countMyCoursebyIndex.get(i).getIndexNum();
-	    }
-	    
-	    for(int i=0; i < 6; i++) {
-	    	toSix += countMyCoursebyIndex.get(i).getIndexNum();
-	    }
-	    
-	    PageInfo pageInfo = new PageInfo(page, 10, total, toSix);
-		
-		List<MyCourseSearch> myCourseList = courseService.findMyCourse(pageInfo, param);
-		List<MyCourseSearch> indexCourseList = courseService.countMyCourse(param);
-		
-		model.addAttribute("pageInfo", pageInfo);
-		model.addAttribute("myCourseList", myCourseList);
-		model.addAttribute("indexCourseList", indexCourseList);
-		model.addAttribute("countMyCoursebyIndex", countMyCoursebyIndex);
-	
-		return "/course/courseMyCourse";
+
+		int page = 1;
+		if (param.containsKey("page") == true) {
+			try {
+				page = Integer.parseInt(param.get("page"));
+			} catch (Exception e) {
+			}
+		}
+
+		List<MyCourseSearch> countMyCoursebyIndex = courseService.countMyCoursebyIndex(param);
+		int total = 0;
+		int toSix = 10;
+
+		if (countMyCoursebyIndex.isEmpty() == false) {
+			for (int i = 0; i < countMyCoursebyIndex.size(); i++) {
+				total += countMyCoursebyIndex.get(i).getIndexNum();
+			}
+		}
+
+		if (countMyCoursebyIndex.isEmpty() == false && countMyCoursebyIndex.size() > 5) {
+			for (int i = 0; i < 6; i++) {
+				toSix += countMyCoursebyIndex.get(i).getIndexNum();
+			}
+			}else {
+				for (int i = 0; i < countMyCoursebyIndex.size(); i++) {
+					toSix += countMyCoursebyIndex.get(i).getIndexNum();
+				toSix += countMyCoursebyIndex.get(i).getIndexNum(); 
+			}
+		}
+
+	PageInfo pageInfo = new PageInfo(page, 10, total, toSix);
+
+	List<MyCourseSearch> myCourseList = courseService.findMyCourse(pageInfo, param);
+	List<MyCourseSearch> indexCourseList = courseService.countMyCourse(param);
+
+	model.addAttribute("pageInfo",pageInfo);model.addAttribute("myCourseList",myCourseList);model.addAttribute("indexCourseList",indexCourseList);model.addAttribute("countMyCoursebyIndex",countMyCoursebyIndex);
+
+	return"/course/courseMyCourse";
 	}
-	
+
 	@RequestMapping("/courseDetail")
 	public String detailMyCourse(Model model, @RequestParam("myCourseNo") int myCourseNo) {
 		log.info("param : " + myCourseNo);
 		System.out.println("가지고 들어온 파람값: " + myCourseNo);
-		
+
 		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(myCourseNo);
 		List<MyCourseRev> myCourseRevList = courseService.getMyCourseRev(myCourseNo);
-		List<MyCourseImage> myCourseImageList =courseService.getMyCourseImage(myCourseNo);
-		
-		
+		List<MyCourseImage> myCourseImageList = courseService.getMyCourseImage(myCourseNo);
+
 		model.addAttribute("detailCourseList", detailCourseList);
 		model.addAttribute("myCourseRevList", myCourseRevList);
 		model.addAttribute("myCourseImageList", myCourseImageList);
-		
+
 		return "/course/courseDetail";
 	}
 
@@ -91,19 +97,19 @@ public class CourseController {
 	public String tourList(Model model, @RequestParam Map<String, String> param) {
 		log.info("param : " + param.toString());
 		System.out.println("가지고 들어온 파람값: " + param.toString());
-		
-		
-		  int page = 1;
-	      if(param.containsKey("page") == true) {
-	         try {
-	            page = Integer.parseInt(param.get("page"));
-	         } catch (Exception e) {}
-	      }
-	      
-	    PageInfo pageInfo = new PageInfo(page, 10, courseService.countRecommCourse(param), 6);
+
+		int page = 1;
+		if (param.containsKey("page") == true) {
+			try {
+				page = Integer.parseInt(param.get("page"));
+			} catch (Exception e) {
+			}
+		}
+
+		PageInfo pageInfo = new PageInfo(page, 10, courseService.countRecommCourse(param), 6);
 		List<MainRecommCourse> recommCourseList = courseService.findRecommCourse(pageInfo, param);
-		int total = courseService.countRecommCourse(param); 
-		
+		int total = courseService.countRecommCourse(param);
+
 		model.addAttribute("recommCourseList", recommCourseList);
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("total", total);
@@ -138,8 +144,6 @@ public class CourseController {
 		return "/course/courseMain";
 	}
 
-	
-	
 //	@RequestMapping("/courseMain")
 //	public String Course(Model model, @RequestParam("contentId") int contentId) {
 //
