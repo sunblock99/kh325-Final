@@ -166,7 +166,7 @@ public class TourController {
 		return "tour/infoDetail";
 	}
 
-	@GetMapping("/tourDetailInfo.do") // contentId로 숙박 소개+반복 조회하기   
+	@GetMapping("/tourDetailInfo2.do") // contentId로 숙박 소개+반복 조회하기   
 	public String HotelDetailInfo(Model model, @RequestParam("contentId") int contentId) {
 		RepeatHotel repeatHotel = tService.findHotelDetailByContentId(contentId);
 		
