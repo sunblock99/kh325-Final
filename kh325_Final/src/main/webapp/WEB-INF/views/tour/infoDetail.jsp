@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Directory Theme by Bootstrapious</title>
+    <title>상세정보페이지</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -160,15 +160,26 @@
                 <div class="col-lg-8">
 
                     <!-- 사진 -->
-                    <c:if test="${!empty imgDetail}">
+                    <c:if test="${!empty imgDetail || tour.firstImage ne null}">
                     <div class="">
                         <h3 class="mb-4 text-pBlack fs-2">갤러리</h3>
-                        <div class="row gallery ms-n1 me-n1">
+                        <div class="row gallery ms-n1 me-n1 text-block">
+                            
                             <c:forEach items="${imgDetail}" var="tourImage" begin="0" end="5" >
 	                            <div class="col-lg-4 col-6 px-1 mb-2">
-	                                <a href="<c:out value="${tourImage.originImgUrl}" />"><img class="img-fluid" src="<c:out value="${tourImage.originImgUrl}" />" alt="..."></a>
+	                            <c:if test="${!empty imgDetail}">
+	                                <a href="<c:out value="${tourImage.originImgUrl}" />">
+	                                <img class="img-fluid" src="<c:out value="${tourImage.originImgUrl}" />" alt="..."></a>
+	                             </c:if>
+	                             </div>   
+							</c:forEach>
+							
+	                             <c:if test="${tour.firstImage ne null}">
+	                       			<div class="col-lg-4 col-6 px-1 mb-2">
+	                                <a href="<c:out value="${tour.firstImage}" />">
+	                                <img class="img-fluid" src="<c:out value="${tour.firstImage}" />" alt="..."></a>
 	                            </div>
-                            </c:forEach>
+	                           </c:if>
                         </div>
                     </div>
                     </c:if>
@@ -176,21 +187,21 @@
                     <!-- 소개 -->
                     <div class="text-block">
                         <h3 class="mb-3 text-pBlack fs-2">소개</h3>
-                        <p class="text-muted fs-5">${tour.overview}</p>
+                        <p class="text-muted fs-5" style="word-break:keep-all;">${tour.overview}</p>
                         <br>
-                        <p class="text-block text-muted fs-5"><i class="fa fa-home me-3"></i>${tour.homePage}<c:if test="${tour.homePage eq null}">홈페이지 정보없음</c:if> </p>
+                        <p class="text-block text-muted fs-5"><i class="fa fa-home me-3"></i>
+                        <br>${tour.homePage}<c:if test="${tour.homePage eq null}">홈페이지 정보없음</c:if> </p>
 
                     </div>
 
 
                    <!-- 지도 -->
-                   <div class="text-block">
+                   <div class="mt-5">
                     <!-- Listing Location-->
                     <h3 class="mb-4 fs-2 text-pBlack">위치</h3>
                     <div class="map-wrapper-300 mb-3">
-                     <div id="detailMap" style="width:100%;height:350px;"></div>
-                     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fe923d0403373a46493e39c5c706eea9"></script>
-                    <br>
+                     <div id="map" style="width:850px;height:300px;"></div>
+	                    <br>
                     </div>
                 </div>
 
@@ -494,6 +505,7 @@
                                     <div class="text-center mt-2 text-pB" style="font-size: 15px;">코스담기</div>
                                 </div>
                             </div>
+                            
                             <!-- 코스추가 기능 -->
                             <!-- 좋아요 기능 -->
                             <div class="col-1">
@@ -633,7 +645,7 @@
                     justify-content-between">
                                     <div>
                                         <p class="mb-0 text-sidebar-title-event fs-5">BASIC INFORMATION</p>
-                                        <p class="mb-0 fs-3 text-pBlack">기본정보</p>
+                                        <p class="mb-0 fs-3 text-pBlack" style="word-break: keep-all;">기본정보</p>
                                     </div>
                                     <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem
                       ms-3 text-muted flex-shrink-0">
@@ -647,16 +659,16 @@
                                     <li class="col-lg-12 mb-2 justify-content-evenly">
                                         <a class="text-gray-00 text-sm text-decoration-none" href="#">
                                             <i class="text-warning col-1 fa fa-exclamation-circle fs-6"></i>
-                                            <span class="col-1 text-black fs-6">우편번호</span>
-                                            <span class="text-muted ms-3 float-end"><c:out value="${tour.zipCode}"/></span>
+                                            <span class="col-1 text-black fs-6" style="word-break: keep-all;">우편번호</span>
+                                            <span class="text-muted ms-3 float-end" style="word-break: keep-all;"><c:out value="${tour.zipCode}"/></span>
                                         </a>
                                     </li>
 
                                     <li class="col-lg-12 mb-2">
                                         <a class=" text-sm text-decoration-none" href="#">
                                             <i class="text-warning col-1 fa fa-map-marked fs-6"></i>
-                                            <span class="col-1 text-black fs-6">주소</span>
-                                            <span class="text-muted ms-3 float-end">
+                                            <span class="col-1 text-black fs-6" style="word-break: keep-all;">주소</span>
+                                            <span class="text-muted ms-3 float-end style="word-break: keep-all;"">
                                             <c:out value="${tour.addr1}"/>
                                             <c:if test="${tour.addr2 != null}">
                                             	<c:out value="${tour.addr2}"/>
@@ -668,8 +680,8 @@
                                     <li class="col-lg-12 mb-2">
                                         <a class=" text-sm text-decoration-none a-orign-text" href="#">
                                             <i class="text-warning col-1 fa fa-phone fs-6"></i>
-                                            <span class="col-1 text-black fs-6">전화번호</span>
-                                            <span class="text-muted ms-3 float-end">
+                                            <span class="col-1 text-black fs-6" style="word-break: keep-all;">전화번호</span>
+                                            <span class="text-muted ms-3 float-end" style="word-break: keep-all;">
                                             ${tour.tel}
                                             <c:if test="${tour.tel == null}"><c:out value="정보없음"/></c:if>
                                             </span>
@@ -707,19 +719,19 @@
 									
 									<c:if test="${detail.heritage1 ne 0 || detail.heritage2 ne 0 || detail.heritage3 ne 0}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">분류</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                    <c:if test="${detail.heritage1 ne 0}"><c:out value="세계문화유산"/></c:if>
-		                                    <c:if test="${detail.heritage2 ne 0}"><c:out value="세계자연유산"/></c:if>
-		                                    <c:if test="${detail.heritage3 ne 0}"><c:out value="세계기록유산"/></c:if>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">분류</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                    <c:if test="${detail.heritage1 ne 0}"><c:out value="세계문화유산 "/></c:if>
+		                                    <c:if test="${detail.heritage2 ne 0}"><c:out value="세계자연유산 "/></c:if>
+		                                    <c:if test="${detail.heritage3 ne 0}"><c:out value="세계기록유산 "/></c:if>
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
                                     	<c:if test="${detail.infoCenter ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">문의및안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">문의</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                  ${detail.infoCenter}
 	                                        </td>
 	                                    </tr>
@@ -727,107 +739,107 @@
 
                                     	 <c:if test="${detail.openDate ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">개장일</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.openDate}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">개장일</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.openDate}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.restDate ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">쉬는날</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.restDate}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">쉬는날</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.restDate}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.expGuide ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">체험안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                               ${detail.expGuide}
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">체험안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.expGuide}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.expAgeRange ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">체험가능연령</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.expAgeRange}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">체험가능연령</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.expAgeRange}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.accomCount ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">수용인원</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.accomCount}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">수용인원</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.accomCount}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.useSeason ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">이용시기</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.useSeason}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">이용시기</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.useSeason}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.useTime ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">이용시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.useTime}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">이용시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.useTime}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.parking ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주차시설</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.parking}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차시설</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.parking}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkBabyCarriage ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">유모차대여</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkBabyCarriage}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">유모차대여</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkBabyCarriage}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkCreditCard ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">신용카드사용여부</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkCreditCard}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">신용카드사용여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                               ${detail.chkCreditCard}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkPet ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">반려동물동반</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkPet}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">반려동물동반</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkPet}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:forEach items="${repeatInfo}" var="repeatInfo">
 	                                    <tr>
-	                                    <th class="ps-0 fs-6">${repeatInfo.infoName}</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">${repeatInfo.infoName}</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${repeatInfo.infoText}
 	                                        </td>
 	                                    </tr>
@@ -839,125 +851,125 @@
 									<c:if test="${tour.contentTypeId == 14}">
                                     	<c:if test="${detail.culScale ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">규모</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.culScale}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">규모</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.culScale}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.useFee ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">이용요금</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.useFee}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">이용요금</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.useFee}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.discountInfo ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">할인정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.discountInfo}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">할인정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.discountInfo}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.spendTime ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">관람소요시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.spendTime}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">관람소요시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.spendTime}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.parkingFee ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주차요금</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.parkingFee}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차요금</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.parkingFee}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.infoCenterCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">문의및안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.infoCenterCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">문의및안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.infoCenterCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.accomCountCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">수용인원</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.accomCountCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">수용인원</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.accomCountCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.useTimeCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">이용시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.useTimeCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">이용시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.useTimeCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.restDateCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">쉬는날</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.restDateCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">쉬는날</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.restDateCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.parkingCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주차시설</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.parkingCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차시설</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.parkingCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.chkBabyCarriageCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">유모차대여</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkBabyCarriageCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">유모차대여</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkBabyCarriageCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.chkPetCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">반려동물동반</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkPetCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">반려동물동반</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkPetCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:if test="${detail.chkCreditCardCulture ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">카드사용정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkCreditCardCulture}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">카드사용정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkCreditCardCulture}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:forEach items="${repeatInfo}" var="repeatInfo">
 	                                    <tr>
-	                                    <th class="ps-0 fs-6">${repeatInfo.infoName}</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">${repeatInfo.infoName}</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${repeatInfo.infoText}
 	                                        </td>
 	                                    </tr>
@@ -968,170 +980,170 @@
 									<c:if test="${tour.contentTypeId == 15}">
                                     	<c:if test="${detail.sponsor1 ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주최자정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.sponsor1}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주최자정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.sponsor1}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.sponsor1Tel ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주최자연락처</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.sponsor1Tel}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주최자연락처</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.sponsor1Tel}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.sponsor2 ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주관사정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.sponsor2}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주관사정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.sponsor2}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.sponsor2Tel ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주관사연락처</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.sponsor2Tel}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주관사연락처</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.sponsor2Tel}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.eventEndDate ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">행사종료일</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.eventEndDate}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">행사종료일</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.eventEndDate}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.playTime ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">공연시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.playTime}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">공연시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.playTime}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.eventPlace ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">행사장소</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.eventPlace}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">행사장소</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.eventPlace}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.eventHomePage ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">행사홈페이지</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.eventHomePage}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">행사홈페이지</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.eventHomePage}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.ageLimit ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">관람가능연령</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.ageLimit}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">관람가능연령</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.ageLimit}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.bookingPlace ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">예매처</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.bookingPlace}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">예매처</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.bookingPlace}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.placeInfo ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">행사장위치안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.placeInfo}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">행사장위치안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.placeInfo}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.subEvent ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">부대행사</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.subEvent}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">부대행사</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.subEvent}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.evProgram ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">행사프로그램</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.evProgram}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">행사프로그램</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                               ${detail.evProgram}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.eventStartDate ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">행사시작일</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.eventStartDate}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">행사시작일</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.eventStartDate}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.useTimeFestival ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">이용요금</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.useTimeFestival}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">이용요금</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.useTimeFestival}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.discountInfoFestival ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">할인정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.discountInfoFestival}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">할인정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.discountInfoFestival}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.spendTimeFestival ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">관람소요시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.spendTimeFestival}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">관람소요시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.spendTimeFestival}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.festivalGrade ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">축제등급</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.festivalGrade}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">축제등급</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.festivalGrade}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:forEach items="${repeatInfo}" var="repeatInfo">
 	                                    <tr>
-	                                    <th class="ps-0 fs-6">${repeatInfo.infoName}</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">${repeatInfo.infoName}</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${repeatInfo.infoText}
 	                                        </td>
 	                                    </tr>
@@ -1142,134 +1154,134 @@
 									<c:if test="${tour.contentTypeId == 28}">
                                     	<c:if test="${detail.accomcountLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">수용인원</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.accomcountLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">수용인원</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.accomcountLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkbabycarriageLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">유모차대여</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkbabycarriageLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">유모차대여</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkbabycarriageLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkcreditcardLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">카드사용정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkcreditcardLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">카드사용정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkcreditcardLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkpetLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">반려동물동반</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkpetLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">반려동물동반</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkpetLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.expagerangeLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">체험가능연령</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.expagerangeLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">체험가능연령</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.expagerangeLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.infocenterLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">문의및안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.infocenterLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">문의및안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.infocenterLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.openPeriod ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">개장기간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.openPeriod}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">개장기간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.openPeriod}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.parkingfeeLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주차요금</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.parkingfeeLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차요금</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.parkingfeeLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.parkingLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주차시설</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.parkingLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차시설</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.parkingLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.reservation ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">예약안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.reservation}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">예약안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.reservation}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.restdateLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">쉬는날</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.restdateLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">쉬는날</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.restdateLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.scaleLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">규모</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.scaleLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">규모</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.scaleLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.usefeeLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">입장료</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.usefeeLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">입장료</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.usefeeLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.usetimeLeports ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">이용시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.usetimeLeports}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">이용시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.usetimeLeports}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 	                                    
 	                                    <c:forEach items="${repeatInfo}" var="repeatInfo">
 	                                    <tr>
-	                                    <th class="ps-0 fs-6">${repeatInfo.infoName}</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">${repeatInfo.infoName}</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${repeatInfo.infoText}
 	                                        </td>
 	                                    </tr>
@@ -1280,135 +1292,135 @@
 									<c:if test="${tour.contentTypeId == 38}">
                                     	<c:if test="${detail.chkbabyCarriage ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">유모차대여</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkbabyCarriage}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">유모차대여</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkbabyCarriage}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkcreditCard ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">카드사용정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkcreditCard}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">카드사용정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkcreditCard}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.chkpetShopping ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">반려동물동반</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.chkpetShopping}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">반려동물동반</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkpetShopping}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.cultureCenter ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">문화센터바로가기</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.cultureCenter}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">문화센터바로가기</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.cultureCenter}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.fairDay ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">장서는날</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.fairDay}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">장서는날</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.fairDay}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.infocenterShopping ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">문의및안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.infocenterShopping}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">문의및안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.infocenterShopping}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.opendateShopping ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">개장일</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.opendateShopping}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">개장일</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.opendateShopping}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.openTime ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">영업시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.openTime}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">영업시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.openTime}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.parkingShopping ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주차시설</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.parkingShopping}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차시설</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.parkingShopping}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.restdateShopping ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">쉬는날</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.restdateShopping}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">쉬는날</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                               ${detail.restdateShopping}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.restroom ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">화장실설명</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.restroom}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">화장실설명</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.restroom}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.saleItem ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">판매품목</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.saleItem}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">판매품목</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.saleItem}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.saleItemcost ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">판매품목별가격</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.saleItemcost}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">판매품목별가격</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.saleItemcost}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.scaleShopping ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">규모</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.scaleShopping}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">규모</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.scaleShopping}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
 
                                     	<c:if test="${detail.shopGuide ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">매장안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
-		                                <c:out value="${detail.shopGuide}"/>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">매장안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.shopGuide}
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
@@ -1418,8 +1430,8 @@
 									<c:if test="${tour.contentTypeId == 39}">
                                     	<c:if test="${detail.chkcreditcardFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">카드사용정보</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6 ">카드사용정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.chkcreditcardFood}
 	                                        </td>
 	                                    </tr>
@@ -1427,8 +1439,8 @@
 	                                    
                                     	<c:if test="${detail.treatMenu ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">취급메뉴</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6 ">취급메뉴</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.treatMenu}
 	                                        </td>
 	                                    </tr>
@@ -1436,8 +1448,8 @@
 	                                    
                                     	<c:if test="${detail.firstMenu ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">대표메뉴</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">대표메뉴</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.firstMenu}
 	                                        </td>
 	                                    </tr>
@@ -1445,8 +1457,8 @@
 
                                     	<c:if test="${detail.infocenterFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">문의및안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;" style="word-break: keep-all;">문의및안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.infocenterFood}
 	                                        </td>
 	                                    </tr>
@@ -1454,8 +1466,8 @@
 
                                     	<c:if test="${detail.kidsFacility ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">어린이놀이방여부</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">어린이놀이방여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.kidsFacility}
 	                                        </td>
 	                                    </tr>
@@ -1463,8 +1475,8 @@
 
                                     	<c:if test="${detail.opendateFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">개업일</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">개업일</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.opendateFood}
 	                                        </td>
 	                                    </tr>
@@ -1472,8 +1484,8 @@
 
                                     	<c:if test="${detail.opentimeFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">영업시간</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">영업시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.opentimeFood}
 	                                        </td>
 	                                    </tr>
@@ -1481,8 +1493,8 @@
 
                                     	<c:if test="${detail.packing ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">포장가능</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">포장가능</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.packing}
 	                                        </td>
 	                                    </tr>
@@ -1490,8 +1502,8 @@
 
                                     	<c:if test="${detail.parkingFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">주차시설</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차시설</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.parkingFood}
 	                                        </td>
 	                                    </tr>
@@ -1499,8 +1511,8 @@
 
                                     	<c:if test="${detail.reservationFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">예약안내</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">예약안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.reservationFood}
 	                                        </td>
 	                                    </tr>
@@ -1508,8 +1520,8 @@
 
                                     	<c:if test="${detail.restdateFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">쉬는날</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">쉬는날</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.restdateFood}
 	                                        </td>
 	                                    </tr>
@@ -1517,8 +1529,8 @@
 
                                     	<c:if test="${detail.scaleFood ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">규모</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">규모</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.scaleFood}
 	                                        </td>
 	                                    </tr>
@@ -1526,8 +1538,8 @@
 
                                     	<c:if test="${detail.seat ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">좌석수</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">좌석수</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.seat}
 	                                        </td>
 	                                    </tr>
@@ -1535,8 +1547,8 @@
 
                                     	<c:if test="${detail.smoking ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">금연/흡연여부</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">금연/흡연여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.smoking}
 	                                        </td>
 	                                    </tr>
@@ -1544,8 +1556,8 @@
 	                                    
                                     	<c:if test="${detail.lcnsNo ne null}">
                                     	<tr>
-	                                    <th class="ps-0 fs-6">인허가번호</th>
-	                                    <td class="pe-0 text-end text-pSb text-gray-600">
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">인허가번호</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
 		                                ${detail.lcnsNo}
 	                                        </td>
 	                                    </tr>
@@ -1555,8 +1567,8 @@
 
                                 	<c:if test="${tour.contentTypeId == 32}">
                                     <tr>
-                                        <th class="ps-0 fs-6">수용인원</th>
-                                        <td class="pe-0 text-end text-pSb text-gray-600">8:00 am - 6:00 pm</td>
+                                        <th class="ps-0 fs-6" style="word-break: keep-all;">수용인원</th>
+                                        <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">8:00 am - 6:00 pm</td>
                                     </tr>
                        				</c:if>
                        				
@@ -1837,8 +1849,9 @@
             </div>
         </div>
     </div>
+   
     <!-- Footer-->
-    <jsp:include page="/WEB-INF/views/common/darkHeader.jsp">
+    <jsp:include page="/WEB-INF/views/common/footer.jsp">
 			<jsp:param value="예아바디" name="title"/>
 	</jsp:include>
  
@@ -1900,37 +1913,131 @@
         })
     </script>
     
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf195a29b50143fef5883a438669e5bb"></script>
-    <script>
-    var mapContainer = document.getElementById('detailMap'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(${tour.mapX},${tour.mapY}), // 지도의 중심좌표
-        level: 6 // 지도의 확대 레벨
-    };
-	
-	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	
-	// 마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(${tour.mapX},${tour.mapY}); 
-	
-	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-	    position: markerPosition
-	});
-	
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
-        
-	// 마커 이미지의 주소
-    var markerImageUrl = "${path}/resources/img/marker3.png",
-        markerImageSize = new kakao.maps.Size(40, 42), // 마커 이미지의 크기
-        markerImageOptions = {
-            offset: new kakao.maps.Point(20, 42) // 마커 좌표에 일치시킬 이미지 안의 좌표
-        };
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////    
+<!--     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf195a29b50143fef5883a438669e5bb"></script> -->
     
+     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2d8185dedc7836784431638389dd3d"></script>
+                     
+     <script>
+                  
+                     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                     mapOption = { 
+                         center: new kakao.maps.LatLng('${tour.mapY}', '${tour.mapX}'), // 지도의 중심좌표
+                         level: 6 // 지도의 확대 레벨
+                     };
+
+	                 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	                 // 마커가 표시될 위치입니다 
+	                 var markerPosition  = new kakao.maps.LatLng('${tour.mapY}', '${tour.mapX}'); 
+	
+	                 // 마커를 생성합니다
+	                 var marker = new kakao.maps.Marker({
+	                     position: markerPosition
+	                 });
+	
+	                 // 마커가 지도 위에 표시되도록 설정합니다
+	                 marker.setMap(map);
+	                 
+	              // 지도에 확대 축소 컨트롤을 생성한다
+		                var zoomControl = new kakao.maps.ZoomControl();
+		
+		                // 지도의 우측에 확대 축소 컨트롤을 추가한다
+		                map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+		
+		                // 마커 이미지의 주소
+		                var markerImageUrl = "${path}/resources/img/marker3.png",
+		                    markerImageSize = new kakao.maps.Size(40, 42), // 마커 이미지의 크기
+		                    markerImageOptions = {
+		                        offset: new kakao.maps.Point(20, 42) // 마커 좌표에 일치시킬 이미지 안의 좌표
+		                    };
+		
+		                // 마커 이미지의 이미지 크기 입니다
+		                var imageSize = new kakao.maps.Size(24, 35);
+		
+		                // 마커 이미지를 생성합니다    
+		                var markerImage = new kakao.maps.MarkerImage(markerImageUrl, imageSize);
+		
+		                for (let i = 0; i < positions.length; i++) {
+		                    var data = positions[i];
+		                    displayMarker(data);
+		                }
+		
+		                // 지도에 마커를 표시하는 함수입니다    
+		                function displayMarker(data) {
+		                    var marker = new kakao.maps.Marker({
+		                        map: map,
+		                        position: data.latlng,
+		                        image: markerImage
+		                    });
+		                    var overlay = new kakao.maps.CustomOverlay({
+		                        yAnchor: 1,
+		                        position: marker.getPosition()
+		                    });
+		                    
+		                    if (!data.tel){
+		                    	data.tel= '&nbsp;&nbsp;&#45;-- ';
+		                    }
+		
+		                    // var content = document.getElementById('clickMarkerInfo');
+		                    // var content = document.getElementById('popup_map');
+		                    var content = document.createElement('div');
+		                    content.innerHTML = '<div class="wrap" id="popup_map">' +
+		                        '    <div class="info">' +
+		                        '        <div class="title">' +
+		                        data.title +
+		                        '        </div>' +
+		                        '        <div class="body">' +
+		                        '            <div class="img">' +
+		                        '                <img src="' +
+		                        data.image +
+		                        '" width="73" height="70">' +
+		                        '           </div>' +
+		                        '            <div class="desc">' +
+		                        '                <div class="text-sm">' +
+		                        '<MARQUEE>' +
+		                        data.address +
+		                        '</MARQUEE>' +
+		                        '</div>' +
+		                        '                <div class="jibun">'+
+		                        	data.tel +
+		                        '</div>' +
+//	 	                        '                <div>'+
+//	 	                        data.hp +
+//	 	                        '</div>' +
+		                        '                <div class="pt-1"><a href="https://www.kakaocorp.com/main" target="_blank" class="link">상세페이지 →</a></div>' +
+		                        '            </div>' +
+		                        '        </div>' +
+		                        '    </div>' +
+		                        '</div>';
+		                    // content.innerHTML = data.title;
+		                    // content.style.cssText = 'background: white; border: 1px solid black';
+		
+		                    var closeBtn = document.getElementById('closeBtn');
+		                    var closeBtn = document.createElement('button');
+		                    closeBtn.innerHTML = 'X';
+		                    closeBtn.style.cssText = 'background: rgba(0, 0, 0,0); color: rgba(0, 0, 0,0); border: none';
+		                    closeBtn.onclick = function () {
+		                        overlay.setMap(null);
+		                    };
+		
+		                    content.appendChild(closeBtn);
+		                    overlay.setContent(content);
+		
+		                    var isClick = new kakao.maps.event.addListener(marker, 'click', function () {
+		                        overlay.setMap(map);
+		                        return true;
+		                    });
+		
+		                    if (isClick === true) {
+		                        overlay.setMap(null);
+		                    }
+		
+		                    // kakao.maps.event.addListener(marker, 'click', function() {
+		                    //     overlay.setMap(null);
+		                    // });
+		
+		
+		                }							    
     
         //  버튼 클릭 이벤트 
         var div2 = document.getElementsByClassName("div2");
@@ -1994,7 +2101,12 @@
         function onDisplay() {
             $('#noneDiv').show();
         }
-    </script>
+        
+</script>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////     -->
+
+
     <script>
         $(document).on('click', '.tile-link.active', function() {
             var href = $(this).attr('href').substring(0);

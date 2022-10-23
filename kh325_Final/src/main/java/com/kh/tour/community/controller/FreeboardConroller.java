@@ -82,6 +82,12 @@ public class FreeboardConroller {
 		log.info("freeboardNo : " + freeboardNo);
 		log.info("loginMember : " + loginMember);
 		
+		if(loginMember == null) {
+			model.addAttribute("msg", "로그인후 조회하실 수 있습니다.");
+			model.addAttribute("location", "/loginView");
+			return "/common/msg";
+		}
+		
 		Freeboard board = service.selectBoardByNo(freeboardNo);
 		List<FreeBoardComment> comments = board.getCommentList();
 		List<Freeboard> bestList = service.selectBestPost();
@@ -118,6 +124,12 @@ public class FreeboardConroller {
 
 	@GetMapping("/writefree")
 	public String writeFree( Model model,@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
+		
+		if(loginMember == null) {
+			model.addAttribute("msg", "로그인후 조회하실 수 있습니다.");
+			model.addAttribute("location", "/loginView");
+			return "/common/msg";
+		}
 		
 		model.addAttribute("loginMember",loginMember);
 		log.info("loginMember : " + loginMember.toString());

@@ -36,6 +36,13 @@ public class CompanionController {
 	public String freeboardList(Model model, @RequestParam Map<String, String> param,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		log.info("param : " + param.toString());
+		
+		if(loginMember == null) {
+			model.addAttribute("msg", "로그인후 조회하실 수 있습니다.");
+			model.addAttribute("location", "/loginView");
+			return "/common/msg";
+		}
+		
 		int page = 1;
 		if (param.containsKey("page") == true) {
 			try {
@@ -43,6 +50,15 @@ public class CompanionController {
 			} catch (Exception e) {
 			}
 		}
+		
+		if(param.get("area") != null) {
+			if(param.get("area").equals("전국")) {
+				param.remove("area");
+			}
+		}
+		
+		log.info("param : " + param.toString());
+		
 		log.info("page: " + page);
 		PageInfo pageInfo = new PageInfo(page, 6, service.selectBoardCount(param), 6);
 		List<Companion> list = service.selectBoardList(pageInfo, param);
@@ -66,6 +82,13 @@ public class CompanionController {
 	public String compCommentForWriter(Model model, int companionNo,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
+
+		if(loginMember == null) {
+			model.addAttribute("msg", "로그인후 조회하실 수 있습니다.");
+			model.addAttribute("location", "/loginView");
+			return "/common/msg";
+		}
+		
 		log.info("no:" + companionNo);
 		List<Member> setMember = service.selectCommentSenderList(companionNo); 
 		
@@ -84,6 +107,13 @@ public class CompanionController {
 	@GetMapping("/compCommentForSender")
 	public String compCommentForSender(Model model, int companionNo,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
+		
+		
+		if(loginMember == null) {
+			model.addAttribute("msg", "로그인후 신청 하실 수 있습니다.");
+			model.addAttribute("location", "/loginView");
+			return "/common/msg";
+		}
 		
 		log.info("no:" + companionNo);
 		List<CompanionComment> list = service.selectCommentByNo(companionNo,loginMember.getUserNo());
@@ -145,7 +175,10 @@ public class CompanionController {
 	
 	// 메모 게시글 등록 
 	@PostMapping("/writeCompanion")
-	public String writeCompanion(Model model, Companion companion) {
+	public String writeCompanion(Model model, Companion companion,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
+		
+		companion.setUserNo(loginMember.getUserNo());
 		
 		log.info("companion:"+ companion);
 		int result = service.insertBoard(companion);

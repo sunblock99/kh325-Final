@@ -293,12 +293,15 @@
                         <div class="mb-2 ">
                             <label class="form-label" for="form_dates">Dates</label>
                             <div class="datepicker-container datepicker-container-left">
-                                <input class="form-control" type="date" name="departureDate"  value="${param.departureDate }"placeholder="Choose your dates">
+                                <input class="form-control" type="date" name="departureDate" value="${param.departureDate }"placeholder="Choose your dates">
                             </div>
                         </div>
                         <div class="mb-2 ">
                             <label class="form-label" for="area-form">Area</label>
-                            <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker" value="${param.area }">
+                            <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker">
+                            	<c:if test="${!empty param.area }">
+                                	<option value="${param.area }" selected>${param.area}</option>
+                                </c:if>
                                 <option value="전국">전국</option>
                                 <option value="서울">서울</option>
                                 <option value="경기 ">경기</option>
@@ -324,7 +327,7 @@
                                     <h1 class="modal-title fs-5 fw-bold" id="findCompLabel">동행 구하기 메모 작성</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body" style="background-image: url({path}/resources/image/monoon_back.png);">
+                                <div class="modal-body" style="background-image: url(${path}/resources/image/monoon_back.png);">
                                     <form action="${path}/community/writeCompanion" method="post" name="frm">
                                     	<input type="text" name="userNo" value="${loginMember.userNo }" hidden>
                                         <div class="row">
@@ -338,21 +341,22 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label" for="area-form">지역</label>
-                                                <select class="selectpicker form-control " name="area" id="area" data-style="btn-selectpicker" >
-                                                <option value="전국" selected="selected">전국</option>
-                                                <option value="서울">서울</option>
-                                                <option value="경기">경기</option>
-                                                <option value="전라">전라</option>
-                                                <option value="경상">경상</option>
-                                                <option value="충청">충청</option>
-                                                <option value="제주">제주</option>
-                                            </select>
+                                                
+                                                <select class="selectpicker form-control" name="area" id="area" data-style="btn-selectpicker" >
+	                                                <option value="전국">전국</option>
+	                                                <option value="서울">서울</option>
+	                                                <option value="경기">경기</option>
+	                                                <option value="전라">전라</option>
+	                                                <option value="경상">경상</option>
+	                                                <option value="충청">충청</option>
+	                                                <option value="제주">제주</option>
+                                            	</select>
                                             </div>
                                         </div>
 
                                         <div class="form-group pt-3">
                                             <label class="form-label" for="find_text">내용</label>
-                                            <textarea class="form-control find_text" id="content" name="content" cols="10" rows="4" placeholder="40자 이내로 작성하세요."></textarea>
+                                            <textarea class="form-control find_text" id="content" name="content" cols="10" rows="4" placeholder="50자 이내로 작성하세요."></textarea>
                                             <div class="text-muted pb-2 test_cnt">(0 / 50)</div>
                                         </div>
                                         <div class="form-group pt-3 text-end ">
@@ -425,7 +429,7 @@
 			                                <div class="form-group">
 			                                	<input type="text" name="boardType" value="${board.boardType }" hidden/>
 			                                	<input type="text" name="boardNo" value="${board.companionNo }" hidden/>
-			                                	<input type="text" name="boardName" value="동행구하기" hidden />
+			                                	<input type="text" name="boardName" value="${board.content }" hidden />
 			                                	<input type="text" name="userNo" value="${loginMember.userNo }" hidden/>
 			                                    <label class="form-label" for="area-form">신고사유</label>
 			                                    <select class="selectpicker form-control bg-gray-200 " name="category" id="area-form" data-style="btn-selectpicker " title="신고사유를 선택하세요.">

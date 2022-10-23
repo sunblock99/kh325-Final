@@ -159,7 +159,12 @@
 		}
     </style>
     <script type="text/javascript">
-    
+	    function popup(pageUrl) {
+	        var url = "${path}/community/companionComment";
+	        var name = "popup test";
+	        var option = "width = 1000, height = 500, top = 100, left = 200, location = no"
+	        window.open(pageUrl, name, option);
+	    }
     </script>
 </head>
 
@@ -310,7 +315,7 @@
                 <div class="col-lg-6 mb-2">
                     <div class="h3 text-dark d-flex mb-4">
                         <div class="col-6">
-                            <a class="text-reset text-pB" href="${path }/community/freeboardList"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/comm2.png" alt=""></span>자유게시판</a>
+                            <a class="text-reset text-pB text-decoration-none" href="${path }/community/freeboardList"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/comm2.png" alt=""></span>자유게시판</a>
                         </div>
                         <div class="col-6 text-end pe-3">
                              <%-- <a href="${path }/community/freeboardList" class=" text-muted p-7 pt-3">+</a> --%>
@@ -333,27 +338,15 @@
                 <!--갤러리 시작-->
                 <div class="col-lg-6 mb-2 text-pB">
                     <h2 class="h3 text-dark d-flex align-items-center mb-4 pb-1">
-                        <a class="text-reset text-pB" href="#"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/comm3.png" alt=""></span>사진전</a>
+                        <a class="text-reset text-pB text-decoration-none" href="${path }/community/gallery"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/comm3.png" alt=""></span>사진전</a>
                     </h2>
                     <div class="row gallery ms-n1 me-n1 ">
+                    	<c:forEach var="gallery" items="${galleryList}">
                         <div class="col-lg-4 col-6 px-1 mb-2">
-                            <a href="http://tong.visitkorea.or.kr/cms2/website/63/2857963.jpg"><img class="img-fluid" src="http://tong.visitkorea.or.kr/cms2/website/63/2857963.jpg" alt="..."></a>
+                            <a href="${gallery.renamedImage }"><img class="img-fluid" src="${gallery.renamedImage }" alt="..."></a>
                         </div>
-                        <div class="col-lg-4 col-6 px-1 mb-2">
-                            <a href="http://tong.visitkorea.or.kr/cms2/website/37/2856637.jpg"><img class="img-fluid" src="http://tong.visitkorea.or.kr/cms2/website/37/2856637.jpg" alt="..."></a>
-                        </div>
-                        <div class="col-lg-4 col-6 px-1 mb-2">
-                            <a href="http://tong.visitkorea.or.kr/cms2/website/54/2839254.jpg"><img class="img-fluid" src="http://tong.visitkorea.or.kr/cms2/website/54/2839254.jpg" alt="..."></a>
-                        </div>
-                        <div class="col-lg-4 col-6 px-1 mb-2">
-                            <a href="http://tong.visitkorea.or.kr/cms2/website/05/2834205.jpg"><img class="img-fluid" src="http://tong.visitkorea.or.kr/cms2/website/05/2834205.jpg" alt="..."></a>
-                        </div>
-                        <div class="col-lg-4 col-6 px-1 mb-2">
-                            <a href="http://tong.visitkorea.or.kr/cms2/website/97/2826997.jpg"><img class="img-fluid" src="http://tong.visitkorea.or.kr/cms2/website/97/2826997.jpg" alt="..."></a>
-                        </div>
-                        <div class="col-lg-4 col-6 px-1 mb-2">
-                            <a href="http://tong.visitkorea.or.kr/cms2/website/99/2816599.jpg"><img class="img-fluid" src="http://tong.visitkorea.or.kr/cms2/website/99/2816599.jpg" alt="..."></a>
-                        </div>
+                    	</c:forEach>
+                        
                     </div>
                 </div>
                 <!--갤러리 끝-->
@@ -396,12 +389,12 @@
     </section>
     <!--커뮤니티 룰 끝 -->
     <section class="py-5 ">
-        <div class="container ">
+        <div class="container">
             <div class="row ">
                 <!--동행 시작 -->
                 <div class="col-lg-5 mb-2 ">
-                    <h2 class="h3 text-dark d-flex align-items-center mb-4 ">
-                        <a class="text-reset " href="${path}/community/companionList"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/comm1.png " alt=" "></span>함께가요</a>
+                    <h2 class="h3 text-dark d-flex align-items-center mb-4 text-decoration-none">
+                        <a class="text-reset text-decoration-none" href="${path}/community/companionList"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/comm1.png " alt=" "></span>함께가요</a>
                     </h2>
                     
                     <c:set var="index" value="0" />
@@ -410,8 +403,17 @@
                     	<c:forEach var="i" begin="${index }" end="${index+1 }" step="1">
                         <div class="col-5 hover-animate" style="background-image: url(${path }/resources/image/postit_1\(250x2\).png); width: 250px; height: 250px; ">
                             <div class="pt-5 ps-4 pe-4 ">
-                                <a class="text-black text-decoration-none" href="${path}/community/companionList">
-                                	
+                            	<c:if test="${!empty loginMember }">
+                            		<c:if test="${loinMember.userNo == compList.get(i).userNo }">
+                                		<a class="text-black text-decoration-none" onclick="popup('${path}/community/compCommentForWriter?companionNo=${compList.get(i).companionNo}&userNo=${compList.get(i).userNo}') ">
+                            		</c:if>
+                            		<c:if test="${loinMember.userNo ne compList.get(i).userNo }">
+                                		<a class="text-black text-decoration-none" onclick="popup('${path}/community/compCommentForSender?companionNo=${compList.get(i).companionNo}&userNo=${compList.get(i).userNo}') ">
+                            		</c:if>
+                                </c:if>	
+                            	<c:if test="${empty loginMember }">
+                                	<a class="text-black text-decoration-none" href="${path }/community/companionList">
+                                </c:if>	
                                     <p class="text-center blockquote-footer pt-3 text-pB">
                                     	<fmt:formatDate value="${compList.get(i).departureDate }" pattern="yyyy.MM.dd"/>~
                                     	<fmt:formatDate value="${ compList.get(i).closeDate}" pattern="yyyy.MM.dd"/>
@@ -431,7 +433,7 @@
                 <!-- 블로그 시작 -->
                 <div class="col-lg-7 mb-2 ps-5 ">
                     <h2 class="h3 text-dark d-flex align-items-center mb-5 ">
-                        <a class="text-reset " href="${path }/community/journeyList"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/quote.png " alt=" "></span>블로그</a>
+                        <a class="text-reset text-decoration-none" href="${path }/community/journeyList"><span class="py-1 me-1 text-pB"><img src="${path }/resources/image/quote.png " alt=" "></span>블로그</a>
                     </h2>
                     <c:forEach begin="0" end="1" step="1" var="i">
                     <div class="card mb-3 shadow">

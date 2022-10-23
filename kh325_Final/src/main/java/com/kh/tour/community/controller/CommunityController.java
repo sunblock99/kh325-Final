@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +18,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.community.model.service.CompanionService;
 import com.kh.tour.community.model.service.FreeBoardService;
+import com.kh.tour.community.model.service.GalleryService;
 import com.kh.tour.community.model.service.JourneyService;
 import com.kh.tour.community.model.vo.Companion;
-import com.kh.tour.community.model.vo.FreeBoardComment;
 import com.kh.tour.community.model.vo.Freeboard;
+import com.kh.tour.community.model.vo.Gallery;
 import com.kh.tour.community.model.vo.Journey;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,8 +41,11 @@ public class CommunityController {
 	@Autowired
 	JourneyService journeyService;
 	
+	@Autowired
+	GalleryService galleryService;
+	
 	@RequestMapping("/community")
-	public String commnity(Model model) {
+	public String commnity(Model model,HttpServletRequest request) {
 		
 		Map<String,String> param = new HashMap<>();
 		PageInfo pageInfo = new PageInfo(1, 109, freeboardService.selectBoardCount(param), 9);
@@ -51,8 +57,21 @@ public class CommunityController {
 		pageInfo.setListLimit(freeboardService.selectBoardCount(param));
 		List<Journey> journeyList = journeyService.selectBoardList(pageInfo, param);
 		List<Journey> bestJourney = new ArrayList<>();
+		
 		for(Journey j:journeyList) {
 			bestJourney.add(j);
+		}
+		
+		for(Journey board : bestJourney) {
+			if(board.getImgRenamed() != null) {
+				if(board.getImgRenamed().contains("http")==false) {
+					String rootPath = request.getContextPath();
+					String savePath = rootPath + "/resources/uploaded";
+					String imgPath = savePath + "/" + board.getImgRenamed();
+					board.setImgRenamed(imgPath);
+				}
+				
+			}
 		}
 		
 		Collections.sort(bestJourney, new Comparator<Journey>() {
@@ -68,10 +87,27 @@ public class CommunityController {
 			};
 		});
 		
+		pageInfo.setListLimit(6);
+		List<Gallery> galleryList = galleryService.getGalleryList(pageInfo, param);
+		
+		for(int i = 0; i<galleryList.size();i++) {
+			Gallery board= galleryList.get(i);
+			if(board.getRenamedImage() != null) {
+				if(board.getRenamedImage().contains("http")==false) {
+					String rootPath = request.getContextPath();
+					String savePath = rootPath + "/resources/uploaded";
+					String imgPath = savePath + "/" + board.getRenamedImage();
+					galleryList.get(i).setRenamedImage(imgPath);
+				}
+			}
+
+		}
+		
 		model.addAttribute("freeList",freeList);
 		model.addAttribute("compList",compList);
 		model.addAttribute("journeyList",journeyList);
 		model.addAttribute("bestJourney",bestJourney);
+		model.addAttribute("galleryList",galleryList);
 		
 		return "community/communityMain";
 	}

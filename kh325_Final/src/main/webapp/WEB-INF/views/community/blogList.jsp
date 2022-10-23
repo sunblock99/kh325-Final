@@ -116,11 +116,11 @@
 	    overflow: hidden;
 	    text-overflow: ellipsis;
 	    display: -webkit-box;
-	    -webkit-line-clamp: 3; /* 라인수 */
+	    -webkit-line-clamp: 4; /* 라인수 */
 	    -webkit-box-orient: vertical;
 	    word-wrap:break-word; 
 	    line-height: 1.2em;
-	    height: 3.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+	    height: 4.8em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 	  }
 	  
 	  .txt_post_long{
@@ -133,7 +133,7 @@
 	    line-height: 1.2em;
 	    height: 8.4em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 	  }
-    </style>
+   </style>
 </head>
 
 <body>
@@ -158,56 +158,62 @@
                 <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link-header" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
-                        </li>
+			                <a class="fs-3 nav-link-header text-pB" id="homeDropdownMenuLink" href="${path }"
+			                  aria-haspopup="true" aria-expanded="false">홈</a>
+		             	</li>
 
                         <!-- 상단바메뉴 시작 -->
-                        <li class="nav-item position-static">
+                        <li class="nav-item position-static text-pB">
                             <li class="nav-item dropdown">
-                                <a class="nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      관광정보</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                    <h6 class="dropdown-header fw-normal" style="font-family:
-                        pB;">관광정보</h6>
-                                    <a class="hvr dropdown-item" href="#">HOT PLACE </a>
-                                    <a class="hvr dropdown-item" href="#">관광지 정보</a>
-                                    <a class="hvr dropdown-item" href="#">지역별
-                        축제ㅣ행사 </a>
-                                    <a class="hvr dropdown-item" href="#">날짜별 축제ㅣ행사</a>
+                                <a class="fs-3 nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" 
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관광정보</a>
+                                <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                                    <h6 class="dropdown-header fs-5 text-pSb">관광정보</h6>
+                                    <a class="hvr dropdown-item fs-5" href="${path}/tour/hotPlace">HOT PLACE </a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-directory-structure.html">관광지 정보</a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-gulp.html">지역별 축제ㅣ행사 </a>
+                                    <a class="hvr dropdown-item fs-5" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
                                 </div>
                             </li>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link-header" href="#">커뮤니티</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link-header" href="#" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
-
-                        <!-- <li class="nav-item"><a class="nav-link-header" href="login.html">로그인</a></li> -->
-
-                        <!-- 일반회원 로그인 성공 시 -->
-                        <!-- <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
-                  href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  곰발바닥 님</a>
-                  <div class="dropdown-menu dropdown-menu-end"
-                      aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                      <a class="hvr dropdown-item"
-                        href="docs/docs-introduction.html">마이페이지</a>
-                      <a class="hvr dropdown-item"
-                        href="docs/docs-directory-structure.html">로그아웃</a>
-                  </div>
-                </li> -->
-
-                        <!-- 관리자 로그인 성공 시 -->
-                        <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  곰발바닥 님</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                <a class="hvr dropdown-item" href="#">마이페이지</a>
-                                <a class="hvr dropdown-item" href="#">관리자페이지</a>
-                                <a class="hvr dropdown-item" href="#">로그아웃</a>
-                            </div>
-                        </li>
-
-                    </ul>
+		              <li class="nav-item"><a class="fs-3 nav-link-header" href="${path }/community">커뮤니티</a></li>
+		                        <li class="nav-item">
+		                            <a class="fs-3 nav-link-header" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a></li>
+		              
+		              <c:if test="${loginMember eq null}">
+		              <li class="nav-item"><a class="fs-3 nav-link-header" href="${path}/loginView">로그인</a></li>
+		              </c:if>
+		              
+		              <!-- 일반회원 로그인 성공 시 -->
+		              <c:if test="${loginMember ne null && loginMember.managerStatus eq 'N'}">
+		              <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
+		                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                <c:out value="${loginMember.userName}" /> 님</a>
+		                <div class="dropdown-menu dropdown-menu-end"
+		                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
+		                    <a class="hvr dropdown-item"
+		                      href="docs/docs-introduction.html">마이페이지</a>
+		                    <a class="hvr dropdown-item"
+		                      href="docs/docs-directory-structure.html">로그아웃</a>
+		                </div>
+		              </li>
+		              </c:if> 
+		              
+		              <!-- 관리자 로그인 성공 시 -->
+		              <c:if test="${loginMember.managerStatus eq 'Y'}">
+		              <li class="nav-item dropdown"><a class="fs-3 nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
+		                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                 <c:out value="${loginMember.userName}" /> 님</a>
+		                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink text-pB">
+		                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-introduction.html">마이페이지</a>
+		                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-introduction.html">관리자페이지</a>
+		                                <a class="hvr dropdown-item fs-5 text-pSb" href="docs/docs-directory-structure.html">로그아웃</a>
+		                            </div>
+		              </li>
+		              </c:if>
+		
+		            </ul>
                 </div>
             </div>
         </nav>
@@ -289,7 +295,6 @@
 							</p>
                             <p class="text-lg text-gray-700 mb-4 txt_post_long">${bestPost.content } </p>
                             <h6 class="fs-4 text-pB">— written by ${bestPost.userName }</h6>
-                            </blockquote>
                         </div>
                     </div>
                 </div>
@@ -308,7 +313,7 @@
             </div>
             <div>
                 <label class="form-label me-2" for="form_sort">Sort by</label>
-                <select class="selectpicker" name="sort" id="form_sort" data-style="btn-selectpicker" onchange="orderList()">
+                <select class="selectpicker" name="sort" id="form_sort" data-style="btn-selectpicker" title="${param.sort }"onchange="orderList()">
 	                <option value="newest">Newest</option>
 	                <option value="popular">Most popular</option>
 	                <option value="oldest">Oldest</option>
