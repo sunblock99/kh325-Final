@@ -112,6 +112,51 @@ div {
 
 /*폰트 끝*/
 
+.btn-warning-review {
+	color: #212529;
+	background-color: #ffc107;
+	border-color: #ffc107;
+	font-family: 'pB';
+	letter-spacing:-1px;
+	font-size: 15px;
+  }
+  
+  .btn-warning-review:hover {
+	color: #212529;
+	background-color: #ffca2c;
+	border-color: #ffc720;
+	font-family: 'pB';
+  }
+  
+  .btn-check:focus + .btn-warning-review, .btn-warning-review:focus {
+	color: #212529;
+	background-color: #ffca2c;
+	border-color: #ffc720;
+	box-shadow: 0 0 0 0.25rem rgba(222, 170, 12, 0.5);
+	font-family: 'pB';
+  }
+  
+  .btn-check:checked + .btn-warning-review,
+  .btn-check:active + .btn-warning-review, .btn-warning-review:active, .btn-warning-review.active,
+  .show > .btn-warning-review.dropdown-toggle {
+	color: #212529;
+	background-color: #ffcd39;
+	border-color: #ffc720;
+	font-family: 'pB';
+  }
+  
+  .btn-check:checked + .btn-warning-review:focus,
+  .btn-check:active + .btn-warning-review:focus, .btn-warning-review:active:focus, .btn-warning-review.active:focus,
+  .show > .btn-warning-review.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.25rem rgba(222, 170, 12, 0.5);
+  }
+  
+  .btn-warning-review:disabled, .btn-warning-review.disabled {
+	color: #212529;
+	background-color: #ffc107;
+	border-color: #ffc107;
+	font-family: 'pB';
+  }
 
 /* 일립시스 */
 

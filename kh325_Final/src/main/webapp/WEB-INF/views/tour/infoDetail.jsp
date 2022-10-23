@@ -533,79 +533,49 @@
                     <!-- 리뷰 -->
                     <div class="text-block text-pB">
                         <h5 class="mb-4 fs-2 text-pBlack">리뷰 목록 </h5>
+                         <c:if test="${!empty review}">
+                        <c:forEach items="${review}" var="review">
                         <div class="d-flex d-block d-sm-flex review">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-8.jpg" alt="Padmé Amidala">
-                                <span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
+                                <img class="d-block avatar avatar-xl p-2 mb-2" src="${review.userAvatar}" alt="${review.userName}님">
+                            </div>
                             <div>
-                                <h6 class="mt-2 mb-1 text-pB fs-5">Padmé Amidala</h6>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">"${review.userName}"</h6>
+                                
                                 <div class="mb-2">
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                </div>
-                                <p class="text-muted text-md">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly,
-                                    slightly domed and divided by arches into stiff sections </p>
+	                                <c:forEach begin="1" end="${review.star}" step="1">
+										<i class="fa fa-star text-warning "></i>
+									</c:forEach>
+									<c:if test="${review.star < 5}">
+										<c:forEach begin="${review.star+1}" end="5" step="1">
+										<i class="fa fa-xs fa-star text-gray-200"></i>
+										</c:forEach>
+									</c:if>
+								</div>
+
+                                <p class="text-muted text-md">${review.content}</p>
                             </div>
                         </div>
-                        <div class="d-flex d-block d-sm-flex review">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                            <div>
-                                <h6 class="mt-2 mb-1 text-pB fs-5">Luke Skywalker</h6>
-                                <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa
-                      fa-xs fa-star text-warning"></i><i class="fa fa-xs
-                      fa-star
-                      text-warning"></i><i class="fa fa-xs fa-star
-                      text-gray-200"></i>
-                                </div>
-                                <p class="text-muted text-md">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot;
-                                    he thought. It wasn't a dream. </p>
-                            </div>
-                        </div>
-                        <div class="d-flex d-block d-sm-flex review">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                            <div>
-                                <h6 class="mt-2 mb-1 text-pB fs-5">Princess Leia</h6>
-                                <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa
-                      fa-xs fa-star text-warning"></i><i class="fa fa-xs
-                      fa-star
-                      text-gray-200"></i><i class="fa fa-xs fa-star
-                      text-gray-200"></i>
-                                </div>
-                                <p class="text-muted text-md">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table. </p>
-                            </div>
-                        </div>
-                        <div class="d-flex d-block d-sm-flex review">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/avatar-4.jpg" alt="Jabba Hut"><span class="text-uppercase text-muted text-sm">Dec 2018</span></div>
-                            <div>
-                                <h6 class="mt-2 mb-1 text-pB fs-5">Jabba Hut</h6>
-                                <div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa
-                      fa-xs fa-star text-warning"></i><i class="fa fa-xs
-                      fa-star
-                      text-warning"></i><i class="fa fa-xs fa-star
-                      text-warning"></i>
-                                </div>
-                                <p class="text-muted text-md">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. </p>
-                            </div>
-                        </div>
+                        </c:forEach>
+                        </c:if>
+                        
+
                         <div class="py-5">
-                            <button class="btn btn-outline-warning" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a
-                  review</button>
+                            <button class="btn btn-outline-warning"  style="letter-spacing:-1px; font-size:15px;" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">
+                  리뷰 쓰기</button>
                             <div class="collapse mt-4" id="leaveReview">
-                                <h5 class="mb-4">Leave a review</h5>
+                                <h5 class="mb-4 text-pB">리뷰를 남겨주세요</h5>
                                 <form class="form" id="contact-form" method="get" action="#">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
-                                                <label class="form-label" for="name">Your name *</label>
-                                                <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
+                                                <label class="form-label text-pB" for="name">이름 *</label>
+                                                <input class="form-control text-pB" type="text" name="name" id="name" placeholder="닉네임을 입력해주세요" required="required">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-4">
-                                                <label class="form-label" for="rating">Your rating *</label>
+                                                <label class="form-label text-pB" for="rating">별점을 남겨주세요 *</label>
                                                 <select class="form-select focus-shadow-0" name="rating" id="rating">
                             <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;
                               (5/5)</option>
@@ -614,22 +584,18 @@
                             <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;
                               (3/5)</option>
                             <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;
-                              (2/5)</option>
+                              (2/5)</option>t
                             <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;
                               (1/5)</option>
                           </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-4">
-                                        <label class="form-label" for="email">Your email *</label>
-                                        <input class="form-control" type="email" name="email" id="email" placeholder="Enter your email" required="required">
+                                    <div class="mb-4 text-pB">
+                                        <label class="form-label text-pB" for="review">내용 *</label>
+                                        <textarea class="form-control text-pB" rows="4" name="review" id="review" placeholder="내용을 작성해주세요" required="required"></textarea>
                                     </div>
-                                    <div class="mb-4">
-                                        <label class="form-label" for="review">Review text *</label>
-                                        <textarea class="form-control" rows="4" name="review" id="review" placeholder="Enter your review" required="required"></textarea>
-                                    </div>
-                                    <button class="btn btn-warning" type="submit">Post review</button>
+                                    <button class="btn btn-warning-review" type="submit">리뷰 남기기</button>
                                 </form>
                             </div>
                         </div>
@@ -714,9 +680,7 @@
                                 <table class="table text-sm mb-0">
                                 	
 							<!-- 12 : 관광지 -->
-<%-- 							<c:foreach items="${repeatInfo}" var="RepeatInfo"> --%>
 									<c:if test="${tour.contentTypeId == 12}">
-									
 									<c:if test="${detail.heritage1 ne 0 || detail.heritage2 ne 0 || detail.heritage3 ne 0}">
                                     	<tr>
 	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">분류</th>

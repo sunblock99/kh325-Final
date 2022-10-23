@@ -7,10 +7,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import com.kh.tour.course.model.vo.DetailCourse;
+import com.kh.tour.member.model.vo.Review;
 import com.kh.tour.tour.model.vo.DetailCultural;
 import com.kh.tour.tour.model.vo.DetailEvent;
 import com.kh.tour.tour.model.vo.DetailHotel;
 import com.kh.tour.tour.model.vo.DetailRestaurant;
+import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
@@ -54,6 +56,8 @@ public interface TotalTourMapper {
 	DetailRestaurant detailRestaurant(int contentId);
 
 	List<TourImage> tourImage(int contentId);
+
+	List<DetailReview> getReviewList (int contentId);
 	
 	
 

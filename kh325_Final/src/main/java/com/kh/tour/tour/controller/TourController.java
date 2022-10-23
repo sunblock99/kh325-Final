@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.tour.common.util.PageInfo;
+import com.kh.tour.member.model.vo.Review;
 import com.kh.tour.tour.model.service.TourService;
 import com.kh.tour.tour.model.vo.DetailCultural;
 import com.kh.tour.tour.model.vo.DetailEvent;
 import com.kh.tour.tour.model.vo.DetailRestaurant;
+import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
@@ -128,37 +130,53 @@ public class TourController {
 		
 		if(contentTypeId == 12) {
 			DetailTourist detail = tService.getDetailTourist(contentId);
+			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("detail", detail);
+			model.addAttribute("review", review);
+			log.info("review : " + review);
+
 		}
 
 		if(contentTypeId == 14) {
 			DetailCultural detail = tService.getDetailCultural(contentId);
+			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("detail", detail);
+			model.addAttribute("review", review);
+
 		}
 		
 		if(contentTypeId == 15) {
 			DetailEvent detail = tService.getDetailEvent(contentId);
+			List<DetailReview> review = tService.getReviewList(contentId);
+			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
 		}
 		
 		if(contentTypeId == 28) {
 			DetailSports detail = tService.getDetailSports(contentId);
+			List<DetailReview> review = tService.getReviewList(contentId);
+			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
 		}
 
 		if(contentTypeId == 38) {
 			DetailShopping detail = tService.getDetailShopping(contentId);
+			List<DetailReview> review = tService.getReviewList(contentId);
+			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
 		}
 		
 		if(contentTypeId == 39) {
 			DetailRestaurant detail = tService.getDetailRestaurant(contentId);
+			List<DetailReview> review = tService.getReviewList(contentId);
+			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
 		}
 		
 		if(repeatInfo == null) {
 			return "redirect:error";
 		}
+		
 		
 		model.addAttribute("tour", tour);
 		model.addAttribute("repeatInfo", repeatInfo);
