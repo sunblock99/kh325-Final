@@ -232,7 +232,7 @@
                             <!-- 배경이미지  -->
 	                           <div class="gradient-overlay-img" style="background-image: url(<c:if test="${HotPlace.firstImage == null}"><c:out value="${path}/resources/image/noImage.png"/></c:if> <c:if test="${HotPlace.firstImage != null}"><c:out value="${HotPlace.firstImage}"/></c:if>); cursor:pointer; height: auto; width: auto;">
 	                                <div class="card-list__img">
-	                                    <a href="#" class="card-list_link"></a>
+	                                    <a href="${path}/tourDetailInfo.do?contentId=${contentId}" class="card-list_link"></a>
 	                                </div>
 
                                 <!-- 소개 정보 -->

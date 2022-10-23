@@ -12,10 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.tour.model.service.TourService;
+import com.kh.tour.tour.model.vo.DetailCultural;
+import com.kh.tour.tour.model.vo.DetailEvent;
+import com.kh.tour.tour.model.vo.DetailRestaurant;
+import com.kh.tour.tour.model.vo.DetailShopping;
+import com.kh.tour.tour.model.vo.DetailSports;
+import com.kh.tour.tour.model.vo.DetailTourist;
 import com.kh.tour.tour.model.vo.RepeatCourse;
 import com.kh.tour.tour.model.vo.RepeatHotel;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
+import com.kh.tour.tour.model.vo.TourImage;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -106,43 +113,59 @@ public class TourController {
 	}
 	
 	
-//	@GetMapping("/tourDetailInfo.do") //contentId로 공통+이미지+무장애 객체 조회하기
-//	public String tourCommonInfo(Model model, @RequestParam("contentId") int contentId) {
-//		Tour tour = tService.findByContentId(contentId);
-//		
-//		if(tour == null) {
-//			return "redirect:error";
-//		}
-//		
-//		model.addAttribute("tour", tour);
-//		return "tour/infoDetail";
-//	}
-//	
-//	
-//	@GetMapping("/tourDetailInfo.do") //  contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기 
-//	public String tourDetailInfo(Model model, @RequestParam("contentId") int contentId) {
-//		RepeatInfo repeatInfo = tService.findDetailByContentId(contentId);
-//		
-//		if(repeatInfo == null) {
-//			return "redirect:error";
-//		}
-//		
-//		model.addAttribute("repeatInfo", repeatInfo);
-//		return "tour/infoDetail";
-//	}
-//	
-//	@GetMapping("/tourDetailInfo.do") // contentId로 여행코스 소개+반복 조회하기  
-//	public String CourseDetailInfo(Model model, @RequestParam("contentId") int contentId) {
-//		RepeatCourse repeatCourse = tService.findCourseDetailByContentId(contentId);
-//		
-//		if(repeatCourse == null) {
-//			return "redirect:error";
-//		}
-//		
-//		model.addAttribute("repeatCourse", repeatCourse);
-//		return "tour/infoDetail";
-//	}
-//	
+	@GetMapping("/tourDetailInfo.do") //  contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기 
+	public String tourDetailInfo(Model model, @RequestParam("contentId") int contentId, @RequestParam("contentTypeId") int contentTypeId) {
+//		int contentId = 2661435;
+//		int contentTypeId = 12;
+		Tour tour = tService.findByContentId(contentId);
+		List<RepeatInfo> repeatInfo = tService.findDetailByContentId(contentId);
+		List<TourImage> imgDetail = tService.getTourImage(contentId);
+		
+		log.info("tour : " + tour);
+		log.info("repeatInfo : " + repeatInfo);
+		log.info("imgDetail : " + imgDetail);
+		
+		
+		if(contentTypeId == 12) {
+			DetailTourist detail = tService.getDetailTourist(contentId);
+			model.addAttribute("detail", detail);
+		}
+
+		if(contentTypeId == 14) {
+			DetailCultural detail = tService.getDetailCultural(contentId);
+			model.addAttribute("detail", detail);
+		}
+		
+		if(contentTypeId == 15) {
+			DetailEvent detail = tService.getDetailEvent(contentId);
+			model.addAttribute("detail", detail);
+		}
+		
+		if(contentTypeId == 28) {
+			DetailSports detail = tService.getDetailSports(contentId);
+			model.addAttribute("detail", detail);
+		}
+
+		if(contentTypeId == 38) {
+			DetailShopping detail = tService.getDetailShopping(contentId);
+			model.addAttribute("detail", detail);
+		}
+		
+		if(contentTypeId == 39) {
+			DetailRestaurant detail = tService.getDetailRestaurant(contentId);
+			model.addAttribute("detail", detail);
+		}
+		
+		if(repeatInfo == null) {
+			return "redirect:error";
+		}
+		
+		model.addAttribute("tour", tour);
+		model.addAttribute("repeatInfo", repeatInfo);
+		model.addAttribute("imgDetail", imgDetail);
+		return "tour/infoDetail";
+	}
+
 	@GetMapping("/tourDetailInfo.do") // contentId로 숙박 소개+반복 조회하기   
 	public String HotelDetailInfo(Model model, @RequestParam("contentId") int contentId) {
 		RepeatHotel repeatHotel = tService.findHotelDetailByContentId(contentId);

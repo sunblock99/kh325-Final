@@ -425,7 +425,7 @@
 		
 		LEFT OUTER JOIN TOUR_FREE TF
 		ON (B.CONTENTID = TF.CONTENTID) <!-- 무장애 -->
-		
+		WHERE
 		B.CONTENTID = #{contentId}
 	</select>
 	
@@ -484,9 +484,43 @@
 		</select>
 		
 	
+	<select id="detailTourist" resultMap="detailTouristListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_TOURIST WHERE CONTENTID = #{contentId}
+	</select>
+
+	<select id="detailCourse" resultMap="detailCourseListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_COURSE WHERE CONTENTID = #{contentId}
+	</select>
+
+	<select id="detailHotel" resultMap="detailHotelListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_HOTEL WHERE CONTENTID = #{contentId}
+	</select>
+
+	<select id="detailCultural" resultMap="detailCulturalListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_CULTURAL WHERE CONTENTID = #{contentId}
+	</select>
 	
+	<select id="detailEvent" resultMap="detailEventListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_EVENT WHERE CONTENTID = #{contentId}
+	</select>
+
+	<select id="detailSports" resultMap="detailSportsListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_SPORTS WHERE CONTENTID = #{contentId}
+	</select>
 	
+	<select id="detailShopping" resultMap="detailShoppingListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_SHOPPING WHERE CONTENTID = #{contentId}
+	</select>
+
+	<select id="detailRestaurant" resultMap="detailRestaurantListResultMap" parameterType="int">
+	SELECT * FROM DETAIL_RESTAURANT WHERE CONTENTID = #{contentId}
+	</select>
 	
+	<select id="tourImage" resultMap="tourImageListResultMap" parameterType="int">
+	 SELECT * FROM TOUR_IMAGE I
+	 JOIN BASIC_TOUR_INFO B ON (B.CONTENTID = I.CONTENTID)
+	 WHERE I.CONTENTID = #{contentId}
+	</select>
 	
 	
 	

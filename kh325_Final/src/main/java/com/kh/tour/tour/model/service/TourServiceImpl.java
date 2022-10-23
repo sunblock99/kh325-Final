@@ -9,11 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.tour.common.util.PageInfo;
+import com.kh.tour.course.model.vo.DetailCourse;
 import com.kh.tour.tour.model.mapper.TotalTourMapper;
+import com.kh.tour.tour.model.vo.DetailCultural;
+import com.kh.tour.tour.model.vo.DetailEvent;
+import com.kh.tour.tour.model.vo.DetailHotel;
+import com.kh.tour.tour.model.vo.DetailRestaurant;
+import com.kh.tour.tour.model.vo.DetailShopping;
+import com.kh.tour.tour.model.vo.DetailSports;
+import com.kh.tour.tour.model.vo.DetailTourist;
 import com.kh.tour.tour.model.vo.RepeatCourse;
 import com.kh.tour.tour.model.vo.RepeatHotel;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
+import com.kh.tour.tour.model.vo.TourImage;
 
 
 
@@ -69,7 +78,7 @@ public class TourServiceImpl implements TourService{
 		 
 		return mapper.selectEventListCount(searchMap);
 	}
-
+	
 	@Override //contentId로 공통 + 이미지 + 무장애 조회
 	public Tour findByContentId(int contentId) {
 		Tour tour = mapper.selectByContentId(contentId);
@@ -77,9 +86,9 @@ public class TourServiceImpl implements TourService{
 	}
 
 	@Override //contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 반복 + 소개 조회 
-	public RepeatInfo findDetailByContentId(int contentId) {
-		RepeatInfo repeatInfo = mapper.selectDetailByContentId(contentId);
-		return repeatInfo;
+	public List<RepeatInfo> findDetailByContentId(int contentId) {
+		
+		return mapper.selectDetailByContentId(contentId);
 	}
 	
 	@Override // contentId로 여행코스 소개+반복 조회하기
@@ -103,6 +112,59 @@ public class TourServiceImpl implements TourService{
 	@Override
 	public int getTourCount(Map<String, String> param, List<String> areaCode, String cat1, List<String> cat2) {
 		return 0;
+	}
+
+	@Override
+	public DetailTourist getDetailTourist(int contentId) {
+		return mapper.detailTourist(contentId);
+	}
+
+	@Override
+	public DetailCourse getDetailCourse(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.detailCourse(contentId);
+	}
+
+	@Override
+	public DetailHotel getDetailHotel(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.detailHotel(contentId);
+	}
+
+	@Override
+	public DetailCultural getDetailCultural(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.detailCultural(contentId);
+	}
+
+	@Override
+	public DetailEvent getDetailEvent(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.detailEvent(contentId);
+	}
+
+	@Override
+	public DetailSports getDetailSports(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.detailSports(contentId);
+	}
+
+	@Override
+	public DetailShopping getDetailShopping(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.detailShopping(contentId);
+	}
+
+	@Override
+	public DetailRestaurant getDetailRestaurant(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.detailRestaurant(contentId);
+	}
+
+	@Override
+	public List<TourImage> getTourImage(int contentId) {
+		// TODO Auto-generated method stub
+		return mapper.tourImage(contentId);
 	}
 
 
