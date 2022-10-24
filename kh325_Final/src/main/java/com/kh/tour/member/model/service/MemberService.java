@@ -1,11 +1,13 @@
 package com.kh.tour.member.model.service;
 
 import java.util.List;
+import java.util.Map;
 
+import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.member.model.vo.Bookmark;
+import com.kh.tour.member.model.vo.MemMyCourse;
 import com.kh.tour.member.model.vo.Member;
 import com.kh.tour.member.model.vo.MyCommunity;
-import com.kh.tour.member.model.vo.MemMyCourse;
 import com.kh.tour.member.model.vo.Review;
 
 public interface MemberService {
@@ -33,10 +35,12 @@ public interface MemberService {
 
 	int deleteReview(int reviewNo);
 
-	List<MyCommunity> community(int userNo);
+	List<MyCommunity> community(PageInfo pageInfo, Map<String,String>map);
 
 	int deleteCommunity(int freeboardNo);
 
 	List<MemMyCourse> mycourse(int userNo);
+	
+	int selectBoardCount(Map<String,String>map);
 
 }

@@ -152,196 +152,11 @@
     }
     /*폰트 끝*/
 </style>
-
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <body style="padding-top: 72px;">
-    <header class="header">
-        <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo"></a>
-                    <form class="form-inline d-none d-sm-flex" action="#" id="search">
-                        <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
-                            <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                            <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
-                        </div>
-                    </form>
-                </div>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                <!-- Navbar Collapse -->
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <form class="form-inline mt-4 mb-2 d-sm-none" action="#" id="searchcollapsed">
-                        <div class="input-label-absolute input-label-absolute-left w-100">
-                            <label class="label-absolute" for="searchcollapsed_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                            <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchcollapsed_search" placeholder="Search" aria-label="Search" type="search">
-                        </div>
-                    </form>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="homeDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Home</a>
-                            <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item" href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a class="dropdown-item" href="index-4.html">Real Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
-                        </li>
-                        <!-- Megamenu-->
-                        <li class="nav-item dropdown position-static"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Template</a>
-                            <div class="dropdown-menu megamenu py-lg-0">
-                                <div class="row">
-                                    <div class="col-lg-9">
-                                        <div class="row p-3 pe-lg-0 ps-lg-5 pt-lg-5">
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Homepage</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Rooms   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-2.html">Restaurants   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-3.html">Travel   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-4.html">Real estate <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Restaurants</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category.html">Category - Map on the top   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2.html">Category - Map on the right   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3.html">Category - no map   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail.html">Restaurant detail   </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Rooms</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-rooms.html">Category - Map on the top   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2-rooms.html">Category - Map on the right   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3-rooms.html">Category - no map   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail-rooms.html">Room detail   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Blog</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Blog   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="post.html">Post   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Pages</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="compare.html">Comparison   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="team.html">Team   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="contact.html">Contact   </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Pages</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="pricing.html">Pricing   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="text.html">Text page   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="faq.html">F.A.Q.s   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="coming-soon.html">Coming soon   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="404.html">404 page   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base.html">Knowledge Base  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base-topic.html">Knowledge Base  &mdash; Topic<span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="terms.html">Terms & Conditions  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Host</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-add-0.html">Add new listing - 6 pages   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-list.html">Bookings &mdash; list view   </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">User</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-profile.html">Profile   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-account.html">Account   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-personal.html">Personal info - forms   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-security.html">Password & security - forms   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="login.html">Sign in   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="signup.html">Sign up   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-1.html">Booking process - 4 pages   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-grid.html">Bookings &mdash; grid view   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-detail.html">Booking detail   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-invoice.html">Invoice  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages.html">Messages <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages-detail.html">Message Detail  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="row megamenu-services d-none d-lg-flex ps-lg-5">
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#destination-map-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Best rentals</h6>
-                                                        <p class="mb-0 text-muted text-sm">Find the perfect place</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#money-box-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Earn points</h6>
-                                                        <p class="mb-0 text-muted text-sm">And get great rewards</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#customer-support-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">020-800-456-747</h6>
-                                                        <p class="mb-0 text-muted text-sm">24/7 Available Support</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#secure-payment-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Secure Payment</h6>
-                                                        <p class="mb-0 text-muted text-sm">Secure Payment</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="${path}/resources/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- /Megamenu end-->
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Docs</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
-                                <h6 class="dropdown-header fw-normal">Documentation</h6><a class="dropdown-item" href="docs/docs-introduction.html">Introduction </a><a class="dropdown-item" href="docs/docs-directory-structure.html">Directory structure </a><a class="dropdown-item" href="docs/docs-gulp.html">Gulp </a>
-                                <a class="dropdown-item" href="docs/docs-customizing-css.html">Customizing CSS </a><a class="dropdown-item" href="docs/docs-credits.html">Credits </a><a class="dropdown-item" href="docs/docs-changelog.html">Changelog </a>
-                                <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown ms-lg-3">
-                            <a id="userDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="img/avatar/avatar-10.jpg" alt="Jack London"></a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink"><a class="dropdown-item" href="user-booking-1.html">Booking process - 4 pages </a><a class="dropdown-item" href="user-grid.html">Bookings &mdash; grid view </a><a class="dropdown-item" href="user-booking-detail.html">Booking detail </a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt me-2 text-muted"></i> Sign out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- /Navbar -->
-    </header>
+    <jsp:include page="/WEB-INF/views/common/darkHeader.jsp">
+		<jsp:param value="예아바디" name="title"/>
+	</jsp:include>
 
     <section class="py-5">
         <div class="container" style="padding-top:30px;">
@@ -398,8 +213,8 @@
                             <div class="d-flex align-items-center mb-2">
                                 <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2" style="background-color: #FFF1CC">
                                     <svg class="svg-icon text-primary svg-icon-md" style="color: #FC950D !important;">
-            <use xlink:href="#chat-app-1"> </use>
-          </svg>
+						            	<use xlink:href="#chat-app-1"> </use>
+						          	</svg>
                                 </div>
                                 <div>
                                     <a href="${path}/myPage/community">
@@ -412,8 +227,8 @@
                             <div class="d-flex align-items-center  mb-2 ">
                                 <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2" style="background-color: #FFF1CC">
                                     <svg class="svg-icon text-primary svg-icon-md" style="color: #FC950D !important;">
-              <use xlink:href="#image-gallery-1"> </use>
-            </svg>
+						              <use xlink:href="#image-gallery-1"> </use>
+						            </svg>
                                 </div>
                                 <div>
                                     <a href="${path}/community/gallery">
@@ -425,8 +240,8 @@
                             <div class="d-flex align-items-center mb-2">
                                 <div class="icon-rounded icon-rounded-sm bg-primary-light flex-shrink-0 me-2" style="background-color: #FFF1CC">
                                     <svg class="svg-icon text-primary svg-icon-md" style="color: #FC950D !important;">
-          <use xlink:href="#road-1"> </use>
-        </svg>
+							          <use xlink:href="#road-1"> </use>
+							        </svg>
                                 </div>
                                 <div>
                                     <a href="${path}/myPage/myCourse">
@@ -445,67 +260,117 @@
                     <br>
                     <div>
                         <label class="form-label me-2 text-pB" for="form_sort">정렬</label>
-                        <select class="selectpicker text-pB" name="sort" id="board" data-style="btn-selectpicker">
-                          <option class="text-pB" value="sortBy_3" disabled>게시판</option>
-                            <option class="text-pB" onclick="location.href='${path}/myPage/community/journey'" value="freeBoard">자유게시판</option>
-                            <option class="text-pB" onclick="${path}/myPage/community/journey"  value="companion">동행구하기</option>
-                            <option class="text-pB" onclick="${path}/myPage/community/journey" value="journey">여행후기</option>
+                        <select class="selectpicker text-pB" name="sortBy" id="sortBy" title="<c:out value="${boardCate }"/>" data-style="btn-selectpicker" onchange="requestBoard()">
+                          	<option class="text-pB" value="" disabled>게시판</option>
+                          	<c:if test="${!empty param.boardCate }">
+                            	<option value="${param.boardCate }" selected>${param.boardCate}</option>
+                            </c:if>
+                            <option class="text-pB" value="COMM_FREEBOARD">자유게시판</option>
+                            <option class="text-pB" value="COMM_JOURNEY">여행후기</option>
+                            <option class="text-pB" value="COMM_COMPANION">동행구하기</option>
                         </select>
                     </div>
                     <script type="text/javascript">
-//                     var selectBoard = function selectBoard(value){
-
-//                     	location.href="${path}/"
-//                     	};
+                    
+                    	function requestBoard() {
+                    		console.log("gg")
+                    		var sort = $("#sortBy option:selected").val();
+                	    	var contextPath = '<c:out value='${path}'/>';
+                	    	var path = '${path}/myPage/community?sortBy='+sort+'&page=1';
+                	    	console.log(path);
+                	    	location.replace(path);
+                    	}
                     
                     </script>
 
                     <br>
 
-					<c:forEach var="Community" items="${communityList}">
                     <div class="table-responsive text-sm mb-5">
                         <table class="table table-striped">
                             <thead class="bg-gray-200">
                                 <tr class="border-0">
                                     <th class="text-center">게시판 명</th>
                                     <th>게시글 제목</th>
-                                    <th>작성일</th>
-                                    <th class="text-end" style="text-align:center">조회수</th>
-                                    <th class="center" style="text-align:center">댓글수</th>
-                                    <th class="text-end"></th>
+                                    <th></th>
+                                    <th class="text-center">작성일</th>
+                                    <th class="text-center" style="text-align:center">조회수</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            	<c:forEach var="Community" items="${communityList}">
                                 <tr>
-                                    <td class="text-center "><a class="text-black" href="">자유/모임</a></td>
-                                    <td class="fw-bold"><a class="text-black" href=""><c:out value="${Community.title}"/></a>
-                                    </td>
-                                    <td><c:out value="${Community.postDate}"/></td>
-                                    <td class="text-end"><c:out value="${Community.count}"/></td>
-                                    <td class="text-center">5</td>
-                                    <td class="text-end">
-                                    <a href="${path}/community/deleteCommunity?freeboardNo=${Community.freeboardNo}">
-                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>
-                                    <span class="text-black">수정</span></span></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="${path}/myPage/deleteCommunity?freeboardNo=${Community.freeboardNo}"><i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">삭제</span></span>
-                                        </a>
-                                    </td>
+                                	<c:if test="${Community.boardType eq 'FB' }">
+	                                    <td class="text-center "><a class="text-black" href="">자유/모임</a></td>
+                                	</c:if>
+                                	<c:if test="${Community.boardType eq 'CB' }">
+	                                    <td class="text-center "><a class="text-black" href="">동행/모임</a></td>
+                                	</c:if>
+                                	<c:if test="${Community.boardType eq 'JB' }">
+	                                    <td class="text-center "><a class="text-black" href="">여행후기</a></td>
+                                	</c:if>
+                                	
+                                    <td class="fw-bold" colspan="2" ><a class="text-black" href=""><c:out value="${Community.title}"/></a></td>
+                                    
+                                    <td class="text-center"><fmt:formatDate type="date" dateStyle="long" value="${Community.postDate}"/></td>
+                                    <td class="text-center"><c:out value="${Community.count}"/></td>
+                                    <c:if test="${Community.boardType eq 'FB'}">
+	                                    <td class="text-end">
+		                                    <a href="${path}/community/updatefreeboard?freeboardNo=${Community.boardNo}">
+		                                    	<i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span>
+		                                    </a>
+	                                    </td>
+	                                    <td class="text-center">
+		                                    <a href="${path}/myPage/deleteCommunity?freeboardNo=${Community.boardNo}">
+			                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>
+			                                    <span class="text-black">삭제</span>
+		                                    </a>
+                                    	</td>
+                                    </c:if>
+                                    <c:if test="${Community.boardType eq 'JB'}">
+	                                    <td class="text-end">
+		                                    <a href="${path}/community/updateJourney?journeyNo=${Community.boardNo}">
+		                                    	<i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i><span class="text-black">수정</span>
+		                                    </a>
+	                                    </td>
+	                                    <td class="text-center">
+		                                    <a href="${path}/myPage/deleteCommunity?journeyNo=${Community.boardNo}">
+			                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>
+			                                    <span class="text-black">삭제</span>
+		                                    </a>
+                                    	</td>
+                                    </c:if>
+                                    <c:if test="${Community.boardType eq 'CB'}">
+	                                    <td class="text-center" colspan="2">
+		                                    <a href="${path}/myPage/deleteCommunity?companionNo=${Community.boardNo}&userNo=${loginMember.userNo}">
+			                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>
+			                                    <span class="text-black">삭제</span>
+		                                    </a>
+                                    	</td>
+                                    </c:if>
                                 </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    </c:forEach>
-
                     <div class="mt-5" style="width: 348px; ">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination" style="margin-left: 400px; margin-right: 500px;">
-                                <li class="page-item-course"><a class="page-link-course" href="#" aria-label="Previous">Previous</a></li>
-                                <li class="page-item active-course"><a class="page-link-course" href="#">1       </a></li>
-                                <li class="page-item-course"><a class="page-link-course" href="#">2       </a></li>
-                                <li class="page-item-course"><a class="page-link-course" href="#">3       </a></li>
-                                <li class="page-item-course"><a class="page-link-course" href="#">4       </a></li>
-                                <li class="page-item-course"><a class="page-link-course" href="#">5 </a></li>
-                                <li class="page-item-course"><a class="page-link-course" href="#" aria-label="Next">Next</a></li>
+                            	 <c:if test="${pageInfo.endPage > 2 }">
+                                 <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
+									<c:if test="${pageInfo.currentPage == status.current}">
+										<li class="page-item disabled"><a class="page-link " href="#"><c:out value="${status.current}"/></a></li>
+									</c:if>
+									<c:if test="${pageInfo.currentPage != status.current}">
+										 <li class="page-item-course ">
+										 	<a class="page-link-course" href="#" onclick="movePage('${path}/community/freeboardList?page=${status.current}');">
+												<c:out value="${status.current}"/>
+											</a>
+										</li>
+									</c:if>
+								</c:forEach>
+								</c:if>
                             </ul>
                         </nav>
                     </div>
@@ -568,10 +433,10 @@
                     </div>
                     <div class="col-md-6">
                         <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/visa.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/mastercard.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/paypal.svg" alt="..."></li>
+                            <li class="list-inline-item"><img class="w-2rem" src="${path }/resources/img/western-union.svg" alt="..."></li>
                         </ul>
                     </div>
                 </div>
@@ -579,7 +444,30 @@
         </div>
     </footer>
     <!-- JavaScript files-->
+    
     <script>
+	    $(document).ready(function() {
+	    	console.log(${board.like})
+	        $('.like-button').click(function() {
+		        var path = "${path}/community/likeOnOff?boardNo=${board.journeyNo}";
+		        console.log(path)
+		        $.ajax({
+	   	            type: "get",
+	   	            url: path,
+	   	            contentType: "application/json; charset=utf-8",
+	   	            data: '',
+	   	            dataType: "json",
+	   	            success: function (data) {
+	   	            	$('.like-button').toggleClass('is-active');
+	   	            	console.log(data);
+	                          
+	   	            },
+	   	        	error: function (req, status, error) {
+		                alert("좋아요는 회원 전용 기능입니다.");
+	   	        	}
+		    	})
+	        })
+	    });
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
         //   see more here 

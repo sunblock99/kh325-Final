@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 
 import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
@@ -25,7 +26,12 @@ public interface MemberMapper {
 	int deleteBookmark(int likeNo);
 	List<Review> review(int userNo);
 	int deleteReview(int reviewNo);
-	List<MyCommunity> community(int userNo);
+	List<MyCommunity> communityFreeboard(RowBounds rowBounds,Map<String,String> map);
+	List<MyCommunity> communityCompanion(RowBounds rowBounds,Map<String,String> map);
+	List<MyCommunity> communityJourney(RowBounds rowBounds,Map<String,String> map);
 	int deleteCommunity(int freeboardNo);
 	List<MemMyCourse> mycourse(int userNo);
+	int selectFreeBoardCount(Map<String,String>map);
+	int selectCompBoardCount(Map<String,String>map);
+	int selectJourneyBoardCount(Map<String,String>map);
 }

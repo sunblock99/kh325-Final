@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.member.model.mapper.MemberMapper;
 import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.Member;
@@ -226,8 +228,48 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MyCommunity> community(int userNo) {
-		return mapper.community(userNo);
+	public List<MyCommunity> community(PageInfo pageInfo, Map<String,String> map) {
+		
+		int offset = (pageInfo.getCurrentPage() - 1) * pageInfo.getListLimit();
+		RowBounds rowBounds = new RowBounds(offset, pageInfo.getListLimit());
+		String sortBy = map.get("sortBy");
+		
+		if(sortBy != null) {
+			if(sortBy.equals("COMM_FREEBOARD")) {
+				return mapper.communityFreeboard(rowBounds, map);
+			}
+			if(sortBy.equals("COMM_COMPANION")) {
+				return mapper.communityCompanion(rowBounds, map);
+			}
+			if(sortBy.equals("COMM_JOURNEY")) {
+				return mapper.communityJourney(rowBounds, map);
+			}
+		}
+		
+		return null;
+		
+		//return mapper.community(rowBounds,userNo);
+	}
+	
+	@Override
+	public int selectBoardCount(Map<String,String>map) {
+		
+		String sortBy = map.get("sortBy");
+		
+		if(sortBy != null) {
+			if(sortBy.equals("COMM_FREEBOARD")) {
+				return mapper.selectFreeBoardCount(map);
+			}
+			if(sortBy.equals("COMM_COMPANION")) {
+				return mapper.selectCompBoardCount(map);
+			}
+			if(sortBy.equals("COMM_JOURNEY")) {
+				return mapper.selectJourneyBoardCount(map);
+			}
+		}
+		
+		return 0;
+		
 	}
 
 	@Override

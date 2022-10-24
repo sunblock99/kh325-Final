@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +15,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.tour.common.util.PageInfo;
+import com.kh.tour.community.model.service.CompanionService;
+import com.kh.tour.community.model.service.FreeBoardService;
+import com.kh.tour.community.model.service.JourneyService;
 import com.kh.tour.member.model.service.MemberService;
 import com.kh.tour.member.model.vo.Bookmark;
+import com.kh.tour.member.model.vo.MemMyCourse;
 import com.kh.tour.member.model.vo.Member;
 import com.kh.tour.member.model.vo.MyCommunity;
-import com.kh.tour.member.model.vo.MemMyCourse;
 import com.kh.tour.member.model.vo.Review;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +42,16 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private FreeBoardService freeboardService;
+	
+	@Autowired
+	private CompanionService companionService;
+	
+	@Autowired
+	private JourneyService journeyService;
+	
 	
 	@PostMapping("/login")
 	public String login(Model model, String userEmail, String userPassword) {
@@ -254,27 +271,83 @@ public class MemberController {
 	
 	@GetMapping("/myPage/community")
 	public String community(Model model,
-			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember, @RequestParam Map<String,String> param) {
 		
-		int uno = loginMember.getUserNo();
-		List<MyCommunity> communityList = service.community(uno);
+		int page = 1;
+		
+		if (param.containsKey("page") == true) {
+			try {
+				page = Integer.parseInt(param.get("page"));
+			} catch (Exception e) {
+			}
+		}
+		if(param.get("sortBy") == null) {
+			param.put("sortBy","COMM_FREEBOARD");
+		}
+		param.put("userNo", loginMember.getUserNo()+"");
+		
+		//log.info("총게시글수: " + service.selectBoardCount(param));
+		PageInfo pageInfo = new PageInfo(page, 10, service.selectBoardCount(param), 10);
+		
+		List<MyCommunity> communityList = service.community(pageInfo,param);
+		
+		//log.info("내가 쓴 컴티게시글: " + communityList);
+		
+		String boardCate = "";
+		if(param.get("sortBy").equals("COMM_FREEBOARD")) {
+			boardCate = "자유게시판";
+		} else if(param.get("sortBy").equals("COMM_COMPANION")){
+			boardCate = "동행구하기";
+		} else {
+			boardCate = "여행후기";
+		}
+		
+		//log.info("boardCate:" + param.get("boardCate"));
 		
 		model.addAttribute("communityList", communityList);
-	return "myPage/community";	
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("param", param);
+		model.addAttribute("boardCate", boardCate);
+		model.addAttribute("loginMember", loginMember);
+		
+		return "myPage/community";	
 	}
 	
+	// 마이페이지에서 글삭할때! 
 	@GetMapping("/myPage/deleteCommunity")
 	public String deleteCommunity(Model model,
-			@SessionAttribute(name= "loginMember", required = false) Member loginMember, int freeboardNo) {
-		int result = service.deleteCommunity(freeboardNo);
-		if( result > 0) {
-			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
-			model.addAttribute("location", "/myPage/bookmark");
-		}else {
-			model.addAttribute("msg", "삭제에 실패하였습니다.");
-			model.addAttribute("location", "/myPage/bookmark");
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember,  @RequestParam Map<String,String> param, HttpServletRequest request) {
+		
+		log.info("param:" + param);
+		
+		String rootPath = request.getSession().getServletContext().getRealPath("uploaded");
+		log.info("rootPath:" + rootPath);
+		rootPath = rootPath + "/uploaded"; 
+		
+		int result = 0;
+		if(param.containsKey("freeboardNo")) {
+			result = freeboardService.deleteBoard(Integer.parseInt(param.get("freeboardNo")),rootPath);
 		}
-		return "myPage/community";
+		
+		if(param.containsKey("journeyNo")) {
+			result = journeyService.deleteBoard(Integer.parseInt(param.get("journeyNo")), rootPath);
+		}
+		
+		if(param.containsKey("companionNo")) {
+			result = companionService.deleteBoard(Integer.parseInt(param.get("companionNo")));
+		}
+		
+		
+		 if(result > 0) { 
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+		 	model.addAttribute("location", "/myPage/community"); 
+		 }else {
+			 model.addAttribute("msg", "삭제에 실패하였습니다."); 
+			 model.addAttribute("location","/myPage/community"); 
+		 } 
+		 
+		 return "/common/msg";
+		 
 	}
 	
 	@GetMapping("/myPage/mycourse")
