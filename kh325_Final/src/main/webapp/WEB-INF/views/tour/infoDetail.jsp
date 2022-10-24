@@ -540,7 +540,7 @@
                                 <img class="d-block avatar avatar-xl p-2 mb-2" src="${review.userAvatar}" alt="${review.userName}님">
                             </div>
                             <div>
-                                <h6 class="mt-2 mb-1 text-pB fs-5">"${review.userName}"</h6>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">${review.userName}</h6>
                                 
                                 <div class="mb-2">
 	                                <c:forEach begin="1" end="${review.star}" step="1">
