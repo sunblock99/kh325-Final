@@ -497,7 +497,7 @@
 	
 		
 	
-		<!-- 7. 관광지 체크박스로 조회된 관광지 리스트 갯수-->
+		<!-- 5. 관광지 체크박스로 조회된 관광지 리스트 갯수-->
 		<select id="selectTourListCount" resultType="int"  parameterType="map">
 					SELECT COUNT(*) FROM
 					(SELECT B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.ADDR1,B.FIRSTIMAGE, B.FIRSTIMAGE2, B.OVERVIEW,
@@ -557,7 +557,7 @@
 					</select>
 	
 	
-			<!-- 8. 관광지 체크박스로 조회된 관광지 리스트 -->
+			<!-- 6. 관광지 체크박스로 조회된 관광지 리스트 -->
 			<select id="selectTourList" resultMap="tourInfoListResultMap" parameterType="map">					
 					SELECT B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.ADDR1,B.FIRSTIMAGE, B.FIRSTIMAGE2, B.OVERVIEW,
 					        A.AREACODE, A.AREANAME,A.SIGUNGUCODE,A.DETAILAREANAME,
@@ -615,9 +615,9 @@
 					</if>		
 			</select>
 				
-			<!-- 9. 관광지 찜하기 -->
-			<insert id="tourLikeInsert" parameterType="int"  >
-					INSERT INTO BOARD (
+			<!-- 7. 관광지 찜하기 -->
+			<insert id="tourLikeInsert" parameterType="map"  >
+					INSERT INTO TOUR_LIKE (
 						LIKE_NO,
 						UNO,
 						CONTENTID
@@ -625,7 +625,7 @@
 					) VALUES (
 						SEQ_LIKE_NO.NEXTVAL,
 						#{userNo},
-						#{contentId},
+						#{contentId}
 					)
 				</insert>
 				
@@ -634,7 +634,7 @@
 				DELETE FROM TOUR_LIKE WHERE UNO = #{userNo} AND CONTENTID = #{contentId}; 
 			</delete>
 				
-			<!-- 11. 찜목록 전체 불러오기 -->
+			<!-- 9. 찜목록 전체 불러오기 -->
 			<select id="selectTourLikeList" resultMap="tourLikeResultMap"  parameterType="int">
 				SELECT * FROM TOUR_LIKE 
 				WHERE 1=1
@@ -643,7 +643,7 @@
 				</if>
 			</select>
 			
-			<!-- 11. 중분류 불러오기 -->
+			<!-- 10. 중분류 불러오기 -->
 			<select id="selectCat1List" resultMap="AreaCodeListResultMap"  parameterType="String">
 				SELECT CAT2 FROM CATEGORY 
 				WHERE 1=1 

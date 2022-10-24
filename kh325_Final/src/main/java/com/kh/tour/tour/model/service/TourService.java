@@ -37,8 +37,6 @@ public interface TourService {
 
 	int insertTourLike(int userNo, int contentId);//관광지 찜하기
 
-	int deleteTourLike(int userNo, int contentId);//관광지 찜삭제하기
-
 	List<TourLike> selectTourLikeList(int userNo); // userNo로 찜목록 전체 조회
 
 	List<Category> getCat2List(String cat1); //선택된 대분류로 소분류 리스트 조회

@@ -240,49 +240,42 @@ public class TourController {
 			return "/common/msg";
 		}
 		
-		
 		if(contentId != 0 && contentId > 0) {
 			System.out.println("가지고 들어온 contentId는 :" + contentId);
 		}else {
 			System.out.println("contentId null");
 		}
 		
-		int UserNo = loginMember.getUserNo(); // 로그인한 회원의 userNo 받아오기
-		List<TourLike> tourLike = tService.selectTourLikeList(UserNo); //회원번호로 찜리스트 조회해오기
+		int userNo = loginMember.getUserNo(); // 로그인한 회원의 userNo 받아오기
+		System.out.println("현재 로그인된 회원번호는 :" + userNo);
+		List<TourLike> tourLike = tService.selectTourLikeList(userNo); //회원번호로 찜리스트 조회해오기
+		System.out.println("회원번호로 조회한 찜목록 :" +tourLike.toString());
 		
 		int result2 = 0;
 		
 		for (int i = 0; i < tourLike.size(); i++) {
 			if(tourLike.get(i).getContentId() ==  contentId) { //찜목록에 내가 찜하고 싶은 관광지가 이미 있는 경우
-				result2 = 1;
+				model.addAttribute("msg", "이미 있는 찜목록 입니다.");
+				model.addAttribute("location", "/tourSearch.do");
+				return "/common/msg";
 			}else {//찜목록에 내가 찜하고 싶은 관광지가 없는 경우
 				result2 = -1;
-			}
-		}
-		
-		if(result2 == 1) { //찜목록에 내가 찜하고 싶은 관광지가 이미 있는 경우 -> delete
-			int result= tService.deleteTourLike(UserNo,contentId);
-			if(result > 0) {
-				model.addAttribute("msg", "찜하기 삭제 되었습니다");
-				model.addAttribute("location", "/tour/infoSearch");
-			}else {
-				model.addAttribute("msg", "찜하기 삭제하기 실패하였습니다.");
-				model.addAttribute("location", "/tour/infoSearch");
-			}
-		}
-		
-		if(result2 == -1) {//찜목록에 내가 찜하고 싶은 관광지가 없는 경우 -> insert
-			int result= tService.insertTourLike(UserNo,contentId);
-			if(result > 0) {
-				model.addAttribute("msg", "찜목록에 넣기 성공하였습니다.");
-				model.addAttribute("location", "/tour/infoSearch");
-			}else {
-				model.addAttribute("msg", "찜목록에 넣기 실패하였습니다.");
-				model.addAttribute("location", "/tour/infoSearch");
+				
+				if(result2 == -1) {//찜목록에 내가 찜하고 싶은 관광지가 없는 경우 -> insert
+					int result= tService.insertTourLike(userNo,contentId);
+					if(result > 0) {
+						model.addAttribute("msg", "찜목록에 넣기 성공하였습니다.");
+						model.addAttribute("location", "/tourSearch.do");
+					}else {
+						model.addAttribute("msg", "찜목록에 넣기 실패하였습니다.");
+						model.addAttribute("location", "/tourSearch.do");
+					}
+				}
+				
 			}
 		}
 		return "/common/msg";
-		
 	}
+	
 
 }

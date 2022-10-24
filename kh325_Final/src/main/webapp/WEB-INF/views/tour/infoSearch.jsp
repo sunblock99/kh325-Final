@@ -6,7 +6,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <c:set var="searchValue" value="${param.searchValue}"/>
-<c:set var="cat1" value="${param.cat1}"/>
+<%-- <c:set var="cat1" value="${param.cat1}"/> --%>
 <c:set var="areaCode" value="${areaCode}"/>
 <c:set var="cat2List" value="${param.cat2}"/>
 
@@ -337,141 +337,140 @@
 							                                 }                                                        
 							                           }                                                         
 					                   </script>    
-                           
+					                   
+                            		
 
                             <!-- SERVICE TYPE 체크박스 -->
                             <div class="mb-4">
                                 <h6 class="form-label" style="font-size: 0.95rem !important;">SERVICE TYPE - 대분류</h6>
                                 <ul class="list-unstyled mb-0">
-								<!-- 1번 시작-->
-									<c:if test="${cat1 == 'A01'}">
-	                                    <li>
-	                                        <div class="form-check">
-	                                            <input class="form-check-input" type="radio" value="A01" checked id="type_0"  name="cat1" id="cat1">
-	                                            <label class="form-check-label fs-6 " for="type_0">자연</label>
-	                                        </div>
-	                                    </li>
-                                    </c:if>
-                                    <c:if test="${cat1 != 'A01'}">
-	                                    <li>
-	                                        <div class="form-check">
-	                                            <input class="form-check-input" type="radio" value="A01" id="type_0"  name="cat1" id="cat1">
-	                                            <label class="form-check-label fs-6" for="type_0">자연</label>
-	                                        </div>
-	                                    </li>
-                                    </c:if>
-								<!-- 1번 끝 -->
-								
-                                    <c:if test="${cat1 == 'A02'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A02" checked id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">인문(문화/예술/역사)</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                    <c:if test="${cat1 != 'A02'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A02" id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">인문(문화/예술/역사)</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                    <!-- 2번 끝 -->
-                                    
-                                    <c:if test="${cat1 == 'A03'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A03" checked id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">레포츠</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                    <c:if test="${cat1 != 'A03'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A03" id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">레포츠</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                     <!-- 3번 끝 -->
-                                     
-                                    <c:if test="${cat1 == 'A04'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A04" checked id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">쇼핑</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                    <c:if test="${cat1 != 'A04'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A04" id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">쇼핑</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                     <!-- 4번 끝 -->
-                                     
-                                    <c:if test="${cat1 == 'A05'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A05" checked id="type_0"  name="cat1" id="cat1"> 
-                                            <label class="form-check-label fs-6" for="type_0">음식</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                    <c:if test="${cat1 != 'A05'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A05" id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">음식</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                     <!-- 5번 끝 -->
-                                     
-                                    <c:if test="${cat1 == 'B02'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="B02" checked id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">숙박</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                    <c:if test="${cat1 != 'B02'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="B02" id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">숙박</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                     <!-- 6번 끝 -->
-                                    
-                                    <c:if test="${cat1 == 'C01'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="C01" checked id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">추천코스</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                    <c:if test="${cat1 != 'C01'}">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="C01" id="type_0"  name="cat1" id="cat1">
-                                            <label class="form-check-label fs-6" for="type_0">추천코스</label>
-                                        </div>
-                                    </li>
-                                    </c:if>
-                                     <!-- 7번 끝 -->
+									<!-- 1번 시작-->
+									<li>
+										<div class="form-check">
+											<c:if test="${cat1 eq 'A01'}">
+												<input class="form-check-input" type="radio" value="A01"
+													checked  name="cat1" id="cat1">
+											</c:if>
+											<c:if test="${cat1 ne 'A01'}">
+												<input class="form-check-input" type="radio" value="A01"
+													 name="cat1" id="cat1">
+											</c:if>
+											<label class="form-check-label fs-6 " for="type_0">자연</label>
+										</div>
+
+									</li>
+									<!-- 1번 끝 -->
+
+									<li>
+										<div class="form-check">
+											<c:if test="${cat1 eq 'A02'}">
+												<input class="form-check-input" type="radio" value="A02"
+													checked  name="cat1" id="cat1">
+											</c:if>
+											<c:if test="${cat1 ne 'A02'}">
+												<input class="form-check-input" type="radio" value="A02"
+													 name="cat1" id="cat1">
+											</c:if>
+											<label class="form-check-label fs-6 " for="type_0">인문(문화/예술/역사)</label>
+										</div>
+
+									</li>
+									<!-- 2번 끝 -->
+
+									<li>
+										<div class="form-check">
+											<c:if test="${cat1 eq 'A03'}">
+												<input class="form-check-input" type="radio" value="A03"
+													checked  name="cat1" id="cat1">
+											</c:if>
+											<c:if test="${cat1 ne 'A03'}">
+												<input class="form-check-input" type="radio" value="A03"
+													 name="cat1" id="cat1">
+											</c:if>
+											<label class="form-check-label fs-6 " for="type_0">레포츠</label>
+										</div>
+
+									</li>
+									<!-- 3번 끝 -->
+
+									<li>
+										<div class="form-check">
+											<c:if test="${cat1 eq 'A04'}">
+												<input class="form-check-input" type="radio" value="A04"
+													checked  name="cat1" id="cat1">
+											</c:if>
+											<c:if test="${cat1 ne 'A04'}">
+												<input class="form-check-input" type="radio" value="A04"
+													 name="cat1" id="cat1">
+											</c:if>
+											<label class="form-check-label fs-6 " for="type_0">쇼핑</label>
+										</div>
+
+									</li>
+									<!-- 4번 끝 -->
+
+									<li>
+										<div class="form-check">
+											<c:if test="${cat1 eq 'A05'}">
+												<input class="form-check-input" type="radio" value="A05"
+													checked  name="cat1" id="cat1">
+											</c:if>
+											<c:if test="${cat1 ne 'A05'}">
+												<input class="form-check-input" type="radio" value="A05"
+													 name="cat1" id="cat1">
+											</c:if>
+											<label class="form-check-label fs-6 " for="type_0">음식</label>
+										</div>
+
+									</li>
+									<!-- 5번 끝 -->
+
+									<li>
+										<div class="form-check">
+											<c:if test="${cat1 eq 'B02'}">
+												<input class="form-check-input" type="radio" value="B02"
+													checked  name="cat1" id="cat1">
+											</c:if>
+											<c:if test="${cat1 ne 'B02'}">
+												<input class="form-check-input" type="radio" value="B02"
+													 name="cat1" id="cat1">
+											</c:if>
+											<label class="form-check-label fs-6 " for="type_0">숙박</label>
+										</div>
+
+									</li>
+									<!-- 6번 끝 -->
+
+									<li>
+										<div class="form-check">
+											<c:if test="${cat1 eq 'C01'}">
+												<input class="form-check-input" type="radio" value="C01"
+													checked  name="cat1" id="cat1">
+											</c:if>
+											<c:if test="${cat1 ne 'C01'}">
+												<input class="form-check-input" type="radio" value="C01"
+													 name="cat1" id="cat1">
+											</c:if>
+											<label class="form-check-label fs-6 " for="type_0">추천코스</label>
+										</div>
+
+									</li>
+									<!-- 7번 끝 -->
                                 </ul>
                             </div>
 
+										<script type="text/javascript">                                           
+							                 var selectValue = "${cat1}";                          
+							                    var selectedElement = document.getElementById("cat1");
+							                       var options = selectedElement.options;                  
+							                          for(var i = 0; i < options.length; i++){                
+							                              if(options[i].value == selectValue){                     
+							                                    selectedElement.selectedIndex = i;                      
+							                                       break;                                                  
+							                                 }                                                        
+							                           }                                                         
+					                   </script>    
+                           
                             
                             <!-- 중분류 시작 -->
                             <div class="pb-4">
@@ -484,7 +483,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0101"> <label
+															 name="cat2" value="A0101"> <label
 															class="form-check-label fs-5" for="type_0">자연관광지
 														</label>
 													</div>
@@ -492,7 +491,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0102"> <label
+															 name="cat2" value="A0102"> <label
 															class="form-check-label fs-5" for="type_0">관광자원
 														</label>
 													</div>
@@ -500,7 +499,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0201"> <label
+															 name="cat2" value="A0201"> <label
 															class="form-check-label fs-5" for="type_0">역사관광지
 														</label>
 													</div>
@@ -508,7 +507,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0202"> <label
+															 name="cat2" value="A0202"> <label
 															class="form-check-label fs-5" for="type_0">휴양관광지
 														</label>
 													</div>
@@ -516,7 +515,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0203"> <label
+															 name="cat2" value="A0203"> <label
 															class="form-check-label fs-5" for="type_0">체험관광지
 														</label>
 													</div>
@@ -524,7 +523,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0204"> <label
+															 name="cat2" value="A0204"> <label
 															class="form-check-label fs-5" for="type_0">산업관광지
 														</label>
 													</div>
@@ -532,7 +531,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0205"> <label
+															 name="cat2" value="A0205"> <label
 															class="form-check-label fs-5" for="type_0">건축/조형물
 														</label>
 													</div>
@@ -540,7 +539,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0206"> <label
+															 name="cat2" value="A0206"> <label
 															class="form-check-label fs-5" for="type_0">문화시설
 														</label>
 													</div>
@@ -548,7 +547,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0207"> <label
+															 name="cat2" value="A0207"> <label
 															class="form-check-label fs-5" for="type_0">축제
 														</label>
 													</div>
@@ -556,7 +555,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0208"> <label
+															 name="cat2" value="A0208"> <label
 															class="form-check-label fs-5" for="type_0">공연/행사
 														</label>
 													</div>
@@ -564,7 +563,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0301"> <label
+															 name="cat2" value="A0301"> <label
 															class="form-check-label fs-5" for="type_0">레포츠소개
 														</label>
 													</div>
@@ -572,7 +571,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0302"> <label
+															 name="cat2" value="A0302"> <label
 															class="form-check-label fs-5" for="type_0">육상 레포츠
 														</label>
 													</div>
@@ -580,7 +579,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0303"> <label
+															 name="cat2" value="A0303"> <label
 															class="form-check-label fs-5" for="type_0"> 수상 레포츠
 														</label>
 													</div>
@@ -588,7 +587,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0304"> <label
+															 name="cat2" value="A0304"> <label
 															class="form-check-label fs-5" for="type_0">항공 레포츠
 														</label>
 													</div>
@@ -596,7 +595,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0305"> <label
+															 name="cat2" value="A0305"> <label
 															class="form-check-label fs-5" for="type_0">복합 레포츠
 														</label>
 													</div>
@@ -604,7 +603,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0401"> <label
+															 name="cat2" value="A0401"> <label
 															class="form-check-label fs-5" for="type_0">쇼핑
 														</label>
 													</div>
@@ -612,7 +611,7 @@
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															id="type_0" name="cat2" value="A0502"> <label
+															 name="cat2" value="A0502"> <label
 															class="form-check-label fs-5" for="type_0">음식점
 														</label>
 													</div>
@@ -654,8 +653,8 @@
                                 <div class="card h-100 border-0 shadow">
                                     <div class="card-img-top overflow-hidden gradient-overlay">
                                     
-                                        <img class="img-fluid" style="weight:340px !important; height:226px !important;" src="<c:if test="${Tour.firstImage == null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${Tour.firstImage != null}"><c:out value="${Tour.firstImage}"/></c:if>" />
-                                        <a class="tile-link" onclick="location.href='${path}/tourDetailInfo?contentId=${Tour.contentId}'"></a>
+                                        <img class="" style="width:340px !important; height:226px !important;" src="<c:if test="${Tour.firstImage == null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${Tour.firstImage != null}"><c:out value="${Tour.firstImage}"/></c:if>" />
+                                        <a class="tile-link" onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'"></a>
                                         <div class="card-img-overlay-top text-end">
                                             <a class=" heart_pink card-fav-icon position-relative z-index-50 align-content-center" onclick="location.href='${path}/tourLike.do?contentId=${Tour.contentId}'">
                                                 <i class="fas fa-heart svg-icon"></i>
@@ -665,22 +664,22 @@
                                     <div class="card-body d-flex align-items-center">
                                         <div class="row w-100 txt_line">
                                             <p class="card-title col-md-8" style=" margin-top: 0; margin-bottom: 0.5rem; font-family: 'pEb'; font-weight: 700; font-size: 1.35rem; line-height: 1.3;">
-                                                <a class=" text-black text-overflow-elip-1" onclick="location.href='${path}/tourDetailInfo?contentId=${Tour.contentId}'"><c:out value="${Tour.title}"/></a>
+                                                <a class=" text-black text-overflow-elip-1" onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'"><c:out value="${Tour.title}"/></a>
                                             </p>
                                             <div class="d-flex col-md-3 justify-center pt-1" style="text-align: center">
-                                                 <c:forEach begin="1" end="${Tour.avgStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
-                                				<c:if test="${Tour.avgStar < 5}"><c:forEach begin="${Tour.avgStar+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
+                                                 <c:forEach begin="1" end="${Tour.avgStar}" step="1"><i class="fa fa-xs fa-star text-warning pt-1"></i></c:forEach>
+                                				<c:if test="${Tour.avgStar < 5}"><c:forEach begin="${Tour.avgStar+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200 pt-1"></i></c:forEach></c:if>
                                                 <span class="text-primary justify-center" style=" margin-top: 0;
                                         margin-bottom: 0rem;
                                         font-family: 'pSb';
                                         font-weight: 700;
-                                        line-height: 1.3;"><c:out value="${Tour.avgStar}"/>/5</span>
+                                        line-height: 1.2;">&nbsp;&nbsp;<c:out value="${Tour.avgStar}"/>/5</span>
                                             </div>
                                             <p class=" text-gray-900 card-subtitle mb-2 address_short fw-bold" style=" font-size: 1.05rem !important;"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i><c:out value="${Tour.addr1}"/>
                                             </p>
                                             <div class=" card-text overflow-hidden
                                         text-sm text-gray-800 txt_line">
-                                                <div class="detail_short"><c:out value="${Tour.overview}"/>
+                                                <div class="detail_short">${Tour.overview}"
                                                 </div>
                                             </div>
                                         </div>
@@ -755,15 +754,20 @@
             }
 
         	// 5. name으로 cat1인 체크박스의 값들을 가져온다.
-            var cat1 = document.getElementsByName("cat1"); // 지역
+         /*     var cat1 = document.getElementsByName("cat1"); // 지역
             if (cat1.length != 0) {
-                for (var i = 0; i < cat1.length; i++) {
-                    if (cat1[i].selected == true) {
-                    	pageUrl = pageUrl + '&cat1=' + cat1[i].value;
+                for (let j = 0; j < cat1.length; j++) {
+                    if (cat1[j].selected == true) {
+                    	pageUrl = pageUrl + '&cat1=' + '${cat1}';
                     }
                 }
+            } 
+              */
+            var cat1 = document.getElementById("cat1");
+            if (cat1.value.length > 0) {
+                pageUrl = pageUrl + '&cat1=' + cat1.value;
             }
-            
+          
             
             //  6. name으로 cat2인 체크박스의 값들을 가져온다.
             var cat2Values = document.getElementsByName("cat2");

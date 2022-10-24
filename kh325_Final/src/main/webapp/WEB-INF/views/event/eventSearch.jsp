@@ -945,9 +945,9 @@
 		                            <div class="card border-0 shadow">
 		                                <div class="card-img-top overflow-hidden gradient-overlay">
 		                                    <img style="width: inherit !important; height: 270px !important;" src="<c:if test="${Tour.firstImage == null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${Tour.firstImage != null}"><c:out value="${Tour.firstImage}"/></c:if>" />
-		                                    <a class="tile-link " onclick="location.href='${path}/tourDetailInfo?contentId=${Tour.contentId}'"></a>
+		                                    <a class="tile-link " onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'"></a>
 		                                    <div class="card-img-overlay-top text-end ">
-		                                        <a class=" heart_pink card-fav-icon position-relative z-index-50 " href="${path}/resources/javascript: void(); ">
+		                                        <a class=" heart_pink card-fav-icon position-relative z-index-50 " onclick="location.href='${path}/tourLike.do?contentId=${Tour.contentId}'">
 		                                            <i class="fas fa-heart svg-icon "></i>
 		                                        </a>
 		                                    </div>
@@ -958,9 +958,9 @@
 		                                <div class="card-body d-flex align-items-center ">
 		                                    <div class="row w-100">
 		                                        <p class="card-title col-md-12" style=" margin-top: -3px; font-family: 'pEb'; font-weight: 700; font-size: 1.2rem; line-height: 1.3rem;">
-		                                            <a class=" text-black text-overflow-elip-1" onclick="location.href='${path}/tourDetailInfo?contentId=${Tour.contentId}'"><c:out value="${Tour.title}"/></a>
+		                                            <a class=" text-black text-overflow-elip-1" onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'"><c:out value="${Tour.title}"/></a>
 		                                        </p>
-		                                        <p class="card-subtitle col-md-8 flex-grow-1 mb-0 text-muted " style="font-size: 0.95rem !important;"> <a class=" text-black" onclick="location.href='${path}/tourDetailInfo?contentId=${Tour.contentId}'">&#91;<c:out value="${Tour.detailEventTable.eventStartDate}"/>&nbsp;-&nbsp;<c:out value="${Tour.detailEventTable.eventEndDate}"/>&#93;</a>
+		                                        <p class="card-subtitle col-md-8 flex-grow-1 mb-0 text-muted " style="font-size: 0.95rem !important;"> <a class=" text-black" onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'">&#91;<c:out value="${Tour.detailEventTable.eventStartDate}"/>&nbsp;-&nbsp;<c:out value="${Tour.detailEventTable.eventEndDate}"/>&#93;</a>
 		                                        <div class="d-flex card-text mt-1">
 		                                            <p class="flex-grow-1 mb-0 text-muted detail_short_poster" style="font-size: 0.95rem !important;"><i class="fas fa-map-marker text-secondary opacity-4 me-1"></i><c:out value="${Tour.addr1}"/></p>
 		                                        </div>

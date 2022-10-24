@@ -233,17 +233,7 @@ public class TourServiceImpl implements TourService{
 		return result;
 	}
 
-	@Override // 관광지 찜삭제하기
-	public int deleteTourLike(int userNo, int contentId) {
-		int result = 0;
-
-		if (userNo != 0 && userNo > 0 && contentId != 0 && userNo > 0) {
-			result = mapper.tourLikeDelete(userNo,contentId);
-		}
-		return result;
-	}
-
-
+	
 	@Override
 	public List<TourLike> selectTourLikeList(int userNo) {
 		List<TourLike> tourLike = mapper.selectTourLikeList(userNo);
