@@ -15,7 +15,7 @@ public class DetailReview {
 	private int reviewNo;	
 	private int contentId;	
 	private int userNo;	
-	private String star;	
+	private int star;	
 	private String content;
 	private String userAvatar;
 	private String userName;

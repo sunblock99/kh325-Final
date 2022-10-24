@@ -63,8 +63,7 @@ public interface TourService {
 
 	List<DetailReview> getReviewList(int contentId);
 
-
-
+	int insertReview(DetailReview detailReview);
 
 
 	

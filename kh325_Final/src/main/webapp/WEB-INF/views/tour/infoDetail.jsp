@@ -491,15 +491,15 @@
                             <!-- 코스추가 기능 -->
                             <div class="col-1">
                                 <div class="wrapper mt-0">
-                                    <a href="${path}/resources/javascript:void(0);" class="like-button">
+                                    <a href="${path}/addMyCourse?uNo=${loginMember.userNo}&contetntId=${tour.contentId}" class="like-button" >
                                         <i class="material-icons not-liked bouncy">
-                        <svg class="svg-icon theme-line-1 text-danger">
-                          <use xlink:href="#map-location-1"></use></svg>
-                      </i>
+                                        <svg class="svg-icon theme-line-1 text-danger">
+                                        <use xlink:href="#map-location-1"></use></svg></i>
+                                        
                                         <i class="material-icons is-liked bouncy">
-                        <svg class="svg-icon theme-line-1">
-                          <use xlink:href="#map-location-1"></use></svg>
-                        </i>
+                        				<svg class="svg-icon theme-line-1">
+                          				<use xlink:href="#map-location-1"></use></svg></i>
+                                        
                                         <span class="like-overlay"></span>
                                     </a>
                                     <div class="text-center mt-2 text-pB" style="font-size: 15px;">코스담기</div>
@@ -510,16 +510,15 @@
                             <!-- 좋아요 기능 -->
                             <div class="col-1">
                                 <div class="wrapper mt-0">
-                                    <a href="${path}/resources/javascript:void(0);" class="like-button">
+                                    <a href="${path}/tourLike.do?contentId=${tour.contentId}" class="like-button">
                                         <i class="material-icons not-liked bouncy">
-                      <svg class="svg-icon text-danger">
-                        <use xlink:href="#heart-1"></use>
-                      </svg></i>
+                      					<svg class="svg-icon text-danger">
+                        				<use xlink:href="#heart-1"></use></svg></i>
+                        				
                                         <i class="material-icons is-liked bouncy">
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"></use>
-                      </svg>
-                      </i>
+                      					<svg class="svg-icon text-white">
+                        				<use xlink:href="#heart-1"></use></svg></i>
+                        				
                                         <span class="like-overlay"></span>
                                     </a>
                                     <div class="text-center mt-2 me-0 text-pB" style="font-size: 16px;">좋아요</div>
@@ -533,14 +532,15 @@
                     <!-- 리뷰 -->
                     <div class="text-block text-pB">
                         <h5 class="mb-4 fs-2 text-pBlack">리뷰 목록 </h5>
-                         <c:if test="${!empty review}">
+                        <c:if test="${empty review}"><h5 class="mb-4 fs-5 text-muted text-pB">남겨진 리뷰가 없습니다</h5></c:if>
+                        <c:if test="${!empty review}">
                         <c:forEach items="${review}" var="review">
                         <div class="d-flex d-block d-sm-flex review">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
                                 <img class="d-block avatar avatar-xl p-2 mb-2" src="${review.userAvatar}" alt="${review.userName}님">
                             </div>
                             <div>
-                                <h6 class="mt-2 mb-1 text-pB fs-5">"${review.userName}"</h6>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">${review.userName}</h6>
                                 
                                 <div class="mb-2">
 	                                <c:forEach begin="1" end="${review.star}" step="1">
@@ -561,30 +561,38 @@
                         
 
                         <div class="py-5">
-                            <button class="btn btn-outline-warning"  style="letter-spacing:-1px; font-size:15px;" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">
-                  리뷰 쓰기</button>
+                           
+                           <c:if test="${loginMember ne null}">
+                            <button class="btn btn-outline-warning" style="letter-spacing:-1px; font-size:15px;" id="leaveReview" type="button" 
+                            data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">
+                  			리뷰 쓰기</button>
+                            </c:if>
+                            
+                           <form class="form" id="contact-form" method="post" action="${path}/tourDetailInfo/leaveReview.do">
                             <div class="collapse mt-4" id="leaveReview">
                                 <h5 class="mb-4 text-pB">리뷰를 남겨주세요</h5>
-                                <form class="form" id="contact-form" method="get" action="#">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <label class="form-label text-pB" for="name">이름 *</label>
-                                                <input class="form-control text-pB" type="text" name="name" id="name" placeholder="닉네임을 입력해주세요" required="required">
+                                                <input type="hidden" name ="contentId" value="${tour.contentId}">
+                                                <input type="hidden" name="contentTypeId" value="${tour.contentTypeId}">
+                                                <input type="hidden" name="userNo" value="${loginMember.userNo}">
+                                                <input class="form-control text-pB" type="text" name="name" id="name" placeholder="닉네임을 입력해주세요" required="required" value="${loginMember.userName}">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-4">
-                                                <label class="form-label text-pB" for="rating">별점을 남겨주세요 *</label>
-                                                <select class="form-select focus-shadow-0" name="rating" id="rating">
-                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;
+                                                <label class="form-label text-pB" for="star">별점을 남겨주세요 *</label>
+                                                <select class="form-select focus-shadow-0" name="star" id="star">
+                            <option value=5>&#9733;&#9733;&#9733;&#9733;&#9733;
                               (5/5)</option>
                             <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;
                               (4/5)</option>
                             <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;
                               (3/5)</option>
                             <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;
-                              (2/5)</option>t
+                              (2/5)</option>
                             <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;
                               (1/5)</option>
                           </select>
@@ -593,11 +601,11 @@
                                     </div>
                                     <div class="mb-4 text-pB">
                                         <label class="form-label text-pB" for="review">내용 *</label>
-                                        <textarea class="form-control text-pB" rows="4" name="review" id="review" placeholder="내용을 작성해주세요" required="required"></textarea>
+                                        <textarea class="form-control text-pB" rows="4" name="content" id="content" placeholder="내용을 작성해주세요" required="required"></textarea>
                                     </div>
                                     <button class="btn btn-warning-review" type="submit">리뷰 남기기</button>
-                                </form>
                             </div>
+                          </form>
                         </div>
                     </div>
                 </div>
@@ -1528,13 +1536,281 @@
 	                                    </c:if>
 	                                </c:if>
 
-
+                                    
+                                    <!-- 숙박 -->
                                 	<c:if test="${tour.contentTypeId == 32}">
-                                    <tr>
-                                        <th class="ps-0 fs-6" style="word-break: keep-all;">수용인원</th>
-                                        <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">8:00 am - 6:00 pm</td>
-                                    </tr>
+                                  		<c:if test="${detail.accomCountLodging ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">수용가능인원</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.accomCountLodging}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.benikia ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">베니키아여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.benikia}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.checkInTime ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">입실시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.checkInTime}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.checkOutTime ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">퇴실시간</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.checkOutTime}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.chkCooking ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">객실내취사여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.chkCooking}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.foodPlace ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">식음료장</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.foodPlace}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.goodStay ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">굿스테이여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.goodStay}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.hanok ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">한옥여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.hanok}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.infoCenterLodging ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">문의및안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.haninfoCenterLodgingok}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.parkingLodging ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">주차시설</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.parkingLodging}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.pickUp ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">픽업서비스</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.pickUp}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.roomCount ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">객실수</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.roomCount}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.reservationLodging ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">예약안내</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.reservationLodging}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.reservationUrl ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">예약안내홈페이지</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.reservationUrl}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.roomType ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">객실유형</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.roomType}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.scaleLodging ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">규모</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.scaleLodging}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.subFacility ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">부대시설(기타)</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.subFacility}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.barbecue ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">바비큐장여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.barbecue}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.beauty ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">뷰티시설정보</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.beauty}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.beverage ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">식음료장여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.beverage}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.bicycle ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">자전거대여여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.bicycle}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.campfire ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">캠프파이여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.campfire}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.fitness ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">헬스장여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.fitness}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.karaoke ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">노래방여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.karaoke}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.publicBath ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">공용샤워실여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.publicBath}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.publicPc ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">공용PC방여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.publicPc}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.sauna ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">사우나실여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.sauna}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.seminar ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">세미나실여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.seminar}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+
+                                  		<c:if test="${detail.sports ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">스포츠시설여부</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.sports}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+	                                    
+                                  		<c:if test="${detail.refundRegulation ne null}">
+                                    	<tr>
+	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">환불규정</th>
+	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
+		                                ${detail.refundRegulation}
+	                                        </td>
+	                                    </tr>
+	                                    </c:if>
+	                                    
                        				</c:if>
+                       				
                        				
                                 </table>
                             </div>
@@ -1563,252 +1839,57 @@
                     role="tablist">
 
                     <!-- Additional required wrapper-->
-                    <div class="swiper-wrapper pb-5">
-                        <!-- Slides-->
-                        <div class="swiper-slide h-auto px-1">
-                            <!-- place item-->
-                            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top h-75  overflow-hidden gradient-overlay">
-                                        <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=a168f9fb-ec51-495b-8d00-0e399e2079f0" />
-                                        <a class="tile-link" href="#myCourse1" data-bs-toggle="tab" role="tab"></a>
-                                        <div class="card-img-overlay-bottom z-index-20 ">
-                                            <div class="d-flex text-white text-sm align-items-center ">
-                                                <div style="font-family: pB; font-size:larger"><em>1코스</em></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="row w-100 txt_line ">
-
-                                            <p class="card-title col-md-7"><a class="courseList_title text-black" href="#">부용대</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
-                                                <span class="text-primary justify-center">4/5</span>
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 풍천면 광덕솔밭길 72</p>
-                                            <div class=" card-text text-muted 
-                                        text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">부용대는 태백산맥의 맨 끝부분에 해당하며 정상에서 안동 하회마을을 한눈에 조망할 수 있는 높이 64m의 절벽이다. 부용대라는 이름은 중국 고사에서 따온 것으로 부용은 연꽃을 뜻한다. 하회마을이 들어선 모습이 연꽃 같다는 데서 유래한 것으로, 하회마을을 가장 잘 바라볼 수 있는 곳이라 부용대라 부른다. 처음에는 ‘하회 북쪽에 있는 언덕’이란 뜻에서 ‘북애’라 불렸다.
-                                                    아래로 낙동강이 굽이쳐 흐르는 곳에 옥연정사, 겸암정사, 화천서원이 자리하고 있다.
+                     <div class="swiper-wrapper pb-5">
+                                <!-- Slides-->
+                                  <c:if test="${!empty detailCourseList}">
+										<c:forEach var="MyCourseSearch" items="${detailCourseList}" varStatus="status"> 
+                                <div class="swiper-slide h-auto px-1">
+                                    <!-- place item-->
+                                   
+                                    <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
+                                        <div class="card h-100 border-0 shadow">
+                                            <div class="card-img-top h-75  overflow-hidden gradient-overlay">
+                                                <img class="" style="height: 100%; width:100%;" src="${MyCourseSearch.firstImage}" />
+                                                <a class="tile-link" href="#myCourse${status.index +1}" data-bs-toggle="tab" role="tab"></a>
+                                                <div class="card-img-overlay-bottom z-index-20 ">
+                                                    <div class="d-flex text-white text-sm align-items-center ">
+                                                        <div style="font-family: pB; font-size:larger"><em><c:out value="${status.index +1}"/>코스</em></div>
+                                                    </div>
                                                 </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide h-auto px-1">
-                            <!-- place item-->
-                            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                        <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=1f41f7da-c10c-4c33-aa96-5ba98300ddb6" />
-                                        <a class="tile-link" href="#myCourse2" data-bs-toggle="tab" role="tab"></a>
-                                        <div class="card-img-overlay-bottom z-index-20 ">
-                                            <div class="d-flex text-white text-sm align-items-center ">
-                                                <div style="font-family: pB; font-size:larger"><em>2코스</em></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-8"><a class="courseList_title text-black" data-toggle="collapse" href="#collapseCourseGallery" aria-expanded="false" aria-controls="collapseCourseGallery">하회 솔밭식당</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
-                                                <span class="text-primary justify-center">4/5</span>
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 전서로 214-6</p>
-                                            <div class=" card-text text-muted 
-                                        text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">경북 안동시 풍천면 하회장터에 위치한 솔밭식당은 안동찜닭, 고등어정식 등 안동 대표음식을 판매하고 있으며, 하회별신굿 탈놀이 공연장 및 하회마을 도보거리에 위치하고 있어 관광지 접근성이 좋다.
+                                                <div class="card-img-overlay-top text-end">
+                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                                                        <i class="fas fa-heart svg-icon"></i>
+                                                    </a>
                                                 </div>
+                                            </div>
+                                            <div class="card-body d-flex align-items-center">
+                                                <div class="row w-100 txt_line ">
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide h-auto px-1">
-                            <!-- place item-->
-                            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top h-75   overflow-hidden gradient-overlay">
-                                        <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=ac455587-c410-4c5b-82eb-24762a653b90" />
-                                        <a class="tile-link" href="#myCourse3" data-bs-toggle="tab" role="tab"></a>
-                                        <div class="card-img-overlay-bottom z-index-20 ">
-                                            <div class="d-flex text-white text-sm align-items-center ">
-                                                <div style="font-family: pB; font-size:larger"><em>3코스</em></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-8 "><a class=" text-black courseList_title" data-toggle="collapse" href="#collapseCourseGallery" aria-expanded="false" aria-controls="collapseCourseGallery">하회별신굿탈놀이 상설공연</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
-                                                <span class="text-primary justify-center">4/5</span>
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 풍천면 하회종가길 3-15</p>
-                                            <div class=" card-text text-muted 
-                                        text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">800여 년 이상의 역사를 지닌
-                                                    <하회별신굿탈놀이>는 양반, 선비 등의 기득권층과 고려 당시 불교계로 대변되는 특권층, 그외 일반 민중의 생활과 갈등을 꾸밈 없이 드러낸다. 이는 곧, 예로부터 양반이 많았던 안동에서 꾸준히 그 명맥을 이어올 수 있는 이유이자 우리나라 대표 가면극인 '탈놀이'의 특성에서 비롯됨을 알 수 있다. 총 6개 마당으로 이루어진 공연에서는 고려 중기부터 현대를 아우르는 우리 사회의
-                                                        모순과 지배층의 권위를 날카롭게 풍자한다. 여기에 민중들의 억눌려 있던 답답함과 억울함을 해소해 주는 매개로 기능하여 마을의 평안과 안녕, 나아가 공동체의 결속을 도모한다. 이를 통해 800년의 시대를 뛰어 넘어 현재와 이어지고, 국내를 넘어 세계와 소통하는 축제의 장을 마련한다.
-                                                </div>
+                                                    <p class="card-title col-md-7"><a class="courseList_title text-black" href="#"><c:out value="${MyCourseSearch.detailTitle}"/></a>
+                                                    </p>
+                                                    <div class="d-flex col-md-3" style="text-align: center">
+                                                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><c:forEach begin="1" end="${MyCourseSearch.detailCntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
+                                <c:if test="${MyCourseSearch.detailCntRevStar < 5}"><c:forEach begin="${MyCourseSearch.detailCntRevStar+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
+                                                        </p>
+                                                        <span class="text-primary justify-center"><c:out value="${MyCourseSearch.detailCntRevStar}"/>/5</span>
+                                                    </div>
+                                                    <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i><c:out value="${MyCourseSearch.addr1}"/></p>
+                                                    <div class=" card-text text-muted 
+                                                        text-sm text-black-50 txt_line">
+                                                        <div class="courseList_info"><c:out value="${MyCourseSearch.overview}"/>
+                                                        </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide h-auto px-1">
-                            <!-- place item-->
-                            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                        <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=bf846985-ea6f-4652-97a1-62a63837ed44" />
-                                        <a class="tile-link" href="#myCourse4" data-bs-toggle="tab" role="tab"></a>
-                                        <div class="card-img-overlay-bottom z-index-20 ">
-                                            <div class="d-flex text-white text-sm align-items-center ">
-                                                <div style="font-family: pB; font-size:larger"><em>4코스</em></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-8"><a class="courseList_title text-black" data-toggle="collapse" href="#collapseCourseGallery" aria-expanded="false" aria-controls="collapseCourseGallery">병산서원 [유네스코 세계문화유산]</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
-                                                <span class="text-primary justify-center">4/5</span>
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 풍천면 병산길 386</p>
-                                            <div class=" card-text text-muted 
-                                        text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">본래 이 서원의 전신은 풍산현에 있던 풍악서당(豊岳書堂)으로 고려 때부터 사림의 교육기관이었다. 1572년(선조5)에 서애(西厓) 유성룡(柳成龍) 선생이 지금의 병산으로 옮긴 것이다. 1607년 서애가 타계하자 정경세(鄭經世) 등 지방 유림의 공의로 선생의 학문과 덕행을 추모하기 위하여 1613년(광해군5)에 존덕사(尊德祠)를 창건하고 위패를 봉안하여 1614년
-                                                    병산서원으로 개칭하였다. 1620년(광해군 12)에 유림의 공론에 따라 퇴계 선생을 모시는 여강서원(廬江書院)으로 위패를 옮기게 되었다. 그 뒤 1629년(인조 9)에 별도의 위패를 마련하여 존덕사에 모셨으며, 그의 셋째 아들 류진(柳袗)을 추가 배향하였다. 1863년(철종 14)에 사액(賜額)되어 서원으로 승격하였다. 선현 배향과 지방교육의 일익을 담당하여
-                                                    많은 학자를 배출하였으며, 1868년(고종5) 대원군의 서원철폐령이 내렸을 때에도 훼철(毁撤)되지 않고 보호되었다. 일제강점기에 대대적인 보수가 행해졌으며 강당은 1921년에, 사당은 1937년 각각 다시 지어 졌다. 매년 3월 중정(中丁：두 번째 丁日)과 9월 중정에 향사례를 지내고 있다. 사적으로 지정되어 있으며 서애 선생의 문집을 비롯하여 각종 문헌
-                                                    1,000여 종 3,000여 책이 소장되어 있다.
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide h-auto px-1">
-                            <!-- place item-->
-                            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                        <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=faa8c18d-8fcb-4771-bffc-c5173b45c5ce" />
-                                        <a class="tile-link" href="#myCourse5" data-bs-toggle="tab" role="tab"></a>
-                                        <div class="card-img-overlay-bottom z-index-20 ">
-                                            <div class="d-flex text-white text-sm align-items-center ">
-                                                <div style="font-family: pB; font-size:larger"><em>5코스</em></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-8">
-                                                <a class="courseList_title text-black" href="#">안동대장금찜닭</a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
-                                                <span class="text-primary justify-center">4/5</span>
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 번영1길 45</p>
-                                            <div class=" card-text text-muted 
-                                        text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">부용대는 태백산맥의 맨 끝부분에 해당하며 정상에서 안동 하회마을을 한눈에 조망할 수 있는 높이 64m의 절벽이다. 부용대라는 이름은 중국 고사에서 따온 것으로 부용은 연꽃을 뜻한다. 하회마을이 들어선 모습이 연꽃 같다는 데서 유래한 것으로, 하회마을을 가장 잘 바라볼 수 있는 곳이라 부용대라 부른다. 처음에는 ‘하회 북쪽에 있는 언덕’이란 뜻에서 ‘북애’라 불렸다.
-                                                    아래로 낙동강이 굽이쳐 흐르는 곳에 옥연정사, 겸암정사, 화천서원이 자리하고 있다.
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide h-auto px-1">
-                            <!-- place item-->
-                            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-                                <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top h-75 overflow-hidden gradient-overlay">
-                                        <img class="" style="height: 100%; width:100%;" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=53504e12-c96f-480e-bfb3-ee9ddc12b42f" />
-                                        <a class="tile-link" href="#myCourse6" data-bs-toggle="tab" role="tab"></a>
-                                        <div class="card-img-overlay-bottom z-index-20 ">
-                                            <div class="d-flex text-white text-sm align-items-center ">
-                                                <div style="font-family: pB; font-size:larger"><em>6코스</em></div>
-                                            </div>
-                                        </div>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="row w-100 txt_line ">
-                                            <p class="card-title col-md-8"><a class="courseList_title text-black" href="#">관광커뮤니티센터 여기
-                                        </a>
-                                            </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                </p>
-                                                <span class="text-primary justify-center">4/5</span>
-                                            </div>
-                                            <p class="text-sm text-black-50 card-subtitle mb-2"><i class="fa fa-map-marker text-secondary opacity-4 me-1"></i> 경상북도 안동시 축제장길 210 탈춤공연장</p>
-                                            <div class=" card-text text-muted 
-                                        text-sm text-black-50 txt_line">
-                                                <div class="courseList_info">안동을 찾은 관광객들의 휴식 공간으로 제공되고 있으며 무인카페와 지역 특산품을 전시, 판매하는 공간이다.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                               </div>
+                                    
+                             
+                                     </c:forEach>
+                				 </c:if>
                             </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2078,6 +2159,8 @@
             $('.tab-pane[id="' + href + '"]').removeClass('active');
         })
     </script>
+    
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">

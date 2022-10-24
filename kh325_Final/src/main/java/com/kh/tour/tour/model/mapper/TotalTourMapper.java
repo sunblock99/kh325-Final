@@ -66,4 +66,6 @@ public interface TotalTourMapper {
 
 	List<DetailReview> getReviewList (int contentId);
 
+	int insertReview(DetailReview detailReview);
+
 }

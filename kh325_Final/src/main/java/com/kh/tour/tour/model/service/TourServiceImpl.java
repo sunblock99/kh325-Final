@@ -312,6 +312,11 @@ public class TourServiceImpl implements TourService{
 		return mapper.getReviewList(contentId);
 	}
 	
+	@Override
+	public int insertReview(DetailReview detailReview) {
+		// TODO Auto-generated method stub
+		return mapper.insertReview(detailReview);
+	}
 }
 
 	

@@ -167,7 +167,7 @@
                     <div class="row pt-lg-5 mb-3" style="font-family: pR; font-size: 25px; line-height:45px;">
                         <div class="col-lg-3 d-grid me-0" style="text-align:center;">
                             <div class="wrapper-switch w-100">
-                                <input type="checkbox"  id="switch-1" onclick="location.href='${path}/tour/hotPlace?contentTypeId=12'"/>
+                                <input type="checkbox" <c:if test="${hotPlaceList[1].contentTypeId eq 12}">checked</c:if> id="switch-1" onclick="location.href='${path}/tour/hotPlace?contentTypeId=12'"/>
 	                                <label for="switch-1" class="switch_label">
 				                    	<span style="font-family: pB; font-size: 25px; line-height:45px;">관광지</span>
 				                    </label>
@@ -175,7 +175,7 @@
                         </div>
                         <div class="col-lg-3 d-grid me-0" style="text-align:center;">
                             <div class="wrapper-switch w-100">
-	                               <input type="checkbox" id="switch-2" onclick="location.href='${path}/tour/hotPlace?contentTypeId=39'">
+	                               <input type="checkbox" <c:if test="${hotPlaceList[1].contentTypeId eq 39}">checked</c:if> id="switch-2" onclick="location.href='${path}/tour/hotPlace?contentTypeId=39'">
 	                               	<label for="switch-2" class="switch_label">
 	                      			 	<span style="font-family: pB; font-size: 25px; line-height:45px;">음식점</span>
 				                    </label>
@@ -228,11 +228,11 @@
                     <!-- 핫플레이스 카드 시작 -->
                   <c:forEach items="${hotPlaceList}" var="HotPlace">
                     <div class="swiper-slide h-auto px-2">
-                        <article class="card-list">
+                        <article class="card-list" onclick="location.href='${path}/tourDetailInfo.do?contentId=${HotPlace.contentId}&contentTypeId=${HotPlace.contentTypeId}'">
                             <!-- 배경이미지  -->
 	                           <div class="gradient-overlay-img" style="background-image: url(<c:if test="${HotPlace.firstImage == null}"><c:out value="${path}/resources/image/noImage.png"/></c:if> <c:if test="${HotPlace.firstImage != null}"><c:out value="${HotPlace.firstImage}"/></c:if>); cursor:pointer; height: auto; width: auto;">
 	                                <div class="card-list__img">
-	                                    <a href="${path}/tourDetailInfo.do?contentId=${contentId}" class="card-list_link"></a>
+	                                    <a href="${path}/tourDetailInfo.do?contentId=${HotPlace.contentId}&contentTypeId=${HotPlace.contentTypeId}" class="card-list_link"></a>
 	                                </div>
 
                                 <!-- 소개 정보 -->

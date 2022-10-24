@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kh.tour.common.util.PageInfo;
+import com.kh.tour.course.model.service.CourseService;
+import com.kh.tour.course.model.vo.MyCourseSearch;
 import com.kh.tour.member.model.vo.Member;
 import com.kh.tour.tour.model.service.TourService;
 import com.kh.tour.tour.model.vo.Category;
@@ -37,6 +40,9 @@ public class TourController {
 
 	@Autowired
 	private TourService tService;
+	
+	@Autowired
+	private CourseService courseService;
 	
 	@GetMapping("/eventSearch.do") //지역,행사 페이지에서 체크박스로 행사리스트 조회
 	public String eventSearchlist(Model model, @RequestParam Map<String, String> param,
@@ -140,9 +146,10 @@ public class TourController {
 		List<RepeatInfo> repeatInfo = tService.findDetailByContentId(contentId);
 		List<TourImage> imgDetail = tService.getTourImage(contentId);
 		
-		log.info("tour : " + tour);
-		log.info("repeatInfo : " + repeatInfo);
-		log.info("imgDetail : " + imgDetail);
+		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(10);
+//		log.info("tour : " + tour);
+//		log.info("repeatInfo : " + repeatInfo);
+//		log.info("imgDetail : " + imgDetail);
 		
 		
 		if(contentTypeId == 12) {
@@ -150,7 +157,7 @@ public class TourController {
 			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("detail", detail);
 			model.addAttribute("review", review);
-			log.info("review : " + review);
+			//log.info("review : " + review);
 
 		}
 
@@ -194,11 +201,31 @@ public class TourController {
 			return "redirect:error";
 		}
 		
-		
+		model.addAttribute("detailCourseList", detailCourseList);
 		model.addAttribute("tour", tour);
 		model.addAttribute("repeatInfo", repeatInfo);
 		model.addAttribute("imgDetail", imgDetail);
 		return "tour/infoDetail";
+	}
+	
+	@PostMapping("/tourDetailInfo/leaveReview.do")
+	public String insertReview(Model model, HttpServletRequest request,
+			@RequestParam("contentId") int contentId,
+			@RequestParam("contentTypeId") int contentTypeId,
+			@RequestParam("userNo") int userNo,
+			@RequestParam("star") int star,			
+			@RequestParam("content") String content,			
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember 
+			
+			) {
+		System.out.println("review 작성 컨트롤러 호출");
+		String gogo = this.tourDetailInfo(model,contentId,contentTypeId);
+		
+		log.info("리뷰 작성 요청");
+		DetailReview detailReview = new DetailReview(0, contentId, userNo, star, content, null, null);
+		int result = tService.insertReview(detailReview);
+		
+		return gogo;
 	}
 	
 	
@@ -257,11 +284,5 @@ public class TourController {
 		return "/common/msg";
 		
 	}
-	
-	
-	
-	
-	
-	
 
 }
