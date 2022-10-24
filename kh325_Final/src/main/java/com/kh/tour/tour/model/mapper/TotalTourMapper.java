@@ -44,7 +44,7 @@ public interface TotalTourMapper {
 
 	List<TourLike> selectTourLikeList(int userNo); // userNo로 찜목록 전체 조회하기
 
-	List<Category> selectCat1List(String cat1);
+	List<Category> selectCat1List(String cat1); 
 	
 	DetailTourist detailTourist(int contentId);
 

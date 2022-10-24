@@ -905,7 +905,7 @@
                                     <div class="row">
                                             <!-- input 박스 -->
                                             <div class="d-flex align-items-center form-control-search">
-                                                <input class="ps-3 py-1 col-8 search-input" type="search" value="${param.searchValue}" id="searchValue" name="searchValue" placeholder="관광지를 검색하세요">
+                                                <input class="ps-3 py-1 col-8 search-input" type="search" value="<c:out value="${param.searchValue}"/>" id="searchValue" name="searchValue" placeholder="관광지를 검색하세요">
                                                 <!-- 서치 버튼 -->
                                                 <button class="w-50 h-2rem me-1 btn btn-warning p-0" type="submit"> Search
                                                 </button>
@@ -989,7 +989,7 @@
 	            <nav aria-label="Page navigation example ">
 	                <ul class="pagination pagination-template d-flex justify-content-center p-5">
 	                    <li class="page-item ">
-	                        <span onclick="movePage('${path}/eventSearch?page=${pageInfo.prevPage}');" class="page-link"><span style="color: #000000;">Previous</span></span>
+	                        <span onclick="movePage('${path}/eventSearch.do?page=${pageInfo.prevPage}');" class="page-link"><span style="color: #000000;">Previous</span></span>
 	                    </li>
 	                    <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
 	                    	<c:if test="${pageInfo.currentPage == status.current}">
@@ -1001,14 +1001,14 @@
 	                   		</c:if>
 	                		<c:if test="${pageInfo.currentPage != status.current}">
 	                   			 <li class="page-item">
-	                   			 		<a onclick="movePage('${path}/eventSearch?page=${status.current}');" class="page-link">
+	                   			 		<a onclick="movePage('${path}/eventSearch.do?page=${status.current}');" class="page-link">
 	                   			 			<span style="color: #000000;">${status.current}</span>
 	                   			 		</a>
 	                   			 </li> 
 	                   		</c:if>
 	                     </c:forEach>
 	                    <li class="page-item">
-	                        <a onclick="movePage('${path}/eventSearch?page=${pageInfo.nextPage}');" class="page-link" ><span style="color: #000000;">Next</span></a>
+	                        <a onclick="movePage('${path}/eventSearch.do?page=${pageInfo.nextPage}');" class="page-link" ><span style="color: #000000;">Next</span></a>
 	                    </li>
 	                </ul>
 	            </nav>

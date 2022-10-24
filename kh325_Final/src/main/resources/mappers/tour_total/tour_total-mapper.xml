@@ -459,6 +459,7 @@
 		LEFT OUTER JOIN TOUR_FREE TF
 		ON (B.CONTENTID = TF.CONTENTID) <!-- 무장애 -->
 		
+		WHERE
 		B.CONTENTID = #{contentId}
 	</select>
 	
