@@ -694,7 +694,7 @@
                             <nav aria-label="Page navigation example ">
 	                <ul class="pagination pagination-template d-flex justify-content-center p-5">
 	                    <li class="page-item ">
-	                        <span onclick="movePage('${path}/eventSearch?page=${pageInfo.prevPage}');" class="page-link"><span style="color: #000000;">Previous</span></span>
+	                        <span onclick="movePage('${path}/tourSearch.do?page=${pageInfo.prevPage}');" class="page-link"><span style="color: #000000;">Previous</span></span>
 	                    </li>
 	                    <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
 	                    	<c:if test="${pageInfo.currentPage == status.current}">
@@ -706,14 +706,14 @@
 	                   		</c:if>
 	                		<c:if test="${pageInfo.currentPage != status.current}">
 	                   			 <li class="page-item">
-	                   			 		<a onclick="movePage('${path}/eventSearch?page=${status.current}');" class="page-link">
+	                   			 		<a onclick="movePage('${path}/tourSearch.do?page=${status.current}');" class="page-link">
 	                   			 			<span style="color: #000000;">${status.current}</span>
 	                   			 		</a>
 	                   			 </li> 
 	                   		</c:if>
 	                     </c:forEach>
 	                    <li class="page-item">
-	                        <a onclick="movePage('${path}/eventSearch?page=${pageInfo.nextPage}');" class="page-link" ><span style="color: #000000;">Next</span></a>
+	                        <a onclick="movePage('${path}/tourSearch.do?page=${pageInfo.nextPage}');" class="page-link" ><span style="color: #000000;">Next</span></a>
 	                    </li>
 	                </ul>
 	            </nav>
