@@ -540,7 +540,7 @@
                                 <img class="d-block avatar avatar-xl p-2 mb-2" src="${review.userAvatar}" alt="${review.userName}님">
                             </div>
                             <div>
-                                <h6 class="mt-2 mb-1 text-pB fs-5">${review.userName}</h6>
+                                <h6 class="mt-2 mb-1 text-pB fs-5">"${review.userName}"</h6>
                                 
                                 <div class="mb-2">
 	                                <c:forEach begin="1" end="${review.star}" step="1">
@@ -1831,7 +1831,7 @@
 
                     <div class="col-md-11">
                         <span class="courseName">12코스</span>
-                        <span class="h5" style="font-family: pB;">고즈넉한 쉼이 흐르는 안동 1박2일 여행 코스</span>
+                        <span class="h5" style="font-family: pB;"><c:out value="${detailCourseList.size()}"/><c:out value="${detailCourseList.get(0).getMyCourseTitle()}"/></span>
                     </div>
                 </div>
                 <!-- Slider main container-->
