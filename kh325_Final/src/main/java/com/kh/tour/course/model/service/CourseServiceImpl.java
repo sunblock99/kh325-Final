@@ -16,6 +16,7 @@ import com.kh.tour.course.model.vo.DetailCourse;
 import com.kh.tour.course.model.vo.MainMyCourse;
 import com.kh.tour.course.model.vo.MainRecommCourse;
 import com.kh.tour.course.model.vo.MyCourse;
+import com.kh.tour.course.model.vo.MyCourseCreate;
 import com.kh.tour.course.model.vo.MyCourseDetail;
 import com.kh.tour.course.model.vo.MyCourseImage;
 import com.kh.tour.course.model.vo.MyCourseRev;
@@ -205,6 +206,59 @@ public class CourseServiceImpl implements CourseService{
 	public List<RecommCourseRev> getRecommCourseRev(int contentId) {
 
 		return courseMapper.detailRecommCourseRev(contentId);
+	}
+
+	@Override
+	public int createCourse(MyCourseCreate myCourseCreate) {
+		
+		return courseMapper.createCourse(myCourseCreate);
+	}
+
+	@Override
+	public int deleteCourse(int myCourseNo) {
+		
+		return courseMapper.deleteContent(myCourseNo);
+	}
+
+	@Override
+	public int updateCourse(MyCourseCreate myCourseCreate) {
+		
+		return courseMapper.updateCourse(myCourseCreate);
+	}
+
+	@Override
+	public int insertContent(int myCourseNo, int contentId, int myCourseSn) {
+		
+		return courseMapper.insertContent(myCourseNo, contentId, myCourseSn);
+	}
+
+	@Override
+	public int deleteContent(int myCourseDetailNo) {
+	
+		return courseMapper.deleteContent(myCourseDetailNo);
+	}
+
+	@Override
+	public int ascent(int myCourseDetailNo, int changedSn) {
+	
+		return courseMapper.ascent(myCourseDetailNo, changedSn);
+	}
+
+	@Override
+	public int descent(int myCourseDetailNo, int changedSn) {
+		
+		return courseMapper.descent(myCourseDetailNo, changedSn);
+	}
+
+	@Override
+	public List<MyCourseSearch> getForMyPage(int userNo, int myCourseNo) {
+
+		return courseMapper.selectForMyPage(userNo, myCourseNo);
+	}
+
+	@Override
+	public List<MyCourseSearch> getForEdit(int myCourseDetailNo) {
+		return courseMapper.selectForEdit(myCourseDetailNo);
 	}
 
 

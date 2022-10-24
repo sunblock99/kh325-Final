@@ -31,4 +31,6 @@ public class MyCourseSearch {
 	private String mapX;           //GPS X좌표          
 	private String mapY;           //GPS Y좌표    
 	private int detailCntRevStar;
+	private int myCourseDetailNo;
+	private int myCourseSn;
 }

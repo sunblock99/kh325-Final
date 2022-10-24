@@ -9,12 +9,11 @@ import org.apache.ibatis.session.RowBounds;
 import com.kh.tour.course.model.vo.DetailCourse;
 import com.kh.tour.course.model.vo.MainMyCourse;
 import com.kh.tour.course.model.vo.MainRecommCourse;
-import com.kh.tour.course.model.vo.MyCourse;
+import com.kh.tour.course.model.vo.MyCourseCreate;
 import com.kh.tour.course.model.vo.MyCourseDetail;
 import com.kh.tour.course.model.vo.MyCourseImage;
 import com.kh.tour.course.model.vo.MyCourseRev;
 import com.kh.tour.course.model.vo.MyCourseSearch;
-import com.kh.tour.course.model.vo.MyCourseSearchIndex;
 import com.kh.tour.course.model.vo.RecommCourseDetail;
 import com.kh.tour.course.model.vo.RecommCourseImage;
 import com.kh.tour.course.model.vo.RecommCourseRev;
@@ -64,4 +63,32 @@ public interface CourseMapper {
 	List<RecommCourseImage> detailRecommCourseImage(int contentId);
 	// 추천 코스 디테일 리뷰
 	List<RecommCourseRev> detailRecommCourseRev(int contentId);
+	
+	
+	// 코스 만들기
+	int createCourse(MyCourseCreate myCourseCreate);
+	
+	// 코스 삭제하기	
+	int deleteCourse(int myCourseNo);
+	
+	// 코스 편집하기 
+	int updateCourse(MyCourseCreate myCourseCreate);
+	
+	// 코스 컨텐츠 하나 추가하기
+	int insertContent(int myCourseNo, int contentId, int myCourseSn);
+	
+	// 코스 컨텐츠 하나 삭제하기
+	int deleteContent(int myCourseDetailNo);
+	
+	// 코스 순서 올리기
+	int ascent(int myCourseDetailNo, int changedSn);
+	
+	// 코스 순서 내리기
+	int descent(int myCourseDetailNo, int changedSn);
+	
+	// 마이페이지용 나의코스정보 불러오기
+	List<MyCourseSearch> selectForMyPage(int userNo, int myCourseNo);
+	
+	List<MyCourseSearch> selectForEdit(int myCourseDetailNo);
 }
+	
