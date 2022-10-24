@@ -6,13 +6,20 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kh.tour.tour.model.vo.Tour;
+import com.kh.tour.travelMap.model.vo.CourseMap;
 import com.kh.tour.travelMap.model.vo.TravelMap;
 
 @Mapper
 public interface TravelMapMapper {
 	List<TravelMap> selectTravelMapList(String contentTypeName);
-//	List<TravelMap> selectTravelMapList(Map<String, String> map);
+	Tour selectTourById(int contentId);
 	
-	Tour selectTourById(int contentId); 
+	CourseMap selectCourseByNo(int contentId);
+	List<CourseMap> selectCourseMapList(); 
 	
+//	List<CourseMap> selectCourseMapDetailList(int contentId);
+//	List<CourseMap> selectCourseMapList(int contentId); 
+	
+//	List<CourseMap> selectCourseMapList(String contentTypeName);
+//	List<CourseMap> selectCourseMapList(Map<String, String> map);
 }

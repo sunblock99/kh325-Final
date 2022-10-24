@@ -194,7 +194,7 @@
                                                         name="title" placeholder="제목을 입력해주세요">
                                                     <input class="form-control-addTag " style="top:30%;" type="text"
                                                         name="galTag" placeholder="태그를 입력해주세요">
-                                                    <input type="hidden" name="writerId" value="${loginMember.id}"
+                                                    <input type="hidden" name="writerId" value="${loginMember.userNo}"
                                                         readonly>
 
                                                     <div class="uploadButtons">
@@ -218,14 +218,14 @@
 
 
                                 <!-- 로그인 안했으면 사진올리는거 안보여줌 -->
-                                <%-- <c:if test="${loginMember != null}"> --%>
+                                <c:if test="${loginMember != null}">
                                     <div class="mt-3">
                                         <button class="btn btn-link btn-collapse text-secondary fs-6" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#addPictures"
                                             aria-expanded="false" aria-controls="addPictures" data-expanded-text="접기"
                                             data-collapsed-text="이미지 게시하기">이미지 게시하기</button>
                                     </div>
-                                    <%-- </c:if> --%>
+                                    </c:if>
 
                             </div>
 
@@ -296,16 +296,25 @@
                                                 onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"
                                                 style="background-image: url(${path}/resources/uploaded/gallery/<c:out value="${list[i].renamedImage}" />);">
 <%--                                                 style="background-image: url(<c:out value=" ${list[i].renamedImage}" /> --%>
-                                            );">
+<!--                                             );"> -->
                                             <div class="info card-img-overlay-bottom z-index-50">
                                                 <h4 class="text-white text-shadow-dark" style="float: left;">
                                                     <c:out value="${list[i].title}" />
                                                 </h4>
-                                                <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim"
-                                                    class=" text-white" style="float: right;"><i
-                                                        class="fa-solid fa-bullhorn fas "></i></a>
-                                                <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white"
-                                                    style="float: right;"><i class="fa-regular fa-trash-can"></i></a>
+						                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+						                        <c:if test="${loginMember != null}">
+						                            <c:choose>
+						                                <c:when
+						                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+						                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+						                                            class="fa-regular fa-trash-can"></i></a>
+						                                </c:when>
+						                                <c:otherwise>
+						                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+						                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+						                                </c:otherwise>
+						                            </c:choose>
+						                        </c:if>
                                                 <p class="text-sm mb-0 text-shadow-dark"
                                                     style="color:rgb(253, 159, 40); clear: both;"> •
                                                     TAG&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -337,10 +346,20 @@
                                         <h4 class="text-white text-shadow-dark" style="float: left;">
                                             <c:out value="${list[i].title}" />
                                         </h4>
-                                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                                class="fa-regular fa-trash-can"></i></a>
+                                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+				                        <c:if test="${loginMember != null}">
+				                            <c:choose>
+				                                <c:when
+				                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+				                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+				                                            class="fa-regular fa-trash-can"></i></a>
+				                                </c:when>
+				                                <c:otherwise>
+				                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+				                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+				                                </c:otherwise>
+				                            </c:choose>
+				                        </c:if>
                                         <p class="text-sm mb-0 text-shadow-dark"
                                             style="color:rgb(253, 159, 40); clear: both;"> •
                                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -370,10 +389,20 @@
                                 <h4 class="text-white text-shadow-dark" style="float: left;">
                                     <c:out value="${list[i].title}" />
                                 </h4>
-                                <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                                    style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                                <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                        class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                                 <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;">
                                     •
                                     TAG&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -402,10 +431,20 @@
                             <h4 class="text-white text-shadow-dark" style="float: left;">
                                 <c:out value="${list[i].title}" />
                             </h4>
-                            <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                                style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                            <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                    class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                             <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                                 TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                                 <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -441,7 +480,7 @@
                         <c:if test="${loginMember != null}">
                             <c:choose>
                                 <c:when
-                                    test="${ !empty loginMember && (loginMember.id == list[i].uno || loginMember.role == 'ROLE_ADMIN') }">
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
                                     <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
                                             class="fa-regular fa-trash-can"></i></a>
                                 </c:when>
@@ -486,7 +525,7 @@
                         <c:if test="${loginMember != null}">
                             <c:choose>
                                 <c:when
-                                    test="${ !empty loginMember && (loginMember.id == list[i].uno || loginMember.role == 'ROLE_ADMIN') }">
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y' == 'Y') }">
                                     <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
                                             class="fa-regular fa-trash-can"></i></a>
                                 </c:when>
@@ -524,10 +563,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white"
-                            style="float: right;"><i class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.6" class="text-white">
@@ -555,10 +605,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white"
-                            style="float: right;"><i class="fa-regular fa-trash-can"></i></a>
+                                                <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.6" class="text-white">
@@ -587,10 +647,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -618,10 +689,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -649,10 +730,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -680,10 +772,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -711,10 +813,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -742,10 +855,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -774,10 +897,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -805,10 +939,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -836,10 +980,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -867,10 +1022,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -898,10 +1063,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -929,10 +1104,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -961,10 +1146,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -991,10 +1187,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -1022,10 +1228,21 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">
@@ -1053,10 +1270,20 @@
                         <h4 class="text-white text-shadow-dark" style="float: left;">
                             <c:out value="${list[i].title}" />
                         </h4>
-                        <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
-                            style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
-                        <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <!-- 로그인 안했을땐 암것도 안보임 / 글쓴이=로그인 or 관리자면 삭제버튼 / 그 외 신고버튼 -->
+                        <c:if test="${loginMember != null}">
+                            <c:choose>
+                                <c:when
+                                    test="${ !empty loginMember && (loginMember.userNo == list[i].uno || loginMember.managerStatus == 'Y') }">
+                                    <a href="#" onclick="deleteGallery(${list[i].boardNo})" class=" text-white" style="float: right;"><i
+                                            class="fa-regular fa-trash-can"></i></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href=" " data-bs-toggle="modal" data-bs-target="#exclaim" class=" text-white"
+                                        style="float: right;"><i class="fa-solid fa-bullhorn fas "></i></a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <p class="text-sm mb-0 text-shadow-dark" style="color:rgb(253, 159, 40); clear: both;"> •
                             TAG&nbsp;&nbsp;|&nbsp;&nbsp;
                             <MARQUEE behavior="scroll" height="17.7" class="text-white">

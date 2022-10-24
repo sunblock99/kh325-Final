@@ -62,6 +62,7 @@ public class GalleryController {
 //	@GetMapping("/list")
 	public String list(Model model, @RequestParam Map<String, String> param) {
 		log.info("param : " + param.toString());
+		System.out.println("파라미터값 : " + param.toString());
 		int page = 1;
 		if (param.containsKey("page") == true) {
 			try {
@@ -134,8 +135,8 @@ public class GalleryController {
 //			return "/common/msg";
 //		}
 
-//		gallery.setUno(loginMember.getUserNo());
-		gallery.setUno(10);
+		gallery.setUno(loginMember.getUserNo());
+//		gallery.setUno(10);
 
 		// 파일을 저장하는 로직
 		if (upfile != null && upfile.isEmpty() == false) {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.tour.tour.model.vo.Tour;
+import com.kh.tour.travelMap.model.vo.CourseMap;
 import com.kh.tour.travelMap.model.vo.TravelMap;
 
 public interface TravelMapService {
@@ -12,5 +13,19 @@ public interface TravelMapService {
 //	List<TravelMap> getTravelMapList(Map<String, String> param);
 
 	Tour findById(int contentId);
+
+//	List<CourseMap> getCourseMapList(Map<String, String> param);
+//
+//	List<CourseMap> getCourseMapDetailList(Map<String, String> param);
+
+	List<CourseMap> getCourseMapList();
+
+//	List<CourseMap> getCourseMapDetailList(int contentId);
+//
+//	List<CourseMap> getCourseMapList(int contentId);
+
+	CourseMap getCourseByNo(int contentId);
+
+//	List<CourseMap> getCourseMapList(String contentTypeName);
 
 }
