@@ -248,7 +248,7 @@
                 <div class="row">
                     <!-- input 박스 -->
                     <div class="col-lg-9 d-flex form-group" style="height: 60px !important;">
-                        <input class="shadow-0 searchbar_font ps-4 fw-bold align-items-center " value="${param.searchValue}" id="searchValue" name="searchValue" placeholder="검색하고 싶은 관광지를 입력하세요">
+                        <input class="shadow-0 searchbar_font ps-4 fw-bold align-items-center " <c:if test="${param.searchValue ne null}">value="${param.searchValue}"</c:if>  id="searchValue" name="searchValue" placeholder="검색하고 싶은 관광지를 입력하세요">
                     </div>
                     <!-- 서치 버튼 -->
                     <div class="col-lg-3 form-group d-grid " style="height: 70px !important; ">
@@ -269,7 +269,7 @@
                             <div class="mb-4">
                                 <h1 class="form-label" for="form_dates">Dates</h1>
                                 <div class="datepicker-container datepicker-container-left">
-                                    <input class="form-control" type="text" name="bookingDate" id="form_dates" style="font-family: 'pB'!important;" placeholder="Choose your dates">
+                                    <input class="form-control" type="text" name="bookingDate" id="bookingDate" style="font-family: 'pB'!important;" placeholder="Choose your dates">
                                 </div>
                             </div>
 
@@ -299,15 +299,15 @@
                                 </select>
                                 
 	                                <script type="text/javascript">                                           
-						                 var selectValue = "${areaCode}";                          
-						                    var selectedElement = document.getElementByName("areaCode");
-						                       var options = selectedElement.options;                  
-						                          for(var i = 0; i < options.length; i++){                
-						                              if(options[i].value == selectValue){                     
-						                                    selectedElement.selectedIndex = i;                      
-						                                       break;                                                  
-						                                 }                                                        
-						                           }                                                         
+						                var selectValue = "${areaCode}";                          
+					                    var selectedElement = document.getElementById("areaCode");
+					                    var options = selectedElement.options;                  
+				                        for(var i = 0; i < options.length; i++){                
+				                            if(options[i].value == selectValue){                     
+				                                  selectedElement.selectedIndex = i;                      
+				                                     break;                                                  
+				                            }                                                        
+				                        }                                                         
 										</script>     
                             </div>
 
@@ -347,7 +347,7 @@
 									<c:if test="${cat1 == 'A01'}">
 	                                    <li>
 	                                        <div class="form-check">
-	                                            <input class="form-check-input" type="radio" value="A01" checked id="type_0"  name="cat1">
+	                                            <input class="form-check-input" type="radio" value="A01" checked id="type_0"  name="cat1" id="cat1">
 	                                            <label class="form-check-label fs-6 " for="type_0">자연</label>
 	                                        </div>
 	                                    </li>
@@ -355,7 +355,7 @@
                                     <c:if test="${cat1 != 'A01'}">
 	                                    <li>
 	                                        <div class="form-check">
-	                                            <input class="form-check-input" type="radio" value="A01" id="type_0"  name="cat1">
+	                                            <input class="form-check-input" type="radio" value="A01" id="type_0"  name="cat1" id="cat1">
 	                                            <label class="form-check-label fs-6" for="type_0">자연</label>
 	                                        </div>
 	                                    </li>
@@ -365,7 +365,7 @@
                                     <c:if test="${cat1 == 'A02'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A02" checked id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A02" checked id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">인문(문화/예술/역사)</label>
                                         </div>
                                     </li>
@@ -373,7 +373,7 @@
                                     <c:if test="${cat1 != 'A02'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A02" id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A02" id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">인문(문화/예술/역사)</label>
                                         </div>
                                     </li>
@@ -383,7 +383,7 @@
                                     <c:if test="${cat1 == 'A03'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A03" checked id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A03" checked id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">레포츠</label>
                                         </div>
                                     </li>
@@ -391,7 +391,7 @@
                                     <c:if test="${cat1 != 'A03'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A03" id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A03" id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">레포츠</label>
                                         </div>
                                     </li>
@@ -401,7 +401,7 @@
                                     <c:if test="${cat1 == 'A04'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A04" checked id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A04" checked id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">쇼핑</label>
                                         </div>
                                     </li>
@@ -409,7 +409,7 @@
                                     <c:if test="${cat1 != 'A04'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A04" id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A04" id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">쇼핑</label>
                                         </div>
                                     </li>
@@ -419,7 +419,7 @@
                                     <c:if test="${cat1 == 'A05'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A05" checked id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A05" checked id="type_0"  name="cat1" id="cat1"> 
                                             <label class="form-check-label fs-6" for="type_0">음식</label>
                                         </div>
                                     </li>
@@ -427,7 +427,7 @@
                                     <c:if test="${cat1 != 'A05'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="A05" id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="A05" id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">음식</label>
                                         </div>
                                     </li>
@@ -437,7 +437,7 @@
                                     <c:if test="${cat1 == 'B02'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="B02" checked id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="B02" checked id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">숙박</label>
                                         </div>
                                     </li>
@@ -445,7 +445,7 @@
                                     <c:if test="${cat1 != 'B02'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="B02" id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="B02" id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">숙박</label>
                                         </div>
                                     </li>
@@ -455,7 +455,7 @@
                                     <c:if test="${cat1 == 'C01'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="C01" checked id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="C01" checked id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">추천코스</label>
                                         </div>
                                     </li>
@@ -463,7 +463,7 @@
                                     <c:if test="${cat1 != 'C01'}">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="C01" id="type_0"  name="cat1">
+                                            <input class="form-check-input" type="radio" value="C01" id="type_0"  name="cat1" id="cat1">
                                             <label class="form-check-label fs-6" for="type_0">추천코스</label>
                                         </div>
                                     </li>
@@ -723,17 +723,16 @@
              </div>
         </section>
     </form>
-
     <script>
         function movePage(pageUrl) {
             // 1. id로 관광지 검색어를 가져 온다.
-            var searchValue = $("#searchValue").val();
+            var searchValue = document.getElementById("searchValue");
             if (searchValue.value.length > 0) {
                 pageUrl = pageUrl + '&searchValue=' + searchValue.value;
             }
 
             // 2. id로 Dates를 가져 온다.
-            var Dates = document.getElementsByName("bookingDate");
+            var Dates = document.getElementById("bookingDate");
             if (Dates.value.length > 0) {
                 pageUrl = pageUrl + '&Dates=' + Dates.value;
             }
@@ -750,17 +749,22 @@
             }
 
             // 4. name으로 tourTypeBox인 체크박스의 값들을 가져온다.
-            var tourType = document.getElementsById("tourType");
+            var tourType = document.getElementById("tourType");
             if (tourType.value.length > 0) {
                 pageUrl = pageUrl + '&tourType=' + tourType.value;
             }
 
-            // 5. name으로 cat1인 체크박스의 값들을 가져온다.
-            var cat1 = document.getElementsById("cat1");
-            if (cat1.value.length > 0) {
-                pageUrl = pageUrl + '&cat1=' + cat1.value;
+        	// 5. name으로 cat1인 체크박스의 값들을 가져온다.
+            var cat1 = document.getElementsByName("cat1"); // 지역
+            if (cat1.length != 0) {
+                for (var i = 0; i < cat1.length; i++) {
+                    if (cat1[i].selected == true) {
+                    	pageUrl = pageUrl + '&cat1=' + cat1[i].value;
+                    }
+                }
             }
-
+            
+            
             //  6. name으로 cat2인 체크박스의 값들을 가져온다.
             var cat2Values = document.getElementsByName("cat2");
             if (cat2Values.length != 0) {
@@ -771,7 +775,7 @@
                     }
                 }
             }
-
+			alert(pageUrl);
             location.href = encodeURI(pageUrl);
         }
     </script>
@@ -983,7 +987,7 @@
 
             // Push the header width values to bArray
             for (var i = 0; i < $('.bubbles').width(); i++) {
-                bArray.push(i);z
+                bArray.push(i);
             }
 
             // Function to select random array element
