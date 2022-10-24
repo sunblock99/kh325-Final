@@ -148,20 +148,18 @@
 						<p class="ps-2 fs-4 text-pR">투게더와 함께 대한민국의 구석구석을 둘러보고 멋진 여행을
 							계획 해보세요</p>
 						<button class="mt-4 mb-5 col-lg-3 btn rounded-pill d-grid fs-5 letter-spacing-1 text-pB"
-							style="background-color: #FD9F28;" type="submit" onclick="${path}/tour/infoSearch">관광정보
+							style="background-color: #FD9F28;" type="submit" onclick="location.href='${path}/tourSearch.do?'">관광정보
 							검색하기</button>
 					</div>
 
 					<!-- 검색창 시작 -->
 					<div class="search-bar col-12 searchbar-shadow p-3 p-lg-1 ps-lg-3 text-pSb absolute-searchbar">
-						<form action="#">
+						<form action="${path}/tourSearch.do" method="get">
 							<div class="row">
 								<div class="col-lg-10 d-flex align-items-center form-group">
-								<form action="/tour/수아 컨트롤러로 보냄">
 									<input style="font-size: 1.4rem;"
 										class="form-control border-0 shadow-0" type="text"
-										name="수아가 받는 인자값" placeholder=" &nbsp; 검색어를 입력 해주세요">
-								</form>
+										name="searchValue" placeholder=" &nbsp; 검색어를 입력 해주세요">
 								</div>
 								<div class="col-lg-2 d-grid" style="text-align: center;">
 									<button class="btn rounded-pill h-100 fs-5 letter-spacing-4"
@@ -194,13 +192,13 @@
 				<div class="row mt-5 pt-4 pb-3">
 					<div class="col-lg-5 d-grid" style="text-align: center;">
 						<button class="btn-black rounded-pill h-100"
-							style="background-color: black; color: #fff;" type="submit">
+							style="background-color: black; color: #fff;" type="button" onclick="location.href='${path}/course/courseRecommended'">
 							추천코스 바로가기</button>
 					</div>
 					<div class="col-lg-5 d-grid" style="text-align: center;">
 						<button class="btn-black rounded-pill h-100"
-							style="background-color: black; color: #fff;" type="submit">나만의
-							코스 만들기</button>
+							style="background-color: black; color: #fff;" type="button" onclick="location.href='${path}/course/courseMyCourse'">
+							나만의 코스 만들기</button>
 					</div>
 				</div>
 			</div>
@@ -210,17 +208,16 @@
 					<div class="d-flex align-items-lg-stretch">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=d9fa86a0-cddf-4f5a-a3ae-97e83f5d4039);">
-							<a class="tile-link" href="category.html"> </a>
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=6c0b1908-db4d-4b91-b1a2-74d94c037bfa);">
+							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=22"> </a>
 							<div
 								class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-								<!-- <h3 class="text-shadow text-uppercase mb-0">   </h3> -->
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="text-end todaytour-font">
-					제주도 여행 <span class="todaytour-font-id">박박만*님</span>
+					남해여행 <span class="todaytour-font-id">박박만*님</span>
 				</div>
 			</div>
 
@@ -229,9 +226,9 @@
 					<div class="d-flex">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=92205eba-0012-49b7-af73-a907c01089f7); ">
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b9145ecf-16ce-4b10-a0c3-3421dd732206); ">
 
-							<a class="tile-link" href="category.html"> </a>
+							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=23"> </a>
 							<div
 								class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 								<!-- <h3 class="text-shadow text-uppercase mb-0">   </h3> -->
@@ -240,7 +237,7 @@
 					</div>
 				</div>
 				<div class="text-end todaytour-font">
-					원주 여행 <span class="todaytour-font-id">짜파게*님</span>
+					울릉도 관광 코스(A) <span class="todaytour-font-id">짜파게*님</span>
 				</div>
 			</div>
 
@@ -317,7 +314,7 @@
 							<c:forEach items="${selectMainHotPlace}" var="MainHotPlace">
 							<div class="swiper-slide h-auto px-2">
 							<div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0">
-								<a class="tile-link" href="category.html"></a>
+								<a class="tile-link" href="${path}/tourDetailInfo.do?contentId=${MainHotPlace.contentId}&contentTypeId=${MainHotPlace.contentTypeId}"></a>
 								
 								<c:if test="${MainHotPlace.firstImage ne null}">
 								<img class="bg-image" src='<c:out value="${MainHotPlace.firstImage}" />' alt="Card image">
@@ -335,50 +332,8 @@
 								</div>
 							</div>
 							</div>
-								</c:forEach>
+						</c:forEach>
 						</div>
-<!-- 						<div class="swiper-slide h-auto px-2"> -->
-<!-- 							<div -->
-<!-- 								class="card card-poster gradient-overlay hover-animate mb-4 -->
-<!--                   mb-lg-0"> -->
-<!-- 								<a class="tile-link" href="category.html"></a><img -->
-<%-- 									class="bg-image" src="${path}/resources/img/photo/paris.jpg" --%>
-<!-- 									alt="Card image"> -->
-<!-- 								<div class="card-body overlay-content"> -->
-<!-- 									<h6 class="card-title text-shadow text-uppercase">Paris</h6> -->
-<!-- 									<p class="card-text text-sm">Artist capital of Europe</p> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="swiper-slide h-auto px-2"> -->
-<!-- 							<div -->
-<!-- 								class="card card-poster gradient-overlay hover-animate mb-4 -->
-<!--                   mb-lg-0"> -->
-<!-- 								<a class="tile-link" href="category.html"></a><img -->
-<!-- 									class="bg-image" -->
-<%-- 									src="${path}/resources/img/photo/barcelona.jpg" --%>
-<!-- 									alt="Card -->
-<!--                     image"> -->
-<!-- 								<div class="card-body overlay-content"> -->
-<!-- 									<h6 class="card-title text-shadow text-uppercase">Barcelona</h6> -->
-<!-- 									<p class="card-text text-sm">Dalí, Gaudí, Barrio Gotico</p> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="swiper-slide h-auto px-2"> -->
-<!-- 							<div -->
-<!-- 								class="card card-poster gradient-overlay hover-animate mb-4 -->
-<!--                   mb-lg-0"> -->
-<!-- 								<a class="tile-link" href="category.html"></a><img -->
-<%-- 									class="bg-image" src="${path}/resources/img/photo/prague.jpg" --%>
-<!-- 									alt="Card -->
-<!--                     image"> -->
-<!-- 								<div class="card-body overlay-content"> -->
-<!-- 									<h6 class="card-title text-shadow text-uppercase">Prague</h6> -->
-<!-- 									<p class="card-text text-sm">City of hundred towers</p> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 					</div>
 				</div>
 			</div>
@@ -402,7 +357,7 @@
 				<div class="row mb-3">
 				<c:forEach items="${selectMainEvent}" var="MainEvent">
 					<div class="col-6 d-flex mt-4">
-						<a class="a-orign-text" href="">
+						<a class="a-orign-text" href="${path}/tourDetailInfo.do?contentId=${MainEvent.contentId}&contentTypeId=${MainEvent.contentTypeId}">
 						<c:if test="${MainEvent.firstImage ne null}" />
 						<img class="date-tile-event me-3 ms-3" src='<c:out value="${MainEvent.firstImage}"/>' />
 						</a>
@@ -413,9 +368,8 @@
 					</div>
 				</c:forEach>
  				</div>
-				<a
-					class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2"
-					href="post.html"> 더보기 <i class="fas fa-angle-double-right ms-1"></i></a>
+				<a class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2"
+					href="${path}/eventSearch.do"> 더보기 <i class="fas fa-angle-double-right ms-1"></i></a>
 			</div>
 
 
@@ -447,8 +401,7 @@
 		<div class="ps-7 pe-7">
 			<div class="row mb-0">
 				<div class="col-md-8">
-					<p class="fs-4 mb-0 mt-5" style="color: #907B65; font-family: pM;">JOIN
-						US TOGETHER</p>
+					<p class="fs-4 mb-0 mt-5" style="color: #907B65; font-family: pM;">JOIN US TOGETHER</p>
 					<h6 class="display-4 pb-0 text-pBlack">커뮤니티</h6>
 				</div>
 
@@ -457,28 +410,33 @@
 					<div
 						class="mt-2 py-2 me-2 container card border-0 shadow-sm hover-animate justify-content-center">
 						<div class="pt-4 row">
-							<a class="col-5" href="post.html"> <img
+							<a class="col-5" href="${path}/community/journeyDetail?journeyNo=10"> <img
 								class="img-main-gallery"
-								src="${path}/resources/img/photo/photo-1512917774080-9991f1c4c750.jpg"
+								src="http://tong.visitkorea.or.kr/cms2/website/99/2816599.jpg"
 								alt="..." /></a>
 
 							<div class="col-7">
-								<a class="a-hover community-cate-font fw-bold" href="#">여행후기
+								<a class="a-hover community-cate-font fw-bold" href="${path}/community/journeyList">여행후기
 								</a>
 								<h5 class="my-1 fs-3">
-									<a class="text-dark" href="post.html">행복의 나라를 아시나요 </a>
+									<a class="text-dark" href="${path}/community/journeyDetail?journeyNo=10">보라섬의 비밀</a>
 								</h5>
 								<p class="text-gray-500 text-md text-pM">
-									<i class="far fa-clock me-2"></i>2022년 09월 24일
+									<i class="far fa-clock me-2"></i>2022년 09월 21일
 								</p>
-								<p class="my-2 text-muted text-pR text-overflow-elip-3">일단
-									여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이
-									들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게
-									적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가
-									붙임</p>
+								<p class="my-2 text-muted text-pR text-overflow-elip-3">이 신비로운 마을을 체험하기 위해서 나는 기꺼이 연차를 쓰고 전북 신안으로 향했다. 
+									보라섬을 보기 위해서는 입장료 5000원이 필요하다. 야박하다고 생각말라, 보라섬이 보여주는 아름다움과 신비한 체험에 
+									비하면 터무니없이 저렴한 가격이다. 그래도 아깝다고 생각되면 보라보라인이 되면 된다. 보라색 아이템을 착용하면
+									입장료는 없다. 이미 당신 자체가 보라섬의 일부이니까. 나도 보라섬이 되기로 했다. 보라색 니트에 머리띠까지 
+									챙겨서 당당하게 보라섬에 입장했다. 보라섬은 온통 보라색이다. 인형의 마을에 들어온 것 처럼
+									이질적이면서도 아름답다. 보라섬은 박지도와 반월도를 이어 만든 섬으로 바다 위에 데크길을 만들어 놓아 한바퀴 
+									돌아볼수 있도록 인프라를 조성해 놓았다. 하늘과 바다와 보라 그 환상의 조합에 푹빠져 다리 아픈줄도 몰랐다. 
+									곳곳에 위치한 포토존에서 신나게 사진도 찍었다. 디저트 맛집들도 많아서 여행 내내 입이 달고 배가 불렀다. 
+									너무 마음에 들었다. 떠나고 싶지 않았다. 하지만 시간은 왜 우릴 허락하지 않는건지.. 
+									어쩔 수 없이 보라섬을 떠나면서 다음에는 꼭 소중한 사람과 함께 오리라 다짐했다.</p>
 								<a
 									class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2"
-									href="post.html"> 더보기 <i
+									href="${path}/community/journeyDetail?journeyNo=10"> 더보기 <i
 									class="fas fa-angle-double-right ms-1"></i></a>
 							</div>
 						</div>
@@ -487,28 +445,35 @@
 					<div
 						class="mt-2 py-2 me-2 container card border-0 shadow-sm hover-animate justify-content-center">
 						<div class="pt-4 row">
-							<a class="col-5" href="post.html"> <img
+							<a class="col-5" href="${path}/community/journeyDetail?journeyNo=9"> <img
 								class="img-main-gallery"
-								src="${path}/resources/img/photo/photo-1512917774080-9991f1c4c750.jpg"
+								src="https://cdn.pixabay.com/photo/2016/04/20/00/41/mcdonalds-1340199_960_720.jpg"
 								alt="..." /></a>
 
 							<div class="col-7">
-								<a class="a-hover community-cate-font fw-bold" href="#">여행후기
+								<a class="a-hover community-cate-font fw-bold" href="${path}/community/journeyList">여행후기
 								</a>
 								<h5 class="my-1 fs-3">
-									<a class="text-dark" href="post.html">행복의 나라를 아시나요 </a>
+									<a class="text-dark" href="${path}/community/journeyDetail?journeyNo=9">행복의 나라로 갈테야 </a>
 								</h5>
 								<p class="text-gray-500 text-md text-pM">
-									<i class="far fa-clock me-2"></i>2022년 09월 24일
+									<i class="far fa-clock me-2"></i>2022년 10월 24일
 								</p>
-								<p class="my-2 text-muted text-pR text-overflow-elip-3">일단
-									여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이
-									들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게
-									적용되는지 몰라서 그냥 내가 붙임일단 여기에는 블로그 글이 들어갈껀데 일립스가 어떻게 적용되는지 몰라서 그냥 내가
-									붙임</p>
+								<p class="my-2 text-muted text-pR text-overflow-elip-3">맥도날드 매장 분위기는 특별하다. 전 연령, 다양한 구성의 사람들이 찾아온다. 
+								그 어수선함 속 자유로운 분위기에 우리 가족도 즐겁게 녹아들었던 것 같다. 
+								가끔 무더운 여름밤이면 우리 가족은 늦은 밤 슬리퍼를 꿰어신고 나와 맥도날드로 피서를 갔다. 
+								아이스크림 콘을 하나씩 입에 물고 시간을 보냈다. 아이스크림만 사먹었는데도 가끔 행사상품에 끼워 나가는 장난감을
+								그냥 주기도 했다. 어릴 때는 내가 너무 착한 어린이라서 그런 선물들을 받는 것이라 생각하고 뿌듯해했다.
+								매장에 방문한 어린이에게 재고 장난감을 선물하는 것이 글로벌 기업의 마케팅 방침이었음을 알게 된 건 꽤 오랜 시간이 지난후였다. 
+								
+								이사를 하고 시간이 흘러 맥도날드는 내 어린시절과 함께 멀어져갔다. 
+								평범하게 대학을 나와 회사를 다니다가 사업을 시작했다. 여행 사업이었다. 사업자 등록을 하고 1년정도 지난 시점에서
+								코로나가 터졌다. 사업은 속수무책으로 곤두박질 쳤다. 회사를 정리했다. 갈피를 잃고 방황했다. 어디로든 도망치고 싶었다.
+								낡은 중고자동차를 헐값에 사서 무작정 대한민국 이곳저곳을 돌아다녔다.
+								</p>
 								<a
 									class="d-flex a-hover a-orign-text btn-link-cate justify-content-end py-2"
-									href="post.html"> 더보기 <i
+									href="${path}/community/journeyDetail?journeyNo=9"> 더보기 <i
 									class="fas fa-angle-double-right ms-1"></i></a> </a>
 							</div>
 						</div>
@@ -526,14 +491,34 @@
 							<tbody class="text-start">
 								<c:forEach items="${selectMainCommunityList}" var="MainCommunity">
 								<tr>
+								
 									<c:if test="${MainCommunity.boardType eq 'FB'}">
-									<td class="community-cate-font">자유게시판</td>
+									<a class="a-hover a-orign-text" href="${path}/community/freeboardList">
+									<td class="community-cate-font">자유게시판</td></a>
 									</c:if>
 									<c:if test="${MainCommunity.boardType eq 'CB'}">
-									<td class="community-cate-font">동행구하기</td>
+									<a class="a-hover a-orign-text" href="${path}/community/companionList">
+									<td class="community-cate-font">동행구하기</td></a>
 									</c:if>
-									<td class="fw-bold community-title-font"><a
-										class="a-hover a-orign-text" href="#"><c:out value="${MainCommunity.title}" /></a></td>
+									
+									<td class="fw-bold community-title-font">
+									
+									<c:if test="${MainCommunity.boardType eq 'FB'}">
+									<a class="a-hover a-orign-text" href="${path}/community/freeDetail?freeboardNo=<c:out value="${MainCommunity.freeboardNo}"/>">
+									<c:out value="${fn:substring(MainCommunity.title,0,20)}" />
+									</a>
+									<c:if test="${fn:length(MainCommunity.title) ge 20}">...</c:if>
+									</c:if>
+
+									<c:if test="${MainCommunity.boardType eq 'CB'}">
+									<a class="a-hover a-orign-text" href="${path}/community/companionList">
+									<c:out value="${fn:substring(MainCommunity.title,0,20)}" />
+									<c:if test="${fn:length(MainCommunity.title) ge 20}">...</c:if>
+									</a>
+									</c:if>
+									
+									</td>
+									
 									<td class="community-title-font"><c:out value="${MainCommunity.userName}" /></td>
 								</tr>
 								</c:forEach>
@@ -542,7 +527,7 @@
 						</table>
 						<a
 							class="d-flex a-hover a-orign-text btn-link-cate justify-content-end pt-4 pe-4"
-							href="post.html"> 전체 게시글 보러가기 <i
+							href="${path}/community"> 전체 게시글 보러가기 <i
 							class="fas fa-angle-double-right ms-1"></i></a>
 
 					</div>
@@ -561,7 +546,7 @@
 
 			<a
 				class="d-flex a-hover a-orign-text btn-link-cate-lgfont justify-content-end pb-3"
-				href="post.html"> 더보기 <i class="fas fa-angle-double-right ms-1"></i></a>
+				href="${path}/community/gallery"> 더보기 <i class="fas fa-angle-double-right ms-1"></i></a>
 
 		</div>
 		<div class="ps-7 pe-7 grid-wrapper pb-5"
@@ -569,55 +554,55 @@
 			<div>
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1541845157-a6d2d100c931?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div>
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1588282322673-c31965a75c3e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 
 			<div class="tall">
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1588117472013-59bb13edafec?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"
-					alt="">
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 
 			<div class="wide">
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1587588354456-ae376af71a25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div>
 				<img class="img-main-gallery hover-animate"
 					src="
             https://images.unsplash.com/photo-1558980663-3685c1d673c4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=60"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="tall">
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1588499756884-d72584d84df5?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2134&amp;q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="big">
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1588492885706-b8917f06df77?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1951&amp;q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div>
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1588247866001-68fa8c438dd7?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=564&amp;q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="wide">
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1586521995568-39abaa0c2311?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="tall">
 				<img class="img-main-gallery hover-animate"
 					src="https://images.unsplash.com/photo-1588453862014-cd1a9ad06a12?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
-					alt="" />
+					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 		</div>
 	</div>

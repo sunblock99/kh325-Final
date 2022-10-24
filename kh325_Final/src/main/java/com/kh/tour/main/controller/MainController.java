@@ -19,7 +19,7 @@ public class MainController {
 	@Autowired
 	MainService service;
 	
-	@RequestMapping("/main")
+	@RequestMapping("/")
 	public String main(Model model) {
 		List<MainHotPlace> selectMainHotPlace = service.selectMainHotPlace();
 		List<MainCommunity> selectMainCommunityList = service.selectMainCommunityList();

@@ -1830,8 +1830,8 @@
                 <div class="row mt-2">
 
                     <div class="col-md-11">
-                        <span class="courseName">12코스</span>
-                        <span class="h5" style="font-family: pB;"><c:out value="${detailCourseList.size()}"/><c:out value="${detailCourseList.get(0).getMyCourseTitle()}"/></span>
+                        <span class="courseName"><c:out value="${detailCourseList.size()}"/>코스</span>
+                        <span class="h5" style="font-family: pB;"><c:out value="${detailCourseList.get(0).getMyCourseTitle()}"/></span>
                     </div>
                 </div>
                 <!-- Slider main container-->
