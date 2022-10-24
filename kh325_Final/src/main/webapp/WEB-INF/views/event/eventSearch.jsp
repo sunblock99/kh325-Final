@@ -947,7 +947,7 @@
 		                                    <img style="width: inherit !important; height: 270px !important;" src="<c:if test="${Tour.firstImage == null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${Tour.firstImage != null}"><c:out value="${Tour.firstImage}"/></c:if>" />
 		                                    <a class="tile-link " onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'"></a>
 		                                    <div class="card-img-overlay-top text-end ">
-		                                        <a class=" heart_pink card-fav-icon position-relative z-index-50 " onclick="location.href='${path}/tourLike.do?contentId=${Tour.contentId}'">
+		                                        <a class=" heart_pink card-fav-icon position-relative z-index-50 " onclick="location.href='${path}/eventLike.do?contentId=${Tour.contentId}'">
 		                                            <i class="fas fa-heart svg-icon "></i>
 		                                        </a>
 		                                    </div>
