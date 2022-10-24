@@ -208,8 +208,8 @@
 					<div class="d-flex align-items-lg-stretch">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=6c0b1908-db4d-4b91-b1a2-74d94c037bfa);">
-							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=22"> </a>
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b5276bc6-398d-42e4-a8b3-706801c8d464);">
+							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=7"> </a>
 							<div
 								class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 							</div>
@@ -217,7 +217,7 @@
 					</div>
 				</div>
 				<div class="text-end todaytour-font">
-					남해여행 <span class="todaytour-font-id">박박만*님</span>
+					통영을 거닐자 <span class="todaytour-font-id">박박만*님</span>
 				</div>
 			</div>
 
@@ -226,9 +226,9 @@
 					<div class="d-flex">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b9145ecf-16ce-4b10-a0c3-3421dd732206); ">
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=46ab91aa-b241-4fdf-9d71-c3029e8e6e48); ">
 
-							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=23"> </a>
+							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=9"> </a>
 							<div
 								class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 								<!-- <h3 class="text-shadow text-uppercase mb-0">   </h3> -->
@@ -237,7 +237,7 @@
 					</div>
 				</div>
 				<div class="text-end todaytour-font">
-					울릉도 관광 코스(A) <span class="todaytour-font-id">짜파게*님</span>
+					강원도 인생삿 찍기여행 <span class="todaytour-font-id">짜파게*님</span>
 				</div>
 			</div>
 
@@ -255,7 +255,7 @@
 				<p class="main-number">1</p>
 				<div class="ps-lg-3">
 					<h5 class="text-uppercase">Together</h5>
-					<p class="mb-5 mb-lg-0 text-pM fs-5">같이 떠나요. 그곳이 어디든 소중한 이와
+					<p class="mb-5 mb-lg-0 text-pM fs-5" style="word-break: keep-all;">같이 떠나요. 그곳이 어디든 소중한 이와
 						함께라면 행복한 시간이 찾아올 거예요. 투게더에서 ‘동행’을 구해보세요. 새로운 인연이 기다릴 거예요.</p>
 				</div>
 			</div>
@@ -265,7 +265,7 @@
 				<p class="main-number">2</p>
 				<div class="ps-lg-3">
 					<h5 class="text-uppercase ms-3">To Get There</h5>
-					<p class="mb-5 mb-lg-0 ms-3 text-pM fs-5">실시간 ‘핫플레이스’부터 우리나라
+					<p class="mb-5 mb-lg-0 ms-3 text-pM fs-5" style="word-break: keep-all;">실시간 ‘핫플레이스’부터 우리나라
 						구석구석 숨겨진 명소까지. 투게더에서 제공하는 관광 정보를 바탕으로 ‘나만의 여행 계획’을 세워보세요.</p>
 				</div>
 			</div>
@@ -275,7 +275,7 @@
 				<p class="main-number">3</p>
 				<div class="ps-lg-3">
 					<h5 class="text-uppercase ms-3">To Remember</h5>
-					<p class="mb-5 mb-lg-0 ms-3 text-pM fs-5">여행은 즐거우셨나요. ‘리뷰’와 ‘여행
+					<p class="mb-5 mb-lg-0 ms-3 text-pM fs-5" style="word-break: keep-all;">여행은 즐거우셨나요. ‘리뷰’와 ‘여행
 						후기’를 통해 여러분의 아름다운 추억을 되새기고 공유해주세요. 함께 나누는 만큼 오래도록 잊히지 않을 기억이 될 거예요</p>
 				</div>
 			</div>
@@ -553,55 +553,54 @@
 			style="overflow: hidden; cursor: pointer;">
 			<div>
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1541845157-a6d2d100c931?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/58/2760758.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div>
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1588282322673-c31965a75c3e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/15/2760715.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 
 			<div class="tall">
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1588117472013-59bb13edafec?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60"
+					src="http://tong.visitkorea.or.kr/cms2/website/87/2647387.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 
 			<div class="wide">
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1587588354456-ae376af71a25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/96/2707196.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div>
 				<img class="img-main-gallery hover-animate"
-					src="
-            https://images.unsplash.com/photo-1558980663-3685c1d673c4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=60"
+					src="http://tong.visitkorea.or.kr/cms2/website/36/2706936.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="tall">
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1588499756884-d72584d84df5?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2134&amp;q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/05/2719605.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="big">
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1588492885706-b8917f06df77?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1951&amp;q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/12/2774412.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div>
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1588247866001-68fa8c438dd7?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=564&amp;q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/39/2705239.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="wide">
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1586521995568-39abaa0c2311?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/31/2779531.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 			<div class="tall">
 				<img class="img-main-gallery hover-animate"
-					src="https://images.unsplash.com/photo-1588453862014-cd1a9ad06a12?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+					src="http://tong.visitkorea.or.kr/cms2/website/88/2826488.jpg"
 					alt="" onclick="location.href='${path}/community/gallery'"/>
 			</div>
 		</div>

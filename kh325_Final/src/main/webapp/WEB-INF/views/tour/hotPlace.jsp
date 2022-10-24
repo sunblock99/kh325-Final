@@ -184,13 +184,6 @@
                     </div>
                 </div>
                 
-                <script>
-//                 function contentTypeClick() {
-//                 	let id = document.getElementById("switch-1").value;
-//                 	location.href = "${path}/tour/hotPlace?id=" + contentTypeId;
-//                 }
-                
-                </script>
 
                 <!-- 공간활용 -->
                 <div class="col-1"></div>
@@ -238,7 +231,10 @@
                                 <!-- 소개 정보 -->
                                 <div class="card-list__info">
                                     <a href="#" class="a-hot-title">
-                                       <span class="card-list__category card-list__category-hover" style="font-family:pB; font-size:15px;"><c:out value="관광지" /></span>
+                                       <span class="card-list__category card-list__category-hover" style="font-family:pB; font-size:15px;">
+                                       <c:if test="${HotPlace.contentTypeId eq 12}"><c:out value="관광지" /></c:if>
+                                       <c:if test="${HotPlace.contentTypeId eq 39}"><c:out value="음식점" /></c:if>
+                                       </span>
                                     	<h3 class="card-list__title card-list__title-hover text-overflow-elip-1" style="font-family:pB"><c:out value="${HotPlace.title}" /></h3>
                                         	<span class="card-list__by card-list__by-hover a-hot-loc text-overflow-elip-1" style="font-family:pB; font-size:15px;">
                           					<span style="color: rgba(255, 178, 105, 0.63);">in </span><c:out value="${HotPlace.addr1}" /></span>
