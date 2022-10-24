@@ -92,9 +92,9 @@ public class TravelMapController {
 		System.out.println("contentId 값 : "+ contentId);
 		System.out.println("courseList 값 : "+ courseMap.getCourse());
 		
-		if(courseMap == null) {
-			return "redirect:error";
-		}
+//		if(courseMap == null) {
+//			return "redirect:error";
+//		}
 		
 		model.addAttribute("courseMapList", courseMapList);
 		model.addAttribute("courseMap", courseMap);
