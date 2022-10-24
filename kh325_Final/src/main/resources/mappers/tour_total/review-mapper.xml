@@ -14,9 +14,9 @@
 		<result property="userAvatar" column="U_AVATAR" />
 	</resultMap>
 	
-	<insert id="insertReview" parameterType="int">
+	<insert id="insertReview" parameterType="DetailReview">
 		INSERT INTO REVIEW_TOTAL 
-			VALUES (#{reviewNo}, #{contentId}, #{userNo}, #{star}, #{content})
+			VALUES (SEQ_REVIEW_NO.NEXTVAL, #{contentId}, #{userNo}, #{star}, #{content})
 	</insert>
 	
 	<select id="getReviewList" parameterType="int" resultMap="ReviewListResultMap">
