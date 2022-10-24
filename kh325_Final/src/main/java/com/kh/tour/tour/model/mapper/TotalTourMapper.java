@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import com.kh.tour.course.model.vo.DetailCourse;
-import com.kh.tour.member.model.vo.Review;
+import com.kh.tour.tour.model.vo.Category;
 import com.kh.tour.tour.model.vo.DetailCultural;
 import com.kh.tour.tour.model.vo.DetailEvent;
 import com.kh.tour.tour.model.vo.DetailHotel;
@@ -16,11 +16,10 @@ import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
-import com.kh.tour.tour.model.vo.RepeatCourse;
-import com.kh.tour.tour.model.vo.RepeatHotel;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.tour.model.vo.TourImage;
+import com.kh.tour.tour.model.vo.TourLike;
 
 
 
@@ -33,12 +32,20 @@ public interface TotalTourMapper {
 	
 	Tour selectByContentId(int contentId); // contentId로 공통정보 + 이미지 + 무장애 상세내용 조회하기 
 	
-	List<RepeatInfo> selectDetailByContentId(int contentId); //  contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기 
+	List<RepeatInfo> selectDetailByContentId(int contentId); //  contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기
 	
-	RepeatCourse selectRepeatCourseByContentId(int contentId); // contentId로 여행코스 소개+반복 조회하기  
-	
-	RepeatHotel selectRepeatHotelByContentId(int contentId); // contentId로 숙박 소개+반복 조회하기  
+	int selectTourListCount(Map<String, Object> searchMap); // 관광지 체크박스로 조회된 관광지 리스트 갯수
 
+	List<Tour> selectTourList(RowBounds rowBound1, Map<String, Object> searchMap); // 관광지 체크박스로 조회된 관광지 리스트 갯수
+
+	int tourLikeInsert(int userNo, int contentId); // userNo랑 contentId로 관광지 찜하기
+	
+	int tourLikeDelete(int userNo, int contentId); // userNo랑 contentId로 관광지 찜하기
+
+	List<TourLike> selectTourLikeList(int userNo); // userNo로 찜목록 전체 조회하기
+
+	List<Category> selectCat1List(String cat1);
+	
 	DetailTourist detailTourist(int contentId);
 
 	DetailCourse detailCourse(int contentId);
@@ -58,9 +65,5 @@ public interface TotalTourMapper {
 	List<TourImage> tourImage(int contentId);
 
 	List<DetailReview> getReviewList (int contentId);
-	
-	
-
-
 
 }

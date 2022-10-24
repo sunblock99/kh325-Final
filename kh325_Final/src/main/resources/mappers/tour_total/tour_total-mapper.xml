@@ -258,12 +258,12 @@
 		<result property="fldgubun" column="FLDGUBUN" />
 		<result property="infoName" column="INFONAME" />
 		<result property="infoText" column="INFOTEXT" />
-		<collection property= "detailTouristTable" resultMap ="detailTouristListResultMap"/> <!-- 1. DetailEvent 객체 삽입 -->
-		<collection property= "detailCulturalTable" resultMap ="detailCulturalListResultMap"/> <!-- 2. DetailEvent 객체 삽입 -->
+		<collection property= "detailTouristTable" resultMap ="detailTouristListResultMap"/> <!-- 1. DetailTourist 객체 삽입 -->
+		<collection property= "detailCulturalTable" resultMap ="detailCulturalListResultMap"/> <!-- 2. DetailCultural 객체 삽입 -->
 		<collection property= "detailEventTable" resultMap ="detailEventListResultMap"/> <!-- 3. DetailEvent 객체 삽입 -->
-		<collection property= "detailSportsTable" resultMap ="detailSportsListResultMap"/> <!-- 4.DetailEvent 객체 삽입 -->
-		<collection property= "detailShoppingTable" resultMap ="detailShoppingListResultMap"/> <!-- 5.DetailEvent 객체 삽입 -->
-		<collection property= "detailRestaurantTable" resultMap ="detailRestaurantListResultMap"/> <!-- 6.DetailEvent 객체 삽입 -->
+		<collection property= "detailSportsTable" resultMap ="detailSportsListResultMap"/> <!-- 4.DetailSports 객체 삽입 -->
+		<collection property= "detailShoppingTable" resultMap ="detailShoppingListResultMap"/> <!-- 5.DetailShopping 객체 삽입 -->
+		<collection property= "detailRestaurantTable" resultMap ="detailRestaurantListResultMap"/> <!-- 6.DetailRestaurant 객체 삽입 -->
 	</resultMap>
 
 	<!-- 14.반복정보_여행코스 테이블 -->
@@ -351,10 +351,37 @@
 		<result property="mapY" column="MAPY" />
 		<result property="mLevel" column="MLEVEL" />
 		<result property="overview" column="OVERVIEW" />
+		<result property="avgStar" column="AVGSTAR" />
 		<collection property= "areaCodeTable" resultMap ="AreaCodeListResultMap"/> <!-- AreaCode 객체 삽입 -->
+		<collection property= "categoryTable" resultMap ="CategoryCodeListResultMap"/> <!-- Category 객체 삽입 -->
 		<collection property= "detailEventTable" resultMap ="detailEventListResultMap"/> <!-- DetailEvent 객체 삽입 -->
 		<collection property= "tourImageTable" resultMap ="tourImageListResultMap"/> <!-- DetailEvent 객체 삽입 -->
-		<collection property= "tourFreeTable" resultMap ="tourFreeListResultMap"/> <!-- DetailEvent 객체 삽입 -->
+		<collection property= "tourFreeTable" resultMap ="tourFreeListResultMap"/> <!-- TourFree 객체 삽입 -->
+		<collection property= "replyTable" resultMap ="replyResultMap"/> <!-- Reply 객체 삽입 -->
+	</resultMap>
+	
+	<!-- 관광지 체크리스트 뿌릴때 쓰일 resultMap -->
+	<resultMap type="TourCheckList" id="TourCheckListResultMap">
+		<result property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="title" column="TITLE" />
+		<result property="addr1" column="ADDR1" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="firstImage2" column="FIRSTIMAGE2" />
+		<result property="overview" column="SOVERVIEW" />
+		<result property="cat1" column="CAT1" />
+		<result property="cat1Name" column="CAT1NAME" />
+		<result property="cat2" column="CAT2" />
+		<result property="cat2Name" column="CAT2NAME" />
+		<result property="eventStartDate" column="EVENTSTARTDATE" />
+		<result property="eventEndDate" column="EVENTENDDATE" />
+		<result property="avgStar" column="AVGSTAR" />
+		<collection property= "areaCodeTable" resultMap ="AreaCodeListResultMap"/> <!-- AreaCode 객체 삽입 -->
+		<collection property= "categoryTable" resultMap ="CategoryCodeListResultMap"/> <!-- Category 객체 삽입 -->
+		<collection property= "detailEventTable" resultMap ="detailEventListResultMap"/> <!-- DetailEvent 객체 삽입 -->
+		<collection property= "tourImageTable" resultMap ="tourImageListResultMap"/> <!-- DetailEvent 객체 삽입 -->
+		<collection property= "tourFreeTable" resultMap ="tourFreeListResultMap"/> <!-- TourFree 객체 삽입 -->
+		<collection property= "replyTable" resultMap ="replyResultMap"/> <!-- Reply 객체 삽입 -->
 	</resultMap>
 
 	<resultMap type="Reply" id="replyResultMap">
@@ -363,6 +390,12 @@
 		<result property="userNo" column="UNO" />
 		<result property="star" column="STAR" />
 		<result property="content" column="CONTENT" />
+	</resultMap>
+	
+	<resultMap type="TourLike" id="tourLikeResultMap">
+		<id property="like_No" column="LIKE_NO" />
+		<result property="userNo" column="UNO" />
+		<result property="contentId" column="CONTENTID" />
 	</resultMap>
 	
 	
@@ -425,7 +458,7 @@
 		
 		LEFT OUTER JOIN TOUR_FREE TF
 		ON (B.CONTENTID = TF.CONTENTID) <!-- 무장애 -->
-		WHERE
+		
 		B.CONTENTID = #{contentId}
 	</select>
 	
@@ -461,74 +494,211 @@
 			WHERE RI.CONTENTID = #{contentId}
 		</select>
 	
-	
-		<!-- 5. contentId로 (여행코스) 소개+반복 조회하기  -->
-		<select id="selectRepeatCourseByContentId" resultMap="repeatCourseListResultMap"  parameterType="int">
-				SELECT DC.*,
-					   RC.* 
-				FROM DETAIL_COURSE DC 	<!-- 행사 소개테이블  --> 
-				JOIN REPEAT_COURSE RC 	<!-- 반복정보 공통  --> 
-				ON (DC.CONTENTID = RC.CONTENTID)
-				WHERE DC.CONTENTID =  #{contentId}
-		</select>
-		
-		
-		<!-- 6. contentId로 (숙박) 소개+반복 조회하기  -->
-		<select id="selectRepeatHotelByContentId" resultMap="repeatHotelListResultMap"  parameterType="int">
-				SELECT DH.*,
-					   RH.*
-				FROM DETAIL_HOTEL DH 	<!-- 숙박 소개테이블  --> 
-				JOIN REPEAT_HOTEL RH 	<!-- 반복정보 공통  --> 
-				ON (DH.CONTENTID = RH.CONTENTID)
-				WHERE DH.CONTENTID = #{contentId}
-		</select>
 		
 	
-	<select id="detailTourist" resultMap="detailTouristListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_TOURIST WHERE CONTENTID = #{contentId}
-	</select>
-
-	<select id="detailCourse" resultMap="detailCourseListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_COURSE WHERE CONTENTID = #{contentId}
-	</select>
-
-	<select id="detailHotel" resultMap="detailHotelListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_HOTEL WHERE CONTENTID = #{contentId}
-	</select>
-
-	<select id="detailCultural" resultMap="detailCulturalListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_CULTURAL WHERE CONTENTID = #{contentId}
-	</select>
+		<!-- 7. 관광지 체크박스로 조회된 관광지 리스트 갯수-->
+		<select id="selectTourListCount" resultType="int"  parameterType="map">
+					SELECT COUNT(*) FROM
+					(SELECT B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.ADDR1,B.FIRSTIMAGE, B.FIRSTIMAGE2, B.OVERVIEW,
+					        A.AREACODE, A.AREANAME,A.SIGUNGUCODE,A.DETAILAREANAME,
+					        C.CAT1,C.CAT1NAME,C.CAT2, C.CAT2NAME, DE.EVENTSTARTDATE, DE.EVENTENDDATE,
+					        NVL(H.AVGSTAR,0) AS AVGSTAR
+					        
+					FROM BASIC_TOUR_INFO B  
+					
+					JOIN AREACODE A ON (B.AREACODE = A.AREACODE AND B.SIGUNGUCODE = A.SIGUNGUCODE)
+					JOIN CATEGORY C ON (B.CAT1 = C.CAT1 AND B.CAT2 = C.CAT2)
+					
+					LEFT OUTER JOIN 
+					(SELECT CONTENTID, ROUND(AVG(STAR)) AS AVGSTAR FROM REVIEW_TOTAL GROUP BY CONTENTID) H
+					ON (B.CONTENTID = H.CONTENTID)
+					
+					LEFT OUTER JOIN DETAIL_EVENT DE 
+					ON (B.CONTENTID = DE.CONTENTID)
+					
+					WHERE 1=1
+					
+					<if test="searchValue != null">
+						AND B.TITLE LIKE '%'||#{searchValue}||'%' <!-- 검색어 -->
+					</if>
+					<if test="areaCodeList != null">
+						AND B.AREACODE IN  <!-- 지역코드 리스트 -->
+						<foreach collection="areaCodeList" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="tourType != null">
+						AND B.CONTENTTYPEID = #{tourType} <!-- 투어타입 -->
+					</if>
+					
+					<if test="cat2List != null">
+						AND B.CAT2 IN  <!-- 중분류 리스트 -->
+						<foreach collection="cat2List" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="eventStartDate != null and eventEndDate != null">
+						AND DE.EVENTSTARTDATE &gt; #{eventStartDate} and DE.EVENTENDDATE &lt;
+						#{eventEndDate}
+					</if>
+					
+					<if test="eventStartDate != null">
+						ORDER BY DE.EVENTSTARTDATE ASC, A.AREACODE ASC)
+					</if>
+					
+					<if test="eventStartDate == null ">
+						ORDER BY A.AREACODE ASC)
+					</if>		
+					</select>
 	
-	<select id="detailEvent" resultMap="detailEventListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_EVENT WHERE CONTENTID = #{contentId}
-	</select>
-
-	<select id="detailSports" resultMap="detailSportsListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_SPORTS WHERE CONTENTID = #{contentId}
-	</select>
 	
-	<select id="detailShopping" resultMap="detailShoppingListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_SHOPPING WHERE CONTENTID = #{contentId}
-	</select>
-
-	<select id="detailRestaurant" resultMap="detailRestaurantListResultMap" parameterType="int">
-	SELECT * FROM DETAIL_RESTAURANT WHERE CONTENTID = #{contentId}
-	</select>
-	
-	<select id="tourImage" resultMap="tourImageListResultMap" parameterType="int">
-	 SELECT * FROM TOUR_IMAGE I
-	 JOIN BASIC_TOUR_INFO B ON (B.CONTENTID = I.CONTENTID)
-	 WHERE I.CONTENTID = #{contentId}
-	</select>
-	
-	
-	
-	
-	
-	
-	
-	
+			<!-- 8. 관광지 체크박스로 조회된 관광지 리스트 -->
+			<select id="selectTourList" resultMap="tourInfoListResultMap" parameterType="map">					
+					SELECT B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.ADDR1,B.FIRSTIMAGE, B.FIRSTIMAGE2, B.OVERVIEW,
+					        A.AREACODE, A.AREANAME,A.SIGUNGUCODE,A.DETAILAREANAME,
+					        C.CAT1,C.CAT1NAME,C.CAT2, C.CAT2NAME, DE.EVENTSTARTDATE, DE.EVENTENDDATE,
+					        NVL(H.AVGSTAR,0) AS AVGSTAR
+					        
+					FROM BASIC_TOUR_INFO B  
+					
+					JOIN AREACODE A ON (B.AREACODE = A.AREACODE AND B.SIGUNGUCODE = A.SIGUNGUCODE)
+					JOIN CATEGORY C ON (B.CAT1 = C.CAT1 AND B.CAT2 = C.CAT2)
+					
+					LEFT OUTER JOIN 
+					(SELECT CONTENTID, ROUND(AVG(STAR)) AS AVGSTAR FROM REVIEW_TOTAL GROUP BY CONTENTID) H
+					ON (B.CONTENTID = H.CONTENTID)
+					
+					LEFT OUTER JOIN DETAIL_EVENT DE 
+					ON (B.CONTENTID = DE.CONTENTID)
+					
+					WHERE 1=1
+					
+					<if test="searchValue != null">
+						AND B.TITLE LIKE '%'||#{searchValue}||'%' <!-- 검색어 -->
+					</if>
+					<if test="areaCodeList != null">
+						AND B.AREACODE IN  <!-- 지역코드 리스트 -->
+						<foreach collection="areaCodeList" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="tourType != null">
+						AND B.CONTENTTYPEID = #{tourType} <!-- 투어타입 -->
+					</if>
+					
+					<if test="cat2List != null">
+						AND B.CAT2 IN  <!-- 중분류 리스트 -->
+						<foreach collection="cat2List" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="eventStartDate != null and eventEndDate != null">
+						AND DE.EVENTSTARTDATE &gt; #{eventStartDate} and DE.EVENTENDDATE &lt;
+						#{eventEndDate}
+					</if>
+					
+					<if test="eventStartDate != null">
+						ORDER BY DE.EVENTSTARTDATE ASC, A.AREACODE ASC
+					</if>
+					
+					<if test="eventStartDate == null ">
+						ORDER BY A.AREACODE ASC
+					</if>		
+			</select>
+				
+			<!-- 9. 관광지 찜하기 -->
+			<insert id="tourLikeInsert" parameterType="int"  >
+					INSERT INTO BOARD (
+						LIKE_NO,
+						UNO,
+						CONTENTID
+						
+					) VALUES (
+						SEQ_LIKE_NO.NEXTVAL,
+						#{userNo},
+						#{contentId},
+					)
+				</insert>
+				
+			<!-- 10 . 관광지 찜 삭제하기 -->	
+			<delete id="tourLikeDelete" parameterType="int">
+				DELETE FROM TOUR_LIKE WHERE UNO = #{userNo} AND CONTENTID = #{contentId}; 
+			</delete>
+				
+			<!-- 11. 찜목록 전체 불러오기 -->
+			<select id="selectTourLikeList" resultMap="tourLikeResultMap"  parameterType="int">
+				SELECT * FROM TOUR_LIKE 
+				WHERE 1=1
+				<if test="userNo != null">
+					AND UNO = #{userNo}
+				</if>
+			</select>
+			
+			<!-- 11. 중분류 불러오기 -->
+			<select id="selectCat1List" resultMap="AreaCodeListResultMap"  parameterType="String">
+				SELECT CAT2 FROM CATEGORY 
+				WHERE 1=1 
+				<if test="cat1 != null">
+					AND CAT1 = #{cat1} GROUP BY CAT2
+				</if>
+			</select>
+			
+				<select id="detailTourist"
+					resultMap="detailTouristListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_TOURIST WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailCourse" resultMap="detailCourseListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_COURSE WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailHotel" resultMap="detailHotelListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_HOTEL WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailCultural"
+					resultMap="detailCulturalListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_CULTURAL WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailEvent" resultMap="detailEventListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_EVENT WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailSports" resultMap="detailSportsListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_SPORTS WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailShopping"
+					resultMap="detailShoppingListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_SHOPPING WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailRestaurant"
+					resultMap="detailRestaurantListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_RESTAURANT WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="tourImage" resultMap="tourImageListResultMap"
+					parameterType="int">
+					SELECT * FROM TOUR_IMAGE I
+					JOIN BASIC_TOUR_INFO B ON (B.CONTENTID = I.CONTENTID)
+					WHERE I.CONTENTID = #{contentId}
+				</select>
+						
+				
 
 
 </mapper>

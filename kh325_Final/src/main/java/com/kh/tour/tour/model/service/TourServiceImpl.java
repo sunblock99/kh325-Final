@@ -7,11 +7,12 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.course.model.vo.DetailCourse;
-import com.kh.tour.member.model.vo.Review;
 import com.kh.tour.tour.model.mapper.TotalTourMapper;
+import com.kh.tour.tour.model.vo.Category;
 import com.kh.tour.tour.model.vo.DetailCultural;
 import com.kh.tour.tour.model.vo.DetailEvent;
 import com.kh.tour.tour.model.vo.DetailHotel;
@@ -20,11 +21,10 @@ import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
-import com.kh.tour.tour.model.vo.RepeatCourse;
-import com.kh.tour.tour.model.vo.RepeatHotel;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.tour.model.vo.TourImage;
+import com.kh.tour.tour.model.vo.TourLike;
 
 
 
@@ -80,41 +80,187 @@ public class TourServiceImpl implements TourService{
 		 
 		return mapper.selectEventListCount(searchMap);
 	}
-	
+
 	@Override //contentId로 공통 + 이미지 + 무장애 조회
 	public Tour findByContentId(int contentId) {
 		Tour tour = mapper.selectByContentId(contentId);
 		return tour;
 	}
 
-	@Override //contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 반복 + 소개 조회 
-	public List<RepeatInfo> findDetailByContentId(int contentId) {
+	
+	@Override
+	public int getTourCount(Map<String, String> param, String tourType, List<String> areaCode, String cat1, List<String> cat2) {
+		Map<String, Object> searchMap = new HashMap<String, Object>();
 		
-		return mapper.selectDetailByContentId(contentId);
+		String searchValue = param.get("searchValue"); // 검색어
+		
+		
+		if (searchValue != null && searchValue.length() > 0) {
+			searchMap.put("searchValue", searchValue); //검색어 1개 넣기
+		}
+		
+		String bookingDate = param.get("bookingDate"); //선택한 날짜 2022-10-26 to 2022-11-07
+		try {
+			String strDate = bookingDate.substring(0,10); //2022-10-26로 자르기
+			String endDate = bookingDate.substring(14,24); //2022-11-07로 자르기
+			
+			String[] strDateArray = strDate.split("-"); //[2022,10,26]로 자르기
+			String[] endDateArray = endDate.split("-"); //[2022,11,07]로 자르기
+		
+			StringBuilder sb1 = new StringBuilder();
+			for (int i = 0; i < strDateArray.length; i++) {
+				sb1.append(strDateArray[i]);
+			}
+			
+			StringBuilder sb2 = new StringBuilder();
+			for (int i = 0; i < endDateArray.length; i++) {
+				sb2.append(endDateArray[i]);
+			}
+			int eventStartDate = Integer.parseInt(sb1.toString()); //int형식 20221026로 만듬
+			int eventEndDate = Integer.parseInt(sb2.toString()); //int형식 20221107로 만듬
+			
+			System.out.println(eventStartDate);
+			System.out.println(eventEndDate);
+			
+			if (eventStartDate != 0 && eventStartDate > 0) {
+				searchMap.put("eventStartDate", eventStartDate); // 선택한 시작 날짜넣기 (NUMBER)
+			}
+			if (eventEndDate != 0 && eventEndDate > 0) {
+				searchMap.put("eventEndDate", eventEndDate); // 선택한 끝 날짜넣기 (NUMBER)
+			}
+			
+		} catch (Exception e) {
+		}
+		try {
+			if (tourType != null) {
+			int tourType1 = Integer.parseInt(param.get("tourType")); // 투어타입
+				searchMap.put("tourType", tourType1); // 투어타입 1개 넣기
+			}
+		} catch (Exception e) {
+		}
+		if(areaCode != null) {
+			searchMap.put("areaCodeList", areaCode); // 지역코드 리스트 넣기
+		}
+		if(cat1 != null) {
+			searchMap.put("cat1", cat1); // 대분류 1개 넣기
+		}
+		if(cat2 != null) {
+			searchMap.put("cat2List", cat2); // 소분류 리스트 넣기
+		}
+
+		System.out.println(searchMap.toString());
+		 
+		return mapper.selectTourListCount(searchMap);
+	}
+
+	@Override
+	public List<Tour> getTourList(PageInfo pageInfo, Map<String, String> param, String tourType, List<String> areaCode, String cat1, List<String> cat2) {
+		int offset = (pageInfo.getCurrentPage() - 1) * pageInfo.getListLimit();
+		RowBounds rowBound1 = new RowBounds(offset, pageInfo.getListLimit());
+		
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		
+		String searchValue = param.get("searchValue"); // 검색어
+		
+		
+		if (searchValue != null && searchValue.length() > 0) {
+			searchMap.put("searchValue", searchValue); //검색어 1개 넣기
+		}
+		
+		String bookingDate = param.get("bookingDate"); //선택한 날짜 2022-10-26 to 2022-11-07
+		try {
+			String strDate = bookingDate.substring(0,10); //2022-10-26로 자르기
+			String endDate = bookingDate.substring(14,24); //2022-11-07로 자르기
+			
+			String[] strDateArray = strDate.split("-"); //[2022,10,26]로 자르기
+			String[] endDateArray = endDate.split("-"); //[2022,11,07]로 자르기
+		
+			StringBuilder sb1 = new StringBuilder();
+			for (int i = 0; i < strDateArray.length; i++) {
+				sb1.append(strDateArray[i]);
+			}
+			
+			StringBuilder sb2 = new StringBuilder();
+			for (int i = 0; i < endDateArray.length; i++) {
+				sb2.append(endDateArray[i]);
+			}
+			int eventStartDate = Integer.parseInt(sb1.toString()); //int형식 20221026로 만듬
+			int eventEndDate = Integer.parseInt(sb2.toString()); //int형식 20221107로 만듬
+			
+			System.out.println(eventStartDate);
+			System.out.println(eventEndDate);
+			
+			if (eventStartDate != 0 && eventStartDate > 0) {
+				searchMap.put("eventStartDate", eventStartDate); // 선택한 시작 날짜넣기 (NUMBER)
+			}
+			if (eventEndDate != 0 && eventEndDate > 0) {
+				searchMap.put("eventEndDate", eventEndDate); // 선택한 끝 날짜넣기 (NUMBER)
+			}
+			
+		} catch (Exception e) {
+		}
+		try {
+			if (tourType != null) {
+			int tourType1 = Integer.parseInt(param.get("tourType")); // 투어타입
+				searchMap.put("tourType", tourType1); // 투어타입 1개 넣기
+			}
+		} catch (Exception e) {
+		}
+		if(areaCode != null) {
+			searchMap.put("areaCodeList", areaCode); // 지역코드 리스트 넣기
+		}
+		if(cat1 != null) {
+			searchMap.put("cat1", cat1); // 대분류 1개 넣기
+		}
+		if(cat2 != null) {
+			searchMap.put("cat2List", cat2); // 소분류 리스트 넣기
+		}
+
+		System.out.println(searchMap.toString());
+		 
+		return mapper.selectTourList(rowBound1,searchMap);
+	}
+
+
+	@Override // 관광지 찜하기
+	@Transactional(rollbackFor = Exception.class)
+	public int insertTourLike(int userNo, int contentId) {
+		int result = 0;
+
+		if (userNo != 0 && userNo > 0 && contentId != 0 && userNo > 0) {
+			result = mapper.tourLikeInsert(userNo,contentId);
+		}
+		return result;
+	}
+
+	@Override // 관광지 찜삭제하기
+	public int deleteTourLike(int userNo, int contentId) {
+		int result = 0;
+
+		if (userNo != 0 && userNo > 0 && contentId != 0 && userNo > 0) {
+			result = mapper.tourLikeDelete(userNo,contentId);
+		}
+		return result;
+	}
+
+
+	@Override
+	public List<TourLike> selectTourLikeList(int userNo) {
+		List<TourLike> tourLike = mapper.selectTourLikeList(userNo);
+		return tourLike;
+	}
+
+	@Override
+	public List<Category> getCat2List(String cat1) {
+		List<Category> selectCat2List = mapper.selectCat1List(cat1);
+		return selectCat2List;
 	}
 	
-	@Override // contentId로 여행코스 소개+반복 조회하기
-	public RepeatCourse findCourseDetailByContentId(int contentId) {
-		RepeatCourse repeatCourse = mapper.selectRepeatCourseByContentId(contentId);
-		return repeatCourse;
-	}
-
-	@Override // contentId로 숙박 소개+반복 조회하기  
-	public RepeatHotel findHotelDetailByContentId(int contentId) {
-		RepeatHotel repeatHotel = mapper.selectRepeatHotelByContentId(contentId);
-		return repeatHotel;
-	}
-
-	@Override
-	public List<Tour> getTourList(PageInfo pageInfo, Map<String, String> param, List<String> areaCode, String cat1,
-			List<String> cat2) {
-		return null;
-	}
-
-	@Override
-	public int getTourCount(Map<String, String> param, List<String> areaCode, String cat1, List<String> cat2) {
-		return 0;
-	}
+	
+	@Override //contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 반복 + 소개 조회 
+    public List<RepeatInfo> findDetailByContentId(int contentId) {
+        return mapper.selectDetailByContentId(contentId);
+    }
 
 	@Override
 	public DetailTourist getDetailTourist(int contentId) {
@@ -123,61 +269,51 @@ public class TourServiceImpl implements TourService{
 
 	@Override
 	public DetailCourse getDetailCourse(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.detailCourse(contentId);
 	}
 
 	@Override
 	public DetailHotel getDetailHotel(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.detailHotel(contentId);
 	}
 
 	@Override
 	public DetailCultural getDetailCultural(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.detailCultural(contentId);
 	}
 
 	@Override
 	public DetailEvent getDetailEvent(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.detailEvent(contentId);
 	}
 
 	@Override
 	public DetailSports getDetailSports(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.detailSports(contentId);
 	}
 
 	@Override
 	public DetailShopping getDetailShopping(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.detailShopping(contentId);
 	}
 
 	@Override
 	public DetailRestaurant getDetailRestaurant(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.detailRestaurant(contentId);
 	}
 
 	@Override
 	public List<TourImage> getTourImage(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.tourImage(contentId);
 	}
 
 	@Override
 	public List<DetailReview> getReviewList(int contentId) {
-		// TODO Auto-generated method stub
 		return mapper.getReviewList(contentId);
 	}
-
-
-	
-
-	
 	
 }
+
+	
+	
+	

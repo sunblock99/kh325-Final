@@ -31,11 +31,15 @@ public class Tour { //공통정보 테이블 = main
 	private String mapY;           //GPS Y좌표          
 	private String mLevel;         //mlevel           
 	private String overview;       //개요  
+	private int avgStar;       //개요  
 	
 	private AreaCode areaCodeTable;      //AreaCode 객체 삽입
+	private Category categoryTable;      //Category 객체 삽입
 	private DetailEvent detailEventTable;  //DetailEvent 객체 삽입
 	private TourFree tourFreeTable;  //TourFree 객체 삽입
 	private TourImage tourImageTable;  //TourImage 객체 삽입
+	private Reply replyTable;  //Reply 객체 삽입
+	
 	
 	
 }

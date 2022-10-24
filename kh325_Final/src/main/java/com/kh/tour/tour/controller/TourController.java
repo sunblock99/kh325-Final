@@ -4,15 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kh.tour.common.util.PageInfo;
-import com.kh.tour.member.model.vo.Review;
+import com.kh.tour.member.model.vo.Member;
 import com.kh.tour.tour.model.service.TourService;
+import com.kh.tour.tour.model.vo.Category;
 import com.kh.tour.tour.model.vo.DetailCultural;
 import com.kh.tour.tour.model.vo.DetailEvent;
 import com.kh.tour.tour.model.vo.DetailRestaurant;
@@ -20,11 +24,10 @@ import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
-import com.kh.tour.tour.model.vo.RepeatCourse;
-import com.kh.tour.tour.model.vo.RepeatHotel;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.tour.model.vo.TourImage;
+import com.kh.tour.tour.model.vo.TourLike;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -72,7 +75,8 @@ public class TourController {
 	
 	
 	@GetMapping("/tourSearch.do") //관광지 페이지에서 체크박스로 관광지 리스트 조회
-	public String tourSearchlist(Model model, @RequestParam Map<String, String> param, //파람 - 검색어 + date + 관광지타입
+	public String tourSearchlist(Model model, @RequestParam Map<String, String> param, //파람 - 검색어 + date 
+			@RequestParam(value = "tourType" , required = false) String tourType, // 관광지타입 1개
 			@RequestParam(value = "areaCode" , required = false) List<String> areaCode, // 체크된 지역코드 리스트
 			@RequestParam(value = "cat1" , required = false) String cat1, // 대분류 1개
 			@RequestParam(value = "cat2" , required = false) List<String> cat2 // 중분류 리스트
@@ -80,6 +84,11 @@ public class TourController {
 		log.info("param : " + param.toString());
 		System.out.println("가지고 들어온 파람값: " + param.toString());
 		
+		if(tourType == null) {
+			System.out.println("tourType null");
+		}else {
+			System.out.println("checkbox tourType : " + tourType);
+		}
 		if(areaCode == null) {
 			System.out.println("areaCodeList null");
 		}else {
@@ -103,9 +112,17 @@ public class TourController {
 			} catch (Exception e) {}
 		}
 		
-		PageInfo pageInfo = new PageInfo(page, 10, tService.getTourCount(param, areaCode, cat1, cat2), 9);
-		int tourListCount = tService.getTourCount(param, areaCode, cat1, cat2);
-		List<Tour> tourlist = tService.getTourList(pageInfo, param, areaCode, cat1, cat2);
+		if (cat1 != null) {
+			System.out.println("체크박스에서 선택된 cat1 값 : " + cat1);
+			List<Category> cat2List = tService.getCat2List(cat1);
+		}
+		
+		
+		
+		PageInfo pageInfo = new PageInfo(page, 10, tService.getTourCount(param, tourType, areaCode, cat1, cat2), 9);
+		int tourListCount = tService.getTourCount(param, tourType, areaCode, cat1, cat2);
+		List<Tour> tourlist = tService.getTourList(pageInfo, param, tourType ,areaCode, cat1, cat2);
+		System.out.println("찾아온 관광지 리스트 : " +  tourlist);
 		
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("param", param);
@@ -183,17 +200,68 @@ public class TourController {
 		model.addAttribute("imgDetail", imgDetail);
 		return "tour/infoDetail";
 	}
-
-	@GetMapping("/tourDetailInfo2.do") // contentId로 숙박 소개+반복 조회하기   
-	public String HotelDetailInfo(Model model, @RequestParam("contentId") int contentId) {
-		RepeatHotel repeatHotel = tService.findHotelDetailByContentId(contentId);
+	
+	
+	@GetMapping("/tourLike.do") //찜하기 기능
+	public String tourLike(Model model, HttpServletRequest request,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			@RequestParam("contentId") int contentId) {
 		
-		if(repeatHotel == null) {
-			return "redirect:error";
+		if(loginMember == null || loginMember.getUserNo() < 0) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("location", "/");
+			return "/common/msg";
 		}
 		
-		model.addAttribute("repeatHotel", repeatHotel);
-		return "tour/infoDetail";
+		
+		if(contentId != 0 && contentId > 0) {
+			System.out.println("가지고 들어온 contentId는 :" + contentId);
+		}else {
+			System.out.println("contentId null");
+		}
+		
+		int UserNo = loginMember.getUserNo(); // 로그인한 회원의 userNo 받아오기
+		List<TourLike> tourLike = tService.selectTourLikeList(UserNo); //회원번호로 찜리스트 조회해오기
+		
+		int result2 = 0;
+		
+		for (int i = 0; i < tourLike.size(); i++) {
+			if(tourLike.get(i).getContentId() ==  contentId) { //찜목록에 내가 찜하고 싶은 관광지가 이미 있는 경우
+				result2 = 1;
+			}else {//찜목록에 내가 찜하고 싶은 관광지가 없는 경우
+				result2 = -1;
+			}
+		}
+		
+		if(result2 == 1) { //찜목록에 내가 찜하고 싶은 관광지가 이미 있는 경우 -> delete
+			int result= tService.deleteTourLike(UserNo,contentId);
+			if(result > 0) {
+				model.addAttribute("msg", "찜하기 삭제 되었습니다");
+				model.addAttribute("location", "/tour/infoSearch");
+			}else {
+				model.addAttribute("msg", "찜하기 삭제하기 실패하였습니다.");
+				model.addAttribute("location", "/tour/infoSearch");
+			}
+		}
+		
+		if(result2 == -1) {//찜목록에 내가 찜하고 싶은 관광지가 없는 경우 -> insert
+			int result= tService.insertTourLike(UserNo,contentId);
+			if(result > 0) {
+				model.addAttribute("msg", "찜목록에 넣기 성공하였습니다.");
+				model.addAttribute("location", "/tour/infoSearch");
+			}else {
+				model.addAttribute("msg", "찜목록에 넣기 실패하였습니다.");
+				model.addAttribute("location", "/tour/infoSearch");
+			}
+		}
+		return "/common/msg";
+		
 	}
+	
+	
+	
+	
+	
+	
 
 }
