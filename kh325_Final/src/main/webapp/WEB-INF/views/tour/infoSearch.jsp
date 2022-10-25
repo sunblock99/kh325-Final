@@ -6,14 +6,19 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <c:set var="searchValue" value="${param.searchValue}"/>
-<%-- <c:set var="cat1" value="${param.cat1}"/> --%>
+<c:set var="cat2List" value="${cat2}"/>
 <c:set var="areaCode" value="${areaCode}"/>
-<c:set var="cat2List" value="${param.cat2}"/>
+<c:set var="tourType" value="${param.tourType}"/>
+<c:set var="cat1" value="${cat1}"/>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head>  
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- 추가 -->
+	<meta charset="utf-8" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>관광지 통합검색 페이지 - 3*3 - final</title>
@@ -269,7 +274,12 @@
                             <div class="mb-4">
                                 <h1 class="form-label" for="form_dates">Dates</h1>
                                 <div class="datepicker-container datepicker-container-left">
-                                    <input class="form-control" type="text" name="bookingDate" id="bookingDate" style="font-family: 'pB'!important;" placeholder="Choose your dates">
+                                <c:if test="${bookingDate eq null}">
+                                    <input class="form-control" type="text" value="" name="bookingDate" id="bookingDate" style="font-family: 'pB'!important;" placeholder="Choose your dates">
+                                </c:if>
+                                <c:if test="${bookingDate ne null}">
+                                    <input class="form-control" type="text" name="bookingDate" id="bookingDate" style="font-family: 'pB'!important;" placeholder="${bookingDate}">
+                                </c:if>
                                 </div>
                             </div>
 
@@ -277,9 +287,9 @@
                             <div class="mb-4 " style="font-family: 'pB'!important; ">
                                 <h6 class="form-label" style="font-size: 0.95rem !important;" for="form_neighbourhood ">
                                     LOCATION</h6>
-                                <select class="selectpicker form-control " style="font-family: 'pB'!important; " name="areaCode" id="areaCode" multiple data-style="btn-selectpicker " data-live-search="true " data-selected-text-format="count>3" data-none-selected-text="검색하고 싶은 지역을 선택하세요.">
+                                <select class="selectpicker form-control " style="font-family: 'pB'!important;" name="areaCode" id="areaCode" multiple data-style="btn-selectpicker " data-live-search="true " data-selected-text-format="count>3" data-none-selected-text="검색하고 싶은 지역을 선택하세요.">
 <!--                                     <option value="neighbourhood_0">전국 </option> -->
-                                   <option value="1" <c:if test="${areaCode.contains('1')}">selected</c:if>>서울</option>
+                                  		<option value="1" <c:if test="${areaCode.contains('1')}">selected</c:if>>서울</option>
                                         <option value="2" <c:if test="${areaCode.contains('2')}">selected</c:if>>인천 </option>
                                         <option value="3" <c:if test="${areaCode.contains('3')}">selected</c:if>>대전 </option>
                                         <option value="4" <c:if test="${areaCode.contains('4')}">selected</c:if>>대구 </option>
@@ -297,10 +307,10 @@
                                         <option value="38" <c:if test="${areaCode.contains('38')}">selected</c:if>>전라남도 </option>
                                         <option value="39" <c:if test="${areaCode.contains('39')}">selected</c:if>>제주도 </option>
                                 </select>
-                                
-	                                <script type="text/javascript">                                           
+                            </div>
+	                                 <script type="text/javascript">                                           
 						                var selectValue = "${areaCode}";                          
-					                    var selectedElement = document.getElementById("areaCode");
+					                    var selectedElement = document.getElementsByName("areaCode");
 					                    var options = selectedElement.options;                  
 				                        for(var i = 0; i < options.length; i++){                
 				                            if(options[i].value == selectValue){                     
@@ -308,8 +318,7 @@
 				                                     break;                                                  
 				                            }                                                        
 				                        }                                                         
-										</script>     
-                            </div>
+										</script>    
 
                             <!-- TOUR TYPE 체크박스 -->
                             <div class="mb-4">
@@ -317,13 +326,13 @@
                                 </h6>
                                 <select class="selectpicker form-control" name="tourType" id="tourType" data-selected-text-format="count>3" data-none-selected-text="">
                                     <option value="12">관광지 </option>
-                                    <option value="14">문화시설 </option>
-                                    <option value="15">축제공연행사 </option>
-                                    <option value="25">여행코스 </option>
-                                    <option value="28">레포츠 </option>
-                                    <option value="32">숙박 </option>
-                                    <option value="38">쇼핑 </option>
-                                    <option value="39">음식점 </option>
+                                    <option value="14" >문화시설 </option>
+                                    <option value="15" >축제공연행사 </option>
+                                    <option value="25" >여행코스 </option>
+                                    <option value="28" >레포츠 </option>
+                                    <option value="32" >숙박 </option>
+                                    <option value="38" >쇼핑 </option>
+                                    <option value="39" >음식점 </option>
                                 </select>
                             </div>
                             		<script type="text/javascript">                                           
@@ -336,8 +345,7 @@
 							                                       break;                                                  
 							                                 }                                                        
 							                           }                                                         
-					                   </script>    
-					                   
+					                   </script>  
                             		
 
                             <!-- SERVICE TYPE 체크박스 -->
@@ -355,7 +363,7 @@
 												<input class="form-check-input" type="radio" value="A01"
 													 name="cat1" id="cat1">
 											</c:if>
-											<label class="form-check-label fs-6 " for="type_0">자연</label>
+											<label class="form-check-label fs-6 " >자연</label>
 										</div>
 
 									</li>
@@ -371,7 +379,7 @@
 												<input class="form-check-input" type="radio" value="A02"
 													 name="cat1" id="cat1">
 											</c:if>
-											<label class="form-check-label fs-6 " for="type_0">인문(문화/예술/역사)</label>
+											<label class="form-check-label fs-6 " >인문(문화/예술/역사)</label>
 										</div>
 
 									</li>
@@ -387,7 +395,7 @@
 												<input class="form-check-input" type="radio" value="A03"
 													 name="cat1" id="cat1">
 											</c:if>
-											<label class="form-check-label fs-6 " for="type_0">레포츠</label>
+											<label class="form-check-label fs-6 " >레포츠</label>
 										</div>
 
 									</li>
@@ -403,7 +411,7 @@
 												<input class="form-check-input" type="radio" value="A04"
 													 name="cat1" id="cat1">
 											</c:if>
-											<label class="form-check-label fs-6 " for="type_0">쇼핑</label>
+											<label class="form-check-label fs-6 " >쇼핑</label>
 										</div>
 
 									</li>
@@ -419,7 +427,7 @@
 												<input class="form-check-input" type="radio" value="A05"
 													 name="cat1" id="cat1">
 											</c:if>
-											<label class="form-check-label fs-6 " for="type_0">음식</label>
+											<label class="form-check-label fs-6 " >음식</label>
 										</div>
 
 									</li>
@@ -435,7 +443,7 @@
 												<input class="form-check-input" type="radio" value="B02"
 													 name="cat1" id="cat1">
 											</c:if>
-											<label class="form-check-label fs-6 " for="type_0">숙박</label>
+											<label class="form-check-label fs-6 " >숙박</label>
 										</div>
 
 									</li>
@@ -451,7 +459,7 @@
 												<input class="form-check-input" type="radio" value="C01"
 													 name="cat1" id="cat1">
 											</c:if>
-											<label class="form-check-label fs-6 " for="type_0">추천코스</label>
+											<label class="form-check-label fs-6 " >추천코스</label>
 										</div>
 
 									</li>
@@ -462,16 +470,16 @@
 										<script type="text/javascript">                                           
 							                 var selectValue = "${cat1}";                          
 							                    var selectedElement = document.getElementById("cat1");
-							                       var options = selectedElement.options;                  
 							                          for(var i = 0; i < options.length; i++){                
 							                              if(options[i].value == selectValue){                     
 							                                    selectedElement.selectedIndex = i;                      
 							                                       break;                                                  
 							                                 }                                                        
-							                           }                                                         
-					                   </script>    
-                           
+							                           }   
+					                   </script>  
+					                     
                             
+                              
                             <!-- 중분류 시작 -->
                             <div class="pb-4">
                                 <div class="collapse" id="moreFilters">
@@ -479,12 +487,12 @@
                                         <div class="mb-0">
                                             <h6 class="form-label" style="font-size: 0.95rem !important;">중분류</h6>
                                             <ul class="list-inline mt-xl-1 mb-0">
-														<!--  li 태그 시작-->
+												<!--  li 태그 시작-->
 												<c:if test="${cat1 eq 'A01'}">
 												<li class="list-inline-item"> 
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
-															 name="cat2" value="A0102"> <label
+															 name="cat2" value="A0102" > <label
 															class="form-check-label fs-5" >자연관광지
 														</label>
 													</div>
@@ -696,14 +704,27 @@
 													</div>
 												</li>
 												</c:if>
+									  
 											</ul>
                                         </div>
                                     </div>
                                 </div>
                                 
 
+                                
+                                	<script type="text/javascript">                                           
+							                          var cat2Values = document.getElementsByName("cat2");
+							                          if (cat2Values.length != 0) {
+							                              for (var i = 0; i < cat2Values.length; i++) {
+							                                  if (cat2Values[i].checked == true) {
+							                                      cat2Value = cat2Values[i].value;
+							                                  }
+							                              }
+							                          }
+							                          
+					                   </script>
 
-                                <div class="mb-4">
+								<div class="mb-4">
                                     <button class="btn btn-link btn-collapse ps-0 text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#moreFilters" aria-expanded="false" aria-controls="moreFilters" data-expanded-text="Less filters" data-collapsed-text="More filters">More filters</button>
                                 </div>
                                 <div class="mb-1">
@@ -731,9 +752,13 @@
                             <div class="col-sm-6 col-xl-4 mb-5 v text-black" data-marker-id="59c0c8e33b1527bfe2abaf92">
                                 <div class="card h-100 border-0 shadow">
                                     <div class="card-img-top overflow-hidden gradient-overlay">
-                                    
-                                        <img class="" style="width:340px !important; height:226px !important;" src="<c:if test="${Tour.firstImage == null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${Tour.firstImage != null}"><c:out value="${Tour.firstImage}"/></c:if>" />
+                                         <img class="" style="width:340px !important; height:226px !important; object-fit: fill; " src="<c:if test="${Tour.firstImage == null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${Tour.firstImage != null}"><c:out value="${Tour.firstImage}"/></c:if>" />
+                                         <c:if test="${Tour.contentTypeId eq '25'}">
+                                        <a class="tile-link" onclick="location.href='${path}/course/recommCourseDetail?contentId=${Tour.contentId}'"></a>
+                                        </c:if>
+                                         <c:if test="${Tour.contentTypeId ne '25'}">
                                         <a class="tile-link" onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'"></a>
+                                        </c:if>
                                         <div class="card-img-overlay-top text-end">
                                             <a class=" heart_pink card-fav-icon position-relative z-index-50 align-content-center" onclick="location.href='${path}/tourLike.do?contentId=${Tour.contentId}'">
                                                 <i class="fas fa-heart svg-icon"></i>
@@ -743,7 +768,12 @@
                                     <div class="card-body d-flex align-items-center">
                                         <div class="row w-100 txt_line">
                                             <p class="card-title col-md-8" style=" margin-top: 0; margin-bottom: 0.5rem; font-family: 'pEb'; font-weight: 700; font-size: 1.35rem; line-height: 1.3;">
+												<c:if test="${Tour.contentTypeId eq '25'}">
+                                                <a class=" text-black text-overflow-elip-1" onclick="location.href='${path}/course/recommCourseDetail?contentId=${Tour.contentId}'"><c:out value="${Tour.title}"/></a>
+                                             </c:if>
+                                             <c:if test="${Tour.contentTypeId ne '25'}">
                                                 <a class=" text-black text-overflow-elip-1" onclick="location.href='${path}/tourDetailInfo.do?contentId=${Tour.contentId}&contentTypeId=${Tour.contentTypeId}'"><c:out value="${Tour.title}"/></a>
+                                             </c:if>                                            
                                             </p>
                                             <div class="d-flex col-md-3 justify-center pt-1" style="text-align: center">
                                                  <c:forEach begin="1" end="${Tour.avgStar}" step="1"><i class="fa fa-xs fa-star text-warning pt-1"></i></c:forEach>
@@ -816,7 +846,7 @@
             }
 
             // 3. name으로 areaCode인 체크박스의 값들을 가져온다.
-            var areaCodeValues = document.getElementsByName("areaCode"); // 지역
+           /*  var areaCodeValues = document.getElementsByName("areaCode"); // 지역
             if (areaCodeValues.length != 0) {
                 for (var i = 0; i < areaCodeValues.length; i++) {
                     if (areaCodeValues[i].selected == true) {
@@ -824,7 +854,15 @@
                         pageUrl += '&areaCodeValue=' + areaCodeValue;
                     }
                 }
+            } */
+            var LocationValues = document.getElementById("areaCode"); //지역이름배열
+            for (var i = 0; i < LocationValues.options.length; i++) {
+                if (LocationValues.options[i].selected == true) {
+                	LocationValue = LocationValues.options[i].value;
+                    pageUrl += '&areaCode=' + LocationValue;
+                }
             }
+            
 
             // 4. name으로 tourTypeBox인 체크박스의 값들을 가져온다.
             var tourType = document.getElementById("tourType");
@@ -833,35 +871,37 @@
             }
 
         	// 5. name으로 cat1인 체크박스의 값들을 가져온다.
-         /*     var cat1 = document.getElementsByName("cat1"); // 지역
-            if (cat1.length != 0) {
-                for (let j = 0; j < cat1.length; j++) {
-                    if (cat1[j].selected == true) {
-                    	pageUrl = pageUrl + '&cat1=' + '${cat1}';
-                    }
-                }
-            } 
-              */
-            var cat1 = document.getElementById("cat1");
+           /*  var cat1 = document.getElementById("cat1");
             if (cat1.value.length > 0) {
                 pageUrl = pageUrl + '&cat1=' + cat1.value;
-            }
+            } */
+            var cat1s = document.getElementsByName("cat1");  //시대 
+	          if (cat1s.length != 0) {
+				for (var i = 0; i < cat1s.length; i++) {
+	                  if (cat1s[i].checked == true) {
+	                	  cat1 = cat1s[i].value;
+	                      pageUrl += '&cat1=' + cat1;
+	                  }
+	              }
+			  }
           
-            
             //  6. name으로 cat2인 체크박스의 값들을 가져온다.
             var cat2Values = document.getElementsByName("cat2");
             if (cat2Values.length != 0) {
                 for (var i = 0; i < cat2Values.length; i++) {
-                    if (cat2Values[i].selected == true) {
-                        cat2Value = cat2Value[i].value;
+                    if (cat2Values[i].checked == true) {
+                        cat2Value = cat2Values[i].value;
                         pageUrl += '&cat2Value=' + cat2Value;
                     }
                 }
             }
+            
 			alert(pageUrl);
             location.href = encodeURI(pageUrl);
         }
     </script>
+    
+   
 
     <!-- 광고 시작 -->
     <section class="py-4 position-relative dark-overlay "><img class="bg-image" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b6036c7a-2fcb-4516-ab7d-f77482991316" alt=" ">
@@ -1102,6 +1142,8 @@
 
         });
     </script>
+    
+   
 </body>
 
 </html>
