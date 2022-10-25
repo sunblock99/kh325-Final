@@ -116,7 +116,7 @@
 	
 	
 <!-- 나의코스 4개 for 코스 메인 -->
-	<resultMap type="MainMyCourse" id="MyCourseResultMap">
+	<resultMap type="MainMyCourse" id="MainMyCourseResultMap">
 		<id property="myCourseNo" column="MYCOURSE_NO"/>
 		<result property="rowNum" column="ROWNUM"/>
 		<result property="cntRevStar" column="CNTREVSTAR"/>
@@ -132,7 +132,7 @@
 		<result property="myCourseStatus" column="MYCOURSE_STATUS"/>
 	</resultMap>
 	
-	<select id="selectSortedByRevStar" resultMap="MyCourseResultMap">
+	<select id="selectSortedByRevStar" resultMap="MainMyCourseResultMap">
 		SELECT ROWNUM, STRPT.*, MC.UNO, M.U_NAME, M.U_AVATAR, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
                         MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS 
 		FROM MYCOURSE MC 
@@ -405,13 +405,6 @@
 		<result property="content" column="CONTENT"/>
 	</resultMap>
 	
-	<select id="detailRecommCourseRev" resultMap="RecommCourseRevResultMap" parameterType="int">
-		SELECT RT.UNO, RT.CONTENTID, RT.CONTENT, RT.STAR, M.U_NAME, U_AVATAR 
-		FROM review_total RT 
-		LEFT OUTER JOIN MEMBER M
-		ON(RT.UNO = M.UNO)
-		WHERE CONTENTID = #{contentId}
-	</select>
 
 	<resultMap type="MyCourseDetail" id="MyCourseDetaileResultMap">
 		<id property="myCourseDetailNo" column="MYCOURSE_DETAIL_NO"/>
