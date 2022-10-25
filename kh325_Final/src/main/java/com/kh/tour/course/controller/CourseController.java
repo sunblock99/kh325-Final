@@ -172,24 +172,23 @@ public class CourseController {
 	@RequestMapping("/tour/infoDetail/createCourse")
 	public String createCourse(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@RequestParam("userNo") int userNo, @RequestParam("myCourseTitle") String myCourseTitle) {
+			@RequestParam("myCourseTitle") String myCourseTitle, @RequestParam("myCourseNo") int myCourseNo,
+			@RequestParam("contentId") int contentId, @RequestParam("contentTypeId") int contentTypeId) {
 
-		if(loginMember == null || loginMember.getUserNo() < 0) {
-			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("location", "/tour/infoDetail");
-			return "/common/msg";
-		}
-		
+		int userNo = loginMember.getUserNo();
+
 		log.info("코스 만들기 요청");
 		MyCourseCreate myCourseCreate = new MyCourseCreate(0, userNo, myCourseTitle, null, null, null, null, null);
 		int result = courseService.createCourse(myCourseCreate);
 
 		if (result > 0) {
 			model.addAttribute("msg", "코스 리스트에 성공적으로 추가되었습니다.");
-			model.addAttribute("location", "/tour/infoDetail");
+			model.addAttribute("location",
+					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
 		} else {
 			model.addAttribute("msg", "코스 리스트 추가에 실패하였습니다.");
-			model.addAttribute("location", "/tour/infoDetail");
+			model.addAttribute("location",
+					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
 		}
 		return "/common/msg";
 	}
@@ -246,18 +245,13 @@ public class CourseController {
 	@RequestMapping("/tour/infoDetail/addContent")
 	public String insertContent(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@RequestParam("myCourseNo") int myCourseNo, @RequestParam("contentId") int contentId) {
-		
-		int userNo = loginMember.getUserNo();
+			@RequestParam("userNo") int userNo, @RequestParam("myCourseNo") int myCourseNo,
+			@RequestParam("contentId") int contentId, @RequestParam("contentTypeId") int contentTypeId) {
+
 		int myCourseSn = 0;
-		
-		if(loginMember == null || userNo < 0) {
-			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("location", "/tour/infoDetail");
-			return "/common/msg";
-		}
 
 		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
+		System.out.println(myCourseList);
 		if (myCourseList.isEmpty() == true) {
 			myCourseSn = 1;
 		} else {
@@ -268,10 +262,12 @@ public class CourseController {
 
 		if (result > 0) {
 			model.addAttribute("msg", "코스 추가에 성공하였습니다.");
-			model.addAttribute("location", "/tour/infoDetail");
+			model.addAttribute("location",
+					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
 		} else {
 			model.addAttribute("msg", "코스 추가에 실패하였습니다.");
-			model.addAttribute("location", "/tour/infoDetail");
+			model.addAttribute("location",
+					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
 		}
 		return "/common/msg";
 	}
@@ -280,30 +276,27 @@ public class CourseController {
 	@RequestMapping("/myPage/myCourseEdit/deleteContent")
 	public String deleteContent(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@RequestParam("myCourseNo") int myCourseNo,
-			@RequestParam("myCourseDetailNo") int myCourseDetailNo) {
-		
+			@RequestParam("myCourseNo") int myCourseNo, @RequestParam("myCourseDetailNo") int myCourseDetailNo) {
+
 		int userNo = loginMember.getUserNo();
-		
+
 		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
 		List<MyCourseSearch> searchByNoList = courseService.getForEdit(myCourseDetailNo);
-		
+
 		int deletedSn = searchByNoList.get(0).getMyCourseSn();
 		int targetNo = 0;
 		int targetSn = 0;
 		int descentResult = 0;
-		
+
 		if (myCourseList.size() > deletedSn) {
-			for(int i = deletedSn+1; i <= myCourseList.size(); i++) {
-				targetSn = myCourseList.get(i).getMyCourseSn(); 
+			for (int i = deletedSn + 1; i <= myCourseList.size(); i++) {
+				targetSn = myCourseList.get(i).getMyCourseSn();
 				targetNo = myCourseList.get(i).getMyCourseDetailNo();
-				descentResult = courseService.descent(targetSn-1, targetNo);
+				descentResult = courseService.descent(targetSn - 1, targetNo);
 			}
 		}
-		
+
 		int deleteResult = courseService.deleteContent(myCourseDetailNo);
-		
-		
 
 		if (deleteResult > 0 && descentResult > 0) {
 			model.addAttribute("msg", "코스 삭제에 성공하였습니다.");
@@ -355,47 +348,61 @@ public class CourseController {
 		}
 		return "/common/msg";
 	}
-	
+
 	// 코스 순서 변경하기(내리기)
-		@RequestMapping("/myPage/myCourseEdit/editSnDescent")
-		public String editSnDescent(Model model, HttpServletRequest request,
-				@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-				@RequestParam("myCourseNo") int myCourseNo, @RequestParam("myCourseDetailNo") int myCourseDetailNo) {
+	@RequestMapping("/myPage/myCourseEdit/editSnDescent")
+	public String editSnDescent(Model model, HttpServletRequest request,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			@RequestParam("myCourseNo") int myCourseNo, @RequestParam("myCourseDetailNo") int myCourseDetailNo) {
 
-			int userNo = loginMember.getUserNo();
-			int originSn = 0;
-			int targetSn = 0;
-			int targetNo = 0;
+		int userNo = loginMember.getUserNo();
+		int originSn = 0;
+		int targetSn = 0;
+		int targetNo = 0;
 
-			List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
-			List<MyCourseSearch> searchByNoList = courseService.getForEdit(myCourseDetailNo);
+		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
+		List<MyCourseSearch> searchByNoList = courseService.getForEdit(myCourseDetailNo);
 
-			if (myCourseList.size() == 1 || searchByNoList.get(0).getMyCourseSn() == 1
-					|| searchByNoList.get(0).getMyCourseSn() == myCourseList.size()) {
-				model.addAttribute("msg", "순서를 변경하실 수 없습니다");
-				model.addAttribute("location", "/");
-			} else {
-				for (int i = 0; i < myCourseList.size(); i++) {
-					if (myCourseList.get(i).getMyCourseDetailNo() == myCourseDetailNo) {
-						targetSn = myCourseList.get(i + 1).getMyCourseSn();
-						targetNo = myCourseList.get(i + 1).getMyCourseDetailNo();
-						originSn = myCourseList.get(i).getMyCourseSn();
-					}
+		if (myCourseList.size() == 1 || searchByNoList.get(0).getMyCourseSn() == 1
+				|| searchByNoList.get(0).getMyCourseSn() == myCourseList.size()) {
+			model.addAttribute("msg", "순서를 변경하실 수 없습니다");
+			model.addAttribute("location", "/");
+		} else {
+			for (int i = 0; i < myCourseList.size(); i++) {
+				if (myCourseList.get(i).getMyCourseDetailNo() == myCourseDetailNo) {
+					targetSn = myCourseList.get(i + 1).getMyCourseSn();
+					targetNo = myCourseList.get(i + 1).getMyCourseDetailNo();
+					originSn = myCourseList.get(i).getMyCourseSn();
 				}
 			}
-		
-			int descentResult = courseService.descent(targetSn, myCourseDetailNo);
-			int ascentResult = courseService.ascent(originSn, targetNo);
-
-			if (ascentResult > 0 && descentResult > 0) {
-				model.addAttribute("msg", "순서 변경에 성공하였습니다.");
-				model.addAttribute("location", "/myPage/myCourseEdit");
-			} else {
-				model.addAttribute("msg", "순서 변경에 실패하였습니다.");
-				model.addAttribute("location", "/myPage/myCourseEdit");
-			}
-			return "/common/msg";
 		}
+
+		int descentResult = courseService.descent(targetSn, myCourseDetailNo);
+		int ascentResult = courseService.ascent(originSn, targetNo);
+
+		if (ascentResult > 0 && descentResult > 0) {
+			model.addAttribute("msg", "순서 변경에 성공하였습니다.");
+			model.addAttribute("location", "/myPage/myCourseEdit");
+		} else {
+			model.addAttribute("msg", "순서 변경에 실패하였습니다.");
+			model.addAttribute("location", "/myPage/myCourseEdit");
+		}
+		return "/common/msg";
+	}
+
+	// 코스 리스트 for 디테일
+	@RequestMapping("/addMyCourse")
+	public String listforDetail(Model model, HttpServletRequest request,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			@RequestParam("contentId") int contentId, @RequestParam("contentTypeId") int contentTypeId) {
+
+		if (loginMember == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("location",
+					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
+		}
+		return "/common/msg";
+	}
 
 //	@RequestMapping("/courseMain")
 //	public String Course(Model model, @RequestParam("contentId") int contentId) {

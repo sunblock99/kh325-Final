@@ -78,5 +78,6 @@ public interface CourseService {
 	
 	List<MyCourseSearch> getForMyPage(int userNo, int myCourseNo);
 	List<MyCourseSearch> getForEdit(int myCourseDetailNo);
+	List<MyCourseSearch> getForCreate();
 
 }

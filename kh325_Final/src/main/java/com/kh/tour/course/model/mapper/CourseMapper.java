@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import com.kh.tour.course.model.vo.DetailCourse;
@@ -75,20 +76,22 @@ public interface CourseMapper {
 	int updateCourse(MyCourseCreate myCourseCreate);
 	
 	// 코스 컨텐츠 하나 추가하기
-	int insertContent(int myCourseNo, int contentId, int myCourseSn);
+	int insertContent(@Param("myCourseNo")int myCourseNo, @Param("contentId")int contentId, @Param("myCourseSn")int myCourseSn);
 	
 	// 코스 컨텐츠 하나 삭제하기
 	int deleteContent(int myCourseDetailNo);
 	
 	// 코스 순서 올리기
-	int ascent(int changedSn, int myCourseDetailNo);
+	int ascent(@Param("changedSn")int changedSn, @Param("myCourseDetailNo")int myCourseDetailNo);
 	
 	// 코스 순서 내리기
-	int descent(int changedSn, int myCourseDetailNo);
+	int descent(@Param("changedSn")int changedSn, @Param("myCourseDetailNo")int myCourseDetailNo);
 	
 	// 마이페이지용 나의코스정보 불러오기
-	List<MyCourseSearch> selectForMyPage(int userNo, int myCourseNo);
+	List<MyCourseSearch> selectForMyPage(@Param("userNo")int userNo, @Param("myCourseNo")int myCourseNo);
 	
 	List<MyCourseSearch> selectForEdit(int myCourseDetailNo);
+	
+	List<MyCourseSearch> selectForCreate();
 }
 	

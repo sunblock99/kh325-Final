@@ -491,22 +491,124 @@
                             <!-- 코스추가 기능 -->
                             <div class="col-1">
                                 <div class="wrapper mt-0">
-                                    <a href="${path}/addMyCourse?uNo=${loginMember.userNo}&contetntId=${tour.contentId}" class="like-button" >
+                                    <a class="like-button" data-bs-toggle="modal" data-bs-target="#addCourse">
                                         <i class="material-icons not-liked bouncy">
-                                        <svg class="svg-icon theme-line-1 text-danger">
-                                        <use xlink:href="#map-location-1"></use></svg></i>
-                                        
-                                        <i class="material-icons is-liked bouncy">
-                        				<svg class="svg-icon theme-line-1">
-                          				<use xlink:href="#map-location-1"></use></svg></i>
-                                        
+                                            <svg class="svg-icon theme-line-1 text-danger">
+                                                <use xlink:href="#map-location-1"></use></svg>
+                                        </i>
+
+                                        <i class="material-icons is-liked bouncy" data-bs-toggle="modal" data-bs-target="#dropCourse">
+                                            <svg class="svg-icon theme-line-1">
+                                                <use xlink:href="#map-location-1"></use></svg>
+                                        </i>
                                         <span class="like-overlay"></span>
                                     </a>
+
                                     <div class="text-center mt-2 text-pB" style="font-size: 15px;">코스담기</div>
                                 </div>
                             </div>
-                            
                             <!-- 코스추가 기능 -->
+                          
+                          <!-- 여행코스 모달1 : addCourse-->
+                          <div class="modal fade" id="addCourse" tabindex="-1" aria-labelledby="addCourseLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                          <h1 class="modal-title fs-5 fw-bold text-pB ms-1" id="addCourseLabel">코스 담기</h1>
+                                          <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                          
+                                      <div class="modal-body">
+	                                     <input type="text" name="" value="" hidden>
+	                                        <div class="row">
+	                                          <div class="form-group">
+	                                           <form id="test" action="${path}/tour/infoDetail/addContent">    
+	                                            <label class="form-label" for="area-form">나의 코스 목록</label>  
+	                                            <input type="text" name="userNo" value="${loginMember.userNo}" hidden>
+	                                            <input type="text" name="contentId" value="${tour.contentId}" hidden>  
+	                                            <input type="text" name="contentTypeId" value="${tour.contentTypeId}" hidden>     
+	                                              <c:if test="${!empty listForCourseCreate }">      
+							                 <c:forEach var="i" begin="0" end="${listForCourseCreate.size()-1}">    
+							                 <c:if test="${listForCourseCreate.get(i).getUserNo() eq loginMember.userNo}">            
+							                  <select class="selectpicker form-control text-pB" name="myCourseNo" id="myCourseNo" data-style="btn-selectpicker" >
+							                    <option value="${listForCourseCreate.get(i).getMyCourseNo()}"><c:out value="${listForCourseCreate.get(i).getMyCourseTitle()}"/></option>
+							                  </select>
+							                  </c:if> 
+							                  </c:forEach>
+							                   </c:if> 
+	                                            </form>
+	                                          </div>
+	                                        </div>
+                                        
+	                                        <div class="row form-group pt-4 pb-2 text-pB">
+	                                        
+	                                          <form class="col-6" action="" method="post" name="">
+	                                          	<input data-bs-toggle="modal" data-bs-target="#makeCourse" class="btn btn-warning"
+	                                          	style="letter-spacing:-1px;" value="새로 만들기">
+	                                          </form>
+	                          
+	                                          <form class="col-6" action="" method="post" name="">
+	                                          	<input class="btn btn-warning float-end" type="submit" form="test" style="letter-spacing:-1px;" value="내 코스 담기">
+	                                          </form>
+	                                       </div>
+                                      </div>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <!-- 여행코스 모달2 : makeCourse -->
+                          <div class="modal fade" id="makeCourse" tabindex="-1" aria-labelledby="makeCourseLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5 fw-bold text-pB ms-1" id="makeCourseLabel">새 코스 만들기</h1>
+                                          <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                          <form action="${path}/tour/infoDetail/createCourse" method="post" name="" id="test2">
+                                            <input type="text" name="userNo" value="${loginMember.userNo}" hidden>
+	                                            <input type="text" name="contentId" value="${tour.contentId}" hidden>  
+	                                            <input type="text" name="contentTypeId" value="${tour.contentTypeId}" hidden>   
+                                              <div class="row">
+                                                <div class="form-group pt-3">
+                                                  <label class="form-label" for="find_text">코스 이름</label>
+                                                  <textarea class="form-control find_text" id="content" name="myCourseTitle" cols="10" rows="1" placeholder="10자 이내로 작성하세요."></textarea>
+                                                </div>
+                          
+                                              </div>
+                                              <div class="form-group pt-5 text-end col-12 text-pB">
+                                                  <input type="submit" class="btn btn-warning col-3" form="test2" value="코스 만들기">
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- 여행코스 해제 : dropCourse -->
+                          <div class="modal fade" id="dropCourse" tabindex="-1" aria-labelledby="dropCourseLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5 fw-bold text-pB ms-1" id="dropCourseLabel">나의 코스에서 삭제 하시겠습니까?</h1>
+                                        <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="row modal-body text-pR">
+                                          &nbsp; &nbsp; 삭제하면 되돌릴 수 없습니다
+                                        <form action="" method="post" name="">
+                                          <input type="text" name="userNo" value="" hidden>
+                                          <div class="form-group pt-5 float-end text-pB">
+                                            <input class="btn btn-muted" type="submit" value="삭제하기" name="userNo" value="">
+                                          </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 코스추가 기능 끝 -->
+                            
+                            
                             <!-- 좋아요 기능 -->
                             <div class="col-1">
                                 <div class="wrapper mt-0">
@@ -524,7 +626,7 @@
                                     <div class="text-center mt-2 me-0 text-pB" style="font-size: 16px;">좋아요</div>
                                 </div>
                             </div>
-                            <!-- 좋아요 기능 -->
+                          <!-- 좋아요 기능 -->
                         </div>
                     </div>
 

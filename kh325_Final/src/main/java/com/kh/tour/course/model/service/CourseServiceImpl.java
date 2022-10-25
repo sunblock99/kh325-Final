@@ -261,6 +261,12 @@ public class CourseServiceImpl implements CourseService{
 		return courseMapper.selectForEdit(myCourseDetailNo);
 	}
 
+	@Override
+	public List<MyCourseSearch> getForCreate() {
+	
+		return courseMapper.selectForCreate();
+	}
+
 
 
 	
