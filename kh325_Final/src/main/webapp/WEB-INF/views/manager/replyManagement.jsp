@@ -277,17 +277,17 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
 
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="${path}/myPage/profile" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-circle me-1"></i>
                                     <span>내 정보수정</span>
                                 </a>
 
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="${path}/" class="dropdown-item notify-item">
                                     <i class="mdi mdi-lifebuoy me-1"></i>
                                     <span>홈페이지로 가기</span>
                                 </a>
 
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="${path}/logout" class="dropdown-item notify-item">
                                     <i class="mdi mdi-logout me-1"></i>
                                     <span>로그아웃</span>
                                 </a>
