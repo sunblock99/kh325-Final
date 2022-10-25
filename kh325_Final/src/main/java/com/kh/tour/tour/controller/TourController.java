@@ -79,63 +79,66 @@ public class TourController {
 		return "event/eventSearch";
 	}
 	
-	
 	@GetMapping("/tourSearch.do") //관광지 페이지에서 체크박스로 관광지 리스트 조회
-	public String tourSearchlist(Model model, @RequestParam Map<String, String> param, //파람 - 검색어 + date 
-			@RequestParam(value = "tourType" , required = false) String tourType, // 관광지타입 1개
-			@RequestParam(value = "areaCode" , required = false) List<String> areaCode, // 체크된 지역코드 리스트
-			@RequestParam(value = "cat1" , required = false) String cat1, // 대분류 1개
-			@RequestParam(value = "cat2" , required = false) List<String> cat2 // 중분류 리스트
-			) {
-		log.info("param : " + param.toString());
-		System.out.println("가지고 들어온 파람값: " + param.toString());
-		
-		if(tourType == null) {
-			System.out.println("tourType null");
-		}else {
-			System.out.println("checkbox tourType : " + tourType);
+		public String tourSearchlist(Model model, @RequestParam Map<String, String> param, //파람 - 검색어 + date 
+				@RequestParam(value = "tourType" , required = false) String tourType, // 관광지타입 1개
+				@RequestParam(value = "areaCode" , required = false) List<String> areaCode, // 체크된 지역코드 리스트
+				@RequestParam(value = "cat1" , required = false) String cat1, // 대분류 1개
+				@RequestParam(value = "cat2" , required = false) List<String> cat2 // 중분류 리스트
+				) {
+			log.info("param : " + param.toString());
+			System.out.println("가지고 들어온 파람값: " + param.toString());
+			
+			if(tourType == null) {
+				System.out.println("tourType null");
+			}else {
+				System.out.println("checkbox tourType : " + tourType);
+			}
+			if(areaCode == null) {
+				System.out.println("areaCodeList null");
+			}else {
+				System.out.println("checkbox areaCodeList list : " + areaCode);
+			}
+			if(cat1 == null) {
+				System.out.println("cat1List null");
+			}else {
+				System.out.println("checkbox cat1  : " + cat1);
+			}
+			if(cat2 == null) {
+				System.out.println("cat2List null");
+			}else {
+				System.out.println("checkbox cat2List list : " + cat2);
+			}
+			
+			int page = 1;
+			if(param.containsKey("page") == true) {
+				try {
+					page = Integer.parseInt(param.get("page"));
+				} catch (Exception e) {}
+			}
+			
+			if (cat1 != null) {
+				System.out.println("체크박스에서 선택된 cat1 값 : " + cat1);
+				List<Category> cat2List = tService.getCat2List(cat1); //cat1으로 찾아온 cat2항목과 이름
+				System.out.println("찾아온 cat2List : " + cat2List.toString());
+				model.addAttribute("cat2List",	cat2List);
+			}
+			
+			PageInfo pageInfo = new PageInfo(page, 10, tService.getTourCount(param, tourType, areaCode, cat1, cat2), 9);
+			int tourListCount = tService.getTourCount(param, tourType, areaCode, cat1, cat2);
+			List<Tour> tourlist = tService.getTourList(pageInfo, param, tourType ,areaCode, cat1, cat2);
+			System.out.println("찾아온 관광지 리스트 : " +  tourlist);
+			
+			
+			model.addAttribute("areaCode",	areaCode);
+			model.addAttribute("cat1",	cat1);
+			model.addAttribute("cat2",	cat2);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("param", param);
+			model.addAttribute("tourListCount", tourListCount);
+			model.addAttribute("tourlist", tourlist);
+			return "tour/infoSearch";
 		}
-		if(areaCode == null) {
-			System.out.println("areaCodeList null");
-		}else {
-			System.out.println("checkbox areaCodeList list : " + areaCode);
-		}
-		if(cat1 == null) {
-			System.out.println("cat1List null");
-		}else {
-			System.out.println("checkbox cat1  : " + cat1);
-		}
-		if(cat2 == null) {
-			System.out.println("cat2List null");
-		}else {
-			System.out.println("checkbox cat2List list : " + cat2);
-		}
-		
-		int page = 1;
-		if(param.containsKey("page") == true) {
-			try {
-				page = Integer.parseInt(param.get("page"));
-			} catch (Exception e) {}
-		}
-		
-		if (cat1 != null) {
-			System.out.println("체크박스에서 선택된 cat1 값 : " + cat1);
-			List<Category> cat2List = tService.getCat2List(cat1);
-		}
-		
-		
-		
-		PageInfo pageInfo = new PageInfo(page, 10, tService.getTourCount(param, tourType, areaCode, cat1, cat2), 9);
-		int tourListCount = tService.getTourCount(param, tourType, areaCode, cat1, cat2);
-		List<Tour> tourlist = tService.getTourList(pageInfo, param, tourType ,areaCode, cat1, cat2);
-		System.out.println("찾아온 관광지 리스트 : " +  tourlist);
-		
-		model.addAttribute("pageInfo", pageInfo);
-		model.addAttribute("param", param);
-		model.addAttribute("tourListCount", tourListCount);
-		model.addAttribute("tourlist", tourlist);
-		return "tour/infoSearch";
-	}
 	
 	
 	@GetMapping("/tourDetailInfo.do") //  contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기 
@@ -145,7 +148,7 @@ public class TourController {
 		Tour tour = tService.findByContentId(contentId);
 		List<RepeatInfo> repeatInfo = tService.findDetailByContentId(contentId);
 		List<TourImage> imgDetail = tService.getTourImage(contentId);
-		
+		List<MyCourseSearch> listForCourseCreate = courseService.getForCreate();
 		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(10);
 //		log.info("tour : " + tour);
 //		log.info("repeatInfo : " + repeatInfo);
@@ -157,6 +160,7 @@ public class TourController {
 			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("detail", detail);
 			model.addAttribute("review", review);
+		
 			//log.info("review : " + review);
 
 		}
@@ -166,7 +170,7 @@ public class TourController {
 			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("detail", detail);
 			model.addAttribute("review", review);
-
+	
 		}
 		
 		if(contentTypeId == 15) {
@@ -174,6 +178,7 @@ public class TourController {
 			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
+
 		}
 		
 		if(contentTypeId == 28) {
@@ -181,6 +186,7 @@ public class TourController {
 			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
+	
 		}
 
 		if(contentTypeId == 38) {
@@ -188,6 +194,7 @@ public class TourController {
 			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
+	
 		}
 		
 		if(contentTypeId == 39) {
@@ -195,6 +202,7 @@ public class TourController {
 			List<DetailReview> review = tService.getReviewList(contentId);
 			model.addAttribute("review", review);
 			model.addAttribute("detail", detail);
+	
 		}
 		
 		if(repeatInfo == null) {
@@ -205,6 +213,7 @@ public class TourController {
 		model.addAttribute("tour", tour);
 		model.addAttribute("repeatInfo", repeatInfo);
 		model.addAttribute("imgDetail", imgDetail);
+		model.addAttribute("listForCourseCreate", listForCourseCreate);
 		return "tour/infoDetail";
 	}
 	
