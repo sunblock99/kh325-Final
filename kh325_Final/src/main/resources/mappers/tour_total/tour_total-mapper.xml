@@ -534,6 +534,10 @@
 						AND B.CONTENTTYPEID = #{tourType} <!-- 투어타입 -->
 					</if>
 					
+					<if test="cat1 != null">
+						AND B.CAT1 = #{cat1} <!-- 투어타입 -->
+					</if>
+					
 					<if test="cat2List != null">
 						AND B.CAT2 IN  <!-- 중분류 리스트 -->
 						<foreach collection="cat2List" item="item" index="index"
@@ -591,6 +595,10 @@
 					
 					<if test="tourType != null">
 						AND B.CONTENTTYPEID = #{tourType} <!-- 투어타입 -->
+					</if>
+					
+					<if test="cat1 != null">
+						AND B.CAT1 = #{cat1} <!-- 투어타입 -->
 					</if>
 					
 					<if test="cat2List != null">

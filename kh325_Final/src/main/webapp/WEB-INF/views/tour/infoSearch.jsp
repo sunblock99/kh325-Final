@@ -479,28 +479,35 @@
                                         <div class="mb-0">
                                             <h6 class="form-label" style="font-size: 0.95rem !important;">중분류</h6>
                                             <ul class="list-inline mt-xl-1 mb-0">
-												<!-- 원래있는 li 태그 시작-->
- 											 	<li class="list-inline-item">
- 													<div class="form-check"> 
-														<input class="form-check-input" type="checkbox"
-															 name="cat2" value="A0101"> <label
-															class="form-check-label fs-5" for="type_0">자연관광지
-														</label>
-													</div>
-												</li> 
- 											 	<li class="list-inline-item">
+														<!--  li 태그 시작-->
+												<c:if test="${cat1 eq 'A01'}">
+												<li class="list-inline-item"> 
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0102"> <label
-															class="form-check-label fs-5" for="type_0">관광자원
+															class="form-check-label fs-5" >자연관광지
 														</label>
 													</div>
-												</li> 
- 											 	<li class="list-inline-item">
+												</li>  
+												
+												<!--  li 태그 끝-->
+												
+												<li class="list-inline-item"> 
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="A0102"> <label
+															class="form-check-label fs-5" >관광자원
+														</label>
+													</div>
+												</li>  
+												</c:if>
+											
+											<c:if test="${cat1 eq 'A02'}">
+ 										 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0201"> <label
-															class="form-check-label fs-5" for="type_0">역사관광지
+															class="form-check-label fs-5" >역사관광지
 														</label>
 													</div>
 												</li> 
@@ -508,7 +515,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0202"> <label
-															class="form-check-label fs-5" for="type_0">휴양관광지
+															class="form-check-label fs-5" >휴양관광지
 														</label>
 													</div>
 												</li> 
@@ -516,7 +523,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0203"> <label
-															class="form-check-label fs-5" for="type_0">체험관광지
+															class="form-check-label fs-5" >체험관광지
 														</label>
 													</div>
 												</li> 
@@ -524,7 +531,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0204"> <label
-															class="form-check-label fs-5" for="type_0">산업관광지
+															class="form-check-label fs-5" >산업관광지
 														</label>
 													</div>
 												</li> 
@@ -532,7 +539,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0205"> <label
-															class="form-check-label fs-5" for="type_0">건축/조형물
+															class="form-check-label fs-5" >건축/조형물
 														</label>
 													</div>
 												</li> 
@@ -540,7 +547,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0206"> <label
-															class="form-check-label fs-5" for="type_0">문화시설
+															class="form-check-label fs-5" >문화시설
 														</label>
 													</div>
 												</li> 
@@ -548,7 +555,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0207"> <label
-															class="form-check-label fs-5" for="type_0">축제
+															class="form-check-label fs-5" >축제
 														</label>
 													</div>
 												</li> 
@@ -556,23 +563,27 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0208"> <label
-															class="form-check-label fs-5" for="type_0">공연/행사
+															class="form-check-label fs-5" >공연/행사
 														</label>
 													</div>
 												</li> 
+											</c:if>
+											
+												<c:if test="${cat1 eq 'A03'}">
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0301"> <label
-															class="form-check-label fs-5" for="type_0">레포츠소개
+															class="form-check-label fs-5" >레포츠소개
 														</label>
 													</div>
-												</li> 
+												</li>
+												 
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0302"> <label
-															class="form-check-label fs-5" for="type_0">육상 레포츠
+															class="form-check-label fs-5" >육상 레포츠
 														</label>
 													</div>
 												</li> 
@@ -580,7 +591,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0303"> <label
-															class="form-check-label fs-5" for="type_0"> 수상 레포츠
+															class="form-check-label fs-5" > 수상 레포츠
 														</label>
 													</div>
 												</li> 
@@ -588,7 +599,7 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0304"> <label
-															class="form-check-label fs-5" for="type_0">항공 레포츠
+															class="form-check-label fs-5" >항공 레포츠
 														</label>
 													</div>
 												</li> 
@@ -596,27 +607,95 @@
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0305"> <label
-															class="form-check-label fs-5" for="type_0">복합 레포츠
+															class="form-check-label fs-5" >복합 레포츠
 														</label>
 													</div>
 												</li> 
+												</c:if>
+												
+												<c:if test="${cat1 eq 'A04'}">
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0401"> <label
-															class="form-check-label fs-5" for="type_0">쇼핑
+															class="form-check-label fs-5" >쇼핑
 														</label>
 													</div>
 												</li> 
+												</c:if>
+												
+												<c:if test="${cat1 eq 'A05'}">
  											 	<li class="list-inline-item">
  													<div class="form-check"> 
 														<input class="form-check-input" type="checkbox"
 															 name="cat2" value="A0502"> <label
-															class="form-check-label fs-5" for="type_0">음식점
+															class="form-check-label fs-5" >음식점
 														</label>
 													</div>
-												</li> 
-												<!-- 원래있는 li 태그 끝-->
+												</li>
+												</c:if>
+												
+												<c:if test="${cat1 eq 'B02'}">
+ 											 	<li class="list-inline-item">
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="B0201"> <label
+															class="form-check-label fs-5" >숙박시설
+														</label>
+													</div>
+												</li>
+												</c:if>
+												
+												<c:if test="${cat1 eq 'C01'}">
+ 											 	<li class="list-inline-item">
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="C0112"> <label
+															class="form-check-label fs-5" >가족코스
+														</label>
+													</div>
+												</li>
+ 											 	<li class="list-inline-item">
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="C0113"> <label
+															class="form-check-label fs-5" >나홀로코스
+														</label>
+													</div>
+												</li>
+ 											 	<li class="list-inline-item">
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="C0114"> <label
+															class="form-check-label fs-5" >힐링코스
+														</label>
+													</div>
+												</li>
+ 											 	<li class="list-inline-item">
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="C0115"> <label
+															class="form-check-label fs-5" >도보코스
+														</label>
+													</div>
+												</li>
+ 											 	<li class="list-inline-item">
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="C0116"> <label
+															class="form-check-label fs-5" >캠핑코스
+														</label>
+													</div>
+												</li>
+ 											 	<li class="list-inline-item">
+ 													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox"
+															 name="cat2" value="C0117"> <label
+															class="form-check-label fs-5" >맛코스
+														</label>
+													</div>
+												</li>
+												</c:if>
 											</ul>
                                         </div>
                                     </div>
