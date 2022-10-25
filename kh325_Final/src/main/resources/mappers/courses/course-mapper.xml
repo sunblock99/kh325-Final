@@ -515,7 +515,7 @@
 	
 	<!-- 코스 컨텐츠 순서 올리기 -->
 	<update id="ascent" parameterType="int">
-		UPDATE MYCOURSE_DETAIL SET MYCOURSE_SN=#{targetNum} WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}
+		UPDATE MYCOURSE_DETAIL SET MYCOURSE_SN=#{changedSn} WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}
 	</update>
 	
 	<!-- 코스 컨텐츠 순서 내리기 -->

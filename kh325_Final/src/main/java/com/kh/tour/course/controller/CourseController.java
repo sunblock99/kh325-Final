@@ -280,11 +280,32 @@ public class CourseController {
 	@RequestMapping("/myPage/myCourseEdit/deleteContent")
 	public String deleteContent(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			@RequestParam("myCourseNo") int myCourseNo,
 			@RequestParam("myCourseDetailNo") int myCourseDetailNo) {
+		
+		int userNo = loginMember.getUserNo();
+		
+		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
+		List<MyCourseSearch> searchByNoList = courseService.getForEdit(myCourseDetailNo);
+		
+		int deletedSn = searchByNoList.get(0).getMyCourseSn();
+		int targetNo = 0;
+		int targetSn = 0;
+		int descentResult = 0;
+		
+		if (myCourseList.size() > deletedSn) {
+			for(int i = deletedSn+1; i <= myCourseList.size(); i++) {
+				targetSn = myCourseList.get(i).getMyCourseSn(); 
+				targetNo = myCourseList.get(i).getMyCourseDetailNo();
+				descentResult = courseService.descent(targetSn-1, targetNo);
+			}
+		}
+		
+		int deleteResult = courseService.deleteContent(myCourseDetailNo);
+		
+		
 
-		int result = courseService.deleteContent(myCourseDetailNo);
-
-		if (result > 0) {
+		if (deleteResult > 0 && descentResult > 0) {
 			model.addAttribute("msg", "코스 삭제에 성공하였습니다.");
 			model.addAttribute("location", "/myPage/myCourseEdit");
 		} else {

@@ -81,10 +81,10 @@ public interface CourseMapper {
 	int deleteContent(int myCourseDetailNo);
 	
 	// 코스 순서 올리기
-	int ascent(int myCourseDetailNo, int changedSn);
+	int ascent(int changedSn, int myCourseDetailNo);
 	
 	// 코스 순서 내리기
-	int descent(int myCourseDetailNo, int changedSn);
+	int descent(int changedSn, int myCourseDetailNo);
 	
 	// 마이페이지용 나의코스정보 불러오기
 	List<MyCourseSearch> selectForMyPage(int userNo, int myCourseNo);

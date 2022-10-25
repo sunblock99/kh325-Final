@@ -72,9 +72,9 @@ public interface CourseService {
 	// 코스 컨텐츠 하나 삭제하기
 	int deleteContent(int myCourseDetailNo);
 	// 코스 순서 올리기
-	int ascent(int myCourseDetailNo, int changedSn);
+	int ascent(int changedSn, int myCourseDetailNo);
 	// 코스 순서 내리기
-	int descent(int myCourseDetailNo, int changedSn);
+	int descent(int changedSn, int myCourseDetailNo);
 	
 	List<MyCourseSearch> getForMyPage(int userNo, int myCourseNo);
 	List<MyCourseSearch> getForEdit(int myCourseDetailNo);

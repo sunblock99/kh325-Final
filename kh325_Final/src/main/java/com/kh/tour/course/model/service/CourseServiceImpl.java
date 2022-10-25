@@ -239,15 +239,15 @@ public class CourseServiceImpl implements CourseService{
 	}
 
 	@Override
-	public int ascent(int myCourseDetailNo, int changedSn) {
+	public int ascent(int changedSn, int myCourseDetailNo) {
 	
-		return courseMapper.ascent(myCourseDetailNo, changedSn);
+		return courseMapper.ascent(changedSn, myCourseDetailNo);
 	}
 
 	@Override
-	public int descent(int myCourseDetailNo, int changedSn) {
+	public int descent(int changedSn, int myCourseDetailNo) {
 		
-		return courseMapper.descent(myCourseDetailNo, changedSn);
+		return courseMapper.descent(changedSn, myCourseDetailNo);
 	}
 
 	@Override
