@@ -169,20 +169,19 @@ public class CourseController {
 	}
 
 	// 코스 만들기
-	@RequestMapping("/tour/infoDetail/createCourse")
+	@RequestMapping("/createCourse")
 	public String createCourse(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@RequestParam("myCourseTitle") String myCourseTitle, @RequestParam("myCourseNo") int myCourseNo,
+			@RequestParam("myCourseTitle") String myCourseTitle,
 			@RequestParam("contentId") int contentId, @RequestParam("contentTypeId") int contentTypeId) {
 		
-		if (loginMember == null) {
+		if(loginMember == null || loginMember.getUserNo() < 0) {
 			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("location",
-					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
+			model.addAttribute("location", "tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
+			return "/common/msg";
 		}
 		int userNo = loginMember.getUserNo();
 		
-
 		log.info("코스 만들기 요청");
 		MyCourseCreate myCourseCreate = new MyCourseCreate(0, userNo, myCourseTitle, null, null, null, null, null);
 		int result = courseService.createCourse(myCourseCreate);
@@ -227,9 +226,6 @@ public class CourseController {
 			@RequestParam("myCourseMainImage") String myCourseMainImage,
 			@RequestParam("myCourseStatus") String myCourseStatus) {
 
-		
-	
-		
 		int userNo = loginMember.getUserNo();
 
 		log.info("코스 만들기 요청");
@@ -249,17 +245,18 @@ public class CourseController {
 	}
 
 	// 코스 컨텐츠 하나 추가하기
-	@RequestMapping("/tour/infoDetail/addContent")
+	@RequestMapping("/addContent")
 	public String insertContent(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@RequestParam("userNo") int userNo, @RequestParam("myCourseNo") int myCourseNo,
+			@RequestParam("myCourseNo") int myCourseNo,
 			@RequestParam("contentId") int contentId, @RequestParam("contentTypeId") int contentTypeId) {
 
-		if (loginMember == null) {
+		if(loginMember == null || loginMember.getUserNo() < 0) {
 			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("location",
-					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
+			model.addAttribute("location", "tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
+			return "/common/msg";
 		}
+		int userNo = loginMember.getUserNo();
 		int myCourseSn = 0;
 
 		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);

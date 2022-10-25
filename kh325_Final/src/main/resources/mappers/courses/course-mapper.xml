@@ -546,7 +546,7 @@
 		SELECT * FROM MYCOURSE_DETAIL WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}
 	</select>
 	
-	<select id="selectForCreate" parameterType="int" resultMap="MyCourseSearchResultMap">
+	<select id="selectForCreate" resultMap="MyCourseSearchResultMap">
 		SELECT * FROM MYCOURSE
 	</select>
 

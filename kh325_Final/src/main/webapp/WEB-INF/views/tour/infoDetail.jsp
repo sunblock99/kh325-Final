@@ -522,20 +522,22 @@
 	                                     <input type="text" name="" value="" hidden>
 	                                        <div class="row">
 	                                          <div class="form-group">
-	                                           <form id="test" action="${path}/tour/infoDetail/addContent">    
+	                                           <form id="test" action="${path}/addContent">    
 	                                            <label class="form-label" for="area-form">나의 코스 목록</label>  
 	                                            <input type="text" name="userNo" value="${loginMember.userNo}" hidden>
 	                                            <input type="text" name="contentId" value="${tour.contentId}" hidden>  
 	                                            <input type="text" name="contentTypeId" value="${tour.contentTypeId}" hidden>     
-	                                              <c:if test="${!empty listForCourseCreate }">      
-							                 <c:forEach var="i" begin="0" end="${listForCourseCreate.size()-1}">    
-							                 <c:if test="${listForCourseCreate.get(i).getUserNo() eq loginMember.userNo}">            
+	                                                         
 							                  <select class="selectpicker form-control text-pB" name="myCourseNo" id="myCourseNo" data-style="btn-selectpicker" >
+							                  <c:if test="${!empty listForCourseCreate}">      
+							                 <c:forEach var="i" begin="0" end="${listForCourseCreate.size()-1}">    
+							                 <c:if test="${listForCourseCreate.get(i).getUserNo() eq loginMember.userNo}"> 
 							                    <option value="${listForCourseCreate.get(i).getMyCourseNo()}"><c:out value="${listForCourseCreate.get(i).getMyCourseTitle()}"/></option>
-							                  </select>
-							                  </c:if> 
+							                    </c:if> 
 							                  </c:forEach>
 							                   </c:if> 
+							                  </select>
+							                
 	                                            </form>
 	                                          </div>
 	                                        </div>
@@ -566,7 +568,7 @@
                                           <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">
-                                          <form action="${path}/tour/infoDetail/createCourse" method="post" name="" id="test2">
+                                          <form action="${path}/createCourse" method="post" name="" id="test2">
                                             <input type="text" name="userNo" value="${loginMember.userNo}" hidden>
 	                                            <input type="text" name="contentId" value="${tour.contentId}" hidden>  
 	                                            <input type="text" name="contentTypeId" value="${tour.contentTypeId}" hidden>   
