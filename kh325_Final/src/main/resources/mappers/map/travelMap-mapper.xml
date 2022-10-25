@@ -20,9 +20,36 @@
 		<result property="overview" column="OVERVIEW" />
 		<result property="star" column="STAR" />
 	</resultMap>
+	
+	<resultMap type="TravelMap" id="CourseMapListDetailResultMap" extends="travelMapListResultMap">
+		<collection property="course" javaType="arrayList" columnPrefix="RC_" resultMap="repeatCourseListResultMap"/>
+	</resultMap>
+	
+	<resultMap type="DetailCourse" id="detailCourseListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="infocenterTourcourse" column="INFOCENTERTOURCOURSE" />
+		<result property="distance" column="DISTANCE" />
+		<result property="schedule" column="SCHEDULE" />
+		<result property="takeTime" column="TAKETIME" />
+		<result property="theme" column="THEME" />
+	</resultMap>
+
+	<resultMap type="RepeatCourse" id="repeatCourseListResultMap">
+		<id property="courseDetailNo" column="COURSE_DETAIL_NO" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="subNum" column="SUBNUM" />
+		<result property="subcontentId" column="SUBCONTENTID" />
+		<result property="subName" column="SUBNAME" />
+		<result property="subdetailImg" column="SUBDETAILIMG" />
+		<result property="subdetailOverview" column="SUBDETAILOVERVIEW" />
+		<result property="subdetailAlt" column="SUBDETAILALT" />
+		<collection property= "detailCourseTable" resultMap ="detailCourseListResultMap"/> 
+	</resultMap>
 
 	<select id="selectTravelMapList"
-		resultMap="travelMapListResultMap" parameterType="String">
+		resultMap="travelMapListResultMap" parameterType="int">
 		SELECT T.CONTENTID,
 			 T.CONTENTTYPEID,
 			 C.CONTENTTYPENAME,
@@ -39,34 +66,61 @@
 		JOIN CONTENTTYPELIST C ON(T.CONTENTTYPEID = C.CONTENTTYPEID)
 		full OUTER JOIN REVIEW_TOTAL L ON (T.CONTENTID = L.CONTENTID)
 		
-<!-- 		<if test="tourKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{tourKeyword} -->
+<!-- 		<if test="contentTypeName != null"> -->
+<!-- 		WHERE C.CONTENTTYPENAME = #{contentTypeName} -->
 <!-- 		</if> -->
-<!-- 		<if test="restaurantKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{restaurantKeyword} -->
-<!-- 		</if> -->
-<!-- 		<if test="hotelKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{hotelKeyword} -->
-<!-- 		</if> -->
-<!-- 		<if test="leportsKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{leportsKeyword} -->
-<!-- 		</if> -->
-<!-- 		<if test="facilityKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{facilityKeyword} -->
-<!-- 		</if> -->
-<!-- 		<if test="recommendKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{recommendKeyword} -->
-<!-- 		</if> -->
-<!-- 		<if test="travelCourseKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{travelCourseKeyword} -->
-<!-- 		</if> -->
-<!-- 		<if test="myCourseKeyword != null"> -->
-<!-- 			WHERE C.CONTENTTYPENAME = #{myCourseKeyword} -->
-<!-- 		</if> -->
-		
-		<if test="contentTypeName != null">
-		WHERE C.CONTENTTYPENAME = #{contentTypeName}
+		<if test="contentTypeId != null">
+		WHERE T.CONTENTTYPEID = #{contentTypeId}
 		</if>
+	</select>
+	
+	<!-- 컨텐츠타입아이디로 리핏코스리스트 찾기 (보드 리플 참고) -->
+	<select id="selectCourseByNo" parameterType="int" resultMap="CourseMapListDetailResultMap">
+ 		SELECT 
+ 			BTI.CONTENTID, 
+ 			BTI.TITLE, 
+ 			BTI.FIRSTIMAGE, 
+            BTI.OVERVIEW, 
+            DC.SCHEDULE, 
+            DC.THEME, 
+            RC.SUBNUM, 
+            RC.SUBCONTENTID, 
+            RC.SUBNAME, 
+            RC.SUBDETAILOVERVIEW, 
+            RC.SUBDETAILIMG,
+            MAPX.MAPX, 
+            MAPX.MAPY
+        FROM BASIC_TOUR_INFO BTI 
+        LEFT OUTER JOIN  DETAIL_COURSE DC ON (BTI.CONTENTID = DC.CONTENTID)
+        LEFT OUTER JOIN REPEAT_COURSE RC ON (BTI.CONTENTID = RC.CONTENTID)
+        LEFT OUTER JOIN
+        	(SELECT RC.SUBCONTENTID AS SUBID, BTI.MAPX, BTI.MAPY, BTI.AREACODE, BTI.SIGUNGUCODE FROM BASIC_TOUR_INFO BTI  
+        	LEFT OUTER JOIN REPEAT_COURSE RC ON (BTI.CONTENTID = RC.SUBCONTENTID)) MAPX
+        ON (MAPX.SUBID = RC.SUBCONTENTID)
+        WHERE 1=1
+        AND BTI.CONTENTTYPEID = 25
+        AND BTI.CONTENTID = #{contentId}
+        ORDER BY bti.contentid ASC, RC.subnum ASC
+	</select>
+	
+	<!-- 코스 목록 -->
+	<select id="selectCourseMapList" resultMap="travelMapListResultMap">
+		SELECT 
+			B.CONTENTID, 
+			B.CONTENTTYPEID, 
+			B.TITLE, 
+			D.DISTANCE, 
+			D.SCHEDULE, 
+			D.TAKETIME, 
+			B.FIRSTIMAGE ,
+			B.OVERVIEW, 
+			B.MAPX, 
+			B.MAPY
+		FROM BASIC_TOUR_INFO B
+		LEFT JOIN DETAIL_COURSE D ON (B.CONTENTID = D.CONTENTID)
+		where b.CONTENTTYPEID = 25
+		ORDER BY B.CONTENTID ASC
+
 	</select>
 
 </mapper>

@@ -10,21 +10,21 @@ import com.kh.tour.travelMap.model.vo.TravelMap;
 public interface TravelMapService {
 
 	List<TravelMap> getTravelMapList(String contentTypeName);
-//	List<TravelMap> getTravelMapList(Map<String, String> param);
+	List<TravelMap> getTravelMapList(int contentTypeId);
 
 	Tour findById(int contentId);
 
 //	List<CourseMap> getCourseMapList(Map<String, String> param);
-//
 //	List<CourseMap> getCourseMapDetailList(Map<String, String> param);
 
-	List<CourseMap> getCourseMapList();
+	List<TravelMap> getCourseMapList();
+//	List<CourseMap> getCourseMapList();
 
 //	List<CourseMap> getCourseMapDetailList(int contentId);
-//
 //	List<CourseMap> getCourseMapList(int contentId);
 
-	CourseMap getCourseByNo(int contentId);
+	TravelMap getCourseByNo(int contentId);
+//	CourseMap getCourseByNo(int contentId);
 
 //	List<CourseMap> getCourseMapList(String contentTypeName);
 

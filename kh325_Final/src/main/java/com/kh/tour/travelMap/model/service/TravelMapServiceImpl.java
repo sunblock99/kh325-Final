@@ -25,17 +25,32 @@ public class TravelMapServiceImpl implements TravelMapService {
 	private TravelMapMapper mapper;
 
 	@Override
+	public List<TravelMap> getTravelMapList(int contentTypeId) {
+		return mapper.selectTravelMapList(contentTypeId);
+	}
+	
+	
+	@Override
 	public List<TravelMap> getTravelMapList(String contentTypeName) {
 		return mapper.selectTravelMapList(contentTypeName);
 	}
 
+//	@Override
+//	public List<CourseMap> getCourseMapList() {
+//		return mapper.selectCourseMapList();
+//	}
 	@Override
-	public List<CourseMap> getCourseMapList() {
+	public List<TravelMap> getCourseMapList() {
 		return mapper.selectCourseMapList();
 	}
+//	
+//	@Override
+//	public CourseMap getCourseByNo(int contentId) {
+//		return mapper.selectCourseByNo(contentId);
+//	}
 	
 	@Override
-	public CourseMap getCourseByNo(int contentId) {
+	public TravelMap getCourseByNo(int contentId) {
 		return mapper.selectCourseByNo(contentId);
 	}
 
@@ -77,5 +92,4 @@ public class TravelMapServiceImpl implements TravelMapService {
 		return tour;
 	}
 
-	
 }

@@ -216,24 +216,21 @@
 	                        <!-- <div><img src="https://papers.co/wallpaper/papers.co-od09-nature-travel-kit-25-wallpaper.jpg" style="width: 100%;"></div> -->
 	                        <!-- <h1 class="text-serif mb-4" style="background-image: url(https://papers.co/wallpaper/papers.co-od09-nature-travel-kit-25-wallpaper.jpg)">여 행 지 도</h1> -->
 	                        <!-- <h1 class="ms-4 text-shadow"><i class="fa-regular fa-compass" style="color: #FD9F28;"></i> &nbsp;여 행 지 도</h1> -->
-	                        <h6 class="ms-2 fw-bold text-center pt-4" style="color: #907B65;">
+	                        <h6 class="ms-2 fw-bold text-center pt-5" style="color: #907B65;">
 	                            &nbsp; TOGETHER</h6>
-	                        <h6 class="fs-1 ms-2 pb-3 text-center">여행지도</h6>
-	                        <hr class="my-3">
+	                        <h6 class="fs-1 ms-2 pb-2 text-center">여행지도</h6>
+	                        <hr>
 	                        <form action="#">
 	                            <div class="row">
 	                                <!-- 카테고리 체크박스 시작 -->
 	                                <div class="pc_depth1 text-center">
 	                                
-	                                <c:set var="URL" value="${pageContext.request.requestURL}" />
-	                                <c:set var="typeName" value="${fn:split(URL,'=')[1]}" />
-	                                
-	                            <label class="option_item ">
-	                            	<c:if test="${travelMapList[1].contentTypeName eq '관광지'}">
-	                                <input type="radio"  name="searchType" value="tour" onclick="location.href='${path}/map/travelMap?contentTypeName=관광지'" style="display: none;" class="checkbox" checked>
+	                            <label class="option_item px-2">
+	                            	<c:if test="${travelMapList[1].contentTypeId eq '12'}">
+	                                <input type="radio"  name="searchType" value="tour" onclick="location.href='${path}/map/travelMap?contentTypeId=12'" style="display: none;" class="checkbox" checked>
 	                            	</c:if>
-	                            	<c:if test="${travelMapList[1].contentTypeName ne '관광지'}">
-	                                <input type="radio"  name="searchType" value="tour" onclick="location.href='${path}/map/travelMap?contentTypeName=관광지'" style="display: none;" class="checkbox" >
+	                            	<c:if test="${travelMapList[1].contentTypeId ne '12'}">
+	                                <input type="radio"  name="searchType" value="tour" onclick="location.href='${path}/map/travelMap?contentTypeId=12'" style="display: none;" class="checkbox" >
 	                            	</c:if>
 	                                <div class="option_inner travel">
 	                                    <div class="icon ">
@@ -242,75 +239,76 @@
 	                                    <div class="name">관광지</div>
 	                                </div> 
 	                            </label>
-	                            <label class="option_item">				
-	                            	<c:if test="${travelMapList[1].contentTypeName eq '식당'}">
-	                                <input type="radio"  name="searchType" value="restaurant" onclick="location.href='${path}/map/travelMap?contentTypeName=식당'" style="display: none;" class="checkbox" checked>
+	                            <label class="option_item px-2">				
+	                            	<c:if test="${travelMapList[1].contentTypeId eq '39'}">
+	                                <input type="radio"  name="searchType" value="restaurant" onclick="location.href='${path}/map/travelMap?contentTypeId=39'" style="display: none;" class="checkbox" checked>
 	                            	</c:if>																		
-	                            	<c:if test="${travelMapList[1].contentTypeName ne '식당' }">
-	                                <input type="radio"  name="searchType" value="restaurant" onclick="location.href='${path}/map/travelMap?contentTypeName=식당'" style="display: none;" class="checkbox">
+	                            	<c:if test="${travelMapList[1].contentTypeId ne '39' }">
+	                                <input type="radio"  name="searchType" value="restaurant" onclick="location.href='${path}/map/travelMap?contentTypeId=39'" style="display: none;" class="checkbox">
 	                            	</c:if>																		
 	                                <div class="option_inner restaurant">
 	                                    <div class="icon"><i class="fa-solid fa-utensils"></i></div>
 	                                    <div class="name">식당</div>
 	                                </div>
 	                            </label>
-	                            <label class="option_item">
-	                            	<c:if test="${travelMapList[1].contentTypeName eq '숙소' }">
-	                                <input type="radio"  name="searchType" value="hotel" onclick="location.href='${path}/map/travelMap?contentTypeName=숙소'" style="display: none;" class="checkbox" checked>
+	                            <label class="option_item px-2">
+	                            	<c:if test="${travelMapList[1].contentTypeId eq '32' }">
+	                                <input type="radio"  name="searchType" value="hotel" onclick="location.href='${path}/map/travelMap?contentTypeId=32'" style="display: none;" class="checkbox" checked>
 	                                </c:if>
-	                            	<c:if test="${travelMapList[1].contentTypeName ne '숙소' }">
-	                                <input type="radio"  name="searchType" value="hotel" onclick="location.href='${path}/map/travelMap?contentTypeName=숙소'" style="display: none;" class="checkbox">
+	                            	<c:if test="${travelMapList[1].contentTypeId ne '32' }">
+	                                <input type="radio"  name="searchType" value="hotel" onclick="location.href='${path}/map/travelMap?contentTypeId=32'" style="display: none;" class="checkbox">
 	                                </c:if>
 	                                <div class="option_inner hotel">
 	                                    <div class="icon"><i class="fa-solid fa-bed"></i></div>
 	                                    <div class="name">숙소</div>
 	                                </div>
 	                            </label>
-	                            <label class="option_item">
-	                            	<c:if test="${travelMapList[1].contentTypeName eq '레포츠' }">
-	                                <input type="radio"  name="searchType" value="leports" onclick="location.href='${path}/map/travelMap?contentTypeName=레포츠'" style="display: none;" class="checkbox" checked>
+	                            <label class="option_item px-2">
+	                            	<c:if test="${travelMapList[1].contentTypeId eq '28' }">
+	                                <input type="radio"  name="searchType" value="leports" onclick="location.href='${path}/map/travelMap?contentTypeId=28'" style="display: none;" class="checkbox" checked>
 	                                </c:if>
-	                            	<c:if test="${travelMapList[1].contentTypeName ne '레포츠' }">
-	                                <input type="radio"  name="searchType" value="leports" onclick="location.href='${path}/map/travelMap?contentTypeName=레포츠'" style="display: none;" class="checkbox">
+	                            	<c:if test="${travelMapList[1].contentTypeId ne '28' }">
+	                                <input type="radio"  name="searchType" value="leports" onclick="location.href='${path}/map/travelMap?contentTypeId=28'" style="display: none;" class="checkbox">
 	                                </c:if>
 	                                <div class="option_inner cafe">
 	                                    <div class="icon"><i class="fa-solid fa-person-hiking"></i></div>
 	                                    <div class="name">레포츠</div>
 	                                </div>
 	                            </label>
-	                            <label class="option_item">
-	                            	<c:if test="${travelMapList[1].contentTypeName eq '문화시설' }">
-	                                <input type="radio"  name="searchType" value="facility" onclick="location.href='${path}/map/travelMap?contentTypeName=문화시설'"style="display: none;" class="checkbox" checked>
+	                            <br>
+	                            <label class="option_item px-2">
+	                            	<c:if test="${travelMapList[1].contentTypeId eq '14' }">
+	                                <input type="radio"  name="searchType" value="facility" onclick="location.href='${path}/map/travelMap?contentTypeId=14'"style="display: none;" class="checkbox" checked>
 	                                </c:if>
-	                            	<c:if test="${travelMapList[1].contentTypeName ne '문화시설' }">
-	                                <input type="radio"  name="searchType" value="facility" onclick="location.href='${path}/map/travelMap?contentTypeName=문화시설'"style="display: none;" class="checkbox">
+	                            	<c:if test="${travelMapList[1].contentTypeId ne '14' }">
+	                                <input type="radio"  name="searchType" value="facility" onclick="location.href='${path}/map/travelMap?contentTypeId=14'"style="display: none;" class="checkbox">
 	                                </c:if>
 	                                <div class="option_inner parking">
 	                                    <div class="icon"><i class="fa-solid fa-building-columns"></i></div>
 	                                    <div class="name">문화시설</div>
 	                                </div>
 	                            </label>
-	                            <br>
+	                            
 	                            <!-- 카테고리 체크박스 끝 -->
 	                            <!-- 코스 시작 -->
-	                            <label class="option_item">
-	                                <c:if test="${travelMapList[1].contentTypeName eq '코스' }">
-	                                <input type="radio"  name="searchType" value="recommend" onclick="location.href='${path}/map/travelMap?contentTypeName=코스'" style="display: none;" class="checkbox" checked/>
+	                            <label class="option_item px-2">
+	                                <c:if test="${travelMapList[1].contentTypeId eq '38' }">
+	                                <input type="radio"  name="searchType" value="recommend" onclick="location.href='${path}/map/travelMap?contentTypeId=38'" style="display: none;" class="checkbox" checked/>
 	                                </c:if>
-	                                <c:if test="${travelMapList[1].contentTypeName ne '코스' }">
-	                                <input type="radio"  name="searchType" value="recommend" onclick="location.href='${path}/map/travelMap?contentTypeName=코스'" style="display: none;" class="checkbox"  />
+	                                <c:if test="${travelMapList[1].contentTypeId ne '38' }">
+	                                <input type="radio"  name="searchType" value="recommend" onclick="location.href='${path}/map/travelMap?contentTypeId=38'" style="display: none;" class="checkbox"  />
 	                                </c:if>
 	                                <div class="option_inner recommend">
-	                                    <div class="icon"><i class="fa-solid fa-thumbs-up"></i></div>
-	                                    <div class="name">추천코스</div>
+	                                    <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
+	                                    <div class="name">쇼핑</div>
 	                                </div>
 	                            </label>
-	                            <label class="option_item">
-	                            	<c:if test="${travelMapList[1].contentTypeName eq '코스' }">
-	                                <input type="radio"  name="searchType" value="travelCourse" onclick="location.href='${path}/map/travelMap?contentTypeName=코스'" style="display: none;" class="checkbox" checked />
+	                            <label class="option_item px-2">
+	                            	<c:if test="${travelMapList[1].contentTypeId eq '25' }">
+	                                <input type="radio"  name="searchType" value="travelCourse" onclick="location.href='${path}/map/travelMap?contentTypeId=25'" style="display: none;" class="checkbox" checked />
 	                            	</c:if>
-	                            	<c:if test="${travelMapList[1].contentTypeName ne '코스' }">
-	                                <input type="radio"  name="searchType" value="travelCourse" onclick="location.href='${path}/map/travelMap?contentTypeName=코스'" style="display: none;" class="checkbox"/>
+	                            	<c:if test="${travelMapList[1].contentTypeId ne '25' }">
+	                                <input type="radio"  name="searchType" value="travelCourse" onclick="location.href='${path}/map/travelMap?contentTypeId=25'" style="display: none;" class="checkbox"/>
 	                            	</c:if>
 	                                <div class="option_inner travelCourse">
 	                                    <div class="icon"><i class="fa-solid fa-arrows-split-up-and-left"></i>
@@ -318,34 +316,64 @@
 	                                    <div class="name">여행코스</div>
 	                                </div>
 	                            </label>
-	                            <label class="option_item pb-4">
-	                            	<c:if test="${travelMapList[1].contentTypeName eq '나의여행' }">
-	                                <input type="radio"  name="searchType" value="myCourse" onclick="location.href='${path}/map/travelMap?contentTypeName=나의여행'" style="display: none;" class="checkbox" checked />
+	                            <label class="option_item pb-4 px-2">
+	                            	<c:if test="${travelMapList[1].contentTypeId eq '50' }">
+	                                <input type="radio"  name="searchType" value="myCourse" onclick="location.href='${path}/map/travelMap?contentTypeId=50'" style="display: none;" class="checkbox" checked />
 	                            	</c:if>
-	                            	<c:if test="${travelMapList[1].contentTypeName ne '나의여행' }">
-	                                <input type="radio"  name="searchType" value="myCourse" onclick="location.href='${path}/map/travelMap?contentTypeName=나의여행'" style="display: none;" class="checkbox" />
+	                            	<c:if test="${travelMapList[1].contentTypeId ne '50' }">
+	                                <input type="radio"  name="searchType" value="myCourse" onclick="location.href='${path}/map/travelMap?contentTypeId=50'" style="display: none;" class="checkbox" />
 	                            	</c:if>
 	                                <div class="option_inner myTrip">
 	                                    <div class="icon"><i class="fa-solid fa-street-view"></i></div>
 	                                    <div class="name">나의여행</div>
 	                                </div>
 	                            </label>
-	                            <label class="option_item">
-	                                <div class="option_inner" style="cursor: default;"></div>
-	                            </label>
-	                            <label class="option_item">
-	                                <div class="option_inner" style="cursor: default;"></div>
-	                            </label>
+<!-- 	                            <label class="option_item"> -->
+<!-- 	                                <div class="option_inner" style="cursor: default;"></div> -->
+<!-- 	                            </label> -->
+<!-- 	                            <label class="option_item"> -->
+<!-- 	                                <div class="option_inner" style="cursor: default;"></div> -->
+<!-- 	                            </label> -->
 	                            <!-- 코스 끝 -->
 	                        </div>
 	                            </div>
 	                        </form>
 	
 	                        <div class=" menu_cont mt-3 text-pB">
-	                        <c:if test="${empty travelMapList}">
-									<div>조회된 글이 없습니다.</div>
+	                        
+	                        
+<%-- 	                        <c:if test="${empty travelMapList}"> --%>
+							<c:if test="${travelMapList[1].contentTypeId eq '25' }">
+	                        <c:forEach var="courseMap" items="${courseMapList}">
+	                            <div class="d-flex d-block d-sm-flex review2">
+	                                <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
+	                                <img class="d-block picSize round "
+	                                        src="${courseMap.firstImage }" onerror="this.src='http://www.kogl.or.kr/upload_recommend/%EC%A7%80%EC%97%AD%EB%B3%84%EB%AC%B8%ED%99%94%EC%9E%AC/%EC%B6%A9%EC%B2%AD%EB%82%A8%EB%8F%84/%EA%B3%B5%EC%A3%BC/thumb_%EC%8B%9C%EB%8F%84%EC%9C%A0%ED%98%95%EB%AC%B8%ED%99%94%EC%9E%AC%EC%A0%9C93%ED%98%B8_%ED%8F%AC%EC%A0%95%EC%82%AC%EB%AC%B8%EB%A3%A8_%EC%A0%95%EB%A9%B4.jpg'">
+<%-- 	                                        src="${TravelMap.firstImage }" onerror="this.src='${path}/resources/images/defaultImage.png'"> --%>
+										<div class="pt-3" style="width:8rem;">	                                    
+<!-- 		                                    <div class=" text-sm mb-2" style=" display: flex; width:8rem;">총 거리 :  -->
+		                                    	<div class=" text-sm mb-2" style=" font-weight: bold; text-align:center; color: #907B65;">총 거리 : ${courseMap.distance}</div>
+<!-- 		                                    </div> -->
+<!-- 		                                    	<div class=" text-sm mb-2" style=" display: flex;">총 소요시간 :  -->
+		                                    <div class=" text-sm mb-2" style=" font-weight: bold; text-align:center; color: #907B65;">총 소요시간 : ${courseMap.takeTime}</div>
+<!-- 		                                    </div> -->
+	                                    </div>
+	                                </div>
+	                                <div class="width100">
+	                                    <h6 class="py-1 text-lg">
+<%-- 	                                        <a href="${path}/board/view?no=${TravelMap.contentId}" class="a-orign-text" onclick="onDisplay();">${TravelMap.title}</a> --%>
+	                                         <button  style="border:0; outline: 0; background-color: rgba(0,0,0,0); font-weight: bold; text-align:left; " onclick="panTo('${courseMap.mapY}', '${courseMap.mapX}')">${courseMap.title}</button> 
+<%-- 	                                        <a href="#" onclick="panTo'${TravelMap.mapX}', '${TravelMap.mapY}'); return false;" class="a-orign-text">${TravelMap.title}</a> --%>
+	                                    </h6>
+	                                    <div class="text-muted text-sm">${courseMap.overview}</div>
+	                                    <div class="pe-4 pt-1 float-end">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            </c:forEach>
 							</c:if>
-	                        <c:forEach var="TravelMap" items="${travelMapList}">
+							
+	                        <c:forEach var="TravelMap" items="${travelMapList}" varStatus="status">
 	                            <div class="d-flex d-block d-sm-flex review2">
 	                                <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img
 	                                        class="d-block picSize round "
@@ -353,11 +381,17 @@
 <%-- 	                                        src="${TravelMap.firstImage }" onerror="this.src='${path}/resources/images/defaultImage.png'"> --%>
 	                                </div>
 	                                <div class="width100">
-	                                    <div class=" text-sm mb-2" style="font-weight: bold; color: #907B65;">${TravelMap.contentTypeName}
+	                                    <div class=" text-sm mb-2" style="font-weight: bold; color: #907B65; ">${TravelMap.contentTypeName}
 	                                    </div>
 	                                    <h6 class="py-1 text-lg">
 <%-- 	                                        <a href="${path}/board/view?no=${TravelMap.contentId}" class="a-orign-text" onclick="onDisplay();">${TravelMap.title}</a> --%>
-	                                         <button class="text-shadow" style="border:0; outline: 0; background-color: rgba(0,0,0,0); font-weight: bold;" onclick="panTo('${TravelMap.mapY}', '${TravelMap.mapX}')">${TravelMap.title}</button> 
+											<c:if test="${travelMapList[1].contentTypeId eq '50' }">
+	                                         <button class="text-shadow" style="border:0; outline: 0; background-color: rgba(0,0,0,0); font-weight: bold; text-align:left;" onclick="panTo('${TravelMap.mapY}', '${TravelMap.mapX}')">
+	                                         	${status.count}. ${TravelMap.title}</button> 
+											</c:if>			                                         
+											<c:if test="${travelMapList[1].contentTypeId ne '50' }">
+	                                         <button class="text-shadow" style="border:0; outline: 0; background-color: rgba(0,0,0,0); font-weight: bold; text-align:left;" onclick="panTo('${TravelMap.mapY}', '${TravelMap.mapX}')">${TravelMap.title}</button> 
+											</c:if>			                                         
 <%-- 	                                        <a href="#" onclick="panTo'${TravelMap.mapX}', '${TravelMap.mapY}'); return false;" class="a-orign-text">${TravelMap.title}</a> --%>
 	                                    </h6>
 	                                    <div class="text-muted text-sm">${TravelMap.addr1}</div>
@@ -538,6 +572,22 @@
 	                    tel: '${TravelMap.tel}',
 	               		});
 	                </c:forEach>
+	                
+	                
+	                <c:if test="${travelMapList[1].contentTypeId eq '25' }">
+	                var positions = [];
+					<c:forEach items="${courseList}" var="course">
+						positions.push({
+	                	id: '${course.contentId}',
+	                	title: '${course.subName}',
+	                    latlng: new kakao.maps.LatLng('${course.subMapY}', '${course.subMapX}'),
+	                    image: '${course.subdetailImg}',
+	                    address: '${course.subdetailOverview}',
+	               		});
+	                </c:forEach>
+	                </c:if>
+	                
+	                
 	
 	                // 지도에 확대 축소 컨트롤을 생성한다
 	                var zoomControl = new kakao.maps.ZoomControl();
@@ -565,13 +615,24 @@
 	
 	                // 지도에 마커를 표시하는 함수입니다    
 	                function displayMarker(data) {
+	                	
 	                    var marker = new kakao.maps.Marker({
 	                        map: map,
 	                        position: data.latlng,
 	                        image: markerImage
 	                    });
+	                    <c:if test="${travelMapList[1].contentTypeId eq '25' }">
+	                    var marker = new kakao.maps.Marker({
+	                        map: map,
+	                        position: data.latlng,
+	                        image: markerImage
+	                    });
+	                    </c:if>
+	                    
+	                    
 	                    var overlay = new kakao.maps.CustomOverlay({
 	                        yAnchor: 1,
+	                        xAnchor: -0.2,
 	                        position: marker.getPosition()
 	                    });
 	                    
@@ -617,8 +678,8 @@
 	
 	                    var closeBtn = document.getElementById('closeBtn');
 	                    var closeBtn = document.createElement('button');
-	                    closeBtn.innerHTML = 'X';
-	                    closeBtn.style.cssText = 'background: rgba(0, 0, 0,0); color: rgba(0, 0, 0,0); border: none';
+	                    closeBtn.innerHTML = 'xx';
+	                    closeBtn.style.cssText = 'background: rgba(0, 0, 0,0); color: rgba(0, 0, 0,0); border: none ';
 	                    closeBtn.onclick = function () {
 	                        overlay.setMap(null);
 	                    };
@@ -643,7 +704,7 @@
 	                }
 	
 	                
-	                <c:if test="${travelMapList[1].contentTypeName eq '나의여행' }">
+	                <c:if test="${travelMapList[1].contentTypeId eq '50' || travelMapList[1].contentTypeId eq '25'}">
 	                var paths = [];
 	                for (let i = 0; i < positions.length; i++) {
 	                    var pathDarw = positions[i].latlng;
@@ -664,7 +725,7 @@
 	                    // endArrow: true, // 선의 끝을 화살표로 표시되도록 설정한다
 	                    strokeWeight: 3, // 선의 두께
 	                    strokeColor: '#FF846B', // 선 색
-	                    strokeOpacity: 0.5, // 선 투명도
+	                    strokeOpacity: 0.8, // 선 투명도
 	                    strokeStyle: 'shortdash' // 선 스타일
 	
 	

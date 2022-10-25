@@ -255,9 +255,9 @@
 }
 
 .option_item .option_inner .icon {
-    margin-top: 4px;
+    margin-top: 2px;
     margin-bottom: 11px;
-    font-size: 23px;
+    font-size: 25px;
     /* background-image: url(); */
 }
 
@@ -268,18 +268,16 @@
 .option_item .option_inner .name {
     user-select: none;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
-    padding-top: 0.5rem !important;
+    /* padding-top: 1rem !important; */
 }
 
-.option_item .checkbox:checked~.option_inner.travel {
+.option_item .checkbox:checked~.option_inner {
     border-color: #fda128ae;
     color: #FD9F28;
     transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-
 }
-
 .option_item .checkbox:checked~.option_inner.restaurant {
     border-color: #fda128ae;
     color: #FD9F28;
@@ -321,6 +319,7 @@
     color: #FD9F28;
     transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
+
 
 
 /* 버튼 색 바뀌는거 */

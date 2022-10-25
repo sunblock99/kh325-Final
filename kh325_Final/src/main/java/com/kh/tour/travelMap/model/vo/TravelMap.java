@@ -1,6 +1,10 @@
 package com.kh.tour.travelMap.model.vo;
 
 
+import java.util.List;
+
+import com.kh.tour.tour.model.vo.RepeatCourse;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +26,16 @@ public class TravelMap { //공통정보 테이블 = main
 	private String mapY;           //GPS Y좌표          
 	private String overview;       //개요  
 	private int star;
+	
+	private String 	distance; 
+	private String 	schedule; 
+	private String 	takeTime; 
+	private int 	subNum; 
+	private int 	subcontentId; 
+	private String 	subName;
+	private String 	subdetailImg;
+	private List<RepeatCourse> course;
+	
 }
 
 

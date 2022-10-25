@@ -12,10 +12,13 @@ import com.kh.tour.travelMap.model.vo.TravelMap;
 @Mapper
 public interface TravelMapMapper {
 	List<TravelMap> selectTravelMapList(String contentTypeName);
+	List<TravelMap> selectTravelMapList(int contentTypeId);
 	Tour selectTourById(int contentId);
 	
-	CourseMap selectCourseByNo(int contentId);
-	List<CourseMap> selectCourseMapList(); 
+//	CourseMap selectCourseByNo(int contentId);
+	TravelMap selectCourseByNo(int contentId);
+//	List<CourseMap> selectCourseMapList(); 
+	List<TravelMap> selectCourseMapList(); 
 	
 //	List<CourseMap> selectCourseMapDetailList(int contentId);
 //	List<CourseMap> selectCourseMapList(int contentId); 
