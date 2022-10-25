@@ -68,4 +68,8 @@ public interface TotalTourMapper {
 
 	int insertReview(DetailReview detailReview);
 
+	List<Tour> calendarList(RowBounds rowBounds, Map<String, Object> searchMap);
+
+	int getCalendarCount(Map<String, Object> searchMap);
+
 }

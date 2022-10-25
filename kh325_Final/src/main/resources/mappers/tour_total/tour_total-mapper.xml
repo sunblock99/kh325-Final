@@ -698,6 +698,33 @@
 					JOIN BASIC_TOUR_INFO B ON (B.CONTENTID = I.CONTENTID)
 					WHERE I.CONTENTID = #{contentId}
 				</select>
+				
+				<!-- 캘린더 리스트 -->
+		<select id="calendarList" resultMap="tourInfoListResultMap"  parameterType="map">
+		SELECT  B.*, 
+				DE.*
+		FROM BASIC_TOUR_INFO B
+		INNER JOIN DETAIL_EVENT DE
+		ON (B.CONTENTID = DE.CONTENTID)
+		WHERE 1=1
+		
+		<if test="eventStartDate != null">
+			AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate}
+		</if>
+		
+		ORDER BY DE.EVENTSTARTDATE ASC
+	</select>
+		
+		<select id="getCalendarCount" parameterType="map" resultType="int">
+		SELECT  count(*)
+		FROM BASIC_TOUR_INFO B
+		INNER JOIN DETAIL_EVENT DE
+		ON (B.CONTENTID = DE.CONTENTID)
+		WHERE 1=1
+		<if test="eventStartDate != null">
+			AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate}
+		</if>
+		</select>
 						
 				
 
