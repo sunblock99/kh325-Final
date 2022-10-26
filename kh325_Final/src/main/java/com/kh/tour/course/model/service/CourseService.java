@@ -3,6 +3,8 @@ package com.kh.tour.course.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.course.model.vo.DetailCourse;
 import com.kh.tour.course.model.vo.MainMyCourse;
@@ -79,5 +81,6 @@ public interface CourseService {
 	List<MyCourseSearch> getForMyPage(int userNo, int myCourseNo);
 	List<MyCourseSearch> getForEdit(int myCourseDetailNo);
 	List<MyCourseSearch> getForCreate();
+	List<MyCourseSearch> getForMyPageList(@Param("userNo")int userNo);
 
 }

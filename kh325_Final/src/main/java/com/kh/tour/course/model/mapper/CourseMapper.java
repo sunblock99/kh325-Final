@@ -93,5 +93,7 @@ public interface CourseMapper {
 	List<MyCourseSearch> selectForEdit(int myCourseDetailNo);
 	
 	List<MyCourseSearch> selectForCreate();
+	
+	List<MyCourseSearch> selectForMyPageList(@Param("userNo")int userNo);
 }
 	

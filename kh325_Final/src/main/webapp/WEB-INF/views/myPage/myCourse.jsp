@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -24,12 +24,12 @@
     <!-- swiper-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
     <!-- Magnigic Popup-->
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
-    <link rel="stylesheet" href="css/course_detail.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/course_detail.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.png">
     <!-- Tweaks for older IEs-->
@@ -55,7 +55,7 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     .text-pBlack {
@@ -66,7 +66,7 @@
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     .text-pEb {
@@ -77,7 +77,7 @@
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     .text-pB {
@@ -88,7 +88,7 @@
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     .text-pSb {
@@ -99,7 +99,7 @@
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     .text-pM {
@@ -111,7 +111,7 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
     
     .text-pR {
@@ -122,7 +122,7 @@
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     .text-pL {
@@ -133,7 +133,7 @@
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     .text-pEl {
@@ -144,7 +144,7 @@
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     .text-pThin {
@@ -268,13 +268,15 @@
                     <!-- <p class="subtitle text-sm text-primary">Reviews </p>
                         <h5 class="mb-4">Listing Reviews </h5> -->
                     <div class="text-block">
-
                         <div class="row">
                             <!-- place item-->
+                                <c:if test="${!empty MyPageCourseList}">
+				<c:forEach var="i" begin="1" end="${MyPageCourseList.size()-1}" step="1">
+				<c:if test="${MyPageCourseList.get(i-1).getMyCourseNo() != MyPageCourseList.get(i).getMyCourseNo()}"> 
                             <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
                                 <div class="card h-100 border-0 shadow ">
                                     <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=6c0b1908-db4d-4b91-b1a2-74d94c037bfa " alt="Modern, Well-Appointed Room " />
-                                        <a class="tile-link " href="detail-rooms.html "></a>
+                                        <a class="tile-link" href="${path}/myPage/myCourseEidt?myCourseNo=${MyPageCourseList.get(i-1).getMyCourseNo()}"></a>
                                         <div class="card-img-overlay-top text-end">
                                             <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
                                                 <i class="fas fa-heart svg-icon"></i>
@@ -283,46 +285,32 @@
                                     </div>
                                     <div class="card-body d-flex align-items-center ">
                                         <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html ">남해여행 7코스</a></h6>
+                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html "><c:out value="${MyPageCourseList.get(i-1).getMyCourseTitle()}"/></a></h6>
                                             <div class="d-flex card-subtitle mb-3 ">
-                                                <p class="flex-grow-1 mb-0 text-muted text-sm ">경남 남해군</p>
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning
-                    "></i><i class="fa fa-star text-warning "></i>
-                                                </p>
+                                                <p class="flex-grow-1 mb-0 text-muted text-sm "><c:forEach begin="1" end="${MyPageCourseList.get(i-1).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
+                                <c:if test="${MyPageCourseList.get(i-1).getCntRevStar() < 5}"><c:forEach begin="${MyPageCourseList.get(i-1).getCntRevStar()+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
+                                        </p>
+                                        <span class="text-primary justify-center"><c:out value="${MyPageCourseList.get(i-1).getCntRevStar()}"/>/5</span>      
                                             </div>
                                             <p class="card-text text-muted "><span class="h-100 text-primary ">Travel</span> </p>
                                             <ul class="overflow-hidden " style="height:120px ">
                                                 <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 독일마을</a>
+                                                    <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i-1).getMyCourseContent()}"/></a>
                                                 </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 상주은모래비치</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 금산 보리암(남해)</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 가천 다랭이마을</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 남해보물섬전망대</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> [남해 바래길]화전별곡길</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 설천 남해해안도로</a>
-                                                </li>
+                                   
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+           </c:if>    
+			 
                             <!-- place item-->
-                            <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
+                               <c:if test="${i == MyPageCourseList.size()-1}">
+                      <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
                                 <div class="card h-100 border-0 shadow ">
-                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b9145ecf-16ce-4b10-a0c3-3421dd732206 " alt="Modern, Well-Appointed Room " />
-                                        <a class="tile-link " href="detail-rooms.html "></a>
+                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=6c0b1908-db4d-4b91-b1a2-74d94c037bfa " alt="Modern, Well-Appointed Room " />
+                                        <a class="tile-link" href="${path}/myPage/myCourseEdit?myCourseNo=${MyPageCourseList.get(i).getMyCourseNo()}"></a>
                                         <div class="card-img-overlay-top text-end">
                                             <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
                                                 <i class="fas fa-heart svg-icon"></i>
@@ -331,247 +319,27 @@
                                     </div>
                                     <div class="card-body d-flex align-items-center ">
                                         <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html ">울릉도 관광 코스(A) 7코스</a></h6>
+                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html "><c:out value="${MyPageCourseList.get(i).getMyCourseTitle()}"/></a></h6>
                                             <div class="d-flex card-subtitle mb-3 ">
-                                                <p class="flex-grow-1 mb-0 text-muted text-sm ">경북 울릉도</p>
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning
-                    "></i><i class="fa fa-star text-warning "></i>
-                                                </p>
+                                                <p class="flex-grow-1 mb-0 text-muted text-sm "><c:forEach begin="1" end="${MyPageCourseList.get(i).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
+                                <c:if test="${MyPageCourseList.get(i).getCntRevStar() < 5}"><c:forEach begin="${MyPageCourseList.get(i).getCntRevStar()+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
+                                        </p>
+                                        <span class="text-primary justify-center"><c:out value="${MyPageCourseList.get(i).getCntRevStar()}"/>/5</span>      
                                             </div>
                                             <p class="card-text text-muted "><span class="h-100 text-primary ">Travel</span> </p>
                                             <ul class="overflow-hidden " style="height:120px ">
                                                 <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  관음도 (울릉도, 독도 국가지질공원)</a>
+                                                    <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i).getMyCourseContent()}"/></a>
                                                 </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 독도전망대 케이블카</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  봉래폭포 (울릉도, 독도 국가지질공원)</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 천부해중전망대</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 태하향목 관광모노레일</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  울릉예림원</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 내수전일출전망대</a>
-                                                </li>
+                                   
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- place item-->
-                            <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                                <div class="card h-100 border-0 shadow ">
-                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=030bf4ee-49e2-45f3-a457-a6c87159333d " alt="Modern, Well-Appointed Room " />
-                                        <a class="tile-link " href="detail-rooms.html "></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center ">
-                                        <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html ">낭만이 넘치는 여수 밤바다 코스 4코스</a></h6>
-                                            <div class="d-flex card-subtitle mb-3 ">
-                                                <p class="flex-grow-1 mb-0 text-muted text-sm ">전남 여수시</p>
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning
-                    "></i><i class="fa fa-star text-warning "></i>
-                                                </p>
-                                            </div>
-                                            <p class="card-text text-muted "><span class="h-100 text-primary ">Travel</span> </p>
-                                            <ul class="overflow-hidden " style="height:120px ">
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 만성리 검은모래해변</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  여수 녹테마레</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 이순신광장</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 낭만포차</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- place item-->
-                            <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                                <div class="card h-100 border-0 shadow ">
-                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=210247d3-4468-4f92-8ec5-1e8ff5a86151 " alt="Modern, Well-Appointed Room " />
-                                        <a class="tile-link " href="detail-rooms.html "></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center ">
-                                        <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html ">경주 일주 11코스</a></h6>
-                                            <div class="d-flex card-subtitle mb-3 ">
-                                                <p class="flex-grow-1 mb-0 text-muted text-sm ">경북 경주시</p>
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning
-                    "></i><i class="fa fa-star text-warning "></i>
-                                                </p>
-                                            </div>
-                                            <p class="card-text text-muted "><span class="h-100 text-primary ">Travel</span> </p>
-                                            <ul class="overflow-hidden " style="height:120px ">
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 골굴사(경주)</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 신라역사과학관</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 불국사 [유네스코 세계문화유산]</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 용산회식당</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 남산</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  경주 포석정지</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 교촌마을</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 계림</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 교촌마을</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 첨성대</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 동궁과 월지</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 경주 보문관광단지</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- place item-->
-                            <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                                <div class="card h-100 border-0 shadow ">
-                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=8c3dfdc6-02dd-41de-ad3d-47deb173b4e0 " alt="Modern, Well-Appointed Room " />
-                                        <a class="tile-link " href="detail-rooms.html "></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center ">
-                                        <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html ">감자국 여행기 7코스</a></h6>
-                                            <div class="d-flex card-subtitle mb-3 ">
-                                                <p class="flex-grow-1 mb-0 text-muted text-sm ">강원 평창군</p>
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning
-                    "></i><i class="fa fa-star text-warning "></i>
-                                                </p>
-                                            </div>
-                                            <p class="card-text text-muted "><span class="h-100 text-primary ">Travel</span> </p>
-                                            <ul class="overflow-hidden " style="height:120px ">
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 오대산 선재길</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  몰운대(정선)</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 화암동굴 (강원고생대 국가지질공원)</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 임계사통팔달시장 / 임계장 (5, 10일)</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">화암약수 (강원고생대 국가지질공원) </a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">매봉산풍력발전단지(바람의 언덕)와 고랭지배추밭</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 용연동굴 (강원고생대 국가지질공원)</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- place item-->
-                            <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                                <div class="card h-100 border-0 shadow ">
-                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=a6eb07eb-c53c-4bec-b7c4-fa346d01681f " alt="Modern, Well-Appointed Room " />
-                                        <a class="tile-link " href="detail-rooms.html "></a>
-                                        <div class="card-img-overlay-top text-end">
-                                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
-                                                <i class="fas fa-heart svg-icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center ">
-                                        <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html ">보령서천 10코스</a></h6>
-                                            <div class="d-flex card-subtitle mb-3 ">
-                                                <p class="flex-grow-1 mb-0 text-muted text-sm ">충남 홍성군</p>
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning "></i><i class="fa fa-star text-warning
-                    "></i><i class="fa fa-star text-warning "></i>
-                                                </p>
-                                            </div>
-                                            <p class="card-text text-muted "><span class="h-100 text-primary ">Travel</span> </p>
-                                            <ul class="overflow-hidden " style="height:120px ">
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 홍주아문</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 보령 충청수영성</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 순교성지 갈매못</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 상화원</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  서천 마량리 동백나무 숲</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html "> 한국최초 성경전래지 기념관</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  판교 시간이멈춘마을</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  국립생태원(서천)</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  국립해양생물자원관</a>
-                                                </li>
-                                                <li class="mb-1 ">
-                                                    <a class="text-muted " href="knowledge-base-topic.html ">  장항 스카이워크 (기벌포 해전 전망대)</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                            </c:if>             
+                </c:forEach>
+			</c:if>
                                 </div>
                             </div>
 
@@ -586,73 +354,9 @@
         </div>
         </div>
     </section>
-    <!-- Footer-->
-    <footer class="position-relative z-index-10 d-print-none">
-        <!-- Main block - menus, subscribe form-->
-        <div class="py-6 bg-gray-200 text-muted">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <div class="fw-bold text-uppercase text-dark mb-3">Directory</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                        <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
-                        <ul class="list-unstyled">
-                            <li><a class="text-muted" href="index.html">Rooms</a></li>
-                            <li><a class="text-muted" href="category-rooms.html">Map on top</a></li>
-                            <li><a class="text-muted" href="category-2-rooms.html">Side map</a></li>
-                            <li><a class="text-muted" href="category-3-rooms.html">No map</a></li>
-                            <li><a class="text-muted" href="detail-rooms.html">Room detail</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                        <h6 class="text-uppercase text-dark mb-3">Pages</h6>
-                        <ul class="list-unstyled">
-                            <li><a class="text-muted" href="compare.html">Comparison                                   </a></li>
-                            <li><a class="text-muted" href="team.html">Team                                   </a></li>
-                            <li><a class="text-muted" href="contact.html">Contact                                   </a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-                        <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-                        <form action="#" id="newsletter-form">
-                            <div class="input-group mb-3">
-                                <input class="form-control bg-transparent border-dark border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                                <button class="btn btn-outline-dark border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyright section of the footer-->
-        <div class="py-4 fw-light bg-gray-800 text-gray-300">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="text-sm mb-md-0">&copy; 2021, Your company. All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <jsp:include page="/WEB-INF/views/common/footer.jsp">
+			<jsp:param value="예아바디" name="title"/>
+	</jsp:include>
     <!-- JavaScript files-->
     <script>
         // ------------------------------------------------------- //
@@ -679,24 +383,24 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
 </body>
 
 </html>

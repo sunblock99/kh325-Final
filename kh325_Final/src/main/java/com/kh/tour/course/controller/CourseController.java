@@ -398,17 +398,32 @@ public class CourseController {
 	}
 
 	// 코스 리스트 for 디테일
-	@RequestMapping("/addMyCourse")
+	@RequestMapping("/myPage/myCourse")
 	public String listforDetail(Model model, HttpServletRequest request,
-			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@RequestParam("contentId") int contentId, @RequestParam("contentTypeId") int contentTypeId) {
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 
-		if (loginMember == null) {
-			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("location",
-					"/tourDetailInfo.do?contentId=" + contentId + "&contentTypeId=" + contentTypeId);
-		}
-		return "/common/msg";
+		int userNo = loginMember.getUserNo();
+		
+		log.info("param : " + userNo);
+
+		List<MyCourseSearch> MyPageCourseList = courseService.getForMyPageList(userNo);
+		model.addAttribute("MyPageCourseList", MyPageCourseList);
+
+		return "/myPage/myCourse";
+	}
+	
+	@RequestMapping("/myPage/myCourseEdit")
+	public String listforEdit(Model model, HttpServletRequest request,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember, @RequestParam("myCourseNo") int myCourseNo) {
+
+		int userNo = loginMember.getUserNo();
+		
+		log.info("param : " + userNo);
+
+		List<MyCourseSearch> myCourseEditList = courseService.getForMyPage(userNo, myCourseNo);
+		model.addAttribute("myCourseEditList", myCourseEditList);
+
+		return "/myPage/myCourseEdit";
 	}
 
 //	@RequestMapping("/courseMain")
