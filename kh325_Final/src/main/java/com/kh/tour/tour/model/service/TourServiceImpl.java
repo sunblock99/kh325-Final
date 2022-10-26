@@ -225,12 +225,15 @@ public class TourServiceImpl implements TourService{
 	@Override // 관광지 찜하기
 	@Transactional(rollbackFor = Exception.class)
 	public int insertTourLike(int userNo, int contentId) {
-		int result = 0;
-
-		if (userNo != 0 && userNo > 0 && contentId != 0 && userNo > 0) {
-			result = mapper.tourLikeInsert(userNo,contentId);
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		
+		if (userNo != 0 && userNo > 0) {
+			searchMap.put("userNo", userNo);
 		}
-		return result;
+		if (contentId != 0 && contentId > 0) {
+			searchMap.put("contentId", contentId);
+		}
+		return mapper.tourLikeInsert(searchMap);
 	}
 
 	

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="tour" value="${tour}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -614,7 +615,7 @@
                             <!-- 좋아요 기능 -->
                             <div class="col-1">
                                 <div class="wrapper mt-0">
-                                    <a href="${path}/tourLike.do?contentId=${tour.contentId}" class="like-button">
+                                    <a onclick="location.href='${path}/tourLike.do?contentId=${tour.contentId}'" class="like-button">
                                         <i class="material-icons not-liked bouncy">
                       					<svg class="svg-icon text-danger">
                         				<use xlink:href="#heart-1"></use></svg></i>
@@ -1961,7 +1962,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " onclick="location.href='${path}/tourLike.do?contentId=${tour.contentId}'">
                                                         <i class="fas fa-heart svg-icon"></i>
                                                     </a>
                                                 </div>

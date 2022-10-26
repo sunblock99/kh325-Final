@@ -38,10 +38,6 @@ public interface TotalTourMapper {
 
 	List<Tour> selectTourList(RowBounds rowBound1, Map<String, Object> searchMap); // 관광지 체크박스로 조회된 관광지 리스트 갯수
 
-	int tourLikeInsert(int userNo, int contentId); // userNo랑 contentId로 관광지 찜하기
-	
-	int tourLikeDelete(int userNo, int contentId); // userNo랑 contentId로 관광지 찜하기
-
 	List<TourLike> selectTourLikeList(int userNo); // userNo로 찜목록 전체 조회하기
 
 	List<Category> selectCat1List(String cat1); 
@@ -71,5 +67,7 @@ public interface TotalTourMapper {
 	List<Tour> calendarList(RowBounds rowBounds, Map<String, Object> searchMap);
 
 	int getCalendarCount(Map<String, Object> searchMap);
+
+	int tourLikeInsert(Map<String, Object> searchMap);
 
 }
