@@ -15,7 +15,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--   <title>Directory Theme by Bootstrapious</title> -->
+      <title>갤러리 Gallery</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${path}/resources/css/addGallery.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- <link rel="stylesheet" href="${path}/resources/css/font.css"> -->
 
     <!-- <link href="${path}/resources/css/addSearch.css" rel="stylesheet" /> -->
@@ -67,35 +68,35 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
 
     @font-face {
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
 
     @font-face {
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
 
     @font-face {
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
 
     @font-face {
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
 
     @font-face {
@@ -103,28 +104,28 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
 
     @font-face {
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
 
     @font-face {
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
 
     @font-face {
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
 
     @font-face {
@@ -157,14 +158,16 @@
 </style>
 
 
-<!-- <body style="padding-top: 0px"> -->
 
-<body style="padding-top: 90px; ">
+<body style="padding-top: 0px">
+<!--     <section > -->
+<!--     <section> -->
+<!--                   <section class=" position-relative pt-5 pb-4" > -->
+<!--                         <img class="bg-image" style="opacity: 0.6; " src="https://images.pexels.com/photos/4784481/pexels-photo-4784481.jpeg?auto=compress&cs=tinysrgb&w=1600"> -->
+<!-- <body style="padding-top: 90px; "> -->
     <section class="circle1">
         <section class="circle2">
-            <!--       <section class=" position-relative pt-5 pb-4" > -->
             <section class=" position-relative pt-5 pb-4 " style="background-color: rgba(255, 193, 121, 0.295);">
-                <!--         <img class="bg-image" style="opacity: 0.6; " src="https://images.pexels.com/photos/4784481/pexels-photo-4784481.jpeg?auto=compress&cs=tinysrgb&w=1600"> -->
                 <!--         <img class="bg-image" style="opacity: 0.6; " src="https://images.pexels.com/photos/13077046/pexels-photo-13077046.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"> -->
                 <div class="container">
                     <div class="row">

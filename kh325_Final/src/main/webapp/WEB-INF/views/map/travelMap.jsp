@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+	<title>여행지도 Travel Map</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -33,7 +33,7 @@
     <!-- <link rel="stylesheet" href="${path}/resources/css/style.myMap.css" id="theme-stylesheet"> -->
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${path}/resources/css/addMap.css">
-    <link rel="stylesheet" href="${path}/resources/css/font.css">
+<%--     <link rel="stylesheet" href="${path}/resources/css/font.css"> --%>
     <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
@@ -58,35 +58,35 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
 
     @font-face {
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
 
     @font-face {
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
 
     @font-face {
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
 
     @font-face {
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
 
     @font-face {
@@ -94,28 +94,28 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
 
     @font-face {
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
 
     @font-face {
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
 
     @font-face {
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
 
     div {
@@ -123,84 +123,103 @@
         letter-spacing: -1px;
     }
 </style>
-<header class="header header-absolute fixed-top" style="font-size:30px;">
-    <!-- Navbar-->
+<header class="header header-absolute fixed-top" style="font-size:50px;">
     <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top bg-white" style="padding-bottom:0rem">
         <div class="container-fluid">
-            <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center">
 
-                <!-- 로고 시작 -->
-                <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-					<img class="ps-3" src="${path}/resources/image/togetherLogo.png" width="30%" height="10%">
-				</a>
-                <!-- 로고 끝-->
+            <!-- 로고 시작 -->
+            <a class="navbar-brand py-3 px-5" href="${path }/" style="line-height:0;">
+              <img class="ps-3" src="${path}/resources/image/togetherLogo.png" width="40%" height="60%">
+            </a>
+            <!-- 로고 끝-->
 
-                <!-- 공간활용 용도-->
-                <div class="input-label-absolute input-label-absolute-left
-          input-expand ms-lg-2 ms-xl-3"></div>
-            </div>
+            <!-- 공간활용 용도-->
+            <div class="input-label-absolute input-label-absolute-left
+              input-expand ms-lg-2 ms-xl-3"></div>
+          </div>
 
-            <!-- =============== 메뉴바 영역 =============== -->
-            <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link-header-black" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
-                    </li>
+          <!-- =============== 메뉴바 영역 =============== -->
+          <div class="collapse navbar-collapse px-6 " id="navbarCollapse"
+            style="font-family: pL;">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="fs-3 nav-link-header-black text-pB" id="homeDropdownMenuLink" href="${path }/"
+                  aria-haspopup="true" aria-expanded="false">홈</a>
+              </li>
 
-                    <!-- 상단바메뉴 시작 -->
-                    <li class="nav-item position-static">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            관광정보</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                <h6 class="dropdown-header fw-normal" style="font-family:
-                  pB;">관광정보</h6>
-                                <a class="hvr dropdown-item" href="docs/docs-introduction.html">HOT PLACE </a>
-                                <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">관광지 정보</a>
-                                <a class="hvr dropdown-item" href="docs/docs-gulp.html">지역별
-                                축제ㅣ행사 </a>
-                                <a class="hvr dropdown-item" href="docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
-                            </div>
-                        </li>
-                    </li>
+              <!-- 상단바메뉴 시작 -->
+               <li class="nav-item position-static text-pB">
+                   <li class="nav-item dropdown">
+                       <a class="fs-3 nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" 
+                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관광정보</a>
+                       <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                           <h6 class="dropdown-header fs-5 text-pSb">관광정보</h6>
+                           <a class="hvr dropdown-item fs-5" href="${path}/tour/hotPlace">HOT PLACE </a>
+                           <a class="hvr dropdown-item fs-5" href="${path }/tourSearch.do">관광지 정보</a>
+                           <a class="hvr dropdown-item fs-5" href="${path }/eventSearch.do">지역별 축제ㅣ행사 </a>
+                           <a class="hvr dropdown-item fs-5" href="#">날짜별 축제ㅣ행사</a>
+                       </div>
+                   </li>
+               </li>
+			   <li class="nav-item position-static text-pB">
+                  <li class="nav-item dropdown">
+                      <a class="fs-3 nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" 
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 커뮤니티</a>
+                      <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                          <a class="hvr dropdown-item fs-5" href="${path}/community">커뮤니티 메인</a>
+                          <a class="hvr dropdown-item fs-5" href="${path}/community/freeboardList">자유게시판 </a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/community/gallery">갤러리</a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/community/companionList">동행 구하기</a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/community/journeyList">여행 후기</a>
+                      </div>
+                  </li>
+               </li>
+				
+              <!-- <li class="nav-item"><a class="fs-3 nav-link-header-black" href="${path }/community">커뮤니티</a></li>-->
+              
+              <li class="nav-item">
+                  <a class="fs-3 nav-link-header-black" href="${path }/course/courseMain" aria-haspopup="true" aria-expanded="false">여행코스</a>
+              </li>
+              
+              <c:if test="${loginMember eq null}">
+              <li class="nav-item"><a class="fs-3 nav-link-header-black" href="${path}/loginView">로그인</a></li>
+              </c:if>
+              
+              <c:if test="${loginMember ne null && loginMember.managerStatus eq 'N'}">
+              <li class="nav-item dropdown"><a class="fs-3 nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
+                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <c:out value="${loginMember.userName}" /> 님</a>
+                <div class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
+                    <a class="fs-5 text-pSb hvr dropdown-item"
+                      href="${path }/myPage/profile">마이페이지</a>
+                    <a class="fs-5 text-pSb hvr dropdown-item"
+                      href="${path }/logout">로그아웃</a>
+                </div>
+              </li>
+              </c:if>
 
-                    <li class="nav-item"><a class="nav-link-header-black" href="contact.html">커뮤니티</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link-header-black" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a>
-                    </li>
-
-                    <!-- <li class="nav-item"><a class="nav-link-header-black" href="login.html">로그인</a></li> -->
-
-                    <!-- 일반회원 로그인 성공 시 -->
-                    <!-- <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
-            href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            곰발바닥 님</a>
-            <div class="dropdown-menu dropdown-menu-end"
-                aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                <a class="hvr dropdown-item"
-                  href="docs/docs-introduction.html">마이페이지</a>
-                <a class="hvr dropdown-item"
-                  href="docs/docs-directory-structure.html">로그아웃</a>
-            </div>
-          </li> -->
-
-                    <!-- 관리자 로그인 성공 시 -->
-                    <li class="nav-item dropdown"><a class="nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            곰발바닥 님</a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                            <a class="hvr dropdown-item" href="docs/docs-introduction.html">마이페이지</a>
-                            <a class="hvr dropdown-item" href="docs/docs-introduction.html">관리자페이지</a>
-                            <a class="hvr dropdown-item" href="docs/docs-directory-structure.html">로그아웃</a>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
+              
+              <!-- 관리자 로그인 성공 시 -->
+              <c:if test="${loginMember.managerStatus eq 'Y'}">
+              <li class="nav-item dropdown"><a class="fs-3 nav-link-header-black dropdown-toggle" id="docsDropdownMenuLink"
+                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <c:out value="${loginMember.userName}" /> 님</a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink text-pB">
+                  <a class="hvr dropdown-item fs-5 text-pSb" href="${path }/myPage/profile">마이페이지</a>
+                  <a class="hvr dropdown-item fs-5 text-pSb" href="${path }/manager/dashBoard">관리자페이지</a>
+                  <a class="hvr dropdown-item fs-5 text-pSb" href="${path }/logout">로그아웃</a>
+              </div>
+              </li>
+              </c:if>
+            </ul>
+          </div>
         </div>
-    </nav>
-    <!-- 상단바메뉴 끝 -->
-    <!-- =============== 메뉴바 영역 끝 =============== -->
-</header>	
+      </nav>
+      <!-- 상단바메뉴 끝 -->
+      <!-- =============== 메뉴바 영역 끝 =============== -->
+    </header>
 
 <%-- <c:set var="searchType" value="${param.searchType}"/> --%>
 <%-- <c:if test="${empty searchType}"> --%>
@@ -236,7 +255,7 @@
 	                                    <div class="icon ">
 	                                        <i class="fa-solid fa-map-location-dot"></i>
 	                                    </div>
-	                                    <div class="name">관광지</div>
+	                                    <div class="name" style="word-break : keep-all">관광지</div>
 	                                </div> 
 	                            </label>
 	                            <label class="option_item px-2">				
@@ -248,7 +267,7 @@
 	                            	</c:if>																		
 	                                <div class="option_inner restaurant">
 	                                    <div class="icon"><i class="fa-solid fa-utensils"></i></div>
-	                                    <div class="name">식당</div>
+	                                    <div class="name" style="word-break : keep-all">식당</div>
 	                                </div>
 	                            </label>
 	                            <label class="option_item px-2">
@@ -260,7 +279,7 @@
 	                                </c:if>
 	                                <div class="option_inner hotel">
 	                                    <div class="icon"><i class="fa-solid fa-bed"></i></div>
-	                                    <div class="name">숙소</div>
+	                                    <div class="name" style="word-break : keep-all">숙소</div>
 	                                </div>
 	                            </label>
 	                            <label class="option_item px-2">
@@ -272,7 +291,7 @@
 	                                </c:if>
 	                                <div class="option_inner cafe">
 	                                    <div class="icon"><i class="fa-solid fa-person-hiking"></i></div>
-	                                    <div class="name">레포츠</div>
+	                                    <div class="name" style="word-break : keep-all">레포츠</div>
 	                                </div>
 	                            </label>
 	                            <br>
@@ -285,7 +304,7 @@
 	                                </c:if>
 	                                <div class="option_inner parking">
 	                                    <div class="icon"><i class="fa-solid fa-building-columns"></i></div>
-	                                    <div class="name">문화시설</div>
+	                                    <div class="name" style="word-break : keep-all">문화시설</div>
 	                                </div>
 	                            </label>
 	                            
@@ -300,7 +319,7 @@
 	                                </c:if>
 	                                <div class="option_inner recommend">
 	                                    <div class="icon"><i class="fa-solid fa-cart-shopping"></i></div>
-	                                    <div class="name">쇼핑</div>
+	                                    <div class="name" style="word-break : keep-all">쇼핑</div>
 	                                </div>
 	                            </label>
 	                            <label class="option_item px-2">
@@ -313,7 +332,7 @@
 	                                <div class="option_inner travelCourse">
 	                                    <div class="icon"><i class="fa-solid fa-arrows-split-up-and-left"></i>
 	                                    </div>
-	                                    <div class="name">여행코스</div>
+	                                    <div class="name" style="word-break : keep-all">여행코스</div>
 	                                </div>
 	                            </label>
 	                            <label class="option_item pb-4 px-2">
@@ -325,7 +344,7 @@
 	                            	</c:if>
 	                                <div class="option_inner myTrip">
 	                                    <div class="icon"><i class="fa-solid fa-street-view"></i></div>
-	                                    <div class="name">나의여행</div>
+	                                    <div class="name" style="word-break : keep-all">나의여행</div>
 	                                </div>
 	                            </label>
 <!-- 	                            <label class="option_item"> -->
@@ -565,6 +584,7 @@
 					<c:forEach items="${travelMapList}" var="TravelMap">
 						positions.push({
 	                	id: '${TravelMap.contentId}',
+	                	type: '${TravelMap.contentTypeId}',
 	                	title: '${TravelMap.title}',
 	                    latlng: new kakao.maps.LatLng('${TravelMap.mapY}', '${TravelMap.mapX}'),
 	                    image: '${TravelMap.firstImage}',
@@ -667,7 +687,7 @@
 // 	                        data.hp +
 // 	                        '</div>' +
 	                        '                <div class="pt-1"><a href="${path}/tourDetailInfo.do?contentId='+
-	                        		data.id +
+	                        		data.id + '&contentTypeId='+ data.type +
 	                        		'"  class="link">상세페이지 →</a></div>' +
 	                        '            </div>' +
 	                        '        </div>' +
