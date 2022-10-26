@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="myCourseNo" value="${myCourseNo}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -320,7 +321,9 @@
                             <div class="h-100" id="detailMap"></div>
                         </div>
                 </div>
-                <div class="text-block">
+                
+                
+              <div class="text-block">
                     <p class="subtitle text-sm text-pB" style=" color:#907B65; ">Reviews </p>
                     <h5 class="mb-4 text-pEb">여행코스 후기 </h5>
                     <c:if test="${!empty myCourseRevList}">
@@ -341,18 +344,19 @@
                         <button class="btn btn-outline-warning" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
                         <div class="collapse mt-4" id="leaveReview">
                             <h5 class="mb-4 text-pB">Leave a review</h5>
-                            <form class="form" id="contact-form" method="get" action="#">
+                            <form class="form" id="contact-form" method="post" action="${path}/course/MyCourseRev?MyCourseNo=${myCourseNo}">
+                            	
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-4">
                                             <label class="form-label text-pB" for="name">Your name *</label>
-                                            <input class="form-control" type="text" name="name" id="name" placeholder="이름이나 닉네임을 입력해주세요" required="required">
+                                            <input class="form-control" type="text" name="userName" value="${loginMember.userName}" readonly="readonly">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-4">
-                                            <label class="form-label text-pB" for="rating">Your rating *</label>
-                                            <select class="form-select focus-shadow-0" name="rating" id="rating">
+                                            <label class="form-label text-pB" for="rating" >Your rating *</label>
+                                            <select class="form-select focus-shadow-0" name="cntRevStar" id="cntRevStar">
                           <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
                           <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
                           <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
@@ -364,11 +368,11 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label text-pB" for="email">Your email *</label>
-                                    <input class="form-control" type="email" name="email" id="email" placeholder="이메일을 입력해주세요" required="required">
+                                    <input class="form-control" type="email" name="email" id="email" value="${loginMember.userEmail}" readonly="readonly">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label text-pB" for="review">Review text *</label>
-                                    <textarea class="form-control" rows="4" name="review" id="review" placeholder="여행은 즐거우셨나요? 방문하신 장소에 대한 후기를 남겨주세요" required="required"></textarea>
+                                    <textarea class="form-control" rows="4" name="content" id="review" placeholder="여행은 즐거우셨나요? 방문하신 장소에 대한 후기를 남겨주세요" required="required"></textarea>
                                 </div>
                                 <button class="btn btn-warning" type="submit">Post review</button>
                             </form>
@@ -392,6 +396,7 @@
             </div>
         </div>
     </div>
+
 
       <!-- Footer-->
      <!-- Footer-->
