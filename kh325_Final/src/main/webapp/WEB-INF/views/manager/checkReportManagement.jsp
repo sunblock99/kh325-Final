@@ -364,17 +364,17 @@
 													</c:if>
                                                     </td>
                                                     <td>
-                                                    <c:if test="${Manager.boardType eq 'GAL'}">
-                                                        <a href="${path}/community/gallery" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+                                                     <c:if test="${Manager.boardType eq 'GAL'}">
+                                                        <a href="${path}/community/gallery" class="text-body fw-semibold"><c:out value="${fn:substring(Manager.boardName,0,30)}"/></a>
 													</c:if>
 													<c:if test="${Manager.boardType eq 'JB'}">
-                                                        <a href="${path}/community/journeyDetail?journeyNo=${Manager.boardNo}" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+                                                        <a href="${path}/community/journeyDetail?journeyNo=${Manager.boardNo}" class="text-body fw-semibold"><c:out value="${fn:substring(Manager.boardName,0,30)}"/></a>
 													</c:if>
 													<c:if test="${Manager.boardType eq 'CB'}">
-                                                        <a href="${path}/community/companionList" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+                                                        <a href="${path}/community/companionList" class="text-body fw-semibold"><c:out value="${fn:substring(Manager.boardName,0,30)}"/></a>
 													</c:if>
 													<c:if test="${Manager.boardType eq 'FB'}">
-                                                        <a href="${path}/community/freeDetail?freeboardNo=${Manager.boardNo}" class="text-body fw-semibold"><c:out value="${Manager.boardName}"/></a>
+                                                        <a href="${path}/community/freeDetail?freeboardNo=${Manager.boardNo}" class="text-body fw-semibold"><c:out value="${fn:substring(Manager.boardName,0,30)}"/></a>
 													</c:if>
                                                     </td>
                                                     <td>
