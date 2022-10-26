@@ -258,26 +258,30 @@
                     <!-- <p class="subtitle text-sm text-primary">Reviews </p>
                         <h5 class="mb-4">Listing Reviews </h5> -->
                     <div class="text-block">
+                    <form action="${path}/myPage/myCourseEdit/edit" method="post" name="" id="edit1">
                         <div class=" mb-5 col-12">
                             <label class="form-label" for="password-current" style="color:black">
-                                    <h6 class="text-pEb"><c:out value="${myCourseEditList.get(0).getMyCourseTitle()}"/></h6>
+                                    <h6 class="text-pEb">코스 이름</h6>
                                 </label>
-                            <input class="form-control" type="text" name="name" id="name">
+                                 <input type="hidden" name="userNo" value="${loginMember.userNo}">
+                                  <input type="hidden" name="myCourseNo" value="${myCourseEditList.get(0).getMyCourseNo()}" >
+	                             <input type="hidden" name="myCourseMainImage" value="${myCourseEditList.get(0).getFirstImage()}" >  
+                            <input class="form-control" type="text" name="myCourseTitle" id="title" value="<c:out value="${myCourseEditList.get(0).getMyCourseTitle()}"/>">
                         </div>
 
                         <div class="mb-2">
-                            <label class="form-label me-2 text-pEb" for="form_sort"><c:out value="${myCourseEditList.get(0).getMyCourseTitle()}"/></label>
+                            <label class="form-label me-2 text-pEb" for="form_sort"></label>
                             <div class="dropdown bootstrap-select">
                                 <div class="dropdown bootstrap-select">
                                     <div class="dropdown bootstrap-select">
-                                        <div class="dropdown bootstrap-select "><select class="selectpicker" name="sort" id="form_sort" data-style="btn-selectpicker" title="" tabindex="null">
-                              <option class="text-pEb" value="sortBy_0">가족코스   </option>
-                              <option class="text-pEb" value="sortBy_1">혼자여행   </option>
-                              <option class="text-pEb" value="sortBy_2">도보코스   </option>
-                              <option class="text-pEb" value="sortBy_3">힐링코스   </option>
-                              <option class="text-pEb" value="sortBy_4">맛 코스   </option>
-                              <option class="text-pEb" value="sortBy_5">캠핑코스   </option>
-                              <option class="text-pEb" value="sortBy_6">반려동물과 함께   </option>
+                                        <div class="dropdown bootstrap-select "><select class="selectpicker" name="myCourseThema" id="thema" title="테마 " data-style="btn-selectpicker"  tabindex="null">
+                              <option class="text-pEb" value="가족코스">가족코스   </option>
+                              <option class="text-pEb" value="혼자여행">혼자여행   </option>
+                              <option class="text-pEb" value="도보코스">도보코스   </option>
+                              <option class="text-pEb" value="힐링코스">힐링코스   </option>
+                              <option class="text-pEb" value="맛코스">맛코스   </option>
+                              <option class="text-pEb" value="캠핑코스">캠핑코스   </option>
+                              <option class="text-pEb" value="반려동물과함께">반려동물과함께   </option>
                             </select>
                                         </div>
                                     </div>
@@ -288,29 +292,48 @@
                             <div class="dropdown bootstrap-select">
                                 <div class="dropdown bootstrap-select">
                                     <div class="dropdown bootstrap-select">
-                                        <div class="dropdown bootstrap-select"><select class="selectpicker" name="sort" id="form_sort" data-style="btn-selectpicker" title="" tabindex="null">
-                              <option class="text-pEb" value="sortBy_0 " >당일여행   </option>
-                              <option class="text-pEb" value="sortBy_1">1박2일   </option>
-                              <option class="text-pEb" value="sortBy_2">2박3일 이상   </option>
+                                        <div class="dropdown bootstrap-select"><select class="selectpicker" name="myCourseSchedule" id="schedule" title="일정 " data-style="btn-selectpicker" tabindex="null">
+                              <option class="text-pEb" value="당일여행 " >당일여행   </option>
+                              <option class="text-pEb" value="1박2일">1박2일   </option>
+                              <option class="text-pEb" value="2박3일이상">2박3일이상   </option>
                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                              <div class=" mb-5 col-12 mt-3">
+                            <label class="form-label" for="password-current" style="color:black">
+                                <h6 class="text-pEb">코스 설명</h6>
+                            </label>
+                            <input class="form-control" type="text" name="myCourseContent" id="content" value="<c:out value="${myCourseEditList.get(0).getMyCourseContent()}"/>"style="height:114px; border: 2px solid #ced4da;">
+                        </div>
 
-
+                        <div class="mb-4" style=" width:100%;  border: 1px solid #ced4da;  padding : 10px; padding-left: 15px; padding-right: 15px;">
+                            <h6 class="text-pEb" style="margin-bottom: 0px;">공개여부
+                                <span style="float:right;">
+                                <input type="radio" name="myCourseStatus" id="yes" value="Y">
+                                <label for="chkMenu03">&nbsp;&nbsp;허용</label>
+                        
+                                <input type="radio" name="myCourseStatus" id="no" value="N" checked="checked">
+                                <label for="chkMenu04">&nbsp;&nbsp;불가</label>
+                                </span>
+                            </h6>
+                        </div>
+						</form>
+						
                         <hr style="height: 3px;">
                         <h6 class="text-pEb">코스 목록</h6>
                         <hr>
-
+	       <c:if test="${!empty myCourseEditList}">
+				<c:forEach var="i" begin="0" end="${myCourseEditList.size()-1}" step="1">
                         <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-1000.jpg" alt="Luke Skywalker">
+                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="<c:out value="${myCourseEditList.get(i).getFirstImage()}"/>" alt="Luke Skywalker">
                             </div>
                             <div>
-                                <h5 class="mt-3 mb-3 text-pB">골목식당</h5>
-                                <p class="text-muted text-sm text-pB">제주 제주시 </p>
+                                <h5 class="mt-3 mb-3 text-pB"><c:out value="${myCourseEditList.get(i).getDetailTitle()}"/></h5>
+                                <p class="text-muted text-sm text-pB"><c:out value="${myCourseEditList.get(i).getAddr1()}"/></p>
                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3">
                                     <a type="button" class="delete-botton" style="border-color:white; background-color:white; bo">
                                         <span class="me-1 text-muted text-pB">
@@ -319,52 +342,8 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-100.jpg" alt="Luke Skywalker">
-                            </div>
-                            <div>
-                                <h5 class="mt-4 mb-3 text-pB">휴일로</h5>
-                                <p class="text-muted text-sm text-pB">제주 서귀포시 </p>
-                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3">
-                                    <a type="button" class="delete-botton" style="border-color:white; background-color:white; bo">
-                                        <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>삭제</span>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-101.jpg" alt="Luke Skywalker">
-                            </div>
-                            <div>
-                                <h5 class="mt-4 mb-3 text-pB">카페더라이트</h5>
-                                <p class="text-muted text-sm text-pB">제주 서귀포시 </p>
-                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3">
-                                    <a type="button" class="delete-botton" style="border-color:white; background-color:white; bo">
-                                        <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>삭제</span>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
-                            <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-102.jpg" alt="Luke Skywalker">
-                            </div>
-                            <div>
-                                <h5 class="mt-4 mb-3 text-pB">중문해물라면오빠네 본점</h5>
-                                <p class="text-muted text-sm text-pB">제주 서귀포시 </p>
-                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3">
-                                    <a type="button" class="delete-botton" style="border-color:white; background-color:white; bo">
-                                        <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>삭제</span>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-
+                  </c:forEach>
+			</c:if>
                         <h6 class="text-pEb mt-3">코스 위치정보</h6>
                         <!--MAP-->
                         <div class="map-wrapper-450 mt-3">
@@ -372,28 +351,10 @@
                         </div>
                         <hr>
                         <!--MAP-->
-                        <div class=" mb-5 col-12 mt-3">
-                            <label class="form-label" for="password-current" style="color:black">
-                                <h6 class="text-pEb">코스 설명</h6>
-                            </label>
-                            <input class="form-control" type="text" name="name" id="name" style="height:314px; border: 2px solid #ced4da;">
-                        </div>
-
-                        <div class="mb-4" style=" width:100%;  border: 1px solid #ced4da;  padding : 10px; padding-left: 15px; padding-right: 15px;">
-                            <h6 class="text-pEb" style="margin-bottom: 0px;">공개여부
-                                <span style="float:right;">
-                                <input type="radio" name="chkMenu2" id="chkMenu03" value="1">
-                                <label for="chkMenu03">&nbsp;&nbsp;허용</label>
-                        
-                                <input type="radio" name="chkMenu2" id="chkMenu04" value="0" checked="checked">
-                                <label for="chkMenu04">&nbsp;&nbsp;불가</label>
-                                </span>
-                            </h6>
-                        </div>
+                
 
 
-
-                        <button class="btn btn-primary text-pB" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">저장하기</button>
+                        <button class="btn btn-primary text-pB"  form="edit1" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">저장하기</button>
                     </div>
 
 

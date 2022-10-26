@@ -494,7 +494,7 @@
 	
 	<!-- 코스 편집하기 -->
 	<update id="updateCourse" parameterType="MyCourseCreate">
-		UPDATE BOARD
+		UPDATE MYCOURSE
 		SET
 			MYCOURSE_TITLE = #{myCourseTitle},
 			MYCOURSE_THEMA = #{myCourseThema},
@@ -512,6 +512,7 @@
 			VALUES(SEQ_MYCOURSE_DETAIL_NO.NEXTVAL, 
 			#{myCourseNo}, #{contentId}, #{myCourseSn})
 	</insert>
+	
 	
 	<!-- 코스 컨텐츠 하나 삭제하기 -->
 	<delete id="deleteContent" parameterType="int">
@@ -550,7 +551,6 @@
         WHERE 1=1 	
         AND MC.UNO = #{userNo}
         AND MC.MYCOURSE_NO = #{myCourseNo}
-        AND MC.MYCOURSE_STATUS = 'Y'
         ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC
 	</select>
 	

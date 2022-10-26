@@ -468,23 +468,52 @@
      <script>
                   
                      var mapContainer = document.getElementById('detailMap'), // 지도를 표시할 div 
+//                      <c:forEach items="${detailCourseList}" var="MyCourseSearch">
+                     <c:if test="${detailCourseList[1].mapX eq null }">
                      mapOption = { 
-                         center: new kakao.maps.LatLng('${MyCourseSearch.mapY}', '${MyCourseSearch.mapX}'), // 지도의 중심좌표
+                         center: new kakao.maps.LatLng('33.450705', '126.570677'), // 지도의 중심좌표
                          level: 6 // 지도의 확대 레벨
+//                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
                      };
+                     </c:if>
+                     <c:if test="${detailCourseList[1].mapX ne null }">
+                     mapOption = { 
+                         center: new kakao.maps.LatLng('MyCourseSearch.mapY', 'MyCourseSearch.mapX'), // 지도의 중심좌표
+                         level: 6 // 지도의 확대 레벨
+//                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
+                     };
+                     </c:if>
+//                      </c:forEach>
 
                     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-   
-                    // 마커가 표시될 위치입니다 
-                    var markerPosition  = new kakao.maps.LatLng('${MyCourseSearch.mapY}', '${MyCourseSearch.mapX}'); 
+                    
+                  /*   // 마커가 표시될 위치입니다 
+                    var markerPosition  = new kakao.maps.LatLng('${detailCourseList[1].mapY}', '${detailCourseList[1].mapX}');  */
+                    
+                    var positions = [];
+					<c:forEach items="${detailCourseList}" var="MyCourseSearch">
+						positions.push({
+	                    latlng: new kakao.maps.LatLng('MyCourseSearch.mapY', 'MyCourseSearch.mapX'),
+	               		});
+	                </c:forEach>
+                  
+	                
+					<c:forEach items="${detailCourseList}" var="MyCourseSearch">
+					 <c:if test="${MyCourseSearch.mapX eq null }">
+						positions.push({
+	                    latlng: new kakao.maps.LatLng('33.450705', '126.570677'),
+	               		});
+						 </c:if>
+	                </c:forEach>
+                  
    
                     // 마커를 생성합니다
-                    var marker = new kakao.maps.Marker({
+                 /*    var marker = new kakao.maps.Marker({
                         position: markerPosition
-                    });
+                    }); */
    
                     // 마커가 지도 위에 표시되도록 설정합니다
-                    marker.setMap(map);
+//                     marker.setMap(map);
                     
                  // 지도에 확대 축소 컨트롤을 생성한다
                       var zoomControl = new kakao.maps.ZoomControl();
@@ -504,154 +533,205 @@
       
                       // 마커 이미지를 생성합니다    
                       var markerImage = new kakao.maps.MarkerImage(markerImageUrl, imageSize);
-      
+                      
                       for (let i = 0; i < positions.length; i++) {
-                          var data = positions[i];
-                          displayMarker(data);
-                      }
-      
+  	                    var data = positions[i];
+  	                    displayMarker(data);
+  	                }
+  	
                       // 지도에 마커를 표시하는 함수입니다    
-                      function displayMarker(data) {
-                          var marker = new kakao.maps.Marker({
-                              map: map,
-                              position: data.latlng,
-                              image: markerImage
-                          });
-                          var overlay = new kakao.maps.CustomOverlay({
-                              yAnchor: 1,
-                              position: marker.getPosition()
-                          });
-                          
-                          if (!data.tel){
-                             data.tel= '&nbsp;&nbsp;&#45;-- ';
-                          }
-      
-                          // var content = document.getElementById('clickMarkerInfo');
-                          // var content = document.getElementById('popup_map');
-                          var content = document.createElement('div');
-                          content.innerHTML = '<div class="wrap" id="popup_map">' +
-                              '    <div class="info">' +
-                              '        <div class="title">' +
-                              data.title +
-                              '        </div>' +
-                              '        <div class="body">' +
-                              '            <div class="img">' +
-                              '                <img src="' +
-                              data.image +
-                              '" width="73" height="70">' +
-                              '           </div>' +
-                              '            <div class="desc">' +
-                              '                <div class="text-sm">' +
-                              '<MARQUEE>' +
-                              data.address +
-                              '</MARQUEE>' +
-                              '</div>' +
-                              '                <div class="jibun">'+
-                                 data.tel +
-                              '</div>' +
-//                               '                <div>'+
-//                               data.hp +
-//                               '</div>' +
-                              '                <div class="pt-1"><a href="https://www.kakaocorp.com/main" target="_blank" class="link">상세페이지 →</a></div>' +
-                              '            </div>' +
-                              '        </div>' +
-                              '    </div>' +
-                              '</div>';
-                          // content.innerHTML = data.title;
-                          // content.style.cssText = 'background: white; border: 1px solid black';
-      
-                          var closeBtn = document.getElementById('closeBtn');
-                          var closeBtn = document.createElement('button');
-                          closeBtn.innerHTML = 'X';
-                          closeBtn.style.cssText = 'background: rgba(0, 0, 0,0); color: rgba(0, 0, 0,0); border: none';
-                          closeBtn.onclick = function () {
-                              overlay.setMap(null);
-                          };
-      
-                          content.appendChild(closeBtn);
-                          overlay.setContent(content);
-      
-                          var isClick = new kakao.maps.event.addListener(marker, 'click', function () {
-                              overlay.setMap(map);
-                              return true;
-                          });
-      
-                          if (isClick === true) {
-                              overlay.setMap(null);
-                          }
-      
-                          // kakao.maps.event.addListener(marker, 'click', function() {
-                          //     overlay.setMap(null);
-                          // });
-      
-      
-                      }                         
-    
-        //  버튼 클릭 이벤트 
-        var div2 = document.getElementsByClassName("div2");
+  	                function displayMarker(data) {
+  	                	
+  	                    var marker = new kakao.maps.Marker({
+  	                        map: map,
+  	                        position: data.latlng,
+  	                        image: markerImage
+  	                    });
+  	                   
+  	                    var overlay = new kakao.maps.CustomOverlay({
+  	                        yAnchor: 1,
+  	                        xAnchor: -0.2,
+  	                        position: marker.getPosition()
+  	                    });
+  	                    
+  	                    
+  	                    // var content = document.getElementById('clickMarkerInfo');
+  	                    // var content = document.getElementById('popup_map');
+  	                    var content = document.createElement('div');
+  	                    content.innerHTML = '<div class="wrap" id="popup_map">' +
+  	                        '    <div class="info">' +
+  	                        '        <div class="title">' +
+  	                        data.title +
+  	                        '        </div>' +
+  	                        '        <div class="body">' +
+  	                        '            <div class="img">' +
+  	                        '                <img src="' +
+  	                        data.image +
+  	                        '" width="73" height="70">' +
+  	                        '           </div>' +
+  	                        '            <div class="desc">' +
+  	                        '                <div class="text-sm">' +
+  	                        '<MARQUEE>' +
+  	                        data.address +
+  	                        '</MARQUEE>' +
+  	                        '</div>' +
+  	                        '                <div class="jibun">'+
+  	                        	data.tel +
+  	                        '</div>' +
+//   	                        '                <div>'+
+//   	                        data.hp +
+//   	                        '</div>' +
+  	                        '                <div class="pt-1"><a href="${path}/tourDetailInfo.do?contentId='+
+  	                        		data.id + '&contentTypeId='+ data.type +
+  	                        		'"  class="link">상세페이지 →</a></div>' +
+  	                        '            </div>' +
+  	                        '        </div>' +
+  	                        '    </div>' +
+  	                        '</div>';
+  	                    // content.innerHTML = data.title;
+  	                    // content.style.cssText = 'background: white; border: 1px solid black';
+  	
+  	                    var closeBtn = document.getElementById('closeBtn');
+  	                    var closeBtn = document.createElement('button');
+  	                    closeBtn.innerHTML = 'xx';
+  	                    closeBtn.style.cssText = 'background: rgba(0, 0, 0,0); color: rgba(0, 0, 0,0); border: none ';
+  	                    closeBtn.onclick = function () {
+  	                        overlay.setMap(null);
+  	                    };
+  	
+  	                    content.appendChild(closeBtn);
+  	                    overlay.setContent(content);
+  	
+  	                    var isClick = new kakao.maps.event.addListener(marker, 'click', function () {
+  	                        overlay.setMap(map);
+  	                        return true;
+  	                    });
+  	
+  	                    if (isClick === true) {
+  	                        overlay.setMap(null);
+  	                    }
+  	
+  	                    // kakao.maps.event.addListener(marker, 'click', function() {
+  	                    //     overlay.setMap(null);
+  	                    // });
+  	
+  	
+  	                }
+  	
+  	                
+  	                var paths = [];
+  	                for (let i = 0; i < positions.length; i++) {
+  	                    var pathDarw = positions[i].latlng;
+  	                    paths.push(pathDarw);
+  	                }
+  	
+  	                // 지도에 선을 표시한다 
+  	                var polyline = new kakao.maps.Polyline({
+  	                    map: map, // 선을 표시할 지도 객체 
+  	                    // path: [ // 선을 구성하는 좌표 배열
+  	                    //     // new kakao.maps.LatLng(33.450705, 126.570677),
+  	                    //     // new kakao.maps.LatLng(33.450936, 126.569477),
+  	                    //     // new kakao.maps.LatLng(33.450879, 126.569940),
+  	                    //     // new kakao.maps.LatLng(33.451393, 126.570738),
+  	                    //     data.latlng,
+  	                    // ],
+  	                    path: paths,
+  	                    // endArrow: true, // 선의 끝을 화살표로 표시되도록 설정한다
+  	                    strokeWeight: 3, // 선의 두께
+  	                    strokeColor: '#FF846B', // 선 색
+  	                    strokeOpacity: 0.8, // 선 투명도
+  	                    strokeStyle: 'shortdash' // 선 스타일
+  	
+  	
+  	                });
+  	
+  	
+  	
+  	
+  	
+  	                //  버튼 클릭 이벤트 
+  	
+  	                var div2 = document.getElementsByClassName("div2");
+  	
+  	                function handleClick(event) {
+  	                    console.log(event.target);
+  	                    // console.log(this);
+  	                    // 콘솔창을 보면 둘다 동일한 값이 나온다
+  	
+  	                    console.log(event.target.classList);
+  	
+  	                    if (event.target.classList[1] === "clicked") {
+  	                        event.target.classList.remove("clicked");
+  	                    } else {
+  	                        for (var i = 0; i < div2.length; i++) {
+  	                            div2[i].classList.remove("clicked");
+  	                        }
+  	
+  	                        event.target.classList.add("clicked");
+  	                    }
+  	                }
+  	
+  	                function init() {
+  	                    for (var i = 0; i < div2.length; i++) {
+  	                        div2[i].addEventListener("click", handleClick);
+  	                    }
+  	                }
+  	
+  	                init();
+  	
+  	                //  버튼 클릭 이벤트 끝 
+  	
+  	                //  코스 클릭시 위에 체크박스 해제 
+  	
+  	                // 버튼 클릭시 체크박스 해제
+  	                $(function () {
+  	
+  	                    $("input[name=allNonChk]").click(function () {
+  	                        $(":checkbox").prop("checked", false);
+  	                    });
+  	                });
+  	                $(function () {
+  	
+  	                    $("input[id=allNonChk]").click(function () {
+  	                        $(":checkbox").prop("checked", false);
+  	                    });
+  	                });
+  	
+  	                $(document).ready(function () {
+  	                    $('input[type="checkbox"][name="course"]').click(function () {
+  	                        if ($(this).prop('checked')) {
+  	                            $('input[type="checkbox"][name="place"]').prop('checked', false);
+  	                            $(this).prop('checked', true);
+  	                        }
+  	                    });
+  	                });
+  	
+  	
+  	                //  클릭시 div 확장 
+  	
+  	                function onDisplay() {
+  	                    $('#noneDiv').show();
+  	                }
 
-        function handleClick(event) {
-            console.log(event.target);
-            // console.log(this);
-            // 콘솔창을 보면 둘다 동일한 값이 나온다
-
-            console.log(event.target.classList);
-
-            if (event.target.classList[1] === "clicked") {
-                event.target.classList.remove("clicked");
-            } else {
-                for (var i = 0; i < div2.length; i++) {
-                    div2[i].classList.remove("clicked");
-                }
-
-                event.target.classList.add("clicked");
-            }
-        }
-
-        function init() {
-            for (var i = 0; i < div2.length; i++) {
-                div2[i].addEventListener("click", handleClick);
-            }
-        }
-
-        init();
-
-        //  버튼 클릭 이벤트 끝 
-
-        //  코스 클릭시 위에 체크박스 해제 
-
-        // 버튼 클릭시 체크박스 해제
-        $(function() {
-
-            $("input[name=allNonChk]").click(function() {
-                $(":checkbox").prop("checked", false);
-            });
-        });
-        $(function() {
-
-            $("input[id=allNonChk]").click(function() {
-                $(":checkbox").prop("checked", false);
-            });
-        });
-
-        $(document).ready(function() {
-            $('input[type="checkbox"][name="course"]').click(function() {
-                if ($(this).prop('checked')) {
-                    $('input[type="checkbox"][name="place"]').prop('checked', false);
-                    $(this).prop('checked', true);
-                }
-            });
-        });
-
-
-        //  클릭시 div 확장 
-
-        function onDisplay() {
-            $('#noneDiv').show();
-        }
-        
-</script>
-
+  	                
+  	                //클릭시 중심좌표 이동
+  	            function clickMove(mapY, mapx){
+  	                // 이동할 위도 경도 위치를 생성합니다 
+  	                var moveLatLon = new kakao.maps.LatLng(mapY, mapX);
+  	                
+  	                // 지도 중심을 이동 시킵니다
+  	                map.clickMove(moveLatLon);
+  	            }
+  	                
+  	            function panTo(mapX, mapY) {
+  	                // 이동할 위도 경도 위치를 생성합니다 
+  	                var moveLatLon = new kakao.maps.LatLng(mapX, mapY);
+  	                
+  	                // 지도 중심을 부드럽게 이동시킵니다
+  	                // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+  	                map.panTo(moveLatLon);            
+  	            }        
+  	            </script>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////     -->
 
 
