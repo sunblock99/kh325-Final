@@ -574,4 +574,5 @@
         ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC
 	</select>
 
+
 </mapper>

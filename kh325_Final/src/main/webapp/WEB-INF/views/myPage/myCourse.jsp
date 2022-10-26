@@ -468,6 +468,7 @@
     </script>
     <!-- Main Theme JS file    -->
     <script src="${path}/resources/js/theme.js"></script>
+    
 </body>
 
 </html>
