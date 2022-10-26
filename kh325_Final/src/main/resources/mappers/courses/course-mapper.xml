@@ -513,6 +513,7 @@
 			#{myCourseNo}, #{contentId}, #{myCourseSn})
 	</insert>
 	
+	
 	<!-- 코스 컨텐츠 하나 삭제하기 -->
 	<delete id="deleteContent" parameterType="int">
 		DELETE FROM MYCOURSE_DETAIL WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}

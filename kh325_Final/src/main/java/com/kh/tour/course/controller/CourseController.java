@@ -26,7 +26,6 @@ import com.kh.tour.course.model.vo.RecommCourseDetail;
 import com.kh.tour.course.model.vo.RecommCourseImage;
 import com.kh.tour.course.model.vo.RecommCourseRev;
 import com.kh.tour.member.model.vo.Member;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
