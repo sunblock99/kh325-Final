@@ -225,19 +225,21 @@ public class CourseController {
 			@RequestParam("myCourseSchedule") String myCourseSchedule,
 			@RequestParam("myCourseContent") String myCourseContent,
 			@RequestParam("myCourseMainImage") String myCourseMainImage,
+			@RequestParam("myCourseNo") int myCourseNo,
 			@RequestParam("myCourseStatus") String myCourseStatus) {
 
+	
 		int userNo = loginMember.getUserNo();
 
 		log.info("코스 만들기 요청");
-		MyCourseCreate myCourseCreate = new MyCourseCreate(0, userNo, myCourseTitle, myCourseThema, myCourseSchedule,
+		MyCourseCreate myCourseCreate = new MyCourseCreate(myCourseNo, userNo, myCourseTitle, myCourseThema, myCourseSchedule,
 				myCourseContent, myCourseMainImage, myCourseStatus);
 
 		int result = courseService.updateCourse(myCourseCreate);
 
 		if (result > 0) {
 			model.addAttribute("msg", "코스 편집에 성공하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		} else {
 			model.addAttribute("msg", "코스 편집에 실패하였습니다.");
 			model.addAttribute("location", "/myPage/myCourseEdit");
