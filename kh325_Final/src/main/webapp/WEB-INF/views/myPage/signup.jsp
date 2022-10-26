@@ -45,7 +45,7 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     .text-pBlack {
@@ -56,7 +56,7 @@
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     .text-pEb {
@@ -67,7 +67,7 @@
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     .text-pB {
@@ -78,7 +78,7 @@
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     .text-pSb {
@@ -89,7 +89,7 @@
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     .text-pM {
@@ -101,7 +101,7 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
     
     .text-pR {
@@ -112,7 +112,7 @@
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     .text-pL {
@@ -123,7 +123,7 @@
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     .text-pEl {
@@ -134,7 +134,7 @@
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     .text-pThin {
@@ -273,7 +273,7 @@
 </script>
     
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
 </body>
 
 </html>

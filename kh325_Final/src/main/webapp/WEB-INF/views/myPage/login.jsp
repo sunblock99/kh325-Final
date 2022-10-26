@@ -189,7 +189,7 @@
                             <button class="btn btn text-pB" type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=cd8b1886f132139b606ba3a3939880a9&redirect_uri=http://localhost:82/kakao/callback&response_type=code'" style="color: #F9E000; border-color: #F9E000; position: relative; padding-left: 12;"><img src="${path}/resources/icons/kakaoLogin.png" style="width: 20px; height: 20pxp; float:left; "><i class="fa-2x  fab btn-social-icon"> </i><span class="d-none d-sm-inline">카카오톡 로그인</span></button>
                         </div>
                         <hr class="my-4">
-                        <p class="text-center"><small class="text-muted text-center text-pB">아직 아이디가 없으신가요?<a href="signup.html" style="color: #FC950D; text-decoration: none;">  회원가입하기                </a></small></p>
+                        <p class="text-center"><small class="text-muted text-center text-pB">아직 아이디가 없으신가요?<a href="${path}/signup" style="color: #FC950D; text-decoration: none;">  회원가입하기                </a></small></p>
                     </form>
                     <a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html">
                         <svg class="svg-icon w-3rem h-3rem" style="color: #FC950D; text-decoration: none">

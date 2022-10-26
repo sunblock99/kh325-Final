@@ -114,12 +114,50 @@
 		<result property="star" column="STAR"/>
 	</resultMap>
 	
-	<select id="bookmark" parameterType="int" resultMap="bookmarkResultMap">
+<!-- 	<select id="bookmark" parameterType="int" resultMap="bookmarkResultMap">
 		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE2, B.ADDR1, B.OVERVIEW, R.STAR FROM BASIC_TOUR_INFO B
 		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
 		JOIN REVIEW_TOTAL R ON(R.UNO = L.UNO and R.CONTENTID = B.CONTENTID)
 		WHERE L.UNO = #{userNo}
-	</select> 
+	</select>  -->
+	
+	<!-- 즐겨찾기 쿼리 -->
+	<select id="bookmarkTour" parameterType="Map" resultMap="bookmarkResultMap">
+		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE2, B.ADDR1, B.OVERVIEW, R.STAR FROM BASIC_TOUR_INFO B
+		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
+		JOIN REVIEW_TOTAL R ON(R.UNO = L.UNO and R.CONTENTID = B.CONTENTID)
+		WHERE L.UNO = #{userNo}
+	</select>
+	
+	<select id="bookmarkHotel" parameterType="Map" resultMap="bookmarkResultMap">
+		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE2, B.ADDR1, B.OVERVIEW, R.STAR FROM BASIC_TOUR_INFO B
+		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
+		JOIN REVIEW_TOTAL R ON(R.UNO = L.UNO and R.CONTENTID = B.CONTENTID)
+		WHERE L.UNO = #{userNo}
+	</select>
+	
+	<select id="bookmarkRestaurant" parameterType="Map" resultMap="bookmarkResultMap">
+		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE2, B.ADDR1, B.OVERVIEW, R.STAR FROM BASIC_TOUR_INFO B
+		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
+		JOIN REVIEW_TOTAL R ON(R.UNO = L.UNO and R.CONTENTID = B.CONTENTID)
+		WHERE L.UNO = #{userNo}
+	</select>
+	
+	<select id="selectTourBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM DETAIL_TOUR 
+		WHERE UNO = #{userNo}
+	</select>
+	<select id="selectHotelBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM DETAIL_HOTEL 
+		WHERE UNO = #{userNo}
+	</select>
+	<select id="selectResBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM DETAIL_RESTAURANT 
+		WHERE UNO = #{userNo}
+	</select>
 	
 	<delete id="deleteBookmark" parameterType="int">
 		DELETE FROM TOUR_LIKE 
@@ -150,17 +188,51 @@
 	<resultMap type="MyCommunity" id="communityResultMap">
 		<result property="boardType" column="BOARD_TYPE"/>
 		<result property="userNo" column="UNO"/>
-		<result property="freeboardNo" column="FREEBOARD_NO"/>
+		<result property="boardNo" column="BOARD_NO"/>
 		<result property="title" column="TITLE"/>
 		<result property="postDate" column="POST_DATE"/>
 		<result property="count" column="COUNT"/>
 	</resultMap>
 	
-	<select id="community" parameterType="int" resultMap="communityResultMap">
-		SELECT F.BOARD_TYPE, M.UNO, F.FREEBOARD_NO, F.TITLE, F.POST_DATE, F.COUNT FROM COMM_FREEBOARD F
-		JOIN MEMBER M ON(F.UNO=M.UNO)
-		JOIN FREEBOARD_COMMENT C ON(C.FREEBOARD_NO = F.FREEBOARD_NO)
-		WHERE F.STATUS = 'Y' AND M.UNO= #{userNo}
+	<!-- 나의 커뮤니티 게시글 쿼리 -->
+	<select id="communityFreeboard" parameterType="Map" resultMap="communityResultMap">
+		SELECT B.BOARD_TYPE, M.UNO, B.FREEBOARD_NO AS BOARD_NO, B.TITLE, B.POST_DATE, B.COUNT 
+		FROM COMM_FREEBOARD B
+		JOIN MEMBER M ON(B.UNO=M.UNO)
+		WHERE B.STATUS = 'Y' AND M.UNO = #{userNo}
+		ORDER BY B.FREEBOARD_NO DESC
+	</select>
+	
+	<select id="communityCompanion" parameterType="Map" resultMap="communityResultMap">
+		SELECT B.BOARD_TYPE, M.UNO, B.COMPANION_NO AS BOARD_NO, B.CONTENT AS TITLE, B.POST_DATE
+		FROM COMM_COMPANION B
+		JOIN MEMBER M ON(B.UNO=M.UNO)
+		WHERE B.STATUS = 'Y' AND M.UNO= #{userNo}
+		ORDER BY B.COMPANION_NO DESC
+	</select>
+	
+	<select id="communityJourney" parameterType="Map" resultMap="communityResultMap">
+		SELECT B.BOARD_TYPE, M.UNO, B.JOURNEY_NO AS BOARD_NO, B.TITLE, B.POST_DATE, B.COUNT 
+		FROM COMM_JOURNEY B
+		JOIN MEMBER M ON(B.UNO=M.UNO)
+		WHERE B.STATUS = 'Y' AND M.UNO= #{userNo}
+		ORDER BY B.JOURNEY_NO DESC
+	</select>
+	
+	<select id="selectFreeBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM COMM_FREEBOARD 
+		WHERE STATUS = 'Y' AND UNO = #{userNo}
+	</select>
+	<select id="selectCompBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM COMM_COMPANION 
+		WHERE STATUS = 'Y' AND UNO = #{userNo}
+	</select>
+	<select id="selectJourneyBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM COMM_JOURNEY 
+		WHERE STATUS = 'Y' AND UNO = #{userNo}
 	</select>
 	
 	<delete id="deleteCommunity" parameterType="int">

@@ -27,7 +27,7 @@ public interface MemberService {
 
 	Member getUserInfo(String access_Token);
 
-	List<Bookmark> bookmark(int userNo);
+	List<Bookmark> bookmark(PageInfo pageInfo, Map<String,String>map);
 	
 	int deleteBookmark(int likeNo);
 
@@ -42,5 +42,8 @@ public interface MemberService {
 	List<MemMyCourse> mycourse(int userNo);
 	
 	int selectBoardCount(Map<String,String>map);
+
+	int selectBookmarkBoardCount(Map<String, String> map);
+
 
 }

@@ -217,16 +217,64 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("/myPage/bookmark")
-	public String bookmark(Model model, 
-			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
+//	@GetMapping("/myPage/bookmark")
+//	public String bookmark(Model model, 
+	//		@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
 //		int userNo = loginMember.getUserNo();
 //		System.out.println("userNo : " + userNo);
 		
-		List<Bookmark> bookmarkList = service.bookmark(1); 
+		
+		//int uno = loginMember.getUserNo();
+		//List<Bookmark> bookmarkList = service.bookmark(uno);
 	
+//		model.addAttribute("bookmarkList", bookmarkList);
+//	return "myPage/bookmark";
+//	}
+	
+	@GetMapping("/myPage/bookmark")
+	public String bookmark(Model model,
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember, @RequestParam Map<String,String> param) {
+		
+		int page = 1;
+		
+		if (param.containsKey("page") == true) {
+			try {
+				page = Integer.parseInt(param.get("page"));
+			} catch (Exception e) {
+			}
+		}
+		if(param.get("sortBy") == null) {
+			param.put("sortBy","DETAIL_TOUR");
+		}
+		param.put("userNo", loginMember.getUserNo()+"");
+		
+		//log.info("총게시글수: " + service.selectBoardCount(param));
+		PageInfo pageInfo = new PageInfo(page, 10, service.selectBoardCount(param), 10);
+		
+		List<Bookmark> bookmarkList = service.bookmark(pageInfo,param);
+		
+		//log.info("내가 쓴 컴티게시글: " + communityList);
+		
+		String bookmarkCate = "";
+		if(param.get("sortBy").equals("DETAIL_TOUR")) {
+			bookmarkCate = "관광지";
+		} else if(param.get("sortBy").equals("DETAIL_HOTEL")){
+			bookmarkCate = "숙박업소";
+		} else if(param.get("sortBy").equals("DETAIL_RESTAURANT")){
+			bookmarkCate = "음식점";
+		} else {
+			bookmarkCate = "기타";
+		}
+		
+		//log.info("boardCate:" + param.get("boardCate"));
+		
 		model.addAttribute("bookmarkList", bookmarkList);
-	return "myPage/bookmark";
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("param", param);
+		model.addAttribute("bookmarkCate", bookmarkCate);
+		model.addAttribute("loginMember", loginMember);
+		
+		return "myPage/bookmark";	
 	}
 	
 	
