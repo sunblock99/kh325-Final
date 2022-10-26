@@ -276,7 +276,7 @@
                             <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
                                 <div class="card h-100 border-0 shadow ">
                                     <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="<c:out value="${MyPageCourseList.get(i-1).getFirstImage()}"/>" alt="Modern, Well-Appointed Room " />
-                                        <a class="tile-link" href="${path}/myPage/myCourseEidt?myCourseNo=${MyPageCourseList.get(i-1).getMyCourseNo()}"></a>
+                                        <a class="tile-link" href="${path}/myPage/myCourseEdit?myCourseNo=${MyPageCourseList.get(i-1).getMyCourseNo()}"></a>
                                         <div class="card-img-overlay-top text-end">
                                    
                                         </div>
@@ -413,9 +413,6 @@
                         </div>
 
                     </div>
-
-
-
                 </div>
             </div>
         </div>

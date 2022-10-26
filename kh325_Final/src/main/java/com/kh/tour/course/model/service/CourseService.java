@@ -82,5 +82,8 @@ public interface CourseService {
 	List<MyCourseSearch> getForEdit(int myCourseDetailNo);
 	List<MyCourseSearch> getForCreate();
 	List<MyCourseSearch> getForMyPageList(@Param("userNo")int userNo);
+	
+	//코스디테일페이지 리뷰남기기
+    int writeMyCourseRev(MyCourseRev myCourseRev);
 
 }

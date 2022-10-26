@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MyCourseRev {
-	
-	private int myCourseNo;
-	private int userNo;
-	private String userName;
-	private String userAvatar;
-	private int cntRevStar;
-	private String mcRevContent;
-	
+
+    private int myCourseRevNo; //리뷰번호
+    private int myCourseNo; //나의코스번호
+    private int userNo;
+    private String userName;
+    private String userAvatar;
+    private int cntRevStar;
+    private String mcRevContent;
+
 }

@@ -93,7 +93,8 @@ public class CourseController {
 		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(myCourseNo);
 		List<MyCourseRev> myCourseRevList = courseService.getMyCourseRev(myCourseNo);
 		List<MyCourseImage> myCourseImageList = courseService.getMyCourseImage(myCourseNo);
-
+		
+		model.addAttribute("myCourseNo", myCourseNo);
 		model.addAttribute("detailCourseList", detailCourseList);
 		model.addAttribute("myCourseRevList", myCourseRevList);
 		model.addAttribute("myCourseImageList", myCourseImageList);
@@ -426,6 +427,36 @@ public class CourseController {
 		return "/myPage/myCourseEdit";
 	}
 
+	// 코스 리뷰 작성
+	@RequestMapping("/course/MyCourseRev")
+    public String write(Model model, HttpServletRequest request,
+            @RequestParam("MyCourseNo") int MyCourseNo,
+            @RequestParam("cntRevStar") int cntRevStar,
+            @RequestParam("content") String content,
+            @SessionAttribute(name = "loginMember", required = false) Member loginMember 
+            ) {
+
+            log.info("리플 작성 요청");
+
+        if(loginMember == null || loginMember.getUserNo() < 0) {
+            model.addAttribute("msg", "로그인이 필요합니다.");
+            model.addAttribute("location", "/course/courseDetail?myCourseNo=" + MyCourseNo);
+            return "/common/msg";
+        }
+
+        MyCourseRev myCourseRev = new MyCourseRev(0,MyCourseNo, loginMember.getUserNo(), loginMember.getUserName(), loginMember.getUserAvatar(), cntRevStar, content);
+        log.debug("myCourseRev : " + myCourseRev);
+
+        int result = courseService.writeMyCourseRev(myCourseRev);
+
+        if(result > 0) {
+            model.addAttribute("msg", "리플이 등록되었습니다.");
+        }else {
+            model.addAttribute("msg", "리플 작성에 실패했습니다.");
+        }
+        model.addAttribute("location", "/course/courseDetail?myCourseNo=" + MyCourseNo);
+        return "/common/msg";
+    }
 //	@RequestMapping("/courseMain")
 //	public String Course(Model model, @RequestParam("contentId") int contentId) {
 //

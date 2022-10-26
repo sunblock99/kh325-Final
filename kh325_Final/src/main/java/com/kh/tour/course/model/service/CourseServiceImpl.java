@@ -273,7 +273,10 @@ public class CourseServiceImpl implements CourseService{
 		return courseMapper.selectForMyPageList(userNo);
 	}
 
-
+	@Override
+    public int writeMyCourseRev(MyCourseRev myCourseRev) {
+         return courseMapper.insertMyCourseRev(myCourseRev);
+    }
 
 	
 

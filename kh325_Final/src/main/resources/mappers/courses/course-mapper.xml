@@ -270,23 +270,35 @@
         ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC
 	</select>
 	
-	<!-- 나의 코스 디테일 리뷰 -->	
-	<resultMap type="MyCourseRev" id="MyCourseRevResultMap">
-		<result property="myCourseNo" column="MYCOURSE_NO"/>
-		<result property="userNo" column="UNO"/>
-		<result property="userName" column="U_NAME"/>
-		<result property="userAvatar" column="U_AVATAR"/>
-		<result property="cntRevStar" column="MYCOURSE_REV_STAR"/>
-		<result property="mcRevContent" column="MYCOURSE_REV_CONTENT"/>
-	</resultMap>
-	
-	<select id="detailMyCourseRev" resultMap="MyCourseRevResultMap" parameterType="int">
-		SELECT MR.UNO, MR.MYCOURSE_NO, MR.MYCOURSE_REV_CONTENT, MR.MYCOURSE_REV_STAR, M.U_NAME, U_AVATAR 
-		FROM MYCOURSE_REV MR 
-		LEFT JOIN MEMBER M
-		ON(MR.UNO = M.UNO)
-		WHERE MYCOURSE_NO = #{myCourseNo}
-	</select>
+	<!-- 나의 코스 디테일 리뷰 -->
+    <resultMap type="MyCourseRev" id="MyCourseRevResultMap">
+        <result property="myCourseRevNo" column="MYCOURSE_REV_NO"/>
+        <result property="myCourseNo" column="MYCOURSE_NO"/>
+        <result property="userNo" column="UNO"/>
+        <result property="userName" column="U_NAME"/>
+        <result property="userAvatar" column="U_AVATAR"/>
+        <result property="cntRevStar" column="MYCOURSE_REV_STAR"/>
+        <result property="mcRevContent" column="MYCOURSE_REV_CONTENT"/>
+    </resultMap>
+
+    <select id="detailMyCourseRev" resultMap="MyCourseRevResultMap" parameterType="int">
+        SELECT MR.UNO, MR.MYCOURSE_NO, MR.MYCOURSE_REV_CONTENT, MR.MYCOURSE_REV_STAR, M.U_NAME, U_AVATAR 
+        FROM MYCOURSE_REV MR 
+        LEFT JOIN MEMBER M
+        ON(MR.UNO = M.UNO)
+        WHERE MYCOURSE_NO = #{myCourseNo}
+        ORDER BY MYCOURSE_REV_NO DESC
+    </select>
+
+    <insert id="insertMyCourseRev" parameterType="MyCourseRev">
+    INSERT INTO MYCOURSE_REV VALUES (
+            SEQ_MYCOURSE_REV_NO.NEXTVAL,
+            #{userNo},
+            #{myCourseNo},
+            #{mcRevContent},
+            #{cntRevStar}
+        )
+    </insert>
 	
 	<!-- 나의 코스 디테일 이미지 -->	
 	<resultMap type="MyCourseImage" id="MyCourseImageResultMap">

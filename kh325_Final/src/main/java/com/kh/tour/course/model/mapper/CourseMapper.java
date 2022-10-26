@@ -95,5 +95,8 @@ public interface CourseMapper {
 	List<MyCourseSearch> selectForCreate();
 	
 	List<MyCourseSearch> selectForMyPageList(@Param("userNo")int userNo);
+	
+	//코스디테일페이지 리뷰 남기기
+    int insertMyCourseRev(MyCourseRev myCourseRev);
 }
 	

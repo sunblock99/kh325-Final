@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <!-- Google fonts - Poppins-->
@@ -26,12 +26,12 @@
     <!-- Magnigic Popup-->
     <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/customKNI.css">
-    <link rel="stylesheet" href="css/myPage_myCourseEdit.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
+    <link rel="stylesheet" href="${path}/resources/css/myPage_myCourseEdit.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,7 +47,7 @@
         font-family: 'pBlack';
         font-weight: 900;
         font-display: swap;
-        src: url(font/Pretendard-Black.ttf);
+        src: url(${path}/resources/font/Pretendard-Black.ttf);
     }
     
     .text-pBlack {
@@ -58,7 +58,7 @@
         font-family: 'pEb';
         font-weight: 800;
         font-display: swap;
-        src: url(font/Pretendard-ExtraBold.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
     }
     
     .text-pEb {
@@ -80,7 +80,7 @@
         font-family: 'pSb';
         font-weight: 600;
         font-display: swap;
-        src: url(font/Pretendard-SemiBold.ttf);
+        src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
     }
     
     .text-pSb {
@@ -91,7 +91,7 @@
         font-family: 'pM';
         font-weight: 500;
         font-display: swap;
-        src: url(font/Pretendard-Medium.ttf);
+        src: url(${path}/resources/font/Pretendard-Medium.ttf);
     }
     
     .text-pM {
@@ -103,7 +103,7 @@
         font-weight: 400;
         font-display: swap;
         letter-spacing: 1px;
-        src: url(font/Pretendard-Regular.ttf);
+        src: url(${path}/resources/font/Pretendard-Regular.ttf);
     }
     
     .text-pR {
@@ -114,7 +114,7 @@
         font-family: 'pL';
         font-weight: 300;
         font-display: swap;
-        src: url(font/Pretendard-Light.ttf);
+        src: url(${path}/resources/font/Pretendard-Light.ttf);
     }
     
     .text-pL {
@@ -125,7 +125,7 @@
         font-family: 'pEl';
         font-weight: 200;
         font-display: swap;
-        src: url(font/Pretendard-ExtraLight.ttf);
+        src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
     }
     
     .text-pEl {
@@ -136,7 +136,7 @@
         font-family: 'pThin';
         font-weight: 100;
         font-display: swap;
-        src: url(font/Pretendard-Thin.ttf);
+        src: url(${path}/resources/font/Pretendard-Thin.ttf);
     }
     
     .text-pThin {
@@ -260,13 +260,13 @@
                     <div class="text-block">
                         <div class=" mb-5 col-12">
                             <label class="form-label" for="password-current" style="color:black">
-                                    <h6 class="text-pEb">코스 이름</h6>
+                                    <h6 class="text-pEb"><c:out value="${myCourseEditList.get(0).getMyCourseTitle()}"/></h6>
                                 </label>
                             <input class="form-control" type="text" name="name" id="name">
                         </div>
 
                         <div class="mb-2">
-                            <label class="form-label me-2 text-pEb" for="form_sort">코스 테마</label>
+                            <label class="form-label me-2 text-pEb" for="form_sort"><c:out value="${myCourseEditList.get(0).getMyCourseTitle()}"/></label>
                             <div class="dropdown bootstrap-select">
                                 <div class="dropdown bootstrap-select">
                                     <div class="dropdown bootstrap-select">
@@ -306,7 +306,7 @@
 
                         <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="img/avatar/avatar-1000.jpg" alt="Luke Skywalker">
+                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-1000.jpg" alt="Luke Skywalker">
                             </div>
                             <div>
                                 <h5 class="mt-3 mb-3 text-pB">골목식당</h5>
@@ -321,7 +321,7 @@
                         </div>
                         <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="img/avatar/avatar-100.jpg" alt="Luke Skywalker">
+                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-100.jpg" alt="Luke Skywalker">
                             </div>
                             <div>
                                 <h5 class="mt-4 mb-3 text-pB">휴일로</h5>
@@ -336,7 +336,7 @@
                         </div>
                         <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="img/avatar/avatar-101.jpg" alt="Luke Skywalker">
+                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-101.jpg" alt="Luke Skywalker">
                             </div>
                             <div>
                                 <h5 class="mt-4 mb-3 text-pB">카페더라이트</h5>
@@ -351,7 +351,7 @@
                         </div>
                         <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="img/avatar/avatar-102.jpg" alt="Luke Skywalker">
+                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="${path}/resources/img/avatar/avatar-102.jpg" alt="Luke Skywalker">
                             </div>
                             <div>
                                 <h5 class="mt-4 mb-3 text-pB">중문해물라면오빠네 본점</h5>
@@ -432,27 +432,27 @@
         injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg');
     </script>
     <!-- jQuery-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Magnific Popup - Lightbox for the gallery-->
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Smooth scroll-->
-    <script src="vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="vendor/object-fit-images/ofi.min.js"></script>
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script>
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
-    <script src="js/map-layers.js">
+    <script src="${path}/resources/js/theme.js"></script>
+    <script src="${path}/resources/js/map-layers.js">
     </script>
-    <script src="js/map-detail.js"></script>
+    <script src="${path}/resources/js/map-detail.js"></script>
     <script>
         createListingsMap({
             mapId: 'detailMap',
@@ -701,7 +701,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">
     </script>
-    <script src="js/datepicker-detail.js">
+    <script src="${path}/resources/js/datepicker-detail.js">
     </script>
 </body>
 
