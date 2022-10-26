@@ -327,6 +327,21 @@
                         <hr>
 	       <c:if test="${!empty myCourseEditList}">
 				<c:forEach var="i" begin="0" end="${myCourseEditList.size()-1}" step="1">
+<%-- 				<form action="${path}/myPage/myCourseEdit/editSnAscent" method="post" name="" id="editSnUp"> --%>
+			
+<%--                                   <input type="hidden" name="myCourseNo" value="${myCourseEditList.get(i).getMyCourseNo()}" > --%>
+<%-- 	                             <input type="hidden" name="myCourseDetailNo" value="${myCourseEditList.get(i).getMyCourseDetailNo()}" >  --%>
+<!-- 				 </form> -->
+<%-- 				 	<form action="${path}/myPage/myCourseEdit/editSnDescent" method="post" name="" id="editSnDown"> --%>
+		
+<%--                                   <input type="hidden" name="myCourseNo" value="${myCourseEditList.get(i).getMyCourseNo()}" > --%>
+<%-- 	                             <input type="hidden" name="myCourseDetailNo" value="${myCourseEditList.get(i).getMyCourseDetailNo()}" >  --%>
+<!-- 				 </form> -->
+<%-- 				 	<form action="${path}/myPage/myCourseEdit/deleteContent" method="post" name="" id="editDelete"> --%>
+		
+<%--                                   <input type="hidden" name="myCourseNo" value="${myCourseEditList.get(i).getMyCourseNo()}" > --%>
+<%-- 	                             <input type="hidden" name="myCourseDetailNo" value="${myCourseEditList.get(i).getMyCourseDetailNo()}" >  --%>
+<!-- 				 </form> -->
                         <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
                                 <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="<c:out value="${myCourseEditList.get(i).getFirstImage()}"/>" alt="Luke Skywalker">
@@ -335,15 +350,39 @@
                                 <h5 class="mt-3 mb-3 text-pB"><c:out value="${myCourseEditList.get(i).getDetailTitle()}"/></h5>
                                 <p class="text-muted text-sm text-pB"><c:out value="${myCourseEditList.get(i).getAddr1()}"/></p>
                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3">
-                                    <a type="button" class="delete-botton" style="border-color:white; background-color:white; bo">
+                                    <a type="button" class="delete-botton"  href="${path}/myPage/myCourseEdit/deleteContent?myCourseDetailNo=${myCourseEditList.get(i).getMyCourseDetailNo()}&myCourseNo=${myCourseEditList.get(i).getMyCourseNo()}"style="border-color:white; background-color:white; bo">
                                         <span class="me-1 text-muted text-pB">
                                     <i class="fa fa-trash opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>삭제</span>
+                                    </a>
+                                        <a type="button" class="delete-botton"  href="${path}/myPage/myCourseEdit/editSnAscent?myCourseDetailNo=${myCourseEditList.get(i).getMyCourseDetailNo()}&myCourseNo=${myCourseEditList.get(i).getMyCourseNo()}" style="margin-left:470px; border-color:white; background-color:white; ">
+                                        <span class="me-1 text-muted text-pB">
+                                    <i class="fa fa-arrow-circle-up opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>순서 올리기</span>
+                                    </a>
+                                    <a type="button" class="delete-botton"  href="${path}/myPage/myCourseEdit/editSnDescent?myCourseDetailNo=${myCourseEditList.get(i).getMyCourseDetailNo()}&myCourseNo=${myCourseEditList.get(i).getMyCourseNo()}"  style="border-color:white; background-color:white; ">
+                                        <span class="me-1 text-muted text-pB">
+                                    <i class="fa fa-arrow-circle-down opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>순서 내리기</span>
                                     </a>
                                 </p>
                             </div>
                         </div>
+                     
                   </c:forEach>
 			</c:if>
+<!-- 			<script> -->
+<!-- // 			function chk_form1() { -->
+<!-- // 			document.getElementById('editDelete').submit(); -->
+<!-- // 			} -->
+<!-- 			</script> -->
+<!-- 			<script> -->
+<!-- // 			function chk_form2() { -->
+<!-- // 			document.getElementById('editSnUp').submit(); -->
+<!-- // 			} -->
+<!-- 			</script> -->
+<!-- 			<script> -->
+<!-- // 			function chk_form3() { -->
+<!-- // 			document.getElementById('editSnDown').submit(); -->
+<!-- // 			} -->
+<!-- 			</script> -->
                         <h6 class="text-pEb mt-3">코스 위치정보</h6>
                         <!--MAP-->
                         <div class="map-wrapper-450 mt-3">

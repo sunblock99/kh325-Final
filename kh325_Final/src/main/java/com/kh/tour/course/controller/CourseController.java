@@ -92,7 +92,7 @@ public class CourseController {
 		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(myCourseNo);
 		List<MyCourseRev> myCourseRevList = courseService.getMyCourseRev(myCourseNo);
 		List<MyCourseImage> myCourseImageList = courseService.getMyCourseImage(myCourseNo);
-		
+		System.out.println("찾아온 디테일코스 입니다 : " + detailCourseList);
 		model.addAttribute("myCourseNo", myCourseNo);
 		model.addAttribute("detailCourseList", detailCourseList);
 		model.addAttribute("myCourseRevList", myCourseRevList);
@@ -241,7 +241,7 @@ public class CourseController {
 			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		} else {
 			model.addAttribute("msg", "코스 편집에 실패하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		}
 		return "/common/msg";
 	}
@@ -262,8 +262,9 @@ public class CourseController {
 		int myCourseSn = 0;
 
 		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
-		System.out.println(myCourseList);
-		if (myCourseList.isEmpty() == true) {
+		List<MyCourseDetail> forSn = courseService.findMyDetailByContentId(myCourseNo);
+	
+		if (forSn.isEmpty() == true) {
 			myCourseSn = 1;
 		} else {
 			myCourseSn = myCourseList.size() + 1;
@@ -309,10 +310,10 @@ public class CourseController {
 
 		if (deleteResult > 0 && descentResult > 0) {
 			model.addAttribute("msg", "코스 삭제에 성공하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		} else {
 			model.addAttribute("msg", "코스 삭제에 실패하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		}
 		return "/common/msg";
 	}
@@ -331,12 +332,11 @@ public class CourseController {
 		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
 		List<MyCourseSearch> searchByNoList = courseService.getForEdit(myCourseDetailNo);
 
-		if (myCourseList.size() == 1 || searchByNoList.get(0).getMyCourseSn() == 1
-				|| searchByNoList.get(0).getMyCourseSn() == myCourseList.size()) {
+		if (myCourseList.size() == 1 || searchByNoList.get(0).getMyCourseSn() == 1) {
 			model.addAttribute("msg", "순서를 변경하실 수 없습니다");
-			model.addAttribute("location", "/");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		} else {
-			for (int i = 0; i < myCourseList.size(); i++) {
+			for (int i = 1; i < myCourseList.size(); i++) {
 				if (myCourseList.get(i).getMyCourseDetailNo() == myCourseDetailNo) {
 					targetSn = myCourseList.get(i - 1).getMyCourseSn();
 					targetNo = myCourseList.get(i - 1).getMyCourseDetailNo();
@@ -350,10 +350,10 @@ public class CourseController {
 
 		if (ascentResult > 0 && descentResult > 0) {
 			model.addAttribute("msg", "순서 변경에 성공하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		} else {
 			model.addAttribute("msg", "순서 변경에 실패하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		}
 		return "/common/msg";
 	}
@@ -372,12 +372,11 @@ public class CourseController {
 		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
 		List<MyCourseSearch> searchByNoList = courseService.getForEdit(myCourseDetailNo);
 
-		if (myCourseList.size() == 1 || searchByNoList.get(0).getMyCourseSn() == 1
-				|| searchByNoList.get(0).getMyCourseSn() == myCourseList.size()) {
+		if (myCourseList.size() == 1 || searchByNoList.get(0).getMyCourseSn() == myCourseList.size()) {
 			model.addAttribute("msg", "순서를 변경하실 수 없습니다");
-			model.addAttribute("location", "/");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		} else {
-			for (int i = 0; i < myCourseList.size(); i++) {
+			for (int i = 0; i < myCourseList.size()-1; i++) {
 				if (myCourseList.get(i).getMyCourseDetailNo() == myCourseDetailNo) {
 					targetSn = myCourseList.get(i + 1).getMyCourseSn();
 					targetNo = myCourseList.get(i + 1).getMyCourseDetailNo();
@@ -391,10 +390,10 @@ public class CourseController {
 
 		if (ascentResult > 0 && descentResult > 0) {
 			model.addAttribute("msg", "순서 변경에 성공하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		} else {
 			model.addAttribute("msg", "순서 변경에 실패하였습니다.");
-			model.addAttribute("location", "/myPage/myCourseEdit");
+			model.addAttribute("location", "/myPage/myCourseEdit?myCourseNo=" + myCourseNo);
 		}
 		return "/common/msg";
 	}

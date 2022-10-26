@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <c:set var="myCourseNo" value="${myCourseNo}"/>
+<c:set var="detailCourseList" value="${detailCourseList}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -469,42 +470,42 @@
                   
                      var mapContainer = document.getElementById('detailMap'), // 지도를 표시할 div 
 //                      <c:forEach items="${detailCourseList}" var="MyCourseSearch">
-                     <c:if test="${detailCourseList[1].mapX eq null }">
+//                      <c:if test="${detailCourseList[1].mapX eq null }">
+//                      mapOption = { 
+//                          center: new kakao.maps.LatLng('33.450705', '126.570677'), // 지도의 중심좌표
+//                          level: 6 // 지도의 확대 레벨
+// //                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
+//                      };
+//                      </c:if>
+//                      <c:if test="${detailCourseList[1].mapX ne null }">
                      mapOption = { 
-                         center: new kakao.maps.LatLng('33.450705', '126.570677'), // 지도의 중심좌표
+                         center: new kakao.maps.LatLng('${detailCourseList[0].mapY}', '${detailCourseList[0].mapX}'), // 지도의 중심좌표
                          level: 6 // 지도의 확대 레벨
 //                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
                      };
-                     </c:if>
-                     <c:if test="${detailCourseList[1].mapX ne null }">
-                     mapOption = { 
-                         center: new kakao.maps.LatLng('MyCourseSearch.mapY', 'MyCourseSearch.mapX'), // 지도의 중심좌표
-                         level: 6 // 지도의 확대 레벨
-//                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
-                     };
-                     </c:if>
+//                      </c:if>
 //                      </c:forEach>
 
                     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
                     
                   /*   // 마커가 표시될 위치입니다 
                     var markerPosition  = new kakao.maps.LatLng('${detailCourseList[1].mapY}', '${detailCourseList[1].mapX}');  */
-                    
+                	
                     var positions = [];
-					<c:forEach items="${detailCourseList}" var="MyCourseSearch">
+                    <c:forEach items="${detailCourseList}" var="MyCourseSearch">
 						positions.push({
-	                    latlng: new kakao.maps.LatLng('MyCourseSearch.mapY', 'MyCourseSearch.mapX'),
+	                    latlng: new kakao.maps.LatLng('${MyCourseSearch.mapY}', '${MyCourseSearch.mapX}'),
 	               		});
 	                </c:forEach>
                   
 	                
-					<c:forEach items="${detailCourseList}" var="MyCourseSearch">
-					 <c:if test="${MyCourseSearch.mapX eq null }">
-						positions.push({
-	                    latlng: new kakao.maps.LatLng('33.450705', '126.570677'),
-	               		});
-						 </c:if>
-	                </c:forEach>
+// 					<c:forEach items="${detailCourseList}" var="MyCourseSearch">
+// // 					 <c:if test="${MyCourseSearch.mapX eq null }">
+// 						positions.push({
+// 	                    latlng: new kakao.maps.LatLng('33.450705', '126.570677'),
+// 	               		});
+// // 						 </c:if>
+// 	                </c:forEach>
                   
    
                     // 마커를 생성합니다
