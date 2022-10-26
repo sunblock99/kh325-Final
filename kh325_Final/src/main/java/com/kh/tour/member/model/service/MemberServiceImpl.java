@@ -155,8 +155,8 @@ public class MemberServiceImpl implements MemberService {
 			access_Token = element.getAsJsonObject().get("access_token").getAsString();
 			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
             
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
+//			System.out.println("access_token : " + access_Token);
+//			System.out.println("refresh_token : " + refresh_Token);
             
 			br.close();
 			bw.close();
@@ -199,7 +199,7 @@ public class MemberServiceImpl implements MemberService {
 			Member kakaoMember = mapper.selectMember(userInfo.getUserEmail());
 			if(kakaoMember.getUserEmail() == null) {
 			int result = mapper.insertKakaoMember(userInfo);
-			System.out.println(result);
+//			System.out.println(result);
 			}
 			
 			return mapper.selectMember(userInfo.getUserEmail());

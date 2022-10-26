@@ -167,8 +167,8 @@
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
                             <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
-                            <h5 class="text-pB">Dongmin Lee</h5>
-                            <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
+                            <h5 class="text-pB"><c:out value="${loginMember.userName}"/></h5>
+                            <p class="text-muted text-sm mb-0 text-pB"><c:out value="${loginMember.userAddress}"/> </p>
                         </div>
                         <div class="card-body p-5" style="height: 540px;">
                             <div class="d-flex align-items-center  mb-2 ">

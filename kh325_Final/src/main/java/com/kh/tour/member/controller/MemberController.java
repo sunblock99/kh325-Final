@@ -25,6 +25,7 @@ import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.community.model.service.CompanionService;
 import com.kh.tour.community.model.service.FreeBoardService;
 import com.kh.tour.community.model.service.JourneyService;
+import com.kh.tour.main.controller.MainController;
 import com.kh.tour.member.model.service.MemberService;
 import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.MemMyCourse;
@@ -51,6 +52,9 @@ public class MemberController {
 	
 	@Autowired
 	private JourneyService journeyService;
+	
+	@Autowired
+	MainController mainController;
 	
 	
 	@PostMapping("/login")
@@ -201,19 +205,21 @@ public class MemberController {
 	@GetMapping("/kakao/callback")
 	public String kakaoLogin(Model model,String code) throws Exception{
 		// code는 카카오 서버로부터 받은 인가코드
-		System.out.println("카카오로그인 실행");
+//		System.out.println("카카오로그인 실행");
 		
 		String access_Token = service.getAccessToken(code);
 		Member userInfo = service.getUserInfo(access_Token);
-		System.out.println("###uNo#### : " + userInfo.getUserNo());
-		System.out.println("###nickname#### : " + userInfo.getUserName());
-		System.out.println("###email#### : " + userInfo.getUserEmail());
+//		System.out.println("###uNo#### : " + userInfo.getUserNo());
+//		System.out.println("###nickname#### : " + userInfo.getUserName());
+//		System.out.println("###email#### : " + userInfo.getUserEmail());
 		
 		
 		
 		model.addAttribute("loginMember", userInfo);
 		
-		return "home";
+		String main = mainController.main(model);
+
+        return main;
 	}
 	
 	
