@@ -3,6 +3,8 @@ package com.kh.tour.member.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.kh.tour.common.util.PageInfo;
 import com.kh.tour.member.model.vo.Bookmark;
 import com.kh.tour.member.model.vo.MemMyCourse;
@@ -44,6 +46,7 @@ public interface MemberService {
 	int selectBoardCount(Map<String,String>map);
 
 	int selectBookmarkBoardCount(Map<String, String> map);
-
+	
+	public String saveFile(MultipartFile upfile, String savePath);
 
 }

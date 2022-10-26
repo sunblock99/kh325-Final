@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.tour.common.util.PageInfo;
@@ -145,7 +146,9 @@ public class MemberController {
 	@PostMapping("/myPage/update")
 	public String update(Model model,
 				@ModelAttribute Member member, // @ModelAttribute 생략 가능!!
-				@SessionAttribute(name= "loginMember", required = false) Member loginMember 
+				@SessionAttribute(name= "loginMember", required = false) Member loginMember,
+				HttpServletRequest request,
+				@RequestParam("upfile") MultipartFile upfile
 			) {
 		if(loginMember == null || loginMember.getUserEmail().equals(member.getUserEmail()) == false) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
@@ -153,6 +156,18 @@ public class MemberController {
 			return "common/msg";
 		}
 		
+		 if(upfile != null && upfile.isEmpty() == false) {
+			 
+				String rootPath = request.getSession().getServletContext().getRealPath("resources");
+				String savePath = rootPath + "/uploaded";
+				String renameFileName = service.saveFile(upfile, savePath); // 실제 파일 저장하는 코드
+				
+				if(renameFileName != null) {
+					member.setUserAvatar(request.getContextPath() + "/resources/uploaded/" + renameFileName);
+				}
+			}
+		
+		log.info("loginMember aaaa: " + member.getUserAvatar());
 		member.setUserNo(loginMember.getUserNo());
 		int result = service.save(member);
 		

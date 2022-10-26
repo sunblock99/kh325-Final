@@ -2,11 +2,14 @@ package com.kh.tour.member.model.service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -326,6 +330,30 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemMyCourse> mycourse(int userNo) {
 		return mapper.mycourse(userNo);
+	}
+	
+	@Override
+	public String saveFile(MultipartFile upfile, String savePath) {
+		File folder = new File(savePath);
+		if(folder.exists() == false) {
+			folder.mkdir();
+		}
+		
+		System.out.println("savePath : " + savePath);
+		
+		String originalFileName = upfile.getOriginalFilename();
+		String reNameFileName = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmssSSS"))
+				+ originalFileName.substring(originalFileName.lastIndexOf("."));
+		
+		String reNamePath = savePath + "/" + reNameFileName;
+		
+		try {
+			upfile.transferTo(new File(reNamePath));
+		} catch (Exception e) {
+			return null;
+		}
+		
+		return reNameFileName;
 	}
 	
 }

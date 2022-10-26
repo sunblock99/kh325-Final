@@ -169,7 +169,7 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
+                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${loginMember.userAvatar }" alt=""></a>
                             <h5 class="text-pB"><c:out value="${loginMember.userName}"/></h5>
                             <p class="text-muted text-sm mb-0 text-pB"><c:out value="${loginMember.userAddress}"/> </p>
                         </div>
@@ -258,7 +258,7 @@
                 <div class="col-lg-9 ps-lg-5">
                     <h1 class="hero-heading mb-0 text-pEb">Profile</h1>
                     <div class="text-block ">
-                    <form action="${path}/myPage/update" method="post">
+                    <form action="${path}/myPage/update" method="post" enctype="multipart/form-data">
                         <div class=" mt-5 mb-5 col-12">
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">이름</h6>
@@ -313,7 +313,7 @@
                             <label class="form-label" for="formFile" style="color:black">
                                 <h6 class="text-pEb"> 프로필 사진 변경</h6>
                             </label>
-                            <input class="form-control" name="userAvatar" id="formFile" type="file">
+                            <input class="form-control" name="upfile" id="formFile" type="file">
                         </div>
                         <button class="btn btn-primary text-pEb" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">수정하기</button>
                         <button class="btn btn-primary text-pEb" type="button" onclick="location.href='${path}/member/delete'" id="deleteMember" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">탈퇴하기</button>
