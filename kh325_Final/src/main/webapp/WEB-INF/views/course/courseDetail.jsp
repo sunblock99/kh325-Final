@@ -238,7 +238,7 @@
                             <!-- Additional required wrapper-->
                             <div class="swiper-wrapper pb-5">
                                 <!-- Slides-->
-                                  <c:if test="${!empty detailCourseList}">
+                               <c:if test="${!empty detailCourseList}">
 										<c:forEach var="MyCourseSearch" items="${detailCourseList}" varStatus="status"> 
                                 <div class="swiper-slide h-auto px-1">
                                     <!-- place item-->
@@ -246,7 +246,7 @@
                                     <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
                                         <div class="card h-100 border-0 shadow">
                                             <div class="card-img-top h-75  overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="${MyCourseSearch.firstImage}" />
+                                                <img  style="height: 100%; width:100%;" src="<c:if test="${MyCourseSearch.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseSearch.firstImage ne null}"><c:out value="${Tour.firstImage}"/></c:if>" />
                                                 <a class="tile-link" href="#myCourse${status.index +1}" data-bs-toggle="tab" role="tab"></a>
                                                 <div class="card-img-overlay-bottom z-index-20 ">
                                                     <div class="d-flex text-white text-sm align-items-center ">
@@ -282,8 +282,6 @@
                                         </div>
                                     </div>
                                </div>
-                                    
-                             
                                      </c:forEach>
                 				 </c:if>
                             </div>
