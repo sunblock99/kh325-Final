@@ -151,6 +151,13 @@
         font-family: 'pThin';
     }
     
+    .card-pic {
+     width: 300px;
+     height: 220px;
+     object-fit: cover;
+    }
+    
+
     div {
         font-family: 'pR';
         letter-spacing: -1px;
@@ -158,195 +165,12 @@
     /*폰트 끝*/
 </style>
 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <body style="padding-top: 72px;">
-    <header class="header">
-        <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo"></a>
-                    <form class="form-inline d-none d-sm-flex" action="#" id="search">
-                        <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
-                            <label class="label-absolute" for="search_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                            <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search" placeholder="Search" aria-label="Search" type="search">
-                        </div>
-                    </form>
-                </div>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                <!-- Navbar Collapse -->
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <form class="form-inline mt-4 mb-2 d-sm-none" action="#" id="searchcollapsed">
-                        <div class="input-label-absolute input-label-absolute-left w-100">
-                            <label class="label-absolute" for="searchcollapsed_search"><i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-                            <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchcollapsed_search" placeholder="Search" aria-label="Search" type="search">
-                        </div>
-                    </form>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="homeDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Home</a>
-                            <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item" href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a class="dropdown-item" href="index-4.html">Real Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a></div>
-                        </li>
-                        <!-- Megamenu-->
-                        <li class="nav-item dropdown position-static"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Template</a>
-                            <div class="dropdown-menu megamenu py-lg-0">
-                                <div class="row">
-                                    <div class="col-lg-9">
-                                        <div class="row p-3 pe-lg-0 ps-lg-5 pt-lg-5">
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Homepage</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index.html">Rooms   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-2.html">Restaurants   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-3.html">Travel   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="index-4.html">Real estate <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Restaurants</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category.html">Category - Map on the top   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2.html">Category - Map on the right   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3.html">Category - no map   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail.html">Restaurant detail   </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Rooms</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-rooms.html">Category - Map on the top   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-2-rooms.html">Category - Map on the right   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="category-3-rooms.html">Category - no map   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="detail-rooms.html">Room detail   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Blog</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="blog.html">Blog   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="post.html">Post   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Pages</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="compare.html">Comparison   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="team.html">Team   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="contact.html">Contact   </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Pages</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="pricing.html">Pricing   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="text.html">Text page   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="faq.html">F.A.Q.s   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="coming-soon.html">Coming soon   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="404.html">404 page   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base.html">Knowledge Base  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="knowledge-base-topic.html">Knowledge Base  &mdash; Topic<span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="terms.html">Terms & Conditions  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                </ul>
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">Host</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-add-0.html">Add new listing - 6 pages   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-list.html">Bookings &mdash; list view   </a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <!-- Megamenu list-->
-                                                <h6 class="text-uppercase">User</h6>
-                                                <ul class="megamenu-list list-unstyled">
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-profile.html">Profile   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-account.html">Account   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-personal.html">Personal info - forms   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-security.html">Password & security - forms   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="login.html">Sign in   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="signup.html">Sign up   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-1.html">Booking process - 4 pages   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-grid.html">Bookings &mdash; grid view   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-booking-detail.html">Booking detail   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-invoice.html">Invoice  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages.html">Messages <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                    <li class="megamenu-list-item"><a class="megamenu-list-link" href="user-messages-detail.html">Message Detail  <span class="badge badge-info-light ms-1">New</span>   </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="row megamenu-services d-none d-lg-flex ps-lg-5">
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#destination-map-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Best rentals</h6>
-                                                        <p class="mb-0 text-muted text-sm">Find the perfect place</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#money-box-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Earn points</h6>
-                                                        <p class="mb-0 text-muted text-sm">And get great rewards</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#customer-support-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">020-800-456-747</h6>
-                                                        <p class="mb-0 text-muted text-sm">24/7 Available Support</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-6 d-flex">
-                                                <div class="megamenu-services-item">
-                                                    <svg class="svg-icon megamenu-services-icon">
-                              <use xlink:href="#secure-payment-1"> </use>
-                            </svg>
-                                                    <div>
-                                                        <h6 class="text-uppercase">Secure Payment</h6>
-                                                        <p class="mb-0 text-muted text-sm">Secure Payment</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 d-none d-lg-block position-relative"><img class="bg-image" src="${path}/resources/img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt=""></div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- /Megamenu end-->
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Docs</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink">
-                                <h6 class="dropdown-header fw-normal">Documentation</h6><a class="dropdown-item" href="docs/docs-introduction.html">Introduction </a><a class="dropdown-item" href="docs/docs-directory-structure.html">Directory structure </a><a class="dropdown-item" href="docs/docs-gulp.html">Gulp </a>
-                                <a class="dropdown-item" href="docs/docs-customizing-css.html">Customizing CSS </a><a class="dropdown-item" href="docs/docs-credits.html">Credits </a><a class="dropdown-item" href="docs/docs-changelog.html">Changelog </a>
-                                <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header fw-normal">Components</h6><a class="dropdown-item" href="docs/components-bootstrap.html">Bootstrap </a><a class="dropdown-item" href="docs/components-directory.html">Theme </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown ms-lg-3">
-                            <a id="userDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="img/avatar/avatar-10.jpg" alt="Jack London"></a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink"><a class="dropdown-item" href="user-booking-1.html">Booking process - 4 pages </a><a class="dropdown-item" href="user-grid.html">Bookings &mdash; grid view </a><a class="dropdown-item" href="user-booking-detail.html">Booking detail </a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt me-2 text-muted"></i> Sign out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- /Navbar -->
-    </header>
+ <jsp:include page="/WEB-INF/views/common/darkHeader.jsp">
+		<jsp:param value="예아바디" name="title"/>
+	</jsp:include>
+
     <section class="py-5">
         <div class="container" style="padding-top:30px;">
             <div class="row">
@@ -356,8 +180,8 @@
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
                             <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
-                            <h5 class="text-pB">Dongmin Lee</h5>
-                            <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
+							<h5 class="text-pB"><c:out value="${loginMember.userName}"/></h5>
+                            <p class="text-muted text-sm mb-0 text-pB"><c:out value="${loginMember.userAddress}"/> </p>
                         </div>
                         <div class="card-body p-5" style="height: 540px;">
                             <div class="d-flex align-items-center  mb-2 ">
@@ -520,8 +344,8 @@
 							<c:forEach var="Bookmark" items="${bookmarkList}">
                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;">
                                 <div class="card h-100 border-0 shadow">
-                                    <div class="card-img-top overflow-hidden gradient-overlay">
-                                        <img class="img-fluid" src='<c:out value="${Bookmark.image}"/>'>
+                                    <div class="card-img-top overflow-hidden gradient-overlay" style="object-fit:full;">
+                                        <img class="card-pic" src='<c:out value="${Bookmark.image}"/>'>
                                         <a class="tile-link" href="detail-rooms.html"></a>
                                         <div class="card-img-overlay-top text-end">
                                             <a class="card-fav-icon position-relative z-index-50" href="${path}/myPage/deleteBookmark?likeNo=${Bookmark.likeNo}" style="background-color:black;">
@@ -559,8 +383,7 @@
                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true" >&nbsp;&nbsp;<c:out value="${Bookmark.address}"/></i> </p>
                                             <div class=" card-text text-muted 
                                                                 text-sm text-black-50 txt_line">
-                                                <div class="courseList_info" <c:out value="${Bookmark.overview}"/>>서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시
-                                                    태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div>
+                                                <div class="courseList_info"> <c:out value="${Bookmark.overview}"/></div>
                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;">
 
                                                     <span>
@@ -571,198 +394,6 @@
                                 </div>
                             </div>
 							</c:forEach>
-<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
-<!--                                 <div class="card h-100 border-0 shadow"> -->
-<!--                                     <div class="card-img-top overflow-hidden gradient-overlay"> -->
-<%--                                         <img class="img-fluid" src="${path}/resources/img/photo/mock.jpg"> --%>
-<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
-<!--                                         <div class="card-img-overlay-top text-end"> -->
-<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
-<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
-<!--                                             </a> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
-<!--                                         <div class="row w-100 txt_line "> -->
-<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
-<!--                                                 <a class=" text-black" href="detail-rooms.html">목인박물관 목석원</a> -->
-<!--                                             </p> -->
-<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
-<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
-<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
-<!--                                                 </p> -->
-
-<!--                                             </div> -->
-<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
-<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 종로구 </p> -->
-<!--                                             <div class=" card-text text-muted  -->
-<!--                                                                 text-sm text-black-50 txt_line"> -->
-<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
-<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
-<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
-
-<!--                                                     <span> -->
-<!--                                                         </span></p> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-
-<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
-<!--                                 <div class="card h-100 border-0 shadow"> -->
-<!--                                     <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;"> -->
-<%--                                         <img class="img-fluid" src="${path}/resources/img/photo/sabana.jpg"> --%>
-<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
-<!--                                         <div class="card-img-overlay-top text-end"> -->
-<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
-<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
-<!--                                             </a> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
-<!--                                         <div class="row w-100 txt_line "> -->
-<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
-<!--                                                 <a class=" text-black" href="detail-rooms.html">사비나 미술관</a> -->
-<!--                                             </p> -->
-<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
-<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
-<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
-<!--                                                 </p> -->
-
-<!--                                             </div> -->
-<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
-<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 은평구 </p> -->
-<!--                                             <div class=" card-text text-muted  -->
-<!--                                                                 text-sm text-black-50 txt_line"> -->
-<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
-<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
-<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
-
-<!--                                                 </p> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-
-<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
-<!--                                 <div class="card h-100 border-0 shadow"> -->
-<!--                                     <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;"> -->
-<%--                                         <img class="img-fluid" src="${path}/resources/img/photo/pill.JPG"> --%>
-<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
-<!--                                         <div class="card-img-overlay-top text-end"> -->
-<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
-<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
-<!--                                             </a> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
-<!--                                         <div class="row w-100 txt_line "> -->
-<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
-<!--                                                 <a class=" text-black" href="detail-rooms.html">필경재</a> -->
-<!--                                             </p> -->
-<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
-<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
-<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
-<!--                                                 </p> -->
-
-<!--                                             </div> -->
-<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
-<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 강남구 </p> -->
-<!--                                             <div class=" card-text text-muted  -->
-<!--                                                                 text-sm text-black-50 txt_line"> -->
-<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
-<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
-<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
-
-<!--                                                 </p> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-
-<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
-<!--                                 <div class="card h-100 border-0 shadow"> -->
-<!--                                     <div class="card-img-top overflow-hidden gradient-overlay" style="height: 195.98px;"> -->
-<!--                                         <img class="img-fluid" src="img/photo/cham.jpg"> -->
-<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
-<!--                                         <div class="card-img-overlay-top text-end"> -->
-<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
-<!--                                                 <i class="fa fa-trash" style="color:white" aria-hidden="true"></i> -->
-<!--                                             </a> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
-<!--                                         <div class="row w-100 txt_line "> -->
-<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
-<!--                                                 <a class=" text-black" href="detail-rooms.html">참숯골</a> -->
-<!--                                             </p> -->
-<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
-<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
-<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
-<!--                                                 </p> -->
-
-<!--                                             </div> -->
-<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
-<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 중구 </p> -->
-<!--                                             <div class=" card-text text-muted  -->
-<!--                                                                 text-sm text-black-50 txt_line"> -->
-<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
-<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
-<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
-
-<!--                                                 </p> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-
-<!--                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;"> -->
-<!--                                 <div class="card h-100 border-0 shadow"> -->
-<!--                                     <div class="card-img-top overflow-hidden gradient-overlay"> -->
-<!--                                         <img class="img-fluid" src="img/photo/hamo.JPG"> -->
-<!--                                         <a class="tile-link" href="detail-rooms.html"></a> -->
-<!--                                         <div class="card-img-overlay-top text-end"> -->
-<!--                                             <a class="card-fav-icon position-relative z-index-50" href="javascript: void();" style="background-color:black;"> -->
-<!--                                                 <i class="fa fa-trash" style="color:white; " aria-hidden="true"></i> -->
-<!--                                             </a> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;"> -->
-<!--                                         <div class="row w-100 txt_line "> -->
-<!--                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;"> -->
-<!--                                                 <a class=" text-black" href="detail-rooms.html">하모</a> -->
-<!--                                             </p> -->
-<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
-<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
-<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
-<!--                                                 </p> -->
-
-<!--                                             </div> -->
-<!--                                             <p class="text-sm text-black-50 card-subtitle mb-2"> -->
-<!--                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true"></i> 서울 강남구 </p> -->
-<!--                                             <div class=" card-text text-muted  -->
-<!--                                                                 text-sm text-black-50 txt_line"> -->
-<!--                                                 <div class="courseList_info">서울의 서쪽인 강서구에서 즐길 수 있는 코스다. 서서울호수공원은 정수장이 공원으로 다시 태어난 재활용 공원이다. 기존 시설을 최대한 활용한 공원이지만 편안히 즐기기에 부족함이 없다. 주변 부천과 경계지에 있는 작동 오리촌은 유서가 깊다. 이 오래된 자연 마을에서 오리고기를 맛보는 것도 좋고 부천의 식물원과 온수공원까지 돌아보자. 유서가 깊은 지역 공원이며, 다시 -->
-<!--                                                     태어난 자연을 둘러보는 코스기 때문에 의미가 깊다.</div> -->
-<!--                                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3" style="float:right;"> -->
-
-<!--                                                 </p> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-
-
-
-
-
-
-
                         </div>
                         
                          <div class="mt-5" style="width: 348px; ">

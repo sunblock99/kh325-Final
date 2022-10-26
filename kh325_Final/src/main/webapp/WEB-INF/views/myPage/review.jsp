@@ -163,8 +163,8 @@
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
                             <a class="d-inline-block " href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
-                            <h5 class="text-pB">Dongmin Lee</h5>
-                            <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
+							<h5 class="text-pB"><c:out value="${loginMember.userName}"/></h5>
+                            <p class="text-muted text-sm mb-0 text-pB"><c:out value="${loginMember.userAddress}"/> </p>
                         </div>
                         <div class="card-body p-5" style="height: 540px;">
                             <div class="d-flex align-items-center  mb-2 ">
@@ -294,87 +294,7 @@
                             </div>
                         </div>
                         </c:forEach>
-               <!--          <hr>
-                        <div class="d-block mb-5">
-                            <div>
-                                <h5 class="mt-2 mb-1 text-pEb">2022년 경복궁 생과방</h5>
-                                <div class="mb-2">
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-gray-200"></i>
-                                </div>
-                                <p class="text-muted text-sm">국왕과 왕비의 후식과 별식을 준비했던 곳에서 실제 임금이 먹었던 궁중병과와 궁중약차를 즐기는 신선한 체험이었어요. 특히 궁중병과가 맛있었습니다! 다음엔 부모님 모시고 오고 싶네요~</p>
-                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm" style="float:right;">
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>삭제</span>
-                                </p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="d-block mb-5">
-                            <div>
-                                <h5 class="mt-2 mb-1">설해원</h5>
-                                <div class="mb-2">
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                </div>
-                                <p class="text-muted text-sm">양양국제공항 뒤편에 위치해있고 설악권에 있어서 휴식과 힐링이 가능해요. 럭셔리 복합 리조트로 골프장, 온천 사우나, 부대시설들이 정말 다양해서 좋았습니다. </p>
-                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm" style="float:right;">
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>삭제</span>
-                                </p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="d-block mb-5">
-                            <div>
-                                <h5 class="mt-2 mb-1">하이커 그라운드</h5>
-                                <div class="mb-2">
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                </div>
-                                <p class="text-muted text-sm">K-POP체험과 미디어 아트 관람을 동시에 할 수 있어서 좋았어요. 감성 사진도 많이 찍으실 수 있어요. 청계천과 가까워서 관람 후 청계천으로 산책을 가는 것도 좋은 코스일 것 같습니다! </p>
-                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm" style="float:right;">
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>삭제</span>
-                                </p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="d-block mb-5">
-                            <div>
-                                <h5 class="mt-2 mb-1">하이커 그라운드</h5>
-                                <div class="mb-2">
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                    <i class="fa fa-xs fa-star text-warning"></i>
-                                </div>
-                                <p class="text-muted text-sm">K-POP체험과 미디어 아트 관람을 동시에 할 수 있어서 좋았어요. 감성 사진도 많이 찍으실 수 있어요. 청계천과 가까워서 관람 후 청계천으로 산책을 가는 것도 좋은 코스일 것 같습니다! </p>
-                                <p class="card-text d-flex justify-content-between text-gray-800 text-sm" style="float:right;">
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>삭제</span>
-                                </p>
-                            </div>
-                        </div>
-                        --> 
+
                     </div>
                 </div>
                 <div class="mt-2" style="width: 348px; ">
