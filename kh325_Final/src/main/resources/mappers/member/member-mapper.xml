@@ -60,7 +60,7 @@
 		) VALUES (
 		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
 		    #{userPassword}, #{userPhone}, 
-		    #{userAddress}, #{userAvatar}, DEFAULT, DEFAULT
+		    #{userAddress},DEFAULT, DEFAULT, DEFAULT
 		)
 	</insert>
 	
