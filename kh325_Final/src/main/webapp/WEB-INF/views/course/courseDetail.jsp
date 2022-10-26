@@ -246,8 +246,8 @@
                                    
                                     <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
                                         <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75  overflow-hidden gradient-overlay">
-                                                <img  style="height: 100%; width:100%;" src="<c:if test="${MyCourseSearch.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseSearch.firstImage ne null}"><c:out value="${Tour.firstImage}"/></c:if>" />
+                                            <div class="card-img-top  overflow-hidden gradient-overlay">
+                                                <img style="width: 289px !important;  height: 216px !important;" src="<c:if test="${MyCourseSearch.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseSearch.firstImage ne null}"><c:out value="${MyCourseSearch.firstImage}"/></c:if>" />
                                                 <a class="tile-link" href="#myCourse${status.index +1}" data-bs-toggle="tab" role="tab"></a>
                                                 <div class="card-img-overlay-bottom z-index-20 ">
                                                     <div class="d-flex text-white text-sm align-items-center ">
@@ -255,7 +255,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="#">
                                                         <i class="fas fa-heart svg-icon"></i>
                                                     </a>
                                                 </div>
@@ -300,8 +300,8 @@
                                 	<c:if test="${!empty myCourseImageList}">
                                 	<c:forEach var="MyCourseImage" items="${myCourseImageList}" varStatus="status"> 
                                 	<c:if test="${MyCourseImage.myCourseSn eq i}">
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="${MyCourseImage.originImgUrl}" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="${MyCourseImage.originImgUrl}" alt="..."></a>
+                                    <div class="col-lg-4 col-6 px-1 mb-2">           
+                                         <a href="${MyCourseImage.originImgUrl}" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="<c:if test="${MyCourseImage.originImgUrl eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseImage.originImgUrl ne null}"><c:out value="${MyCourseImage.originImgUrl}"/></c:if>"></a>
                                     </div>
                                     </c:if>
                                     </c:forEach>
