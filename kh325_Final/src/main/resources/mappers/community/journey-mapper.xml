@@ -8,6 +8,7 @@
 		<id property="journeyNo" column="JOURNEY_NO" />
 		<result property="userNo" column="UNO" />
 		<result property="userName" column="U_NAME" />
+		<result property="userAvatar" column="U_AVATAR" />
 		<result property="title" column="TITLE" />
 		<result property="subTitle" column="SUB_TITLE" />
 		<result property="hashTag" column="HASH_TAG" />
@@ -25,6 +26,7 @@
 		<result property="journeyNo" column="JOURNEY_NO"/>
 		<result property="userNo" column="UNO"/>
 		<result property="userName" column="U_NAME"/>
+		<result property="userAvatar" column="U_AVATAR" />
 		<result property="content" column="CONTENT"/>
 		<result property="postDate" column="POST_DATE"/>
 		<result property="status" column="STATUS"/>
@@ -47,6 +49,7 @@
 		SELECT  B.JOURNEY_NO,
 				M.UNO, 
 				M.U_NAME,
+				M.U_AVATAR,
 				B.TITLE, 
 				B.SUB_TITLE,
 				B.HASH_TAG,
@@ -109,6 +112,7 @@
 			   B.TITLE, 
 			   M.UNO, 
 			   M.U_NAME,
+			   M.U_AVATAR,
 			   B.SUB_TITLE, 
 			   B.HASH_TAG, 
 			   B.CONTENT, 
@@ -123,6 +127,7 @@
 		       R.CONTENT AS R_CONTENT, 
 		       M2.UNO AS R_UNO, 
 		       M2.U_NAME AS R_U_NAME,
+		       M2.U_AVATAR AS R_U_AVATAR,
 		       R.POST_DATE AS R_POST_DATE,
 		       R.STATUS AS R_STATUS
 		FROM COMM_JOURNEY B

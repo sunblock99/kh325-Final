@@ -125,7 +125,7 @@
                     	<c:forEach var="set" items="${setMember}">
 		                        <a href="${path}/community/showComments?companionNo=${param.companionNo}&senderNo=${set.userNo}">
 		                            <li class="list-group-item border-0 text-center">
-		                                <img class="avatar avatar-border-white flex-shrink-0" src="${path }/resources/img/avatar/avatar-1.jpg" alt="user">
+		                                <img class="avatar avatar-border-white flex-shrink-0" src="${set.userAvatar}" alt="user">
 		                                <p class=" mb-3 text-muted text-sm">${set.userName}</p>
 		                            </li>
 		                        </a>
@@ -146,7 +146,7 @@
             	<c:forEach var="comment" items="${list}">
             	<c:if test="${!empty comment.msgSend}">
                 <!-- Sender Message-->
-                <div class="d-flex col-md-9 col-xl-7 mb-3"><img class="avatar avatar-border-white flex-shrink-0" src="${path }/resources/img/avatar/avatar-1.jpg" alt="user">
+                <div class="d-flex col-md-9 col-xl-7 mb-3"><img class="avatar avatar-border-white flex-shrink-0" src="${comment.senderAvatar}" alt="user">
                     <div class="ms-3">
                         <div class="bg-gray-200 rounded p-4 mb-2">
                             <p class="text-sm mb-0" style="width: 410px;">${comment.msgSend}</p>
@@ -163,7 +163,7 @@
                             <p class="text-sm mb-0 text-white" style="width: 410px;">${comment.msgRec }</p>
                         </div>
                         <p class="small text-muted ms-3"><fmt:formatDate type="date" dateStyle="full" value="${comment.postDate }"/></p>
-                    </div><img class="avatar avatar-border-white flex-shrink-0" src="${path }/resources/img/avatar/avatar-10.jpg" alt="user">
+                    </div><img class="avatar avatar-border-white flex-shrink-0" src="${comment.receiverAvatar}" alt="user">
                 </div>
                 </c:if>
 				</c:forEach>

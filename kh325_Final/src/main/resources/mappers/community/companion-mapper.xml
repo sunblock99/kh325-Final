@@ -22,11 +22,11 @@
 		<result property="companionNo" column="COMPANION_NO"/>
 		<result property="senderNo" column="SENDER_NO"/>
 		<result property="senderName" column="SENDER_NAME"/>
-		<result property="senderImg" column="SENDER_IMG"/>
+		<result property="senderAvatar" column="U_AVATAR_S"/>
 		<result property="msgSend" column="MSG_SEND"/>
 		<result property="receiverNo" column="RECEIVER_NO"/>
 		<result property="receiverName" column="RECEIVER_NAME"/>
-		<result property="receiverImg" column="RECEIVER_IMG"/>
+		<result property="receiverAvatar" column="U_AVATAR_R"/>
 		<result property="msgRec" column="MSG_REC"/>
 		<result property="postDate" column="POST_DATE"/>
 		<result property="status" column="STATUS"/>
@@ -112,11 +112,11 @@
             B.COMPANION_NO,
             M2.UNO AS SENDER_NO,
             M2.U_NAME SENDER_NAME,
-            M2.U_AVATAR SENDER_IMG,
+            M2.U_AVATAR AS U_AVATAR_S,
             B.MSG_SEND,
             M.UNO AS RECEIVER_NO,
             M.U_NAME AS RECEIVER_NAME,
-            M.U_AVATAR AS RECEIVER_IMG,
+            M.U_AVATAR AS U_AVATAR_R,
             B.MSG_REC,
             B.POST_DATE,
             B.STATUS

@@ -13,6 +13,7 @@ public class JourneyComment {
 	int commentNo;
 	int journeyNo;
 	int userNo;
+	String userAvatar;
 	String userName;
 	String content;
 	Date postDate;

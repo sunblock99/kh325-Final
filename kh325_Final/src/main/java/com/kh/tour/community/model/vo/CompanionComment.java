@@ -13,12 +13,12 @@ public class CompanionComment {
 	int commentNo;
 	int companionNo;
 	int senderNo;
+	String senderAvatar;
 	String senderName;
-	String senderImg;
 	String msgSend;
 	int receiverNo;
+	String receiverAvatar;
 	String receiverName;
-	String receiverImg;
 	String msgRec;
 	Date postDate;
 	String status;

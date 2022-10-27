@@ -166,7 +166,7 @@ div {
                         <h1 class="py-4 text-pB text-center"> ${board.title }</h1>
                         
                         <div class="text-center mb-4 pb-4">
-                            <a href=""><img class="text-start avatar p-1 me-2" src="${path}/resources/img/avatar/avatar-11.jpg" alt=""></a>
+                            <a href=""><img class="text-start avatar p-1 me-2" src="${board.userAvatar }" alt=""></a>
                              Written by <a class="fw-bold" href="#" style="color: #907B65;">${board.userName }</a>
                              <span class="mx-2">|<span class="mx-2 text-pR"><fmt:formatDate type="both" dateStyle="full" value="${board.postDate}"/> <span class="mx-2 text-muted"> ${comments.size() } comments </span>
                     </div>
@@ -228,7 +228,7 @@ div {
 	                        <c:forEach var="comment" items="${comments}">
 	                        <!--댓글 시작-->
 	                        <div class="d-flex mb-4">
-	                            <img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${path}/resources/img/avatar/avatar-0.jpg" alt="Julie Alma">
+	                            <img class="avatar avatar-lg p-1 flex-shrink-0 me-4" src="${comment.userAvatar}" alt="Julie Alma">
 	                            <div>
 	                                <h5 class="text-pB">${comment.userName }</h5>
 	                                <p class="text-sm text-muted"><i class="far fa-clock pe-1"></i><fmt:formatDate type="date" dateStyle="full" value="${comment.postDate}"/>  </p>

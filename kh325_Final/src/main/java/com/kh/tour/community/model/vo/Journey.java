@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Journey {
 	int journeyNo;
 	int userNo;
+	String userAvatar;
 	String userName;
 	String title;
 	String subTitle;

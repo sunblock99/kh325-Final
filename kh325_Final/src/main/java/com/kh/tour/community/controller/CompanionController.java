@@ -123,7 +123,7 @@ public class CompanionController {
 			}
 		}
 		
-		log.info("제거된 리스트: " + list);
+		//log.info("제거된 리스트: " + list);
 		
 		Companion companion = service.selectCompanionByNo(companionNo);
 		
@@ -141,7 +141,7 @@ public class CompanionController {
 		List<CompanionComment> list = service.selectCommentByNo(companionNo,senderNo);
 		List<Member> setMember = service.selectCommentSenderList(companionNo); 
 		
-		log.info("list:" + list);
+		//log.info("list:" + list);
 		model.addAttribute("list",list);
 		model.addAttribute("loginMember",loginMember);
 		model.addAttribute("setMember",setMember);
@@ -151,7 +151,7 @@ public class CompanionController {
 	}
 	
 	@GetMapping("/deleteCompanion")
-	public String deleteCompanion(Model model, int companionNo,int userNo,
+	public String deleteCompanion(Model model, int companionNo, int userNo,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		
 		if(loginMember.getUserNo() != userNo) {
