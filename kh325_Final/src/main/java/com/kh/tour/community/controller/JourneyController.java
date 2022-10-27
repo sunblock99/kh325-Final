@@ -136,7 +136,7 @@ public class JourneyController {
 		}
 		
 		log.info("likeList:" + likeList.toString() );
-		log.info(list.toString());
+		//log.info(list.toString());
 		log.info(service.selectBoardCount(param)+"");
 		model.addAttribute("totalCount", service.selectBoardCount(param)+"");
 		model.addAttribute("hashMap",hashMap);
@@ -185,8 +185,8 @@ public class JourneyController {
 		model.addAttribute("comments",comments);
 		
 		log.info("상세:" + board.toString());
-		log.info("댓글리스트:" + comments.toString());
-		log.info("comment sorted:",comments);
+		//log.info("댓글리스트:" + comments.toString());
+		//log.info("comment sorted:",comments);
 		
 		return "community/blogDetail";
 	}

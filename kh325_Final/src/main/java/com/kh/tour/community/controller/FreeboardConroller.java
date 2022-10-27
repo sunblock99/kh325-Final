@@ -63,7 +63,7 @@ public class FreeboardConroller {
 		log.info("page: " + page);
 		PageInfo pageInfo = new PageInfo(page, 10, service.selectBoardCount(param), 10);
 		List<Freeboard> list = service.selectBoardList(pageInfo, param);
-		log.info(list.toString());
+		//log.info(list.toString());
 		
 		List<Freeboard> bestList = service.selectBestPost();
 		
@@ -98,8 +98,8 @@ public class FreeboardConroller {
 		model.addAttribute("comments",comments);
 		model.addAttribute("bestList",bestList);
 		
-		log.info("상세:" + board.toString());
-		log.info("댓글리스트:" + comments.toString());
+		//log.info("상세:" + board.toString());
+		//log.info("댓글리스트:" + comments.toString());
 		
 		Collections.sort(comments, new Comparator<FreeBoardComment>() {
 			@Override
@@ -114,7 +114,7 @@ public class FreeboardConroller {
 			};
 		});
 		
-		log.info("comment sorted:",comments);
+		//log.info("comment sorted:",comments);
 		
 		
 		return "community/freeDetail";
@@ -160,7 +160,7 @@ public class FreeboardConroller {
 		}
 		board.setUserNo(loginMember.getUserNo());
 		 
-		log.info("게시그 ㄹ: " + board);
+		//log.info("게시그 ㄹ: " + board);
 		int result = service.insertBoard(board);
 		
 		if(result > 0) {
