@@ -23,6 +23,7 @@ public class MyCourseSearch {
 	private String myCourseMainImage;
 	private String myCourseStatus;
 	private int contentId;
+	private int contentTypeId;
 	private String detailTitle;
 	private String addr1; 
 	private String firstImage; 

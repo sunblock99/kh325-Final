@@ -39,7 +39,6 @@ public class CourseController {
 	public String myCourseList(Model model, @RequestParam Map<String, String> param) {
 
 		log.info("param : " + param.toString());
-		System.out.println("가지고 들어온 파람값: " + param.toString());
 
 		int page = 1;
 		if (param.containsKey("page") == true) {
@@ -69,7 +68,6 @@ public class CourseController {
 			}
 		}
 
-		System.out.println(toSix);
 
 		PageInfo pageInfo = new PageInfo(page, 10, total, toSix);
 
@@ -87,12 +85,11 @@ public class CourseController {
 	@RequestMapping("/course/courseDetail")
 	public String detailMyCourse(Model model, @RequestParam("myCourseNo") int myCourseNo) {
 		log.info("param : " + myCourseNo);
-		System.out.println("가지고 들어온 파람값: " + myCourseNo);
 
 		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(myCourseNo);
 		List<MyCourseRev> myCourseRevList = courseService.getMyCourseRev(myCourseNo);
 		List<MyCourseImage> myCourseImageList = courseService.getMyCourseImage(myCourseNo);
-		System.out.println("찾아온 디테일코스 입니다 : " + detailCourseList);
+
 		model.addAttribute("myCourseNo", myCourseNo);
 		model.addAttribute("detailCourseList", detailCourseList);
 		model.addAttribute("myCourseRevList", myCourseRevList);
@@ -104,7 +101,6 @@ public class CourseController {
 	@RequestMapping("/course/recommCourseDetail")
 	public String detailRecommCourse(Model model, @RequestParam("contentId") int contentId) {
 		log.info("param : " + contentId);
-		System.out.println("가지고 들어온 파람값: " + contentId);
 
 		List<RecommCourseDetail> detailRecommCourseList = courseService.getDetailRecommCourse(contentId);
 		List<RecommCourseImage> recommCourseImageList = courseService.getRecommCourseImage(contentId);
@@ -120,7 +116,6 @@ public class CourseController {
 	@RequestMapping("/course/courseRecommended")
 	public String tourList(Model model, @RequestParam Map<String, String> param) {
 		log.info("param : " + param.toString());
-		System.out.println("가지고 들어온 파람값: " + param.toString());
 
 		int page = 1;
 		if (param.containsKey("page") == true) {
@@ -154,7 +149,6 @@ public class CourseController {
 		List<MyCourseDetail> MyCourseMainDetail4 = courseService
 				.findMyDetailByContentId((MyCourseMain.get(3).getMyCourseNo()));
 
-		System.out.println(MyCourseMain.get(0).getMyCourseMainImage());
 
 		List<MainRecommCourse> recommCourseMain = courseService.SortedByRevStar();
 
@@ -422,7 +416,6 @@ public class CourseController {
 		log.info("param : " + userNo);
 
 		List<MyCourseSearch> myCourseEditList = courseService.getForMyPage(userNo, myCourseNo);
-		System.out.println(myCourseEditList);
 		model.addAttribute("myCourseEditList", myCourseEditList);
 
 		return "/myPage/myCourseEdit";

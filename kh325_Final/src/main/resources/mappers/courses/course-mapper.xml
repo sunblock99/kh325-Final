@@ -20,6 +20,7 @@
 		<result property="myCourseMainImage" column="MYCOURSE_MAINIMAGE"/>
 		<result property="myCourseStatus" column="MYCOURSE_STATUS"/>
 		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
 		<result property="detailTitle" column="TITLE"/>
 		<result property="addr1" column="ADDR1"/>
 		<result property="indexNum" column="INDEXNUM"/>
@@ -532,7 +533,7 @@
 	<select id="selectForMyPage" parameterType="int" resultMap="MyCourseSearchResultMap">
 		SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
                         MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR, 
-                        M.UNO, M.U_NAME, M.U_AVATAR, MT.MYCOURSE_SN, MT.CONTENTID,  MT.MYCOURSE_DETAIL_NO, BTIM.TITLE, BTIM.OVERVIEW, BTIM.ADDR1, BTIM.FIRSTIMAGE, 
+                        M.UNO, M.U_NAME, M.U_AVATAR, MT.MYCOURSE_SN, MT.CONTENTID,  MT.CONTENTTYPEID,  MT.MYCOURSE_DETAIL_NO, BTIM.TITLE, BTIM.OVERVIEW, BTIM.ADDR1, BTIM.FIRSTIMAGE, 
                         BTIM.MAPX, BTIM.MAPY, NVL(DETAILSTRPT.DETAILCNTREVSTAR,0) AS DETAILCNTREVSTAR, FORCNT.INDEXNUM
         FROM MYCOURSE MC 
         LEFT OUTER JOIN 

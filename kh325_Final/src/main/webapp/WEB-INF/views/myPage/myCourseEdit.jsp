@@ -69,7 +69,7 @@
         font-family: 'pB';
         font-weight: 700;
         font-display: swap;
-        src: url(font/Pretendard-Bold.ttf);
+        src: url(${path}/resources/font/Pretendard-Bold.ttf);
     }
     
     .text-pB {
@@ -160,7 +160,7 @@
                 <div class="col-lg-3 me-lg-auto">
                     <div class="card border-0 shadow mb-6 mb-lg-0">
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
-                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="img/avatar/avatar-10.jpg" alt=""></a>
+                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
                             <h5 text-pB>Dongmin Lee</h5>
                             <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
                         </div>
@@ -306,7 +306,7 @@
                             <label class="form-label" for="password-current" style="color:black">
                                 <h6 class="text-pEb">코스 설명</h6>
                             </label>
-                            <input class="form-control" type="text" name="myCourseContent" id="content" value="<c:out value="${myCourseEditList.get(0).getMyCourseContent()}"/>"style="height:114px; border: 2px solid #ced4da;">
+                            <input class="form-control" type="text" name="myCourseContent" id="content" value="<c:out value="${myCourseEditList.get(0).getMyCourseContent()}"/>"style="height:150px; border: 2px solid #ced4da;">
                         </div>
 
                         <div class="mb-4" style=" width:100%;  border: 1px solid #ced4da;  padding : 10px; padding-left: 15px; padding-right: 15px;">
@@ -344,7 +344,9 @@
 <!-- 				 </form> -->
                         <div class="d-flex d-block d-sm-flex review" style="padding-top: 10px; padding-bottom: 10px;">
                             <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                                <img class="d-block avatar avatar-xl p-2 mb-2" style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="<c:out value="${myCourseEditList.get(i).getFirstImage()}"/>" alt="Luke Skywalker">
+                            <a href="${path}/tourDetailInfo.do?contentId=${myCourseEditList.get(i).getContentId()}&contentTypeId=${myCourseEditList.get(i).getContentTypeId()}">
+                                <img class="d-block avatar avatar-xl p-2 mb-2"  style="border-radius: 0%; width: 11rem; box-shadow:0 0 0rem rgb(0 0 0 / 0%)" src="<c:out value="${myCourseEditList.get(i).getFirstImage()}"/>" alt="Luke Skywalker">
+                            </a>
                             </div>
                             <div>
                                 <h5 class="mt-3 mb-3 text-pB"><c:out value="${myCourseEditList.get(i).getDetailTitle()}"/></h5>
@@ -352,7 +354,7 @@
                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm mt-3">
                                     <a type="button" class="delete-botton"  href="${path}/myPage/myCourseEdit/deleteContent?myCourseDetailNo=${myCourseEditList.get(i).getMyCourseDetailNo()}&myCourseNo=${myCourseEditList.get(i).getMyCourseNo()}"style="border-color:white; background-color:white; bo">
                                         <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>삭제</span>
+                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray; " aria-hidden="true "></i>삭제</span>
                                     </a>
                                         <a type="button" class="delete-botton"  href="${path}/myPage/myCourseEdit/editSnAscent?myCourseDetailNo=${myCourseEditList.get(i).getMyCourseDetailNo()}&myCourseNo=${myCourseEditList.get(i).getMyCourseNo()}" style="margin-left:470px; border-color:white; background-color:white; ">
                                         <span class="me-1 text-muted text-pB">
@@ -360,7 +362,7 @@
                                     </a>
                                     <a type="button" class="delete-botton"  href="${path}/myPage/myCourseEdit/editSnDescent?myCourseDetailNo=${myCourseEditList.get(i).getMyCourseDetailNo()}&myCourseNo=${myCourseEditList.get(i).getMyCourseNo()}"  style="border-color:white; background-color:white; ">
                                         <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-arrow-circle-down opacity-5 me-1 " style="color:gray; " aria-hidden="true "></i>순서 내리기</span>
+                                    <i class="fa fa-arrow-circle-down opacity-5 me-1" style="color:gray; " aria-hidden="true "></i>순서 내리기</span>
                                     </a>
                                 </p>
                             </div>
@@ -493,7 +495,12 @@
                     var positions = [];
                     <c:forEach items="${myCourseEditList}" var="MyCourseSearch">
 						positions.push({
+							id: '${MyCourseSearch.contentId}',
+							type: '${MyCourseSearch.contentTypeId}',
 	                    latlng: new kakao.maps.LatLng('${MyCourseSearch.mapY}', '${MyCourseSearch.mapX}'),
+	                    title: '${MyCourseSearch.detailTitle}',
+	                    image: '${MyCourseSearch.firstImage}',
+	                    address: '${MyCourseSearch.addr1}',
 	               		});
 	                </c:forEach>
 
@@ -546,16 +553,18 @@
                 '            <div class="img">' +
                 '                <img src="' +
                 data.image +
-                '" width="73" height="70">' +
+                '" width="100" height="70">' +
                 '           </div>' +
                 '            <div class="desc">' +
                 '                <div class="ellipsis">' +
-                '<MARQUEE>' +
+                '<div>' +
                 data.address +
-                '</MARQUEE>' +
                 '</div>' +
-                '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
-                '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+                '</div>' +
+                
+                '                <div class="pt-4" ><a href="${path}/tourDetailInfo.do?contentId='+
+        		data.id + '&contentTypeId='+ data.type +
+        		'"  class="link">상세페이지 →</a></div>' +
                 '            </div>' +
                 '        </div>' +
                 '    </div>' +
