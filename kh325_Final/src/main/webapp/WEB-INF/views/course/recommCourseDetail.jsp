@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="detailRecommCourseList" value="${detailRecommCourseList}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,7 @@
     <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
-
+  
     <link rel="stylesheet" href="${path}/resources/css/course_detail.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
@@ -238,15 +239,15 @@
                             <!-- Additional required wrapper-->
                             <div class="swiper-wrapper pb-5">
                                 <!-- Slides-->
-                                  <c:if test="${!empty detailRecommCourseList}">
+                               <c:if test="${!empty detailRecommCourseList}">
 										<c:forEach var="RecommCourseDetail" items="${detailRecommCourseList}" varStatus="status"> 
                                 <div class="swiper-slide h-auto px-1">
                                     <!-- place item-->
                                    
                                     <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
                                         <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75  overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="${RecommCourseDetail.subDetailImg}" />
+                                            <div class="card-img-top  overflow-hidden gradient-overlay">
+                                                <img style="width: 289px !important;  height: 216px !important;" src="<c:if test="${RecommCourseDetail.subDetailImg eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${RecommCourseDetail.subDetailImg ne null}"><c:out value="${RecommCourseDetail.subDetailImg}"/></c:if>" />
                                                 <a class="tile-link" href="#myCourse${status.index +1}" data-bs-toggle="tab" role="tab"></a>
                                                 <div class="card-img-overlay-bottom z-index-20 ">
                                                     <div class="d-flex text-white text-sm align-items-center ">
@@ -254,7 +255,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="#">
                                                         <i class="fas fa-heart svg-icon"></i>
                                                     </a>
                                                 </div>
@@ -266,7 +267,7 @@
                                                     </p>
                                                     <div class="d-flex col-md-3" style="text-align: center">
                                                         <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><c:forEach begin="1" end="${RecommCourseDetail.cntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
-                                <c:if test="${RecommCourseDetail.cntRevStar < 5}"><c:forEach begin="${RecommCourseDetail.cntRevStarr+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
+                                <c:if test="${RecommCourseDetail.cntRevStar < 5}"><c:forEach begin="${RecommCourseDetail.cntRevStar+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
                                                         </p>
                                                         <span class="text-primary justify-center"><c:out value="${RecommCourseDetail.cntRevStar}"/>/5</span>
                                                     </div>
@@ -282,8 +283,6 @@
                                         </div>
                                     </div>
                                </div>
-                                    
-                             
                                      </c:forEach>
                 				 </c:if>
                             </div>
@@ -301,8 +300,8 @@
                                 	<c:if test="${!empty recommCourseImageList}">
                                 	<c:forEach var="RecommCourseImage" items="${recommCourseImageList}" varStatus="status"> 
                                 	<c:if test="${RecommCourseImage.subNum eq i}">
-                                    <div class="col-lg-4 col-6 px-1 mb-2">
-                                        <a href="${RecommCourseImage.originImgUrl}" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="${RecommCourseImage.originImgUrl}" alt="..."></a>
+                                    <div class="col-lg-4 col-6 px-1 mb-2">           
+                                         <a href="${RecommCourseImage.originImgUrl}" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="<c:if test="${RecommCourseImage.originImgUrl eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${RecommCourseImage.originImgUrl ne null}"><c:out value="${RecommCourseImage.originImgUrl}"/></c:if>"></a>
                                     </div>
                                     </c:if>
                                     </c:forEach>
@@ -319,16 +318,18 @@
                     <p class="subtitle text-sm text-pB" style="color:#907B65;">Location</p>
                     <h5 class="mb-5 text-pEb">여행코스 위치정보</h5>
                         <div class="map-wrapper-450 mt-3">
-                            <div class="h-100" id="detailMap"></div>
+                            <div class="h-100" id="detailMap2"></div>
                         </div>
                 </div>
-                <div class="text-block">
+                
+                
+              <div class="text-block">
                     <p class="subtitle text-sm text-pB" style=" color:#907B65; ">Reviews </p>
                     <h5 class="mb-4 text-pEb">여행코스 후기 </h5>
                     <c:if test="${!empty recommCourseRevList}">
 					<c:forEach var="RecommCourseRev" items="${recommCourseRevList}" varStatus="status"> 
                     <div class="d-flex d-block d-sm-flex review" style="padding-top: 1rem; padding-bottom: 1rem;">
-                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/NAIM2.png" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm"></span></div>
+                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/NAIM2.png" ><span class="text-uppercase text-muted text-sm"></span></div>
                         <div>
                             <h6 class="mt-2 mb-1"><c:out value="${RecommCourseRev.userName}"></c:out></h6>
                             <div class="mb-0"><c:forEach begin="1" end="${RecommCourseRev.star}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
@@ -343,18 +344,19 @@
                         <button class="btn btn-outline-warning" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
                         <div class="collapse mt-4" id="leaveReview">
                             <h5 class="mb-4 text-pB">Leave a review</h5>
-                            <form class="form" id="contact-form" method="get" action="#">
+                            <form class="form" id="contact-form" method="post" action="${path}/course/MyCourseRev?MyCourseNo=">
+                            	
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-4">
                                             <label class="form-label text-pB" for="name">Your name *</label>
-                                            <input class="form-control" type="text" name="name" id="name" placeholder="이름이나 닉네임을 입력해주세요" required="required">
+                                            <input class="form-control" type="text" name="userName" value="${loginMember.userName}" readonly="readonly">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-4">
-                                            <label class="form-label text-pB" for="rating">Your rating *</label>
-                                            <select class="form-select focus-shadow-0" name="rating" id="rating">
+                                            <label class="form-label text-pB" for="rating" >Your rating *</label>
+                                            <select class="form-select focus-shadow-0" name="cntRevStar" id="cntRevStar">
                           <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
                           <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
                           <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
@@ -366,11 +368,11 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label text-pB" for="email">Your email *</label>
-                                    <input class="form-control" type="email" name="email" id="email" placeholder="이메일을 입력해주세요" required="required">
+                                    <input class="form-control" type="email" name="email" id="email" value="${loginMember.userEmail}" readonly="readonly">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label text-pB" for="review">Review text *</label>
-                                    <textarea class="form-control" rows="4" name="review" id="review" placeholder="여행은 즐거우셨나요? 방문하신 장소에 대한 후기를 남겨주세요" required="required"></textarea>
+                                    <textarea class="form-control" rows="4" name="content" id="review" placeholder="여행은 즐거우셨나요? 방문하신 장소에 대한 후기를 남겨주세요" required="required"></textarea>
                                 </div>
                                 <button class="btn btn-warning" type="submit">Post review</button>
                             </form>
@@ -395,80 +397,12 @@
         </div>
     </div>
 
+
       <!-- Footer-->
-    <footer class="position-relative z-index-10 d-print-none">
-      <!-- Main block - menus, subscribe form-->
-      <div class="py-5 bg-gray-200 text-muted">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 mb-5 mb-lg-0">
-              <img src="${path}/resources/image/togetherLogo.png" height="60" width="140" alt="">
-              <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
-              <div class="mt-4 pt-2 ps-3 ms-sm-4">
-                <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0 pt-4 ms-4">
-              <h6 class="text-dark mb-2">CONTACT
-              <ul class="list-unstyled">
-                <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
-                  <a class="text-muted" href="category-rooms.html">1544-9970</a>
-                </li>
-              </ul>
-            </h6>
-
-            <h6 class="text-dark mb-2">ADDRESS
-            <ul class="list-unstyled">
-              <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
-                <a class="text-muted" href="category-rooms.html">서울특별시 강남구 테헤란로14길 6 남도빌딩<br><br></a>
-              </li>
-            </ul>
-            </h6>
-            </div>
-            
-            <div class="col-lg-3 pt-4" style="font-family:pB;">
-              <h6 class="fs-5 text-dark mb-2">정기구독 & 뉴스레터</h6>
-              <p class="mb-3"> 투게더의 소식을 정기적으로 받아보세요</p>
-              <form action="#" id="newsletter-form">
-                <div class="input-group mb-3">
-                  <input class="form-control bg-transparent border-dark
-                    border-end-0" type="email" placeholder="Your Email Address"
-                    aria-label="Your Email Address">
-                  <button class="btn btn-outline-dark border-start-0"
-                    type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+     <!-- Footer-->
+	 <jsp:include page="/WEB-INF/views/common/footer.jsp"/> 
       <!-- Copyright section of the footer-->
-      <div class="py-4 fw-light bg-gray-800 text-gray-300">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start">
-              <p class="text-sm mb-md-0">&copy; 2022, TOGETHER. All rights
-                reserved.</p>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                <li class="list-inline-item"><img class="w-2rem"
-                    src="${path}/resources/img/visa.svg" alt="..."></li>
-                <li class="list-inline-item"><img class="w-2rem"
-                    src="${path}/resources/img/mastercard.svg" alt="..."></li>
-                <li class="list-inline-item"><img class="w-2rem"
-                    src="${path}/resources/img/paypal.svg" alt="..."></li>
-                <li class="list-inline-item"><img class="w-2rem"
-                    src="${path}/resources/img/western-union.svg" alt="..."></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- JavaScript files-->
-    <script>
+      <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
         //   see more here 
@@ -512,40 +446,73 @@
     <!-- Main Theme JS file    -->
     <script src="${path}/resources/js/theme.js"></script>
     <!-- Map-->
-   <!--  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
     <!-- Available tile layers-->
     <script src="${path}/resources/js/map-layers.js">
     </script>
     <script src="${path}/resources/js/map-detail.js"></script>
     <script>
-        createListingsMap({
-            mapId: 'detailMap',
-            jsonFile: '/resources/js/restaurants-geojson.json',
-            //tileLayer: tileLayers[5]  - uncomment for a different map styling
-        });
+        $(document).ready(function() {
+            $('.like-button').click(function() {
+                $(this).toggleClass('is-active');
+            })
+        })
     </script>
+    
+<!--     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf195a29b50143fef5883a438669e5bb"></script> -->
+    
      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2d8185dedc7836784431638389dd3d"></script>
                      
      <script>
                   
-                     var mapContainer = document.getElementById('detailMap'), // 지도를 표시할 div 
+                     var mapContainer = document.getElementById('detailMap2'), // 지도를 표시할 div 
+//                      <c:forEach items="${detailCourseList}" var="MyCourseSearch">
+//                      <c:if test="${detailCourseList[1].mapX eq null }">
+//                      mapOption = { 
+//                          center: new kakao.maps.LatLng('33.450705', '126.570677'), // 지도의 중심좌표
+//                          level: 6 // 지도의 확대 레벨
+// //                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
+//                      };
+//                      </c:if>
+//                      <c:if test="${detailCourseList[1].mapX ne null }">
                      mapOption = { 
-                         center: new kakao.maps.LatLng('${MyCourseSearch.mapY}', '${MyCourseSearch.mapX}'), // 지도의 중심좌표
+                         center: new kakao.maps.LatLng('33.450705', '126.570677'), // 지도의 중심좌표
                          level: 6 // 지도의 확대 레벨
+//                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
                      };
+//                      </c:if>
+//                      </c:forEach>
 
                     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-   
-                    // 마커가 표시될 위치입니다 
-                    var markerPosition  = new kakao.maps.LatLng('${MyCourseSearch.mapY}', '${MyCourseSearch.mapX}'); 
+                    
+                  /*   // 마커가 표시될 위치입니다 
+                    var markerPosition  = new kakao.maps.LatLng('${detailCourseList[1].mapY}', '${detailCourseList[1].mapX}');  */
+                	
+                    var positions = [];
+                 
+						positions.push({
+					
+	                    latlng: new kakao.maps.LatLng('33.450705', '126.570677')
+	               		});
+	          
+                  
+	                
+// 					<c:forEach items="${detailCourseList}" var="MyCourseSearch">
+// // 					 <c:if test="${MyCourseSearch.mapX eq null }">
+// 						positions.push({
+// 	                    latlng: new kakao.maps.LatLng('33.450705', '126.570677'),
+// 	               		});
+// // 						 </c:if>
+// 	                </c:forEach>
+                  
    
                     // 마커를 생성합니다
-                    var marker = new kakao.maps.Marker({
+                 /*    var marker = new kakao.maps.Marker({
                         position: markerPosition
-                    });
+                    }); */
    
                     // 마커가 지도 위에 표시되도록 설정합니다
-                    marker.setMap(map);
+//                     marker.setMap(map);
                     
                  // 지도에 확대 축소 컨트롤을 생성한다
                       var zoomControl = new kakao.maps.ZoomControl();
@@ -565,153 +532,216 @@
       
                       // 마커 이미지를 생성합니다    
                       var markerImage = new kakao.maps.MarkerImage(markerImageUrl, imageSize);
-      
+                      
                       for (let i = 0; i < positions.length; i++) {
-                          var data = positions[i];
-                          displayMarker(data);
-                      }
-      
+  	                    var data = positions[i];
+  	                    displayMarker(data);
+  	                }
+  	
                       // 지도에 마커를 표시하는 함수입니다    
-                      function displayMarker(data) {
-                          var marker = new kakao.maps.Marker({
-                              map: map,
-                              position: data.latlng,
-                              image: markerImage
-                          });
-                          var overlay = new kakao.maps.CustomOverlay({
-                              yAnchor: 1,
-                              position: marker.getPosition()
-                          });
-                          
-                          if (!data.tel){
-                             data.tel= '&nbsp;&nbsp;&#45;-- ';
-                          }
-      
-                          // var content = document.getElementById('clickMarkerInfo');
-                          // var content = document.getElementById('popup_map');
-                          var content = document.createElement('div');
-                          content.innerHTML = '<div class="wrap" id="popup_map">' +
-                              '    <div class="info">' +
-                              '        <div class="title">' +
-                              data.title +
-                              '        </div>' +
-                              '        <div class="body">' +
-                              '            <div class="img">' +
-                              '                <img src="' +
-                              data.image +
-                              '" width="73" height="70">' +
-                              '           </div>' +
-                              '            <div class="desc">' +
-                              '                <div class="text-sm">' +
-                              '<MARQUEE>' +
-                              data.address +
-                              '</MARQUEE>' +
-                              '</div>' +
-                              '                <div class="jibun">'+
-                                 data.tel +
-                              '</div>' +
-//                               '                <div>'+
-//                               data.hp +
-//                               '</div>' +
-                              '                <div class="pt-1"><a href="https://www.kakaocorp.com/main" target="_blank" class="link">상세페이지 →</a></div>' +
-                              '            </div>' +
-                              '        </div>' +
-                              '    </div>' +
-                              '</div>';
-                          // content.innerHTML = data.title;
-                          // content.style.cssText = 'background: white; border: 1px solid black';
-      
-                          var closeBtn = document.getElementById('closeBtn');
-                          var closeBtn = document.createElement('button');
-                          closeBtn.innerHTML = 'X';
-                          closeBtn.style.cssText = 'background: rgba(0, 0, 0,0); color: rgba(0, 0, 0,0); border: none';
-                          closeBtn.onclick = function () {
-                              overlay.setMap(null);
-                          };
-      
-                          content.appendChild(closeBtn);
-                          overlay.setContent(content);
-      
-                          var isClick = new kakao.maps.event.addListener(marker, 'click', function () {
-                              overlay.setMap(map);
-                              return true;
-                          });
-      
-                          if (isClick === true) {
-                              overlay.setMap(null);
-                          }
-      
-                          // kakao.maps.event.addListener(marker, 'click', function() {
-                          //     overlay.setMap(null);
-                          // });
-      
-      
-                      }                         
-    
-        //  버튼 클릭 이벤트 
-        var div2 = document.getElementsByClassName("div2");
+  	                function displayMarker(data) {
+  	                	
+  	                    var marker = new kakao.maps.Marker({
+  	                        map: map,
+  	                        position: data.latlng,
+  	                        image: markerImage
+  	                    });
+  	                   
+  	                    var overlay = new kakao.maps.CustomOverlay({
+  	                        yAnchor: 1,
+  	                        xAnchor: -0.2,
+  	                        position: marker.getPosition()
+  	                    });
+  	                    
+  	                    
+  	                    // var content = document.getElementById('clickMarkerInfo');
+  	                    // var content = document.getElementById('popup_map');
+  	                    var content = document.createElement('div');
+  	                    content.innerHTML = '<div class="wrap" id="popup_map">' +
+  	                        '    <div class="info">' +
+  	                        '        <div class="title">' +
+  	                        data.title +
+  	                        '        </div>' +
+  	                        '        <div class="body">' +
+  	                        '            <div class="img">' +
+  	                        '                <img src="' +
+  	                        data.image +
+  	                        '" width="73" height="70">' +
+  	                        '           </div>' +
+  	                        '            <div class="desc">' +
+  	                        '                <div class="text-sm">' +
+  	                        '<div>' +
+  	                        data.address +
+  	                        '</div>' +
+  	                        '</div>' +
 
-        function handleClick(event) {
-            console.log(event.target);
-            // console.log(this);
-            // 콘솔창을 보면 둘다 동일한 값이 나온다
+  	                        '                <div class="pt-4"><a href="${path}/tourDetailInfo.do?contentId='+
+  	                        		data.id + '&contentTypeId='+ data.type +
+  	                        		'"  class="link">상세페이지 →</a></div>' +
+  	                        '            </div>' +
+  	                        '        </div>' +
+  	                        '    </div>' +
+  	                        '</div>';
+  	                    // content.innerHTML = data.title;
+  	                    // content.style.cssText = 'background: white; border: 1px solid black';
+  	
+  	                    var closeBtn = document.getElementById('closeBtn');
+  	                    var closeBtn = document.createElement('button');
+  	                    closeBtn.innerHTML = 'xx';
+  	                    closeBtn.style.cssText = 'background: rgba(0, 0, 0,0); color: rgba(0, 0, 0,0); border: none ';
+  	                    closeBtn.onclick = function () {
+  	                        overlay.setMap(null);
+  	                    };
+  	
+  	                    content.appendChild(closeBtn);
+  	                    overlay.setContent(content);
+  	
+  	                    var isClick = new kakao.maps.event.addListener(marker, 'click', function () {
+  	                        overlay.setMap(map);
+  	                        return true;
+  	                    });
+  	
+  	                    if (isClick === true) {
+  	                        overlay.setMap(null);
+  	                    }
+  	
+  	                    // kakao.maps.event.addListener(marker, 'click', function() {
+  	                    //     overlay.setMap(null);
+  	                    // });
+  	
+  	
+  	                }
+  	
+  	                
+  	                var paths = [];
+  	                for (let i = 0; i < positions.length; i++) {
+  	                    var pathDarw = positions[i].latlng;
+  	                    paths.push(pathDarw);
+  	                }
+  	
+  	                // 지도에 선을 표시한다 
+  	                var polyline = new kakao.maps.Polyline({
+  	                    map: map, // 선을 표시할 지도 객체 
+  	                    // path: [ // 선을 구성하는 좌표 배열
+  	                    //     // new kakao.maps.LatLng(33.450705, 126.570677),
+  	                    //     // new kakao.maps.LatLng(33.450936, 126.569477),
+  	                    //     // new kakao.maps.LatLng(33.450879, 126.569940),
+  	                    //     // new kakao.maps.LatLng(33.451393, 126.570738),
+  	                    //     data.latlng,
+  	                    // ],
+  	                    path: paths,
+  	                    // endArrow: true, // 선의 끝을 화살표로 표시되도록 설정한다
+  	                    strokeWeight: 3, // 선의 두께
+  	                    strokeColor: '#FF846B', // 선 색
+  	                    strokeOpacity: 0.8, // 선 투명도
+  	                    strokeStyle: 'shortdash' // 선 스타일
+  	
+  	
+  	                });
+  	
+  	
+  	
+  	
+  	
+  	                //  버튼 클릭 이벤트 
+  	
+  	                var div2 = document.getElementsByClassName("div2");
+  	
+  	                function handleClick(event) {
+  	                    console.log(event.target);
+  	                    // console.log(this);
+  	                    // 콘솔창을 보면 둘다 동일한 값이 나온다
+  	
+  	                    console.log(event.target.classList);
+  	
+  	                    if (event.target.classList[1] === "clicked") {
+  	                        event.target.classList.remove("clicked");
+  	                    } else {
+  	                        for (var i = 0; i < div2.length; i++) {
+  	                            div2[i].classList.remove("clicked");
+  	                        }
+  	
+  	                        event.target.classList.add("clicked");
+  	                    }
+  	                }
+  	
+  	                function init() {
+  	                    for (var i = 0; i < div2.length; i++) {
+  	                        div2[i].addEventListener("click", handleClick);
+  	                    }
+  	                }
+  	
+  	                init();
+  	
+  	                //  버튼 클릭 이벤트 끝 
+  	
+  	                //  코스 클릭시 위에 체크박스 해제 
+  	
+  	                // 버튼 클릭시 체크박스 해제
+  	                $(function () {
+  	
+  	                    $("input[name=allNonChk]").click(function () {
+  	                        $(":checkbox").prop("checked", false);
+  	                    });
+  	                });
+  	                $(function () {
+  	
+  	                    $("input[id=allNonChk]").click(function () {
+  	                        $(":checkbox").prop("checked", false);
+  	                    });
+  	                });
+  	
+  	                $(document).ready(function () {
+  	                    $('input[type="checkbox"][name="course"]').click(function () {
+  	                        if ($(this).prop('checked')) {
+  	                            $('input[type="checkbox"][name="place"]').prop('checked', false);
+  	                            $(this).prop('checked', true);
+  	                        }
+  	                    });
+  	                });
+  	
+  	
+  	                //  클릭시 div 확장 
+  	
+  	                function onDisplay() {
+  	                    $('#noneDiv').show();
+  	                }
 
-            console.log(event.target.classList);
-
-            if (event.target.classList[1] === "clicked") {
-                event.target.classList.remove("clicked");
-            } else {
-                for (var i = 0; i < div2.length; i++) {
-                    div2[i].classList.remove("clicked");
-                }
-
-                event.target.classList.add("clicked");
-            }
-        }
-
-        function init() {
-            for (var i = 0; i < div2.length; i++) {
-                div2[i].addEventListener("click", handleClick);
-            }
-        }
-
-        init();
-
-        //  버튼 클릭 이벤트 끝 
-
-        //  코스 클릭시 위에 체크박스 해제 
-
-        // 버튼 클릭시 체크박스 해제
-        $(function() {
-
-            $("input[name=allNonChk]").click(function() {
-                $(":checkbox").prop("checked", false);
-            });
-        });
-        $(function() {
-
-            $("input[id=allNonChk]").click(function() {
-                $(":checkbox").prop("checked", false);
-            });
-        });
-
-        $(document).ready(function() {
-            $('input[type="checkbox"][name="course"]').click(function() {
-                if ($(this).prop('checked')) {
-                    $('input[type="checkbox"][name="place"]').prop('checked', false);
-                    $(this).prop('checked', true);
-                }
-            });
-        });
+  	                
+  	                //클릭시 중심좌표 이동
+  	            function clickMove(mapY, mapx){
+  	                // 이동할 위도 경도 위치를 생성합니다 
+  	                var moveLatLon = new kakao.maps.LatLng(mapY, mapX);
+  	                
+  	                // 지도 중심을 이동 시킵니다
+  	                map.clickMove(moveLatLon);
+  	            }
+  	                
+  	            function panTo(mapX, mapY) {
+  	                // 이동할 위도 경도 위치를 생성합니다 
+  	                var moveLatLon = new kakao.maps.LatLng(mapX, mapY);
+  	                
+  	                // 지도 중심을 부드럽게 이동시킵니다
+  	                // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+  	                map.panTo(moveLatLon);            
+  	            }        
+  	            </script>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////     -->
 
 
-        //  클릭시 div 확장 
-
-        function onDisplay() {
-            $('#noneDiv').show();
-        }
-        
-</script>
+    <script>
+        $(document).on('click', '.tile-link.active', function() {
+            var href = $(this).attr('href').substring(0);
+            $(this).removeClass('active');
+            $('.tab-pane[id="' + href + '"]').removeClass('active');
+        })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">
+    </script>
+    <script src="${path}/resources/js/datepicker-detail.js">
+    </script>
 </body>
 
 </html>

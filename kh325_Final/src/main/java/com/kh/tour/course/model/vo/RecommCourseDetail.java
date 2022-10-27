@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class RecommCourseDetail {
 
 	private  int     contentId;       //콘텐츠ID
+	private  int     contentTypeId;       //콘텐츠ID
 	private String detailTitle;
 	private String firstImage; 
 	private String detailAreaName;
@@ -20,6 +21,7 @@ public class RecommCourseDetail {
 	private String schedule;
 	private int subNum;
 	private String subContentId;
+	private String addr1;          //주소  
 	private String subName;
 	private String subDetailOverview;
 	private String subDetailImg;

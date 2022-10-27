@@ -105,8 +105,9 @@ public class CourseController {
 		List<RecommCourseDetail> detailRecommCourseList = courseService.getDetailRecommCourse(contentId);
 		List<RecommCourseImage> recommCourseImageList = courseService.getRecommCourseImage(contentId);
 		List<RecommCourseRev> recommCourseRevList = courseService.getRecommCourseRev(contentId);
-
-		model.addAttribute("detailCourseList", detailRecommCourseList);
+		
+		System.out.println(detailRecommCourseList);
+		model.addAttribute("detailRecommCourseList", detailRecommCourseList);
 		model.addAttribute("recommCourseImageList", recommCourseImageList);
 		model.addAttribute("recommCourseRevList", recommCourseRevList);
 

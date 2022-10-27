@@ -468,9 +468,6 @@
     <script src="${path}/resources/vendor/object-fit-images/ofi.min.js "></script>
     <!-- Swiper Carousel                       -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js "></script>
-    <script>
-        var basePath = ''
-    </script>
     <!-- Main Theme JS file    -->
     <script src="${path}/resources/js/theme.js "></script>
     <!-- Map-->

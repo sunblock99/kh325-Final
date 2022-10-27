@@ -494,7 +494,12 @@
                     var positions = [];
                     <c:forEach items="${detailCourseList}" var="MyCourseSearch">
 						positions.push({
+							id: '${MyCourseSearch.contentId}',
+							type: '${MyCourseSearch.contentTypeId}',
 	                    latlng: new kakao.maps.LatLng('${MyCourseSearch.mapY}', '${MyCourseSearch.mapX}'),
+	                    title: '${MyCourseSearch.detailTitle}',
+	                    image: '${MyCourseSearch.firstImage}',
+	                    address: '${MyCourseSearch.addr1}',
 	               		});
 	                </c:forEach>
                   
@@ -572,17 +577,12 @@
   	                        '           </div>' +
   	                        '            <div class="desc">' +
   	                        '                <div class="text-sm">' +
-  	                        '<MARQUEE>' +
+  	                        '<div>' +
   	                        data.address +
-  	                        '</MARQUEE>' +
   	                        '</div>' +
-  	                        '                <div class="jibun">'+
-  	                        	data.tel +
   	                        '</div>' +
-//   	                        '                <div>'+
-//   	                        data.hp +
-//   	                        '</div>' +
-  	                        '                <div class="pt-1"><a href="${path}/tourDetailInfo.do?contentId='+
+
+  	                        '                <div class="pt-4"><a href="${path}/tourDetailInfo.do?contentId='+
   	                        		data.id + '&contentTypeId='+ data.type +
   	                        		'"  class="link">상세페이지 →</a></div>' +
   	                        '            </div>' +
