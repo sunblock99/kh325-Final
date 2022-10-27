@@ -312,6 +312,7 @@
 					<div class="swiper-wrapper pb-5">
 						<!-- Slides-->
 							<c:forEach items="${selectMainHotPlace}" var="MainHotPlace">
+							<c:if test="${MainHotPlace.contentTypeId eq 12 || MainHotPlace.contentTypeId eq 39}">
 							<div class="swiper-slide h-auto px-2">
 							<div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0">
 								<a class="tile-link" href="${path}/tourDetailInfo.do?contentId=${MainHotPlace.contentId}&contentTypeId=${MainHotPlace.contentTypeId}"></a>
@@ -332,6 +333,7 @@
 								</div>
 							</div>
 							</div>
+							</c:if>
 						</c:forEach>
 						</div>
 					</div>

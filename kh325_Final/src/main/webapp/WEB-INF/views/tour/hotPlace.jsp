@@ -220,10 +220,12 @@
 
                     <!-- 핫플레이스 카드 시작 -->
                   <c:forEach items="${hotPlaceList}" var="HotPlace">
+                  <c:if test="${HotPlace.contentTypeId eq 12 || HotPlace.contentTypeId eq 39}">
                     <div class="swiper-slide h-auto px-2">
                         <article class="card-list" onclick="location.href='${path}/tourDetailInfo.do?contentId=${HotPlace.contentId}&contentTypeId=${HotPlace.contentTypeId}'">
                             <!-- 배경이미지  -->
-	                           <div class="gradient-overlay-img" style="background-image: url(<c:if test="${HotPlace.firstImage == null}"><c:out value="${path}/resources/image/noImage.png"/></c:if> <c:if test="${HotPlace.firstImage != null}"><c:out value="${HotPlace.firstImage}"/></c:if>); cursor:pointer; height: auto; width: auto;">
+	                           <div class="gradient-overlay-img" style="background-image: url(<c:if test="${HotPlace.firstImage == null}"><c:out value="${path}/resources/image/noImage.png"/></c:if>
+	                           	 <c:if test="${HotPlace.firstImage != null}"><c:out value="${HotPlace.firstImage}"/></c:if>); cursor:pointer; height: auto; width: auto;">
 	                                <div class="card-list__img">
 	                                    <a href="${path}/tourDetailInfo.do?contentId=${HotPlace.contentId}&contentTypeId=${HotPlace.contentTypeId}" class="card-list_link"></a>
 	                                </div>
@@ -244,6 +246,7 @@
                          </div>
                        </article>
                      </div>
+                  </c:if>
                    </c:forEach>
               </div>
 
