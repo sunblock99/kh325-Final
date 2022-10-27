@@ -995,7 +995,6 @@
 	                pageUrl += '&searchValue=' + searchValue.value;
 	            }
 	            
-	            alert(pageUrl);
 	            location.href = encodeURI(pageUrl);
             }
             </script>

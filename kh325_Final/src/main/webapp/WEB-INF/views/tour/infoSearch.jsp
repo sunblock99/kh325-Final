@@ -917,7 +917,6 @@
                 }
             }
             
-			alert(pageUrl);
             location.href = encodeURI(pageUrl);
         }
     </script>
