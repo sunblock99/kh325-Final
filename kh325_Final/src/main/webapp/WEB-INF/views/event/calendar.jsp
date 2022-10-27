@@ -252,7 +252,7 @@
                 line-height: 1.3;">프로계획러 사용자가 직접 만든</h3>
                 <h3 class="fw-bold text-shadow mb-3" style=" font-size: 3rem; font-family:'pSb'; font-weight: 400; line-height: 1.3;">풀코스 여행</text>
                 </h3>
-                <button type="button" class="btn btn-light">Go for My Trip</button>
+                <button type="button" onclick="location.href='${path}/course/courseMain'" class="btn btn-light">Go for My Trip</button>
             </div>
         </div>
     </section>

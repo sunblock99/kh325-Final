@@ -41,6 +41,7 @@
     <!-- Custom stylesheet - for your changes-->
     <!-- <link rel="stylesheet" href="css/custom.css"> -->
     <link rel="stylesheet" href="${path}/resources/css/tour_InfoSearch.css">
+    <link rel="stylesheet" href="${path}/resources/css/customKNI.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="${path}/resources/img/favicon.png">
     <!-- Tweaks for older IEs-->
@@ -138,6 +139,8 @@
 </style>
 
 <body style="padding-top: 100px;">
+
+
     <!-- =================== 블랙 헤더 html =================== -->
     <header class="header header-absolute" style="font-size:30px;">
        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
@@ -174,10 +177,11 @@
                            <a class="hvr dropdown-item fs-5" href="${path}/tour/hotPlace">HOT PLACE </a>
                            <a class="hvr dropdown-item fs-5" href="${path }/tourSearch.do">관광지 정보</a>
                            <a class="hvr dropdown-item fs-5" href="${path }/eventSearch.do">지역별 축제ㅣ행사 </a>
-                           <a class="hvr dropdown-item fs-5" href="#">날짜별 축제ㅣ행사</a>
+                           <a class="hvr dropdown-item fs-5" href="${path}/calendar">날짜별 축제ㅣ행사</a>
                        </div>
                    </li>
                </li>
+               
 			   <li class="nav-item position-static text-pB">
                   <li class="nav-item dropdown">
                       <a class="fs-3 nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" 
@@ -192,12 +196,18 @@
                   </li>
                </li>
 				
-              <!-- <li class="nav-item"><a class="fs-3 nav-link-header-black" href="${path }/community">커뮤니티</a></li>-->
-              
-              <li class="nav-item">
-                  <a class="fs-3 nav-link-header-black" href="${path }/course/courseMain" aria-haspopup="true" aria-expanded="false">여행코스</a>
-              </li>
-              
+				<li class="nav-item position-static text-pB">
+                  <li class="nav-item dropdown">
+                      <a class="fs-3 nav-link-header-black dropdown-toggle me-4" id="docsDropdownMenuLink" href="#" 
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보</a>
+                      <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+						<h6 class="dropdown-header fs-5 text-pSb">여행정보</h6>
+                          <a class="hvr dropdown-item fs-5" href="${path }/course/courseMain">여행코스</a>
+                          <a class="hvr dropdown-item fs-5" href="${path}/map/travelMap">여행지도 </a>
+                      </div>
+                  </li>
+               </li>
+             
               <c:if test="${loginMember eq null}">
               <li class="nav-item"><a class="fs-3 nav-link-header-black" href="${path}/loginView">로그인</a></li>
               </c:if>
@@ -932,7 +942,7 @@
                 line-height: 1.3;">프로계획러 사용자가 직접 만든</h3>
                 <h3 class="fw-bold text-shadow mb-3" style=" font-size: 3rem; font-family:'pSb'; font-weight: 400; line-height: 1.3;">풀코스 여행</text>
                 </h3>
-                <button type="button" class="btn btn-light">Go for My Trip</button>
+                <button type="button" onclick="location.href='${path}/course/courseMain'" class="btn btn-light">Go for My Trip</button>
             </div>
         </div>
     </section>
