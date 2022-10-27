@@ -299,7 +299,7 @@ public class CourseController {
 		int descentResult = 0;
 
 		if (myCourseList.size() > deletedSn) {
-			for (int i = deletedSn + 1; i <= myCourseList.size(); i++) {
+			for (int i = deletedSn; i < myCourseList.size(); i++) {
 				targetSn = myCourseList.get(i).getMyCourseSn();
 				targetNo = myCourseList.get(i).getMyCourseDetailNo();
 				descentResult = courseService.descent(targetSn - 1, targetNo);
@@ -366,7 +366,7 @@ public class CourseController {
 
 		int userNo = loginMember.getUserNo();
 		int originSn = 0;
-		int targetSn = 0;
+		int targetSn = 1;
 		int targetNo = 0;
 
 		List<MyCourseSearch> myCourseList = courseService.getForMyPage(userNo, myCourseNo);
