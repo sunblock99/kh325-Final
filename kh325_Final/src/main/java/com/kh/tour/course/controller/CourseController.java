@@ -422,6 +422,7 @@ public class CourseController {
 		log.info("param : " + userNo);
 
 		List<MyCourseSearch> myCourseEditList = courseService.getForMyPage(userNo, myCourseNo);
+		System.out.println(myCourseEditList);
 		model.addAttribute("myCourseEditList", myCourseEditList);
 
 		return "/myPage/myCourseEdit";
