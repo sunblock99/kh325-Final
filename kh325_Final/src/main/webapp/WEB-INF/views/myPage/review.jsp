@@ -162,7 +162,7 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block " href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${path}/resources/img/avatar/avatar-10.jpg" alt=""></a>
+                            <a class="d-inline-block " href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${loginMember.userAvatar }" alt=""></a>
 							<h5 class="text-pB"><c:out value="${loginMember.userName}"/></h5>
                             <p class="text-muted text-sm mb-0 text-pB"><c:out value="${loginMember.userAddress}"/> </p>
                         </div>
@@ -257,7 +257,7 @@
                         <!-- <p class="subtitle text-sm text-primary">Reviews </p>
                         <h5 class="mb-4">Listing Reviews </h5> -->
                         <c:forEach var="Review" items="${reviewList}">
-                        <div class="d-block mb-5">
+                        <div class="d-block mb-5"style="margin-bottom: 50px; padding-bottom: 10px;">
                             <div>
                                 <h5 class="mt-2 mb-1 text-pEb"><c:out value="${Review.title}"/></h5>
                                 <div class="mb-2">
@@ -279,12 +279,11 @@
                                 </div>
                                 <p class="text-muted text-sm "><c:out value="${Review.content}"/></p>
                                 <p class="card-text d-flex justify-content-between text-gray-800 text-sm" style="float:right;">
+                                    <a href="${path}/tourDetailInfo.do?contentId=${Review.contentId}&contentTypeId=${Review.contentTypeId}">
                                     <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="${path}/">
-                                    <span class="me-1 text-muted text-pB">
-                                    <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정
+                                    <i class="fa fa-pen opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>수정
                                     </span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    
                                     <a href="${path}/myPage/deleteReview?reviewNo=${Review.reviewNo}">
                                     <span class="me-1 text-muted text-pB">
                                     <i class="fa fa-trash opacity-5 me-1" style="color:gray;" aria-hidden="true"></i>삭제
@@ -314,72 +313,9 @@
         </div>
     </section>
     <!-- Footer-->
-    <footer class="position-relative z-index-10 d-print-none">
-        <!-- Main block - menus, subscribe form-->
-        <div class="py-6 bg-gray-200 text-muted">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <div class="fw-bold text-uppercase text-dark mb-3">Directory</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="pinterest"><i class="fab fa-pinterest"></i></a></li>
-                            <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="vimeo"><i class="fab fa-vimeo"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                        <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
-                        <ul class="list-unstyled">
-                            <li><a class="text-muted" href="index.html">Rooms</a></li>
-                            <li><a class="text-muted" href="category-rooms.html">Map on top</a></li>
-                            <li><a class="text-muted" href="category-2-rooms.html">Side map</a></li>
-                            <li><a class="text-muted" href="category-3-rooms.html">No map</a></li>
-                            <li><a class="text-muted" href="detail-rooms.html">Room detail</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                        <h6 class="text-uppercase text-dark mb-3">Pages</h6>
-                        <ul class="list-unstyled">
-                            <li><a class="text-muted" href="compare.html">Comparison                                   </a></li>
-                            <li><a class="text-muted" href="team.html">Team                                   </a></li>
-                            <li><a class="text-muted" href="contact.html">Contact                                   </a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-                        <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-                        <form action="#" id="newsletter-form">
-                            <div class="input-group mb-3">
-                                <input class="form-control bg-transparent border-dark border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                                <button class="btn btn-outline-dark border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyright section of the footer-->
-        <div class="py-4 fw-light bg-gray-800 text-gray-300">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="text-sm mb-md-0">&copy; 2021, Your company. All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="img/western-union.svg" alt="..."></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp">
+			<jsp:param value="예아바디" name="title"/>
+</jsp:include>
     <!-- JavaScript files-->
     <script>
         // ------------------------------------------------------- //

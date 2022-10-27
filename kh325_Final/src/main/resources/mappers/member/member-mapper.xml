@@ -168,13 +168,14 @@
 		<result property="reviewNo" column="REVIEW_NO"/>
 		<result property="userNo" column="UNO"/>
 		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
 		<result property="title" column="TITLE"/>
 		<result property="star" column="STAR"/>
 		<result property="content" column="CONTENT"/>
 	</resultMap>
 	
 	<select id="review" parameterType="int" resultMap="reviewResultMap">
-		SELECT R.REVIEW_NO, R.UNO, R.CONTENTID, B.TITLE, R.STAR, R.CONTENT FROM REVIEW_TOTAL R
+		SELECT R.REVIEW_NO, R.UNO, R.CONTENTID, B.CONTENTTYPEID, B.TITLE, R.STAR, R.CONTENT FROM REVIEW_TOTAL R
 		JOIN MEMBER M ON(M.UNO=R.UNO)
 		JOIN BASIC_TOUR_INFO B ON(B.CONTENTID = R.CONTENTID)
 		WHERE R.UNO =  #{userNo}
