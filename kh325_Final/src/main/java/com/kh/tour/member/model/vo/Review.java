@@ -12,6 +12,7 @@ public class Review {
 	private int reviewNo;
 	private int userNo;
 	private int contentId;
+	private int contentTypeId;
 	private String title; //콘텐츠명(제목)
 	private int star;
 	private String content;
