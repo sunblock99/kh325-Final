@@ -27,9 +27,7 @@ public interface MemberMapper {
 	int updatePwd(Map<String, String> map);
 	int deleteMember(int userNo);
 	int insertKakaoMember(Member member);
-	List<Bookmark> bookmarkTour(RowBounds rowBounds, Map<String, String> map);
-	List<Bookmark> bookmarkHotel(RowBounds rowBounds, Map<String, String> map);
-	List<Bookmark> bookmarkRestaurant(RowBounds rowBounds, Map<String, String> map);
+	List<Bookmark> bookmark(int userNo);
 	int deleteBookmark(int likeNo);
 	List<Review> review(int userNo);
 	int deleteReview(int reviewNo);

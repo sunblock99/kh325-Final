@@ -208,57 +208,13 @@ public class MemberServiceImpl implements MemberService {
 			
 			return mapper.selectMember(userInfo.getUserEmail());
 	}
-
-//	@Override
-//	public List<Bookmark> bookmark(int userNo) {
-//		return mapper.bookmark(userNo);
-//	}
 	
 	@Override
-	public List<Bookmark> bookmark(PageInfo pageInfo, Map<String,String> map) {
-		
-		int offset = (pageInfo.getCurrentPage() - 1) * pageInfo.getListLimit();
-		RowBounds rowBounds = new RowBounds(offset, pageInfo.getListLimit());
-		String sortBy = map.get("sortBy");
-		
-		if(sortBy != null) {
-			if(sortBy.equals("DETAIL_TOUR")) {
-				return mapper.bookmarkTour(rowBounds, map);
-			}
-			if(sortBy.equals("DETAIL_HOTEL")) {
-				return mapper.bookmarkHotel(rowBounds, map);
-			}
-			if(sortBy.equals("DETAIL_RESTAURANT")) {
-				return mapper.bookmarkRestaurant(rowBounds, map);
-			}
-		}
-		
-		return null;
-		
-		//return mapper.community(rowBounds,userNo);
-	}
-	
-	@Override
-	public int selectBookmarkBoardCount(Map<String,String>map) {
-		
-		String sortBy = map.get("sortBy");
-		
-		if(sortBy != null) {
-			if(sortBy.equals("DETAIL_TOUR")) {
-				return mapper.selectTourBoardCount(map);
-			}
-			if(sortBy.equals("DETAIL_HOTEL")) {
-				return mapper.selectHotelBoardCount(map);
-			}
-			if(sortBy.equals("DETAIL_RESTAURANT")) {
-				return mapper.selectResBoardCount(map);
-			}
-		}
-		
-		return 0;
-		
+	public List<Bookmark> bookmark(int userNo) {
+		return mapper.bookmark(userNo);
 	}
 
+	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public int deleteBookmark(int likeNo) {
@@ -355,6 +311,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return reNameFileName;
 	}
-	
+
+	@Override
+	public int selectBookmarkBoardCount(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
 
