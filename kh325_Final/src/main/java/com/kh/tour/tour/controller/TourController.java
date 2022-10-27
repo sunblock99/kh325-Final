@@ -27,6 +27,7 @@ import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
+import com.kh.tour.tour.model.vo.EventHighLike;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.tour.model.vo.TourImage;
@@ -47,8 +48,6 @@ public class TourController {
 	@GetMapping("/eventSearch.do") //지역,행사 페이지에서 체크박스로 행사리스트 조회
 	public String eventSearchlist(Model model, @RequestParam Map<String, String> param,
 			@RequestParam(value = "neighbourhood" , required = false) String[] neighbourhood) {
-		log.info("param : " + param.toString());
-		System.out.println("가지고 들어온 파람값: " + param.toString());
 		
 		if(neighbourhood == null) {
 			System.out.println("neighbourhood null");
@@ -72,12 +71,20 @@ public class TourController {
 			model.addAttribute("neighbourhood", neighbourhoodList);
 			}	
 		
+		List<EventHighLike> eventHighLikeList = tService.getEventHighLike();
+		if(eventHighLikeList != null) {
+			
+			System.out.println("찾아온 eventHighLikeList는 : " + eventHighLikeList);
+			model.addAttribute("eventHighLikeList", eventHighLikeList);
+			}	
+		
 		model.addAttribute("list", list);
 		model.addAttribute("eventListCount", eventListCount);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
 		return "event/eventSearch";
 	}
+	
 	
 	@GetMapping("/tourSearch.do") //관광지 페이지에서 체크박스로 관광지 리스트 조회
 		public String tourSearchlist(Model model, @RequestParam Map<String, String> param, //파람 - 검색어 + date 

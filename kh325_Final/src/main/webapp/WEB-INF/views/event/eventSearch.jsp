@@ -608,84 +608,107 @@
 <body style="padding-top: 0;">
 
     <!-- =================== 화이트 헤더 html =================== -->
-    <header class="header header-absolute" style="font-size:30px;">
-        <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center">
+    <header class="header header-absolute" style="font-size: 50px;">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center">
 
-                    <!-- 로고 시작 -->
-                    <a class="navbar-brand py-3 px-5" href="index.html" style="line-height:0;">
-                        <img class="ps-3" src="https://cdn.discordapp.com/attachments/1013740193389486172/1022387710322806816/002.png" width="30%" height="10%">
-                    </a>
-                    <!-- 로고 끝-->
+            <!-- 로고 시작 -->
+            <a class="navbar-brand " href="${path }" style="line-height:0;">
+              <img class="ps-3" src="${path}/resources/image/togetherLogoWhite.png" width="40%" height="60%">
+            </a>
+            <!-- 로고 끝-->
 
-                    <!-- 공간활용 용도-->
-                    <div class="input-label-absolute input-label-absolute-left
-                  input-expand ms-lg-2 ms-xl-3"></div>
+            <!-- 공간활용 용도-->
+            <div class="input-label-absolute input-label-absolute-left
+              input-expand ms-lg-2 ms-xl-3"></div>
+          </div>
+
+          <!-- =============== 메뉴바 영역 =============== -->
+          <div class="collapse navbar-collapse " id="navbarCollapse"
+            style="font-family: pL;">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a class="fs-3 nav-link-header text-pB" id="homeDropdownMenuLink" href="${path }"
+                  aria-haspopup="true" aria-expanded="false">홈</a>
+              </li>
+
+              <!-- 상단바메뉴 시작 -->
+              <li class="nav-item position-static text-pB">
+                  <li class="nav-item dropdown">
+                      <a class="fs-3 nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" 
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관광정보</a>
+                      <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                          <h6 class="dropdown-header fs-5 text-pSb">관광정보</h6>
+                          <a class="hvr dropdown-item fs-5" href="${path}/tour/hotPlace">HOT PLACE </a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/tourSearch.do">관광지 정보</a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/eventSearch.do">지역별 축제ㅣ행사 </a>
+                          <a class="hvr dropdown-item fs-5" href="#">날짜별 축제ㅣ행사</a>
+                      </div>
+                  </li>
+              </li>
+			
+			 <!-- 커뮤드롭다운 -->
+			 
+			 <li class="nav-item position-static text-pB">
+                  <li class="nav-item dropdown">
+                      <a class="fs-3 nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" 
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 커뮤니티</a>
+                      <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+                          <a class="hvr dropdown-item fs-5" href="${path}/community">커뮤니티 메인</a>
+                          <a class="hvr dropdown-item fs-5" href="${path}/community/freeboardList">자유게시판 </a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/community/gallery">갤러리</a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/community/companionList">동행 구하기</a>
+                          <a class="hvr dropdown-item fs-5" href="${path }/community/journeyList">여행 후기</a>
+                      </div>
+                  </li>
+              </li>
+				
+              <%-- <li class="nav-item"><a class="fs-3 nav-link-header" href="${path }/community">커뮤니티</a></li>--%>
+              <li class="nav-item">
+                  <a class="fs-3 nav-link-header" href="${path }/course/courseMain" aria-haspopup="true" aria-expanded="false">여행코스</a>
+              </li> 
+    
+              <c:if test="${loginMember eq null}">
+              <li class="nav-item"><a class="fs-3 nav-link-header" href="${path}/loginView">로그인</a></li>
+              </c:if>
+              
+              <!-- 일반회원 로그인 성공 시 -->
+              <c:if test="${loginMember ne null && loginMember.managerStatus eq 'N'}">
+              <li class="nav-item dropdown"><a class="fs-3 nav-link-header  dropdown-toggle" id="docsDropdownMenuLink"
+                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <c:out value="${loginMember.userName}" /> 님</a>
+                <div class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
+                    <a class="fs-5 text-pSb hvr dropdown-item"
+                      href="${path }/myPage/profile">마이페이지</a>
+                    <a class="fs-5 text-pSb hvr dropdown-item"
+                      href="${path }/logout">로그아웃</a>
                 </div>
-
-                <!-- =============== 메뉴바 영역 =============== -->
-                <div class="collapse navbar-collapse px-6 " id="navbarCollapse" style="font-family: pL;">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link-header" id="homeDropdownMenuLink" href="index.html" aria-haspopup="true" aria-expanded="false">홈</a>
-                        </li>
-
-                        <!-- 상단바메뉴 시작 -->
-                        <li class="nav-item position-static">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link-header dropdown-toggle me-3" id="docsDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                관광정보</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                    <h6 class="dropdown-header fw-normal" style="font-family:
-                          pB;">관광정보</h6>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-introduction.html">HOT PLACE </a>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-directory-structure.html">관광지 정보</a>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-gulp.html">지역별
-                                    축제ㅣ행사 </a>
-                                    <a class="hvr dropdown-item" href="${path}/resources/docs/docs-customizing-css.html">날짜별 축제ㅣ행사</a>
-                                </div>
-                            </li>
-                        </li>
-
-                        <li class="nav-item"><a class="nav-link-header" href="contact.html">커뮤니티</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link-header" href="index.html" aria-haspopup="true" aria-expanded="false">여행코스</a>
-                        </li>
-
-                        <!-- <li class="nav-item"><a class="nav-link-header" href="login.html">로그인</a></li> -->
-
-                        <!-- 일반회원 로그인 성공 시 -->
-                        <!-- <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
-                    href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    곰발바닥 님</a>
-                    <div class="dropdown-menu dropdown-menu-end"
-                        aria-labelledby="docsDropdownMenuLink"  style="font-family: pB;">
-                        <a class="hvr dropdown-item"
-                          href="docs/docs-introduction.html">마이페이지</a>
-                        <a class="hvr dropdown-item"
-                          href="docs/docs-directory-structure.html">로그아웃</a>
-                    </div>
-                  </li> -->
-
-                        <!-- 관리자 로그인 성공 시 -->
-                        <li class="nav-item dropdown"><a class="nav-link-header dropdown-toggle" id="docsDropdownMenuLink" href="login.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                곰발바닥 님</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink" style="font-family: pB;">
-                                <a class="hvr dropdown-item" href="${path}/resources/docs/docs-introduction.html">마이페이지</a>
-                                <a class="hvr dropdown-item" href="${path}/resources/docs/docs-introduction.html">관리자페이지</a>
-                                <a class="hvr dropdown-item" href="${path}/resources/docs/docs-directory-structure.html">로그아웃</a>
-                            </div>
-                        </li>
-
-                    </ul>
+              </li>
+              </c:if>
+              
+              <!-- 관리자 로그인 성공 시 -->
+              <c:if test="${loginMember.managerStatus eq 'Y'}">
+              <li class="nav-item dropdown"><a class="fs-3 nav-link-header dropdown-toggle" id="docsDropdownMenuLink"
+                href="login.html"data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <c:out value="${loginMember.userName}" /> 님</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="docsDropdownMenuLink text-pB">
+                    <a class="hvr dropdown-item fs-5 text-pSb" href="${path }/myPage/profile">마이페이지</a>
+                    <a class="hvr dropdown-item fs-5 text-pSb" href="${path }/manager/dashBoard">관리자페이지</a>
+                    <a class="hvr dropdown-item fs-5 text-pSb" href="${path }/logout">로그아웃</a>
                 </div>
-            </div>
-        </nav>
-        <!-- 상단바메뉴 끝 -->
-        <!-- =============== 메뉴바 영역 끝 =============== -->
+              </li>
+              </c:if>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- 상단바메뉴 끝 -->
+      <!-- =============== 메뉴바 영역 끝 =============== -->
     </header>
+
 
 
 
@@ -715,100 +738,35 @@
                                     <div class="row pt-6 pb-2">
                                         <div class="container">
                                             <div class="swiper-container items-slider mx-n2 pt-3">
-                                                <!-- Additional required wrapper -->
-                                                <div class="swiper-wrapper pb-0 ">
-                                                    <!-- Slides 시작-->
-                                                    <!-- 1번 -->
-                                                    <div class="swiper-slide px-2">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=c57ac522-3c06-4a6f-9f81-921fd065c6d3" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">
-                                                                    2022서울릴랙스위크</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- 2번 -->
-                                                    <div class="swiper-slide px-2 ">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image" src="http://tong.visitkorea.or.kr/cms/resource/82/2861782_image2_1.jpg" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">
-                                                                    미생페스티벌</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- 3번 -->
-                                                    <div class="swiper-slide px-2 ">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image" src="http://tong.visitkorea.or.kr/cms/resource/59/2861859_image2_1.jpg" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">동인천 낭만시장
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- 4번 -->
-                                                    <div class="swiper-slide px-2 ">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image " src="http://tong.visitkorea.or.kr/cms/resource/34/2861734_image2_1.jpg" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">
-                                                                    서울뷰티먼스</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- 5번 -->
-                                                    <div class="swiper-slide px-2 ">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image " src="http://tong.visitkorea.or.kr/cms/resource/09/2861709_image2_1.jpg" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">
-                                                                    렛츠런캠핑파크</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- 6번 -->
-                                                    <div class="swiper-slide px-2 ">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image " src="http://tong.visitkorea.or.kr/cms/resource/41/2859841_image2_1.jpg" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">
-                                                                    행복로축제</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- 7번 -->
-                                                    <div class="swiper-slide px-2 ">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image " src="http://tong.visitkorea.or.kr/cms/resource/83/2858883_image2_1.jpg" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">
-                                                                    강동북페스티벌</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- 8번 -->
-                                                    <div class="swiper-slide px-2 ">
-                                                        <div class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
-                                                            <a class="tile-link " href="category.html "></a><img class="slide-image " src="http://tong.visitkorea.or.kr/cms/resource/20/2858920_image2_1.png" alt="Card image ">
-                                                            <div class=" overlay-content card-body-center">
-                                                                <div class="card-f text-shadow text-uppercase fw-bold" style="font-size: 0.7rem; line-height: 1.5rem;">
-                                                                    거창한마당대축제</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- 8번 끝 -->
-
-                                                </div>
-                                            </div>
+												<!-- Additional required wrapper -->
+												<c:if test="${!empty eventHighLikeList}">
+													<div class="swiper-wrapper pb-0 ">
+														<!-- Slides 시작-->
+														<c:forEach var="EventHighLike"
+															items="${eventHighLikeList}">
+															<c:if test="${EventHighLike.firstImage ne null }">
+																<!-- 1번 -->
+																<div class="swiper-slide px-2">
+																	<div
+																		class=" gradient-overlay up-hover mb-4 mb-lg-0 main_banner_silde_picture">
+																		<a class="tile-link "
+																			href="${path}/tourDetailInfo.do?contentId=${EventHighLike.contentId}&contentTypeId=15"></a>
+																		<img class="slide-image"
+																			src="${EventHighLike.firstImage}">
+																		<div class=" overlay-content card-body-center">
+																			<div
+																				class="card-f text-shadow text-uppercase fw-bold text-overflow-elip-1"
+																				style="font-size: 0.8rem; line-height: 1.5rem;">
+																				<c:out value="${EventHighLike.title}" />
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</c:if>
+														</c:forEach>
+													</div>
+												</c:if>
+											</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1043,75 +1001,8 @@
             </script>
 
 
-    <footer class="position-relative z-index-10 d-print-none">
-        <!-- Main block - menus, subscribe form-->
-        <div class="py-5 bg-gray-200 text-muted">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <img src="https://cdn.discordapp.com/attachments/1013740193389486172/1022387710322806816/002.png" height="60" width="140" alt="">
-                        <div class="text-black mb-4 ps-3 ms-sm-4" style="font-family:pM;">TOGETHER, to GET THERE</div>
-                        <div class="mt-4 pt-2 ps-3 ms-sm-4">
-                            <span class="text-muted text-sm">김나임ㅣ김태은ㅣ박혜연ㅣ선형채ㅣ윤하영ㅣ정수아ㅣ정원일</span>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-5 mb-lg-0 pt-4 ms-4">
-                        <h6 class="text-dark mb-2">CONTACT
-                            <ul class="list-unstyled">
-                                <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
-                                    <a class="text-muted" href="category-rooms.html">1544-9970</a>
-                                </li>
-                            </ul>
-                        </h6>
-
-                        <h6 class="text-dark mb-2">ADDRESS
-                            <ul class="list-unstyled">
-                                <li class="mt-sm-2" style="font-family:pEl; letter-spacing:0px;">
-                                    <a class="text-muted" href="category-rooms.html">서울특별시 강남구 테헤란로14길 6
-                                        남도빌딩<br><br></a>
-                                </li>
-                            </ul>
-                        </h6>
-                    </div>
-
-                    <div class="col-lg-3 pt-4" style="font-family:pB;">
-                        <h6 class="fs-5 text-dark mb-2">정기구독 & 뉴스레터</h6>
-                        <p class="mb-3"> 투게더의 소식을 정기적으로 받아보세요</p>
-                        <form action="#" id="newsletter-form">
-                            <div class="input-group mb-3">
-                                <input class="form-control bg-transparent border-dark
-                      border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
-                                <button class="btn btn-outline-dark border-start-0" type="submit"> <i
-                                        class="fa fa-paper-plane text-lg"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-      
-        <!-- Copyright section of the footer-->
-        <div class="py-4 fw-light bg-gray-800 text-gray-300">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="text-sm mb-md-0">&copy; 2022, TOGETHER. All rights reserved.
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/visa.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/mastercard.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/paypal.svg" alt="..."></li>
-                            <li class="list-inline-item"><img class="w-2rem" src="${path}/resources/img/western-union.svg" alt="..."></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+     <!-- Footer-->
+   <jsp:include page="/WEB-INF/views/common/footer.jsp"/> 
     <!-- JavaScript files-->
     <script>
         // ------------------------------------------------------- //

@@ -16,6 +16,7 @@ import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
+import com.kh.tour.tour.model.vo.EventHighLike;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.tour.model.vo.TourImage;
@@ -69,5 +70,7 @@ public interface TotalTourMapper {
 	int getCalendarCount(Map<String, Object> searchMap);
 
 	int tourLikeInsert(Map<String, Object> searchMap);
+
+	List<EventHighLike> getEventHighLike(); //찜갯수가 높은순대로 행사목록 가져오기
 
 }

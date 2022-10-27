@@ -21,6 +21,7 @@ import com.kh.tour.tour.model.vo.DetailReview;
 import com.kh.tour.tour.model.vo.DetailShopping;
 import com.kh.tour.tour.model.vo.DetailSports;
 import com.kh.tour.tour.model.vo.DetailTourist;
+import com.kh.tour.tour.model.vo.EventHighLike;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 import com.kh.tour.tour.model.vo.Tour;
 import com.kh.tour.tour.model.vo.TourImage;
@@ -307,8 +308,12 @@ public class TourServiceImpl implements TourService{
 	
 	@Override
 	public int insertReview(DetailReview detailReview) {
-		// TODO Auto-generated method stub
 		return mapper.insertReview(detailReview);
+	}
+
+	@Override
+	public List<EventHighLike> getEventHighLike() {
+		return mapper.getEventHighLike();
 	}
 }
 

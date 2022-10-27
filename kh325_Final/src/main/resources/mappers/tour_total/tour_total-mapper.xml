@@ -392,10 +392,19 @@
 		<result property="content" column="CONTENT" />
 	</resultMap>
 	
+<!-- 	찜테이블 -->
 	<resultMap type="TourLike" id="tourLikeResultMap">
 		<id property="like_No" column="LIKE_NO" />
 		<result property="userNo" column="UNO" />
 		<result property="contentId" column="CONTENTID" />
+	</resultMap>
+	
+<!-- 	찜갯수 높은순대로 가져온 행사목록 -->
+	<resultMap type="EventHighLike" id="eventHighLikeResultMap">
+		<result property="title" column="TITLE" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="eventLike" column="EVENTLIKE" />
 	</resultMap>
 	
 	
@@ -732,6 +741,22 @@
 		<if test="eventStartDate != null">
 			AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate}
 		</if>
+		</select>
+		
+		<select id="getEventHighLike" resultMap="eventHighLikeResultMap">
+			SELECT B.TITLE, B.FIRSTIMAGE, DE.CONTENTID, NVL(H.EVENTLIKE,0) AS EVENTLIKE
+			FROM BASIC_TOUR_INFO B
+			
+			JOIN DETAIL_EVENT DE
+			ON (DE.CONTENTID = B.CONTENTID)
+			
+			LEFT OUTER JOIN 
+			(SELECT COUNT(TI.LIKE_NO) AS EVENTLIKE,TI.CONTENTID
+			FROM TOUR_LIKE TI
+			GROUP BY TI.CONTENTID) H
+			ON (DE.CONTENTID = H.CONTENTID)
+			
+			ORDER BY EVENTLIKE DESC
 		</select>
 						
 				
