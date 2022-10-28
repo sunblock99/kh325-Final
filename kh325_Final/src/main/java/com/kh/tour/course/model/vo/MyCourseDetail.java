@@ -13,6 +13,7 @@ public class MyCourseDetail {
 	private int myCourseDetailNo;
 	private int myCourseNo;
 	private int contentId;
+	private int contentTypeId;
 	private int myCourseSn;
 	private String title;
 	private String addr1;

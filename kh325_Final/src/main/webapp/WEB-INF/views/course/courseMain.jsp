@@ -192,10 +192,10 @@
                 <c:if test="${!empty recommCourseMain}">
 				<c:forEach var="MainRecommCourse" items="${recommCourseMain}">     
                     <div class="col-sm-6 mb-4 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92">
-                        <div class="card h-100 border-0 shadow">
+                        <div class="card  border-0 shadow">
                             <div class="card-img-top overflow-hidden gradient-overlay">
-                                <img class="img-fluid" src="<c:choose><c:when test="${MainRecommCourse.firstImage != null}"><c:out value="${MainRecommCourse.firstImage}"/></c:when><c:when test="${MainRecommCourse.firstImage == null}"><c:out value="http://tong.visitkorea.or.kr/cms/resource/46/2779046_image2_1.jpg"/></c:when></c:choose>" />
-                                <a class="tile-link" href="detail-rooms.html"></a>
+                                <img class="img-fluid" style="width: 402px !important;  height: 268px !important;"  src="<c:choose><c:when test="${MainRecommCourse.firstImage != null}"><c:out value="${MainRecommCourse.firstImage}"/></c:when><c:when test="${MainRecommCourse.firstImage == null}"><c:out value="http://tong.visitkorea.or.kr/cms/resource/46/2779046_image2_1.jpg"/></c:when></c:choose>" />
+                                <a class="tile-link" href="${path}/course/recommCourseDetail?contentId=${MainRecommCourse.contentId}"></a>
                                 <div class="card-img-overlay-top text-end">
                                     <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                         <i class="fas fa-heart svg-icon"></i>
@@ -204,7 +204,7 @@
                             </div>
                             <div class="card-body d-flex align-items-center ">
                                 <div class="row w-100 txt_line ">
-                                    <p class="card-title col-md-9 overflow-hidden" style="white-space:nowrap; text-overflow: ellipsis;"><a class=" text-black" href="detail-rooms.html"><c:out value="${MainRecommCourse.title}"/></a>
+                                    <p class="card-title col-md-9 overflow-hidden" style="white-space:nowrap; text-overflow: ellipsis;"><a class=" text-black" href="#"><c:out value="${MainRecommCourse.title}"/></a>
                                     </p>
                                     <div class="d-flex col-md-3 inline-block" style="text-align: center">
                                         <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><c:forEach begin="1" end="${MainRecommCourse.cntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
@@ -269,9 +269,9 @@
         <div class="row inline-wrapper mt-4 " style="height:520px ">
             <!-- place item1-->
             <div class="col-sm-3 mb-2 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                <div class="card h-100 border-0 shadow ">
-                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 412px !important;  height: 275px !important;" src="${path}<c:out value="${MyCourseMain.get(0).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
-                        <a class="tile-link " href="detail-rooms.html "></a>
+                <div class="card border-0 shadow ">
+                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(0).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
+                        <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(0).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
                             <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${path}/resources/img/avatar/avatar-0.jpg " alt="Pamela " />
                                 <div><c:out value="${MyCourseMain.get(0).getUserName()}"/></div>
@@ -285,7 +285,7 @@
                     </div>
                     <div class="card-body d-flex align-items-center ">
                         <div class="w-100 ">
-                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="${path}/resources/detail-rooms.html "><c:out value="${MyCourseMain.get(0).getMyCourseTitle()}"/></a></h6>
+                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="#"><c:out value="${MyCourseMain.get(0).getMyCourseTitle()}"/></a></h6>
                             <div class="d-flex card-subtitle mb-3 ">
                                 <p class="flex-grow-1 mb-0 text-muted text-sm "><c:out value="${MyCourseMainDetail1.get(0).getAddr1()}"/></p>
                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><c:forEach begin="1" end="${MyCourseMain.get(0).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
@@ -297,7 +297,7 @@
                             <c:if test="${!empty MyCourseMainDetail1}">
 				<c:forEach var="MyCourseDetail" items="${MyCourseMainDetail1}">
                                 <li class="mb-1 ">
-                                    <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyCourseDetail.title}"/></a>
+                                    <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyCourseDetail.contentId}&contentTypeId=${MyCourseDetail.contentTypeId}"><c:out value="${MyCourseDetail.title}"/></a>
                                 </li>
                                </c:forEach>
 			</c:if>
@@ -308,9 +308,9 @@
             </div>
                    <!-- place item2-->
             <div class="col-sm-3 mb-2 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                <div class="card h-100 border-0 shadow ">
-                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 412px !important;  height: 275px !important;" src="${path}<c:out value="${MyCourseMain.get(1).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
-                        <a class="tile-link " href="detail-rooms.html "></a>
+                <div class="card border-0 shadow ">
+                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(1).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
+                        <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(1).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
                             <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${path}/resources/img/avatar/avatar-0.jpg " alt="Pamela " />
                                 <div><c:out value="${MyCourseMain.get(1).getUserName()}"/></div>
@@ -324,7 +324,7 @@
                     </div>
                     <div class="card-body d-flex align-items-center ">
                         <div class="w-100 ">
-                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="${path}/resources/detail-rooms.html "><c:out value="${MyCourseMain.get(1).getMyCourseTitle()}"/></a></h6>
+                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="#"><c:out value="${MyCourseMain.get(1).getMyCourseTitle()}"/></a></h6>
                             <div class="d-flex card-subtitle mb-3 ">
                                 <p class="flex-grow-1 mb-0 text-muted text-sm "><c:out value="${MyCourseMainDetail2.get(0).getAddr1()}"/></p>
                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><c:forEach begin="1" end="${MyCourseMain.get(1).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
@@ -336,7 +336,7 @@
                             <c:if test="${!empty MyCourseMainDetail2}">
 				<c:forEach var="MyCourseDetail" items="${MyCourseMainDetail2}">
                                 <li class="mb-1 ">
-                                    <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyCourseDetail.title}"/></a>
+                                    <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyCourseDetail.contentId}&contentTypeId=${MyCourseDetail.contentTypeId}"><c:out value="${MyCourseDetail.title}"/></a>
                                 </li>
                                </c:forEach>
 			</c:if>
@@ -347,9 +347,9 @@
             </div>
                    <!-- place item3-->
             <div class="col-sm-3 mb-2 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                <div class="card h-100 border-0 shadow ">
-                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="${path}<c:out value="${MyCourseMain.get(2).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
-                        <a class="tile-link " href="detail-rooms.html "></a>
+                <div class="card border-0 shadow ">
+                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(2).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
+                        <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(2).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
                             <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${path}/resources/img/avatar/avatar-0.jpg " alt="Pamela " />
                                 <div><c:out value="${MyCourseMain.get(2).getUserName()}"/></div>
@@ -363,7 +363,7 @@
                     </div>
                     <div class="card-body d-flex align-items-center ">
                         <div class="w-100 ">
-                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="${path}/resources/detail-rooms.html "><c:out value="${MyCourseMain.get(2).getMyCourseTitle()}"/></a></h6>
+                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="#"><c:out value="${MyCourseMain.get(2).getMyCourseTitle()}"/></a></h6>
                             <div class="d-flex card-subtitle mb-3 ">
                                 <p class="flex-grow-1 mb-0 text-muted text-sm "><c:out value="${MyCourseMainDetail3.get(0).getAddr1()}"/></p>
                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><c:forEach begin="1" end="${MyCourseMain.get(2).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
@@ -375,7 +375,7 @@
                             <c:if test="${!empty MyCourseMainDetail3}">
 				<c:forEach var="MyCourseDetail" items="${MyCourseMainDetail3}">
                                 <li class="mb-1 ">
-                                    <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyCourseDetail.title}"/></a>
+                                    <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyCourseDetail.contentId}&contentTypeId=${MyCourseDetail.contentTypeId}"><c:out value="${MyCourseDetail.title}"/></a>
                                 </li>
                                </c:forEach>
 			</c:if>
@@ -386,9 +386,9 @@
             </div>
                    <!-- place item4-->
             <div class="col-sm-3 mb-2 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                <div class="card h-100 border-0 shadow ">
-                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="${path}<c:out value="${MyCourseMain.get(3).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
-                        <a class="tile-link " href="detail-rooms.html "></a>
+                <div class="card  border-0 shadow ">
+                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(3).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
+                        <a class="tile-link "  href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(3).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
                             <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${path}/resources/img/avatar/avatar-0.jpg " alt="Pamela " />
                                 <div><c:out value="${MyCourseMain.get(3).getUserName()}"/></div>
@@ -402,7 +402,7 @@
                     </div>
                     <div class="card-body d-flex align-items-center ">
                         <div class="w-100 ">
-                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="${path}/resources/detail-rooms.html "><c:out value="${MyCourseMain.get(3).getMyCourseTitle()}"/></a></h6>
+                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="#"><c:out value="${MyCourseMain.get(3).getMyCourseTitle()}"/></a></h6>
                             <div class="d-flex card-subtitle mb-3 ">
                                 <p class="flex-grow-1 mb-0 text-muted text-sm "><c:out value="${MyCourseMainDetail4.get(0).getAddr1()}"/></p>
                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-end "><c:forEach begin="1" end="${MyCourseMain.get(3).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
@@ -414,7 +414,7 @@
                             <c:if test="${!empty MyCourseMainDetail4}">
 				<c:forEach var="MyCourseDetail" items="${MyCourseMainDetail4}">
                                 <li class="mb-1 ">
-                                    <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyCourseDetail.title}"/></a>
+                                    <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyCourseDetail.contentId}&contentTypeId=${MyCourseDetail.contentTypeId}"><c:out value="${MyCourseDetail.title}"/></a>
                                 </li>
                                </c:forEach>
 			</c:if>

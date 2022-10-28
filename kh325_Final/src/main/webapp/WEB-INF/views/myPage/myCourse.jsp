@@ -170,9 +170,9 @@
                         <div class="card-header bg-gray-100 py-4 border-0 text-center" style="background-color: #FFF1CC!important;">
                             <h3 class="text-pB">나의 회원정보</h3>
                             <p class=" text-xs mb-4 text-pB" style="color:#987107">오늘도 투게더와 함께 멋진 여행을 계획해보세요.</p>
-                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="img/avatar/avatar-10.jpg" alt=""></a>
-                            <h5 class="text-pB">Dongmin Lee</h5>
-                            <p class="text-muted text-sm mb-0 text-pB">Seoul, Korea </p>
+                            <a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="${loginMember.userAvatar }" alt=""></a>
+                            <h5 class="text-pB"><c:out value="${loginMember.userName}"/></h5>
+                            <p class="text-muted text-sm mb-0 text-pB"><c:out value="${loginMember.userAddress}"/> </p>
                         </div>
                         <div class="card-body p-5" style="height: 540px;">
                             <div class="d-flex align-items-center  mb-2 ">
@@ -195,7 +195,7 @@
             </svg>
                                 </div>
                                 <div>
-                                    <a href="user-bookmark.html">
+                                    <a href="${path}/myPage/bookmark">
                                         <p class="mb-0 text-pB" style="color: black">즐겨찾기</p>
                                     </a>
                                 </div>
@@ -208,7 +208,7 @@
           </svg>
                                 </div>
                                 <div>
-                                    <a href="${path}/myPage/bookmark">
+                                    <a href="${path}/myPage/review">
                                         <p class="mb-0 text-pB" style="color: black">작성 리뷰</p>
                                     </a>
                                 </div>
@@ -249,7 +249,7 @@
                                 </div>
                                 <div>
                                     <a href="${path}/myPage/myCourse">
-                                        <p class="mb-0 text-pB" style="color: black"><b>나의 여행코스</b></p>
+                                        <p class="mb-0 text-pB" style="color: black">나의 여행코스</p>
                                     </a>
                                 </div>
                             </div>
@@ -274,8 +274,8 @@
 				<c:forEach var="i" begin="1" end="${MyPageCourseList.size()-1}" step="1">
 				<c:if test="${MyPageCourseList.get(i-1).getMyCourseNo() != MyPageCourseList.get(i).getMyCourseNo()}"> 
                             <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                                <div class="card h-100 border-0 shadow ">
-                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="<c:out value="${MyPageCourseList.get(i-1).getFirstImage()}"/>" alt="Modern, Well-Appointed Room " />
+                                <div class="card border-0 shadow ">
+                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 294px !important;  height: 196px !important;"src="<c:if test="${MyPageCourseList.get(i-1).getFirstImage() eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyPageCourseList.get(i-1).getFirstImage() ne null}"><c:out value="${MyPageCourseList.get(i-1).getFirstImage()}"/></c:if>" alt="Modern, Well-Appointed Room " />
                                         <a class="tile-link" href="${path}/myPage/myCourseEdit?myCourseNo=${MyPageCourseList.get(i-1).getMyCourseNo()}"></a>
                                         <div class="card-img-overlay-top text-end">
                                    
@@ -294,41 +294,41 @@
                                             <ul class="overflow-hidden " style="height:120px ">
                                                     <c:if test="${MyPageCourseList.get(i-1).getIndexNum() > 3}">     
                                     <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
                                     </li>
                                       <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +1).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +1).getDetailTitle()}"/></a>
                                     </li>
                                       <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +2).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +2).getDetailTitle()}"/></a>
                                     </li>
                                       <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +3).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +3).getDetailTitle()}"/></a>
                                     </li>
                                     </c:if>
                                     <c:if test="${MyPageCourseList.get(i-1).getIndexNum() == 3}">
                   
                                     <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
                                     </li>
                                       <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +1).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +1).getDetailTitle()}"/></a>
                                     </li>
                                       <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +2).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +2).getDetailTitle()}"/></a>
                                     </li>
                                     </c:if>
                                     <c:if test="${MyPageCourseList.get(i-1).getIndexNum() == 2}">
                                     <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
                                     </li>
                                       <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +1).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum() +1).getDetailTitle()}"/></a>
                                     </li>
                                     </c:if>
                                     <c:if test="${MyPageCourseList.get(i-1).getIndexNum() == 1}">
                                     <li class="mb-1 ">
-                                        <a class="text-muted " href="knowledge-base-topic.html "><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
+                                        <a class="text-muted " href="${path}/tourDetailInfo.do?contentId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentId()}&contentTypeId=${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getContentTypeId()} ""><c:out value="${MyPageCourseList.get(i - MyPageCourseList.get(i-1).getIndexNum()).getDetailTitle()}"/></a>
                                     </li>
                                     </c:if>
                                    

@@ -217,17 +217,157 @@
                         </div>
                         <div class="collapse" id="moreFilters">
                             <div>
-                                <ul class="list-unstyled mb-0">
-                           
-                                <c:forEach var="i" begin="1" end="5" step="1"> 
+                                 <ul class="list-unstyled mb-0">
                                     <li>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="amenities_0" name="amenities[]">
-                                            <label class="form-check-label" for="amenities_0"><c:out value="${i}"></c:out></label>
+                                            <label class="form-check-label" for="amenities_0">강남구                             </label>
                                         </div>
                                     </li>
-                                    </c:forEach>
-                                 
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_1" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_1">도봉구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_2" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_2">동대문구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_3" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_3">동작구                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_4" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_4">마포구                              </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_5" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_5">서대문구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_6" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_6">서초구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_7" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_7">성동구                             </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_8" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_8">성북구                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_9" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_9">송파구                             </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_10" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_10">양천구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_11" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_11">강동구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_12" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_12">영등포구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_13" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_13">용산구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">은평구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">종로구                              </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">중구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">중랑구                              </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">강북구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">강서구                              </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">관악구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">광진구                               </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">구로구                              </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">금천구                             </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="amenities_14" name="amenities[]">
+                                            <label class="form-check-label" for="amenities_14">노원구                               </label>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -259,9 +399,9 @@
                  <c:if test="${!empty recommCourseList}">
 				<c:forEach var="MainRecommCourse" items="${recommCourseList}">     
                     <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-                        <div class="card h-100 border-0 shadow">
+                        <div class="card border-0 shadow">
                             <div class="card-img-top overflow-hidden gradient-overlay">
-                                <img class="img-fluid" src="<c:out value="${MainRecommCourse.firstImage}"></c:out>" />
+                                <img class="" style="width: 427px !important;  height: 285px !important;" src="<c:if test="${MainRecommCourse.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MainRecommCourse.firstImage ne null}"><c:out value="${MainRecommCourse.firstImage}"/></c:if>" />
                                 <a class="tile-link" href="${path}/course/recommCourseDetail?contentId=${MainRecommCourse.contentId}"></a>
                                 <div class="card-img-overlay-top text-end">
                                     <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
@@ -271,7 +411,7 @@
                             </div>
                             <div class="card-body d-flex align-items-center">
                                 <div class="row w-100 txt_line ">
-                                    <p class="card-title col-md-9"><a class="courseList_title text-black" href="detail-rooms.html"><c:out value="${MainRecommCourse.title}"></c:out></a>
+                                    <p class="card-title col-md-9"><a class="courseList_title text-black" href="#"><c:out value="${MainRecommCourse.title}"></c:out></a>
                                     </p>
                                     <div class="d-flex col-md-3" style="text-align: center">
                                         <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>

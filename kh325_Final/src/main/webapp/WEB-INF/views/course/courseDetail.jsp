@@ -174,7 +174,7 @@
                  <c:if test="${!empty detailCourseList}">
 				<c:forEach var="MyCourseSearch" items="${detailCourseList}"> 
                 <div class="swiper-slide">
-                    <a href="${MyCourseSearch.firstImage}" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="${MyCourseSearch.firstImage}" alt="Our street"></a>
+                    <a href="${MyCourseSearch.firstImage}" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="<c:if test="${MyCourseSearch.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseSearch.firstImage ne null}"><c:out value="${MyCourseSearch.firstImage}"/></c:if>" alt="Our street"></a>
                 </div> 
                 </c:forEach>
                  </c:if>
@@ -264,7 +264,7 @@
                                             <div class="card-body d-flex align-items-center">
                                                 <div class="row w-100 txt_line ">
 
-                                                    <p class="card-title col-md-7"><a class="courseList_title text-black" href="#"><c:out value="${MyCourseSearch.detailTitle}"/></a>
+                                                    <p class="card-title col-md-7"><a class="courseList_title text-black" href="${path}/tourDetailInfo.do?contentId=${MyCourseSearch.contentId}&contentTypeId=${MyCourseSearch.contentTypeId}"><c:out value="${MyCourseSearch.detailTitle}"/></a>
                                                     </p>
                                                     <div class="d-flex col-md-3" style="text-align: center">
                                                         <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><c:forEach begin="1" end="${MyCourseSearch.detailCntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
