@@ -465,36 +465,27 @@
                      
      <script>
                   
-                     var mapContainer = document.getElementById('detailMap2'), // 지도를 표시할 div 
-//                      <c:forEach items="${detailCourseList}" var="MyCourseSearch">
-//                      <c:if test="${detailCourseList[1].mapX eq null }">
-//                      mapOption = { 
-//                          center: new kakao.maps.LatLng('33.450705', '126.570677'), // 지도의 중심좌표
-//                          level: 6 // 지도의 확대 레벨
-// //                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
-//                      };
-//                      </c:if>
-//                      <c:if test="${detailCourseList[1].mapX ne null }">
+                     var mapContainer = document.getElementById('detailMap2'),
                      mapOption = { 
-                         center: new kakao.maps.LatLng('33.450705', '126.570677'), // 지도의 중심좌표
+                         center: new kakao.maps.LatLng('${detailRecommCourseList2[0].mapY}', '${detailRecommCourseList2[0].mapX}'), // 지도의 중심좌표
                          level: 6 // 지도의 확대 레벨
 //                          mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
                      };
-//                      </c:if>
-//                      </c:forEach>
 
                     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-                    
-                  /*   // 마커가 표시될 위치입니다 
-                    var markerPosition  = new kakao.maps.LatLng('${detailCourseList[1].mapY}', '${detailCourseList[1].mapX}');  */
+                   
                 	
                     var positions = [];
-                 
+            		<c:forEach items="${detailRecommCourseList2}" var="RecommCourseDetail">
 						positions.push({
-					
-	                    latlng: new kakao.maps.LatLng('33.450705', '126.570677')
+							id: '${RecommCourseDetail.subContentId}',
+							type: '${RecommCourseDetail.contentTypeId}',
+							latlng: new kakao.maps.LatLng('${RecommCourseDetail.mapY}', '${RecommCourseDetail.mapX}'),
+							title: '${RecommCourseDetail.subName}',
+		                	image: '${RecommCourseDetail.subDetailImg}',
+							address: '${RecommCourseDetail.detailAreaName}'
 	               		});
-	          
+						   </c:forEach>
                   
 	                
 // 					<c:forEach items="${detailCourseList}" var="MyCourseSearch">
@@ -556,7 +547,7 @@
   	                    
   	                    // var content = document.getElementById('clickMarkerInfo');
   	                    // var content = document.getElementById('popup_map');
-  	                    var content = document.createElement('div');
+  	                      var content = document.createElement('div');
   	                    content.innerHTML = '<div class="wrap" id="popup_map">' +
   	                        '    <div class="info">' +
   	                        '        <div class="title">' +

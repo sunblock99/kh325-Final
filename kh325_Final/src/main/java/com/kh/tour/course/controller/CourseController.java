@@ -1,5 +1,6 @@
 package com.kh.tour.course.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -105,9 +106,39 @@ public class CourseController {
 		List<RecommCourseDetail> detailRecommCourseList = courseService.getDetailRecommCourse(contentId);
 		List<RecommCourseImage> recommCourseImageList = courseService.getRecommCourseImage(contentId);
 		List<RecommCourseRev> recommCourseRevList = courseService.getRecommCourseRev(contentId);
+		List<RecommCourseDetail> detailRecommCourseList2 = new ArrayList<>();
 		
-		System.out.println(detailRecommCourseList);
+		for(int i=0; i < detailRecommCourseList.size(); i++) {
+			if(detailRecommCourseList.get(i).getSubName() != null && detailRecommCourseList.get(i).getSubDetailImg() != null 
+					&& detailRecommCourseList.get(i).getMapX() != null && detailRecommCourseList.get(i).getMapY() != null) {
+		
+			int contentId2 = detailRecommCourseList.get(i).getContentId();     	
+			int contentTypeId = detailRecommCourseList.get(i).getContentTypeId();
+			String detailTitle = detailRecommCourseList.get(i).getDetailTitle(); 
+			String firstImage = detailRecommCourseList.get(i).getFirstImage();       
+			String detailAreaName = detailRecommCourseList.get(i).getDetailAreaName();    
+			String areaName = detailRecommCourseList.get(i).getAreaName();           
+			String overview = detailRecommCourseList.get(i).getOverview();            
+			int cntRevStar = detailRecommCourseList.get(i).getCntRevStar();             
+			String Theme = detailRecommCourseList.get(i).getTheme();               
+			String schedule = detailRecommCourseList.get(i).getSchedule();            
+			int subNum = detailRecommCourseList.get(i).getSubNum();                 
+			String subContentId = detailRecommCourseList.get(i).getSubContentId();        
+			String addr1 = detailRecommCourseList.get(i).getAddr1();           		
+			String subName = detailRecommCourseList.get(i).getSubName();             
+			String subDetailOverview = detailRecommCourseList.get(i).getSubDetailOverview();   
+			String subDetailImg = detailRecommCourseList.get(i).getSubDetailImg();        
+			String mapX = detailRecommCourseList.get(i).getMapX();                
+			String mapY = detailRecommCourseList.get(i).getMapY();      
+			
+			RecommCourseDetail recommCourseDetail = new RecommCourseDetail(contentId2, contentTypeId, detailTitle, firstImage, detailAreaName, areaName, overview, cntRevStar, Theme, schedule, subNum, subContentId, addr1, subName, subDetailOverview, subDetailImg, mapX, mapY);
+			detailRecommCourseList2.add(recommCourseDetail);
+			}
+		}
+		System.out.println(detailRecommCourseList2);
+	
 		model.addAttribute("detailRecommCourseList", detailRecommCourseList);
+		model.addAttribute("detailRecommCourseList2", detailRecommCourseList2);
 		model.addAttribute("recommCourseImageList", recommCourseImageList);
 		model.addAttribute("recommCourseRevList", recommCourseRevList);
 
