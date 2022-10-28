@@ -44,10 +44,39 @@ public class TourController {
 
 	@Autowired
 	private CourseService courseService;
+	
+//	for(int i=0; i < detailRecommCourseList.size(); i++) {
+//        if(detailRecommCourseList.get(i).getSubName() != null && detailRecommCourseList.get(i).getSubDetailImg() != null 
+//              && detailRecommCourseList.get(i).getMapX() != null && detailRecommCourseList.get(i).getMapY() != null) {
+//     
+//        int contentId2 = detailRecommCourseList.get(i).getContentId();        
+//        int contentTypeId = detailRecommCourseList.get(i).getContentTypeId();
+//        String detailTitle = detailRecommCourseList.get(i).getDetailTitle(); 
+//        String firstImage = detailRecommCourseList.get(i).getFirstImage();       
+//        String detailAreaName = detailRecommCourseList.get(i).getDetailAreaName();    
+//        String areaName = detailRecommCourseList.get(i).getAreaName();           
+//        String overview = detailRecommCourseList.get(i).getOverview();            
+//        int cntRevStar = detailRecommCourseList.get(i).getCntRevStar();             
+//        String Theme = detailRecommCourseList.get(i).getTheme();               
+//        String schedule = detailRecommCourseList.get(i).getSchedule();            
+//        int subNum = detailRecommCourseList.get(i).getSubNum();                 
+//        String subContentId = detailRecommCourseList.get(i).getSubContentId();        
+//        String addr1 = detailRecommCourseList.get(i).getAddr1();                 
+//        String subName = detailRecommCourseList.get(i).getSubName();             
+//        String subDetailOverview = detailRecommCourseList.get(i).getSubDetailOverview();   
+//        String subDetailImg = detailRecommCourseList.get(i).getSubDetailImg();        
+//        String mapX = detailRecommCourseList.get(i).getMapX();                
+//        String mapY = detailRecommCourseList.get(i).getMapY();      
+//        
+//        RecommCourseDetail recommCourseDetail = new RecommCourseDetail(contentId2, contentTypeId, detailTitle, firstImage, detailAreaName, areaName, overview, cntRevStar, Theme, schedule, subNum, subContentId, addr1, subName, subDetailOverview, subDetailImg, mapX, mapY);
+//        detailRecommCourseList2.add(recommCourseDetail);
+//        }
+//     }
 
 	@GetMapping("/eventSearch.do") // 지역,행사 페이지에서 체크박스로 행사리스트 조회
 	public String eventSearchlist(Model model, @RequestParam Map<String, String> param,
-			@RequestParam(value = "neighbourhood", required = false) String[] neighbourhood) {
+			@RequestParam(value = "neighbourhood", required = false) String[] neighbourhood,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 
 		if (neighbourhood == null) {
 			System.out.println("neighbourhood null");
@@ -62,6 +91,7 @@ public class TourController {
 			} catch (Exception e) {
 			}
 		}
+		
 
 		PageInfo pageInfo = new PageInfo(page, 10, tService.getEventCount(param, neighbourhood), 12);
 		int eventListCount = tService.getEventCount(param, neighbourhood);
@@ -78,7 +108,7 @@ public class TourController {
 			System.out.println("찾아온 eventHighLikeList는 : " + eventHighLikeList);
 			model.addAttribute("eventHighLikeList", eventHighLikeList);
 		}
-
+		
 		model.addAttribute("list", list);
 		model.addAttribute("eventListCount", eventListCount);
 		model.addAttribute("param", param);
@@ -240,7 +270,6 @@ public class TourController {
 		return gogo;
 	}
 
-	@SuppressWarnings("unused")
 	@GetMapping("/tourLike.do") // 찜하기 기능
 	public String tourLike(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
@@ -272,10 +301,7 @@ public class TourController {
 				model.addAttribute("msg", "찜목록에 넣기 실패하였습니다.");
 				model.addAttribute("location", "/tourSearch.do");
 			}
-			return "/common/msg";
-		}
-
-		if (tourLike.isEmpty() == false) {
+		} else if (tourLike.isEmpty() == false) {
 			for (int i = 0; i < tourLike.size(); i++) {
 				if (tourLike.get(i).getContentId() == contentId) { // 찜목록에 내가 찜하고 싶은 관광지가 이미 있는 경우
 					model.addAttribute("msg", "이미 있는 찜목록 입니다.");
@@ -290,13 +316,11 @@ public class TourController {
 						model.addAttribute("location", "/tourSearch.do");
 					}
 				}
-				return "/common/msg";
 			}
 		}
 		return "/common/msg";
 	}
 
-	@SuppressWarnings("unused")
 	@GetMapping("/eventLike.do") // 행사찜하기 기능
 	public String eventLike(Model model, HttpServletRequest request,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
@@ -328,10 +352,7 @@ public class TourController {
 				model.addAttribute("msg", "찜목록에 넣기 실패하였습니다.");
 				model.addAttribute("location", "/eventSearch.do");
 			}
-			return "/common/msg";
-		}
-
-		if (tourLike.isEmpty() == false) {
+		} else if (tourLike.isEmpty() == false) {
 			for (int i = 0; i < tourLike.size(); i++) {
 				if (tourLike.get(i).getContentId() == contentId) { // 찜목록에 내가 찜하고 싶은 관광지가 이미 있는 경우
 					model.addAttribute("msg", "이미 있는 찜목록 입니다.");
@@ -346,7 +367,6 @@ public class TourController {
 						model.addAttribute("location", "/eventSearch.do");
 					}
 				}
-				return "/common/msg";
 			}
 		}
 		return "/common/msg";
