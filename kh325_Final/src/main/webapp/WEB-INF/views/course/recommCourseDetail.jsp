@@ -173,7 +173,7 @@
                  <c:if test="${!empty detailRecommCourseList}">
 				<c:forEach var="RecommCourseDetail" items="${detailRecommCourseList}"> 
                 <div class="swiper-slide">
-                    <a href="${RecommCourseDetail.subDetailImg}" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="${RecommCourseDetail.subDetailImg}" alt="Our street"></a>
+                    <a href="${RecommCourseDetail.subDetailImg}" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="<c:if test="${RecommCourseDetail.subDetailImg eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${RecommCourseDetail.subDetailImg ne null}"><c:out value="${RecommCourseDetail.subDetailImg}"/></c:if>" alt="Our street"></a>
                 </div> 
                 </c:forEach>
                  </c:if>
@@ -263,7 +263,7 @@
                                             <div class="card-body d-flex align-items-center">
                                                 <div class="row w-100 txt_line ">
 
-                                                    <p class="card-title col-md-7"><a class="courseList_title text-black" href="#"><c:out value="${RecommCourseDetail.subName}"/></a>
+                                                    <p class="card-title col-md-7"><a class="courseList_title text-black" href="${path}/tourDetailInfo.do?contentId=${RecommCourseDetail.subContentId}&contentTypeId=${RecommCourseDetail.contentTypeId}"><c:out value="${RecommCourseDetail.subName}"/></a>
                                                     </p>
                                                     <div class="d-flex col-md-3" style="text-align: center">
                                                         <p class="flex-shrink-1 mb-0 card-stars text-xs text-start"><c:forEach begin="1" end="${RecommCourseDetail.cntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
