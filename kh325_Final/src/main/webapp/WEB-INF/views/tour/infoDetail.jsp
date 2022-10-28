@@ -1545,7 +1545,8 @@
                                     	<tr>
 	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">어린이놀이방여부</th>
 	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
-		                                ${detail.kidsFacility}
+		                                <c:if test="${detail.kidsFacility eq 0}"><c:out value="없음"></c:out></c:if>
+		                                <c:if test="${detail.kidsFacility eq 1}"><c:out value="있음"></c:out></c:if>
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
