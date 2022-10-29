@@ -38,6 +38,7 @@
 		<result property="count" column="CNT"/>
 	</resultMap>
 	
+	
 	<!-- 나의코스 검색페이지 -->
 	<select id="searchMyCourse" resultMap="MyCourseSearchResultMap" parameterType="map">
 		SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 

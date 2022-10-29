@@ -177,6 +177,7 @@ public class TourController {
 		return "tour/infoSearch";
 	}
 
+	
 	@GetMapping("/tourDetailInfo.do") // contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기
 	public String tourDetailInfo(Model model, @RequestParam("contentId") int contentId,
 			@RequestParam("contentTypeId") int contentTypeId) {

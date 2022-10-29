@@ -1955,6 +1955,7 @@
                                 <div class="swiper-slide h-auto px-1">
                                     <!-- place item-->
                                    
+                                   
                                     <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
                                         <div class="card h-100 border-0 shadow">
                                             <div class="card-img-top  overflow-hidden gradient-overlay">
