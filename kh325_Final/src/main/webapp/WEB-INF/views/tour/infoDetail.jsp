@@ -142,6 +142,8 @@
                     </div>
                     <h1 class="display-4 text-black text-pB">${tour.title}</h1>
                     <p class="text-pB fs-5 ms-1">${tour.addr1}</p>
+                    <c:if test="${empty review}"><p class="text-pB fs-6 ms-1 text-muted">남겨진 리뷰가 없습니다</p></c:if>
+                    <c:if test="${!empty review}">
                     <p class="mb-0 d-flex align-items-center" style="color: rgb(255, 183, 0);">
                         <i class="ps-1 fa fa-1x fa-star"></i>
                         <i class="fa fa-1x fa-star"></i>
@@ -149,6 +151,7 @@
                         <i class="fa fa-1x fa-star"></i>
                         <i class="fa fa-1x fa-star text-gray-500 me-4"></i>
                     </p>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -793,14 +796,14 @@
                                 <table class="table text-sm mb-0">
                                 	
 							<!-- 12 : 관광지 -->
-									<c:if test="${tour.contentTypeId == 12}">
+									<c:if test="${tour.contentTypeId == 12 && detail ne null}">
 									<c:if test="${detail.heritage1 ne 0 || detail.heritage2 ne 0 || detail.heritage3 ne 0}">
                                     	<tr>
 	                                    <th class="ps-0 fs-6" style="word-break: keep-all;">분류</th>
 	                                    <td class="pe-0 text-end text-pSb text-gray-600" style="word-break: keep-all;">
-		                                    <c:if test="${detail.heritage1 ne 0}"><c:out value="세계문화유산 "/></c:if>
-		                                    <c:if test="${detail.heritage2 ne 0}"><c:out value="세계자연유산 "/></c:if>
-		                                    <c:if test="${detail.heritage3 ne 0}"><c:out value="세계기록유산 "/></c:if>
+		                                    <c:if test="${detail.heritage1 ne null && detail.heritage1 eq 1}"><c:out value="세계문화유산 "/></c:if>
+		                                    <c:if test="${detail.heritage2 ne null && detail.heritage1 eq 1}"><c:out value="세계자연유산 "/></c:if>
+		                                    <c:if test="${detail.heritage3 ne null && detail.heritage1 eq 1}"><c:out value="세계기록유산 "/></c:if>
 	                                        </td>
 	                                    </tr>
 	                                    </c:if>
