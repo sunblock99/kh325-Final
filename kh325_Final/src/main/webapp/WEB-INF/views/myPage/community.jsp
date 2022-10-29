@@ -231,7 +231,7 @@
 						            </svg>
                                 </div>
                                 <div>
-                                    <a href="${path}/community/gallery">
+                                    <a href="${path}/community/gallery?searchType=uno&searchValue=${loginMember.userNo}">
                                         <p class="mb-0 text-pB" style="color: black">나의 갤러리</p>
                                     </a>
                                 </div>

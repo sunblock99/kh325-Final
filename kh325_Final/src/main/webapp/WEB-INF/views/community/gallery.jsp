@@ -293,7 +293,7 @@
                             <c:if test="${list[i].title ne null}">
 
                                 <div class=" grid-wrapper pb-3">
-                                    <c:if test="${list[i].title eq null}">
+                                    <c:if test="${list[i].renamedImage eq null}">
                                         <div class="big box" style="display:none;">
                                             <div class="gallery-big card-img-top overflow-hidden bg-cover"
                                                 onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"

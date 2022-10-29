@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<!-- <head> -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>여행지도 Travel Map</title>
@@ -127,7 +127,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top bg-white" style="padding-bottom:0rem">
         <div class="container-fluid">
           <div class="d-flex align-items-center">
-
             <!-- 로고 시작 -->
             <a class="navbar-brand py-3 px-5" href="${path }/" style="line-height:0;">
               <img class="ps-3" src="${path}/resources/image/togetherLogo.png" width="40%" height="60%">
@@ -144,29 +143,31 @@
             style="font-family: pL;">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
-                <a class="fs-3 nav-link-header-black text-pB" id="homeDropdownMenuLink" href="${path }/"
+                <a class="fs-3 nav-link-header-black text-pSb me-2" id="homeDropdownMenuLink" href="${path}/"
                   aria-haspopup="true" aria-expanded="false">홈</a>
               </li>
 
               <!-- 상단바메뉴 시작 -->
                <li class="nav-item position-static text-pB">
                    <li class="nav-item dropdown">
-                       <a class="fs-3 nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" 
+                       <a class="fs-3 nav-link-header-black dropdown-toggle me-4" id="docsDropdownMenuLink" href="#" 
                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 관광정보</a>
                        <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
                            <h6 class="dropdown-header fs-5 text-pSb">관광정보</h6>
                            <a class="hvr dropdown-item fs-5" href="${path}/tour/hotPlace">HOT PLACE </a>
-                           <a class="hvr dropdown-item fs-5" href="${path }/tourSearch.do">관광지 정보</a>
-                           <a class="hvr dropdown-item fs-5" href="${path }/eventSearch.do">지역별 축제ㅣ행사 </a>
-                           <a class="hvr dropdown-item fs-5" href="#">날짜별 축제ㅣ행사</a>
+                           <a class="hvr dropdown-item fs-5" href="${path}/tourSearch.do">관광지 정보</a>
+                           <a class="hvr dropdown-item fs-5" href="${path}/eventSearch.do">지역별 축제ㅣ행사 </a>
+                           <a class="hvr dropdown-item fs-5" href="${path}/calendar">날짜별 축제ㅣ행사</a>
                        </div>
                    </li>
                </li>
+               
 			   <li class="nav-item position-static text-pB">
                   <li class="nav-item dropdown">
-                      <a class="fs-3 nav-link-header-black dropdown-toggle me-3" id="docsDropdownMenuLink" href="#" 
+                      <a class="fs-3 nav-link-header-black dropdown-toggle me-4" id="docsDropdownMenuLink" href="#" 
                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 커뮤니티</a>
                       <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+						<h6 class="dropdown-header fs-5 text-pSb">커뮤니티</h6>
                           <a class="hvr dropdown-item fs-5" href="${path}/community">커뮤니티 메인</a>
                           <a class="hvr dropdown-item fs-5" href="${path}/community/freeboardList">자유게시판 </a>
                           <a class="hvr dropdown-item fs-5" href="${path }/community/gallery">갤러리</a>
@@ -175,12 +176,19 @@
                       </div>
                   </li>
                </li>
-				
-              <!-- <li class="nav-item"><a class="fs-3 nav-link-header-black" href="${path }/community">커뮤니티</a></li>-->
-              
-              <li class="nav-item">
-                  <a class="fs-3 nav-link-header-black" href="${path }/course/courseMain" aria-haspopup="true" aria-expanded="false">여행코스</a>
-              </li>
+
+			   <li class="nav-item position-static text-pB">
+                  <li class="nav-item dropdown">
+                      <a class="fs-3 nav-link-header-black dropdown-toggle me-4" id="docsDropdownMenuLink" href="#" 
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보</a>
+                      <div class="dropdown-menu dropdown-menu-end text-pSb" aria-labelledby="docsDropdownMenuLink">
+						<h6 class="dropdown-header fs-5 text-pSb">여행정보</h6>
+                          <a class="hvr dropdown-item fs-5" href="${path }/course/courseMain">여행코스</a>
+                          <a class="hvr dropdown-item fs-5" href="${path}/map/travelMap">여행지도 </a>
+                      </div>
+                  </li>
+               </li>
+				              
               
               <c:if test="${loginMember eq null}">
               <li class="nav-item"><a class="fs-3 nav-link-header-black" href="${path}/loginView">로그인</a></li>
@@ -220,7 +228,6 @@
       <!-- 상단바메뉴 끝 -->
       <!-- =============== 메뉴바 영역 끝 =============== -->
     </header>
-
 <%-- <c:set var="searchType" value="${param.searchType}"/> --%>
 <%-- <c:if test="${empty searchType}"> --%>
 <%-- 	<c:set var="searchType" value="${'tour'}"/> --%>
@@ -457,7 +464,7 @@
 	                        </div>
 	                    </div>
 	                    <!-- 지도 크기 -->
-	                    <div class="col-lg-8 map-side-lg pe-lg-0" style="padding-top: 2rem">
+	                    <div class="col-lg-8 map-side-lg pe-lg-0" style="padding-top: 3.3rem">
 	                        <div class="map-full shadow-left" id="categorySideMap">
 	                        </div>
 	                    </div>
@@ -572,7 +579,7 @@
 	                var mapContainer = document.getElementById('categorySideMap'), // 지도를 표시할 div 
 	                    mapOption = {
 	                        center: new kakao.maps.LatLng('${travelMapList[0].mapY}', '${travelMapList[0].mapX}'), // 지도의 중심좌표
-	                        level: 5, // 지도의 확대 레벨
+	                        level: 4, // 지도의 확대 레벨
 	                        mapTypeId: kakao.maps.MapTypeId.ROADMAP // 지도종류
 	                    };
 	
