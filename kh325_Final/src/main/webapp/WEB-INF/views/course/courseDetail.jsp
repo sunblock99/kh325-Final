@@ -330,7 +330,7 @@
                     <c:if test="${!empty myCourseRevList}">
 					<c:forEach var="MyCourseRev" items="${myCourseRevList}" varStatus="status"> 
                     <div class="d-flex d-block d-sm-flex review" style="padding-top: 1rem; padding-bottom: 1rem;">
-                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${path}/resources/img/avatar/NAIM2.png" alt="Padmé Amidala"><span class="text-uppercase text-muted text-sm"></span></div>
+                        <div class="text-md-center flex-shrink-0 me-4 me-xl-5"><img class="d-block avatar avatar-xl p-2 mb-2" src="${loginMember.userAvatar}"><span class="text-uppercase text-muted text-sm"></span></div>
                         <div>
                             <h6 class="mt-2 mb-1"><c:out value="${MyCourseRev.userName}"></c:out></h6>
                             <div class="mb-0"><c:forEach begin="1" end="${MyCourseRev.cntRevStar}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>

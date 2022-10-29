@@ -256,11 +256,11 @@
 				<c:if test="${myCourseList.get(i-1).getMyCourseNo() != myCourseList.get(i).getMyCourseNo()}">
                 <!-- place item-->
                 <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                    <div class="card h-100 border-0 shadow ">
-                        <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="<c:out value="${myCourseList.get(i-1).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
+                    <div class="card  border-0 shadow ">
+                        <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 415px !important;  height: 241px !important;" src="<c:out value="${myCourseList.get(i-1).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                             <a class="tile-link" href="${path}/course/courseDetail?myCourseNo=${myCourseList.get(i-1).getMyCourseNo()}"></a>
                             <div class="card-img-overlay-bottom z-index-20 ">
-                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${path}/resources/img/avatar/avatar-0.jpg " alt="Pamela " />
+                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${loginMember.userAvatar}" alt="Pamela " />
                                     <div><c:out value="${myCourseList.get(i-1).getUserName()}"/></div>
                                 </div>
                             </div>
@@ -330,18 +330,18 @@
                 <c:if test="${i == myCourseList.size()-1}">
                 <!-- place item-->
                 <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
-                    <div class="card h-100 border-0 shadow ">
-                        <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="<c:out value="${myCourseList.get(i).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
+                    <div class="card border-0 shadow ">
+                        <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 415px !important;  height: 241px !important;" src="<c:out value="${myCourseList.get(i).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                             <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${myCourseList.get(i).getMyCourseNo()}"></a>
                             <div class="card-img-overlay-bottom z-index-20 ">
-                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${path}/resources/img/avatar/avatar-0.jpg " alt="Pamela " />
+                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${loginMember.userAvatar}" alt="Pamela " />
                                     <div><c:out value="${myCourseList.get(i).getUserName()}"/></div>
                                 </div>
                             </div>
                             <div class="card-img-overlay-top text-end">
                                 <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
                                     <i class="fas fa-heart svg-icon"></i>
-                                </a>l
+                                </a>
                             </div>
                         </div>
                         <div class="card-body d-flex align-items-center ">

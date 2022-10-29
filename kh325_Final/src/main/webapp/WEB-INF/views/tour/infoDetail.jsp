@@ -1957,9 +1957,9 @@
                                    
                                     <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
                                         <div class="card h-100 border-0 shadow">
-                                            <div class="card-img-top h-75  overflow-hidden gradient-overlay">
-                                                <img class="" style="height: 100%; width:100%;" src="${MyCourseSearch.firstImage}" />
-                                                <a class="tile-link" href="#myCourse${status.index +1}" data-bs-toggle="tab" role="tab"></a>
+                                            <div class="card-img-top  overflow-hidden gradient-overlay">
+                                                <img class="" style="width: 289px !important;  height: 216px !important;" src="${MyCourseSearch.firstImage}" />
+                                                <a class="tile-link" href="${path}/tourDetailInfo.do?contentId=${MyCourseSearch.contentId}&contentTypeId=${MyCourseSearch.contentTypeId}"></a>
                                                 <div class="card-img-overlay-bottom z-index-20 ">
                                                     <div class="d-flex text-white text-sm align-items-center ">
                                                         <div style="font-family: pB; font-size:larger"><em><c:out value="${status.index +1}"/>코스</em></div>
