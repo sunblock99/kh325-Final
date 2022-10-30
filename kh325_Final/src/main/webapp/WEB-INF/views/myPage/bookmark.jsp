@@ -271,7 +271,7 @@
                         <p class="text-muted text-pEb">즐겨찾기로 등록해놓은 관광 정보를 한눈에 볼 있습니다. </p>
                     </div>
                     <div class="text-block">
-                        <div style="margin-bottom:35px; margin-left: 40rem;">
+                        <div style="margin-top: -90px ;  margin-bottom:35px; margin-left: 40rem;">
                             <label class="form-label me-2 text-pB" for="form_sort">카테고리</label>
                             <div class="dropdown bootstrap-select">
                                 <div class="dropdown bootstrap-select">
@@ -332,7 +332,17 @@
                                     <div class="card-body d-flex align-items-center" style="padding-top: 0px;height: 119.2px;padding-bottom: -5;padding-bottom: 0px;">
                                         <div class="row w-100 txt_line ">
                                             <p class="card-title col-md-9" style="padding-top: 12px;margin-bottom: 10px;">
-                                                <a class=" text-black" href="detail-rooms.html"><c:out value="${Bookmark.title}"/></a>
+                                                <a class=" text-black" style=" display: -webkit-box;
+												    display: -ms-flexbox;
+												    display: box;
+												    margin-top: 1px;
+												    max-height: 80px;
+												    overflow: hidden;
+												    vertical-align: top;
+												    text-overflow: ellipsis;
+												    word-break: break-all;
+												    -webkit-box-orient: vertical;
+												    -webkit-line-clamp: 1" href="detail-rooms.html"><c:out value="${Bookmark.title}"/></a>
                                             </p>
                                             <div class="d-flex col-md-3" style="text-align: center">
                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
@@ -356,7 +366,18 @@
 
                                             </div>
                                             <p class="text-sm text-black-50 card-subtitle mb-2">
-                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" aria-hidden="true" >&nbsp;&nbsp;<c:out value="${Bookmark.address}"/></i> </p>
+                                                <i class="fa fa-map-marker text-secondary opacity-4 me-1" style=" display: -webkit-box;
+												    display: -ms-flexbox;
+												    display: box;
+												    margin-top: 1px;
+												    max-height: 80px;
+												    overflow: hidden;
+												    vertical-align: top;
+												    text-overflow: ellipsis;
+												    word-break: break-all;
+												    -webkit-box-orient: vertical;
+												    -webkit-line-clamp: 1" 
+												    aria-hidden="true" >&nbsp;&nbsp;<c:out value="${Bookmark.address}"/></i> </p>
                                             <div class=" card-text text-muted 
                                                                 text-sm text-black-50 txt_line">
                                                 <div class="courseList_info"> <c:out value="${Bookmark.overview}"/></div>
@@ -372,27 +393,51 @@
 							</c:forEach>
                         </div>
                         
-                         <div class="mt-5" style="width: 348px; ">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination" style="margin-left: 400px; margin-right: 500px;">
-                            	 <c:if test="${pageInfo.endPage > 2 }">
-                                 <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
-									<c:if test="${pageInfo.currentPage == status.current}">
-										<li class="page-item disabled"><a class="page-link " href="#"><c:out value="${status.current}"/></a></li>
-									</c:if>
-									<c:if test="${pageInfo.currentPage != status.current}">
-										 <li class="page-item-course ">
-										 	<a class="page-link-course" href="#" onclick="movePage('${path}/bookmark/hotelList?page=${status.current}');">
-												<c:out value="${status.current}"/>
-											</a>
-										</li>
-									</c:if>
-								</c:forEach>
-								</c:if>
-                            </ul>
-                        </nav>
-                    </div>
+<!--                          <div class="mt-5" style="width: 348px; "> -->
+<!--                         <nav aria-label="Page navigation example"> -->
+<!--                             <ul class="pagination" style="margin-left: 400px; margin-right: 500px;"> -->
+<%--                             	 <c:if test="${pageInfo.endPage > 2 }"> --%>
+<%--                                  <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status"> --%>
+<%-- 									<c:if test="${pageInfo.currentPage == status.current}"> --%>
+<%-- 										<li class="page-item disabled"><a class="page-link " href="#"><c:out value="${status.current}"/></a></li> --%>
+<%-- 									</c:if> --%>
+<%-- 									<c:if test="${pageInfo.currentPage != status.current}"> --%>
+<!-- 										 <li class="page-item-course "> -->
+<%-- 										 	<a class="page-link-course" href="#" onclick="movePage('${path}/bookmark/hotelList?page=${status.current}');"> --%>
+<%-- 												<c:out value="${status.current}"/> --%>
+<!-- 											</a> -->
+<!-- 										</li> -->
+<%-- 									</c:if> --%>
+<%-- 								</c:forEach> --%>
+<%-- 								</c:if> --%>
+<!--                             </ul> -->
+<!--                         	</nav> -->
+<!--                    		 </div> -->
 
+ 					<div class="mt-2 justify-contents-center" style="width: 348px; margin-left: -45%;">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination" style="margin-left: 700px; margin-right: 500px;">
+                            <li class="page-item-course"><a class="page-link-course" href="#" onclick="movePage('${path}/myPage/bookmark?page=${pageInfo.prevPage}');" aria-label="Previous">Previous</a></li>
+                            <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
+	                    	<c:if test="${pageInfo.currentPage == status.current}">
+	                   			 <li class="page-item-course active">
+	                   			 		<a class="page-link-course">
+	                   			 			<span>${status.current}</span>
+	                   			 		</a>
+	                   			 </li>
+	                   		</c:if>
+	                		<c:if test="${pageInfo.currentPage != status.current}">
+	                   			 <li class="page-item-course">
+	                   			 		<a onclick="movePage('${path}/myPage/bookmark?page=${status.current}');" class="page-link-course">
+	                   			 			<span >${status.current}</span>
+	                   			 		</a>
+	                   			 </li> 
+	                   		</c:if>
+	                     </c:forEach>
+                            <li class="page-item-course"><a class="page-link-course" href="#" onclick="movePage('${path}/myPage/bookmark?page=${pageInfo.nextPage}');" aria-label="Next">Next</a></li>
+                        </ul>
+                    </nav>
+                	</div>
                     </div>
                 </div>
             </div>
@@ -402,6 +447,13 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp">
 			<jsp:param value="예아바디" name="title"/>
 </jsp:include>
+<script>
+        function movePage(pageUrl) {
+			alert(pageUrl);
+            location.href = encodeURI(pageUrl);
+        }
+    </script>
+
     <!-- JavaScript files-->
     <script>
         // ------------------------------------------------------- //

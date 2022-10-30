@@ -121,6 +121,14 @@
 		WHERE L.UNO = #{userNo}
 	</select>  
 	
+	<select id="countBookmark" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM BASIC_TOUR_INFO B
+		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
+		JOIN REVIEW_TOTAL R ON(R.UNO = L.UNO and R.CONTENTID = B.CONTENTID)
+		WHERE L.UNO = #{userNo}
+	</select>  
+	
 	
 	<delete id="deleteBookmark" parameterType="int">
 		DELETE FROM TOUR_LIKE 

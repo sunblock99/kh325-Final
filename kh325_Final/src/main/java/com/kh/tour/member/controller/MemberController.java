@@ -240,16 +240,24 @@ public class MemberController {
 	
 	@GetMapping("/myPage/bookmark")
 	public String bookmark(Model model, 
-			@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
-		int userNo = loginMember.getUserNo();
-		System.out.println("userNo : " + userNo);
+			@SessionAttribute(name= "loginMember", required = false) Member loginMember
+			,  @RequestParam Map<String, String> param) {
 		
-		
+		int page = 1;
+		if(param.containsKey("page") == true) {
+			try {
+				page = Integer.parseInt(param.get("page"));
+			} catch (Exception e) {}
+		}
 		int uno = loginMember.getUserNo();
-		List<Bookmark> bookmarkList = service.bookmark(uno);
+		System.out.println("uno : " + uno);
+		
+		PageInfo pageInfo = new PageInfo(page, 10, service.countBookmark(uno), 9);
+		List<Bookmark> bookmarkList = service.bookmark(pageInfo, param, uno);
 	
+		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("bookmarkList", bookmarkList);
-	return "myPage/bookmark";
+		return "myPage/bookmark";
 	}
 	
 //	@GetMapping("/myPage/bookmark")

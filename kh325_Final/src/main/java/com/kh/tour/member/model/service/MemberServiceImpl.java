@@ -209,10 +209,7 @@ public class MemberServiceImpl implements MemberService {
 			return mapper.selectMember(userInfo.getUserEmail());
 	}
 	
-	@Override
-	public List<Bookmark> bookmark(int userNo) {
-		return mapper.bookmark(userNo);
-	}
+	
 
 	
 	@Override
@@ -311,12 +308,20 @@ public class MemberServiceImpl implements MemberService {
 		
 		return reNameFileName;
 	}
+	@Override
+	public List<Bookmark> bookmark(PageInfo pageInfo, Map<String, String> param, int userNo) {
+	
+		int offset = (pageInfo.getCurrentPage() - 1) * pageInfo.getListLimit();
+		RowBounds rowBounds = new RowBounds(offset, pageInfo.getListLimit());
+		
+		return mapper.bookmark(rowBounds, userNo);
+	}
 
 	@Override
-	public int selectBookmarkBoardCount(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int countBookmark(int userNo) {
+		return mapper.countBookmark(userNo);
 	}
+
 
 }
 

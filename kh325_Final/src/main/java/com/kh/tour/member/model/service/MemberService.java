@@ -29,7 +29,7 @@ public interface MemberService {
 
 	Member getUserInfo(String access_Token);
 
-	List<Bookmark> bookmark(int userNo);
+	List<Bookmark> bookmark(PageInfo pageInfo, Map<String, String> param, int userNo);
 	
 	int deleteBookmark(int likeNo);
 
@@ -45,9 +45,9 @@ public interface MemberService {
 	
 	int selectBoardCount(Map<String,String>map);
 
-	int selectBookmarkBoardCount(Map<String, String> map);
-	
 	public String saveFile(MultipartFile upfile, String savePath);
+
+	int countBookmark(int userNo);
 
 
 }
