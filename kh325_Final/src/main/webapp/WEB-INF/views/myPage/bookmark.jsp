@@ -428,7 +428,7 @@
 </jsp:include>
 <script>
         function movePage(pageUrl) {
-			alert(pageUrl);
+// 			alert(pageUrl);
             location.href = encodeURI(pageUrl);
         }
     </script>

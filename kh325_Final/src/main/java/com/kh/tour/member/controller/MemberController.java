@@ -60,7 +60,7 @@ public class MemberController {
 	
 	@PostMapping("/login")
 	public String login(Model model, String userEmail, String userPassword) {
-		log.info("userEmail : " + userEmail + ", userPassword : " + userPassword);
+//		log.info("userEmail : " + userEmail + ", userPassword : " + userPassword);
 		Member loginMember = service.login(userEmail, userPassword);
 		
 //		System.out.println("로그인 멤버는" + loginMember);
@@ -83,22 +83,22 @@ public class MemberController {
 	
 	@RequestMapping("/logout")
 	public String logout(SessionStatus status) {
-		log.info("status : " + status.isComplete());
+//		log.info("status : " + status.isComplete());
 		status.setComplete(); // 세션을 종료하는 코드
-		log.info("status : " + status.isComplete());
+//		log.info("status : " + status.isComplete());
 		return "redirect:/";
 	}
 	
 	@GetMapping("/signup")
 	public String enrollPage() {
-		log.info("가입 페이지 요청");
+//		log.info("가입 페이지 요청");
 		return "myPage/signup";
 	}
 	
 	// ModelAndView 사용법, 가능하면 하나 통일해서 쓸것!! ModelAndView=전자정부에서 좋아한다.....
 	@PostMapping("/myPage/signup")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
-		log.info("회원 가입, member : " + member);
+//		log.info("회원 가입, member : " + member);
 		int result = 0;
 		try {
 			result = service.save(member);
@@ -120,7 +120,7 @@ public class MemberController {
 	// ResponseEntity : json 객체를 알아서 만들어 주는 리턴값
 	@GetMapping("/member/idCheck")
 	public ResponseEntity<Map<String,Object>> idCheck(String id){
-		log.info("아이디 중복 확인, user id : "+ id);
+//		log.info("아이디 중복 확인, user id : "+ id);
 		
 		boolean result = service.validate(id);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -132,7 +132,7 @@ public class MemberController {
 	
 	@GetMapping("/myPage/profile")
 	public String view(Model model,@SessionAttribute(name= "loginMember", required = false) Member loginMember) {
-		log.info("회원 정보 페이지 요청");
+//		log.info("회원 정보 페이지 요청");
 		if(loginMember == null) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			model.addAttribute("location", "/");
@@ -148,13 +148,16 @@ public class MemberController {
 				@ModelAttribute Member member, // @ModelAttribute 생략 가능!!
 				@SessionAttribute(name= "loginMember", required = false) Member loginMember,
 				HttpServletRequest request,
-				@RequestParam("upfile") MultipartFile upfile
+				@RequestParam(name = "upfile", required = false) MultipartFile upfile
 			) {
 		if(loginMember == null || loginMember.getUserEmail().equals(member.getUserEmail()) == false) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			model.addAttribute("location", "/");
 			return "common/msg";
 		}
+		
+		String orginAvatar = loginMember.getUserAvatar();
+		System.out.println("orginAvatar : " + orginAvatar);
 		
 		 if(upfile != null && upfile.isEmpty() == false) {
 			 
@@ -167,7 +170,11 @@ public class MemberController {
 				}
 			}
 		
-		log.info("loginMember aaaa: " + member.getUserAvatar());
+//		log.info("loginMember aaaa: " + member.getUserAvatar());
+		
+		if(member.getUserAvatar() == null) {
+			member.setUserAvatar(orginAvatar);
+		}
 		member.setUserNo(loginMember.getUserNo());
 		int result = service.save(member);
 		
@@ -204,7 +211,7 @@ public class MemberController {
 	public String updatePwd(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember,
 			String userPassword) {
-		log.info("update pw : " + userPassword);
+//		log.info("update pw : " + userPassword);
 		
 		int result = service.updatePwd(loginMember, userPassword);
 		
@@ -250,7 +257,7 @@ public class MemberController {
 			} catch (Exception e) {}
 		}
 		int uno = loginMember.getUserNo();
-		System.out.println("uno : " + uno);
+//		System.out.println("uno : " + uno);
 		
 		PageInfo pageInfo = new PageInfo(page, 10, service.countBookmark(uno), 9);
 		List<Bookmark> bookmarkList = service.bookmark(pageInfo, param, uno);
@@ -395,10 +402,10 @@ public class MemberController {
 	public String deleteCommunity(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember,  @RequestParam Map<String,String> param, HttpServletRequest request) {
 		
-		log.info("param:" + param);
+//		log.info("param:" + param);
 		
 		String rootPath = request.getSession().getServletContext().getRealPath("uploaded");
-		log.info("rootPath:" + rootPath);
+//		log.info("rootPath:" + rootPath);
 		rootPath = rootPath + "/uploaded"; 
 		
 		int result = 0;
