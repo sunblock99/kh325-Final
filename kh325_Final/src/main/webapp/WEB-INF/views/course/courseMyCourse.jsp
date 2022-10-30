@@ -261,7 +261,7 @@
                         <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 415px !important;  height: 241px !important;" src="<c:out value="${myCourseList.get(i-1).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                             <a class="tile-link" href="${path}/course/courseDetail?myCourseNo=${myCourseList.get(i-1).getMyCourseNo()}"></a>
                             <div class="card-img-overlay-bottom z-index-20 ">
-                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${loginMember.userAvatar}" alt="Pamela " />
+                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${myCourseList.get(i-1).getUserAvatar()}" />
                                     <div><c:out value="${myCourseList.get(i-1).getUserName()}"/></div>
                                 </div>
                             </div>
@@ -335,7 +335,7 @@
                         <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 415px !important;  height: 241px !important;" src="<c:out value="${myCourseList.get(i).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                             <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${myCourseList.get(i).getMyCourseNo()}"></a>
                             <div class="card-img-overlay-bottom z-index-20 ">
-                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${loginMember.userAvatar}" alt="Pamela " />
+                                <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${myCourseList.get(i-1).getUserAvatar()}" />
                                     <div><c:out value="${myCourseList.get(i).getUserName()}"/></div>
                                 </div>
                             </div>

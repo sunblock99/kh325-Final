@@ -273,7 +273,7 @@
                     <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(0).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                         <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(0).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
-                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${loginMember.userAvatar}" alt="Pamela " />
+                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${MyCourseMain.get(0).getUserAvatar()}"  />
                                 <div><c:out value="${MyCourseMain.get(0).getUserName()}"/></div>
                             </div>
                         </div>
@@ -312,7 +312,7 @@
                     <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(1).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                         <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(1).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
-                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${loginMember.userAvatar}" alt="Pamela " />
+                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${MyCourseMain.get(1).getUserAvatar()}" alt="Pamela " />
                                 <div><c:out value="${MyCourseMain.get(1).getUserName()}"/></div>
                             </div>
                         </div>
@@ -351,7 +351,7 @@
                     <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(2).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                         <a class="tile-link " href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(2).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
-                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${path}${loginMember.userAvatar}"  />
+                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${MyCourseMain.get(2).getUserAvatar()}"  />
                                 <div><c:out value="${MyCourseMain.get(2).getUserName()}"/></div>
                             </div>
                         </div>
@@ -391,7 +391,7 @@
                     <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " style="width: 367px !important;  height: 245px !important;" src="${path}<c:out value="${MyCourseMain.get(3).getMyCourseMainImage()}"/>" alt="Modern, Well-Appointed Room " />
                         <a class="tile-link "  href="${path}/course/courseDetail?myCourseNo=${MyCourseMain.get(3).getMyCourseNo()}"></a>
                         <div class="card-img-overlay-bottom z-index-20 ">
-                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${loginMember.userAvatar}" alt="Pamela " />
+                            <div class="d-flex text-white text-sm align-items-center "><img class="avatar avatar-border-white flex-shrink-0 me-2 " src="${MyCourseMain.get(3).getUserAvatar()}"  />
                                 <div><c:out value="${MyCourseMain.get(3).getUserName()}"/></div>
                             </div>
                         </div>
