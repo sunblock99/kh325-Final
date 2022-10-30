@@ -94,7 +94,7 @@
 		) VALUES (
 		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
 		    #{userPassword}, 'null' , 
-		    'null', 'null', DEFAULT, DEFAULT
+		    'null', DEFAULT, DEFAULT, DEFAULT
 		)
 	</insert>
 	
@@ -113,11 +113,10 @@
 		<result property="overview" column="OVERVIEW"/>
 		<result property="star" column="STAR"/>
 	</resultMap>
-	
+	 
 	<select id="bookmark" parameterType="int" resultMap="bookmarkResultMap">
-		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE, B.ADDR1, B.OVERVIEW, R.STAR FROM BASIC_TOUR_INFO B
+		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE, B.ADDR1, B.OVERVIEW  FROM BASIC_TOUR_INFO B
 		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
-		JOIN REVIEW_TOTAL R ON(R.CONTENTID = B.CONTENTID)
 		WHERE L.UNO = #{userNo}
 	</select>  
 	

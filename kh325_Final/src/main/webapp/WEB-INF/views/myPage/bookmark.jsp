@@ -321,7 +321,7 @@
                             <div class="col-sm-6 col-xl-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92" style="height: 370px;" href="${path}tourDetailInfo.do?contentId=${tour.contentId}">
                                 <div class="card h-100 border-0 shadow" >
                                     <div class="card-img-top overflow-hidden gradient-overlay" style="object-fit:full;">
-                                        <img class="card-pic" src='<c:out value="${Bookmark.image}"/>'>
+                                        <img class="card-pic" src='<c:if test="${Bookmark.image == null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${Bookmark.image != null}"><c:out value="${Bookmark.image}"/></c:if>'/>
                                         <a class="tile-link" href="${path}/tourDetailInfo.do?contentId=${Bookmark.contentId}&contentTypeId=${Bookmark.contentTypeId}"></a>
                                         <div class="card-img-overlay-top text-end">
                                             <a class="card-fav-icon position-relative z-index-50" href="${path}/myPage/deleteBookmark?likeNo=${Bookmark.likeNo}" style="background-color:black;">
@@ -344,27 +344,27 @@
 												    -webkit-box-orient: vertical;
 												    -webkit-line-clamp: 1" href="detail-rooms.html"><c:out value="${Bookmark.title}"/></a>
                                             </p>
-                                            <div class="d-flex col-md-3" style="text-align: center">
-                                                <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;">
-                                                	<c:if test="${Bookmark.star == 1}">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
-                                                	</c:if>
-                                                	<c:if test="${Bookmark.star == 2}">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
-                                                	</c:if>
-                                                	<c:if test="${Bookmark.star == 3}">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i>
-                                                	</c:if>
-                                                	<c:if test="${Bookmark.star == 4}">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i>
-                                                	</c:if>
-                                                	<c:if test="${Bookmark.star == 5}">
-                                                    <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
-                                                	</c:if>
+<!--                                             <div class="d-flex col-md-3" style="text-align: center"> -->
+<!--                                                 <p class="flex-shrink-1 mb-0 card-stars text-xs text-start" style="margin-top: 15px;"> -->
+<%--                                                 	<c:if test="${Bookmark.star == 1}"> --%>
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i> -->
+<%--                                                 	</c:if> --%>
+<%--                                                 	<c:if test="${Bookmark.star == 2}"> --%>
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i> -->
+<%--                                                 	</c:if> --%>
+<%--                                                 	<c:if test="${Bookmark.star == 3}"> --%>
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i><i class="fa fa-star text-gray-300"></i> -->
+<%--                                                 	</c:if> --%>
+<%--                                                 	<c:if test="${Bookmark.star == 4}"> --%>
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"></i> -->
+<%--                                                 	</c:if> --%>
+<%--                                                 	<c:if test="${Bookmark.star == 5}"> --%>
+<!--                                                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i> -->
+<%--                                                 	</c:if> --%>
                                                 
-                                                </p>
+<!--                                                 </p> -->
 
-                                            </div>
+<!--                                             </div> -->
                                             <p class="text-sm text-black-50 card-subtitle mb-2">
                                                 <i class="fa fa-map-marker text-secondary opacity-4 me-1" style=" display: -webkit-box;
 												    display: -ms-flexbox;

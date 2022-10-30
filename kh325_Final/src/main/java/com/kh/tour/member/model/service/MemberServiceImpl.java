@@ -197,14 +197,20 @@ public class MemberServiceImpl implements MemberService {
 			// 카카오로그인 기능은 무조건 일반로그인으로 하지못하게끔 하기 위해서 비밀번호 설정
 			userInfo.setUserPassword("SKDFKSDM256SDFJM#$%#$DSF4321DSF195@@@");
 			userInfo.setUserEmail(email);
+			
+			Member kakaoMember = mapper.selectMember(userInfo.getUserEmail());
+//			System.out.println("kakaoMember : " + kakaoMember);
+			if(kakaoMember == null) {
+			int result1 = mapper.insertKakaoMember(userInfo);
+//			System.out.println("인서트할게요 !");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-			Member kakaoMember = mapper.selectMember(userInfo.getUserEmail());
-			if(kakaoMember.getUserEmail() == null) {
-			int result = mapper.insertKakaoMember(userInfo);
-//			System.out.println(result);
-			}
+		
+			
+				
+			
 			
 			return mapper.selectMember(userInfo.getUserEmail());
 	}
