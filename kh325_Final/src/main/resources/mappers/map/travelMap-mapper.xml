@@ -71,6 +71,7 @@
 <!-- 		</if> -->
 		<if test="contentTypeId != null">
 		WHERE T.CONTENTTYPEID = #{contentTypeId}
+		AND ROWNUM <![CDATA[ < ]]> 100
 		</if>
 	</select>
 	
