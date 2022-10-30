@@ -174,7 +174,7 @@
                  <c:if test="${!empty detailCourseList}">
 				<c:forEach var="MyCourseSearch" items="${detailCourseList}"> 
                 <div class="swiper-slide">
-                    <a href="${MyCourseSearch.firstImage}" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="<c:if test="${MyCourseSearch.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseSearch.firstImage ne null}"><c:out value="${MyCourseSearch.firstImage}"/></c:if>" alt="Our street"></a>
+                    <a href="${MyCourseSearch.firstImage}" data-toggle="gallery-top" title=""><img style="height: 300px; width:100%;" src="<c:if test="${MyCourseSearch.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseSearch.firstImage ne null}"><c:out value="${MyCourseSearch.firstImage}"/></c:if>" ></a>
                 </div> 
                 </c:forEach>
                  </c:if>
@@ -302,7 +302,7 @@
                                 	<c:forEach var="MyCourseImage" items="${myCourseImageList}" varStatus="status"> 
                                 	<c:if test="${MyCourseImage.myCourseSn eq i}">
                                     <div class="col-lg-4 col-6 px-1 mb-2">           
-                                         <a href="${MyCourseImage.originImgUrl}" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="<c:if test="${MyCourseImage.originImgUrl eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseImage.originImgUrl ne null}"><c:out value="${MyCourseImage.originImgUrl}"/></c:if>"></a>
+                                         <a href="${MyCourseImage.originImgUrl}" data-fancybox="gallery" title=""><img style="height: 100%; width:100%;" src="<c:if test="${MyCourseImage.originImgUrl eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyCourseImage.originImgUrl ne null}"><c:out value="${MyCourseImage.originImgUrl}"/></c:if>"></a>
                                     </div>
                                     </c:if>
                                     </c:forEach>

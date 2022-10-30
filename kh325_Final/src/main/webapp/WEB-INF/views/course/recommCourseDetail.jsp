@@ -173,7 +173,7 @@
                  <c:if test="${!empty detailRecommCourseList}">
 				<c:forEach var="RecommCourseDetail" items="${detailRecommCourseList}"> 
                 <div class="swiper-slide">
-                    <a href="${RecommCourseDetail.subDetailImg}" data-toggle="gallery-top" title="Our street"><img style="height: 300px; width:100%;" src="<c:if test="${RecommCourseDetail.subDetailImg eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${RecommCourseDetail.subDetailImg ne null}"><c:out value="${RecommCourseDetail.subDetailImg}"/></c:if>" alt="Our street"></a>
+                    <a href="${RecommCourseDetail.subDetailImg}" data-toggle="gallery-top" title=""><img style="height: 300px; width:100%;" src="<c:if test="${RecommCourseDetail.subDetailImg eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${RecommCourseDetail.subDetailImg ne null}"><c:out value="${RecommCourseDetail.subDetailImg}"/></c:if>" ></a>
                 </div> 
                 </c:forEach>
                  </c:if>
@@ -301,7 +301,7 @@
                                 	<c:forEach var="RecommCourseImage" items="${recommCourseImageList}" varStatus="status"> 
                                 	<c:if test="${RecommCourseImage.subNum eq i}">
                                     <div class="col-lg-4 col-6 px-1 mb-2">           
-                                         <a href="${RecommCourseImage.originImgUrl}" data-fancybox="gallery" title="Our street"><img style="height: 100%; width:100%;" src="<c:if test="${RecommCourseImage.originImgUrl eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${RecommCourseImage.originImgUrl ne null}"><c:out value="${RecommCourseImage.originImgUrl}"/></c:if>"></a>
+                                         <a href="${RecommCourseImage.originImgUrl}" data-fancybox="gallery" title=""><img style="height: 100%; width:100%;" src="<c:if test="${RecommCourseImage.originImgUrl eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${RecommCourseImage.originImgUrl ne null}"><c:out value="${RecommCourseImage.originImgUrl}"/></c:if>"></a>
                                     </div>
                                     </c:if>
                                     </c:forEach>
@@ -344,7 +344,7 @@
                         <button class="btn btn-outline-warning" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
                         <div class="collapse mt-4" id="leaveReview">
                             <h5 class="mb-4 text-pB">Leave a review</h5>
-                            <form class="form" id="contact-form" method="post" action="${path}/course/MyCourseRev?MyCourseNo=">
+                            <form class="form" id="contact-form" method="post" action="${path}/course/recommCourseRev?contentId=${detailRecommCourseList.get(0).getContentId()}">
                             	
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -356,7 +356,7 @@
                                     <div class="col-sm-6">
                                         <div class="mb-4">
                                             <label class="form-label text-pB" for="rating" >Your rating *</label>
-                                            <select class="form-select focus-shadow-0" name="cntRevStar" id="cntRevStar">
+                                            <select class="form-select focus-shadow-0" name="star" id="cntRevStar">
                           <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
                           <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
                           <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>

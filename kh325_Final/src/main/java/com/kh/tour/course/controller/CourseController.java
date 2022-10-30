@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -27,6 +28,9 @@ import com.kh.tour.course.model.vo.RecommCourseDetail;
 import com.kh.tour.course.model.vo.RecommCourseImage;
 import com.kh.tour.course.model.vo.RecommCourseRev;
 import com.kh.tour.member.model.vo.Member;
+import com.kh.tour.tour.model.service.TourService;
+import com.kh.tour.tour.model.vo.DetailReview;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -35,6 +39,8 @@ public class CourseController {
 
 	@Autowired
 	private CourseService courseService;
+	@Autowired
+	private TourService tService;
 
 	@RequestMapping("/course/courseMyCourse")
 	public String myCourseList(Model model, @RequestParam Map<String, String> param) {
@@ -483,6 +489,30 @@ public class CourseController {
         model.addAttribute("location", "/course/courseDetail?myCourseNo=" + MyCourseNo);
         return "/common/msg";
     }
+	
+	@PostMapping("/course/recommCourseRev")
+	public String insertReview(Model model, HttpServletRequest request, @RequestParam("contentId") int contentId,
+			@RequestParam("star") int star, @RequestParam("content") String content,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember
+
+	) {
+		System.out.println("review 작성 컨트롤러 호출");
+		
+		int userNo = loginMember.getUserNo();
+		log.info("리뷰 작성 요청");
+		DetailReview detailReview = new DetailReview(0, contentId, userNo, star, content, null, null);
+		int result = tService.insertReview(detailReview);
+//		Tour tour = tService.findByContentId(contentId);
+		
+		if(result > 0) {
+			model.addAttribute("msg", "리플이 등록되었습니다.");
+		}else {
+			model.addAttribute("msg", "리플 작성에 실패했습니다.");
+		}
+		model.addAttribute("location", request.getHeader("Referer"));
+//		model.addAttribute("location", "/tourDetailInfo.do?contentId=" + detailReview.getContentId() + "&contentTypeId=" + tour.getContentTypeId());
+		return "/common/msg";
+	}
 //	@RequestMapping("/courseMain")
 //	public String Course(Model model, @RequestParam("contentId") int contentId) {
 //
