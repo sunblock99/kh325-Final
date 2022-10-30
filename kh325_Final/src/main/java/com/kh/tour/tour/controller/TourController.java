@@ -187,7 +187,7 @@ public class TourController {
 		List<RepeatInfo> repeatInfo = tService.findDetailByContentId(contentId);
 		List<TourImage> imgDetail = tService.getTourImage(contentId);
 		List<MyCourseSearch> listForCourseCreate = courseService.getForCreate();
-		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(27);
+		List<MyCourseSearch> detailCourseList = courseService.getDetailMyCourse(3);
 //		log.info("tour : " + tour);
 //		log.info("repeatInfo : " + repeatInfo);
 //		log.info("imgDetail : " + imgDetail);
