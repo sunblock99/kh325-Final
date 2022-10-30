@@ -393,27 +393,6 @@
 							</c:forEach>
                         </div>
                         
-<!--                          <div class="mt-5" style="width: 348px; "> -->
-<!--                         <nav aria-label="Page navigation example"> -->
-<!--                             <ul class="pagination" style="margin-left: 400px; margin-right: 500px;"> -->
-<%--                             	 <c:if test="${pageInfo.endPage > 2 }"> --%>
-<%--                                  <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status"> --%>
-<%-- 									<c:if test="${pageInfo.currentPage == status.current}"> --%>
-<%-- 										<li class="page-item disabled"><a class="page-link " href="#"><c:out value="${status.current}"/></a></li> --%>
-<%-- 									</c:if> --%>
-<%-- 									<c:if test="${pageInfo.currentPage != status.current}"> --%>
-<!-- 										 <li class="page-item-course "> -->
-<%-- 										 	<a class="page-link-course" href="#" onclick="movePage('${path}/bookmark/hotelList?page=${status.current}');"> --%>
-<%-- 												<c:out value="${status.current}"/> --%>
-<!-- 											</a> -->
-<!-- 										</li> -->
-<%-- 									</c:if> --%>
-<%-- 								</c:forEach> --%>
-<%-- 								</c:if> --%>
-<!--                             </ul> -->
-<!--                         	</nav> -->
-<!--                    		 </div> -->
-
  					<div class="mt-2 justify-contents-center" style="width: 348px; margin-left: -45%;">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination" style="margin-left: 700px; margin-right: 500px;">
