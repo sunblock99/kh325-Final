@@ -25,11 +25,11 @@ public class MainController {
 		List<MainCommunity> selectMainCommunityList = service.selectMainCommunityList();
 		List<MainEvent> selectMainEvent = service.selectMainEvent();
 		
-		log.info("핫플은 : " + selectMainHotPlace);
+//		log.info("핫플은 : " + selectMainHotPlace);
 		model.addAttribute("selectMainHotPlace", selectMainHotPlace);
-		log.info("커뮤니티는 : " + selectMainCommunityList);
+//		log.info("커뮤니티는 : " + selectMainCommunityList);
 		model.addAttribute("selectMainCommunityList", selectMainCommunityList);
-		log.info("이벤트 : " + selectMainEvent);
+//		log.info("이벤트 : " + selectMainEvent);
 		model.addAttribute("selectMainEvent", selectMainEvent);
 		
 		return "main/mainHome";

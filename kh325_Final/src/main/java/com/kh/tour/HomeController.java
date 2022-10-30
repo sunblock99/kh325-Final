@@ -20,15 +20,15 @@ import com.kh.tour.main.controller.MainController;
 @Controller
 public class HomeController {
 	
-//	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-//	@Autowired
-//	MainController mainController;
-//	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		String main = mainController.main(model);
-//		
-//		return main;
-//	}
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@Autowired
+	MainController mainController;
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
+		String main = mainController.main(model);
+		
+		return main;
+	}
 	
 }
