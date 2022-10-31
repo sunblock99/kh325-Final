@@ -119,10 +119,16 @@
     
     .detail-pic {
     	width : 280px;
-    	height : 186px;
+    	height : 200px;
     	object-fit : cover;
     }
-    
+
+    .course-pic {
+    	width : 301px;
+    	height : 215px;
+    	object-fit : cover;
+    }
+        
 </style>
 
 <jsp:include page="/WEB-INF/views/common/darkHeader.jsp">
@@ -1966,7 +1972,7 @@
                                     <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
                                         <div class="card h-100 border-0 shadow">
                                             <div class="card-img-top  overflow-hidden gradient-overlay">
-                                                <img class="" style="width: 289px !important;  height: 216px !important;" src="${MyCourseSearch.firstImage}" />
+                                                <img class="course-pic" src="${MyCourseSearch.firstImage}" />
                                                 <a class="tile-link" href="${path}/tourDetailInfo.do?contentId=${MyCourseSearch.contentId}&contentTypeId=${MyCourseSearch.contentTypeId}"></a>
                                                 <div class="card-img-overlay-bottom z-index-20 ">
                                                     <div class="d-flex text-white text-sm align-items-center ">
