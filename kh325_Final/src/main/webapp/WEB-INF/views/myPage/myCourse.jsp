@@ -155,6 +155,7 @@
         font-family: 'pR';
         letter-spacing: -1px;
     }
+    
     /*폰트 끝*/
 </style>
 
@@ -343,7 +344,7 @@
                                <c:if test="${i == MyPageCourseList.size()-1}">
                       <div class="col-sm-6 col-lg-4 mb-5 hover-animate " data-marker-id="59c0c8e33b1527bfe2abaf92 ">
                                 <div class="card h-100 border-0 shadow ">
-                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="img-fluid " src="<c:out value="${MyPageCourseList.get(i).getFirstImage()}"/>" alt="Modern, Well-Appointed Room " />
+                                    <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 294px !important;  height: 196px !important;" src="<c:out value="${MyPageCourseList.get(i).getFirstImage()}"/>" alt="Modern, Well-Appointed Room " />
                                         <a class="tile-link" href="${path}/myPage/myCourseEdit?myCourseNo=${MyPageCourseList.get(i).getMyCourseNo()}"></a>
                                         <div class="card-img-overlay-top text-end">
                                             
