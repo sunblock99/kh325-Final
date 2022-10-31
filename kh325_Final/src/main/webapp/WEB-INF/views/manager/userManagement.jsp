@@ -388,7 +388,7 @@
                                                         <div class="d-flex">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="flex-shrink-0">
-                                                                    <img src="${path}/resources/image/logo.png"
+                                                                    <img src="${Member.userAvatar}"
                                                                         class="rounded-circle avatar-xs" alt="friend">
                                                                 </div>
                                                                 <div class="flex-grow-1 ms-2">
