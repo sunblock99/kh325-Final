@@ -208,8 +208,8 @@
 					<div class="d-flex align-items-lg-stretch">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b5276bc6-398d-42e4-a8b3-706801c8d464);">
-							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=7"> </a>
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=f1f3c487-e930-4c7c-8d45-8cb517fa466d);">
+							<a class="tile-link" href="${path}/course/courseDetail?myCourseNo=11"> </a>
 							<div
 								class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 							</div>
@@ -217,7 +217,7 @@
 					</div>
 				</div>
 				<div class="text-end todaytour-font">
-					통영을 거닐자 <span class="todaytour-font-id">박박만*님</span>
+					바다냄새 코에 넣는 코스 <span class="todaytour-font-id">박명*님</span>
 				</div>
 			</div>
 
@@ -226,9 +226,9 @@
 					<div class="d-flex">
 						<div
 							class="mytour-size ps-7 pe-7 pb-0 pt-6 card shadow-lg border-0 border-0 hover-animate"
-							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=46ab91aa-b241-4fdf-9d71-c3029e8e6e48); ">
+							style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=0a7160a5-3f05-432f-be4b-64e2322545f2); ">
 
-							<a class="tile-link" href="${path}/course/courseMyCourse?myCourseNo=9"> </a>
+							<a class="tile-link" href="${path}/course/courseDetail?myCourseNo=9"> </a>
 							<div
 								class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 								<!-- <h3 class="text-shadow text-uppercase mb-0">   </h3> -->
@@ -237,7 +237,7 @@
 					</div>
 				</div>
 				<div class="text-end todaytour-font">
-					강원도 인생삿 찍기여행 <span class="todaytour-font-id">짜파게*님</span>
+					새해 등산 부수자 코스 <span class="todaytour-font-id">정길*님</span>
 				</div>
 			</div>
 
