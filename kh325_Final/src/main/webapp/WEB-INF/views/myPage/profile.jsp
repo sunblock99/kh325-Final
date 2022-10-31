@@ -295,7 +295,7 @@
                                     <input class="form-control" type="password" name="conPassword" id="conPassword">
                                 </div>
                             </div>
-                            <button class="btn btn-outline-primary text-pEb" type="submit" id="updateSubmit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">비밀번호 업데이트</button>
+                            <button class="btn btn-outline-primary text-pEb" type="button" id="updateSubmit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">비밀번호 업데이트</button>
                         </div>
                         <div class=" mt-5 mb-4 col-12">
                             <label class="form-label" for="password-current" style="color:black">
@@ -317,8 +317,9 @@
                         </div>
                         <button class="btn btn-primary text-pEb" type="submit" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">수정하기</button>
                         <button class="btn btn-primary text-pEb" type="button" onclick="location.href='${path}/member/delete'" id="deleteMember" style="background-color: #FFF1CC; border-color: #FFF1CC; color:#FC950D">탈퇴하기</button>
-                    </div>
                     </form>
+                    </div>
+                    
 
                 </div>
             </div>
@@ -329,7 +330,7 @@
 			<jsp:param value="예아바디" name="title"/>
 </jsp:include>
    
-    
+    <script type="text/javascript" src="${path}/resources/vendor/jquery/jquery.js"></script>
     <script>
 		$(document).ready(() => {
 			$("#updateSubmit").on("click", (e) => {
@@ -344,7 +345,13 @@
 					$("#newPassword").focus();
 					
 					return false;
-				}		
+				}
+				
+				let userPassword = $("#newPassword").val();
+// 				alert(userPassword);
+				location.replace('${path}/myPage/updatePwd?userPassword=' + userPassword);
+				
+				
 			});
 		});
 	</script>
@@ -412,7 +419,7 @@
         var basePath = ''
     </script>
     <!-- Main Theme JS file    -->
-    <script src="js/theme.js"></script>
+    <script src="${path}/resources/js/theme.js"></script>
     
     
 </body>

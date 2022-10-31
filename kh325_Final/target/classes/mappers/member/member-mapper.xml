@@ -76,7 +76,7 @@
 	</update>
 	
 	<update id="updatePwd" parameterType="map">
-		UPDATE MEMBER SET U_PASSWORD = #{newPwd} WHERE UNO = #{userNo}
+		UPDATE MEMBER SET U_PASSWORD = #{newPwd} WHERE UNO = #{no}
 	</update>
 	
 	<update id="deleteMember" parameterType="int">

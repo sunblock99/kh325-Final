@@ -207,21 +207,23 @@ public class MemberController {
 	}
 	
 	
-	@PostMapping("/myPage/updatePwd")
+	@RequestMapping("/myPage/updatePwd")
 	public String updatePwd(Model model,
 			@SessionAttribute(name= "loginMember", required = false) Member loginMember,
 			String userPassword) {
-//		log.info("update pw : " + userPassword);
+		log.info("update pw : " + userPassword);
 		
 		int result = service.updatePwd(loginMember, userPassword);
 		
 		if(result > 0 ) {
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
+			model.addAttribute("location", "/myPage/profile");
+			return "common/msg";
 		}else {
 			model.addAttribute("msg", "비밀번호 변경에 실패하였습니다.");
+			model.addAttribute("location", "/myPage/profile");
+			return "common/msg";
 		}
-		model.addAttribute("script", "self.close()");
-		return "common/msg";
 	}
 	
 	@GetMapping("/kakao/callback")
