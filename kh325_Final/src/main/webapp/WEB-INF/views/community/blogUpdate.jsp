@@ -150,7 +150,7 @@
                             Post your <span style="color: #907B65;">Story</span>
                         </h2>
                         <div class="mb-3 py-2 text-end text-pM">
-                            <a href=""><img class="avatar p-1 me-2" src="${path }/resources/img/avatar/avatar-11.jpg" alt=""></a>
+                            <a href=""><img class="avatar p-1 me-2" src="${loginMember.userAvatar}" alt=""></a>
                              Written by <a class="fw-bold" href="#" style="color: #907B65;">${board.userName }</a><span class="mx-1">|</span> 
                              <fmt:formatDate type="date" dateStyle="long" value="${board.postDate}"/> <span class="mx-1">|</span>
                         </div>
