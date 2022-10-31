@@ -283,7 +283,7 @@ public class MemberController {
 			model.addAttribute("msg", "삭제에 실패하였습니다.");
 			model.addAttribute("location", "/myPage/bookmark");
 		}
-		return "myPage/bookmark";
+		return "/common/msg";
 	}
 	
 	@GetMapping("/myPage/review")
