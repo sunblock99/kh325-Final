@@ -118,11 +118,11 @@
     /*폰트 끝*/
     
     .detail-pic {
-    	width : 280px;
+    	width : 278px;
     	height : 200px;
     	object-fit : cover;
     }
-
+    
     .course-pic {
     	width : 301px;
     	height : 215px;
