@@ -116,6 +116,13 @@
         letter-spacing: -1px;
     }
     /*폰트 끝*/
+    
+    .detail-pic {
+    	width : 280px;
+    	height : 186px;
+    	object-fit : cover;
+    }
+    
 </style>
 
 <jsp:include page="/WEB-INF/views/common/darkHeader.jsp">
@@ -173,7 +180,7 @@
 	                            <div class="col-lg-4 col-6 px-1 mb-2">
 	                            <c:if test="${!empty imgDetail}">
 	                                <a href="<c:out value="${tourImage.originImgUrl}" />">
-	                                <img class="img-fluid" src="<c:out value="${tourImage.originImgUrl}" />" alt="..."></a>
+	                                <img class="detail-pic" src="<c:out value="${tourImage.originImgUrl}" />" alt="..."></a>
 	                             </c:if>
 	                             </div>   
 							</c:forEach>
