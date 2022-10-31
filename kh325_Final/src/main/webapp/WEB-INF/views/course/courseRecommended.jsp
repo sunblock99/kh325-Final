@@ -404,7 +404,7 @@
                                 <img class="" style="width: 427px !important;  height: 285px !important;" src="<c:if test="${MainRecommCourse.firstImage eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MainRecommCourse.firstImage ne null}"><c:out value="${MainRecommCourse.firstImage}"/></c:if>" />
                                 <a class="tile-link" href="${path}/course/recommCourseDetail?contentId=${MainRecommCourse.contentId}"></a>
                                 <div class="card-img-overlay-top text-end">
-                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="javascript: void();">
+                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " name="clickHeart" href="#">
                                         <i class="fas fa-heart svg-icon"></i>
                                     </a>
                                 </div>
@@ -548,6 +548,24 @@
             inputValues[handle].value = values[handle];
         })
     </script>
+    
+    <script>
+            for (var i = 0; i < 6; i++) { // 갤러리 박스가 12개라 임시로 12개 해둠,,
+                const btn = document.getElementsByName("clickHeart")[i];
+
+                btn.addEventListener('click', function onClick(event) {
+                    const backgroundColor = btn.style.backgroundColor;
+
+                    if (backgroundColor === 'salmon') {
+                        btn.style.backgroundColor = '#343a40';
+                        alert('좋아요 취소');
+                    } else {
+                        btn.style.backgroundColor = 'salmon';
+                        alert('좋아요~');
+                    }
+                });
+            }
+        </script>
 </body>
 
 </html>

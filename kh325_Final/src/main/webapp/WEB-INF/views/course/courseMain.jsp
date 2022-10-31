@@ -197,7 +197,7 @@
                                 <img class="img-fluid" style="width: 402px !important;  height: 268px !important;"  src="<c:choose><c:when test="${MainRecommCourse.firstImage != null}"><c:out value="${MainRecommCourse.firstImage}"/></c:when><c:when test="${MainRecommCourse.firstImage == null}"><c:out value="http://tong.visitkorea.or.kr/cms/resource/46/2779046_image2_1.jpg"/></c:when></c:choose>" />
                                 <a class="tile-link" href="${path}/course/recommCourseDetail?contentId=${MainRecommCourse.contentId}"></a>
                                 <div class="card-img-overlay-top text-end">
-                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                                    <a class="heart_pink card-fav-icon position-relative z-index-50" name="clickHeart" href="#">
                                         <i class="fas fa-heart svg-icon"></i>
                                     </a>
                                 </div>
@@ -278,7 +278,7 @@
                             </div>
                         </div>
                         <div class="card-img-overlay-top text-end">
-                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " name="clickHeart" href="#">
                                 <i class="fas fa-heart svg-icon"></i>
                             </a>
                         </div>
@@ -317,7 +317,7 @@
                             </div>
                         </div>
                         <div class="card-img-overlay-top text-end">
-                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " name="clickHeart" href="#">
                                 <i class="fas fa-heart svg-icon"></i>
                             </a>
                         </div>
@@ -356,7 +356,7 @@
                             </div>
                         </div>
                         <div class="card-img-overlay-top text-end">
-                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " name="clickHeart" href="#">
                                 <i class="fas fa-heart svg-icon"></i>
                             </a>
                         </div>
@@ -396,7 +396,7 @@
                             </div>
                         </div>
                         <div class="card-img-overlay-top text-end">
-                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="${path}/resources/javascript: void();">
+                            <a class=" heart_pink card-fav-icon position-relative z-index-50  " name="clickHeart"  href="#">
                                 <i class="fas fa-heart svg-icon"></i>
                             </a>
                         </div>
@@ -482,6 +482,24 @@
     </script>
     <!-- Main Theme JS file    -->
     <script src="${path}/resources/js/theme.js "></script>
+    
+     <script>
+            for (var i = 0; i < 8; i++) { // 갤러리 박스가 12개라 임시로 12개 해둠,,
+                const btn = document.getElementsByName("clickHeart")[i];
+
+                btn.addEventListener('click', function onClick(event) {
+                    const backgroundColor = btn.style.backgroundColor;
+
+                    if (backgroundColor === 'salmon') {
+                        btn.style.backgroundColor = '#343a40';
+                        alert('좋아요 취소');
+                    } else {
+                        btn.style.backgroundColor = 'salmon';
+                        alert('좋아요~');
+                    }
+                });
+            }
+        </script>
 </body>
 
 </html>

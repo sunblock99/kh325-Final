@@ -214,7 +214,7 @@
                     </ul>
                     <ul class="col-6 list-inline mt-4 mb-2 text-end text-pB">
                         <li class="list-inline-item me-3" style="color:#907B65; font-size: 20px;">
-                            <a class="text-secondary " href="#"> <i class="fa fa-heart  h-auto px-2"></i>즐겨찾기</a>
+                            <a class="text-secondary " href="#"> <i class="fa fa-heart  h-auto px-2" ></i>즐겨찾기</a>
                         </li>
                         <li class="list-inline-item me-lg-4" style="color:#907B65; font-size: 20px;">
                             <a class="text-secondary " href="#"> <i class="fa fa-bookmark  h-auto px-2"></i>나의코스</a>
@@ -256,7 +256,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="#">
+                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " name="clickHeart" href="#">
                                                         <i class="fas fa-heart svg-icon"></i>
                                                     </a>
                                                 </div>
@@ -736,7 +736,23 @@
   	            </script>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////     -->
 
+<script>
+            for (var i = 0; i < 6; i++) { // 갤러리 박스가 12개라 임시로 12개 해둠,,
+                const btn = document.getElementsByName("clickHeart")[i];
 
+                btn.addEventListener('click', function onClick(event) {
+                    const backgroundColor = btn.style.backgroundColor;
+
+                    if (backgroundColor === 'salmon') {
+                        btn.style.backgroundColor = '#343a40';
+                        alert('좋아요 취소');
+                    } else {
+                        btn.style.backgroundColor = 'salmon';
+                        alert('좋아요~');
+                    }
+                });
+            }
+        </script>
     <script>
         $(document).on('click', '.tile-link.active', function() {
             var href = $(this).attr('href').substring(0);

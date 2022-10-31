@@ -284,7 +284,7 @@
                                     </div>
                                     <div class="card-body d-flex align-items-center ">
                                         <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html "><c:out value="${MyPageCourseList.get(i-1).getMyCourseTitle()}"/></a></h6>
+                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="${path}/course/courseDetail?myCourseNo=${MyPageCourseList.get(i-1).getMyCourseNo()}"><c:out value="${MyPageCourseList.get(i-1).getMyCourseTitle()}"/></a></h6>
                                             <div class="d-flex card-subtitle mb-3 ">
                                                 <p class="flex-grow-1 mb-0 text-muted text-sm "><c:forEach begin="1" end="${MyPageCourseList.get(i-1).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
                                 <c:if test="${MyPageCourseList.get(i-1).getCntRevStar() < 5}"><c:forEach begin="${MyPageCourseList.get(i-1).getCntRevStar()+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>
@@ -352,7 +352,7 @@
                                     </div>
                                     <div class="card-body d-flex align-items-center ">
                                         <div class="w-100 ">
-                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="detail-rooms.html "><c:out value="${MyPageCourseList.get(i).getMyCourseTitle()}"/></a></h6>
+                                            <h6 class="card-title "><a class="text-decoration-none text-dark " href="${path}/course/courseDetail?myCourseNo=${MyPageCourseList.get(i).getMyCourseNo()}"><c:out value="${MyPageCourseList.get(i).getMyCourseTitle()}"/></a></h6>
                                             <div class="d-flex card-subtitle mb-3 ">
                                                 <p class="flex-grow-1 mb-0 text-muted text-sm "><c:forEach begin="1" end="${MyPageCourseList.get(i).getCntRevStar()}" step="1"><i class="fa fa-star text-warning "></i></c:forEach>
                                 <c:if test="${MyPageCourseList.get(i).getCntRevStar() < 5}"><c:forEach begin="${MyPageCourseList.get(i).getCntRevStar()+1}" end="5" step="1"><i class="fa fa-xs fa-star text-gray-200"></i></c:forEach></c:if>

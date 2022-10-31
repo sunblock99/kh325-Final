@@ -255,7 +255,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-img-overlay-top text-end">
-                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50  " href="#">
+                                                    <a class=" heart_pink card-fav-icon position-relative z-index-50" name="clickHeart" href="#">
                                                         <i class="fas fa-heart svg-icon"></i>
                                                     </a>
                                                 </div>
@@ -718,7 +718,23 @@
   	            }        
   	            </script>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////     -->
+<script>
+            for (var i = 0; i < 6; i++) { // 갤러리 박스가 12개라 임시로 12개 해둠,,
+                const btn = document.getElementsByName("clickHeart")[i];
 
+                btn.addEventListener('click', function onClick(event) {
+                    const backgroundColor = btn.style.backgroundColor;
+
+                    if (backgroundColor === 'salmon') {
+                        btn.style.backgroundColor = '#343a40';
+                        alert('좋아요 취소');
+                    } else {
+                        btn.style.backgroundColor = 'salmon';
+                        alert('좋아요~');
+                    }
+                });
+            }
+        </script>
 
     <script>
         $(document).on('click', '.tile-link.active', function() {
