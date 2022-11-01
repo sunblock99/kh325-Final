@@ -180,7 +180,7 @@
 	
 	<!--추천 코스 4개 for 코스 메인 -->
 	<select id="sortedByRevStar" resultMap="CourseResultMap">
-		 SELECT rownum, rst.* from (select STRPT.*, MC.UNO, M.U_NAME, M.U_AVATAR, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+		 SELECT ROWNUM, RST.* from (select STRPT.*, MC.UNO, M.U_NAME, M.U_AVATAR, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
                         MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS 
 		FROM MYCOURSE MC 
 		JOIN (SELECT CEIL(AVG(MYCOURSE_REV_STAR)) AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO) STRPT
@@ -189,8 +189,8 @@
 		ON(M.UNO = MC.UNO) 
 		WHERE 
 		MYCOURSE_STATUS = 'Y'
-        ORDER BY CNTREVSTAR DESC) rst
-        where ROWNUM BETWEEN 1 AND 3
+        ORDER BY CNTREVSTAR DESC) RST
+        WHERE ROWNUM BETWEEN 1 AND 3
 	</select>
 	
 	<select id="searchRecommCourse" resultMap="CourseResultMap" parameterType="map">
