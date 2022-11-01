@@ -217,8 +217,15 @@ public class CourseServiceImpl implements CourseService{
 	@Override
 	public int deleteCourse(int myCourseNo) {
 		
-		return courseMapper.deleteContent(myCourseNo);
+		return courseMapper.deleteCourse(myCourseNo);
 	}
+	
+	@Override
+	public int deleteCourseDetail(int myCourseNo) {
+
+		return courseMapper.deleteCourseDetail(myCourseNo);
+	}
+
 
 	@Override
 	public int updateCourse(MyCourseCreate myCourseCreate) {
@@ -277,6 +284,7 @@ public class CourseServiceImpl implements CourseService{
     public int writeMyCourseRev(MyCourseRev myCourseRev) {
          return courseMapper.insertMyCourseRev(myCourseRev);
     }
+
 
 	
 

@@ -237,8 +237,9 @@ public class CourseController {
 		log.info("코스 삭제 요청");
 
 		int result = courseService.deleteCourse(myCourseNo);
+		int result2 = courseService.deleteCourseDetail(myCourseNo);
 
-		if (result > 0) {
+		if (result > 0 && result2 > 0) {
 			model.addAttribute("msg", "코스 리스트에서 삭제하였습니다.");
 			model.addAttribute("location", "/myPage/myCourse");
 		} else {

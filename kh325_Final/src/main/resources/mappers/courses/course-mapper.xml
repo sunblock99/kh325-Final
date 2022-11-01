@@ -500,6 +500,11 @@
 		DELETE FROM MYCOURSE WHERE MYCOURSE_NO=#{myCourseNo}
 	</delete>
 	
+	<!-- 코스 디테일 모두 삭제하기 -->	
+	<delete id="deleteCourseDetail" parameterType="int">
+		DELETE FROM MYCOURSE_DETAIL WHERE MYCOURSE_NO=#{myCourseNo}
+	</delete>
+	
 	<!-- 코스 편집하기 -->
 	<update id="updateCourse" parameterType="MyCourseCreate">
 		UPDATE MYCOURSE

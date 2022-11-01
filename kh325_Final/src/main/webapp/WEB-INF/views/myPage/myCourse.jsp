@@ -259,7 +259,7 @@
                 </div>
                 <div class="col-lg-9 ps-lg-5">
                     <h1 class="hero-heading mb-10 text-pEb">My Course</h1>
-                    <button class="btn btn-primary text-pEb" type="submit" onclick="location.href='user-mycourse-edit.html'" style="background-color: #FFF1CC;border-color: #FFF1CC; color:#FC950D! important;float: right;margin-top: 10px;margin-bottom: 10px;">코스 만들기</button>
+                    <button class="btn btn-primary text-pEb" type="submit" onclick="#" style="background-color: #FFF1CC;border-color: #FFF1CC; color:#FC950D! important;float: right;margin-top: 10px;margin-bottom: 10px;">코스 만들기</button>
                     <div class="text-block">
                         <p class="text-muted text-pEb">원하시는 코스를 만드실 수 있습니다. </p>
                     </div>
@@ -279,7 +279,7 @@
                                     <div class="card-img-top overflow-hidden gradient-overlay "> <img class="" style="width: 294px !important;  height: 196px !important;"src="<c:if test="${MyPageCourseList.get(i-1).getFirstImage() eq null}"><c:out value="${path}/resources/image/noImage1.png"/></c:if><c:if test="${MyPageCourseList.get(i-1).getFirstImage() ne null}"><c:out value="${MyPageCourseList.get(i-1).getFirstImage()}"/></c:if>" alt="Modern, Well-Appointed Room " />
                                         <a class="tile-link" href="${path}/myPage/myCourseEdit?myCourseNo=${MyPageCourseList.get(i-1).getMyCourseNo()}"></a>
                                         <div class="card-img-overlay-top text-end">
-                                   
+                                    
                                         </div>
                                     </div>
                                     <div class="card-body d-flex align-items-center ">
@@ -334,6 +334,8 @@
                                     </c:if>
                                    
                                             </ul>
+                                             <a type="button" href="${path}/myPage/myCourse/delete?myCourseNo=${MyPageCourseList.get(i-1).getMyCourseNo()}" class=" text-black" style="float: right;"><i
+						                                            class="fa-regular fa-trash-can"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -401,6 +403,8 @@
                                     </li>
                                     </c:if>
                                             </ul>
+                                               <a type="button" href="${path}/myPage/myCourse/delete?myCourseNo=${MyPageCourseList.get(i).getMyCourseNo()}" class=" text-black" style="float: right;"><i
+						                                            class="fa-regular fa-trash-can"></i></a>
                                         </div>
                                     </div>
                                 </div>

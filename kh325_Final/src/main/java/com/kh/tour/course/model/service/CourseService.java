@@ -67,6 +67,8 @@ public interface CourseService {
 	int createCourse(MyCourseCreate myCourseCreate);
 	// 코스 삭제하기
 	int deleteCourse(int myCourseNo);
+	// 코슫 디테일 전첵 삭제하기
+	int deleteCourseDetail(int myCourseNo);
 	// 코스 편집하기
 	int updateCourse(MyCourseCreate myCourseCreate);
 	// 코스 컨텐츠 하나 추가하기

@@ -72,6 +72,9 @@ public interface CourseMapper {
 	// 코스 삭제하기	
 	int deleteCourse(int myCourseNo);
 	
+	// 코스 디테일 전체 삭제하기	
+	int deleteCourseDetail(int myCourseNo);
+	
 	// 코스 편집하기 
 	int updateCourse(MyCourseCreate myCourseCreate);
 	
