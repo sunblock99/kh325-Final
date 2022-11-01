@@ -190,7 +190,7 @@
 		WHERE 
 		MYCOURSE_STATUS = 'Y'
         ORDER BY CNTREVSTAR DESC) RST
-        WHERE ROWNUM BETWEEN 1 AND 3
+        WHERE ROWNUM BETWEEN 1 AND 4
 	</select>
 	
 	<select id="searchRecommCourse" resultMap="CourseResultMap" parameterType="map">
