@@ -529,7 +529,7 @@
 					WHERE 1=1
 					
 					<if test="searchValue != null">
-						AND B.TITLE LIKE '%'||#{searchValue}||'%' OR b.ADDR1 LIKE '%'||#{searchValue}||'%'<!-- 검색어 -->
+						AND (B.TITLE LIKE '%'||#{searchValue}||'%'  OR b.ADDR1 LIKE '%'||#{searchValue}||'%')<!-- 검색어 -->
 					</if>
 					<if test="areaCodeList != null">
 						AND B.AREACODE IN  <!-- 지역코드 리스트 -->
@@ -592,7 +592,7 @@
 					WHERE 1=1
 					
 					<if test="searchValue != null">
-						AND B.TITLE LIKE '%'||#{searchValue}||'%' AND B.TITLE LIKE '%'||#{searchValue}||'%' OR b.ADDR1 LIKE '%'||#{searchValue}||'%'<!-- 검색어 -->
+						AND (B.TITLE LIKE '%'||#{searchValue}||'%'  OR b.ADDR1 LIKE '%'||#{searchValue}||'%')<!-- 검색어 -->
 					</if>
 					<if test="areaCodeList != null">
 						AND B.AREACODE IN  <!-- 지역코드 리스트 -->
