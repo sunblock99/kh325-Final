@@ -22,7 +22,7 @@
 	<meta charset="utf-8" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>관광지 통합검색 페이지 - 3*3 - final</title>
+    <title>TOGETHER, to GET THERE</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
