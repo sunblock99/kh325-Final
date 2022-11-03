@@ -1,6 +1,5 @@
 package com.kh.tour.tour.model.vo;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tour { //공통정보 테이블 = main 
+public class Tour {
 	private int contentId;         //콘텐츠ID         
 	private int contentTypeId;     //콘텐츠타입ID       
 	private String title;          //콘텐츠명(제목)         
@@ -30,18 +29,7 @@ public class Tour { //공통정보 테이블 = main
 	private String mapX;           //GPS X좌표          
 	private String mapY;           //GPS Y좌표          
 	private String mLevel;         //mlevel           
-	private String overview;       //개요  
-	private int avgStar;       //개요  
-	
-	private AreaCode areaCodeTable;      //AreaCode 객체 삽입
-	private Category categoryTable;      //Category 객체 삽입
-	private DetailEvent detailEventTable;  //DetailEvent 객체 삽입
-	private TourFree tourFreeTable;  //TourFree 객체 삽입
-	private TourImage tourImageTable;  //TourImage 객체 삽입
-	private Reply replyTable;  //Reply 객체 삽입
-	
-	
-	
+	private String overview;       //개요              
 }
 
 
