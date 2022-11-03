@@ -15,6 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.kh.tour.tour.model.vo.Tour;
+import com.kh.tour.tour.model.vo.TourParsing;
 
 public class TourApi {
 
@@ -31,8 +32,8 @@ public class TourApi {
 		TourApi.callCurrentTourByXML();
 	}
 
-	public static List<Tour> callCurrentTourByXML() {
-		List<Tour> list = new ArrayList<>();
+	public static List<TourParsing> callCurrentTourByXML() {
+		List<TourParsing> list = new ArrayList<>();
 		String serviceKey = null;
 
 		// 1일차
@@ -244,7 +245,7 @@ public class TourApi {
 								String telName = getStrData(eElement2, "telName");
 								String overview = getStrData(eElement2, "overview");
 
-								Tour tour = new Tour(contentId, contentTypeId, title, tel, telName, homePage, bookTour,
+								TourParsing tour = new TourParsing(contentId, contentTypeId, title, tel, telName, homePage, bookTour,
 										firstImage, firstImage2, areaCode, sigunguCode, cat1, cat2, cat3, addr1, addr2,
 										zipCode, mapX, mapY, mLevel, overview);
 								list.add(tour);

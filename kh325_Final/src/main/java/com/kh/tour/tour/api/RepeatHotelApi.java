@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 
 import com.kh.tour.tour.model.vo.RepeatCourse;
 import com.kh.tour.tour.model.vo.RepeatHotel;
+import com.kh.tour.tour.model.vo.RepeatHotelParsing;
 import com.kh.tour.tour.model.vo.RepeatInfo;
 
 public class RepeatHotelApi {
@@ -31,8 +32,8 @@ public class RepeatHotelApi {
 		RepeatHotelApi.callCurrentRepeatHotelByXML();
 	}
 
-	public static List<RepeatHotel> callCurrentRepeatHotelByXML() {
-		List<RepeatHotel> list = new ArrayList<>();
+	public static List<RepeatHotelParsing> callCurrentRepeatHotelByXML() {
+		List<RepeatHotelParsing> list = new ArrayList<>();
 		String serviceKey = null;
 		// 1일차
 //		for (int j = 1; j < 20; j++) {
@@ -301,7 +302,7 @@ public class RepeatHotelApi {
 									String roomImg5 = ((Element) roomimg5List.item(k)).getTextContent();
 									String roomImg5alt = ((Element) roomimg5altList.item(k)).getTextContent();
 
-									RepeatHotel repeatCourse = new RepeatHotel(0, contentId, contentTypeId, roomCode,
+									RepeatHotelParsing repeatCourse = new RepeatHotelParsing(0, contentId, contentTypeId, roomCode,
 											roomTitle, roomSize1, roomCount, roomBaseCount, roomMaxCount,
 											roomOffSeasonMinFee1, roomOffSeasonMinFee2, roomPeakSeasonMinFee1,
 											roomPeakSeasonMinFee2, roomIntro, roomBathFacility, roomBath,

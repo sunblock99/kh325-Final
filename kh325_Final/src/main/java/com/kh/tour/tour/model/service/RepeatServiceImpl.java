@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kh.tour.tour.model.mapper.RepeatMapper;
 import com.kh.tour.tour.model.vo.RepeatCourse;
 import com.kh.tour.tour.model.vo.RepeatHotel;
+import com.kh.tour.tour.model.vo.RepeatHotelParsing;
 import com.kh.tour.tour.model.vo.RepeatInfo;
+import com.kh.tour.tour.model.vo.RepeatInfoParsing;
 
 @Service
 public class RepeatServiceImpl implements RepeatService{
@@ -17,7 +19,7 @@ public class RepeatServiceImpl implements RepeatService{
 	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int saveRepeatInfo (RepeatInfo repeatInfo) {
+	public int saveRepeatInfo (RepeatInfoParsing repeatInfo) {
 		return repeatMapper.insertRepeatInfo(repeatInfo);
 	}
 	
@@ -29,7 +31,7 @@ public class RepeatServiceImpl implements RepeatService{
 	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int saveRepeatHotel (RepeatHotel repeatHotel) {
+	public int saveRepeatHotel (RepeatHotelParsing repeatHotel) {
 		return repeatMapper.insertRepeatHotel(repeatHotel);
 	}
 

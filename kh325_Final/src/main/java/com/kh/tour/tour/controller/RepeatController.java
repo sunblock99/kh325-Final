@@ -13,7 +13,9 @@ import com.kh.tour.tour.api.RepeatInfoApi;
 import com.kh.tour.tour.model.service.RepeatService;
 import com.kh.tour.tour.model.vo.RepeatCourse;
 import com.kh.tour.tour.model.vo.RepeatHotel;
+import com.kh.tour.tour.model.vo.RepeatHotelParsing;
 import com.kh.tour.tour.model.vo.RepeatInfo;
+import com.kh.tour.tour.model.vo.RepeatInfoParsing;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,12 +32,12 @@ public class RepeatController {
 		int result = 0;
 		
 		while (true) {
-			List<RepeatInfo> repeatInfoList = RepeatInfoApi.callCurrentRepeatInfoByXML();
+			List<RepeatInfoParsing> repeatInfoList = RepeatInfoApi.callCurrentRepeatInfoByXML();
 			if (repeatInfoList == null || repeatInfoList.isEmpty()) {
 				continue;
 			}
 			
-			for (RepeatInfo repeatInfo : repeatInfoList) {
+			for (RepeatInfoParsing repeatInfo : repeatInfoList) {
 				result = repeatService.saveRepeatInfo(repeatInfo);
 			}
 			
@@ -78,12 +80,12 @@ public class RepeatController {
 		int result = 0;
 		
 		while(true) {
-			List<RepeatHotel> repeatHotelList = RepeatHotelApi.callCurrentRepeatHotelByXML();
+			List<RepeatHotelParsing> repeatHotelList = RepeatHotelApi.callCurrentRepeatHotelByXML();
 			if (repeatHotelList == null || repeatHotelList.isEmpty()) {
 				continue;
 			}
 			
-			for (RepeatHotel repeatHotel : repeatHotelList) {
+			for (RepeatHotelParsing repeatHotel : repeatHotelList) {
 				result = repeatService.saveRepeatHotel(repeatHotel);
 			}
 			

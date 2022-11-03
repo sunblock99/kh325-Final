@@ -15,6 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.kh.tour.tour.model.vo.RepeatInfo;
+import com.kh.tour.tour.model.vo.RepeatInfoParsing;
 
 public class RepeatInfoApi {
 
@@ -29,8 +30,8 @@ public class RepeatInfoApi {
 		RepeatInfoApi.callCurrentRepeatInfoByXML();
 	}
 
-	public static List<RepeatInfo> callCurrentRepeatInfoByXML() {
-		List<RepeatInfo> list = new ArrayList<>();
+	public static List<RepeatInfoParsing> callCurrentRepeatInfoByXML() {
+		List<RepeatInfoParsing> list = new ArrayList<>();
 		String serviceKey = null;
 
 		// 1일차
@@ -226,7 +227,7 @@ public class RepeatInfoApi {
 								String infoName = ((Element) infoNameList.item(k)).getTextContent();
 								String infoText = ((Element) infoTextList.item(k)).getTextContent();
 								
-							RepeatInfo repeatInfo = new RepeatInfo(0, contentId, contentTypeId, serialNum, fldgubun, infoName, infoText);
+								RepeatInfoParsing repeatInfo = new RepeatInfoParsing(0, contentId, contentTypeId, serialNum, fldgubun, infoName, infoText);
 							list.add(repeatInfo);
 //							System.out.println(list.toString());
 						}
