@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.TotalTourMapper">
+	<!-- 1. 지역코드 테이블 -->
+	<resultMap type="AreaCode" id="AreaCodeListResultMap">
+		<id property="areaCodeSeq" column="AREACODE_SEQ" />
+		<result property="areaCode" column="AREACODE" />
+		<result property="areaName" column="AREANAME" />
+		<result property="sigunguCode" column="SIGUNGUCODE" />
+		<result property="detailAreaName" column="DETAILAREANAME" />
+	</resultMap>
+
+	<!-- 2. 카테코리 테이블 -->
+	<resultMap type="Category" id="CategoryCodeListResultMap">
+		<id property="categoryCodeSeq" column="CATEGORY_SEQ" />
+		<result property="cat1" column="CAT1" />
+		<result property="cat1Name" column="CAT1NAME" />
+		<result property="cat2" column="CAT2" />
+		<result property="cat2Name" column="CAT2NAME" />
+	</resultMap>
+
+	<!-- 3. 관광지 소개정보 -->
+	<resultMap type="DetailTourist" id="detailTouristListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="heritage1" column="HERITAGE1" />
+		<result property="heritage2" column="HERITAGE2" />
+		<result property="heritage3" column="HERITAGE3" />
+		<result property="infoCenter" column="INFOCENTER" />
+		<result property="openDate" column="OPENDATE" />
+		<result property="restDate" column="RESTDATE" />
+		<result property="expGuide" column="EXPGUIDE" />
+		<result property="expAgeRange" column="EXPAGERANGE" />
+		<result property="accomCount" column="ACCOMCOUNT" />
+		<result property="useSeason" column="USESEASON" />
+		<result property="useTime" column="USETIME" />
+		<result property="parking" column="PARKING" />
+		<result property="chkBabyCarriage" column="CHKBABYCARRIAGE" />
+		<result property="chkCreditCard" column="CHKCREDITCARD" />
+		<result property="chkPet" column="CHKPET" />
+	</resultMap>
+
+	<!-- 4.문화시설 소개정보 테이블 -->
+	<resultMap type="DetailCultural"
+		id="detailCulturalListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="culScale" column="CUL_SCALE" />
+		<result property="useFee" column="USEFEE" />
+		<result property="discountInfo" column="DISCOUNTINFO" />
+		<result property="spendTime" column="SPENDTIME" />
+		<result property="parkingFee" column="PARKINGFEE" />
+		<result property="infoCenterCulture" column="INFOCENTERCULTURE" />
+		<result property="accomCountCulture" column="ACCOMCOUNTCULTURE" />
+		<result property="useTimeCulture" column="USETIMECULTURE" />
+		<result property="restDateCulture" column="RESTDATECULTURE" />
+		<result property="parkingCulture" column="PARKINGCULTURE" />
+		<result property="chkBabyCarriageCulture"
+			column="CHKBABYCARRIAGECULTURE" />
+		<result property="chkPetCulture" column="CHKPETCULTURE" />
+		<result property="chkCreditCardCulture"
+			column="CHKCREDITCARDCULTURE" />
+	</resultMap>
+
+	<!-- 5. 행사축제정보 소개정보 테이블 -->
+	<resultMap type="DetailEvent" id="detailEventListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="sponsor1" column="SPONSOR1" />
+		<result property="sponsor1Tel" column="SPONSOR1TEL" />
+		<result property="sponsor2" column="SPONSOR2" />
+		<result property="sponsor2Tel" column="SPONSOR2TEL" />
+		<result property="eventEndDate" column="EVENTENDDATE" />
+		<result property="playTime" column="PLAYTIME" />
+		<result property="eventPlace" column="EVENTPLACE" />
+		<result property="eventHomePage" column="EVENTHOMEPAGE" />
+		<result property="ageLimit" column="AGELIMIT" />
+		<result property="bookingPlace" column="BOOKINGPLACE" />
+		<result property="placeInfo" column="PLACEINFO" />
+		<result property="subEvent" column="SUBEVENT" />
+		<result property="evProgram" column="EV_PROGRAM" />
+		<result property="eventStartDate" column="EVENTSTARTDATE" />
+		<result property="useTimeFestival" column="USETIMEFESTIVAL" />
+		<result property="discountInfoFestival"
+			column="DISCOUNTINFOFESTIVAL" />
+		<result property="spendTimeFestival" column="SPENDTIMEFESTIVAL" />
+		<result property="festivalGrade" column="FESTIVALGRADE" />
+	</resultMap>
+
+	<!-- 6. 레포츠 소개정보 테이블 -->
+	<resultMap type="DetailSports" id="detailSportsListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="accomcountLeports" column="ACCOMCOUNTLEPORTS" />
+		<result property="chkbabycarriageLeports"
+			column="CHKBABYCARRIAGELEPORTS" />
+		<result property="chkcreditcardLeports"
+			column="CHKCREDITCARDLEPORTS" />
+		<result property="chkpetLeports" column="CHKPETLEPORTS" />
+		<result property="expagerangeLeports"
+			column="EXPAGERANGELEPORTS" />
+		<result property="infocenterLeports" column="INFOCENTERLEPORTS" />
+		<result property="openPeriod" column="OPENPERIOD" />
+		<result property="parkingfeeLeports" column="PARKINGFEELEPORTS" />
+		<result property="parkingLeports" column="PARKINGLEPORTS" />
+		<result property="reservation" column="RESERVATION" />
+		<result property="restdateLeports" column="RESTDATELEPORTS" />
+		<result property="scaleLeports" column="SCALELEPORTS" />
+		<result property="usefeeLeports" column="USEFEELEPORTS" />
+		<result property="usetimeLeports" column="USETIMELEPORTS" />
+	</resultMap>
+
+	<!-- 7. 쇼핑 소개정보 테이블 -->
+	<resultMap type="DetailShopping"
+		id="detailShoppingListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="chkbabyCarriage" column="CHKBABYCARRIAGE" />
+		<result property="chkcreditCard" column="CHKCREDITCARD" />
+		<result property="chkpetShopping" column="CHKPETSHOPPING" />
+		<result property="cultureCenter" column="CULTURECENTER" />
+		<result property="fairDay" column="FAIRDAY" />
+		<result property="infocenterShopping"
+			column="INFOCENTERSHOPPING" />
+		<result property="opendateShopping" column="OPENDATESHOPPING" />
+		<result property="openTime" column="OPENTIME" />
+		<result property="parkingShopping" column="PARKINGSHOPPING" />
+		<result property="restdateShopping" column="RESTDATESHOPPING" />
+		<result property="restroom" column="RESTROOM" />
+		<result property="saleItem" column="SALEITEM" />
+		<result property="saleItemcost" column="SALEITEMCOST" />
+		<result property="scaleShopping" column="SCALESHOPPING" />
+		<result property="shopGuide" column="SHOPGUIDE" />
+	</resultMap>
+
+	<!-- 8.음식점 소개정보 테이블 -->
+	<resultMap type="DetailRestaurant"
+		id="detailRestaurantListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="chkcreditcardFood" column="CHKCREDITCARDFOOD" />
+		<result property="discountinfoFood" column="DISCOUNTINFOFOOD" />
+		<result property="firstMenu" column="FIRSTMENU" />
+		<result property="infocenterFood" column="INFOCENTERFOOD" />
+		<result property="kidsFacility" column="KIDSFACILITY" />
+		<result property="opendateFood" column="OPENDATEFOOD" />
+		<result property="opentimeFood" column="OPENTIMEFOOD" />
+		<result property="packing" column="PACKING" />
+		<result property="parkingFood" column="PARKINGFOOD" />
+		<result property="reservationFood" column="RESERVATIONFOOD" />
+		<result property="restdateFood" column="RESTDATEFOOD" />
+		<result property="scaleFood" column="SCALEFOOD" />
+		<result property="seat" column="SEAT" />
+		<result property="smoking" column="SMOKING" />
+		<result property="treatMenu" column="TREATMENU" />
+		<result property="lcnsNo" column="LCNSNO" />
+	</resultMap>
+
+	<!-- 9.숙박 소개정보 테이블 -->
+	<resultMap type="DetailHotel" id="detailHotelListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="accomCountLodging" column="ACCOMCOUNTLODGING" />
+		<result property="benikia" column="BENIKIA" />
+		<result property="checkInTime" column="CHECKINTIME" />
+		<result property="checkOutTime" column="CHECKOUTTIME" />
+		<result property="chkCooking" column="CHKCOOKING" />
+		<result property="foodPlace" column="FOODPLACE" />
+		<result property="goodStay" column="GOODSTAY" />
+		<result property="hanok" column="HANOK" />
+		<result property="infoCenterLodging" column="INFOCENTERLODGING" />
+		<result property="parkingLodging" column="PARKINGLODGING" />
+		<result property="pickUp" column="PICKUP" />
+		<result property="roomCount" column="ROOMCOUNT" />
+		<result property="reservationLodging"
+			column="RESERVATIONLODGING" />
+		<result property="reservationUrl" column="RESERVATIONURL" />
+		<result property="roomType" column="ROOMTYPE" />
+		<result property="scaleLodging" column="SCALELODGING" />
+		<result property="subFacility" column="SUBFACILITY" />
+		<result property="barbecue" column="BARBECUE" />
+		<result property="beauty" column="BEAUTY" />
+		<result property="beverage" column="BEVERAGE" />
+		<result property="bicycle" column="BICYCLE" />
+		<result property="campfire" column="CAMPFIRE" />
+		<result property="fitness" column="FITNESS" />
+		<result property="karaoke" column="KARAOKE" />
+		<result property="publicBath" column="PUBLICBATH" />
+		<result property="publicPc" column="PUBLICPC" />
+		<result property="sauna" column="SAUNA" />
+		<result property="seminar" column="SEMINAR" />
+		<result property="sports" column="SPORTS" />
+		<result property="refundRegulation" column="REFUNDREGULATION" />
+	</resultMap>
+
+	<!-- 10. 여행코스 소개정보 테이블 -->
+	<resultMap type="DetailCourse" id="detailCourseListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="distance" column="DISTANCE" />
+		<result property="infocenterTourcourse"
+			column="INFOCENTERTOURCOURSE" />
+		<result property="schedule" column="SCHEDULE" />
+		<result property="takeTime" column="TAKETIME" />
+		<result property="theme" column="THEME" />
+	</resultMap>
+
+	<!-- 11. 투어이미지 테이블 -->
+	<resultMap type="TourImage" id="tourImageListResultMap">
+		<id property="imageDetailNo" column="IMAGE_DETAIL_NO" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="originImgUrl" column="ORIGINIMGURL" />
+		<result property="smallImageUrl" column="SMALLIMAGEURL" />
+	</resultMap>
+
+	<!-- 12. 무장애여행 테이블 -->
+	<resultMap type="TourFree" id="tourFreeListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="parking" column="PARKING" />
+		<result property="route" column="ROUTE" />
+		<result property="publicTransport" column="PUBLICTRANSPORT" />
+		<result property="ticketOffice" column="TICKETOFFICE" />
+		<result property="promotion" column="PROMOTION" />
+		<result property="wheelchair" column="WHEELCHAIR" />
+		<result property="elevator" column="ELEVATOR" />
+		<result property="restroom" column="RESTROOM" />
+		<result property="auditorium" column="AUDITORIUM" />
+		<result property="room" column="ROOM" />
+		<result property="handicapEtc" column="HANDICAPETC" />
+		<result property="braileBlock" column="BRAILEBLOCK" />
+		<result property="helpDog" column="HELPDOG" />
+		<result property="guideHuman" column="GUIDEHUMAN" />
+		<result property="audioGuide" column="AUDIOGUIDE" />
+		<result property="bigPrint" column="BIGPRINT" />
+		<result property="brailePromotion" column="BRAILEPROMOTION" />
+		<result property="guideSystem" column="GUIDESYSTEM" />
+		<result property="blindHandicapEtc" column="BLINDHANDICAPETC" />
+		<result property="signGuide" column="SIGNGUIDE" />
+		<result property="videoGuide" column="VIDEOGUIDE" />
+		<result property="hearingRoom" column="HEARINGROOM" />
+		<result property="hearingHandicapEtc"
+			column="HEARINGHANDICAPETC" />
+		<result property="stroller" column="STROLLER" />
+		<result property="lactationRoom" column="LACTATIONROOM" />
+		<result property="babySpareChair" column="BABYSPARECHAIR" />
+		<result property="infantsFamilyEtc" column="INFANTSFAMILYETC" />
+	</resultMap>
+
+	<!-- 13.반복정보 통합 테이블 -->
+	<resultMap type="RepeatInfo" id="repeatInfoListResultMap">
+		<id property="reSeq" column="RE_SEQ" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="serialNum" column="SERIALNUM" />
+		<result property="fldgubun" column="FLDGUBUN" />
+		<result property="infoName" column="INFONAME" />
+		<result property="infoText" column="INFOTEXT" />
+		<collection property= "detailTouristTable" resultMap ="detailTouristListResultMap"/> <!-- 1. DetailTourist 객체 삽입 -->
+		<collection property= "detailCulturalTable" resultMap ="detailCulturalListResultMap"/> <!-- 2. DetailCultural 객체 삽입 -->
+		<collection property= "detailEventTable" resultMap ="detailEventListResultMap"/> <!-- 3. DetailEvent 객체 삽입 -->
+		<collection property= "detailSportsTable" resultMap ="detailSportsListResultMap"/> <!-- 4.DetailSports 객체 삽입 -->
+		<collection property= "detailShoppingTable" resultMap ="detailShoppingListResultMap"/> <!-- 5.DetailShopping 객체 삽입 -->
+		<collection property= "detailRestaurantTable" resultMap ="detailRestaurantListResultMap"/> <!-- 6.DetailRestaurant 객체 삽입 -->
+	</resultMap>
+
+	<!-- 14.반복정보_여행코스 테이블 -->
+	<resultMap type="RepeatCourse" id="repeatCourseListResultMap">
+		<id property="courseDetailNo" column="COURSE_DETAIL_NO" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="subNum" column="SUBNUM" />
+		<result property="subcontentId" column="SUBCONTENTID" />
+		<result property="subName" column="SUBNAME" />
+		<result property="subdetailOverview" column="SUBDETAILOVERVIEW" />
+		<result property="subdetailImg" column="SUBDETAILIMG" />
+		<result property="subdetailAlt" column="SUBDETAILALT" />
+		<collection property= "detailCourseTable" resultMap ="detailCourseListResultMap"/> <!-- DetailCourse 객체 삽입 -->
+	</resultMap>
+
+	<!-- 15.반복정보_숙박테이블 -->
+	<resultMap type="RepeatHotel" id="repeatHotelListResultMap">
+		<id property="accommoDetailNo" column="ACCOMMO_DETAIL_NO" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="roomCode" column="ROOMCODE" />
+		<result property="roomTitle" column="ROOMTITLE" />
+		<result property="roomSize1" column="ROOMSIZE1" />
+		<result property="roomCount" column="ROOMCOUNT" />
+		<result property="roomBaseCount" column="ROOMBASECOUNT" />
+		<result property="roomMaxCount" column="ROOMMAXCOUNT" />
+		<result property="roomOffSeasonMinFee1"
+			column="ROOMOFFSEASONMINFEE1" />
+		<result property="roomOffSeasonMinFee2"
+			column="ROOMOFFSEASONMINFEE2" />
+		<result property="roomPeakSeasonMinFee1"
+			column="ROOMPEAKSEASONMINFEE1" />
+		<result property="roomPeakSeasonMinFee2"
+			column="ROOMPEAKSEASONMINFEE2" />
+		<result property="roomIntro" column="ROOMINTRO" />
+		<result property="roomBathFacility" column="ROOMBATHFACILITY" />
+		<result property="roomBath" column="ROOMBATH" />
+		<result property="roomHomeTheater" column="ROOMHOMETHEATER" />
+		<result property="roomAircondition" column="ROOMAIRCONDITION" />
+		<result property="roomTv" column="ROOMTV" />
+		<result property="roomPc" column="ROOMPC" />
+		<result property="roomCable" column="ROOMCABLE" />
+		<result property="roomInternet" column="ROOMINTERNET" />
+		<result property="roomRefrigerator" column="ROOMREFRIGERATOR" />
+		<result property="roomToiletries" column="ROOMTOILETRIES" />
+		<result property="roomSofa" column="ROOMSOFA" />
+		<result property="roomCook" column="ROOMCOOK" />
+		<result property="roomTable" column="ROOMTABLE" />
+		<result property="roomHairdryer" column="ROOMHAIRDRYER" />
+		<result property="roomSize2" column="ROOMSIZE2" />
+		<result property="roomImg1" column="ROOMIMG1" />
+		<result property="roomImg1alt" column="ROOMIMG1ALT" />
+		<result property="roomImg2" column="ROOMIMG2" />
+		<result property="roomImg2alt" column="ROOMIMG2ALT" />
+		<result property="roomImg3" column="ROOMIMG3" />
+		<result property="roomImg3alt" column="ROOMIMG3ALT" />
+		<result property="roomImg4" column="ROOMIMG4" />
+		<result property="roomImg4alt" column="ROOMIMG4ALT" />
+		<result property="roomImg5" column="ROOMIMG5" />
+		<result property="roomImg5alt" column="ROOMIMG5ALT" />
+		<collection property= "detailHotelTable" resultMap ="detailHotelListResultMap"/> <!-- DetailHotel 객체 삽입 -->
+	</resultMap>
+
+	<!-- 16. 관광지 공통정보 테이블 -->
+	<resultMap type="Tour" id="tourInfoListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="title" column="TITLE" />
+		<result property="tel" column="TEL" />
+		<result property="telName" column="TELNAME" />
+		<result property="homePage" column="HOMEPAGE" />
+		<result property="bookTour" column="BOOKTOUR" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="firstImage2" column="FIRSTIMAGE2" />
+		<result property="areaCode" column="AREACODE" />
+		<result property="sigunguCode" column="SIGUNGUCODE" />
+		<result property="cat1" column="CAT1" />
+		<result property="cat2" column="CAT2" />
+		<result property="cat3" column="CAT3" />
+		<result property="addr1" column="ADDR1" />
+		<result property="addr2" column="ADDR2" />
+		<result property="zipCode" column="ZIPCODE" />
+		<result property="mapX" column="MAPX" />
+		<result property="mapY" column="MAPY" />
+		<result property="mLevel" column="MLEVEL" />
+		<result property="overview" column="OVERVIEW" />
+		<result property="avgStar" column="AVGSTAR" />
+		<collection property= "areaCodeTable" resultMap ="AreaCodeListResultMap"/> <!-- AreaCode 객체 삽입 -->
+		<collection property= "categoryTable" resultMap ="CategoryCodeListResultMap"/> <!-- Category 객체 삽입 -->
+		<collection property= "detailEventTable" resultMap ="detailEventListResultMap"/> <!-- DetailEvent 객체 삽입 -->
+		<collection property= "tourImageTable" resultMap ="tourImageListResultMap"/> <!-- DetailEvent 객체 삽입 -->
+		<collection property= "tourFreeTable" resultMap ="tourFreeListResultMap"/> <!-- TourFree 객체 삽입 -->
+		<collection property= "replyTable" resultMap ="replyResultMap"/> <!-- Reply 객체 삽입 -->
+	</resultMap>
+	
+	<!-- 관광지 체크리스트 뿌릴때 쓰일 resultMap -->
+	<resultMap type="TourCheckList" id="TourCheckListResultMap">
+		<result property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="title" column="TITLE" />
+		<result property="addr1" column="ADDR1" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="firstImage2" column="FIRSTIMAGE2" />
+		<result property="overview" column="SOVERVIEW" />
+		<result property="cat1" column="CAT1" />
+		<result property="cat1Name" column="CAT1NAME" />
+		<result property="cat2" column="CAT2" />
+		<result property="cat2Name" column="CAT2NAME" />
+		<result property="eventStartDate" column="EVENTSTARTDATE" />
+		<result property="eventEndDate" column="EVENTENDDATE" />
+		<result property="avgStar" column="AVGSTAR" />
+		<collection property= "areaCodeTable" resultMap ="AreaCodeListResultMap"/> <!-- AreaCode 객체 삽입 -->
+		<collection property= "categoryTable" resultMap ="CategoryCodeListResultMap"/> <!-- Category 객체 삽입 -->
+		<collection property= "detailEventTable" resultMap ="detailEventListResultMap"/> <!-- DetailEvent 객체 삽입 -->
+		<collection property= "tourImageTable" resultMap ="tourImageListResultMap"/> <!-- DetailEvent 객체 삽입 -->
+		<collection property= "tourFreeTable" resultMap ="tourFreeListResultMap"/> <!-- TourFree 객체 삽입 -->
+		<collection property= "replyTable" resultMap ="replyResultMap"/> <!-- Reply 객체 삽입 -->
+	</resultMap>
+
+	<resultMap type="Reply" id="replyResultMap">
+		<id property="review_No" column="REVIEW_NO" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="userNo" column="UNO" />
+		<result property="star" column="STAR" />
+		<result property="content" column="CONTENT" />
+	</resultMap>
+	
+<!-- 	찜테이블 -->
+	<resultMap type="TourLike" id="tourLikeResultMap">
+		<id property="like_No" column="LIKE_NO" />
+		<result property="userNo" column="UNO" />
+		<result property="contentId" column="CONTENTID" />
+	</resultMap>
+	
+<!-- 	찜갯수 높은순대로 가져온 행사목록 -->
+	<resultMap type="EventHighLike" id="eventHighLikeResultMap">
+		<result property="title" column="TITLE" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="eventLike" column="EVENTLIKE" />
+	</resultMap>
+	
+	
+	<!-- 1. 체크박스 선택값으로 행사 리스트 조회하기 -->
+	<select id="selectEventList" resultMap="tourInfoListResultMap"  parameterType="map">
+		SELECT  B.*, 
+				DE.*
+		FROM BASIC_TOUR_INFO B
+		INNER JOIN DETAIL_EVENT DE
+		ON (B.CONTENTID = DE.CONTENTID)
+		WHERE 1=1
+		<if test="eventKeyword != null">
+			AND B.TITLE LIKE '%'||#{eventKeyword}||'%' <!-- 검색어  -->
+		</if>
+		<if test="eventStartDate != null">
+			AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate} <!-- 월별 -->
+		</if>
+		<if test="neighbourhood != null">
+			AND B.AREACODE IN  <!-- 지역 -->
+				<foreach collection="neighbourhood" item="item" index="index" separator="," open="(" close=")">
+	              #{item}
+	            </foreach>
+		</if>
+		ORDER BY DE.EVENTSTARTDATE ASC
+	</select>
+
+	<!-- 2. 체크박스 선택값으로 행사 리스트 갯수 세기 -->
+	<select id="selectEventListCount" resultType="int"  parameterType="map">
+			SELECT COUNT(*) FROM (
+				SELECT  B.*, 
+						DE.*
+				FROM BASIC_TOUR_INFO B
+				INNER JOIN DETAIL_EVENT DE
+				ON (B.CONTENTID = DE.CONTENTID)
+				WHERE 1=1
+				<if test="eventKeyword != null">
+					AND B.TITLE LIKE '%'||#{eventKeyword}||'%' <!-- 검색어  -->
+				</if>
+				<if test="eventStartDate != null">
+					AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate} <!-- 월별 -->
+				</if>
+				<if test="neighbourhood != null">
+					AND B.AREACODE IN  <!-- 지역 -->
+						<foreach collection="neighbourhood" item="item" index="index" separator="," open="(" close=")">
+			              #{item}
+			            </foreach>
+				</if>
+				ORDER BY DE.EVENTSTARTDATE ASC)
+	</select>
+	
+	<!-- 3. contentId로 공통(main) + 투어이미지 + 무장애 상세내용 조회하기 -->
+	<select id="selectByContentId" resultMap="tourInfoListResultMap"  parameterType="int">
+		SELECT B.*, 
+			   TI.*,
+			   TF.*
+		FROM BASIC_TOUR_INFO B
+		
+		LEFT OUTER JOIN TOUR_IMAGE TI <!-- 투어이미지 -->
+		ON (B.CONTENTID = TI.CONTENTID)
+		
+		LEFT OUTER JOIN TOUR_FREE TF
+		ON (B.CONTENTID = TF.CONTENTID) <!-- 무장애 -->
+		
+		WHERE
+		B.CONTENTID = #{contentId}
+	</select>
+	
+	
+		<!-- 4. contentId로 (관광지,문화시설,행사축제,레포츠,쇼핑,음식점) 소개+반복 조회하기  -->
+		<select id="selectDetailByContentId" resultMap="repeatInfoListResultMap"  parameterType="int">
+			SELECT  RI.*,
+					DT.*,
+					DC.*,
+					DE.*,
+					DS.*,
+					DSH.*,
+					DRE.*
+			FROM REPEAT_INFO RI 
+			LEFT OUTER JOIN DETAIL_TOURIST DT <!-- 관광지  -->
+			ON (DT.CONTENTID = RI.CONTENTID)
+			
+			LEFT OUTER JOIN  DETAIL_CULTURAL DC  <!-- 문화시설  -->
+			ON (DC.CONTENTID = RI.CONTENTID)
+					
+			LEFT OUTER JOIN  DETAIL_EVENT DE	<!-- 행사축제  -->
+			ON (DE.CONTENTID = RI.CONTENTID)
+					
+			LEFT OUTER JOIN DETAIL_SPORTS DS	<!-- 레포츠  -->
+			ON (DS.CONTENTID = RI.CONTENTID)
+					
+			LEFT OUTER JOIN  DETAIL_SHOPPING DSH	<!-- 쇼핑  -->
+			ON (DSH.CONTENTID = RI.CONTENTID)
+			
+			LEFT OUTER JOIN  DETAIL_RESTAURANT DRE 	<!-- 음식점  -->
+			ON (DRE.CONTENTID = RI.CONTENTID)
+					
+			WHERE RI.CONTENTID = #{contentId}
+		</select>
+	
+		
+	
+		<!-- 5. 관광지 체크박스로 조회된 관광지 리스트 갯수-->
+		<select id="selectTourListCount" resultType="int"  parameterType="map">
+					SELECT COUNT(*) FROM
+					(SELECT B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.ADDR1,B.FIRSTIMAGE, B.FIRSTIMAGE2, B.OVERVIEW,
+					        A.AREACODE, A.AREANAME,A.SIGUNGUCODE,A.DETAILAREANAME,
+					        C.CAT1,C.CAT1NAME,C.CAT2, C.CAT2NAME, DE.EVENTSTARTDATE, DE.EVENTENDDATE,
+					        NVL(H.AVGSTAR,0) AS AVGSTAR
+					        
+					FROM BASIC_TOUR_INFO B  
+					
+					JOIN AREACODE A ON (B.AREACODE = A.AREACODE AND B.SIGUNGUCODE = A.SIGUNGUCODE)
+					JOIN CATEGORY C ON (B.CAT1 = C.CAT1 AND B.CAT2 = C.CAT2)
+					
+					LEFT OUTER JOIN 
+					(SELECT CONTENTID, ROUND(AVG(STAR)) AS AVGSTAR FROM REVIEW_TOTAL GROUP BY CONTENTID) H
+					ON (B.CONTENTID = H.CONTENTID)
+					
+					LEFT OUTER JOIN DETAIL_EVENT DE 
+					ON (B.CONTENTID = DE.CONTENTID)
+					
+					WHERE 1=1
+					
+					<if test="searchValue != null">
+						AND (B.TITLE LIKE '%'||#{searchValue}||'%'  OR b.ADDR1 LIKE '%'||#{searchValue}||'%')<!-- 검색어 -->
+					</if>
+					<if test="areaCodeList != null">
+						AND B.AREACODE IN  <!-- 지역코드 리스트 -->
+						<foreach collection="areaCodeList" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="tourType != null">
+						AND B.CONTENTTYPEID = #{tourType}  <!-- 투어타입 -->
+					</if>
+					
+					<if test="cat1 != null">
+						AND B.CAT1 = #{cat1} <!-- 투어타입 -->
+					</if>
+					
+					<if test="cat2List != null">
+						AND B.CAT2 IN  <!-- 중분류 리스트 -->
+						<foreach collection="cat2List" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="eventStartDate != null and eventEndDate != null">
+						AND DE.EVENTSTARTDATE &gt; #{eventStartDate} and DE.EVENTENDDATE &lt;
+						#{eventEndDate}
+					</if>
+					
+					<if test="eventStartDate != null">
+						ORDER BY DE.EVENTSTARTDATE ASC, A.AREACODE ASC)
+					</if>
+					
+					<if test="eventStartDate == null ">
+						ORDER BY A.AREACODE ASC)
+					</if>		
+					</select>
+	
+	
+			<!-- 6. 관광지 체크박스로 조회된 관광지 리스트 -->
+			<select id="selectTourList" resultMap="tourInfoListResultMap" parameterType="map">					
+					SELECT B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.ADDR1,B.FIRSTIMAGE, B.FIRSTIMAGE2, B.OVERVIEW,
+					        A.AREACODE, A.AREANAME,A.SIGUNGUCODE,A.DETAILAREANAME,
+					        C.CAT1,C.CAT1NAME,C.CAT2, C.CAT2NAME, DE.EVENTSTARTDATE, DE.EVENTENDDATE,
+					        NVL(H.AVGSTAR,0) AS AVGSTAR
+					        
+					FROM BASIC_TOUR_INFO B  
+					
+					JOIN AREACODE A ON (B.AREACODE = A.AREACODE AND B.SIGUNGUCODE = A.SIGUNGUCODE)
+					JOIN CATEGORY C ON (B.CAT1 = C.CAT1 AND B.CAT2 = C.CAT2)
+					
+					LEFT OUTER JOIN 
+					(SELECT CONTENTID, ROUND(AVG(STAR)) AS AVGSTAR FROM REVIEW_TOTAL GROUP BY CONTENTID) H
+					ON (B.CONTENTID = H.CONTENTID)
+					
+					LEFT OUTER JOIN DETAIL_EVENT DE 
+					ON (B.CONTENTID = DE.CONTENTID)
+					
+					WHERE 1=1
+					
+					<if test="searchValue != null">
+						AND (B.TITLE LIKE '%'||#{searchValue}||'%'  OR b.ADDR1 LIKE '%'||#{searchValue}||'%')<!-- 검색어 -->
+					</if>
+					<if test="areaCodeList != null">
+						AND B.AREACODE IN  <!-- 지역코드 리스트 -->
+						<foreach collection="areaCodeList" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="tourType != null">
+						AND B.CONTENTTYPEID = #{tourType} <!-- 투어타입 -->
+					</if>
+					
+					<if test="cat1 != null">
+						AND B.CAT1 = #{cat1} <!-- 투어타입 -->
+					</if>
+					
+					<if test="cat2List != null">
+						AND B.CAT2 IN  <!-- 중분류 리스트 -->
+						<foreach collection="cat2List" item="item" index="index"
+							separator="," open="(" close=")">
+							#{item}
+						</foreach>
+					</if>
+					
+					<if test="eventStartDate != null and eventEndDate != null">
+						AND DE.EVENTSTARTDATE &gt; #{eventStartDate} and DE.EVENTENDDATE &lt;
+						#{eventEndDate}
+					</if>
+					
+					<if test="eventStartDate != null">
+						ORDER BY DE.EVENTSTARTDATE ASC, A.AREACODE ASC
+					</if>
+					
+					<if test="eventStartDate == null ">
+						ORDER BY A.AREACODE ASC
+					</if>		
+			</select>
+				
+			<!-- 7. 관광지 찜하기 -->
+			<insert id="tourLikeInsert" parameterType="map"  >
+					INSERT INTO TOUR_LIKE (
+						LIKE_NO,
+						UNO,
+						CONTENTID
+						
+					) VALUES (
+						SEQ_LIKE_NO.NEXTVAL,
+						#{userNo},
+						#{contentId}
+					)
+				</insert>
+				
+			<!-- 10 . 관광지 찜 삭제하기 -->	
+			<delete id="tourLikeDelete" parameterType="int">
+				DELETE FROM TOUR_LIKE WHERE UNO = #{userNo} AND CONTENTID = #{contentId}; 
+			</delete>
+				
+			<!-- 9. 찜목록 전체 불러오기 -->
+			<select id="selectTourLikeList" resultMap="tourLikeResultMap"  parameterType="int">
+				SELECT * FROM TOUR_LIKE 
+				WHERE 1=1
+				<if test="userNo != null">
+					AND UNO = #{userNo}
+				</if>
+			</select>
+			
+			<!-- 10. 중분류 불러오기 -->
+			<select id="selectCat1List" resultMap="AreaCodeListResultMap"  parameterType="String">
+				SELECT CAT2 FROM CATEGORY 
+				WHERE 1=1 
+				<if test="cat1 != null">
+					AND CAT1 = #{cat1} GROUP BY CAT2
+				</if>
+			</select>
+			
+				<select id="detailTourist"
+					resultMap="detailTouristListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_TOURIST WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailCourse" resultMap="detailCourseListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_COURSE WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailHotel" resultMap="detailHotelListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_HOTEL WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailCultural"
+					resultMap="detailCulturalListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_CULTURAL WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailEvent" resultMap="detailEventListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_EVENT WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailSports" resultMap="detailSportsListResultMap"
+					parameterType="int">
+					SELECT * FROM DETAIL_SPORTS WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailShopping"
+					resultMap="detailShoppingListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_SHOPPING WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="detailRestaurant"
+					resultMap="detailRestaurantListResultMap" parameterType="int">
+					SELECT * FROM DETAIL_RESTAURANT WHERE CONTENTID = #{contentId}
+				</select>
+			
+				<select id="tourImage" resultMap="tourImageListResultMap"
+					parameterType="int">
+					SELECT * FROM TOUR_IMAGE I
+					JOIN BASIC_TOUR_INFO B ON (B.CONTENTID = I.CONTENTID)
+					WHERE I.CONTENTID = #{contentId}
+				</select>
+				
+				<!-- 캘린더 리스트 -->
+		<select id="calendarList" resultMap="tourInfoListResultMap"  parameterType="map">
+		SELECT  B.*, 
+				DE.*
+		FROM BASIC_TOUR_INFO B
+		INNER JOIN DETAIL_EVENT DE
+		ON (B.CONTENTID = DE.CONTENTID)
+		WHERE 1=1
+		
+		<if test="eventStartDate != null">
+			AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate}
+		</if>
+		
+		ORDER BY DE.EVENTSTARTDATE ASC
+	</select>
+		
+		<select id="getCalendarCount" parameterType="map" resultType="int">
+		SELECT  count(*)
+		FROM BASIC_TOUR_INFO B
+		INNER JOIN DETAIL_EVENT DE
+		ON (B.CONTENTID = DE.CONTENTID)
+		WHERE 1=1
+		<if test="eventStartDate != null">
+			AND SUBSTR(DE.EVENTSTARTDATE, 5, 2) = #{eventStartDate}
+		</if>
+		</select>
+		
+		<select id="getEventHighLike" resultMap="eventHighLikeResultMap">
+			SELECT B.TITLE, B.FIRSTIMAGE, DE.CONTENTID, NVL(H.EVENTLIKE,0) AS EVENTLIKE
+			FROM BASIC_TOUR_INFO B
+			
+			JOIN DETAIL_EVENT DE
+			ON (DE.CONTENTID = B.CONTENTID)
+			
+			LEFT OUTER JOIN 
+			(SELECT COUNT(TI.LIKE_NO) AS EVENTLIKE,TI.CONTENTID
+			FROM TOUR_LIKE TI
+			GROUP BY TI.CONTENTID) H
+			ON (DE.CONTENTID = H.CONTENTID)
+			
+			ORDER BY EVENTLIKE DESC
+		</select>
+						
+				
+
+
+</mapper>

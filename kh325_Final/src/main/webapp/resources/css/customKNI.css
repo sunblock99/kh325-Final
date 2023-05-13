@@ -1,0 +1,1292 @@
+/* your styles go here */
+
+@charset "UTF-8";
+
+/*폰트 적용*/
+
+@font-face {
+    font-family: 'pBlack';
+    font-weight: 900;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-Black.ttf);
+}
+
+.text-pBlack {
+    font-family: 'pBlack';
+}
+
+@font-face {
+    font-family: 'pEb';
+    font-weight: 800;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-ExtraBold.ttf);
+}
+
+.text-pEb {
+    font-family: 'pEb';
+}
+
+@font-face {
+    font-family: 'pB';
+    font-weight: 700;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-Bold.ttf);
+}
+
+.text-pB {
+    font-family: 'pB';
+}
+
+@font-face {
+    font-family: 'pSb';
+    font-weight: 600;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-SemiBold.ttf);
+}
+
+.text-pSb {
+    font-family: 'pSb';
+}
+
+@font-face {
+    font-family: 'pM';
+    font-weight: 500;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-Medium.ttf);
+}
+
+.text-pM {
+    font-family: 'pM';
+}
+
+@font-face {
+    font-family: 'pR';
+    font-weight: 400;
+    font-display: swap;
+    letter-spacing: 1px;
+    src: url(${path}/resources/font/Pretendard-Regular.ttf);
+}
+
+.text-pR {
+    font-family: 'pR';
+}
+
+@font-face {
+    font-family: 'pL';
+    font-weight: 300;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-Light.ttf);
+}
+
+.text-pL {
+    font-family: 'pL';
+}
+
+@font-face {
+    font-family: 'pEl';
+    font-weight: 200;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-ExtraLight.ttf);
+}
+
+.text-pEl {
+    font-family: 'pEl';
+}
+
+@font-face {
+    font-family: 'pThin';
+    font-weight: 100;
+    font-display: swap;
+    src: url(${path}/resources/font/Pretendard-Thin.ttf);
+}
+
+.text-pThin {
+    font-family: 'pThin';
+}
+
+div {
+    font-family: 'pR';
+    letter-spacing: -1px;
+}
+
+
+/*폰트 끝*/
+
+.btn-warning-review {
+	color: #212529;
+	background-color: #ffc107;
+	border-color: #ffc107;
+	font-family: 'pB';
+	letter-spacing:-1px;
+	font-size: 15px;
+  }
+  
+  .btn-warning-review:hover {
+	color: #212529;
+	background-color: #ffca2c;
+	border-color: #ffc720;
+	font-family: 'pB';
+  }
+  
+  .btn-check:focus + .btn-warning-review, .btn-warning-review:focus {
+	color: #212529;
+	background-color: #ffca2c;
+	border-color: #ffc720;
+	box-shadow: 0 0 0 0.25rem rgba(222, 170, 12, 0.5);
+	font-family: 'pB';
+  }
+  
+  .btn-check:checked + .btn-warning-review,
+  .btn-check:active + .btn-warning-review, .btn-warning-review:active, .btn-warning-review.active,
+  .show > .btn-warning-review.dropdown-toggle {
+	color: #212529;
+	background-color: #ffcd39;
+	border-color: #ffc720;
+	font-family: 'pB';
+  }
+  
+  .btn-check:checked + .btn-warning-review:focus,
+  .btn-check:active + .btn-warning-review:focus, .btn-warning-review:active:focus, .btn-warning-review.active:focus,
+  .show > .btn-warning-review.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.25rem rgba(222, 170, 12, 0.5);
+  }
+  
+  .btn-warning-review:disabled, .btn-warning-review.disabled {
+	color: #212529;
+	background-color: #ffc107;
+	border-color: #ffc107;
+	font-family: 'pB';
+  }
+
+/* 일립시스 */
+
+.text-overflow-elip-2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    margin-top: 1px;
+    max-height: 80px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2
+}
+
+.text-overflow-elip-1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    margin-top: 1px;
+    max-height: 80px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1
+}
+
+/* hover */
+
+a.a-orign-text {
+    text-decoration: none;
+    color: initial;
+    letter-spacing: -1 !important;
+}
+
+a{
+	text-decoration: none;
+    color: initial;
+    letter-spacing: -1 !important;
+}
+
+
+/* 헤더 hover 효과 */
+
+a.hvr:hover {
+    color: #FD9F28;
+    background-color: #FAF9F8;
+    text-decoration: none;
+}
+
+.text-uppercase-tour {
+    text-transform: uppercase !important;
+  }
+
+/* ==================================== 헤더 ======================================= */
+
+
+/* 화이트헤더 */
+
+.navbar .nav-link-header {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+
+/* 블랙헤더 */
+
+.navbar .nav-link-header-black {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: black;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+
+/* ==================================== 메인페이지 ======================================= */
+
+
+/* 메인 더보기 호버 */
+
+.a-hover:hover {
+    color: #FD9F28;
+    text-align: left;
+    font-size: 18px;
+}
+
+
+/* 갤러리 시작*/
+
+.grid-wrapper>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-wrapper>div>.img-main-gallery {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
+}
+
+.img-main-gallery {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.grid-wrapper .wide {
+    grid-column: span 2;
+}
+
+.grid-wrapper .tall {
+    grid-row: span 2;
+}
+
+.grid-wrapper .big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+
+/* 갤러리 끝*/
+
+.darker-overlay {
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    z-index: 20;
+}
+.darker-overlay::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: ' ';
+      opacity: .5;
+      background-color: #000;
+}
+
+
+/* 검색창 */
+div.absolute-searchbar {
+    position: relative;
+    width: 101%;
+    padding-top: 5px;
+    bottom: 70px;
+    margin: auto;
+    justify-content: center;
+    z-index: 100;
+    overflow: hidden
+    !important;
+}
+
+.searchbar-shadow {
+    filter: drop-shadow(0 5px 10px rgb(0 0 0 / 50%));
+}
+
+/* 검색창 끝 */
+
+
+/* 나만의 여행코스 */
+
+.mytour-size {
+    width: 450px;
+    height: 450px;
+    background-size: cover;
+}
+
+
+/* 핫플레이스 사진 */
+
+.card-poster {
+    flex-direction: row;
+    align-items: flex-end;
+    color: #fff;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .1);
+    min-height: 350px;
+    min-width: 250px;
+}
+
+
+/* 검정 버튼 */
+
+.btn-black {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #000000;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.525rem 0.75rem;
+    font-size: 1.3rem;
+    border-radius: 0.4rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+/* 소개파트 */
+
+.main-number {
+    position: absolute;
+    top: -40px;
+    left: 0px;
+    right: 40px;
+    width: 3rem;
+    text-align: center;
+    color: #FD9F28;
+    font-size: 90px;
+    font-weight: 700;
+    z-index: 5;
+}
+
+
+/* 비디오 받침 배경 사각형 */
+
+.main-square {
+    background-size: 500px 310px;
+    z-index: -100;
+    background-image: url(${path}/resources/image/mainVideoBack.png);
+    background-repeat: no-repeat;
+    background-position-x: 340px;
+    background-position-y: 100px;
+    overflow: visible;
+}
+
+.video-shadow {
+    filter: drop-shadow(5px 5px 10px rgb(0 0 0 / 50%));
+}
+
+
+/* 행사 일정 */
+
+.date-tile-event {
+    display: flex;
+    width: 6.5rem;
+    height: 6.5rem;
+    text-align: center;
+    color: #fffbef;
+    border-radius: 0.5rem;
+    background: #FD9F28;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* 커뮤니티 카테고리 폰트 */
+
+.community-cate-font {
+    color: #907B65;
+    text-align: left;
+    font-size: 18px;
+    inline-size: 150px;
+}
+
+
+/* 커뮤니티 글제목 폰트 */
+
+.community-title-font {
+    color: #000000;
+    text-align: left;
+    font-size: 18px;
+}
+
+
+/* 커뮤니티 테이블 간격 */
+
+tr.community-borer-size {
+    padding: 3px 3px;
+}
+
+
+/* 커뮤니티 더보기 효과*/
+
+.btn-link-cate {
+    font-family: 'pB';
+    color: rgba(101, 101, 101, 0.751);
+    text-decoration: none;
+    font-weight: initial;
+    letter-spacing: 0px;
+    align-items: center;
+    font-size: 16px !important;
+}
+
+.btn-link-cate-lgfont {
+    font-family: 'pB';
+    color: rgba(101, 101, 101, 0.751);
+    text-decoration: none;
+    font-weight: initial;
+    letter-spacing: 0px;
+    align-items: center;
+    font-size: 20px !important;
+}
+
+.btn-link-cate,
+.btn-link-cate-lgfont:hover {
+    color: #b68302;
+    text-decoration: none;
+    font-family: 'pB' !important;
+}
+
+.todaytour-font {
+    color: rgba(43, 43, 43, 0.657);
+    font-family: 'pB';
+    justify-content: start;
+    justify-items: start;
+    justify-self: start;
+    font-size: 25px;
+}
+
+.todaytour-font-id {
+    color: rgba(43, 43, 43, 0.36);
+    font-family: 'pB';
+    justify-content: flex-end;
+    font-size: 20px;
+}
+
+.todaytour-intro-id {
+    color: rgb(255, 232, 162);
+    font-family: pM;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.text-overflow-elip-3 {
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    margin-top: 1px;
+    max-height: 80px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+
+/* ==================================== 관광상세페이지 ======================================= */
+
+
+/* 관광타입 뱃지 */
+
+.badge-tourinfo-detail {
+    font-family: 'pB';
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    background-color: #113DA9;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem
+}
+
+.badge-foodinfo-detail {
+    font-family: 'pB';
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    background-color: #FF005C;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem
+}
+
+.badge-etcinfo-detail {
+    font-family: 'pB';
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    background-color: #FFCD4A;
+    color: black;
+    text-align: center;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem
+}
+
+.text-sidebar-title {
+    font-family: 'pBlack';
+    color: #113DA9;
+}
+
+.text-sidebar-title-food {
+    font-family: 'pBlack';
+    color: #FF005C;
+}
+
+.text-sidebar-title-event {
+    font-family: 'pBlack';
+    color: #b68302;
+}
+
+
+/* 무장애 아이콘 */
+
+.bg-tourinfo-detail-disabled {
+    background-color: #002e74 !important
+}
+
+
+/* ==================================== 핫플레이스 ======================================= */
+
+
+/* 타이핑 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-hotplace {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.1rem);
+    padding-left: var(--bs-gutter-x, 0.1rem);
+    margin-right: 100px;
+    margin-left: 60px;
+    margin-top: 20px;
+    /* margin-bottom: 20px; */
+}
+
+.container-typing {
+    /* height: 60vh; */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.container-typing .type {
+    font-size: 3rem;
+    padding: 0.5rem;
+    font-weight: bold;
+    /* letter-spacing: 0.1rem; */
+    text-align: left;
+    overflow: hidden;
+}
+
+.container-typing p span.typed-text {
+    font-weight: normal;
+    color: #dd7732;
+}
+
+.container-typing p span.cursor {
+    display: inline-block;
+    background-color: #ccc;
+    margin-left: 0.1rem;
+    width: 3px;
+    animation: blink 1s infinite;
+}
+
+.container-typing p span.cursor.typing {
+    animation: none;
+}
+
+@keyframes blink {
+    0% {
+        background-color: #ccc;
+    }
+    49% {
+        background-color: #ccc;
+    }
+    50% {
+        background-color: transparent;
+    }
+    99% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: #ccc;
+    }
+}
+
+
+/* 선택하기 */
+
+.wrapper-switch {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    margin: 50px auto;
+}
+
+#switch-1 {
+    position: absolute;
+    /* hidden */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#switch-2 {
+    position: absolute;
+    /* hidden */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.switch_label {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 180px;
+    height: 50px;
+    background: rgb(255, 240, 224);
+    border: 2px solid #dd76325e;
+    border-radius: 20px;
+    transition: 0.2s;
+    color: #dd7732;
+}
+
+.switch_label:hover {
+    background: #efefef #dd763237;
+}
+
+
+/* checking style */
+
+#switch-1:checked+.switch_label,
+#switch-2:checked+.switch_label {
+    background: #dd7732;
+    border: 2px solid #dd7732;
+    color: #fff
+}
+
+#switch-1:checked+.switch_label:hover,
+#switch-2:checked+.switch_label:hover {
+    background: #f88538;
+}
+
+
+/* 중간 줄 */
+
+.progress {
+    display: flex;
+    height: 0.01rem;
+    overflow: hidden;
+    font-size: 0.75rem;
+    background-color: #dd76328b;
+    border-radius: 0.4rem;
+}
+
+.progress-ver2 {
+    display: flex;
+    height: 1rem;
+    overflow: visible;
+    font-size: 0.75rem;
+    background-color: #dd7732;
+    border-radius: 0.4rem;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #dd7732;
+    z-index: 100;
+}
+
+.hover-animate {
+    transition: all .2s ease-in-out
+}
+
+.hover-animate:focus,
+.hover-animate:hover {
+    transform: translate3d(0, -10px, 0)
+}
+
+
+/* .gradient-overlay-img::after {
+	opacity: 1;
+	background: radial-gradient(to 50, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.65) 70%);
+  } */
+
+.gradient-overlay-img::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: ' ';
+    opacity: .3;
+    background: rgba(61, 33, 0, 0.668);
+}
+
+
+/* 정보 목록 */
+
+* {
+    box-sizing: border-box;
+}
+
+.swiper-container-hot {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+
+.cards {
+    width: 100%;
+    margin-left: 20vh;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    max-width: 550vh;
+}
+
+.card-list__img {
+    visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 235px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card-list__info-hover {
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+}
+
+.card-list__img-hover {
+    transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 235px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
+}
+
+.card-list__img:hover .card-list_link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 235px;
+    cursor: pointer;
+    z-index: 30;
+}
+
+.card-list {
+    margin-right: 3px;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: #fff;
+    width: 80%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+.card-list:hover {
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.10, 1.10);
+}
+
+
+/* 핫플 제목 */
+
+a.a-hot-title {
+    color: black;
+    /* text-shadow: 1px 1px 5px rgb(122, 122, 122); */
+    text-decoration: none !important;
+}
+
+a:hover.a-hot-title {
+    color: #ffffff;
+    text-decoration: none !important;
+    /* text-shadow: 1px 1px 5px rgb(82, 60, 31); */
+}
+
+
+/* 핫플 지역 */
+
+.a-hot-loc {
+    color: #4a2900;
+    text-decoration: none !important;
+    text-shadow: 2px 0px 10px rgb(255, 255, 255), 0px 3px 20px rgb(255, 255, 255), 0px -3px 20px rgb(138, 132, 120);
+    /* text-shadow: 1px 1px 5px rgb(255, 255, 255) */
+}
+
+
+/* 핫플 in */
+
+span.hot-in {
+    color: #855e2fa8;
+    text-decoration: none !important;
+}
+
+.card-list__info {
+    z-index: 50;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 16px 24px 24px 24px;
+}
+
+.card-list__category {
+    font-family: 'pR', swap;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #dd7732;
+}
+
+.card-list__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'pEb', swap;
+    color: black;
+}
+
+.card-list__by {
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.card-list__author {
+    font-weight: 600;
+    text-decoration: none;
+    color: #dd7732
+}
+
+.card-list__author:hover .card-list__author-hover {
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    text-shadow: rgb(0, 0, 0) 0px 1px 10px;
+}
+
+.card-list:hover .card-list__img-hover {
+    height: 100%;
+    opacity: 0.2;
+}
+
+.card-list:hover .card-list__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card-list:hover .card-list__info-hover {
+    opacity: 0.2;
+}
+
+.card-list:hover .card-list__title-hover {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'pB', swap;
+    color: #fff;
+    text-shadow: rgb(0, 0, 0) 0px 1px 10px;
+}
+
+.card-list:hover .card-list__category-hover {
+    font-family: 'pR', swap;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #FD9F28;
+    text-shadow: rgb(0, 0, 0) 0px 1px 10px;
+}
+
+.card-list__by:hover .card-list__by-hover {
+    font-size: 11px;
+    font-family: 'pR', swap;
+    font-weight: 500;
+    color: #ffd39a;
+}
+
+
+/* ==================================== 페이징 처리 효과 ======================================= */
+
+.page-link-course {
+    position: relative;
+    font-weight: bold;
+    display: block;
+    color: #fca43287;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.page-link-course:hover {
+    z-index: 2;
+    color: #FCA332;
+    text-decoration: none;
+    background-color: #fff0dc;
+    border-color: #ffc273;
+}
+
+.page-link-course:focus {
+    z-index: 3;
+    color: #FCA332;
+    background-color: #fff0dc;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #ffc2734a;
+}
+
+
+/* .page-item-course:not(:first-child) .page-link {
+	  margin-left: -1px;
+	} */
+
+.page-item-course.active .page-link-course {
+    z-index: 3;
+    color: #fff8ee;
+    font-weight: bold;
+    text-shadow: 2px 2px 7px rgb(179, 125, 54);
+    background-color: #FCA332 !important;
+    border-color: #FCA332;
+}
+
+.page-item-course.disabled .page-link-course {
+    color: #FCA332;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #fff0dc;
+}
+
+.page-link-course {
+    padding: 0.375rem 0.75rem;
+}
+
+.page-item-course:first-child .page-link {
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+}
+
+.page-item-course:last-child .page-link {
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+}
+
+
+/* ==================================== 푸터 ======================================= */
+
+footer {
+    font-family: 'pEb';
+    letter-spacing: 0px;
+}
+
+
+/* ==================================================================================*/
+
+.courseList_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    margin-top: 1px;
+    max-height: 80px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    width: 110%;
+    max-width: 110%;
+}
+
+.courseList_title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    margin-top: 1px;
+    max-height: 80px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    width: 110%;
+    max-width: 110%;
+}
+
+.courseName {
+    padding: 0.5em 0.9em;
+    margin-right: 10px;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background: #FD9F28;
+    border-radius: 40px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 100%;
+}
+
+
+/* 지도 목록 (스크롤속) 사진 */
+
+.round {
+    border-radius: 5%;
+}
+
+.picSize {
+    width: 8rem;
+    height: 8rem;
+    line-height: 7rem;
+}
+
+.review2 {
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.width100 {
+    width: 100%;
+}
+
+
+/* 마커 레이아웃 */
+
+.customoverlay {
+    position: relative;
+    bottom: 55px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #ddd;
+    float: left;
+}
+
+.customoverlay:nth-of-type(n) {
+    border: 0;
+    box-shadow: 0px 1px 2px #888;
+}
+
+.customoverlay a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    background: #FD9F28;
+    background: #FD9F28 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+}
+
+.customoverlay .title {
+    display: block;
+    text-align: center;
+    background: #fff;
+    margin-right: 35px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.customoverlay:after {
+    content: '';
+    position: absolute;
+    margin-left: -12px;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 12px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+
+/* 마크 오버레이 */
+
+.wrap {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 288px;
+    height: 132px;
+    margin-left: -144px;
+    text-align: left;
+    overflow: hidden;
+    font-size: 12px;
+    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    line-height: 1.5;
+}
+
+.wrap * {
+    padding: 0;
+    margin: 0;
+}
+
+.wrap .info {
+    width: 286px;
+    height: 120px;
+    border-radius: 5px;
+    border-bottom: 2px solid #ccc;
+    border-right: 1px solid #ccc;
+    overflow: hidden;
+    background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+    border: 0;
+    box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+    padding: 5px 0 0 10px;
+    height: 30px;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #888;
+    width: 17px;
+    height: 17px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+    cursor: pointer;
+}
+
+.info .body {
+    position: relative;
+    overflow: hidden;
+}
+
+.info .desc {
+    position: relative;
+    margin: 13px 0 0 90px;
+    height: 75px;
+}
+
+.desc .ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.desc .jibun {
+    font-size: 11px;
+    color: #888;
+    margin-top: -2px;
+}
+
+.info .img {
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 73px;
+    height: 71px;
+    border: 1px solid #ddd;
+    color: #888;
+    overflow: hidden;
+}
+
+.info:after {
+    content: '';
+    position: absolute;
+    margin-left: -12px;
+    left: 50%;
+    bottom: 0;
+    width: 22px;
+    height: 12px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+    color: #5085BB;
+}
+
+a:hover.heart_pink {
+    color: rgb(245, 21, 58) !important;
+    text-decoration: underline;
+}

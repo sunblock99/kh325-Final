@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.TourImageMapper">
+	<resultMap type="TourImage" id="tourImageListResultMap">
+		<id property="imageDetailNo" column="IMAGE_DETAIL_NO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="originImgUrl" column="ORIGINIMGURL"/>
+		<result property="smallImageUrl" column="SMALLIMAGEURL"/>
+	</resultMap>
+	
+	
+	<insert id="insertTourImageInfo" parameterType="TourImage"
+			useGeneratedKeys="true" keyProperty="imageDetailNo" keyColumn="IMAGE_DETAIL_NO">
+		INSERT INTO TOUR_IMAGE (
+			IMAGE_DETAIL_NO,
+			CONTENTID,
+			ORIGINIMGURL,
+			SMALLIMAGEURL
+		) VALUES (
+			SEQ_IMAGE_DETAIL_NO.NEXTVAL,
+			#{contentId},
+			#{originImgUrl},
+			#{smallImageUrl}
+		)
+	</insert>
+	
+
+</mapper>

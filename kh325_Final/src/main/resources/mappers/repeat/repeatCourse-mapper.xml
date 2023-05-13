@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.RepeatMapper">
+   <resultMap type="RepeatCourse" id="repeatCourseListResultMap">
+   <id property="courseDetailNo" column="COURSE_DETAIL_NO" />
+   <result property="contentId" column="CONTENTID" />
+   <result property="contentTypeId" column="CONTENTTYPEID" />
+   <result property="subNum" column="SUBNUM" />
+   <result property="subcontentId" column="SUBCONTENTID" />
+   <result property="subName" column="SUBNAME" />
+   <result property="subdetailOverview" column="SUBDETAILOVERVIEW" />
+   <result property="subdetailImg" column="SUBDETAILIMG" />
+   <result property="subdetailAlt" column="SUBDETAILALT" />
+</resultMap>
+   
+
+   
+   <insert id="insertRepeatCourse" parameterType="RepeatCourse"
+         useGeneratedKeys="true" keyProperty="courseDetailNo" keyColumn="COURSE_DETAIL_NO">
+      INSERT INTO REPEAT_COURSE (
+         COURSE_DETAIL_NO,    
+         CONTENTID,         
+         CONTENTTYPEID,     
+         SUBNUM,            
+         SUBCONTENTID,      
+         SUBNAME,          
+         SUBDETAILOVERVIEW,
+           SUBDETAILIMG,    
+           SUBDETAILALT    
+      ) VALUES (
+         SEQ_REPEAT_COURSE.NEXTVAL,
+         #{contentId},
+         #{contentTypeId},
+         #{subNum},
+         #{subcontentId},
+         #{subName},
+         #{subdetailOverview},
+         #{subdetailImg},
+         #{subdetailAlt}
+      )
+   </insert>
+   
+
+</mapper>

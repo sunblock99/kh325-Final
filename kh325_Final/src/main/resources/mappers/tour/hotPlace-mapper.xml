@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.HotPlaceMapper">
+	<resultMap type="HotPlace" id="hotPlaceListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="title" column="TITLE" />
+		<result property="addr1" column="ADDR1" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="likeCount" column="LIKE_COUNT" />
+	</resultMap>
+
+	<select id="selectHotPlaceList" parameterType="String" resultMap="hotPlaceListResultMap">
+		SELECT B.TITLE, B.ADDR1, B.CONTENTTYPEID, B.FIRSTIMAGE, test.*
+		FROM
+		(SELECT CONTENTID, COUNT(CONTENTID) AS LIKE_COUNT
+		FROM TOUR_LIKE
+		GROUP BY CONTENTID
+		ORDER BY LIKE_COUNT DESC) test, BASIC_TOUR_INFO B
+		WHERE B.CONTENTID = test.CONTENTID
+		<if test="contentTypeId != null">
+		AND CONTENTTYPEID = #{contentTypeId}
+		</if>
+	</select>
+<!-- 		  <foreach item="contentTypeId" index="index" collection="list" open="(" separator="," close=")"> -->
+<!--         	#{item} -->
+<!--   		  </foreach> -->
+	
+</mapper>

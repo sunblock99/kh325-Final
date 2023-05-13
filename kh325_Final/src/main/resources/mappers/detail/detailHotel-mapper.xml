@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailHotel" id="detailHotelListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="accomCountLodging" column="ACCOMCOUNTLODGING" />
+		<result property="benikia" column="BENIKIA" />
+		<result property="checkInTime" column="CHECKINTIME" />
+		<result property="checkOutTime" column="CHECKOUTTIME" />
+		<result property="chkCooking" column="CHKCOOKING" />
+		<result property="foodPlace" column="FOODPLACE" />
+		<result property="goodStay" column="GOODSTAY" />
+		<result property="hanok" column="HANOK" />
+		<result property="infoCenterLodging" column="INFOCENTERLODGING" />
+		<result property="parkingLodging" column="PARKINGLODGING" />
+		<result property="pickUp" column="PICKUP" />
+		<result property="roomCount" column="ROOMCOUNT" />
+		<result property="reservationLodging" column="RESERVATIONLODGING" />
+		<result property="reservationUrl" column="RESERVATIONURL" />
+		<result property="roomType" column="ROOMTYPE" />
+		<result property="scaleLodging" column="SCALELODGING" />
+		<result property="subFacility" column="SUBFACILITY" />
+		<result property="barbecue" column="BARBECUE" />
+		<result property="beauty" column="BEAUTY" />
+		<result property="beverage" column="BEVERAGE" />
+		<result property="bicycle" column="BICYCLE" />
+		<result property="campfire" column="CAMPFIRE" />
+		<result property="fitness" column="FITNESS" />
+		<result property="karaoke" column="KARAOKE" />
+		<result property="publicBath" column="PUBLICBATH" />
+		<result property="publicPc" column="PUBLICPC" />
+		<result property="sauna" column="SAUNA" />
+		<result property="seminar" column="SEMINAR" />
+		<result property="sports" column="SPORTS" />
+		<result property="refundRegulation" column="REFUNDREGULATION" />
+	</resultMap>
+
+
+	<insert id="insertDetailHotel" parameterType="DetailHotel"
+		useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO
+		DETAIL_HOTEL (
+		CONTENTID,
+		CONTENTTYPEID,
+		ACCOMCOUNTLODGING, 
+		BENIKIA,           
+		CHECKINTIME,       
+		CHECKOUTTIME,      
+		CHKCOOKING,        
+		FOODPLACE,         
+		GOODSTAY,          
+		HANOK,             
+		INFOCENTERLODGING, 
+		PARKINGLODGING,    
+		PICKUP,            
+		ROOMCOUNT,         
+		RESERVATIONLODGING,
+		RESERVATIONURL,    
+		ROOMTYPE,          
+		SCALELODGING,      
+		SUBFACILITY,       
+		BARBECUE,          
+		BEAUTY,            
+		BEVERAGE,          
+		BICYCLE,           
+		CAMPFIRE,          
+		FITNESS,           
+		KARAOKE,           
+		PUBLICBATH,        
+		PUBLICPC,          
+		SAUNA,             
+		SEMINAR,           
+		SPORTS,            
+		REFUNDREGULATION  
+		
+		) VALUES (
+		#{contentId},
+		#{contentTypeId},
+		#{accomCountLodging},
+		#{benikia},
+		#{checkInTime},
+		#{checkOutTime},
+		#{chkCooking},
+		#{foodPlace},
+		#{goodStay},
+		#{hanok},
+		#{infoCenterLodging},
+		#{parkingLodging},
+		#{pickUp},
+		#{roomCount},
+		#{reservationLodging},
+		#{reservationUrl},
+		#{roomType},
+		#{scaleLodging},
+		#{subFacility},
+		#{barbecue},
+		#{beauty},
+		#{beverage},
+		#{bicycle},
+		#{campfire},
+		#{fitness},
+		#{karaoke},
+		#{publicBath},
+		#{publicPc},
+		#{sauna},
+		#{seminar},
+		#{sports},
+		#{refundRegulation}
+		)
+	</insert>
+
+
+</mapper>

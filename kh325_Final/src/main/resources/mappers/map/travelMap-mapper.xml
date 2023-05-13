@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.kh.tour.travelMap.model.mapper.TravelMapMapper" >
+	
+	<resultMap type="TravelMap" id="travelMapListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="contentTypeName" column="CONTENTTYPENAME" />
+		<result property="title" column="TITLE" />
+		<result property="tel" column="TEL" />
+		<result property="homePage" column="HOMEPAGE" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="addr1" column="ADDR1" />
+		<result property="mapX" column="MAPX" />
+		<result property="mapY" column="MAPY" />
+		<result property="overview" column="OVERVIEW" />
+		<result property="star" column="STAR" />
+	</resultMap>
+	
+	<resultMap type="TravelMap" id="CourseMapListDetailResultMap" extends="travelMapListResultMap">
+		<collection property="course" javaType="arrayList" columnPrefix="RC_" resultMap="repeatCourseListResultMap"/>
+	</resultMap>
+	
+	<resultMap type="DetailCourse" id="detailCourseListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="infocenterTourcourse" column="INFOCENTERTOURCOURSE" />
+		<result property="distance" column="DISTANCE" />
+		<result property="schedule" column="SCHEDULE" />
+		<result property="takeTime" column="TAKETIME" />
+		<result property="theme" column="THEME" />
+	</resultMap>
+
+	<resultMap type="RepeatCourse" id="repeatCourseListResultMap">
+		<id property="courseDetailNo" column="COURSE_DETAIL_NO" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="subNum" column="SUBNUM" />
+		<result property="subcontentId" column="SUBCONTENTID" />
+		<result property="subName" column="SUBNAME" />
+		<result property="subdetailImg" column="SUBDETAILIMG" />
+		<result property="subdetailOverview" column="SUBDETAILOVERVIEW" />
+		<result property="subdetailAlt" column="SUBDETAILALT" />
+		<collection property= "detailCourseTable" resultMap ="detailCourseListResultMap"/> 
+	</resultMap>
+
+	<select id="selectTravelMapList"
+		resultMap="travelMapListResultMap" parameterType="int">
+		SELECT T.CONTENTID,
+			 T.CONTENTTYPEID,
+			 C.CONTENTTYPENAME,
+			 T.TITLE,
+			 T.TEL,
+			 T.HOMEPAGE,
+			 T.FIRSTIMAGE,
+			 T.ADDR1,
+			 T.MAPX,
+			 T.MAPY,
+			 T.OVERVIEW,
+			 L.STAR
+		FROM BASIC_TOUR_INFO T
+		JOIN CONTENTTYPELIST C ON(T.CONTENTTYPEID = C.CONTENTTYPEID)
+		full OUTER JOIN REVIEW_TOTAL L ON (T.CONTENTID = L.CONTENTID)
+		
+<!-- 		<if test="contentTypeName != null"> -->
+<!-- 		WHERE C.CONTENTTYPENAME = #{contentTypeName} -->
+<!-- 		</if> -->
+		<if test="contentTypeId != null">
+		WHERE T.CONTENTTYPEID = #{contentTypeId}
+		AND ROWNUM <![CDATA[ < ]]> 100
+		</if>
+	</select>
+	
+	<!-- 컨텐츠타입아이디로 리핏코스리스트 찾기 (보드 리플 참고) -->
+	<select id="selectCourseByNo" parameterType="int" resultMap="CourseMapListDetailResultMap">
+ 		SELECT 
+ 			BTI.CONTENTID, 
+ 			BTI.TITLE, 
+ 			BTI.FIRSTIMAGE, 
+            BTI.OVERVIEW, 
+            DC.SCHEDULE, 
+            DC.THEME, 
+            RC.SUBNUM, 
+            RC.SUBCONTENTID, 
+            RC.SUBNAME, 
+            RC.SUBDETAILOVERVIEW, 
+            RC.SUBDETAILIMG,
+            MAPX.MAPX, 
+            MAPX.MAPY
+        FROM BASIC_TOUR_INFO BTI 
+        LEFT OUTER JOIN  DETAIL_COURSE DC ON (BTI.CONTENTID = DC.CONTENTID)
+        LEFT OUTER JOIN REPEAT_COURSE RC ON (BTI.CONTENTID = RC.CONTENTID)
+        LEFT OUTER JOIN
+        	(SELECT RC.SUBCONTENTID AS SUBID, BTI.MAPX, BTI.MAPY, BTI.AREACODE, BTI.SIGUNGUCODE FROM BASIC_TOUR_INFO BTI  
+        	LEFT OUTER JOIN REPEAT_COURSE RC ON (BTI.CONTENTID = RC.SUBCONTENTID)) MAPX
+        ON (MAPX.SUBID = RC.SUBCONTENTID)
+        WHERE 1=1
+        AND BTI.CONTENTTYPEID = 25
+        AND BTI.CONTENTID = #{contentId}
+        ORDER BY bti.contentid ASC, RC.subnum ASC
+	</select>
+	
+	<!-- 코스 목록 -->
+	<select id="selectCourseMapList" resultMap="travelMapListResultMap">
+		SELECT 
+			B.CONTENTID, 
+			B.CONTENTTYPEID, 
+			B.TITLE, 
+			D.DISTANCE, 
+			D.SCHEDULE, 
+			D.TAKETIME, 
+			B.FIRSTIMAGE ,
+			B.OVERVIEW, 
+			B.MAPX, 
+			B.MAPY
+		FROM BASIC_TOUR_INFO B
+		LEFT JOIN DETAIL_COURSE D ON (B.CONTENTID = D.CONTENTID)
+		where b.CONTENTTYPEID = 25
+		ORDER BY B.CONTENTID ASC
+
+	</select>
+
+</mapper>

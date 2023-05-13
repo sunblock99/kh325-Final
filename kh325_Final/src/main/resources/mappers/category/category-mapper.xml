@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.CategoryMapper">
+	<resultMap type="Category" id="CategoryCodeListResultMap">
+		<id property="categoryCodeSeq" column="CATEGORY_SEQ"/>
+		<result property="cat1" column="CAT1"/>
+		<result property="cat1Name" column="CAT1NAME"/>
+		<result property="cat2" column="CAT2"/>
+		<result property="cat2Name" column="CAT2NAME"/>
+	</resultMap>
+	
+	
+	<insert id="insertCategory" parameterType="Category">
+		INSERT INTO CATEGORY (
+			CATEGORY_SEQ,
+			CAT1,
+			CAT1NAME,
+			CAT2,
+			CAT2NAME
+		) VALUES (
+			CATEGORY_SEQ.NEXTVAL,
+			#{cat1},
+			#{cat1Name},
+			#{cat2},
+			#{cat2Name}
+		)
+	</insert>
+	
+</mapper>

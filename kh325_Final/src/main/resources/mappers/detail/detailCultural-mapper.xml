@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailCultural" id="detailCulturalListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="culScale" column="CUL_SCALE"/>
+		<result property="useFee" column="USEFEE"/>
+		<result property="discountInfo" column="DISCOUNTINFO"/>
+		<result property="spendTime" column="SPENDTIME"/>
+		<result property="parkingFee" column="PARKINGFEE"/>
+		<result property="infoCenterCulture" column="INFOCENTERCULTURE"/>
+		<result property="accomCountCulture" column="ACCOMCOUNTCULTURE"/>
+		<result property="useTimeCulture" column="USETIMECULTURE"/>
+		<result property="restDateCulture" column="RESTDATECULTURE"/>
+		<result property="parkingCulture" column="PARKINGCULTURE"/>
+		<result property="chkBabyCarriageCulture" column="CHKBABYCARRIAGECULTURE"/>
+		<result property="chkPetCulture" column="CHKPETCULTURE"/>
+		<result property="chkCreditCardCulture" column="CHKCREDITCARDCULTURE"/>
+	</resultMap>
+	
+	
+	<insert id="insertDetailCultural" parameterType="DetailCultural"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO DETAIL_CULTURAL (
+			CONTENTID,      
+			CONTENTTYPEID,  
+			CUL_SCALE,              
+			USEFEE,                
+			DISCOUNTINFO,          
+			SPENDTIME,             
+			PARKINGFEE,            
+			INFOCENTERCULTURE,     
+			ACCOMCOUNTCULTURE,     
+			USETIMECULTURE,        
+			RESTDATECULTURE,       
+			PARKINGCULTURE,        
+			CHKBABYCARRIAGECULTURE,
+			CHKPETCULTURE,         
+			CHKCREDITCARDCULTURE  
+		) VALUES (
+			#{contentId},
+			#{contentTypeId},
+			#{culScale},
+			#{useFee},
+			#{discountInfo},
+			#{spendTime},
+			#{parkingFee},
+			#{infoCenterCulture},
+			#{accomCountCulture},
+			#{useTimeCulture},
+			#{restDateCulture},
+			#{parkingCulture},
+			#{chkBabyCarriageCulture},
+			#{chkPetCulture},
+			#{chkCreditCardCulture}
+		)
+	</insert>
+	
+
+</mapper>

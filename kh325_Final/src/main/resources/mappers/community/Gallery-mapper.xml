@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="com.kh.tour.community.model.mapper.GalleryMapper">
+	<resultMap type="Gallery" id="galleryListResultMap">
+		<id property="boardNo" column="BOARD_NO"/>
+		<result property="uno" column="UNO"/>
+		<result property="title" column="TITLE"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="originalImage" column="ORIGINAL_IMAGE"/>
+		<result property="renamedImage" column="RENAMED_IMAGE"/>
+		<result property="galTag" column="GAL_TAG"/>
+		<result property="status" column="STATUS"/>
+		<result property="boardType" column="BOARD_TYPE"/>
+	</resultMap>
+	
+	<!-- 이미지 업로드 -->
+	<insert id="insertGallery" parameterType="Gallery"
+			useGeneratedKeys="true" keyProperty="boardNo" keyColumn="BOARD_NO">
+		INSERT INTO GALLERY (
+			BOARD_NO,   
+			UNO,	           
+			TITLE,	       
+			POST_DATE,	       
+			ORIGINAL_IMAGE,
+			RENAMED_IMAGE,
+			GAL_TAG,	       
+			STATUS,	       
+			BOARD_TYPE
+		) VALUES (
+			SEQ_BOARD_NO.NEXTVAL,
+			#{uno},
+<!-- 			#{userNo}, -->
+			#{title},
+			SYSDATE,
+			#{originalImage},
+			#{renamedImage},
+			#{galTag},
+			DEFAULT,
+			DEFAULT
+		)
+	</insert>
+	
+	<!-- 이미지 젠체 출력 -->
+	<select id="selectGalleryList" resultMap="galleryListResultMap"  parameterType="map">
+		SELECT  BOARD_NO, 
+				UNO, 
+				TITLE, 
+				POST_DATE, 
+				ORIGINAL_IMAGE, 
+				RENAMED_IMAGE, 
+				GAL_TAG, 
+				STATUS, 
+				BOARD_TYPE
+		FROM GALLERY 
+<!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
+		WHERE STATUS = 'Y' 
+		<if test="galTagKeyword != null">	<!-- 검색창에서 검색,, -->
+			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%' 
+		</if>
+		<if test="unoKeyword != null">		<!-- 나의갤러리 누르면 회원번호로 검색,, -->
+			AND UNO =#{unoKeyword} 
+		</if>
+		
+		<choose>
+			<when test="sortOldest != null">
+			ORDER BY BOARD_NO ASC
+			</when>
+			<when test="sortPopular != null">
+			ORDER BY BOARD_NO ASC
+			</when>
+			<otherwise>
+			ORDER BY BOARD_NO DESC
+			</otherwise>
+		</choose>
+<!-- 		<if test="sortNewest != null"> -->
+<!-- 		ORDER BY BOARD_NO DESC -->
+<!-- 		</if> -->
+<!-- 		<if test="sortOldest != null"> -->
+<!-- 		ORDER BY BOARD_NO ASC -->
+<!-- 		</if> -->
+<!-- 		<if test="sortPopular != null"> -->
+<!-- 		ORDER BY BOARD_NO DESC -->
+<!-- 		</if> -->
+<!-- 		<if test="sort != null"> -->
+<!-- 		ORDER BY BOARD_NO DESC -->
+<!-- 		</if> -->
+	</select>
+
+	<!-- 갯수 -->
+	<select id="selectGalleryCount" resultType="int"  parameterType="map">
+		SELECT  COUNT(*) 
+		FROM GALLERY 
+<!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
+		WHERE STATUS = 'Y' 
+		<if test="galTagKeyword != null">	<!-- 검색창에서 검색,, -->
+			AND GAL_TAG LIKE '%'||#{galTagKeyword}||'%' 
+		</if>
+		<if test="unoKeyword != null">		<!-- 나의갤러리 누르면 회원번호로 검색,, -->
+			AND UNO =#{unoKeyword} 
+		</if>
+		ORDER BY BOARD_NO DESC 
+	</select>
+	
+	<!-- 글번호로 이미지 가져오기 = 삭제할때 필요 -->
+	<select id="selectGalleryByBoardNo" parameterType="int" resultMap="galleryListResultMap">
+ 		SELECT  BOARD_NO, 
+				UNO, 
+				TITLE, 
+				ORIGINAL_IMAGE, 
+				RENAMED_IMAGE, 
+				GAL_TAG, 
+				STATUS, 
+				BOARD_TYPE
+		FROM GALLERY 
+<!-- 		JOIN MEMBER M ON(G.UNO = M.NO) -->
+		WHERE STATUS='Y' 
+		AND BOARD_NO = #{boardNo}
+<!-- 		WHERE G.STATUS='Y' AND G.UNO=#{uno} -->
+
+
+	</select>
+	
+	<!-- 이미지 삭제 -->
+	<update id="deleteGallery" parameterType="int">
+		UPDATE GALLERY SET STATUS='N' WHERE BOARD_NO=#{boardNo}
+	</update>
+	
+</mapper>

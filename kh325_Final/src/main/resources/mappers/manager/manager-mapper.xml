@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.manager.model.mapper.ManagerMapper">
+	
+	<!-- REPORT 시작 -->
+	<resultMap type="Manager" id="managerResultMap">
+		<id property="reportNo" column="REPORT_NO"/>
+		<result property="boardType" column="BOARD_TYPE"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="boardName" column="BOARD_NAME"/>
+		<result property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="category" column="CATEGORY"/>
+		<result property="reasons" column="REASONS"/>
+		<result property="status" column="STATUS"/>
+	</resultMap>
+	
+	<insert id="insertReport" parameterType="Manager"
+			useGeneratedKeys="true" keyProperty="reportNo" keyColumn="REPORT_NO">
+		INSERT INTO REPORT_NO (
+			REPORT_NO,    
+			BOARD_TYPE,   
+			BOARD_NO,     
+			BOARD_NAME,   
+			UNO,
+			CATEGORY,     
+			REASONS,      
+			STATUS        
+		) VALUES (
+			SEQ_REPORT_NO.NEXTVAL,
+			#{boardType},
+			#{boardNo},
+			#{boardName},
+			#{userNo},
+			#{category},
+			#{reasons},
+			DEFAULT
+		)
+	</insert>
+	
+	<select id="selectReport" resultMap="managerResultMap">
+		 SELECT
+			RN.REPORT_NO,
+    		RN.BOARD_TYPE,
+    		RN.BOARD_NO,
+	    	RN.BOARD_NAME,
+	    	RN.UNO,
+	    	M.U_NAME,
+	    	RN.CATEGORY,
+	    	RN.REASONS,
+	    	RN.STATUS
+		FROM REPORT_NO RN JOIN MEMBER M ON(RN.UNO = M.UNO)
+	</select>
+	
+	<select id="checkSelectReport" resultMap="managerResultMap">
+		SELECT
+			RN.REPORT_NO,
+    		RN.BOARD_TYPE,
+    		RN.BOARD_NO,
+	    	RN.BOARD_NAME,
+	    	RN.UNO,
+	    	M.U_NAME,
+	    	RN.CATEGORY,
+	    	RN.REASONS,
+	    	RN.STATUS
+		FROM REPORT_NO RN JOIN MEMBER M ON(RN.UNO = M.UNO)
+		WHERE STATUS = 'N'
+	</select>
+	
+	<select id="unCheckSelectReport" resultMap="managerResultMap">
+		SELECT
+			RN.REPORT_NO,
+    		RN.BOARD_TYPE,
+    		RN.BOARD_NO,
+	    	RN.BOARD_NAME,
+	    	RN.UNO,
+	    	M.U_NAME,
+	    	RN.CATEGORY,
+	    	RN.REASONS,
+	    	RN.STATUS
+		FROM REPORT_NO RN JOIN MEMBER M ON(RN.UNO = M.UNO)
+		WHERE STATUS = 'Y'
+	</select>
+	
+	<update id="updateReport" parameterType="int">
+		UPDATE REPORT_NO
+		SET
+			STATUS='N'
+		WHERE
+			REPORT_NO=#{report_no}
+	</update>
+	<!-- REPORT 끝 -->
+	
+	<!-- member 시작 -->
+	
+	<resultMap type="Member" id="memberResultMap">
+		<id property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userEmail" column="U_EMAIL"/>
+		<result property="userPassword" column="U_PASSWORD"/>
+		<result property="userPhone" column="U_PHONE"/>
+		<result property="userAddress" column="U_ADDRESS"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="userStatus" column="U_STATUS"/>
+		<result property="managerStatus" column="MANAGER_STATUS"/>
+	</resultMap>
+	
+	<select id="allUser" resultMap="memberResultMap">
+		SELECT
+		UNO,
+		U_NAME,
+		U_EMAIL,
+		U_PASSWORD,
+		U_PHONE,
+		U_ADDRESS,
+		U_AVATAR,
+		U_STATUS,
+		MANAGER_STATUS
+		
+		FROM MEMBER
+		ORDER BY UNO DESC
+	</select>
+	
+	<select id="countAllUser" resultType="int">
+		SELECT
+		count(*)
+		FROM MEMBER
+	</select>
+	
+	<update id="updateUser" parameterType="int">
+		UPDATE MEMBER
+			SET U_STATUS = 'N'
+		WHERE UNO = #{userNo}
+	</update>
+	
+	<update id="promotionUser" parameterType="int">
+		UPDATE MEMBER
+			SET MANAGER_STATUS = 'Y'
+		WHERE UNO = #{userNo}
+	</update>
+	<!-- member 끝 -->
+	
+	<!-- community 시작-->
+	<resultMap type="BoardManager" id="commResultMap">
+		<result property="boardNo" column="FREEBOARD_NO"/>
+		<result property="title" column="TITLE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="userNo" column="UNO"/>
+		<result property="boardType" column="BOARD_TYPE"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="status" column="STATUS"/>
+	</resultMap>
+	
+	<select id="countAllComm" resultType="int">
+		SELECT count(*)
+		FROM
+		( SELECT TITLE, POST_DATE, UNO, BOARD_TYPE, STATUS FROM COMM_FREEBOARD
+		UNION ALL
+		SELECT CONTENT, POST_DATE, UNO, BOARD_TYPE, STATUS FROM COMM_COMPANION
+		UNION ALL
+		SELECT TITLE, POST_DATE, UNO, BOARD_TYPE, STATUS FROM COMM_JOURNEY
+		UNION ALL
+		SELECT TITLE, POST_DATE, UNO, BOARD_TYPE, STATUS FROM GALLERY ) comm
+	</select>
+	
+	<select id="allBoard" resultMap="commResultMap">
+		SELECT comm.*,M.U_NAME
+		FROM
+		(SELECT FREEBOARD_NO, TITLE, CONTENT, POST_DATE, UNO, BOARD_TYPE, STATUS FROM COMM_FREEBOARD
+		UNION ALL
+		SELECT COMPANION_NO,CONTENT,CONTENT, POST_DATE, UNO, BOARD_TYPE, STATUS FROM COMM_COMPANION
+		UNION ALL
+		SELECT JOURNEY_NO, TITLE,CONTENT, POST_DATE, UNO, BOARD_TYPE, STATUS FROM COMM_JOURNEY
+		UNION ALL
+		SELECT BOARD_NO, TITLE,GAL_TAG, POST_DATE, UNO, BOARD_TYPE, STATUS FROM GALLERY) comm
+		JOIN MEMBER M ON(comm.uno = M.UNO)
+		ORDER BY POST_DATE DESC
+	</select>
+	
+	<update id="updateFreeboard" parameterType="int">
+		UPDATE COMM_FREEBOARD
+			SET STATUS = 'N'
+		WHERE FREEBOARD_NO = #{boardNo}
+	</update>
+	
+	<update id="updateCompanion" parameterType="int">
+		UPDATE COMM_COMPANION
+			SET STATUS = 'N'
+		WHERE COMPANION_NO = #{boardNo}
+	</update>
+	
+	<update id="updateJourney" parameterType="int">
+		UPDATE COMM_JOURNEY
+			SET STATUS = 'N'
+		WHERE JOURNEY_NO = #{boardNo}
+	</update>
+	
+	<update id="updateGallery" parameterType="int">
+		UPDATE GALLERY
+			SET STATUS = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	<!-- 커뮤니티 끝 -->
+	
+	<!-- 댓글관리 시작 -->
+	<resultMap type="ReplyManager" id="replyResultMap">
+		<result property="boardNo" column="FREEBOARD_NO"/>
+		<result property="title" column="TITLE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="userNo" column="UNO"/>
+		<result property="boardType" column="BOARD_TYPE"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="status" column="STATUS"/>
+		<result property="commentNo" column="COMMENT_NO"/>
+	</resultMap>
+	
+	<select id="allReply" resultMap="replyResultMap">
+	SELECT comm.*,M.U_NAME
+	FROM
+	(SELECT F.FREEBOARD_NO, F.TITLE,FC.CONTENT ,FC.POST_DATE, FC.UNO, F.BOARD_TYPE, FC.STATUS, FC.COMMENT_NO FROM COMM_FREEBOARD F JOIN FREEBOARD_COMMENT FC ON(f.freeboard_no = fc.freeboard_no)
+	UNION ALL
+	SELECT C.COMPANION_NO,C.CONTENT,CC.MSG_SEND, CC.POST_DATE, CC.RECEIVER_NO, C.BOARD_TYPE, CC.STATUS, CC.COMMENT_NO FROM COMM_COMPANION C JOIN COMPANION_COMMENT CC ON(C.COMPANION_NO = CC.COMPANION_NO)
+	UNION ALL
+	SELECT J.JOURNEY_NO, J.TITLE, JC.CONTENT, JC.POST_DATE, JC.UNO, J.BOARD_TYPE, JC.STATUS, JC.COMMENT_NO FROM COMM_JOURNEY J JOIN JOURNEY_COMMENT JC ON (J.JOURNEY_NO = JC.JOURNEY_NO)
+	) comm
+	JOIN MEMBER M ON(comm.uno = M.UNO)
+	ORDER BY POST_DATE DESC
+	</select>
+	
+	<update id="updateJourneyComment" parameterType="int">
+		UPDATE JOURNEY_COMMENT
+			SET STATUS = 'N'
+		WHERE COMMENT_NO = #{commentNo}
+	</update>
+	
+	<update id="updateCompanionComment" parameterType="int">
+		UPDATE COMPANION_COMMENT
+			SET STATUS = 'N'
+		WHERE COMMENT_NO = #{commentNo}
+	</update>
+	
+	<update id="updateFreeboardComment" parameterType="int">
+		UPDATE FREEBOARD_COMMENT
+			SET STATUS = 'N'
+		WHERE COMMENT_NO = #{commentNo}
+	</update>
+	
+	
+	<!-- 댓글관리 끝 -->
+	
+	<!-- 코스관리 시작 -->
+	<select id="countAllCourse" resultType="int">
+		SELECT
+		count(*)
+		FROM MYCOURSE
+	</select>
+	
+	
+	<!-- 코스관리 끝 -->
+	
+
+	
+
+</mapper>

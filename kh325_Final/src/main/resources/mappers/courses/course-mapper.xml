@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.course.model.mapper.CourseMapper">
+<!-- 나만의코스 -->
+	<resultMap type="MyCourseSearch" id="MyCourseSearchResultMap">
+		<id property="myCourseNo" column="MYCOURSE_NO"/>
+		<result property="rowNum" column="ROWNUM"/>
+		<result property="cntRevStar" column="CNTREVSTAR"/>
+		<result property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="fullMyCourseNo" column="FULLMYCOURSE_NO"/>
+		<result property="myCourseTitle" column="MYCOURSE_TITLE"/>
+		<result property="myCourseThema" column="MYCOURSE_THEMA"/>
+		<result property="myCourseSchedule" column="MYCOURSE_SCHEDULE"/>
+		<result property="myCourseContent" column="MYCOURSE_CONTENT"/>
+		<result property="myCourseMainImage" column="MYCOURSE_MAINIMAGE"/>
+		<result property="myCourseStatus" column="MYCOURSE_STATUS"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="detailTitle" column="TITLE"/>
+		<result property="addr1" column="ADDR1"/>
+		<result property="indexNum" column="INDEXNUM"/>
+		<result property="firstImage" column="FIRSTIMAGE"/>
+		<result property="overview" column="OVERVIEW"/>
+		<result property="mapX" column="MAPX"/>
+		<result property="mapY" column="MAPY"/>
+		<result property="detailCntRevStar" column="DETAILCNTREVSTAR"/>
+		<result property="myCourseDetailNo" column="MYCOURSE_DETAIL_NO"/>
+		<result property="myCourseSn" column="MYCOURSE_SN"/>
+	</resultMap>
+
+	<resultMap type="MyCourseSearchIndex" id="SearchIndexResultMap">
+		<id property="myCourseNo" column="MYCOURSE_NO"/>
+		<result property="count" column="CNT"/>
+	</resultMap>
+	
+	
+	<!-- 나의코스 검색페이지 -->
+	<select id="searchMyCourse" resultMap="MyCourseSearchResultMap" parameterType="map">
+		SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+                        MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR, 
+                        M.U_NAME, M.U_AVATAR, MT.MYCOURSE_SN, MT.CONTENTID, BTIM.TITLE, BTIM.ADDR1, FORCNT.INDEXNUM
+        FROM MYCOURSE MC 
+        LEFT OUTER JOIN 
+        (SELECT CEIL(AVG(MYCOURSE_REV_STAR))AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO)STRPT 
+        ON (STRPT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN MEMBER M 
+		ON(M.UNO = MC.UNO)
+        LEFT OUTER JOIN MYCOURSE_DETAIL MT
+        ON(MT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN BASIC_TOUR_INFO BTIM
+        ON(BTIM.CONTENTID = MT.CONTENTID)
+        LEFT OUTER JOIN (SELECT COUNT(*) AS INDEXNUM, MYCOURSE_NO FROM MYCOURSE_DETAIL GROUP BY MYCOURSE_NO) FORCNT
+        ON(FORCNT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        WHERE 1=1 	
+        <if test="myCourseThema != null">
+		AND MYCOURSE_THEMA LIKE '%'||#{myCourseThema}||'%'
+		</if>
+		<if test="myCourseSchedule != null">
+		AND MYCOURSE_SCHEDULE LIKE '%'||#{myCourseSchedule}||'%'
+		</if> 
+        AND MC.MYCOURSE_STATUS = 'Y'
+        ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC
+	</select>
+	
+	<!-- 나의코스검색결과 카운트 -->
+	<select id="countSearchMyCourse" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM (SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+                        MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR, 
+                        M.U_NAME, M.U_AVATAR, MT.MYCOURSE_SN, MT.CONTENTID, BTIM.TITLE, BTIM.ADDR1
+        FROM MYCOURSE MC 
+        LEFT OUTER JOIN 
+        (SELECT CEIL(AVG(MYCOURSE_REV_STAR))AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO)STRPT 
+        ON (STRPT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN MEMBER M 
+		ON(M.UNO = MC.UNO)
+        LEFT OUTER JOIN MYCOURSE_DETAIL MT
+        ON(MT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN BASIC_TOUR_INFO BTIM
+        ON(BTIM.CONTENTID = MT.CONTENTID)
+        WHERE 1=1
+		<if test="myCourseThema != null">
+		AND MYCOURSE_THEMA LIKE '%'||#{myCourseThema}||'%'
+		</if>
+		<if test="myCourseSchedule != null">
+		AND MYCOURSE_SCHEDULE LIKE '%'||#{myCourseSchedule}||'%'
+		</if> 
+		AND MC.MYCOURSE_STATUS = 'Y'
+        ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC) FORCNT 
+	</select>
+	
+	<!-- 나의코스검색결과 인덱스 포함-->
+	<select id="indexMyCourseDetail" resultMap="MyCourseSearchResultMap" parameterType="map">
+		SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+                        MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS, NVL(STRPT.CNTREVSTAR,0) AS CCNTREVSTAR, M.U_NAME, M.U_AVATAR,  FORCNT.INDEXNUM
+        FROM MYCOURSE MC 
+        LEFT OUTER JOIN 
+        (SELECT CEIL(AVG(MYCOURSE_REV_STAR))AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO)STRPT 
+        ON (STRPT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN MEMBER M 
+		ON(M.UNO = MC.UNO)
+        LEFT OUTER JOIN (SELECT COUNT(*) AS INDEXNUM, MYCOURSE_NO FROM MYCOURSE_DETAIL GROUP BY MYCOURSE_NO) FORCNT
+        ON(FORCNT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        WHERE 1=1
+		<if test="myCourseThema != null">
+		AND MYCOURSE_THEMA LIKE '%'||#{myCourseThema}||'%'
+		</if>
+		<if test="myCourseSchedule != null">
+		AND MYCOURSE_SCHEDULE LIKE '%'||#{myCourseSchedule}||'%'
+		</if> 
+		AND MC.MYCOURSE_STATUS = 'Y'
+        ORDER BY CCNTREVSTAR DESC, MYCOURSE_NO ASC
+	</select>
+	
+	
+<!-- 나의코스 4개 for 코스 메인 -->
+	<resultMap type="MainMyCourse" id="MainMyCourseResultMap">
+		<id property="myCourseNo" column="MYCOURSE_NO"/>
+		<result property="rowNum" column="ROWNUM"/>
+		<result property="cntRevStar" column="CNTREVSTAR"/>
+		<result property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="fullMyCourseNo" column="FULLMYCOURSE_NO"/>
+		<result property="myCourseTitle" column="MYCOURSE_TITLE"/>
+		<result property="myCourseThema" column="MYCOURSE_THEMA"/>
+		<result property="myCourseSchedule" column="MYCOURSE_SCHEDULE"/>
+		<result property="myCourseContent" column="MYCOURSE_CONTENT"/>
+		<result property="myCourseMainImage" column="MYCOURSE_MAINIMAGE"/>
+		<result property="myCourseStatus" column="MYCOURSE_STATUS"/>
+	</resultMap>
+	
+	<select id="selectSortedByRevStar" resultMap="MainMyCourseResultMap">
+		SELECT ROWNUM, RST.* from (select STRPT.*, MC.UNO, M.U_NAME, M.U_AVATAR, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+                        MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS 
+		FROM MYCOURSE MC 
+		JOIN (SELECT CEIL(AVG(MYCOURSE_REV_STAR)) AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO) STRPT
+		ON (STRPT.MYCOURSE_NO = MC.MYCOURSE_NO) 
+		LEFT OUTER JOIN MEMBER M 
+		ON(M.UNO = MC.UNO) 
+		WHERE 
+		MYCOURSE_STATUS = 'Y'
+        ORDER BY CNTREVSTAR DESC) RST
+        WHERE ROWNUM BETWEEN 1 AND 4
+	</select>
+	
+
+<!-- 추천코스 공통정보 -->
+	<resultMap type="MainRecommCourse" id="CourseResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="rowNum" column="ROWNUM"/>
+		<result property="cntRevStar" column="CNTREVSTAR"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="title" column="TITLE"/>
+		<result property="tel" column="TEL"/>
+		<result property="telName" column="TELNAME"/>
+		<result property="homePage" column="HOMEPAGE"/>
+		<result property="bookTour" column="BOOKTOUR"/>
+		<result property="firstImage" column="FIRSTIMAGE"/>
+		<result property="firstImage2" column="FIRSTIMAGE2"/>
+		<result property="areaCode" column="AREACODE"/>
+		<result property="sigunguCode" column="SIGUNGUCODE"/>
+		<result property="cat1" column="CAT1"/>
+		<result property="cat2" column="CAT2"/>
+		<result property="cat3" column="CAT3"/>
+		<result property="addr1" column="ADDR1"/>
+		<result property="addr2" column="ADDR2"/>
+		<result property="zipCode" column="ZIPCODE"/>
+		<result property="mapX" column="MAPX"/>
+		<result property="mapY" column="MAPY"/>
+		<result property="mLevel" column="MLEVEL"/>
+		<result property="overview" column="OVERVIEW"/>
+		<result property="detailAreaName" column="DETAILAREANAME"/>
+		<result property="areaName" column="AREANAME"/>
+	</resultMap>
+	
+	<!--추천 코스 4개 for 코스 메인 -->
+	<select id="sortedByRevStar" resultMap="CourseResultMap">
+		SELECT ROWNUM, RN.* FROM (SELECT STRPT.*, BTC.TITLE, BTC.CONTENTTYPEID, BTC.OVERVIEW, BTC.FIRSTIMAGE, AC.DETAILAREANAME, AC.AREANAME
+		FROM BASIC_TOUR_INFO BTC 
+		right outer JOIN (SELECT CEIL(AVG(STAR)) AS CNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) STRPT
+		ON (BTC.CONTENTID = STRPT.CONTENTID) 
+        left outer JOIN AREACODE AC
+        ON (AC.AREACODE = BTC.AREACODE AND AC.SIGUNGUCODE = BTC.SIGUNGUCODE)
+        ORDER BY CNTREVSTAR DESC) RN
+        WHERE (ROWNUM BETWEEN 1 AND 4)
+        AND CONTENTTYPEID = 25
+	</select>
+	
+	<select id="searchRecommCourse" resultMap="CourseResultMap" parameterType="map">
+		SELECT BTI.CONTENTID, BTI.TITLE, BTI.FIRSTIMAGE, BTI.SIGUNGUCODE, BTI.AREACODE, AC.DETAILAREANAME, AC.AREANAME, BTI.OVERVIEW, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR 
+        FROM BASIC_TOUR_INFO BTI
+        left outer JOIN AREACODE AC
+        ON (AC.AREACODE = BTI.AREACODE AND AC.SIGUNGUCODE = BTI.SIGUNGUCODE)
+        left outer JOIN
+        (SELECT CEIL(AVG(STAR)) AS CNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) STRPT
+		ON (BTI.CONTENTID = STRPT.CONTENTID)
+        WHERE 1=1
+        AND CONTENTTYPEID = 25
+        <if test="areaCode != null">
+		AND AC.AREACODE = #{areaCode}
+		</if>
+		<if test="sigunguCode != null">
+		AND AC.SIGUNGUCODE = #{sigunguCode}
+		</if> 
+        ORDER BY CNTREVSTAR DESC
+	</select>
+	
+	<select id="countSearchRecommCourse" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM (SELECT BTI.CONTENTID, BTI.TITLE, BTI.FIRSTIMAGE, BTI.SIGUNGUCODE, BTI.AREACODE, AC.DETAILAREANAME, AC.AREANAME, BTI.OVERVIEW, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR 
+        FROM BASIC_TOUR_INFO BTI
+        left outer JOIN AREACODE AC
+        ON (AC.AREACODE = BTI.AREACODE AND AC.SIGUNGUCODE = BTI.SIGUNGUCODE)
+        left outer JOIN
+        (SELECT CEIL(AVG(STAR)) AS CNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) STRPT
+		ON (BTI.CONTENTID = STRPT.CONTENTID)
+        WHERE 1=1
+        AND CONTENTTYPEID = 25
+        <if test="areaCode != null">
+		AND AC.AREACODE = #{areaCode}
+		</if>
+		<if test="sigunguCode != null">
+		AND AC.SIGUNGUCODE = #{sigunguCode}
+		</if> 
+        ORDER BY CNTREVSTAR DESC)
+	</select>
+
+	<select id="selectCourseByContentId" resultMap="CourseResultMap" parameterType="int">
+		SELECT * FROM BASIC_TOUR_INFO WHERE CONTENTID = #{contentId}
+	</select>
+	
+<!-- 추천코스 소개정보 -->
+	<resultMap type="DetailCourse" id="DetailCourseResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="distance" column="DISTANCE"/>
+		<result property="infocenterTourcourse" column="INFOCENTERTOURCOURSE"/>
+		<result property="schedule" column="SCHEDULE"/>
+		<result property="takeTime" column="TAKETIME"/>
+		<result property="theme" column="THEME"/>
+	</resultMap>
+	
+	<select id="selectDetailByContentId" resultMap="DetailCourseResultMap" parameterType="int">
+		SELECT * FROM DETAIL_COURSE WHERE CONTENTID = #{contentId}
+	</select>
+	
+	
+<!-- 나의 코스 디테일 -->	
+	<select id="detailMyCourse" resultMap="MyCourseSearchResultMap" parameterType="int">
+		SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+                        MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR, 
+                        M.U_NAME, M.U_AVATAR, MT.MYCOURSE_SN, MT.CONTENTID, BTIM.CONTENTTYPEID, BTIM.TITLE, BTIM.OVERVIEW, BTIM.ADDR1, BTIM.FIRSTIMAGE, 
+                        BTIM.MAPX, BTIM.MAPY, NVL(DETAILSTRPT.DETAILCNTREVSTAR,0) AS DETAILCNTREVSTAR, FORCNT.INDEXNUM
+        FROM MYCOURSE MC 
+        LEFT OUTER JOIN 
+        (SELECT CEIL(AVG(MYCOURSE_REV_STAR))AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO)STRPT 
+        ON (STRPT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN MEMBER M 
+		ON(M.UNO = MC.UNO)
+        LEFT OUTER JOIN MYCOURSE_DETAIL MT
+        ON(MT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN BASIC_TOUR_INFO BTIM
+        ON(BTIM.CONTENTID = MT.CONTENTID)
+        LEFT OUTER JOIN (SELECT COUNT(*) AS INDEXNUM, MYCOURSE_NO FROM MYCOURSE_DETAIL GROUP BY MYCOURSE_NO) FORCNT
+        ON(FORCNT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN (SELECT CEIL(AVG(STAR)) AS DETAILCNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) DETAILSTRPT
+		ON (MT.CONTENTID = DETAILSTRPT.CONTENTID)
+        WHERE 1=1 	
+        AND MC.MYCOURSE_NO = #{myCourseNo}
+        AND MC.MYCOURSE_STATUS = 'Y'
+        ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC
+	</select>
+	
+	<!-- 나의 코스 디테일 리뷰 -->
+    <resultMap type="MyCourseRev" id="MyCourseRevResultMap">
+        <result property="myCourseRevNo" column="MYCOURSE_REV_NO"/>
+        <result property="myCourseNo" column="MYCOURSE_NO"/>
+        <result property="userNo" column="UNO"/>
+        <result property="userName" column="U_NAME"/>
+        <result property="userAvatar" column="U_AVATAR"/>
+        <result property="cntRevStar" column="MYCOURSE_REV_STAR"/>
+        <result property="mcRevContent" column="MYCOURSE_REV_CONTENT"/>
+    </resultMap>
+
+    <select id="detailMyCourseRev" resultMap="MyCourseRevResultMap" parameterType="int">
+        SELECT MR.UNO, MR.MYCOURSE_NO, MR.MYCOURSE_REV_CONTENT, MR.MYCOURSE_REV_STAR, M.U_NAME, U_AVATAR 
+        FROM MYCOURSE_REV MR 
+        LEFT JOIN MEMBER M
+        ON(MR.UNO = M.UNO)
+        WHERE MYCOURSE_NO = #{myCourseNo}
+        ORDER BY MYCOURSE_REV_NO DESC
+    </select>
+
+    <insert id="insertMyCourseRev" parameterType="MyCourseRev">
+    INSERT INTO MYCOURSE_REV VALUES (
+            SEQ_MYCOURSE_REV_NO.NEXTVAL,
+            #{userNo},
+            #{myCourseNo},
+            #{mcRevContent},
+            #{cntRevStar}
+        )
+    </insert>
+	
+	<!-- 나의 코스 디테일 이미지 -->	
+	<resultMap type="MyCourseImage" id="MyCourseImageResultMap">
+		<result property="myCourseNo" column="MYCOURSE_NO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="myCourseSn" column="MYCOURSE_SN"/>
+		<result property="detailTitle" column="TITLE"/>
+		<result property="firstImage" column="FIRSTIMAGE"/>
+		<result property="originImgUrl" column="ORIGINIMGURL"/>
+		<result property="smallImageUrl" column="SMALLIMAGEURL"/>
+	</resultMap>
+	
+	<select id="detailMyCourseImage" resultMap="MyCourseImageResultMap" parameterType="int">
+		SELECT MC.MYCOURSE_NO, MT.MYCOURSE_SN, MT.CONTENTID, BTIM.TITLE, BTIM.FIRSTIMAGE, TI.ORIGINIMGURL, TI.SMALLIMAGEURL
+ 		FROM MYCOURSE MC
+ 		LEFT OUTER JOIN MYCOURSE_DETAIL MT
+ 		ON(MT.MYCOURSE_NO = MC.MYCOURSE_NO)
+ 		LEFT OUTER JOIN BASIC_TOUR_INFO BTIM
+ 		ON(BTIM.CONTENTID = MT.CONTENTID)
+ 		LEFT OUTER JOIN TOUR_IMAGE TI
+ 		ON(BTIM.CONTENTID = TI.CONTENTID)
+		WHERE MC.MYCOURSE_NO = #{myCourseNo}
+		ORDER BY MT.MYCOURSE_SN ASC
+	</select>
+	
+	<!-- 추천 코스 디테일 -->	
+	<resultMap type="RecommCourseDetail" id="RecommCourseDetailResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="detailTitle" column="TITLE"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="firstImage" column="FIRSTIMAGE"/>
+		<result property="detailAreaName" column="DETAILAREANAME"/>
+		<result property="areaName" column="AREANAME"/>
+		<result property="overview" column="OVERVIEW"/>
+		<result property="cntRevStar" column="CNTREVSTAR"/>
+		<result property="Theme" column="THEME"/>
+		<result property="schedule" column="SCHEDULE"/>
+		<result property="addr1" column="ADDR1"/>
+		<result property="subNum" column="SUBNUM"/>
+		<result property="subContentId" column="SUBCONTENTID"/>
+		<result property="subName" column="SUBNAME"/>
+		<result property="subDetailOverview" column="SUBDETAILOVERVIEW"/>
+		<result property="subDetailImg" column="SUBDETAILIMG"/>
+		<result property="mapX" column="MAPX"/>
+		<result property="mapY" column="MAPY"/>
+	</resultMap>
+	
+	<select id="detailRecommCourse" resultMap="RecommCourseDetailResultMap" parameterType="int">
+		SELECT BTI.CONTENTID, BTI.TITLE, BTI.FIRSTIMAGE, 
+               AC.DETAILAREANAME, AC.AREANAME, BTI.OVERVIEW, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR,
+               DC.SCHEDULE, DC.THEME, RC.SUBNUM, RC.SUBCONTENTID, BTI.CONTENTTYPEID, BTI.ADDR1, RC.SUBNAME, RC.SUBDETAILOVERVIEW, RC.SUBDETAILIMG,
+               MAPX.MAPX, MAPX.MAPY
+        FROM BASIC_TOUR_INFO BTI
+        LEFT OUTER JOIN 
+        DETAIL_COURSE DC
+        ON (BTI.CONTENTID = DC.CONTENTID)
+        LEFT OUTER JOIN 
+        REPEAT_COURSE RC
+        ON (BTI.CONTENTID = RC.CONTENTID)
+        LEFT OUTER JOIN
+        (SELECT CEIL(AVG(STAR)) AS CNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) STRPT
+		ON (BTI.CONTENTID = RC.SUBCONTENTID)
+        LEFT OUTER JOIN
+        (SELECT RC.SUBCONTENTID AS SUBID, BTI.MAPX, BTI.MAPY, BTI.AREACODE, BTI.SIGUNGUCODE FROM BASIC_TOUR_INFO BTI  
+        LEFT OUTER JOIN REPEAT_COURSE RC
+        ON (BTI.CONTENTID = RC.SUBCONTENTID)) MAPX
+        ON (MAPX.SUBID = RC.SUBCONTENTID)
+        LEFT OUTER JOIN AREACODE AC
+        ON (AC.AREACODE = MAPX.AREACODE AND AC.SIGUNGUCODE = MAPX.SIGUNGUCODE)
+        WHERE 1=1
+        AND BTI.CONTENTTYPEID = 25
+		AND BTI.CONTENTID = #{contentId}
+		ORDER BY RC.SUBNUM ASC
+	</select>
+	
+	<resultMap type="RecommCourseImage" id="RecommCourseImageResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="subNum" column="SUBNUM"/>
+		<result property="subContentId" column="SUBCONTENTID"/>
+		<result property="subName" column="SUBNAME"/>
+		<result property="originImgUrl" column="ORIGINIMGURL"/>
+		<result property="smallImageUrl" column="SMALLIMAGEURL"/>
+	</resultMap>
+	
+	<select id="detailRecommCourseImage" resultMap="RecommCourseImageResultMap" parameterType="int">
+		SELECT BTI.CONTENTID, RC.SUBNUM, RC.SUBCONTENTID, RC.SUBNAME, TI.ORIGINIMGURL, TI.SMALLIMAGEURL
+        FROM BASIC_TOUR_INFO BTI
+        LEFT OUTER JOIN 
+        DETAIL_COURSE DC
+        ON (BTI.CONTENTID = DC.CONTENTID)
+        LEFT OUTER JOIN 
+        REPEAT_COURSE RC
+        ON (BTI.CONTENTID = RC.CONTENTID)
+        LEFT OUTER JOIN
+        (SELECT CEIL(AVG(STAR)) AS CNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) STRPT
+		ON (BTI.CONTENTID = RC.SUBCONTENTID)
+        LEFT OUTER JOIN
+        (SELECT RC.SUBCONTENTID AS SUBID, BTI.MAPX, BTI.MAPY, BTI.AREACODE, BTI.SIGUNGUCODE FROM BASIC_TOUR_INFO BTI  
+        LEFT OUTER JOIN REPEAT_COURSE RC
+        ON (BTI.CONTENTID = RC.SUBCONTENTID)) MAPX
+        ON (MAPX.SUBID = RC.SUBCONTENTID)
+        LEFT OUTER JOIN AREACODE AC
+        ON (AC.AREACODE = MAPX.AREACODE AND AC.SIGUNGUCODE = MAPX.SIGUNGUCODE)
+        LEFT OUTER JOIN TOUR_IMAGE TI
+        ON (TI.CONTENTID = MAPX.SUBID)
+        WHERE 1=1
+        AND BTI.CONTENTTYPEID = 25
+        AND BTI.CONTENTID = #{contentId}
+        ORDER BY RC.SUBNUM ASC
+	</select>
+	
+	<resultMap type="RecommCourseRev" id="RecommCourseRevResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="star" column="STAR"/>
+		<result property="content" column="CONTENT"/>
+	</resultMap>
+	
+
+	<resultMap type="MyCourseDetail" id="MyCourseDetaileResultMap">
+		<id property="myCourseDetailNo" column="MYCOURSE_DETAIL_NO"/>
+		<result property="myCourseNo" column="MYCOURSE_NO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="myCourseSn" column="MYCOURSE_SN"/>
+		<result property="title" column="TITLE"/>
+		<result property="addr1" column="ADDR1"/>
+	</resultMap>
+	
+	<select id="selectMyDetailByContentId" resultMap="MyCourseDetaileResultMap" parameterType="int">
+		SELECT BB.TITLE, BB.ADDR1, BB.CONTENTID, BB.CONTENTTYPEID, MD.MYCOURSE_SN FROM MYCOURSE_DETAIL MD JOIN BASIC_TOUR_INFO BB ON(MD.CONTENTID = BB.CONTENTID) WHERE MD.MYCOURSE_NO = #{myCourseNo}
+	</select>
+	
+	<!-- 추천 코스 디테일 -->	
+	<select id="detailRecommCourseRev" resultMap="RecommCourseRevResultMap" parameterType="int">
+		SELECT RT.UNO, RT.CONTENTID, RT.CONTENT, RT.STAR, M.U_NAME, U_AVATAR 
+		FROM review_total RT 
+		LEFT OUTER JOIN MEMBER M
+		ON(RT.UNO = M.UNO)
+		WHERE CONTENTID = #{contentId}
+	</select>
+	
+    <resultMap type="MyCourse" id="MyCourseResultMap">
+		<id property="myCourseNo" column="MYCOURSE_NO"/>
+		<result property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="myCourseTitle" column="MYCOURSE_TITLE"/>
+		<result property="myCourseThema" column="MYCOURSE_THEMA"/>
+		<result property="myCourseSchedule" column="MYCOURSE_SCHEDULE"/>
+		<result property="myCourseContent" column="MYCOURSE_CONTENT"/>
+		<result property="myCourseMainImage" column="MYCOURSE_MAINIMAGE"/>
+		<result property="myCourseStatus" column="MYCOURSE_STATUS"/>
+	</resultMap>
+	
+	 <resultMap type="MyCourseCreate" id="MyCourseCreateResultMap">
+		<id property="myCourseNo" column="MYCOURSE_NO"/>
+		<result property="userNo" column="UNO"/>
+		<result property="myCourseTitle" column="MYCOURSE_TITLE"/>
+		<result property="myCourseThema" column="MYCOURSE_THEMA"/>
+		<result property="myCourseSchedule" column="MYCOURSE_SCHEDULE"/>
+		<result property="myCourseContent" column="MYCOURSE_CONTENT"/>
+		<result property="myCourseMainImage" column="MYCOURSE_MAINIMAGE"/>
+		<result property="myCourseStatus" column="MYCOURSE_STATUS"/>
+	</resultMap>
+
+	<!-- 코스 만들기 -->	
+	<insert id="createCourse" parameterType="MyCourseCreate" useGeneratedKeys="true" keyProperty="myCourseNo" keyColumn="MYCOURSE_NO">
+		INSERT INTO MYCOURSE (
+			MYCOURSE_NO,
+			UNO,
+			MYCOURSE_TITLE,
+			MYCOURSE_THEMA,
+			MYCOURSE_SCHEDULE,
+			MYCOURSE_CONTENT,
+			MYCOURSE_MAINIMAGE,
+			MYCOURSE_STATUS	
+		) VALUES (
+			SEQ_MYCOURSE_NO.NEXTVAL,
+			#{userNo},
+			#{myCourseTitle},
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT
+		)
+	</insert>
+	
+	<!-- 코스 삭제하기 -->	
+	<delete id="deleteCourse" parameterType="int">
+		DELETE FROM MYCOURSE WHERE MYCOURSE_NO=#{myCourseNo}
+	</delete>
+	
+	<!-- 코스 디테일 모두 삭제하기 -->	
+	<delete id="deleteCourseDetail" parameterType="int">
+		DELETE FROM MYCOURSE_DETAIL WHERE MYCOURSE_NO=#{myCourseNo}
+	</delete>
+	
+	<!-- 코스 편집하기 -->
+	<update id="updateCourse" parameterType="MyCourseCreate">
+		UPDATE MYCOURSE
+		SET
+			MYCOURSE_TITLE = #{myCourseTitle},
+			MYCOURSE_THEMA = #{myCourseThema},
+			MYCOURSE_SCHEDULE = #{myCourseSchedule},
+			MYCOURSE_CONTENT = #{myCourseContent},
+			MYCOURSE_MAINIMAGE = #{myCourseMainImage},
+			MYCOURSE_STATUS = #{myCourseStatus}
+		WHERE
+			MYCOURSE_NO=#{myCourseNo}
+	</update>
+	
+	<!-- 코스 컨텐츠 하나 추가하기 -->
+	<insert id="insertContent" parameterType="int">
+		INSERT INTO MYCOURSE_DETAIL 
+			VALUES(SEQ_MYCOURSE_DETAIL_NO.NEXTVAL, 
+			#{myCourseNo}, #{contentId}, #{myCourseSn})
+	</insert>
+	
+	
+	<!-- 코스 컨텐츠 하나 삭제하기 -->
+	<delete id="deleteContent" parameterType="int">
+		DELETE FROM MYCOURSE_DETAIL WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}
+	</delete>
+	
+	<!-- 코스 컨텐츠 순서 올리기 -->
+	<update id="ascent" parameterType="int">
+		UPDATE MYCOURSE_DETAIL SET MYCOURSE_SN=#{changedSn} WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}
+	</update>
+	
+	<!-- 코스 컨텐츠 순서 내리기 -->
+	<update id="descent" parameterType="int">
+		UPDATE MYCOURSE_DETAIL SET MYCOURSE_SN=#{changedSn} WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}
+	</update>
+	
+	<select id="selectForMyPage" parameterType="int" resultMap="MyCourseSearchResultMap">
+		SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+                        MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR, 
+                        M.UNO, M.U_NAME, M.U_AVATAR, MT.MYCOURSE_SN, MT.CONTENTID,  BTIM.CONTENTTYPEID,  MT.MYCOURSE_DETAIL_NO, BTIM.TITLE, BTIM.OVERVIEW, BTIM.ADDR1, BTIM.FIRSTIMAGE, 
+                        BTIM.MAPX, BTIM.MAPY, NVL(DETAILSTRPT.DETAILCNTREVSTAR,0) AS DETAILCNTREVSTAR, FORCNT.INDEXNUM
+        FROM MYCOURSE MC 
+        LEFT OUTER JOIN 
+        (SELECT CEIL(AVG(MYCOURSE_REV_STAR))AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO)STRPT 
+        ON (STRPT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN MEMBER M 
+		ON(M.UNO = MC.UNO)
+        LEFT OUTER JOIN MYCOURSE_DETAIL MT
+        ON(MT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN BASIC_TOUR_INFO BTIM
+        ON(BTIM.CONTENTID = MT.CONTENTID)
+        LEFT OUTER JOIN (SELECT COUNT(*) AS INDEXNUM, MYCOURSE_NO FROM MYCOURSE_DETAIL GROUP BY MYCOURSE_NO) FORCNT
+        ON(FORCNT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN (SELECT CEIL(AVG(STAR)) AS DETAILCNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) DETAILSTRPT
+		ON (MT.CONTENTID = DETAILSTRPT.CONTENTID)
+        WHERE 1=1 	
+        AND MC.UNO = #{userNo}
+        AND MC.MYCOURSE_NO = #{myCourseNo}
+        ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC
+	</select>
+	
+	<select id="selectForEdit" parameterType="int" resultMap="MyCourseSearchResultMap">
+		SELECT * FROM MYCOURSE_DETAIL WHERE MYCOURSE_DETAIL_NO = #{myCourseDetailNo}
+	</select>
+	
+	<select id="selectForCreate" resultMap="MyCourseSearchResultMap">
+		SELECT * FROM MYCOURSE
+	</select>
+	
+	<select id="selectForMyPageList" parameterType="int" resultMap="MyCourseSearchResultMap">
+		SELECT MC.MYCOURSE_NO, MC.MYCOURSE_TITLE, MC.MYCOURSE_THEMA, MC.MYCOURSE_SCHEDULE, 
+                        MC.MYCOURSE_CONTENT, MC.MYCOURSE_MAINIMAGE, MC.MYCOURSE_STATUS, NVL(STRPT.CNTREVSTAR,0) AS CNTREVSTAR, 
+                        M.UNO, M.U_NAME, M.U_AVATAR, MT.MYCOURSE_SN, MT.CONTENTID, BTIM.CONTENTTYPEID, MT.MYCOURSE_DETAIL_NO, BTIM.TITLE, BTIM.OVERVIEW, BTIM.ADDR1, BTIM.FIRSTIMAGE, 
+                        BTIM.MAPX, BTIM.MAPY, NVL(DETAILSTRPT.DETAILCNTREVSTAR,0) AS DETAILCNTREVSTAR, FORCNT.INDEXNUM
+        FROM MYCOURSE MC 
+        LEFT OUTER JOIN 
+        (SELECT CEIL(AVG(MYCOURSE_REV_STAR))AS CNTREVSTAR, MYCOURSE_NO FROM MYCOURSE_REV GROUP BY MYCOURSE_NO)STRPT 
+        ON (STRPT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN MEMBER M 
+		ON(M.UNO = MC.UNO)
+        LEFT OUTER JOIN MYCOURSE_DETAIL MT
+        ON(MT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN BASIC_TOUR_INFO BTIM
+        ON(BTIM.CONTENTID = MT.CONTENTID)
+        LEFT OUTER JOIN (SELECT COUNT(*) AS INDEXNUM, MYCOURSE_NO FROM MYCOURSE_DETAIL GROUP BY MYCOURSE_NO) FORCNT
+        ON(FORCNT.MYCOURSE_NO = MC.MYCOURSE_NO)
+        LEFT OUTER JOIN (SELECT CEIL(AVG(STAR)) AS DETAILCNTREVSTAR, CONTENTID FROM REVIEW_TOTAL GROUP BY CONTENTID) DETAILSTRPT
+		ON (MT.CONTENTID = DETAILSTRPT.CONTENTID)
+        WHERE 1=1 	
+        AND MC.UNO = #{userNo}
+        ORDER BY CNTREVSTAR DESC, MYCOURSE_NO ASC, MYCOURSE_SN ASC
+	</select>
+
+
+</mapper>

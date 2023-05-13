@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.AreaCodeMapper">
+	<resultMap type="AreaCode" id="AreaCodeListResultMap">
+		<id property="areaCodeSeq" column="AREACODE_SEQ"/>
+		<result property="areaCode" column="AREACODE"/>
+		<result property="areaName" column="AREANAME"/>
+		<result property="sigunguCode" column="SIGUNGUCODE"/>
+		<result property="detailAreaName" column="DETAILAREANAME"/>
+	</resultMap>
+	
+	
+	<insert id="insertAreaCode" parameterType="AreaCode">
+		INSERT INTO AREACODE (
+			AREACODE_SEQ,
+			AREACODE,
+			AREANAME,
+			SIGUNGUCODE,
+			DETAILAREANAME
+		) VALUES (
+			AREACODE_SEQ.NEXTVAL,
+			#{areaCode},
+			#{areaName},
+			#{sigunguCode},
+			#{detailAreaName}
+		)
+	</insert>
+	
+</mapper>

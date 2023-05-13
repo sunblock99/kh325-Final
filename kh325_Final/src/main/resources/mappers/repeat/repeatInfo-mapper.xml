@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.RepeatMapper">
+	<resultMap type="RepeatInfoParsing" id="repeatInfoListResultMap">
+	<id property="reSeq" column="RE_SEQ" />
+	<result property="contentId" column="CONTENTID" />
+	<result property="contentTypeId" column="CONTENTTYPEID" />
+	<result property="serialNum" column="SERIALNUM" />
+	<result property="fldgubun" column="FLDGUBUN" />
+	<result property="infoName" column="INFONAME" />
+	<result property="infoText" column="INFOTEXT" />
+</resultMap>
+	
+
+	
+	<insert id="insertRepeatInfo" parameterType="RepeatInfoParsing"
+			useGeneratedKeys="true" keyProperty="reSeq" keyColumn="RE_SEQ">
+		INSERT INTO REPEAT_INFO (
+			RE_SEQ,	
+			CONTENTID,
+			CONTENTTYPEID,
+			SERIALNUM,
+			FLDGUBUN,
+			INFONAME,
+			INFOTEXT			
+		) VALUES (
+			SEQ_RE.NEXTVAL,
+			#{contentId},
+			#{contentTypeId},
+			#{serialNum},
+			#{fldgubun},
+			#{infoName},
+			#{infoText}
+		)
+	</insert>
+	
+
+</mapper>

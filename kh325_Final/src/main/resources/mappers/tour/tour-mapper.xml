@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.TourMapper">
+	<resultMap type="Tour" id="tourInfoListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="title" column="TITLE"/>
+		<result property="tel" column="TEL"/>
+		<result property="telName" column="TELNAME"/>
+		<result property="homePage" column="HOMEPAGE"/>
+		<result property="bookTour" column="BOOKTOUR"/>
+		<result property="firstImage" column="FIRSTIMAGE"/>
+		<result property="firstImage2" column="FIRSTIMAGE2"/>
+		<result property="areaCode" column="AREACODE"/>
+		<result property="sigunguCode" column="SIGUNGUCODE"/>
+		<result property="cat1" column="CAT1"/>
+		<result property="cat2" column="CAT2"/>
+		<result property="cat3" column="CAT3"/>
+		<result property="addr1" column="ADDR1"/>
+		<result property="addr2" column="ADDR2"/>
+		<result property="zipCode" column="ZIPCODE"/>
+		<result property="mapX" column="MAPX"/>
+		<result property="mapY" column="MAPY"/>
+		<result property="mLevel" column="MLEVEL"/>
+		<result property="overview" column="OVERVIEW"/>
+	</resultMap>
+	
+	
+	<insert id="insertTourInfo" parameterType="Tour"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO BASIC_TOUR_INFO (
+			CONTENTID,
+			CONTENTTYPEID,
+			TITLE,
+			TEL,
+			TELNAME,
+			HOMEPAGE,
+			BOOKTOUR,
+			FIRSTIMAGE,
+			FIRSTIMAGE2,
+			AREACODE,
+			SIGUNGUCODE,		
+			CAT1,		
+			CAT2,		
+			CAT3,		
+			ADDR1,		
+			ADDR2,		
+			ZIPCODE,		
+			MAPX,		
+			MAPY,		
+			MLEVEL,		
+			OVERVIEW			
+		) VALUES (
+			#{contentId},
+			#{contentTypeId},
+			#{title},
+			#{tel},
+			#{telName},
+			#{homePage},
+			#{bookTour},
+			#{firstImage},
+			#{firstImage2},
+			#{areaCode},
+			#{sigunguCode},
+			#{cat1},
+			#{cat2},
+			#{cat3},
+			#{addr1},
+			#{addr2},
+			#{zipCode},
+			#{mapX},
+			#{mapY},
+			#{mLevel},
+			#{overview}
+		)
+	</insert>
+	
+
+</mapper>

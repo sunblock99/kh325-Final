@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.main.model.mapper.MainMapper">
+	<resultMap type="MainCommunity"
+		id="mainCommunityListResultMap">
+		<id property="rownum" column="ROWNUM" />
+		<result property="freeboardNo" column="FREEBOARD_NO" />
+		<result property="boardType" column="BOARD_TYPE" />
+		<result property="title" column="TITLE" />
+		<result property="userName" column="U_NAME" />
+		<result property="postDate" column="POST_DATE" />
+	</resultMap>
+
+	<select id="selectMainCommunityList"
+		resultMap="mainCommunityListResultMap">
+		SELECT ROWNUM, SORT.* FROM
+		(SELECT FREEBOARD_NO, BOARD_TYPE,
+		TITLE, M.U_NAME, POST_DATE FROM
+		COMM_FREEBOARD B
+		JOIN MEMBER M ON (B.UNO
+		= M.UNO)
+
+		UNION ALL
+
+		SELECT COMPANION_NO, BOARD_TYPE, CONTENT, M.U_NAME,
+		POST_DATE FROM
+		COMM_COMPANION C
+		JOIN MEMBER M ON (C.UNO = M.UNO)) SORT
+		WHERE ROWNUM BETWEEN 1 AND 8
+		ORDER BY POST_DATE DESC
+	</select>
+
+	<resultMap type="MainHotPlace" id="mainHotListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="likeCount" column="LIKE_COUNT" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="title" column="TITLE" />
+		<result property="addr1" column="ADDR1" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+	</resultMap>
+
+	<select id="selectMainHotPlace" parameterType="int"
+		resultMap="mainHotListResultMap">
+		SELECT B.TITLE, B.ADDR1, B.CONTENTTYPEID, B.FIRSTIMAGE,
+		test.*
+		FROM
+		(SELECT CONTENTID, COUNT(CONTENTID) AS LIKE_COUNT
+		FROM
+		TOUR_LIKE
+		GROUP BY CONTENTID
+		ORDER BY LIKE_COUNT DESC) test,
+		BASIC_TOUR_INFO B
+		WHERE B.CONTENTID = test.CONTENTID
+	</select>
+
+	<resultMap type="MainEvent" id="mainEventListResultMap">
+		<id property="contentId" column="CONTENTID" />
+		<result property="contentTypeId" column="CONTENTTYPEID" />
+		<result property="title" column="TITLE" />
+		<result property="firstImage" column="FIRSTIMAGE" />
+		<result property="eventEndDate" column="EVENTENDDATE" />
+		<result property="eventStartDate" column="EVENTSTARTDATE" />
+	</resultMap>
+
+	<select id="selectMainEvent" resultMap="mainEventListResultMap">
+		SELECT * FROM
+		(SELECT B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE, E.EVENTENDDATE,
+		E.EVENTSTARTDATE FROM DETAIL_EVENT E, BASIC_TOUR_INFO B
+		WHERE B.CONTENTTYPEID = 15
+		ORDER BY E.EVENTSTARTDATE DESC)
+        WHERE ROWNUM  <![CDATA[ <= ]]>4
+	</select>
+
+</mapper>

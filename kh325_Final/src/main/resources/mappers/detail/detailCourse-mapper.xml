@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailCourse" id="detailCourseListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="distance" column="DISTANCE"/>
+		<result property="infocenterTourcourse" column="INFOCENTERTOURCOURSE"/>
+		<result property="schedule" column="SCHEDULE"/>
+		<result property="takeTime" column="TAKETIME"/>
+		<result property="theme" column="THEME"/>
+	</resultMap>
+	
+	
+	<insert id="insertDetailCourse" parameterType="DetailCourse"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO DETAIL_COURSE (
+			CONTENTID,      
+			CONTENTTYPEID,  
+			DISTANCE,      
+			INFOCENTERTOURCOURSE,      
+			SCHEDULE,      
+			TAKETIME,     
+			THEME     
+		) VALUES (
+			#{contentId},
+			#{contentTypeId},
+			#{distance},
+			#{infocenterTourcourse},
+			#{schedule},
+			#{takeTime},
+			#{theme}
+		)
+	</insert>
+	
+
+</mapper>

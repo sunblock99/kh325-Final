@@ -1,0 +1,587 @@
+/* 추가한것들 */
+
+
+/* .circle1 {
+    background-size: 900px 900px;
+    z-index: -100;
+    background-image: url("../pic/gallery-ring.png");
+    background-repeat: no-repeat;
+    background-position-x: 10%;
+    background-position-y: 20%;
+} */
+
+
+/* a, abbr, acronym, address, applet, article, aside, audio, b, blockquote, big, body, center, canvas, caption, cite, code, command, datalist, dd, del, details, dfn, dl, div, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, input, select, textarea, button, kbd, keygen, label, legend, li, meter, nav, menu, object, ol, output, p, pre, progress, q, s, samp, section, small, span, source, strike, strong, sub, sup, table, tbody, tfoot, thead, th, tr, colgroup, col, tdvideo, tt, u, ul, var {
+    margin: 0;
+    padding: 0;
+} */
+
+.map_menu {
+    position: relative;
+    /* left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.map_menu .tab {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0% 10% 0;
+}
+
+.map_menu .tab li {
+    width: 20%;
+    text-align: center;
+    margin: 0 0 17px;
+}
+
+@media screen and (max-width: 1023px) {
+    .map_menu {
+        height: auto;
+        padding: 30px 0 0 0;
+        border-radius: 20px 20px 0 0;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .map_menu .stit_area {
+        padding-left: 15px;
+        font-size: 15px;
+        letter-spacing: -0.7px;
+        line-height: 18px;
+    }
+}
+
+.map_cont_wrap {
+    position: absolute;
+    left: 0;
+    top: 89px;
+    height: calc(100% - 89px);
+    display: flex;
+    transition: .3s ease-in-out;
+}
+
+.pc_cont {
+    height: 100%;
+    background: #fff;
+    display: flex;
+    box-shadow: 5px 0px 30px 0px rgb(98 99 100 / 30%);
+}
+
+.map_menu .stit_area {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    line-height: 26px;
+    color: #000;
+}
+
+.pc_depth2 {
+    height: 100%;
+    width: 405px;
+    background: #fff;
+    display: none;
+    /* overflow-y: auto; */
+}
+
+.pc_depth2.view {
+    display: block;
+}
+
+.parking_detail .tit {
+    padding: 20px 25px 0;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.parking_detail .tit .address {
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: -1px;
+    color: #333;
+}
+
+
+/* popup */
+
+.box {
+    width: 40%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 35px;
+    border: 2px solid #fff;
+    border-radius: 20px/50px;
+    background-clip: padding-box;
+    text-align: center;
+}
+
+.button {
+    font-size: 1em;
+    padding: 10px;
+    color: #fff;
+    border: 2px solid #06D85F;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.button:hover {
+    background: #06D85F;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: #06D85F;
+}
+
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .box {
+        width: 70%;
+    }
+    .popup {
+        width: 70%;
+    }
+}
+
+
+/* ======================================================================== */
+
+
+/* check box */
+
+.wrapper {
+    width: 780px;
+    margin: 100px auto 0;
+}
+
+.wrapper .title {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.container {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container .option_item {
+    display: block;
+    position: relative;
+    /* width: 1px;
+    height: 1px;
+    margin: 5px; */
+}
+
+.container .option_item .checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    display: none;
+}
+
+.option_item .option_inner {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 100px;
+    /* border-radius: 100px; 동그라미됨*/
+    text-align: center;
+    /* padding: 40px 40px; */
+    cursor: pointer;
+    color: #585c68;
+    display: block;
+    border: 7px solid transparent;
+    position: relative;
+    margin: 10px;
+    /* margin-left: 6px;
+    margin-right: 6px; */
+}
+
+.option_item .option_inner .icon {
+    margin-top: 2px;
+    margin-bottom: 11px;
+    font-size: 25px;
+    /* background-image: url(); */
+}
+
+.option_item .option_inner .icon .fab {
+    font-size: 30px;
+}
+
+.option_item .option_inner .name {
+    user-select: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    /* padding-top: 1rem !important; */
+}
+
+.option_item .checkbox:checked~.option_inner {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.option_item .checkbox:checked~.option_inner.restaurant {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.option_item .checkbox:checked~.option_inner.cafe {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.option_item .checkbox:checked~.option_inner.hotel {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.option_item .checkbox:checked~.option_inner.parking {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.option_item .checkbox:checked~.option_inner.recommend {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.option_item .checkbox:checked~.option_inner.travelCourse {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.option_item .checkbox:checked~.option_inner.myTrip {
+    border-color: #fda128ae;
+    color: #FD9F28;
+    transition: color 0.12s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+
+
+/* 버튼 색 바뀌는거 */
+
+.option_item .button {
+    border: 1px solid;
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clicked {
+    color: gold;
+}
+
+
+/* .option_item .button.option_inner.myTrip {
+    border-color: #25d366;
+    color: #25d366;
+} */
+
+
+/* .option_item .option_inner.myTrip {
+    border-color: #25d366;
+    color: #25d366;
+} */
+
+input.checkbox[type=checkbox] {
+    display: none;
+}
+
+input.button[type=button] {
+    display: none;
+}
+
+
+/* 스크롤 */
+
+.menu_cont {
+    width: 100%;
+    height: 400px;
+    margin: 5px;
+    background-color: e6e6e6;
+    float: left;
+    overflow: auto;
+    /* height: calc(100% - 285px); */
+    /* overflow-y: scroll; */
+    border-top: 1px solid #e6e6e6;
+}
+
+
+/* 스크롤 전체 */
+
+.menu_cont::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+
+/* 스크롤바 부분 */
+
+.menu_cont::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: #abadac;
+}
+
+
+/* 스크롤바 제외한 나머지 */
+
+.menu_cont::-webkit-scrollbar-track-piece {
+    background: #e5e5e5;
+}
+
+.list_scroll {
+    width: 200px;
+    height: 100px;
+    margin: 5px;
+    background-color: silver;
+    float: left;
+    overflow: auto;
+}
+
+
+/* 지도 목록 (스크롤속) 사진 */
+
+.round {
+    border-radius: 5%;
+}
+
+.picSize {
+    width: 8rem;
+    height: 8rem;
+    line-height: 7rem;
+}
+
+.review2 {
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.width100 {
+    width: 100%;
+}
+
+
+/* 마커 레이아웃 */
+
+.customoverlay {
+    position: relative;
+    bottom: 55px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #ddd;
+    float: left;
+}
+
+.customoverlay:nth-of-type(n) {
+    border: 0;
+    box-shadow: 0px 1px 2px #888;
+}
+
+.customoverlay a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    background: #FD9F28;
+    background: #FD9F28 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+}
+
+.customoverlay .title {
+    display: block;
+    text-align: center;
+    background: #fff;
+    margin-right: 35px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.customoverlay:after {
+    content: '';
+    position: absolute;
+    margin-left: -12px;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 12px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+
+/* 마크 오버레이 */
+
+.wrap {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 288px;
+    height: 132px;
+    margin-left: -144px;
+    text-align: left;
+    overflow: hidden;
+    font-size: 12px;
+    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    line-height: 1.5;
+}
+
+.wrap * {
+    padding: 0;
+    margin: 0;
+}
+
+.wrap .info {
+    width: 286px;
+    height: 120px;
+    border-radius: 5px;
+    border-bottom: 2px solid #ccc;
+    border-right: 1px solid #ccc;
+    overflow: hidden;
+    background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+    border: 0;
+    box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+    padding: 5px 0 0 10px;
+    height: 30px;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #888;
+    width: 17px;
+    height: 17px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+    cursor: pointer;
+}
+
+.info .body {
+    position: relative;
+    overflow: hidden;
+}
+
+.info .desc {
+    position: relative;
+    margin: 13px 0 0 90px;
+    height: 75px;
+}
+
+.desc .ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.desc .jibun {
+    font-size: 11px;
+    color: #888;
+    margin-top: -2px;
+}
+
+.info .img {
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 73px;
+    height: 71px;
+    border: 1px solid #ddd;
+    color: #888;
+    overflow: hidden;
+}
+
+.info:after {
+    content: '';
+    position: absolute;
+    margin-left: -12px;
+    left: 50%;
+    bottom: 0;
+    width: 22px;
+    height: 12px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+    color: #5085BB;
+}

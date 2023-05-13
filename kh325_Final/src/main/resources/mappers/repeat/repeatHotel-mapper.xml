@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.RepeatMapper">
+	<resultMap type="RepeatHotelParsing" id="repeatHotelListResultMap">
+		<id property="accommoDetailNo" column="ACCOMMO_DETAIL_NO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="roomCode" column="ROOMCODE"/>
+		<result property="roomTitle" column="ROOMTITLE"/>
+		<result property="roomSize1" column="ROOMSIZE1"/>
+		<result property="roomCount" column="ROOMCOUNT"/>
+		<result property="roomBaseCount" column="ROOMBASECOUNT"/>
+		<result property="roomMaxCount" column="ROOMMAXCOUNT"/>
+		<result property="roomOffSeasonMinFee1"
+			column="ROOMOFFSEASONMINFEE1"/>
+		<result property="roomOffSeasonMinFee2"
+			column="ROOMOFFSEASONMINFEE2"/>
+		<result property="roomPeakSeasonMinFee1"
+			column="ROOMPEAKSEASONMINFEE1"/>
+		<result property="roomPeakSeasonMinFee2"
+			column="ROOMPEAKSEASONMINFEE2"/>
+		<result property="roomIntro" column="ROOMINTRO"/>
+		<result property="roomBathFacility" column="ROOMBATHFACILITY"/>
+		<result property="roomBath" column="ROOMBATH"/>
+		<result property="roomHomeTheater" column="ROOMHOMETHEATER"/>
+		<result property="roomAircondition" column="ROOMAIRCONDITION"/>
+		<result property="roomTv" column="ROOMTV"/>
+		<result property="roomPc" column="ROOMPC"/>
+		<result property="roomCable" column="ROOMCABLE"/>
+		<result property="roomInternet" column="ROOMINTERNET"/>
+		<result property="roomRefrigerator" column="ROOMREFRIGERATOR"/>
+		<result property="roomToiletries" column="ROOMTOILETRIES"/>
+		<result property="roomSofa" column="ROOMSOFA"/>
+		<result property="roomCook" column="ROOMCOOK"/>
+		<result property="roomTable" column="ROOMTABLE"/>
+		<result property="roomHairdryer" column="ROOMHAIRDRYER"/>
+		<result property="roomSize2" column="ROOMSIZE2"/>
+		<result property="roomImg1" column="ROOMIMG1"/>
+		<result property="roomImg1alt" column="ROOMIMG1ALT"/>
+		<result property="roomImg2" column="ROOMIMG2"/>
+		<result property="roomImg2alt" column="ROOMIMG2ALT"/>
+		<result property="roomImg3" column="ROOMIMG3"/>
+		<result property="roomImg3alt" column="ROOMIMG3ALT"/>
+		<result property="roomImg4" column="ROOMIMG4"/>
+		<result property="roomImg4alt" column="ROOMIMG4ALT"/>
+		<result property="roomImg5" column="ROOMIMG5"/>
+		<result property="roomImg5alt" column="ROOMIMG5ALT"/>
+	</resultMap>
+
+
+
+	<insert id="insertRepeatHotel" parameterType="RepeatHotelParsing"
+		useGeneratedKeys="true" keyProperty="accommoDetailNo"
+		keyColumn="ACCOMMO_DETAIL_NO">
+		INSERT INTO REPEAT_HOTEL(
+		ACCOMMO_DETAIL_NO,
+		CONTENTID,
+		CONTENTTYPEID,
+		ROOMCODE,
+		ROOMTITLE,
+		ROOMSIZE1,
+		ROOMCOUNT,
+		ROOMBASECOUNT,
+		ROOMMAXCOUNT,
+		ROOMOFFSEASONMINFEE1,
+		ROOMOFFSEASONMINFEE2,
+		ROOMPEAKSEASONMINFEE1,
+		ROOMPEAKSEASONMINFEE2,
+		ROOMINTRO,
+		ROOMBATHFACILITY,
+		ROOMBATH,
+		ROOMHOMETHEATER,
+		ROOMAIRCONDITION,
+		ROOMTV,
+		ROOMPC,
+		ROOMCABLE,
+		ROOMINTERNET,
+		ROOMREFRIGERATOR,
+		ROOMTOILETRIES,
+		ROOMSOFA,
+		ROOMCOOK,
+		ROOMTABLE,
+		ROOMHAIRDRYER,
+		ROOMSIZE2,
+		ROOMIMG1,
+		ROOMIMG1ALT,
+		ROOMIMG2,
+		ROOMIMG2ALT,
+		ROOMIMG3,
+		ROOMIMG3ALT,
+		ROOMIMG4,
+		ROOMIMG4ALT,
+		ROOMIMG5,
+		ROOMIMG5ALT
+		) VALUES (
+		SEQ_REPEAT_INFO.NEXTVAL,
+		#{contentId},
+		#{contentTypeId},
+		#{roomCode},
+		#{roomTitle},
+		#{roomSize1},
+		#{roomCount},
+		#{roomBaseCount},
+		#{roomMaxCount},
+		#{roomOffSeasonMinFee1},
+		#{roomOffSeasonMinFee2},
+		#{roomPeakSeasonMinFee1},
+		#{roomPeakSeasonMinFee2},
+		#{roomIntro},
+		#{roomBathFacility},
+		#{roomBath},
+		#{roomHomeTheater},
+		#{roomAircondition},
+		#{roomTv},
+		#{roomPc},
+		#{roomCable},
+		#{roomInternet},
+		#{roomRefrigerator},
+		#{roomToiletries},
+		#{roomSofa},
+		#{roomCook},
+		#{roomTable},
+		#{roomHairdryer},
+		#{roomSize2},
+		#{roomImg1},
+		#{roomImg1alt},
+		#{roomImg2},
+		#{roomImg2alt},
+		#{roomImg3},
+		#{roomImg3alt},
+		#{roomImg4},
+		#{roomImg4alt},
+		#{roomImg5},
+		#{roomImg5alt}
+		)
+	</insert>
+
+
+</mapper>

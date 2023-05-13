@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailShopping" id="detailShoppingListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="chkbabyCarriage" column="CHKBABYCARRIAGE"/>
+		<result property="chkcreditCard" column="CHKCREDITCARD"/>
+		<result property="chkpetShopping" column="CHKPETSHOPPING"/>
+		<result property="cultureCenter" column="CULTURECENTER"/>
+		<result property="fairDay" column="FAIRDAY"/>
+		<result property="infocenterShopping" column="INFOCENTERSHOPPING"/>
+		<result property="opendateShopping" column="OPENDATESHOPPING"/>
+		<result property="openTime" column="OPENTIME"/>
+		<result property="parkingShopping" column="PARKINGSHOPPING"/>
+		<result property="restdateShopping" column="RESTDATESHOPPING"/>
+		<result property="restroom" column="RESTROOM"/>
+		<result property="saleItem" column="SALEITEM"/>
+		<result property="saleItemcost" column="SALEITEMCOST"/>
+		<result property="scaleShopping" column="SCALESHOPPING"/>
+		<result property="shopGuide" column="SHOPGUIDE"/>
+		
+		
+	</resultMap>
+	
+	
+	<insert id="insertDetailShopping" parameterType="DetailShopping"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO DETAIL_SHOPPING (
+			CONTENTID,      
+			CONTENTTYPEID,  
+			CHKBABYCARRIAGE,    
+			CHKCREDITCARD,      
+			CHKPETSHOPPING,     
+			CULTURECENTER,     
+			FAIRDAY,            
+			INFOCENTERSHOPPING,
+			OPENDATESHOPPING,   
+			OPENTIME,          
+			PARKINGSHOPPING,    
+			RESTDATESHOPPING,   
+			RESTROOM,           
+			SALEITEM,           
+			SALEITEMCOST,       
+			SCALESHOPPING,      
+			SHOPGUIDE           
+                    
+		) VALUES (
+			#{contentId},
+			#{contentTypeId},
+			#{chkbabyCarriage},
+			#{chkcreditCard},
+			#{chkpetShopping},
+			#{cultureCenter},
+			#{fairDay},
+			#{infocenterShopping},
+			#{opendateShopping},
+			#{openTime},
+			#{parkingShopping},
+			#{restdateShopping},
+			#{restroom},
+			#{saleItem},
+			#{saleItemcost},
+			#{scaleShopping},
+			#{shopGuide}
+		)
+	</insert>
+	
+
+</mapper>

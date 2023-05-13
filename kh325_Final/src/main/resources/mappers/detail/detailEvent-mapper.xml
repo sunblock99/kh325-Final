@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailEvent" id="detailEventListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="sponsor1" column="SPONSOR1"/>
+		<result property="sponsor1Tel" column="SPONSOR1TEL"/>
+		<result property="sponsor2" column="SPONSOR2"/>
+		<result property="sponsor2Tel" column="SPONSOR2TEL"/>
+		<result property="eventEndDate" column="EVENTENDDATE"/>
+		<result property="playTime" column="PLAYTIME"/>
+		<result property="eventPlace" column="EVENTPLACE"/>
+		<result property="eventHomePage" column="EVENTHOMEPAGE"/>
+		<result property="ageLimit" column="AGELIMIT"/>
+		<result property="bookingPlace" column="BOOKINGPLACE"/>
+		<result property="placeInfo" column="PLACEINFO"/>
+		<result property="subEvent" column="SUBEVENT"/>
+		<result property="evProgram" column="EV_PROGRAM"/>
+		<result property="eventStartDate" column="EVENTSTARTDATE"/>
+		<result property="useTimeFestival" column="USETIMEFESTIVAL"/>
+		<result property="discountInfoFestival" column="DISCOUNTINFOFESTIVAL"/>
+		<result property="spendTimeFestival" column="SPENDTIMEFESTIVAL"/>
+		<result property="festivalGrade" column="FESTIVALGRADE"/>
+		
+		
+	
+	</resultMap>
+	
+	
+	<insert id="insertDetailEvent" parameterType="DetailEvent"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO DETAIL_EVENT (
+			CONTENTID,     
+ 			CONTENTTYPEID, 
+			SPONSOR1,            
+			SPONSOR1TEL,         
+			SPONSOR2,            
+			SPONSOR2TEL,         
+			EVENTENDDATE,        
+			PLAYTIME,           
+			EVENTPLACE,          
+			EVENTHOMEPAGE,       
+			AGELIMIT,            
+			BOOKINGPLACE,        
+			PLACEINFO,           
+			SUBEVENT,            
+			EV_PROGRAM,             
+			EVENTSTARTDATE,      
+			USETIMEFESTIVAL,     
+			DISCOUNTINFOFESTIVAL,
+			SPENDTIMEFESTIVAL,   
+			FESTIVALGRADE     
+		) VALUES (
+			#{contentId},            
+			#{contentTypeId},            
+			#{sponsor1},            
+			#{sponsor1Tel},         
+			#{sponsor2},            
+			#{sponsor2Tel},         
+			#{eventEndDate},        
+			#{playTime},           
+			#{eventPlace},          
+			#{eventHomePage},       
+			#{ageLimit},            
+			#{bookingPlace},        
+			#{placeInfo},           
+			#{subEvent},            
+			#{evProgram},             
+			#{eventStartDate},      
+			#{useTimeFestival},     
+			#{discountInfoFestival},
+			#{spendTimeFestival},   
+		   	#{festivalGrade}
+		  )       
+	</insert>
+	
+
+</mapper>

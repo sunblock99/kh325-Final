@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper 설정 파일임을 선언하는 부분 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.member.model.mapper.MemberMapper">
+	<sql id="selectMemberSql">
+		SELECT
+				UNO,
+				U_NAME,
+				U_EMAIL,
+				U_PASSWORD,
+				U_PHONE,
+				U_ADDRESS,
+				U_AVATAR,
+				U_STATUS,
+				MANAGER_STATUS
+		FROM MEMBER
+	</sql>
+	
+	<resultMap type="Member" id="memberResultMap">
+		<id property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userEmail" column="U_EMAIL"/>
+		<result property="userPassword" column="U_PASSWORD"/>
+		<result property="userPhone" column="U_PHONE"/>
+		<result property="userAddress" column="U_ADDRESS"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="userStatus" column="U_STATUS"/>
+		<result property="managerStatus" column="MANAGER_STATUS"/>
+	</resultMap>
+	
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
+	
+	<select id="selectAll" resultMap="memberResultMap">
+		<include refid="selectMemberSql"/>
+	</select>
+	
+	<!-- 
+ 		외부에서 매개변수로 받는 값이 있으면 해당하는 매개변수의 타입을 지정해줘야한다.(parameterType="string")
+ 		외부에서 매개변수로 받은 값은 #{변수명}로 설정해서 값을 가져온다.
+ 	 -->
+	<select id="selectMember" parameterType="string" resultMap="memberResultMap">
+		<include refid="selectMemberSql"/>
+		WHERE U_EMAIL = #{userEmail} AND U_STATUS = 'Y'
+	</select>
+	
+
+	
+	<insert id="insertMember" parameterType="Member"
+		useGeneratedKeys="true" keyColumn="UNO" keyProperty="userNo">
+		INSERT INTO MEMBER (
+		    UNO, U_NAME, U_EMAIL, 
+		    U_PASSWORD, U_PHONE, U_ADDRESS, 
+		    U_AVATAR, U_STATUS, MANAGER_STATUS
+		) VALUES (
+		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
+		    #{userPassword}, #{userPhone}, 
+		    #{userAddress},DEFAULT, DEFAULT, DEFAULT
+		)
+	</insert>
+	
+	<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER
+		SET
+			U_NAME 	= #{userName},
+			U_EMAIL 	= #{userEmail},
+			U_PHONE 	= #{userPhone},
+			U_ADDRESS = #{userAddress},
+			U_AVATAR 	= #{userAvatar}
+		WHERE UNO = #{userNo}
+	</update>
+	
+	<update id="updatePwd" parameterType="map">
+		UPDATE MEMBER SET U_PASSWORD = #{newPwd} WHERE UNO = #{no}
+	</update>
+	
+	<update id="deleteMember" parameterType="int">
+		UPDATE MEMBER
+			SET U_STATUS = 'N'
+		WHERE UNO = #{userNo}
+	</update>
+	
+	<!-- 카카오 로그인 시작 -->
+	<insert id="insertKakaoMember" parameterType="Member">
+		INSERT INTO MEMBER (
+		    UNO, U_NAME, U_EMAIL, 
+		    U_PASSWORD, U_PHONE, U_ADDRESS, 
+		    U_AVATAR, U_STATUS, MANAGER_STATUS
+		) VALUES (
+		    SEQ_MEMBER_UNO.NEXTVAL, #{userName}, #{userEmail}, 
+		    #{userPassword}, 'null' , 
+		    'null', DEFAULT, DEFAULT, DEFAULT
+		)
+	</insert>
+	
+	
+	
+	
+	<!-- 카카오 로그인  끝 -->
+	
+	<resultMap type="Bookmark" id="bookmarkResultMap">
+		<result property="likeNo" column="LIKE_NO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="title" column="TITLE"/>
+		<result property="image" column="FIRSTIMAGE"/>
+		<result property="address" column="ADDR1"/>
+		<result property="overview" column="OVERVIEW"/>
+		<result property="star" column="STAR"/>
+	</resultMap>
+	 
+	<select id="bookmark" parameterType="int" resultMap="bookmarkResultMap">
+		SELECT L.LIKE_NO, B.CONTENTID, B.CONTENTTYPEID, B.TITLE, B.FIRSTIMAGE, B.ADDR1, B.OVERVIEW  FROM BASIC_TOUR_INFO B
+		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
+		WHERE L.UNO = #{userNo}
+	</select>  
+	
+	<select id="countBookmark" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM BASIC_TOUR_INFO B
+		JOIN TOUR_LIKE L ON(B.CONTENTID=L.CONTENTID)
+		JOIN REVIEW_TOTAL R ON(R.UNO = L.UNO and R.CONTENTID = B.CONTENTID)
+		WHERE L.UNO = #{userNo}
+	</select>  
+	
+	
+	<delete id="deleteBookmark" parameterType="int">
+		DELETE FROM TOUR_LIKE 
+		WHERE LIKE_NO = #{likeNo}
+	</delete>
+	
+	<resultMap type="Review" id="reviewResultMap">
+		<result property="reviewNo" column="REVIEW_NO"/>
+		<result property="userNo" column="UNO"/>
+		<result property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="title" column="TITLE"/>
+		<result property="star" column="STAR"/>
+		<result property="content" column="CONTENT"/>
+	</resultMap>
+	
+	<select id="review" parameterType="int" resultMap="reviewResultMap">
+		SELECT R.REVIEW_NO, R.UNO, R.CONTENTID, B.CONTENTTYPEID, B.TITLE, R.STAR, R.CONTENT FROM REVIEW_TOTAL R
+		JOIN MEMBER M ON(M.UNO=R.UNO)
+		JOIN BASIC_TOUR_INFO B ON(B.CONTENTID = R.CONTENTID)
+		WHERE R.UNO =  #{userNo}
+	</select>
+	
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM REVIEW_TOTAL 
+		WHERE REVIEW_NO = #{reviewNo}
+	</delete> 	
+	
+	<resultMap type="MyCommunity" id="communityResultMap">
+		<result property="boardType" column="BOARD_TYPE"/>
+		<result property="userNo" column="UNO"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="title" column="TITLE"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="count" column="COUNT"/>
+	</resultMap>
+	
+	<!-- 나의 커뮤니티 게시글 쿼리 -->
+	<select id="communityFreeboard" parameterType="Map" resultMap="communityResultMap">
+		SELECT B.BOARD_TYPE, M.UNO, B.FREEBOARD_NO AS BOARD_NO, B.TITLE, B.POST_DATE, B.COUNT 
+		FROM COMM_FREEBOARD B
+		JOIN MEMBER M ON(B.UNO=M.UNO)
+		WHERE B.STATUS = 'Y' AND M.UNO = #{userNo}
+		ORDER BY B.FREEBOARD_NO DESC
+	</select>
+	
+	<select id="communityCompanion" parameterType="Map" resultMap="communityResultMap">
+		SELECT B.BOARD_TYPE, M.UNO, B.COMPANION_NO AS BOARD_NO, B.CONTENT AS TITLE, B.POST_DATE
+		FROM COMM_COMPANION B
+		JOIN MEMBER M ON(B.UNO=M.UNO)
+		WHERE B.STATUS = 'Y' AND M.UNO= #{userNo}
+		ORDER BY B.COMPANION_NO DESC
+	</select>
+	
+	<select id="communityJourney" parameterType="Map" resultMap="communityResultMap">
+		SELECT B.BOARD_TYPE, M.UNO, B.JOURNEY_NO AS BOARD_NO, B.TITLE, B.POST_DATE, B.COUNT 
+		FROM COMM_JOURNEY B
+		JOIN MEMBER M ON(B.UNO=M.UNO)
+		WHERE B.STATUS = 'Y' AND M.UNO= #{userNo}
+		ORDER BY B.JOURNEY_NO DESC
+	</select>
+	
+	<select id="selectFreeBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM COMM_FREEBOARD 
+		WHERE STATUS = 'Y' AND UNO = #{userNo}
+	</select>
+	<select id="selectCompBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM COMM_COMPANION 
+		WHERE STATUS = 'Y' AND UNO = #{userNo}
+	</select>
+	<select id="selectJourneyBoardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM COMM_JOURNEY 
+		WHERE STATUS = 'Y' AND UNO = #{userNo}
+	</select>
+	
+	<delete id="deleteCommunity" parameterType="int">
+		DELETE FROM REVIEW_TOTAL 
+		WHERE REVIEW_NO = #{freeboardNo}
+	</delete> 	
+	
+	<resultMap type="MemMyCourse" id="mycourseResultMap">
+		<result property="mycourseNo" column="MYCOURSE_NO"/>
+		<result property="userNo" column="UNO"/>
+		<result property="mycourseContent" column="MYCOURSE_CONTENT"/>
+		<result property="mycourseTitle" column="MYCOURSE_TITLE"/>
+		<result property="mycourseMainimage" column="MYCOURSE_MAINIMAGE"/>
+	</resultMap>
+	
+	<select id="mycourse" parameterType="int" resultMap="mycourseResultMap">
+		SELECT MYCOURSE_NO, C.UNO, MYCOURSE_CONTENT, MYCOURSE_TITLE, MYCOURSE_MAINIMAGE FROM MYCOURSE C
+		JOIN MEMBER M ON(C.UNO=M.UNO)
+		WHERE C.MYCOURSE_STATUS = 'Y' AND C.UNO = #{userNo}
+	</select>
+
+</mapper>

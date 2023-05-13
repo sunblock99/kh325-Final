@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.TotalTourMapper">
+	<resultMap type="DetailReview" id="ReviewListResultMap">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="userNo" column="UNO" />
+		<result property="userName" column="U_NAME" />
+		<result property="contentId" column="CONTENTID" />
+		<result property="star" column="STAR" />
+		<result property="content" column="CONTENT" />
+		<result property="userAvatar" column="U_AVATAR" />
+	</resultMap>
+	
+	<insert id="insertReview" parameterType="DetailReview">
+		INSERT INTO REVIEW_TOTAL 
+			VALUES (SEQ_REVIEW_NO.NEXTVAL, #{contentId}, #{userNo}, #{star}, #{content})
+	</insert>
+	
+	<select id="getReviewList" parameterType="int" resultMap="ReviewListResultMap">
+		SELECT R.REVIEW_NO, R.CONTENTID, R.UNO, R.STAR, R.CONTENT, M.U_AVATAR, M.U_NAME
+		FROM REVIEW_TOTAL R
+		JOIN MEMBER M ON (R.UNO = M.UNO)
+		JOIN BASIC_TOUR_INFO B ON (R.CONTENTID = B.CONTENTID)
+		WHERE B.CONTENTID = #{contentId}
+		ORDER BY R.REVIEW_NO DESC
+	</select>
+	
+</mapper>

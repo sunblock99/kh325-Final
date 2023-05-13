@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kh.tour.community.model.mapper.CompanionMapper">
+	<resultMap type="Companion" id="companionListResultMap">
+		<id property="companionNo" column="COMPANION_NO" />
+		<result property="userNo" column="UNO" />
+		<result property="userName" column="U_NAME" />
+		<result property="departureDate" column="DEPATURE_DATE" />
+		<result property="closeDate" column="CLOSE_DATE" />
+		<result property="content" column="CONTENT" />
+		<result property="area" column="AREA" />
+		<result property="postDate" column="POST_DATE" />
+		<result property="boardType" column="BOARD_TYPE" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+	
+	<resultMap type="CompanionComment" id="companionCommentResultMap">
+		<id property="commentNo" column="COMMENT_NO"/>
+		<result property="companionNo" column="COMPANION_NO"/>
+		<result property="senderNo" column="SENDER_NO"/>
+		<result property="senderName" column="SENDER_NAME"/>
+		<result property="senderAvatar" column="U_AVATAR_S"/>
+		<result property="msgSend" column="MSG_SEND"/>
+		<result property="receiverNo" column="RECEIVER_NO"/>
+		<result property="receiverName" column="RECEIVER_NAME"/>
+		<result property="receiverAvatar" column="U_AVATAR_R"/>
+		<result property="msgRec" column="MSG_REC"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="status" column="STATUS"/>
+	</resultMap>
+	
+	<resultMap type="Member" id="CommentSenderListMap">
+		<id property="userNo" column="UNO"/>
+		<result property="userName" column="U_NAME"/>
+		<result property="userAvatar" column="U_AVATAR"/>
+		<result property="userEmail" column="U_EMAIL"/>
+		<result property="userPassword" column="U_PASSWORD"/>
+		<result property="userPhone" column="U_PHONE"/>
+		<result property="userAddress" column="U_ADDRESS"/>
+		<result property="userStatus" column="U_STATUS"/>
+		<result property="managerStatus" column="MANAGER_STATUS"/>
+	</resultMap>
+	
+	<resultMap type="Companion" id="companionDetailResultMap" extends="companionListResultMap">
+		<collection property="commentList" javaType="arrayList" columnPrefix="R_" resultMap="companionCommentResultMap"/>
+	</resultMap>
+	
+	
+	
+	<!-- 셀렉트 -->
+	<select id="selectBoardList" resultMap="companionListResultMap"  parameterType="map">
+		SELECT  B.COMPANION_NO,
+				M.UNO, 
+				M.U_NAME,
+				B.DEPATURE_DATE, 
+				B.CLOSE_DATE, 
+				B.CONTENT, 
+				B.AREA, 
+				B.POST_DATE,
+				B.BOARD_TYPE,
+				B.STATUS
+		FROM COMM_COMPANION B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		WHERE B.STATUS = 'Y'
+		AND B.DEPATURE_DATE >= SYSDATE
+		<!-- WHERE 1=1 -->
+		<if test="departureDate != null">
+			AND B.DEPATURE_DATE >= #{departureDate}
+		</if>
+		<if test="area != null">
+			AND B.AREA LIKE '%'||#{area}||'%'
+		</if>
+		ORDER BY B.COMPANION_NO DESC
+	</select>
+	
+	<!-- 게시글개수 -->
+	<select id="selectBoardCount" resultType="int"  parameterType="map">
+		SELECT COUNT(*)
+		FROM COMM_COMPANION B
+		JOIN MEMBER M ON(B.UNO = M.UNO)
+		WHERE B.STATUS = 'Y'
+		AND B.DEPATURE_DATE >= SYSDATE
+		<!-- WHERE 1=1 -->
+		<if test="departureDate != null">
+			AND B.DEPATURE_DATE >= #{departureDate}
+		</if>
+		<if test="area != null">
+			AND B.AREA LIKE '%'||#{area}||'%'
+		</if>
+		ORDER BY B.COMPANION_NO DESC
+	</select>
+	
+	<select id="selectCompanionByNo" parameterType="int" resultMap="companionListResultMap">
+		SELECT  B.COMPANION_NO,
+				B.UNO, 
+				B.DEPATURE_DATE, 
+				B.CLOSE_DATE, 
+				B.CONTENT, 
+				B.AREA, 
+				B.POST_DATE,
+				B.BOARD_TYPE,
+				B.STATUS
+		FROM COMM_COMPANION B
+		WHERE B.STATUS = 'Y' AND B.COMPANION_NO = #{companionNo}
+	</select>
+	
+	<select id="selectCommentByNo" parameterType="int" resultMap="companionCommentResultMap">
+		SELECT B.COMMENT_NO,
+            B.COMPANION_NO,
+            M2.UNO AS SENDER_NO,
+            M2.U_NAME SENDER_NAME,
+            M2.U_AVATAR AS U_AVATAR_S,
+            B.MSG_SEND,
+            M.UNO AS RECEIVER_NO,
+            M.U_NAME AS RECEIVER_NAME,
+            M.U_AVATAR AS U_AVATAR_R,
+            B.MSG_REC,
+            B.POST_DATE,
+            B.STATUS
+		FROM companion_comment B
+		LEFT OUTER JOIN MEMBER M ON(B.RECEIVER_NO = M.UNO)
+        LEFT OUTER JOIN MEMBER M2 ON(B.SENDER_NO = M2.UNO)
+		WHERE B.STATUS = 'Y'  AND B.COMPANION_NO = #{companionNo} AND B.SENDER_NO = #{senderNo}
+		ORDER BY B.COMMENT_NO 
+	</select>
+	
+	<!-- 동행 게시글 등록 -->
+	<insert id="insertBoard" parameterType="Companion">
+		INSERT INTO COMM_COMPANION (
+			COMPANION_NO,
+			UNO,
+			DEPATURE_DATE,
+			CLOSE_DATE,
+			CONTENT,
+			AREA,
+			POST_DATE,
+			BOARD_TYPE,
+			STATUS
+		) VALUES (
+			SEQ_COMP_NO.NEXTVAL,
+			#{userNo},
+			#{departureDate},
+			#{closeDate},
+			#{content},
+			#{area},
+			SYSDATE,
+			DEFAULT,
+			DEFAULT
+		)
+	</insert>
+	
+	<!-- 댓글등록 -->
+	
+	<insert id="insertComment" parameterType="CompanionComment">
+		INSERT INTO COMPANION_COMMENT (
+			COMMENT_NO,
+			COMPANION_NO,
+			SENDER_NO,
+			MSG_SEND,
+			RECEIVER_NO,
+			MSG_REC,
+			POST_DATE,
+			STATUS
+		)VALUES(
+			SEQ_COMP_SC_NO.NEXTVAL, 
+			#{companionNo}, #{senderNo}, #{msgSend}, #{receiverNo}, #{msgRec},SYSDATE, DEFAULT
+		)
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<update id="deleteBoard" parameterType="int">
+		UPDATE COMM_COMPANION SET STATUS='N' WHERE COMPANION_NO=#{companionNo}
+	</update>
+	
+	<!-- 추가 -->
+	
+	<!-- 코멘트 센더 리스트 -->
+		
+	<select id="selectCommentSenderList" parameterType="int" resultMap="CommentSenderListMap">
+		SELECT DISTINCT B.SENDER_NO AS UNO, M.U_NAME, M.U_AVATAR,M.U_EMAIL,M.U_PASSWORD,M.U_PHONE,M.U_ADDRESS,M.U_STATUS,M.MANAGER_STATUS
+		FROM companion_comment B  JOIN MEMBER M ON(B.SENDER_NO = M.UNO) 
+		WHERE companion_no=#{companionNo}
+	</select>
+	
+</mapper> 

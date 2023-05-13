@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailTourist" id="detailTouristListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="heritage1" column="HERITAGE1"/>
+		<result property="heritage2" column="HERITAGE2"/>
+		<result property="heritage3" column="HERITAGE3"/>
+		<result property="infoCenter" column="INFOCENTER"/>
+		<result property="openDate" column="OPENDATE"/>
+		<result property="restDate" column="RESTDATE"/>
+		<result property="expGuide" column="EXPGUIDE"/>
+		<result property="expAgeRange" column="EXPAGERANGE"/>
+		<result property="accomCount" column="ACCOMCOUNT"/>
+		<result property="useSeason" column="USESEASON"/>
+		<result property="useTime" column="USETIME"/>
+		<result property="parking" column="PARKING"/>
+		<result property="chkBabyCarriage" column="CHKBABYCARRIAGE"/>
+		<result property="chkCreditCard" column="CHKCREDITCARD"/>
+		<result property="chkPet" column="CHKPET"/>
+	
+	</resultMap>
+	
+	
+	<insert id="insertDetailTourist" parameterType="DetailTourist"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO DETAIL_TOURIST(
+			CONTENTID,      
+			CONTENTTYPEID,  
+			HERITAGE1,      
+			HERITAGE2,      
+			HERITAGE3,      
+			INFOCENTER,     
+			OPENDATE,       
+			RESTDATE,       
+			EXPGUIDE,       
+			EXPAGERANGE,    
+			ACCOMCOUNT,     
+			USESEASON,      
+			USETIME,        
+			PARKING,           
+			CHKBABYCARRIAGE,
+			CHKCREDITCARD,  
+			CHKPET) VALUES (
+			#{contentId},
+			#{contentTypeId},
+			#{heritage1},
+			#{heritage2},
+			#{heritage3},
+			#{infoCenter},
+			#{openDate},
+			#{restDate},
+			#{expGuide},
+			#{expAgeRange},
+			#{accomCount},
+			#{useSeason},
+			#{useTime},
+			#{parking},
+			#{chkBabyCarriage},
+			#{chkCreditCard},
+			#{chkPet}
+		)
+	</insert>
+	
+
+</mapper>

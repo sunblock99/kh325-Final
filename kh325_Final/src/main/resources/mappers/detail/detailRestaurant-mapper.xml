@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailRestaurant" id="detailRestaurantListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="chkcreditcardFood" column="CHKCREDITCARDFOOD"/>
+		<result property="discountinfoFood" column="DISCOUNTINFOFOOD"/>
+		<result property="firstMenu" column="FIRSTMENU"/>
+		<result property="infocenterFood" column="INFOCENTERFOOD"/>
+		<result property="kidsFacility" column="KIDSFACILITY"/>
+		<result property="opendateFood" column="OPENDATEFOOD"/>
+		<result property="opentimeFood" column="OPENTIMEFOOD"/>
+		<result property="packing" column="PACKING"/>
+		<result property="parkingFood" column="PARKINGFOOD"/>
+		<result property="reservationFood" column="RESERVATIONFOOD"/>
+		<result property="restdateFood" column="RESTDATEFOOD"/>
+		<result property="scaleFood" column="SCALEFOOD"/>
+		<result property="seat" column="SEAT"/>
+		<result property="smoking" column="SMOKING"/>
+		<result property="treatMenu" column="TREATMENU"/>
+		<result property="lcnsNo" column="LCNSNO"/>
+		
+		
+	</resultMap>
+	
+	
+	<insert id="insertDetailRestaurant" parameterType="DetailRestaurant"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO DETAIL_RESTAURANT (
+			CONTENTID,        
+			CONTENTTYPEID,    
+			CHKCREDITCARDFOOD,
+			DISCOUNTINFOFOOD, 
+			FIRSTMENU,        
+			INFOCENTERFOOD,   
+			KIDSFACILITY,     
+			OPENDATEFOOD,     
+			OPENTIMEFOOD,     
+			PACKING,          
+			PARKINGFOOD,      
+			RESERVATIONFOOD,  
+			RESTDATEFOOD,     
+			SCALEFOOD,        
+			SEAT,             
+			SMOKING,          
+			TREATMENU,        
+			LCNSNO   
+		) VALUES (
+			#{contentId}, 
+			#{contentTypeId}, 
+			#{chkcreditcardFood}, 
+			#{discountinfoFood},  
+			#{firstMenu},         
+			#{infocenterFood},    
+			#{kidsFacility},      
+			#{opendateFood},      
+			#{opentimeFood},      
+			#{packing},           
+			#{parkingFood},       
+			#{reservationFood},   
+			#{restdateFood},      
+			#{scaleFood},         
+			#{seat},              
+			#{smoking},           
+			#{treatMenu},         
+			#{lcnsNo}            
+		)
+	</insert>
+	
+
+</mapper>

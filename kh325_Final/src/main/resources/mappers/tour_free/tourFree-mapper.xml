@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.TourFreeMapper">
+	<resultMap type="TourFree" id="tourFreeListResultMap">
+		
+		<id property="contentId" column="CONTENTID"/>
+		<result property="parking" column="PARKING"/>
+		<result property="route" column="ROUTE"/>
+		<result property="publicTransport" column="PUBLICTRANSPORT"/>
+		<result property="ticketOffice" column="TICKETOFFICE"/>
+		<result property="promotion" column="PROMOTION"/>
+		<result property="wheelchair" column="WHEELCHAIR"/>
+		<result property="elevator" column="ELEVATOR"/>
+		<result property="restroom" column="RESTROOM"/>
+		<result property="auditorium" column="AUDITORIUM"/>
+		<result property="room" column="ROOM"/>
+		<result property="handicapEtc" column="HANDICAPETC"/>
+		<result property="braileBlock" column="BRAILEBLOCK"/>
+		<result property="helpDog" column="HELPDOG"/>
+		<result property="guideHuman" column="GUIDEHUMAN"/>
+		<result property="audioGuide" column="AUDIOGUIDE"/>
+		<result property="bigPrint" column="BIGPRINT"/>
+		<result property="brailePromotion" column="BRAILEPROMOTION"/>
+		<result property="guideSystem" column="GUIDESYSTEM"/>
+		<result property="blindHandicapEtc" column="BLINDHANDICAPETC"/>
+		<result property="signGuide" column="SIGNGUIDE"/>
+		<result property="videoGuide" column="VIDEOGUIDE"/>
+		<result property="hearingRoom" column="HEARINGROOM"/>
+		<result property="hearingHandicapEtc" column="HEARINGHANDICAPETC"/>
+		<result property="stroller" column="STROLLER"/>
+		<result property="lactationRoom" column="LACTATIONROOM"/>
+		<result property="babySpareChair" column="BABYSPARECHAIR"/>
+		<result property="infantsFamilyEtc" column="INFANTSFAMILYETC"/>
+		
+	</resultMap>
+	
+	
+	<insert id="insertTourFreeInfo" parameterType="TourFree"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO TOUR_FREE (
+			CONTENTID,
+			PARKING,
+			ROUTE,
+			PUBLICTRANSPORT,
+			TICKETOFFICE,
+			PROMOTION,
+			WHEELCHAIR,
+			EXIT,
+			ELEVATOR,
+			RESTROOM,
+			AUDITORIUM,		
+			ROOM,		
+			HANDICAPETC,		
+			BRAILEBLOCK,		
+			HELPDOG,		
+			GUIDEHUMAN,		
+			AUDIOGUIDE,		
+			BIGPRINT,		
+			BRAILEPROMOTION,		
+			GUIDESYSTEM,		
+			BLINDHANDICAPETC,			
+			SIGNGUIDE,			
+			VIDEOGUIDE,			
+			HEARINGROOM,			
+			HEARINGHANDICAPETC,			
+			STROLLER,			
+			LACTATIONROOM,			
+			BABYSPARECHAIR,			
+			INFANTSFAMILYETC			
+		) VALUES (
+			#{contentId},
+			#{parking},
+			#{route},
+			#{publicTransport},
+			#{ticketOffice},
+			#{promotion},
+			#{wheelchair},
+			#{exit},
+			#{elevator},
+			#{restroom},
+			#{auditorium},
+			#{room},
+			#{handicapEtc},
+			#{braileBlock},
+			#{helpDog},
+			#{guideHuman},
+			#{audioGuide},
+			#{bigPrint},
+			#{brailePromotion},
+			#{guideSystem},
+			#{blindHandicapEtc},
+			#{signGuide},
+			#{videoGuide},
+			#{hearingRoom},
+			#{hearingHandicapEtc},
+			#{stroller},
+			#{lactationRoom},
+			#{babySpareChair},
+			#{infantsFamilyEtc}
+		)
+	</insert>
+
+</mapper>

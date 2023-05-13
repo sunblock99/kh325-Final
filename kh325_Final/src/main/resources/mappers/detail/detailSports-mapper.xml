@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.tour.tour.model.mapper.DetailMapper">
+	<resultMap type="DetailSports" id="detailSportsListResultMap">
+		<id property="contentId" column="CONTENTID"/>
+		<result property="contentTypeId" column="CONTENTTYPEID"/>
+		<result property="accomcountLeports" column="ACCOMCOUNTLEPORTS"/>
+		<result property="chkbabycarriageLeports" column="CHKBABYCARRIAGELEPORTS"/>
+		<result property="chkcreditcardLeports" column="CHKCREDITCARDLEPORTS"/>
+		<result property="chkpetLeports" column="CHKPETLEPORTS"/>
+		<result property="expagerangeLeports" column="EXPAGERANGELEPORTS"/>
+		<result property="infocenterLeports" column="INFOCENTERLEPORTS"/>
+		<result property="openPeriod" column="OPENPERIOD"/>
+		<result property="parkingfeeLeports" column="PARKINGFEELEPORTS"/>
+		<result property="parkingLeports" column="PARKINGLEPORTS"/>
+		<result property="reservation" column="RESERVATION"/>
+		<result property="restdateLeports" column="RESTDATELEPORTS"/>
+		<result property="scaleLeports" column="SCALELEPORTS"/>
+		<result property="usefeeLeports" column="USEFEELEPORTS"/>
+		<result property="usetimeLeports" column="USETIMELEPORTS"/>
+	
+	</resultMap>
+	
+	
+	
+	<insert id="insertDetailSports" parameterType="DetailSports"
+			useGeneratedKeys="true" keyProperty="contentId" keyColumn="CONTENTID">
+		INSERT INTO DETAIL_SPORTS (
+			CONTENTID,      
+			CONTENTTYPEID, 
+			ACCOMCOUNTLEPORTS, 		
+			CHKBABYCARRIAGELEPORTS, 	
+			CHKCREDITCARDLEPORTS, 	
+			CHKPETLEPORTS, 			
+			EXPAGERANGELEPORTS, 		
+			INFOCENTERLEPORTS, 		
+			OPENPERIOD, 				
+			PARKINGFEELEPORTS, 		
+			PARKINGLEPORTS, 			
+			RESERVATION, 			
+			RESTDATELEPORTS, 		
+			SCALELEPORTS, 			
+			USEFEELEPORTS, 			
+			USETIMELEPORTS
+			 			
+		) VALUES (
+			#{contentId},
+			#{contentTypeId},
+			#{accomcountLeports},            
+			#{chkbabycarriageLeports},         
+			#{chkcreditcardLeports},            
+			#{chkpetLeports},         
+			#{expagerangeLeports},        
+			#{infocenterLeports},           
+			#{openPeriod},          
+			#{parkingfeeLeports},       
+			#{parkingLeports},            
+			#{reservation},        
+			#{restdateLeports},           
+			#{scaleLeports},            
+			#{usefeeLeports},             
+			#{usetimeLeports}      
+		  )       
+	</insert>
+	
+
+</mapper>
